@@ -1,0 +1,25 @@
+.button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.text-field {
+    -fx-background-color: -fx-text-box-border, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: #88c9b2, #ffffff ;
+}
+
+.buttonChange {
+    -fx-background-color: transparent;
+}
+
+.buttonChange:hover {
+    -fx-background-color: transparent;
+}
