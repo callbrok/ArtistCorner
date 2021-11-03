@@ -2,16 +2,23 @@ package com.example.testinterfaccia;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.util.Objects;
+
 public class MainArtistaGraphController {
     public AnchorPane anchorParent;
+    public ImageView imageGifButton;
     private double x=0, y=0;
     private Stage stage;
 
     public void initialize(){
         makeDraggable();
+
     }
 
     private void makeDraggable(){

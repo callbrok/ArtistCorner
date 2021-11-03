@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -26,12 +27,12 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Button onAction="#exitWindow" styleClass="buttonChange" layoutX="969.0" layoutY="3.0" mnemonicParsing="false" text="x" textFill="WHITE">
+            <Button layoutX="969.0" layoutY="3.0" mnemonicParsing="false" onAction="#exitWindow" styleClass="buttonChange" text="x" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button onAction="#minimizeWindow" styleClass="buttonChange" layoutX="946.0" layoutY="3.0" mnemonicParsing="false" text="-" textFill="WHITE" />
+            <Button layoutX="946.0" layoutY="3.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="buttonChange" text="-" textFill="WHITE" />
          </children></Pane>
       <Pane id="mainPane" layoutX="206.0" layoutY="127.0" prefHeight="296.0" prefWidth="710.0" style="-fx-background-color: #fff;">
          <children>
@@ -78,6 +79,23 @@
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
+      </Pane>
+      <Pane id="mainPane" layoutX="624.0" layoutY="438.0" prefHeight="159.0" prefWidth="292.0" style="-fx-background-color: #fff;">
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <children>
+            <ImageView fx:id="imageGifButton" fitHeight="197.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/gifPennello.gif" />
+               </image>
+            </ImageView>
+            <Label layoutX="42.0" layoutY="40.0" prefHeight="39.0" prefWidth="213.0" text="Cosa Disegno?" textFill="#2d8465">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
       </Pane>
    </children>
 </AnchorPane>
