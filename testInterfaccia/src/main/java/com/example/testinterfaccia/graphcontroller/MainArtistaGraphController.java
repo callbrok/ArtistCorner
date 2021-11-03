@@ -1,26 +1,27 @@
-package com.example.testinterfaccia;
+package com.example.testinterfaccia.graphcontroller;
 
+import com.example.testinterfaccia.SceneController;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ProfiloArtistaGraphController {
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
-    @FXML
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
-    public Button button5;
-
+public class MainArtistaGraphController {
     public AnchorPane anchorParent;
+    public ImageView imageGifButton;
     private double x=0, y=0;
     private Stage stage;
 
+    public void initialize(){
+        makeDraggable();
+
+    }
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -44,13 +45,8 @@ public class ProfiloArtistaGraphController {
         stage.setIconified(true);
     }
 
-    public void initialize(){
-        makeDraggable();
-
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Carica Opera"));
-        button4.setTooltip(new Tooltip("Offerte Mostre"));
-        button5.setTooltip(new Tooltip("Opere Vendute"));
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(actionEvent);
     }
 }

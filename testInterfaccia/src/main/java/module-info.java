@@ -6,4 +6,6 @@ module com.example.testinterfaccia {
 
     opens com.example.testinterfaccia to javafx.fxml;
     exports com.example.testinterfaccia;
+    exports com.example.testinterfaccia.graphcontroller;
+    opens com.example.testinterfaccia.graphcontroller to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.example.testinterfaccia;
+package com.example.testinterfaccia.graphcontroller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
