@@ -66,7 +66,14 @@ public class ProfiloArtistaGraphController {
     }
 
     public void initializeImage(){
-        Image imageTT = new Image("/demo.png");
+        /*1)preserveRatio:
+            Indicates whether to preserve the aspect ratio of the source image when scaling to
+            fit the image within the fitting bounding box.
+
+          2)smooth:
+            Indicates whether to use a better quality filtering algorithm or a faster one when transforming
+            or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
+        Image imageTT = new Image("/munch_expand.jpeg", 100, 100, true, false);
         imageThumb.setImage(imageTT);
 
         Image imageFF = new Image("/munch_expand.jpeg");
