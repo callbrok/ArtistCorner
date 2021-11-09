@@ -51,7 +51,7 @@
          <graphic>
             <SVGPath content="M 15 2 A 1 1 0 0 0 14.300781 2.2851562 L 3.3925781 11.207031 A 1 1 0 0 0 3.3554688 11.236328 L 3.3183594 11.267578 L 3.3183594 11.269531 A 1 1 0 0 0 3 12 A 1 1 0 0 0 4 13 L 5 13 L 5 24 C 5 25.105 5.895 26 7 26 L 23 26 C 24.105 26 25 25.105 25 24 L 25 13 L 26 13 A 1 1 0 0 0 27 12 A 1 1 0 0 0 26.681641 11.267578 L 26.666016 11.255859 A 1 1 0 0 0 26.597656 11.199219 L 25 9.8925781 L 25 6 C 25 5.448 24.552 5 24 5 L 23 5 C 22.448 5 22 5.448 22 6 L 22 7.4394531 L 15.677734 2.2675781 A 1 1 0 0 0 15 2 z M 18 15 L 22 15 L 22 23 L 18 23 L 18 15 z" />
          </graphic></Button>
-      <Button onAction="#switchToProfiloArtista" layoutY="216.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="205.0" styleClass="button2" text="Profilo">
+      <Button layoutY="216.0" mnemonicParsing="false" onAction="#switchToProfiloArtista" prefHeight="46.0" prefWidth="205.0" styleClass="button2" text="Profilo">
          <graphic>
             <SVGPath content="M 10 4 C 6.803 4 4.9570312 6.494 4.9570312 9.5 C 4.9570312 10.512 5.4414062 11.529297 5.4414062 11.529297 C 5.2474063 11.641297 4.9278125 11.998906 5.0078125 12.628906 C 5.1578125 13.804906 5.6671875 14.101953 5.9921875 14.126953 C 6.1161875 15.224953 7.587 16.796 8 17 L 8 18.667969 C 7.083 21.417969 1 20 1 26 L 19 26 C 19 20 12.917 21.417969 12 18.667969 L 12 17 C 12.413 16.796 13.883813 15.224953 14.007812 14.126953 C 14.332812 14.101953 14.841188 13.804906 14.992188 12.628906 C 15.073187 11.996906 14.753594 11.641297 14.558594 11.529297 C 14.558594 11.529297 15.042969 10.611 15.042969 9.5 C 15.042969 7.274 14.168969 5.375 12.292969 5.375 C 12.292969 5.375 11.949 4 10 4 z M 16.847656 11 C 16.826656 11.085 16.813016 11.183719 16.791016 11.261719 C 16.971016 11.719719 17.055563 12.263812 16.976562 12.882812 C 16.971563 12.925812 16.958172 12.958 16.951172 13 L 28 13 C 28.553 13 29 12.553 29 12 C 29 11.447 28.553 11 28 11 L 16.847656 11 z M 15.427734 16 C 15.038734 16.725 14.513 17.402969 14 17.917969 L 14 18 L 28 18 C 28.553 18 29 17.553 29 17 C 29 16.447 28.553 16 28 16 L 15.427734 16 z M 19.189453 21 C 19.704453 21.531 20.154562 22.184 20.476562 23 L 28 23 C 28.553 23 29 22.553 29 22 C 29 21.447 28.553 21 28 21 L 19.189453 21 z" />
          </graphic></Button>
@@ -80,17 +80,17 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <Pane id="mainPane" layoutX="624.0" layoutY="438.0" prefHeight="159.0" prefWidth="292.0" style="-fx-background-color: #fff;">
+      <Pane id="mainPane" fx:id="paneIdeaButton" layoutX="624.0" layoutY="438.0" prefHeight="159.0" prefWidth="292.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <ImageView fx:id="imageGifButton" fitHeight="197.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageGifButton" fitHeight="159.0" fitWidth="310.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" scaleX="1.01">
                <image>
                   <Image url="@../img/gifPennello.gif" />
                </image>
             </ImageView>
-            <Label layoutX="42.0" layoutY="40.0" prefHeight="39.0" prefWidth="213.0" text="Cosa Disegno?" textFill="#2d8465">
+            <Label fx:id="labelAlgoritmo" layoutX="42.0" layoutY="40.0" prefHeight="39.0" prefWidth="213.0" text="Cosa Disegno?" textFill="#2d8465">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
