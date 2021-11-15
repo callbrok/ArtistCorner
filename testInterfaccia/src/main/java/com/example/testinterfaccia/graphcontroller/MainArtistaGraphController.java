@@ -42,6 +42,7 @@ public class MainArtistaGraphController {
             stage.setY(event.getScreenY() - y);
         }));
     }
+
     public void exitWindow(ActionEvent actionEvent) {
         stage = (Stage) anchorParent.getScene().getWindow();
         stage.close();

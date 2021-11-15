@@ -3,6 +3,7 @@ module com.example.testinterfaccia {
     requires javafx.fxml;
 
     requires org.kordamp.ikonli.javafx;
+    requires java.desktop;
 
     opens com.example.testinterfaccia to javafx.fxml;
     exports com.example.testinterfaccia;

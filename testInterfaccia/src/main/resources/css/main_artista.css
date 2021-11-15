@@ -1,11 +1,19 @@
 #pippo{
-	
+
 	-fx-font-size: 20px;
 }
 
 .button{
 	  -fx-background-color: transparent;
 	  -fx-background-radius: 0;
+}
+
+.buttonAlgoAsk{
+	-fx-background-color: #39A67F;
+}
+
+.buttonAlgoAsk:hover{
+	-fx-background-color: #277458;
 }
 
 .button:hover{

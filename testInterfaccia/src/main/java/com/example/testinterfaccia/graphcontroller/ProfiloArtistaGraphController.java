@@ -84,8 +84,13 @@ public class ProfiloArtistaGraphController {
         initializeImage();
         makeThumbFocused();
         makeDraggable();
+        setTooltipMenu();
+
         anchorPaneFocus.setVisible(false);
 
+    }
+
+    public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
         button2.setTooltip(new Tooltip("Profilo"));
         button3.setTooltip(new Tooltip("Carica Opera"));
