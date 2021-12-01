@@ -24,17 +24,16 @@ public class ProfiloAlgoritmoLogicController {
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {
-                if (line.charAt(0) == '/'){continue;}
+                if (line.charAt(0) == '/'){continue;}  // salta le righe di commento nel file di testo
 
-                String[] nodo = line.split(splitBy);
-                //use comma as separator
+                String[] nodo = line.split(splitBy);   // tokenizza la linea tramite il delimitatore ','
 
                 idAppartenenza = Integer.parseInt(nodo[0]);
                 idProprio = Integer.parseInt(nodo[1]);
                 decisione = nodo[2];
                 domanda = nodo[3];
 
-                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda));
+                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda));   // inizializza un singolo nodo dell'albero
 
             }
         }
@@ -53,10 +52,10 @@ public class ProfiloAlgoritmoLogicController {
         int select = random.nextInt(arrRandAns.length);
 
         if (str.equals("Y")) {
-            for (Nodo n : arraylist) {
+            for (Nodo n : arraylist) {    // scorri tra tutti i nodi dell'albero associati ad una risposta affermativa
                 if (n.getDecisione().contains("Y")) {
-                    if (n.getIdAppartenenza() == idLivello) {
-                        return n;
+                    if (n.getIdAppartenenza() == idLivello) {    // se il nodo di risposta affermativa ha come padre il nodo corrente identificato dall'idLivello
+                        return n;                                // sarà il nodo successivo, quindi lo ritorno per mostrarlo a video.
                     }
                 }
             }
@@ -82,6 +81,6 @@ public class ProfiloAlgoritmoLogicController {
             }
         }
 
-        return errorNode;
+        return errorNode; // mostra nodo di fine albero
     }
 }

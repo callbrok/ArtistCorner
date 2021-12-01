@@ -32,8 +32,8 @@ public class ProfiloAlgoritmoGraphController {
     private Stage stage;
 
     ProfiloAlgoritmoLogicController lc = new ProfiloAlgoritmoLogicController();
-    ArrayList<Nodo> arraylist = lc.initializeTreeTxt();
-    int idLivello = 1;
+    ArrayList<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza Albero
+    int idLivello = 1;    // Variabile che tiene conto del livello corrente dell'albero
     Nodo n;
 
 
@@ -87,9 +87,11 @@ public class ProfiloAlgoritmoGraphController {
 
 
     public void setAnswerNo(ActionEvent actionEvent) {
-        n = lc.decisionTree("N", arraylist, idLivello);
-        labelQuestion.setText(n.getDomanda());
-        idLivello = n.getIdProprio();
+        // In caso di risposta negativa
+
+        n = lc.decisionTree("N", arraylist, idLivello);  // n prende il nodo figlio relativo alla risposta data (NEGATIVA in questo caso)
+        labelQuestion.setText(n.getDomanda());               // mostro a schermo la domanda relativa al nodo corrente ritornato da decisionTree
+        idLivello = n.getIdProprio();                        // viene aggiornato il livello attuale con l'id del nodo corrente
     }
 
     public void setAnswerYes(ActionEvent actionEvent) {
