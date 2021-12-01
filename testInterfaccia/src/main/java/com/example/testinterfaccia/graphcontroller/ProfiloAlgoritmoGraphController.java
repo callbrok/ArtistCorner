@@ -32,7 +32,7 @@ public class ProfiloAlgoritmoGraphController {
     private Stage stage;
 
     ProfiloAlgoritmoLogicController lc = new ProfiloAlgoritmoLogicController();
-    ArrayList<Nodo> arraylist = lc.initializeTree();
+    ArrayList<Nodo> arraylist = lc.initializeTreeTxt();
     int idLivello = 1;
     Nodo n;
 

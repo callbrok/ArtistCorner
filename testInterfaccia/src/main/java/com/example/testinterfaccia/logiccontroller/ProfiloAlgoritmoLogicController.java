@@ -2,26 +2,45 @@ package com.example.testinterfaccia.logiccontroller;
 
 import com.example.testinterfaccia.Nodo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class ProfiloAlgoritmoLogicController {
 
-    public ArrayList<Nodo> initializeTree(){
+    public ArrayList<Nodo> initializeTreeTxt(){
         ArrayList<Nodo> arraylist = new ArrayList<Nodo>();
+        int idAppartenenza, idProprio;
+        String decisione, domanda;
 
-        arraylist.add(new Nodo(1,2,"Y","una persona anziana?"));
-        arraylist.add(new Nodo(1,3,"N","un animale?"));
+        String line = "";
+        String splitBy = ",";
 
-        arraylist.add(new Nodo(2,4,"Y","OK PERSONA ANZIANA"));
-        arraylist.add(new Nodo(2,5, "N","una persona di mezza età?"));
+        try {
+            //parsing a CSV file into BufferedReader class constructor
+            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/treeStructure.txt"));
+            while ((line = br.readLine()) != null)
+            //returns a Boolean value
+            {
+                if (line.charAt(0) == '/'){continue;}
 
-        arraylist.add(new Nodo(3,6,"Y","OK ANIMALE"));
-        arraylist.add(new Nodo(3,7,"N", "BELLO DE CASA"));
+                String[] nodo = line.split(splitBy);
+                //use comma as separator
 
-        arraylist.add(new Nodo(5,8,"Y","OK PERSONA DI MEZZA ETÀ"));
-        arraylist.add(new Nodo(5,9,"N","BELLO DE CASA"));
+                idAppartenenza = Integer.parseInt(nodo[0]);
+                idProprio = Integer.parseInt(nodo[1]);
+                decisione = nodo[2];
+                domanda = nodo[3];
+
+                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda));
+
+            }
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
 
         return arraylist;
     }

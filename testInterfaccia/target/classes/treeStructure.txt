@@ -1,0 +1,13 @@
+// INIZIALIZZAZIONE ALBERO
+// ****************************************************************
+//  I parametri d'inizializzazione di ogni nodo sono i seguenti:
+//   idAppartenenza, idProprio, decisione, domanda
+// ****************************************************************
+1,2,Y,una persona anziana?
+1,3,N,un animale?
+2,4,Y,OK PERSONA ANZIANA
+2,5,N,una persona di mezza età?
+3,6,Y,OK ANIMALE
+3,7,N,BELLO DE CASA
+5,8,Y,OK PERSONA DI MEZZA ETÀ
+5,9,N,BELLO DE CASA
