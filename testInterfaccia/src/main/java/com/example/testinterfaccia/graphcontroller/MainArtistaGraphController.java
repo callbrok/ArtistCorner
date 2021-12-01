@@ -78,4 +78,9 @@ public class MainArtistaGraphController {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloArtista(actionEvent);
     }
+
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(actionEvent);
+    }
 }

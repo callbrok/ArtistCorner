@@ -43,5 +43,14 @@ public class SceneController {
         stage.show();
     }
 
+    public void switchToSceneProfiloVenduto(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/interface/profilo_venduto.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/main_artista.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 }
