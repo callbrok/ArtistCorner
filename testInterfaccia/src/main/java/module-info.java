@@ -4,6 +4,7 @@ module com.example.testinterfaccia {
 
     requires org.kordamp.ikonli.javafx;
     requires java.desktop;
+    requires javafx.web;
 
     opens com.example.testinterfaccia to javafx.fxml;
     exports com.example.testinterfaccia;

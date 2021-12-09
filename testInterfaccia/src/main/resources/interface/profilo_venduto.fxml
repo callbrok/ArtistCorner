@@ -39,7 +39,7 @@
 
 
         </Pane>
-        <Pane id="mainPane" layoutX="56.0" layoutY="127.0" prefHeight="539.0" prefWidth="468.0" style="-fx-background-color: #fff;">
+        <Pane id="mainPane" layoutX="56.0" layoutY="127.0" prefHeight="539.0" prefWidth="447.0" style="-fx-background-color: #fff;">
             <effect>
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
@@ -64,7 +64,7 @@
             <graphic>
                 <SVGPath content="M 2 2 C 1.45 1.99 0.99023438 2.4302344 0.99023438 2.9902344 C 0.98023437 3.5402344 1.4207031 3.99 1.9707031 4 L 3.8808594 4 C 4.1008594 4 4.289375 4.139375 4.359375 4.359375 L 6.0195312 10 L 11 10 C 12.65 10 14 11.35 14 13 C 14 14.38 13.059297 15.550625 11.779297 15.890625 C 11.919297 16.230625 12 16.61 12 17 C 12 18.56 10.79 19.860469 9.25 19.980469 C 9.8 20.610469 10.62 21 11.5 21 L 22.470703 21 C 23.820703 21 25.009141 20.089063 25.369141 18.789062 L 27.960938 9.2597656 C 28.110937 8.7297656 27.799766 8.1790625 27.259766 8.0390625 C 27.179766 8.0090625 27.09 8 27 8 L 7.5097656 8 L 6.2792969 3.7890625 C 5.9592969 2.7290625 4.9808594 2 3.8808594 2 L 2 2 z M 9.25 19.980469 C 9.25 19.980469 9.2402344 19.980703 9.2402344 19.970703 C 9.2302344 19.970703 9.2307031 19.970469 9.2207031 19.980469 L 9.25 19.980469 z M 3 12 C 2.45 12 2 12.45 2 13 C 2 13.55 2.45 14 3 14 L 11 14 C 11.55 14 12 13.55 12 13 C 12 12.45 11.55 12 11 12 L 3 12 z M 1 16 C 0.45 16 0 16.45 0 17 C 0 17.55 0.45 18 1 18 L 9 18 C 9.55 18 10 17.55 10 17 C 10 16.45 9.55 16 9 16 L 1 16 z M 12 23 A 2 2 0 0 0 12 27 A 2 2 0 0 0 12 23 z M 22 23 A 2 2 0 0 0 22 27 A 2 2 0 0 0 22 23 z" />
             </graphic></Button>
-      <Pane id="mainPane" layoutX="538.0" layoutY="127.0" prefHeight="298.0" prefWidth="422.0" style="-fx-background-color: #fff;">
+      <Pane id="mainPane" layoutX="518.0" layoutY="127.0" prefHeight="298.0" prefWidth="422.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
@@ -72,7 +72,7 @@
             <Label layoutX="30.0" layoutY="141.0" prefHeight="86.0" prefWidth="286.0" text="Info opera venduta cliccata a sinistra" />
          </children>
       </Pane>
-      <Pane id="mainPane" layoutX="538.0" layoutY="438.0" prefHeight="229.0" prefWidth="422.0" style="-fx-background-color: #fff;">
+      <Pane id="mainPane" layoutX="518.0" layoutY="438.0" prefHeight="229.0" prefWidth="422.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
