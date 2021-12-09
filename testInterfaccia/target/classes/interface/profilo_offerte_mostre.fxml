@@ -77,9 +77,17 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <WebView fx:id="webMap" prefHeight="229.0" prefWidth="422.0"/>
+            <WebView fx:id="webMap" prefHeight="229.0" prefWidth="422.0" />
          </children>
       </Pane>
+      <Pane fx:id="paneInfoLoading" layoutX="517.0" layoutY="127.0" prefHeight="540.0" prefWidth="424.0" style="-fx-background-color: rgba(39, 116, 88, 0.6);">
+         <children>
+            <Label alignment="CENTER" layoutX="134.0" layoutY="264.0" text="Caricamento..." textAlignment="CENTER" textFill="#ebebeb">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children></Pane>
 
     </children>
 </AnchorPane>

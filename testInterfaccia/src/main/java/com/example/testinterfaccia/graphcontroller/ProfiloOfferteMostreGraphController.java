@@ -2,15 +2,19 @@ package com.example.testinterfaccia.graphcontroller;
 
 import com.example.testinterfaccia.SceneController;
 import com.example.testinterfaccia.logiccontroller.ProfiloOfferteMostreLogicController;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class ProfiloOfferteMostreGraphController {
     ProfiloOfferteMostreLogicController omlc = new ProfiloOfferteMostreLogicController();
@@ -24,6 +28,8 @@ public class ProfiloOfferteMostreGraphController {
     public WebView webMap;
     private double x=0, y=0;
     private Stage stage;
+
+    public Pane paneInfoLoading;
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -56,8 +62,16 @@ public class ProfiloOfferteMostreGraphController {
 
     private void setWebMap() {
         webMap.getEngine().setUserStyleSheetLocation(getClass().getResource("/css/mappe.css").toExternalForm()); // Tolgo scrollbar nella webView
-        String luogo="via michele cappelli 30";
+        String luogo="via palmanova 7 ardea";
 
+        webMap.getEngine().getLoadWorker().stateProperty()
+                .addListener((obs, oldValue, newValue) -> {
+                    if (newValue == Worker.State.SUCCEEDED) {
+                        paneInfoLoading.setVisible(false);  // A fine caricamento
+                    }
+                });
+
+        paneInfoLoading.setVisible(true);   // Durante il caricamento
         webMap.getEngine().loadContent(omlc.makeMapHtml(luogo));
     }
 

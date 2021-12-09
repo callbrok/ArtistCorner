@@ -106,4 +106,13 @@ public class ProfiloAlgoritmoGraphController {
         idLivello = n.getIdProprio();
     }
 
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(actionEvent);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(actionEvent);
+    }
 }

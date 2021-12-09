@@ -69,5 +69,8 @@ public class ProfiloVendutoGraphController {
         sc.switchToSceneProfiloArtista(actionEvent);
     }
 
-
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(actionEvent);
+    }
 }
