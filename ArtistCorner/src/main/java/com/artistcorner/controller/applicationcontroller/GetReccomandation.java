@@ -23,7 +23,7 @@ public class GetReccomandation {
 
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/auxiliaryfacilities/treeStructure.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("ArtistCorner/src/main/resources/auxiliaryfacilities/treeStructure.txt"));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {

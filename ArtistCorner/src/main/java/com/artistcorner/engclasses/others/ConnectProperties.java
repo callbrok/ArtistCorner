@@ -19,7 +19,7 @@ public class ConnectProperties {
 
             // load the properties file
             Properties prop = new Properties();
-            prop.load(new FileInputStream("src/main/resources/dbproperties/login.properties"));
+            prop.load(new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties"));
 
             // assign db parameters
             String dbhostname = prop.getProperty("hostname");
@@ -50,7 +50,7 @@ public class ConnectProperties {
 
             // load the properties file
             Properties prop = new Properties();
-            prop.load(new FileInputStream("src/main/resources/dbproperties/login.properties"));
+            prop.load(new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties"));
 
             // assign db parameters
             driverClassName = prop.getProperty("driver");

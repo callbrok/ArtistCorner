@@ -44,11 +44,11 @@ public class GuiControllerGetReccomandation implements Serializable{
      */
     public void inizializeIdLivello() throws IOException, ClassNotFoundException {
         // Controlla prima se c'è un file su cui fare al deserializzazione
-        File f = new File("src/main/resources/auxiliaryfacilities/objectNodo.txt");
+        File f = new File("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt");
 
         if(f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
             System.out.println("Retriving the Serialized Object nodo\n");
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/auxiliaryfacilities/objectNodo.txt"));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
 
             String s = (String)in.readObject();
             Nodo c2 = (Nodo)in.readObject();
@@ -121,7 +121,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Serializza il nodo passato, come oggetto nel file "object.txt".
      */
     public void makeSerializable(Nodo n) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/auxiliaryfacilities/objectNodo.txt"));
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
         System.out.println("idlivello proprio : "+ n.getIdProprio()+ "\n");
         out.writeObject("Ultimo nodo:\n");
         out.writeObject(n);
@@ -187,7 +187,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Resetta l'algoritmo.
      */
     public void resetAlgo() throws IOException {
-        File f = new File("src/main/resources/auxiliaryfacilities/objectNodo.txt");    // Cerca il file contenente l'oggetto serializzato e
+        File f = new File("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt");    // Cerca il file contenente l'oggetto serializzato e
         f.delete();                                                                             // lo elimina
 
         buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
