@@ -29,6 +29,12 @@ public class GuiControllerGetReccomandation implements Serializable{
     public AnchorPane anchorParent;
     public Label labelQuestion;
     public Button buttonReset;
+    public AnchorPane anchorResult;
+    public Label labelResultSoggetto;
+    public Label labelResultCaract;
+    public Label labelResultStato;
+    public Label labelResultColori;
+    public Label labelResultStile;
 
     private double x=0, y=0;
     private Stage stage;
@@ -50,12 +56,14 @@ public class GuiControllerGetReccomandation implements Serializable{
             System.out.println("Retriving the Serialized Object nodo\n");
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
 
+            String rispostaSerial = (String)in.readObject();
             String s = (String)in.readObject();
             Nodo c2 = (Nodo)in.readObject();
             System.out.println(s + "livello recuperato = " + c2.getIdProprio());
             in.close();
 
             System.out.println(c2.getDomanda());
+            lc.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
             labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
             idLivello = c2.getIdProprio(); // Prende l'id del nodo serializzato
         } else {
@@ -90,7 +98,11 @@ public class GuiControllerGetReccomandation implements Serializable{
     public void initialize() throws IOException, ClassNotFoundException {
         makeDraggable();
         setTooltipMenu();
+
         labelQuestion.setAlignment(Pos.CENTER);
+        labelQuestion.setMaxWidth(526);
+        labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
+        anchorResult.setVisible(false);
 
         inizializeIdLivello();
     }
@@ -123,8 +135,9 @@ public class GuiControllerGetReccomandation implements Serializable{
     public void makeSerializable(Nodo n) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
         System.out.println("idlivello proprio : "+ n.getIdProprio()+ "\n");
+        out.writeObject(lc.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
         out.writeObject("Ultimo nodo:\n");
-        out.writeObject(n);
+        out.writeObject(n);  // Serializza l'ultimo nodo
         out.close(); // Also flushes the output
     }
 
@@ -137,6 +150,8 @@ public class GuiControllerGetReccomandation implements Serializable{
 
         n = lc.decisionTree("N", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
                                                              // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
 
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivello = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
@@ -152,6 +167,8 @@ public class GuiControllerGetReccomandation implements Serializable{
         n = lc.decisionTree("Y", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
                                                              // (ritornato da decisionTree) relativo alla risposta fornita
 
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivello = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
@@ -166,10 +183,24 @@ public class GuiControllerGetReccomandation implements Serializable{
         n = lc.decisionTree("YN", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
                                                               // (ritornato da decisionTree) relativo alla risposta fornita
 
+        if(n.getIdProprio() == 0){showSolution();}            // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
         labelQuestion.setText(n.getDomanda());                // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivello = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
         makeSerializable(n);                                  // Serializza il nodo corrente
+    }
+
+    public void showSolution(){
+        String[] soluzione = lc.getSolution();
+
+        // Visualizza risposte.
+        anchorResult.setVisible(true);
+        labelResultSoggetto.setText(soluzione[0]);
+        labelResultCaract.setText(soluzione[1]);
+        labelResultStato.setText(soluzione[2]);
+        labelResultColori.setText(soluzione[3]);
+        labelResultStile.setText(soluzione[4]);
     }
 
 
