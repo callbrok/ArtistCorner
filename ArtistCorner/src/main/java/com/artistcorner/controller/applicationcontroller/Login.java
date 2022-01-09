@@ -20,7 +20,7 @@ public class Login {
         switch (loggedUser.getRole()){
             // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
             case "artista":
-
+                
                 uh.setUser(loggedUser);   // Setta i dati dell'utente nel singleton.
                 sc.switchToSceneMainArtista(event);
                 break;

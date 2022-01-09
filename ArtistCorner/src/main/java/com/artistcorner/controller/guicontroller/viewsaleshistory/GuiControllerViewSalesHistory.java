@@ -11,6 +11,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -31,6 +34,7 @@ public class GuiControllerViewSalesHistory {
     public ListView listViewSale;
     public Label labelArtWorkTitle;
     public Label labelArtWorkPrice;
+    public LineChart lineChartSell;
     private double x=0, y=0;
     private Stage stage;
     Artist art;
@@ -63,6 +67,7 @@ public class GuiControllerViewSalesHistory {
         makeDraggable();
         setTooltipMenu();
         populateListView();
+       // initializeLineChart();
     }
 
     private void getArtist() {
@@ -89,6 +94,10 @@ public class GuiControllerViewSalesHistory {
                 labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()));
             }
         });
+
+    }
+
+    public void initializeLineChart(){
 
     }
 

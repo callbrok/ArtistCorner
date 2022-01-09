@@ -101,7 +101,7 @@
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
             <children>
-                <LineChart prefHeight="229.0" prefWidth="884.0">
+                <LineChart fx:id="lineChartSell" prefHeight="229.0" prefWidth="884.0">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>

@@ -122,6 +122,9 @@ public class GuiControllerUploadArtwork {
         upArtWork.setTitolo(textFieldTitle.getText());
         upArtWork.setIdArtist(art.getIdArtista());
 
+        // Stati di flagVendibile
+        //  0 : opera non acquistabile
+        //  1 : opera acquistabile
         if (radioBtmSell.isSelected()) {
             upArtWork.setFlagVendibile(1);
             upArtWork.setPrezzo(Double.parseDouble(textFieldPrice.getText()));

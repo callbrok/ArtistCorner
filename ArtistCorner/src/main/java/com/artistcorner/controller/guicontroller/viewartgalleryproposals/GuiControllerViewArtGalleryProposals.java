@@ -1,11 +1,23 @@
 package com.artistcorner.controller.guicontroller.viewartgalleryproposals;
 
 import com.artistcorner.controller.applicationcontroller.ViewArtGalleryProposals;
+import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.query.QueryArtist;
+import com.artistcorner.engclasses.singleton.UserHolder;
+import com.artistcorner.model.ArtGallery;
+import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Proposal;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -13,8 +25,15 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GuiControllerViewArtGalleryProposals {
+    public ListView listViewProposal;
+    public Label labelNomeGalleria;
+    public Label labelDescrGalleria;
+    public Label labelIndirizzoGalleria;
+    public Button buttonAcceptProposal;
+    public Button buttonRejectProposal;
     ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
 
     public AnchorPane anchorParent;
@@ -28,6 +47,8 @@ public class GuiControllerViewArtGalleryProposals {
     private Stage stage;
 
     public Pane paneInfoLoading;
+    int currentProposalId;
+    Artist art;
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -51,19 +72,33 @@ public class GuiControllerViewArtGalleryProposals {
         stage.setIconified(true);
     }
 
+    private void getArtist() {
+        UserHolder uh = UserHolder.getInstance();
+        User u = uh.getUser();
+        art = ArtistDAO.retrieveArtist(u);
+    }
+
 
     public void initialize() throws IOException {
+        getArtist();
+
+        paneInfoLoading.setVisible(false);
+        labelDescrGalleria.setMaxWidth(384);
+        labelDescrGalleria.setWrapText(true);  // Per far andare a capo la linea.
+        buttonAcceptProposal.setVisible(false);
+        buttonRejectProposal.setVisible(false);
+
         makeDraggable();
         setTooltipMenu();
-        setWebMap();
+        populateListView();
     }
 
     /**
      * A seconda dell'indirizzo mostra a video una mappa Google Maps interattiva.
      */
-    private void setWebMap() {
+    private void setWebMap(String luogo) {
         webMap.getEngine().setUserStyleSheetLocation(getClass().getResource("/css/artist/webViewMap.css").toExternalForm());  // Elimina la scrollbar nella webView
-        String luogo="via palmanova 7 ardea";
+        //String luogo="via palmanova 7 ardea";
 
         /**
          * L'html nella WebView viene caricato ed interpretato da un thread in background il cui progresso
@@ -92,6 +127,49 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
+    public void populateListView(){
+        ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista());
+        ArrayList<ArtGallery> arrayOfArtGalleryOfProposal = new ArrayList<ArtGallery>();
+
+        for (Proposal n : arrayOfProposals) {
+            ArtGallery artG = ArtistDAO.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+            listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
+
+            arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
+        }
+
+        listViewProposal.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                buttonAcceptProposal.setVisible(false);    // Reset della visualizzazione dei bottoni.
+                buttonRejectProposal.setVisible(false);
+
+                int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
+
+                ArtGallery currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
+                                                                                         // inizializzato precedentemente.
+                setWebMap(currentArtGallery.getIndirizzo());
+
+                Proposal currentProposal = arrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.
+                currentProposalId = currentProposal.getIdOfferta();
+
+                // Stati del flagAccettazione
+                //  0 : non inizializzato
+                //  1 : offerta accettata
+                //  2 : offerta rifiutata
+                if(currentProposal.getFlagAccettazione() == 0){
+                    buttonAcceptProposal.setVisible(true);
+                    buttonRejectProposal.setVisible(true);
+                }
+
+                labelNomeGalleria.setText(currentArtGallery.getNome());
+                labelDescrGalleria.setText(currentArtGallery.getDescrizione());
+                labelIndirizzoGalleria.setText(currentArtGallery.getIndirizzo());
+            }
+        });
+
+    }
+
 
     public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
@@ -101,5 +179,13 @@ public class GuiControllerViewArtGalleryProposals {
     public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloArtista(actionEvent);
+    }
+
+    public void acceptProposal(ActionEvent event) throws Exception {
+        ArtistDAO.updateProposal(currentProposalId, 1);
+    }
+
+    public void rejectProposal(ActionEvent event) throws Exception {
+        ArtistDAO.updateProposal(currentProposalId, 2);
     }
 }

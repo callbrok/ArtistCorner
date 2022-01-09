@@ -44,7 +44,7 @@
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
             <children>
-                <ListView layoutX="47.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" />
+                <ListView fx:id="listViewProposal" prefHeight="539.0" prefWidth="447.0" />
             </children>
         </Pane>
         <Button fx:id="button1" layoutY="170.0" mnemonicParsing="false" onAction="#switchToMainArtista" prefHeight="46.0" prefWidth="56.0" styleClass="button1">
@@ -72,7 +72,26 @@
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
             <children>
-                <Label layoutX="30.0" layoutY="141.0" prefHeight="86.0" prefWidth="286.0" text="Info offerta mostra cliccata a sinistra" />
+                <Label fx:id="labelNomeGalleria" layoutX="19.0" layoutY="30.0" prefHeight="32.0" prefWidth="286.0" />
+            <Label layoutX="19.0" layoutY="10.0" text="Nome" textFill="#2d8465">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="76.0" text="Descrizione" textFill="#2d8465">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="169.0" text="Indirizzo" textFill="#2d8465">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelDescrGalleria" layoutX="20.0" layoutY="96.0" prefHeight="59.0" prefWidth="384.0" />
+            <Label fx:id="labelIndirizzoGalleria" layoutX="20.0" layoutY="191.0" prefHeight="32.0" prefWidth="286.0" />
+            <Button fx:id="buttonAcceptProposal" onAction="#acceptProposal" layoutX="59.0" layoutY="239.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="139.0" text="Accetta" />
+            <Button fx:id="buttonRejectProposal" onAction="#rejectProposal" layoutX="216.0" layoutY="239.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="139.0" text="Rifiuta" />
             </children>
         </Pane>
         <Pane id="mainPane" layoutX="518.0" layoutY="438.0" prefHeight="229.0" prefWidth="422.0" style="-fx-background-color: #fff;">
@@ -83,9 +102,9 @@
                 <WebView fx:id="webMap" prefHeight="229.0" prefWidth="422.0" />
             </children>
         </Pane>
-        <Pane fx:id="paneInfoLoading" layoutX="517.0" layoutY="127.0" prefHeight="540.0" prefWidth="424.0" style="-fx-background-color: rgba(39, 116, 88, 0.6);">
+        <Pane fx:id="paneInfoLoading" layoutX="517.0" layoutY="438.0" prefHeight="229.0" prefWidth="424.0" style="-fx-background-color: rgba(39, 116, 88, 0.6);">
             <children>
-                <Label alignment="CENTER" layoutX="134.0" layoutY="264.0" text="Caricamento..." textAlignment="CENTER" textFill="#ebebeb">
+                <Label alignment="CENTER" layoutX="97.0" layoutY="99.0" text="Caricamento Mappa..." textAlignment="CENTER" textFill="#ebebeb">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>
