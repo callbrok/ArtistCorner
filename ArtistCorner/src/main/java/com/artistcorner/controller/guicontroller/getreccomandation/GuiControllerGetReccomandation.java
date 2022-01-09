@@ -3,6 +3,7 @@ package com.artistcorner.controller.guicontroller.getreccomandation;
 import com.artistcorner.controller.applicationcontroller.GetReccomandation;
 import com.artistcorner.engclasses.bean.Nodo;
 import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -35,6 +36,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     public Label labelResultStato;
     public Label labelResultColori;
     public Label labelResultStile;
+    public Label labelLogOut;
 
     private double x=0, y=0;
     private Stage stage;
@@ -42,6 +44,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     GetReccomandation lc = new GetReccomandation();
     ArrayList<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
     int idLivello; // Variabile che tiene conto del livello corrente dell'albero
+    Artist art;
     Nodo n;
 
     /**
@@ -94,10 +97,23 @@ public class GuiControllerGetReccomandation implements Serializable{
         stage.setIconified(true);
     }
 
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     public void initialize() throws IOException, ClassNotFoundException {
         makeDraggable();
         setTooltipMenu();
+        makeLogOut();
 
         labelQuestion.setAlignment(Pos.CENTER);
         labelQuestion.setMaxWidth(526);
@@ -119,14 +135,8 @@ public class GuiControllerGetReccomandation implements Serializable{
         button6.setTooltip(new Tooltip("Cosa Disegno?"));
     }
 
-    public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(actionEvent);
-    }
-
-    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(actionEvent);
+    public void getArtist(Artist loggedArtist) {
+        art = loggedArtist;
     }
 
     /**
@@ -204,16 +214,6 @@ public class GuiControllerGetReccomandation implements Serializable{
     }
 
 
-    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(actionEvent);
-    }
-
-    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(actionEvent);
-    }
-
     /**
      * Resetta l'algoritmo.
      */
@@ -224,7 +224,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
             SceneController sc = new SceneController();
             try {
-                sc.switchToSceneProfiloAlgoritmo(event);
+                sc.switchToSceneProfiloAlgoritmo(event, art);
             } catch (IOException e) {
                 e.printStackTrace();
             }

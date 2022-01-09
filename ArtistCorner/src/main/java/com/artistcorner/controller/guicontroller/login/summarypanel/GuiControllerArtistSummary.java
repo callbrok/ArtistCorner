@@ -3,7 +3,6 @@ package com.artistcorner.controller.guicontroller.login.summarypanel;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.singleton.UserHolder;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -16,29 +15,27 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class GuiControllerArtistSummary {
     public AnchorPane anchorParent;
     public ImageView imageGifButton;
     public Pane paneIdeaButton;
     public Label labelAlgoritmo;
+    public Label labelLogOut;
     private double x=0, y=0;
     private Stage stage;
 
     Artist art;
 
-
     public void initialize(){
-        getArtist();
         makeDraggable();
         makeGifPaneClickable();
-
+        makeLogOut();
     }
 
-    private void getArtist() {
-        UserHolder uh = UserHolder.getInstance(); // Interroga il singleton per le credenziali dell'utente.
-        User u = uh.getUser();      // Prende le credenziali dell'utente.
-        art = ArtistDAO.retrieveArtist(u);   // Prende le informazioni dell'artista collegate alle credenziali di accesso.
+    public void getArtist(Artist loggedArtist){
+        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
     }
 
     private void makeDraggable(){
@@ -69,7 +66,7 @@ public class GuiControllerArtistSummary {
         paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
-                sc.switchToSceneProfiloAlgoritmo(event);
+                sc.switchToSceneProfiloAlgoritmo(event, art);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -85,23 +82,36 @@ public class GuiControllerArtistSummary {
 
     }
 
-    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(actionEvent);
+        sc.switchToSceneProfiloArtista(actionEvent, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(actionEvent);
+        sc.switchToSceneProfiloVenduto(actionEvent, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(actionEvent);
+        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
     }
 
     public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
-        sc.switchToSceneUploadOpera(actionEvent);
+        sc.switchToSceneUploadOpera(actionEvent, art);
     }
+
 }

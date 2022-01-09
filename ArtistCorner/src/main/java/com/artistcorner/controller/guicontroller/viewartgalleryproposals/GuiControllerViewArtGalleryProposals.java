@@ -5,7 +5,6 @@ import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.engclasses.singleton.UserHolder;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
@@ -19,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebView;
@@ -34,6 +34,7 @@ public class GuiControllerViewArtGalleryProposals {
     public Label labelIndirizzoGalleria;
     public Button buttonAcceptProposal;
     public Button buttonRejectProposal;
+    public Label labelLogOut;
     ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
 
     public AnchorPane anchorParent;
@@ -48,7 +49,6 @@ public class GuiControllerViewArtGalleryProposals {
 
     public Pane paneInfoLoading;
     int currentProposalId;
-    Artist art;
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -72,15 +72,24 @@ public class GuiControllerViewArtGalleryProposals {
         stage.setIconified(true);
     }
 
-    private void getArtist() {
-        UserHolder uh = UserHolder.getInstance();
-        User u = uh.getUser();
-        art = ArtistDAO.retrieveArtist(u);
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+    public void getArtist(Artist loggedArtist) {
+        populateListView(loggedArtist);
     }
 
 
     public void initialize() throws IOException {
-        getArtist();
 
         paneInfoLoading.setVisible(false);
         labelDescrGalleria.setMaxWidth(384);
@@ -90,7 +99,7 @@ public class GuiControllerViewArtGalleryProposals {
 
         makeDraggable();
         setTooltipMenu();
-        populateListView();
+        makeLogOut();
     }
 
     /**
@@ -127,7 +136,7 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
-    public void populateListView(){
+    public void populateListView(Artist art){
         ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista());
         ArrayList<ArtGallery> arrayOfArtGalleryOfProposal = new ArrayList<ArtGallery>();
 
@@ -170,16 +179,6 @@ public class GuiControllerViewArtGalleryProposals {
 
     }
 
-
-    public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(actionEvent);
-    }
-
-    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(actionEvent);
-    }
 
     public void acceptProposal(ActionEvent event) throws Exception {
         ArtistDAO.updateProposal(currentProposalId, 1);

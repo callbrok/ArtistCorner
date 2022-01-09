@@ -4,7 +4,6 @@ import com.artistcorner.engclasses.bean.Nodo;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.singleton.UserHolder;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,6 +35,7 @@ public class GuiControllerViewSalesHistory {
     public Label labelArtWorkTitle;
     public Label labelArtWorkPrice;
     public LineChart lineChartSell;
+    public Label labelLogOut;
     private double x=0, y=0;
     private Stage stage;
     Artist art;
@@ -61,22 +62,31 @@ public class GuiControllerViewSalesHistory {
         stage.setIconified(true);
     }
 
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     public void initialize() throws IOException {
-        getArtist();
         makeDraggable();
         setTooltipMenu();
-        populateListView();
+        makeLogOut();
        // initializeLineChart();
     }
 
-    private void getArtist() {
-        UserHolder uh = UserHolder.getInstance();
-        User u = uh.getUser();
-        art = ArtistDAO.retrieveArtist(u);
+    public void getArtist(Artist loggedArtist) {
+        populateListView(loggedArtist);
     }
 
-    public void populateListView(){
+    public void populateListView(Artist art){
         ArrayList<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
 
         for (ArtWork n : arrayOfArtwork) {
@@ -110,19 +120,4 @@ public class GuiControllerViewSalesHistory {
     }
 
 
-
-    public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(actionEvent);
-    }
-
-    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(actionEvent);
-    }
-
-    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(actionEvent);
-    }
 }

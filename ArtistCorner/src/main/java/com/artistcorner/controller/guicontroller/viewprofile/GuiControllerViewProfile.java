@@ -3,13 +3,13 @@ package com.artistcorner.controller.guicontroller.viewprofile;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.singleton.UserHolder;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,11 +38,14 @@ public class GuiControllerViewProfile {
     public ImageView imageThumb;
     public ImageView imageFocused;
     public TilePane tilePaneBlob;
+    public Label labelLogOut;
     private double x=0, y=0;
     private Stage stage;
 
-    Artist art;
 
+    public void getArtist(Artist loggedArtist) throws SQLException {
+        initializeTilePane(loggedArtist);
+    }
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -66,15 +69,25 @@ public class GuiControllerViewProfile {
         stage.setIconified(true);
     }
 
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     public void initialize() throws SQLException {
         anchorPaneFocus.setVisible(false);
 
-        getArtist();
-        initializeTilePane();
         makeDraggable();
         setTooltipMenu();
-
+        makeLogOut();
     }
 
     public void centerImage(ImageView imageView) {
@@ -103,7 +116,7 @@ public class GuiControllerViewProfile {
     }
 
 
-    private void initializeTilePane() throws SQLException {
+    private void initializeTilePane(Artist art) throws SQLException {
         ArrayList<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista());  // Prendi tutte le opere caricate dall'artista.
 
         tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
@@ -146,11 +159,7 @@ public class GuiControllerViewProfile {
 
     }
 
-    private void getArtist() {
-        UserHolder uh = UserHolder.getInstance(); // Interroga il singleton per le credenziali dell'utente.
-        User u = uh.getUser();      // Prende le credenziali dell'utente.
-        art = ArtistDAO.retrieveArtist(u);   // Prende le informazioni dell'artista collegate alle credenziali di accesso.
-    }
+
 
     public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
@@ -160,8 +169,5 @@ public class GuiControllerViewProfile {
         button5.setTooltip(new Tooltip("Opere Vendute"));
     }
 
-    public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(actionEvent);
-    }
+
 }

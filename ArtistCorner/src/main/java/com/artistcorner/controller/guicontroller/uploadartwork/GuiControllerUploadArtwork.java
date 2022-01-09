@@ -5,7 +5,6 @@ import com.artistcorner.engclasses.bean.UploadingArtWork;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.singleton.UserHolder;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -33,6 +32,7 @@ public class GuiControllerUploadArtwork {
     public Label labelFilePath;
     public RadioButton radioBtmSell;
     public AnchorPane anchorPaneDragAndDrop;
+    public Label labelLogOut;
     private double x=0, y=0;
     private Stage stage;
 
@@ -62,12 +62,24 @@ public class GuiControllerUploadArtwork {
         stage.setIconified(true);
     }
 
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     public void initialize(){
-        getArtist();
         initDragAndDrop();
         makeDraggable();
         setTooltipMenu();
+        makeLogOut();
     }
 
     public void setTooltipMenu(){
@@ -78,24 +90,8 @@ public class GuiControllerUploadArtwork {
         button5.setTooltip(new Tooltip("Opere Vendute"));
     }
 
-    public void switchToMainArtista(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(actionEvent);
-    }
-
-    public void switchToProfiloArtista(ActionEvent event) {
-    }
-
-    public void switchToProfiloOfferteMostre(ActionEvent event) {
-    }
-
-    public void switchToProfiloVenduto(ActionEvent event) {
-    }
-
-    private void getArtist() {
-        UserHolder uh = UserHolder.getInstance();
-        User u = uh.getUser();
-        art = ArtistDAO.retrieveArtist(u);
+    public void getArtist(Artist loggedArtist) {
+        art = loggedArtist;
     }
 
     public void selectFile(ActionEvent event) {

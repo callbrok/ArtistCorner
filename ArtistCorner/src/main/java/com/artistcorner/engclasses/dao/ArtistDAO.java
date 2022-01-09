@@ -195,7 +195,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectAllArtWorksImage(stmt, idUsr);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork found");
+                Exception e = new Exception("No ArtWork Image found");
                 throw e;
             }
 

@@ -22,7 +22,7 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
+                <Label fx:id="labelLogOut" layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
                     <font>
                         <Font size="10.0" />
                     </font>
@@ -42,6 +42,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
+            <Button layoutX="229.0" layoutY="122.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="297.0" text="LOGOUT" />
             </children>
             <effect>
                 <DropShadow height="10.0" radius="4.5" width="10.0" />

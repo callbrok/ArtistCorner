@@ -22,7 +22,7 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
+                <Label fx:id="labelLogOut" layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
                     <font>
                         <Font size="10.0" />
                     </font>
