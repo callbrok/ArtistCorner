@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class GuiControllerUploadArtwork {
     public Button button1;
@@ -141,4 +142,23 @@ public class GuiControllerUploadArtwork {
     }
 
 
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(event, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(event, art);
+    }
 }

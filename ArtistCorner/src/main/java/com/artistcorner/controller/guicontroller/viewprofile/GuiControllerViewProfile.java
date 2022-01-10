@@ -42,8 +42,11 @@ public class GuiControllerViewProfile {
     private double x=0, y=0;
     private Stage stage;
 
+    Artist art;
+
 
     public void getArtist(Artist loggedArtist) throws SQLException {
+        art = loggedArtist;
         initializeTilePane(loggedArtist);
     }
 
@@ -160,7 +163,6 @@ public class GuiControllerViewProfile {
     }
 
 
-
     public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
         button2.setTooltip(new Tooltip("Profilo"));
@@ -170,4 +172,23 @@ public class GuiControllerViewProfile {
     }
 
 
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneUploadOpera(event, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(event, art);
+    }
 }

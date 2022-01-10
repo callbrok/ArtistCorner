@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GuiControllerViewSalesHistory {
@@ -38,6 +39,7 @@ public class GuiControllerViewSalesHistory {
     public Label labelLogOut;
     private double x=0, y=0;
     private Stage stage;
+
     Artist art;
 
     private void makeDraggable(){
@@ -83,6 +85,7 @@ public class GuiControllerViewSalesHistory {
     }
 
     public void getArtist(Artist loggedArtist) {
+        art = loggedArtist;
         populateListView(loggedArtist);
     }
 
@@ -120,4 +123,23 @@ public class GuiControllerViewSalesHistory {
     }
 
 
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneUploadOpera(event, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(event, art);
+    }
 }

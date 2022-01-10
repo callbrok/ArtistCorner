@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GuiControllerGetReccomandation implements Serializable{
@@ -230,5 +231,30 @@ public class GuiControllerGetReccomandation implements Serializable{
             }
         });
 
+    }
+
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneUploadOpera(event, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(event, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(event, art);
     }
 }

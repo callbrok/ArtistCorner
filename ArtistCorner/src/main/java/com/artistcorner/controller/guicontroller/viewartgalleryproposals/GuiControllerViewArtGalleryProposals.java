@@ -25,6 +25,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GuiControllerViewArtGalleryProposals {
@@ -46,6 +47,8 @@ public class GuiControllerViewArtGalleryProposals {
     public WebView webMap;
     private double x=0, y=0;
     private Stage stage;
+
+    Artist art;
 
     public Pane paneInfoLoading;
     int currentProposalId;
@@ -85,6 +88,7 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
     public void getArtist(Artist loggedArtist) {
+        art = loggedArtist;
         populateListView(loggedArtist);
     }
 
@@ -186,5 +190,26 @@ public class GuiControllerViewArtGalleryProposals {
 
     public void rejectProposal(ActionEvent event) throws Exception {
         ArtistDAO.updateProposal(currentProposalId, 2);
+    }
+
+
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneUploadOpera(event, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(event, art);
     }
 }

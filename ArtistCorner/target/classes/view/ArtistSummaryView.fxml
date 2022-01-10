@@ -42,7 +42,6 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-            <Button layoutX="229.0" layoutY="122.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="297.0" text="LOGOUT" />
             </children>
             <effect>
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
