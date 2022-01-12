@@ -53,5 +53,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javafx-web-11.0.2-win" level="project" />
+    <orderEntry type="library" name="javafx-media-11.0.2-win" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.25" level="project" />
   </component>
 </module>

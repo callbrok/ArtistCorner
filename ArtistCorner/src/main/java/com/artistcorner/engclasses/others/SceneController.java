@@ -2,12 +2,15 @@ package com.artistcorner.engclasses.others;
 
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
 import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
+import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
 import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
 import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
+import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
 import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer;
 import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -118,5 +121,45 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToSceneBuyerSummary(ActionEvent event, Buyer buy) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSummaryView.fxml"));
+        root = loader.load();
+
+        GuiControllerBuyerSummary gcas = loader.getController();
+        gcas.getBuyer(buy);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSceneSearchArtWorkBuyer(MouseEvent event, Buyer buy) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSearchView.fxml"));
+        root = loader.load();
+
+        GuiControllerSearchArtWorkBuyer gcas = loader.getController();
+        gcas.getBuyer(buy);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSceneFavouritesBuyer(MouseEvent event, Buyer buy) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerFavouriteView.fxml"));
+        root = loader.load();
+
+        GuiControllerFavouritesBuyer gcas = loader.getController();
+        gcas.getBuyer(buy);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 }
