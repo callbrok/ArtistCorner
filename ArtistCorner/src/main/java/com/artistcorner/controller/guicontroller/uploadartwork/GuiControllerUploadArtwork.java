@@ -2,21 +2,23 @@ package com.artistcorner.controller.guicontroller.uploadartwork;
 
 import com.artistcorner.controller.applicationcontroller.UploadArtWork;
 import com.artistcorner.engclasses.bean.UploadingArtWork;
-import com.artistcorner.engclasses.bean.User;
-import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -34,6 +36,7 @@ public class GuiControllerUploadArtwork {
     public RadioButton radioBtmSell;
     public AnchorPane anchorPaneDragAndDrop;
     public Label labelLogOut;
+    public Pane paneExceptionLoad;
     private double x=0, y=0;
     private Stage stage;
 
@@ -99,6 +102,10 @@ public class GuiControllerUploadArtwork {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
 
+        // Impone la selezione di soli file di tipo immagine.
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp");
+        fileChooser.getExtensionFilters().add(extFilter);
+
         File selectedFile = fileChooser.showOpenDialog(stage);
         upArtWork.setFilePath(selectedFile.toString());   // Setta il path dell'immagine nella bean.
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
@@ -116,6 +123,7 @@ public class GuiControllerUploadArtwork {
     public void uploadFile(ActionEvent event) throws Exception {
         UploadArtWork upaw = new UploadArtWork();
 
+
         upArtWork.setTitolo(textFieldTitle.getText());
         upArtWork.setIdArtist(art.getIdArtista());
 
@@ -130,9 +138,25 @@ public class GuiControllerUploadArtwork {
             upArtWork.setPrezzo(0);
         }
 
-        upaw.uploadImage(upArtWork);
-        resetForm();
+        try {
+            upaw.uploadImage(upArtWork);
+        } catch (EmptyFieldException e){
+            // Eccezione: Campi lasciati vuoti.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
 
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        } catch (FileNotFoundException e) {
+            // Eccezione: File non selezionato.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }
+
+        resetForm();
     }
 
     public void resetForm(){
@@ -161,4 +185,6 @@ public class GuiControllerUploadArtwork {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloVenduto(event, art);
     }
+
+
 }

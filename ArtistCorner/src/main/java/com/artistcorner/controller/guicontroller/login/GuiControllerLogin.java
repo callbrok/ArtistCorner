@@ -2,10 +2,14 @@ package com.artistcorner.controller.guicontroller.login;
 
 import com.artistcorner.controller.applicationcontroller.Login;
 import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
@@ -16,6 +20,8 @@ public class GuiControllerLogin {
     public SVGPath svgLogo;
     public TextField textFieldUsername;
     public TextField textFieldPassword;
+    public Pane paneExceptionLogin;
+    public Label labelExceptionLogin;
 
     private double x=0, y=0;
     private Stage stage;
@@ -25,6 +31,9 @@ public class GuiControllerLogin {
     public void initialize(){
         makeDraggable();
 
+        labelExceptionLogin.setAlignment(Pos.CENTER);
+        labelExceptionLogin.setMaxWidth(259);
+        paneExceptionLogin.setVisible(false);
         svgLogo.setScaleX(1.1);
         svgLogo.setScaleY(1.1);
     }
@@ -54,6 +63,13 @@ public class GuiControllerLogin {
 
     public void sendData(ActionEvent actionEvent) throws IOException {
         User us = new User(textFieldUsername.getText(), textFieldPassword.getText());
-        lg.credentialLogin(us, actionEvent);   // Passa le credenziali al controller applicativo per effettuare il login.
+
+        try {
+            lg.credentialLogin(us, actionEvent);   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException e){
+            labelExceptionLogin.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+
     }
 }

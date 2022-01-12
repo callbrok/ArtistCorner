@@ -27,8 +27,7 @@ public class LoginDAO {
             ResultSet rs = QueryLogin.selectUser(stmt, user);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No User found");
-                throw e;
+                return null;
             }
 
             // riposizionamento del cursore

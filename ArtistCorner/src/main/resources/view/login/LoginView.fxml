@@ -18,7 +18,7 @@
                         <Font size="23.0" />
                     </font>
                 </Label>
-            <Button onAction="#sendData" layoutX="495.0" layoutY="252.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="293.0" text="LogIn" />
+            <Button layoutX="495.0" layoutY="252.0" mnemonicParsing="false" onAction="#sendData" prefHeight="45.0" prefWidth="293.0" text="LogIn" />
             </children></AnchorPane>
         <AnchorPane layoutX="141.0" layoutY="-1.0" prefHeight="400.0" prefWidth="312.0" style="-fx-background-color: #39A67F;">
             <children>
@@ -28,6 +28,15 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
+            <Pane fx:id="paneExceptionLogin" layoutX="14.0" layoutY="260.0" prefHeight="116.0" prefWidth="282.0" style="-fx-background-color: #d13e0a;">
+               <children>
+                  <Label fx:id="labelExceptionLogin" layoutX="12.0" layoutY="21.0" prefHeight="73.0" prefWidth="259.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             </children></AnchorPane>
         <Button layoutX="796.0" layoutY="4.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="26.0" prefWidth="30.0" styleClass="buttonChange" text="x" textFill="WHITE">
             <font>
