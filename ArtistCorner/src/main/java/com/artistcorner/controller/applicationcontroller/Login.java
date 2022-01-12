@@ -2,9 +2,11 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.LoginDAO;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -29,7 +31,8 @@ public class Login {
                 break;
 
             case "acquirente":
-
+                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUser);
+                sc.switchToSceneBuyerSummary(event, loggedBuyer);
                 break;
         }
 

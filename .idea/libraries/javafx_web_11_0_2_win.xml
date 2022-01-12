@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javafx-web-11.0.2-win">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-web/11.0.2/javafx-web-11.0.2-win.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

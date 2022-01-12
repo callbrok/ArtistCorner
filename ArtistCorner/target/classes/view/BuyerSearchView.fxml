@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer">
+   <children>
+      <Pane layoutX="-1.0" prefHeight="170.0" prefWidth="998.0" style="-fx-background-color: #39A67F;">
+         <children>
+            <Label layoutX="34.0" layoutY="36.0" prefHeight="53.0" prefWidth="233.0" text="Artist Corner" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Button layoutX="969.0" layoutY="3.0" mnemonicParsing="false" onAction="#exitWindow" styleClass="buttonChange" text="x" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="945.0" layoutY="3.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="buttonChange" text="-" textFill="WHITE" />
+         </children>
+
+         <Circle fill="DODGERBLUE" layoutX="779.0" layoutY="65.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" styleClass="cerchioprofilo" />
+         <Label layoutX="811.0" layoutY="50.0" text="Profilo Guest" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label fx:id="labelLogOut" layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
+            <font>
+               <Font size="10.0" />
+            </font>
+         </Label>
+
+
+
+      </Pane>
+      <Pane id="mainPane" layoutX="55.0" layoutY="127.0" prefHeight="539.0" prefWidth="889.0" style="-fx-background-color: #fff;">
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <children>
+            <TextField fx:id="textField" layoutX="93.0" layoutY="56.0" onKeyPressed="#enterSearch" prefHeight="41.0" prefWidth="744.0" />
+            <Label layoutX="55.0" layoutY="19.0" prefHeight="34.0" prefWidth="310.0" text="Cerca Opera ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonCanc" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="799.0" layoutY="58.0" mnemonicParsing="false" onAction="#buttonCancOnClick" opacity="0.5" prefHeight="37.0" prefWidth="37.0" style="-fx-background-color: TRASPARENT;" text="X">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="61.0" mnemonicParsing="false" onAction="#buttonSearchOnClick" opacity="0.25" prefHeight="32.0" prefWidth="26.0" style="-fx-background-color: TRASPARENT;">
+               <graphic>
+                  <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
+               </graphic>
+            </Button>
+            <AnchorPane fx:id="anchorPane" layoutX="59.0" layoutY="120.0" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="783.0">
+               <children>
+                  <ListView fx:id="listView" editable="true" fixedCellSize="-1000.0" prefHeight="396.0" prefWidth="781.0" />
+                  <Pane fx:id="paneFound" layoutX="207.0" prefHeight="404.0" prefWidth="579.0" style="-fx-background-color: #ffffff;" visible="false">
+                     <children>
+                        <Label layoutX="23.0" layoutY="206.0" prefHeight="38.0" prefWidth="223.0" text="Nome Opera">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="artWorkImg" fitHeight="230.0" fitWidth="230.0" layoutX="313.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelArtWork" layoutX="24.0" layoutY="248.0" prefHeight="38.0" prefWidth="267.0" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="291.0" prefHeight="17.0" prefWidth="135.0" text="Autore">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelArtist" layoutX="27.0" layoutY="333.0" prefHeight="38.0" prefWidth="222.0" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="19.0" layoutY="37.0" prefHeight="27.0" prefWidth="187.0" text="ID Opera">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelIdArtWork" layoutX="21.0" layoutY="80.0" prefHeight="38.0" prefWidth="155.0" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="19.0" layoutY="117.0" prefHeight="27.0" prefWidth="187.0" text="ID Artista">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelIdArtist" layoutX="22.0" layoutY="157.0" prefHeight="17.0" prefWidth="135.0" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="298.0" layoutY="255.0" prefHeight="27.0" prefWidth="187.0" text="Prezzo">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelPrice" layoutX="444.0" layoutY="256.0" prefHeight="35.0" prefWidth="120.0" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonAcquista" layoutX="297.0" layoutY="306.0" mnemonicParsing="false" onAction="#compraArtWork" prefHeight="38.0" prefWidth="229.0" style="-fx-background-color: #39A67F;" text="Acquista per " textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonFavourites" layoutX="298.0" layoutY="353.0" mnemonicParsing="false" onAction="#addArtWorkFavourites" prefHeight="38.0" prefWidth="229.0" style="-fx-background-color: Trasparent; -fx-border-color: #39A67F;" text="Aggiungi ai preferiti" textFill="#39a67f">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="labelPrice11" layoutX="413.0" layoutY="256.0" prefHeight="45.0" prefWidth="21.0" text="€" textFill="#39a67f">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Button fx:id="button1" layoutY="170.0" mnemonicParsing="false" onAction="#switchToBuyerSummary" prefHeight="46.0" prefWidth="56.0" styleClass="button">
+         <graphic>
+            <SVGPath content="M 15 2 A 1 1 0 0 0 14.300781 2.2851562 L 3.3925781 11.207031 A 1 1 0 0 0 3.3554688 11.236328 L 3.3183594 11.267578 L 3.3183594 11.269531 A 1 1 0 0 0 3 12 A 1 1 0 0 0 4 13 L 5 13 L 5 24 C 5 25.105 5.895 26 7 26 L 23 26 C 24.105 26 25 25.105 25 24 L 25 13 L 26 13 A 1 1 0 0 0 27 12 A 1 1 0 0 0 26.681641 11.267578 L 26.666016 11.255859 A 1 1 0 0 0 26.597656 11.199219 L 25 9.8925781 L 25 6 C 25 5.448 24.552 5 24 5 L 23 5 C 22.448 5 22 5.448 22 6 L 22 7.4394531 L 15.677734 2.2675781 A 1 1 0 0 0 15 2 z M 18 15 L 22 15 L 22 23 L 18 23 L 18 15 z" />
+         </graphic></Button>
+      <Button fx:id="button2" layoutY="216.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0">
+         <graphic>
+            <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
+         </graphic></Button>
+      <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" onAction="#switchToFavouritesBuyer" onMouseClicked="#switchToFavouritesBuyer" prefHeight="46.0" prefWidth="56.0">
+         <graphic>
+            <SVGPath content="M23,27l-8-7l-8,7V5c0-1.105,0.895-2,2-2h12c1.105,0,2,0.895,2,2V27z" />
+         </graphic></Button>
+   </children>
+</AnchorPane>

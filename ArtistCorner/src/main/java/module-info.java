@@ -32,4 +32,9 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.uploadartwork;
 
+    opens com.artistcorner.controller.guicontroller.viewsearchartworkbuyer to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
+
+    opens com.artistcorner.controller.guicontroller.viewfavouritesbuyer to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
 }
