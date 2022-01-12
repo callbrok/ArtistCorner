@@ -41,7 +41,7 @@ public class QueryBuyer {
         return stmt.executeQuery(sql);
     }
     public static String insertOperaComprata() {
-        return "INSERT INTO compra(opera,acquirente,data) VALUES (?,?,?)";
+        return "INSERT INTO compra(opera,acquirente) VALUES (?,?)";
     }
     public static String switchFlagVendibile(int idOpera){
         String sql="UPDATE opera SET flagVendibile = ? WHERE idOpera ="+idOpera+";";
