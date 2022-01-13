@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer">
+<AnchorPane fx:id="anchorParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer">
    <children>
       <Pane layoutX="-1.0" prefHeight="170.0" prefWidth="998.0" style="-fx-background-color: #39A67F;">
          <children>
@@ -62,7 +68,7 @@
             </Button>
             <AnchorPane fx:id="anchorPane" layoutX="59.0" layoutY="120.0" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="783.0">
                <children>
-                  <ListView fx:id="listView" editable="true" fixedCellSize="-1000.0" prefHeight="396.0" prefWidth="781.0" />
+                  <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" prefHeight="396.0" prefWidth="781.0" />
                   <Pane fx:id="paneFound" layoutX="207.0" prefHeight="404.0" prefWidth="579.0" style="-fx-background-color: #ffffff;" visible="false">
                      <children>
                         <Label layoutX="23.0" layoutY="206.0" prefHeight="38.0" prefWidth="223.0" text="Nome Opera">
@@ -131,8 +137,40 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
+                        <Button fx:id="payPal" layoutX="298.0" layoutY="352.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="230.0" style="-fx-background-color: trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
+                           <graphic>
+                              <ImageView fx:id="payPalImg" fitHeight="30.0" fitWidth="115.0">
+                                 <image>
+                                    <Image url="@../img/PayPal.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="gPay" layoutX="297.0" layoutY="305.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
+                           <graphic>
+                              <ImageView fx:id="gPayImg" fitHeight="32.0" fitWidth="79.0">
+                                 <image>
+                                    <Image url="@../img/GPay.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="applePay" layoutX="415.0" layoutY="305.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: Trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
+                           <graphic>
+                              <ImageView fx:id="applePayImg" fitHeight="32.0" fitWidth="73.0">
+                                 <image>
+                                    <Image url="@../img/ApplePay.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
+                  <Label fx:id="labelCheckoutCompleted" alignment="CENTER" contentDisplay="CENTER" layoutX="506.0" layoutY="306.0" prefHeight="88.0" prefWidth="230.0" text="Acquisto Completato !" textFill="#39a67f" visible="false">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
@@ -145,7 +183,7 @@
          <graphic>
             <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
          </graphic></Button>
-      <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" onAction="#switchToFavouritesBuyer" onMouseClicked="#switchToFavouritesBuyer" prefHeight="46.0" prefWidth="56.0">
+      <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#switchToFavouritesBuyer" prefHeight="46.0" prefWidth="56.0">
          <graphic>
             <SVGPath content="M23,27l-8-7l-8,7V5c0-1.105,0.895-2,2-2h12c1.105,0,2,0.895,2,2V27z" />
          </graphic></Button>

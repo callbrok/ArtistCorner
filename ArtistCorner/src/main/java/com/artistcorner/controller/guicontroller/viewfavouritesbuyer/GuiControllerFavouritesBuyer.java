@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -40,6 +39,13 @@ public class GuiControllerFavouritesBuyer {
         public Button button1;
         public Button button2;
         public Button button3;
+        public Button payPal;
+        public Button gPay;
+        public Button applePay;
+        public ImageView applePayImg;
+        public ImageView gPayImg;
+        public ImageView payPalImg;
+        public Label labelCheckoutCompleted;
         public Label labelArtWork1;
         public Label labelArtist1;
         public Label labelIdOpera1;
@@ -140,14 +146,19 @@ public class GuiControllerFavouritesBuyer {
         public void removeArtWorkFavourites() throws SQLException {
                 BuyerDAO.removeArtWorkFromFavourites(Integer.parseInt(labelIdOpera1.getText()),buy.getIdBuyer());
                 buttonRemFavourites1.setText("Rimosso dai Preferiti");
+                initializeListView();
+        }
+        public void compraArtWork() {
+                buttonAcquista1.setVisible(false);buttonRemFavourites1.setVisible(false);
+                payPal.setVisible(true);gPay.setVisible(true);applePay.setVisible(true);
 
         }
-        public void compraArtWork() throws SQLException {
+        public void buttonPayOnClick() throws SQLException {
                 BuyerDAO.addArtWorkComprata(Integer.parseInt(labelIdOpera1.getText()),buy.getIdBuyer());
                 BuyerDAO.switchFlagVendibile(Integer.parseInt(labelIdOpera1.getText()));
                 BuyerDAO.removeArtWorkFromFavourites(Integer.parseInt(labelIdOpera1.getText()),buy.getIdBuyer());
-                buttonAcquista1.setText("Opera Acquistata !");
-
+                payPal.setVisible(false);gPay.setVisible(false);applePay.setVisible(false);
+                labelCheckoutCompleted.setVisible(true);
         }
         public void switchToBuyerSummary(ActionEvent actionEvent) throws IOException {
                 SceneController sc = new SceneController();

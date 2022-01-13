@@ -20,7 +20,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -37,9 +36,16 @@ public class GuiControllerSearchArtWorkBuyer {
     public Button buttonSearch;
     public Button buttonCanc;
     public ImageView artWorkImg;
+    public Label labelCheckoutCompleted;
     public Button button1;
     public Button button2;
     public Button button3;
+    public Button payPal;
+    public Button gPay;
+    public Button applePay;
+    public ImageView applePayImg;
+    public ImageView gPayImg;
+    public ImageView payPalImg;
     public Label labelArtWork;
     public Label labelArtist;
     public Label labelIdArtWork;
@@ -111,11 +117,9 @@ public class GuiControllerSearchArtWorkBuyer {
         SceneController sc = new SceneController();
         sc.switchToSceneFavouritesBuyer(mouseEvent,buy);
     }
-    public void compraArtWork() throws SQLException {
-        BuyerDAO.addArtWorkComprata(Integer.parseInt(labelIdArtWork.getText()),buy.getIdBuyer());
-        BuyerDAO.switchFlagVendibile(Integer.parseInt(labelIdArtWork.getText()));
-        BuyerDAO.removeArtWorkFromFavourites(Integer.parseInt(labelIdArtWork.getText()),buy.getIdBuyer());
-        buttonAcquista.setText("Opera Acquistata !");
+    public void compraArtWork() {
+        buttonAcquista.setVisible(false);buttonFavourites.setVisible(false);
+        payPal.setVisible(true);gPay.setVisible(true);applePay.setVisible(true);
 
     }
     public void addArtWorkFavourites() throws SQLException {
@@ -132,20 +136,25 @@ public class GuiControllerSearchArtWorkBuyer {
     public void buttonSearchOnClick(){
         String input= textField.getText();
         anchorPane.setVisible(true);
+        paneFound.setVisible(false);
         initializeListView(input);
     }
     public void buttonCancOnClick(){
         textField.setText("");
+    }
+    public void buttonPayOnClick() throws SQLException {
+        BuyerDAO.addArtWorkComprata(Integer.parseInt(labelIdArtWork.getText()),buy.getIdBuyer());
+        BuyerDAO.switchFlagVendibile(Integer.parseInt(labelIdArtWork.getText()));
+        BuyerDAO.removeArtWorkFromFavourites(Integer.parseInt(labelIdArtWork.getText()),buy.getIdBuyer());
+        payPal.setVisible(false);gPay.setVisible(false);applePay.setVisible(false);
+        labelCheckoutCompleted.setVisible(true);
     }
 
     private void initializeListView(String input) {
         ArrayList<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
         ObservableList<String> item = FXCollections.observableArrayList();
         ArrayList<String> artWorkNameList = new ArrayList<>();
-        ArrayList<Integer> artistIdList = new ArrayList<>();
-        ArrayList<String> artistNameList = new ArrayList<>();
         ArrayList<Integer> artWorkIdList = new ArrayList<>();
-        ArrayList<Blob> imgList = new ArrayList<>();
         ArrayList<Double> priceList = new ArrayList<>();
         for (ArtWork artWork : artWorkList) {
             String artWorkName = artWork.getTitolo();
@@ -157,7 +166,6 @@ public class GuiControllerSearchArtWorkBuyer {
             listView.setItems(item);
             item.add(artWorkName);
         }
-        System.out.println(artWorkIdList);
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
@@ -177,6 +185,8 @@ public class GuiControllerSearchArtWorkBuyer {
                 labelIdArtist.setText(Integer.toString(artistId));labelIdArtWork.setText(Integer.toString(artWorkIdList.get(index)));
                 buttonAcquista.setText("Acquista per €"+ priceList.get(index));buttonFavourites.setText("Aggiungi ai Preferiti");
                 labelPrice.setText(Double.toString(priceList.get(index)));
+                buttonAcquista.setVisible(true);buttonFavourites.setVisible(true);
+                payPal.setVisible(false);gPay.setVisible(false);applePay.setVisible(false);labelCheckoutCompleted.setVisible(false);
 
             }
         });

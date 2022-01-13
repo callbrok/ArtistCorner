@@ -264,7 +264,7 @@ public class BuyerDAO {
 
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork found");
+                Exception e = new Exception("No ArtWork ID  found");
                 throw e;
             }
 
@@ -320,7 +320,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectAllArtistId(stmt, idOpera);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtistId found");
+                Exception e = new Exception("No Artist ID found");
                 throw e;
             }
 
