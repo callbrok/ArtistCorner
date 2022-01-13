@@ -45,6 +45,12 @@
     -fx-background-color: transparent;
 }
 
+.paneProfile{
+    -fx-border-radius: 30;
+    -fx-border-width:2;
+    -fx-border-color: #277458;
+    -fx-background-color: transparent;
+}
 
 /* Login */
 

@@ -1,19 +1,16 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryBuyer;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Buyer;
 import java.sql.*;
-import java.text.spi.DateFormatProvider;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BuyerDAO {
 
-    public static Buyer retrieveBuyer(User usr){
+    public static Buyer retrieveBuyer(UserBean usr){
         Buyer bu = null;
         Statement stmt = null;
         Connection conn = null;

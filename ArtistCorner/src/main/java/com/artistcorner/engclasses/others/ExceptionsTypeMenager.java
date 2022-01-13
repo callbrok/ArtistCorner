@@ -7,8 +7,9 @@ public enum ExceptionsTypeMenager {
     EMPTYFIELD(0, "/view/exceptions/EmptyFieldException.fxml"),
     EMPTYPATH(1, "/view/exceptions/EmptyPathException.fxml"),
     DUPLICATEARTWORK(2, "/view/exceptions/DuplicateArtWorkException.fxml"),  //Opera già presente
-    PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale, tramite il controllo sul ritorno del null (da modificare il DAO)
-    SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"); // Nessun opera venduta
+    PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale
+    SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"), // Nessun opera venduta
+    ARTWORKNOTFOUND(5, "/view/exceptions/ArtWorkNotFoundException.fxml"); // Nessun opera caricata
     // Aggiungere errore per il recupero della serializzazione?
 
     private final int type;

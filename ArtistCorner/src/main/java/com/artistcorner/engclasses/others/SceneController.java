@@ -9,6 +9,7 @@ import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControll
 import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
 import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
 import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
@@ -28,7 +29,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
-    public void switchToSceneMainArtista(ActionEvent event, Artist art) throws IOException {
+    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
         root = loader.load();
 
@@ -42,7 +43,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneProfiloArtista(ActionEvent event, Artist art) throws IOException, SQLException {
+    public void switchToSceneProfiloArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewProfileView.fxml"));
         root = loader.load();
 
@@ -56,7 +57,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneProfiloAlgoritmo(MouseEvent event, Artist art) throws IOException{
+    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GetReccomandationView.fxml"));
         root = loader.load();
 
@@ -70,7 +71,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneProfiloVenduto(ActionEvent event, Artist art) throws IOException {
+    public void switchToSceneProfiloVenduto(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewSalesHistoryView.fxml"));
         root = loader.load();
 
@@ -84,7 +85,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneProfiloOfferteMostre(ActionEvent event, Artist art) throws IOException {
+    public void switchToSceneProfiloOfferteMostre(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewArtGalleryProposalsView.fxml"));
         root = loader.load();
 
@@ -98,7 +99,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneUploadOpera(ActionEvent event, Artist art) throws IOException {
+    public void switchToSceneUploadOpera(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UploadArtWork.fxml"));
         root = loader.load();
 

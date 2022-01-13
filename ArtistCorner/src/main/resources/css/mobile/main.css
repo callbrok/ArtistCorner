@@ -1,0 +1,32 @@
+.anchor {
+    -fx-background-image:url("https://i.ibb.co/JkRkK7B/template.png");
+    -fx-background-color:transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 475 691;
+}
+
+.buttonTopBar {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.buttonPane{
+    -fx-background-color: #39A67F;
+    -fx-background-radius: 0;
+}
+
+.buttonPane:hover{
+    -fx-background-color: #88c9b2;
+}
+
+
+/* Login */
+
+.text-field {
+    -fx-background-color: -fx-text-box-border, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: #88c9b2, #ffffff ;
+}

@@ -1,7 +1,7 @@
 package com.artistcorner.controller.guicontroller.login;
 
 import com.artistcorner.controller.applicationcontroller.Login;
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -62,7 +62,7 @@ public class GuiControllerLogin {
     }
 
     public void sendData(ActionEvent actionEvent) throws IOException {
-        User us = new User(textFieldUsername.getText(), textFieldPassword.getText());
+        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
 
         try {
             lg.credentialLogin(us, actionEvent);   // Passa le credenziali al controller applicativo per effettuare il login.

@@ -35,6 +35,9 @@ public class ExceptionsFactory {
             case 4:
                 return new SellArtWorkNotFoundExceptionView(etm);
 
+            case 5:
+                return new ArtWorkNotFoundExceptionView(etm);
+
             default:
                 return new EmptyFieldExceptionView(etm);
         }

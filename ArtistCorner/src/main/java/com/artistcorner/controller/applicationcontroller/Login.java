@@ -1,6 +1,7 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.LoginDAO;
@@ -15,21 +16,22 @@ import java.io.IOException;
 public class Login {
 
 
-    public void credentialLogin(User noLoggedUser, ActionEvent event) throws IOException, UserNotFoundException {
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event) throws IOException, UserNotFoundException {
         SceneController sc = new SceneController();
 
-        User loggedUser = LoginDAO.retrieveUser(noLoggedUser);
+        UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
 
         // Eccezione: Inserito utente non valido.
-        if(loggedUser == null){
+        if(loggedUserBean == null){
             throw new UserNotFoundException("Inserito utente non valido");
         }
 
-        switch (loggedUser.getRole()){
+        switch (loggedUserBean.getRole()){
             // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
             case "artista":
-                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUser);
-                sc.switchToSceneMainArtista(event, loggedArtist);
+                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
+                ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
+                sc.switchToSceneMainArtista(event, loggedArtistBean);
                 break;
 
             case "galleria":
@@ -37,14 +39,10 @@ public class Login {
                 break;
 
             case "acquirente":
-                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUser);
+                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
                 sc.switchToSceneBuyerSummary(event, loggedBuyer);
                 break;
         }
-
-
-
-
 
     }
 

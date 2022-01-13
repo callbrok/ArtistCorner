@@ -1,16 +1,16 @@
 package com.artistcorner.controller.guicontroller.viewartgalleryproposals;
 
 import com.artistcorner.controller.applicationcontroller.ViewArtGalleryProposals;
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +25,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -41,6 +42,8 @@ public class GuiControllerViewArtGalleryProposals {
     public Button buttonRejectProposal;
     public Label labelLogOut;
     public Pane paneExceptionLoad;
+    public SVGPath svgProfile;
+    public Label labelUsernameDisplay;
     ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
 
     public AnchorPane anchorParent;
@@ -53,7 +56,7 @@ public class GuiControllerViewArtGalleryProposals {
     private double x=0, y=0;
     private Stage stage;
 
-    Artist art;
+    ArtistBean art;
 
     public Pane paneInfoLoading;
     int currentProposalId;
@@ -92,8 +95,9 @@ public class GuiControllerViewArtGalleryProposals {
 
     }
 
-    public void getArtist(Artist loggedArtist) throws IOException {
+    public void getArtist(ArtistBean loggedArtist) throws IOException {
         art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
         populateListView(loggedArtist);
     }
 
@@ -105,6 +109,9 @@ public class GuiControllerViewArtGalleryProposals {
         labelDescrGalleria.setWrapText(true);  // Per far andare a capo la linea.
         buttonAcceptProposal.setVisible(false);
         buttonRejectProposal.setVisible(false);
+
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
 
         makeDraggable();
         setTooltipMenu();
@@ -145,23 +152,23 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
-    public void populateListView(Artist art) throws IOException {
+    public void populateListView(ArtistBean art) throws IOException {
         ViewArtGalleryProposals wap = new ViewArtGalleryProposals();
-        ArrayList<Proposal> arrayOfProposals = null;
+        ArrayList<ProposalBean> arrayOfProposalsBean = null;
 
         try {
-            arrayOfProposals = wap.retrieveArtGalleryProposals(art);
+            arrayOfProposalsBean = wap.retrieveArtGalleryProposals(art);
 
-            ArrayList<ArtGallery> arrayOfArtGalleryOfProposal = new ArrayList<ArtGallery>();
+            ArrayList<ArtGalleryBean> arrayOfArtGalleryOfProposal = new ArrayList<ArtGalleryBean>();
 
-            for (Proposal n : arrayOfProposals) {
-                ArtGallery artG = ArtistDAO.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+            for (ProposalBean n : arrayOfProposalsBean) {
+                ArtGalleryBean artG = wap.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
                 listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
 
                 arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
             }
 
-            ArrayList<Proposal> finalArrayOfProposals = arrayOfProposals;
+            ArrayList<ProposalBean> finalArrayOfProposals = arrayOfProposalsBean;
 
             listViewProposal.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
                 @Override
@@ -171,11 +178,11 @@ public class GuiControllerViewArtGalleryProposals {
 
                     int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
 
-                    ArtGallery currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
+                    ArtGalleryBean currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
                                                                                              // inizializzato precedentemente.
                     setWebMap(currentArtGallery.getIndirizzo());
 
-                    Proposal currentProposal = finalArrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.
+                    ProposalBean currentProposal = finalArrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.
                     currentProposalId = currentProposal.getIdOfferta();
 
                     // Stati del flagAccettazione

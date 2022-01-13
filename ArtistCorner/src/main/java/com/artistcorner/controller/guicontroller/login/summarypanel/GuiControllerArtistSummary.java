@@ -1,7 +1,6 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
-import com.artistcorner.engclasses.bean.User;
-import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
@@ -12,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,19 +23,25 @@ public class GuiControllerArtistSummary {
     public Pane paneIdeaButton;
     public Label labelAlgoritmo;
     public Label labelLogOut;
+    public Label labelUsernameDisplay;
+    public SVGPath svgProfile;
     private double x=0, y=0;
     private Stage stage;
 
-    Artist art;
+    ArtistBean art;
 
     public void initialize(){
         makeDraggable();
         makeGifPaneClickable();
         makeLogOut();
+
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
-    public void getArtist(Artist loggedArtist){
+    public void getArtist(ArtistBean loggedArtist){
         art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
     private void makeDraggable(){

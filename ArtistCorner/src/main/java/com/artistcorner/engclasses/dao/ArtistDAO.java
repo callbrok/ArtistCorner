@@ -1,7 +1,7 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.UploadingArtWork;
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class ArtistDAO {
 
-    public static Artist retrieveArtist(User usr){
+    public static Artist retrieveArtist(UserBean usr){
         Artist ar = null;
         Statement stmt = null;
         Connection conn = null;
@@ -140,7 +140,7 @@ public class ArtistDAO {
     }
 
 
-    public static void saveArtWork(UploadingArtWork upArt) throws Exception {
+    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws Exception {
         Statement stmt = null;
         PreparedStatement prStmt = null;
         Connection conn = null;
@@ -169,7 +169,7 @@ public class ArtistDAO {
                 stmt.close();
 
 
-            File file = new File(upArt.getFilePath()); // Apre il file relativo al path passato.
+            File file = new File(filePath); // Apre il file relativo al path passato.
             fis = new FileInputStream(file);
             prStmt = conn.prepareStatement(QueryArtist.insertArtWork());   // Prende la query SQL.
 
@@ -178,7 +178,7 @@ public class ArtistDAO {
             prStmt.setDouble(2, upArt.getPrezzo());
             prStmt.setInt(3, upArt.getFlagVendibile());
             prStmt.setBinaryStream(4, fis, (int) file.length());
-            prStmt.setInt(5, upArt.getIdArtist());
+            prStmt.setInt(5, idArtist);
 
             prStmt.executeUpdate();
             prStmt.close();
@@ -215,8 +215,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectAllArtWorksImage(stmt, idUsr);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork Image found");
-                throw e;
+                return null;
             }
 
             // riposizionamento del cursore

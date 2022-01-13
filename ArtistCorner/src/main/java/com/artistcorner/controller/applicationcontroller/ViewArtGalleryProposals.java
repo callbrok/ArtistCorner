@@ -1,7 +1,11 @@
 package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
@@ -26,7 +30,9 @@ public class ViewArtGalleryProposals {
         return htmlMap;
     }
 
-    public ArrayList<Proposal> retrieveArtGalleryProposals(Artist art) throws ProposalNotFoundException {
+    public ArrayList<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) throws ProposalNotFoundException {
+        Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
+        ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<ProposalBean>();
 
         ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista());
 
@@ -34,7 +40,19 @@ public class ViewArtGalleryProposals {
             throw new ProposalNotFoundException("Nessuna proposta disponibile.");
         }
 
-        return arrayOfProposals;
+        for (Proposal n : arrayOfProposals) {
+            arrayOfProposalBeans.add(new ProposalBean(n.getIdOfferta(), n.getArtista(), n.getGalleria(), n.getFlagAccettazione()));
+        }
+
+
+        return arrayOfProposalBeans;
+    }
+
+    public ArtGalleryBean retrieveArtGallery(int galleria){
+        ArtGallery artG = ArtistDAO.retrieveArtGallery(galleria);   // Fai un retrieve della galleria associata alla proposta.
+
+        return new ArtGalleryBean(artG.getGalleria(), artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), artG.getUsername());
+
     }
 
 }

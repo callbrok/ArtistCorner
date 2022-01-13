@@ -1,12 +1,18 @@
 package com.artistcorner.controller.guicontroller.viewprofile;
 
-import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.controller.applicationcontroller.ViewProfile;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,7 +21,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,18 +43,21 @@ public class GuiControllerViewProfile {
 
     public AnchorPane anchorParent;
     public AnchorPane anchorPaneFocus;
-    public ImageView imageThumb;
     public ImageView imageFocused;
     public TilePane tilePaneBlob;
     public Label labelLogOut;
+    public SVGPath svgProfile;
+    public Label labelUsernameDisplay;
+    public Pane paneExceptionLoad;
     private double x=0, y=0;
     private Stage stage;
 
-    Artist art;
+    ArtistBean art;
 
 
-    public void getArtist(Artist loggedArtist) throws SQLException {
+    public void getArtist(ArtistBean loggedArtist) throws SQLException, IOException {
         art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
         initializeTilePane(loggedArtist);
     }
 
@@ -88,6 +99,9 @@ public class GuiControllerViewProfile {
     public void initialize() throws SQLException {
         anchorPaneFocus.setVisible(false);
 
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
+
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
@@ -119,47 +133,59 @@ public class GuiControllerViewProfile {
     }
 
 
-    private void initializeTilePane(Artist art) throws SQLException {
-        ArrayList<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista());  // Prendi tutte le opere caricate dall'artista.
+    private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
+        ViewProfile vp = new ViewProfile();
+        ArrayList<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
 
-        tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
-        tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
+        try {
+            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
 
-        EventHandler<MouseEvent> mouseHandler = new EventHandler<>() {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-            @Override
-            public void handle(MouseEvent t) {
-                ImageView imageView = (ImageView) t.getSource();  // Prende l'imageView collegata all'evento.
+            tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
+            tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
 
-                imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                centerImage(imageFocused);                     // Centra l'immagine.
-                anchorPaneFocus.setVisible(true);
+            EventHandler<MouseEvent> mouseHandler = new EventHandler<>() {    // Crea un EventHandler sull'imageView all'interno del tilePane.
+                @Override
+                public void handle(MouseEvent t) {
+                    ImageView imageView = (ImageView) t.getSource();  // Prende l'imageView collegata all'evento.
+
+                    imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
+                    centerImage(imageFocused);                     // Centra l'immagine.
+                    anchorPaneFocus.setVisible(true);
+                }
+            };
+
+            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                anchorPaneFocus.setVisible(false);
+            });
+
+            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
+
+                InputStream inputStream = b.getBinaryStream();
+
+                /*1)preserveRatio:
+                Indicates whether to preserve the aspect ratio of the source image when scaling to
+                fit the image within the fitting bounding box.
+
+                2)smooth:
+                Indicates whether to use a better quality filtering algorithm or a faster one when transforming
+                or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
+                Image image = new Image(inputStream, 100, 100, true, false);
+
+                ImageView imageThumb = new ImageView();
+                imageThumb.setImage(image);
+
+                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
+                tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
             }
-        };
 
-        anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            anchorPaneFocus.setVisible(false);
-        });
+        } catch (ArtWorkNotFoundException e) {
+            // Eccezione: Campi lasciati vuoti.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
 
-        for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
-
-            InputStream inputStream = b.getBinaryStream();
-
-            /*1)preserveRatio:
-            Indicates whether to preserve the aspect ratio of the source image when scaling to
-            fit the image within the fitting bounding box.
-
-            2)smooth:
-            Indicates whether to use a better quality filtering algorithm or a faster one when transforming
-            or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
-            Image image = new Image(inputStream, 100, 100, true, false);
-
-            ImageView imageThumb = new ImageView();
-            imageThumb.setImage(image);
-
-            imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-            tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
+            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
-
     }
 
 

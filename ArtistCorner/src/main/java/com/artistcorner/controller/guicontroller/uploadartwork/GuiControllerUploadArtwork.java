@@ -1,20 +1,21 @@
 package com.artistcorner.controller.guicontroller.uploadartwork;
 
 import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.UploadingArtWork;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -38,11 +39,13 @@ public class GuiControllerUploadArtwork {
     public AnchorPane anchorPaneDragAndDrop;
     public Label labelLogOut;
     public Pane paneExceptionLoad;
+    public SVGPath svgProfile;
+    public Label labelUsernameDisplay;
     private double x=0, y=0;
     private Stage stage;
 
-    UploadingArtWork upArtWork = new UploadingArtWork();
-    Artist art;
+    String filePath;
+    ArtistBean art;
 
 
     private void makeDraggable(){
@@ -85,6 +88,9 @@ public class GuiControllerUploadArtwork {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
     public void setTooltipMenu(){
@@ -95,8 +101,9 @@ public class GuiControllerUploadArtwork {
         button5.setTooltip(new Tooltip("Opere Vendute"));
     }
 
-    public void getArtist(Artist loggedArtist) {
+    public void getArtist(ArtistBean loggedArtist) {
         art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
     public void selectFile(ActionEvent event) {
@@ -108,7 +115,7 @@ public class GuiControllerUploadArtwork {
         fileChooser.getExtensionFilters().add(extFilter);
 
         File selectedFile = fileChooser.showOpenDialog(stage);
-        upArtWork.setFilePath(selectedFile.toString());   // Setta il path dell'immagine nella bean.
+        filePath = selectedFile.toString();   // Setta il path dell'immagine nella bean.
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
     }
 
@@ -123,24 +130,23 @@ public class GuiControllerUploadArtwork {
 
     public void uploadFile(ActionEvent event) throws Exception {
         UploadArtWork upaw = new UploadArtWork();
-
-
-        upArtWork.setTitolo(textFieldTitle.getText());
-        upArtWork.setIdArtist(art.getIdArtista());
+        int flagVendibile;
+        double prezzo;
 
         // Stati di flagVendibile
         //  0 : opera non acquistabile
         //  1 : opera acquistabile
         if (radioBtmSell.isSelected()) {
-            upArtWork.setFlagVendibile(1);
-            upArtWork.setPrezzo(Double.parseDouble(textFieldPrice.getText()));
+            flagVendibile=1;
+            prezzo = Double.parseDouble(textFieldPrice.getText());
         } else {
-            upArtWork.setFlagVendibile(0);
-            upArtWork.setPrezzo(0);
+            flagVendibile = 0;
+            prezzo = 0;
         }
 
         try {
-            upaw.uploadImage(upArtWork);
+            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile);
+            upaw.uploadImage(upArtWork, art.getIdArtista(), filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();

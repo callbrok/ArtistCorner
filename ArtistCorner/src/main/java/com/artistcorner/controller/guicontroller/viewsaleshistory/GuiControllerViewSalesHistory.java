@@ -1,9 +1,8 @@
 package com.artistcorner.controller.guicontroller.viewsaleshistory;
 
 import com.artistcorner.controller.applicationcontroller.ViewSalesHistory;
-import com.artistcorner.engclasses.bean.Nodo;
-import com.artistcorner.engclasses.bean.User;
-import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -16,8 +15,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -25,6 +22,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,10 +42,12 @@ public class GuiControllerViewSalesHistory {
     public LineChart lineChartSell;
     public Label labelLogOut;
     public Pane paneExceptionLoad;
+    public SVGPath svgProfile;
+    public Label labelUsernameDisplay;
     private double x=0, y=0;
     private Stage stage;
 
-    Artist art;
+    ArtistBean art;
 
     private void makeDraggable(){
         anchorParent.setOnMousePressed(((event) -> {
@@ -88,33 +88,38 @@ public class GuiControllerViewSalesHistory {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
+
        // initializeLineChart();
     }
 
-    public void getArtist(Artist loggedArtist) throws IOException {
+    public void getArtist(ArtistBean loggedArtist) throws IOException {
         art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
         populateListView(loggedArtist);
     }
 
-    public void populateListView(Artist art) throws IOException {
+    public void populateListView(ArtistBean art) throws IOException {
         ViewSalesHistory vsh = new ViewSalesHistory();
-        ArrayList<ArtWork> arrayOfArtwork = null;
+        ArrayList<ArtWorkBean> arrayOfArtwork = null;
 
         try {
             arrayOfArtwork = vsh.retrieveSellArtWorks(art);
 
-            for (ArtWork n : arrayOfArtwork) {
+            for (ArtWorkBean n : arrayOfArtwork) {
                 listViewSale.getItems().add(n.getTitolo());  // Popola la listView.
                     }
 
-            ArrayList<ArtWork> finalArrayOfArtwork = arrayOfArtwork;
+            ArrayList<ArtWorkBean> finalArrayOfArtwork = arrayOfArtwork;
 
             listViewSale.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observableValue, Object o, Object t1) {
                     int index = listViewSale.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
 
-                    ArtWork currentArt = finalArrayOfArtwork.get(index);   // Prende l'i-esima (index) opera d'arte dal result set.
+                    ArtWorkBean currentArt = finalArrayOfArtwork.get(index);   // Prende l'i-esima (index) opera d'arte dal result set.
 
                     labelArtWorkTitle.setText(currentArt.getTitolo());
                     labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()));

@@ -1,6 +1,7 @@
 package com.artistcorner.controller.guicontroller.getreccomandation;
 
 import com.artistcorner.controller.applicationcontroller.GetReccomandation;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.Nodo;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -38,6 +40,8 @@ public class GuiControllerGetReccomandation implements Serializable{
     public Label labelResultColori;
     public Label labelResultStile;
     public Label labelLogOut;
+    public SVGPath svgProfile;
+    public Label labelUsernameDisplay;
 
     private double x=0, y=0;
     private Stage stage;
@@ -45,7 +49,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     GetReccomandation lc = new GetReccomandation();
     ArrayList<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
     int idLivello; // Variabile che tiene conto del livello corrente dell'albero
-    Artist art;
+    ArtistBean art;
     Nodo n;
 
     /**
@@ -121,6 +125,9 @@ public class GuiControllerGetReccomandation implements Serializable{
         labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
         anchorResult.setVisible(false);
 
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
+
         inizializeIdLivello();
     }
 
@@ -136,8 +143,9 @@ public class GuiControllerGetReccomandation implements Serializable{
         button6.setTooltip(new Tooltip("Cosa Disegno?"));
     }
 
-    public void getArtist(Artist loggedArtist) {
+    public void getArtist(ArtistBean loggedArtist) {
         art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
     /**
