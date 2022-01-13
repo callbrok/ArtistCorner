@@ -1,8 +1,13 @@
 package com.artistcorner.controller.guicontroller.viewsaleshistory;
 
+import com.artistcorner.controller.applicationcontroller.ViewSalesHistory;
 import com.artistcorner.engclasses.bean.Nodo;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
@@ -19,6 +24,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,6 +43,7 @@ public class GuiControllerViewSalesHistory {
     public Label labelArtWorkPrice;
     public LineChart lineChartSell;
     public Label labelLogOut;
+    public Pane paneExceptionLoad;
     private double x=0, y=0;
     private Stage stage;
 
@@ -84,30 +91,44 @@ public class GuiControllerViewSalesHistory {
        // initializeLineChart();
     }
 
-    public void getArtist(Artist loggedArtist) {
+    public void getArtist(Artist loggedArtist) throws IOException {
         art = loggedArtist;
         populateListView(loggedArtist);
     }
 
-    public void populateListView(Artist art){
-        ArrayList<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
+    public void populateListView(Artist art) throws IOException {
+        ViewSalesHistory vsh = new ViewSalesHistory();
+        ArrayList<ArtWork> arrayOfArtwork = null;
 
-        for (ArtWork n : arrayOfArtwork) {
-            listViewSale.getItems().add(n.getTitolo());  // Popola la listView.
+        try {
+            arrayOfArtwork = vsh.retrieveSellArtWorks(art);
+
+            for (ArtWork n : arrayOfArtwork) {
+                listViewSale.getItems().add(n.getTitolo());  // Popola la listView.
+                    }
+
+            ArrayList<ArtWork> finalArrayOfArtwork = arrayOfArtwork;
+
+            listViewSale.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    int index = listViewSale.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
+
+                    ArtWork currentArt = finalArrayOfArtwork.get(index);   // Prende l'i-esima (index) opera d'arte dal result set.
+
+                    labelArtWorkTitle.setText(currentArt.getTitolo());
+                    labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()));
                 }
+            });
 
-        listViewSale.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                int index = listViewSale.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
+        } catch (SellArtWorkNotFoundException e) {
+            // Eccezione: Nessun opera venduta.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
 
-                ArtWork currentArt = arrayOfArtwork.get(index);   // Prende l'i-esima (index) opera d'arte dal result set.
-
-                labelArtWorkTitle.setText(currentArt.getTitolo());
-                labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()));
-            }
-        });
-
+            ev = ef.createView(ExceptionsTypeMenager.SELLARTNOTFOUND);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }
     }
 
     public void initializeLineChart(){

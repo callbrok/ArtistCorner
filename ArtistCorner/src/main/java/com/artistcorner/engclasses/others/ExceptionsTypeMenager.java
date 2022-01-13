@@ -9,7 +9,6 @@ public enum ExceptionsTypeMenager {
     DUPLICATEARTWORK(2, "/view/exceptions/DuplicateArtWorkException.fxml"),  //Opera già presente
     PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale, tramite il controllo sul ritorno del null (da modificare il DAO)
     SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"); // Nessun opera venduta
-    //ARTWORKNOTUPLOADYET(); // Nessun opera caricata, non lo puoi fare qui, bisogna farlo come il login con un anchor nascosto
     // Aggiungere errore per il recupero della serializzazione?
 
     private final int type;

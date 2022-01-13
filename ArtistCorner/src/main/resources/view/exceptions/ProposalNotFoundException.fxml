@@ -4,18 +4,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="539.0" prefWidth="889.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="539.0" prefWidth="447.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="74.0" layoutY="91.0" prefHeight="362.0" prefWidth="739.0" style="-fx-background-color: #d13e0a;">
+      <AnchorPane layoutX="37.0" layoutY="37.0" prefHeight="466.0" prefWidth="372.0" style="-fx-background-color: #d13e0a;">
          <children>
-            <Label layoutX="164.0" layoutY="116.0" prefHeight="49.0" prefWidth="548.0" text="Nessuna proposta" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="64.0" layoutY="141.0" prefHeight="49.0" prefWidth="276.0" text="Nessuna proposta" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="40.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="268.0" layoutY="163.0" prefHeight="49.0" prefWidth="380.0" text="ricevuta" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="133.0" layoutY="172.0" prefHeight="49.0" prefWidth="173.0" text="ricevuta" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="40.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>

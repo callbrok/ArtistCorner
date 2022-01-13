@@ -1,5 +1,12 @@
 package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Proposal;
+
+import java.util.ArrayList;
+
 public class ViewArtGalleryProposals {
 
     /**
@@ -17,6 +24,17 @@ public class ViewArtGalleryProposals {
         htmlMap = sb.toString();
 
         return htmlMap;
+    }
+
+    public ArrayList<Proposal> retrieveArtGalleryProposals(Artist art) throws ProposalNotFoundException {
+
+        ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista());
+
+        if(arrayOfProposals == null){
+            throw new ProposalNotFoundException("Nessuna proposta disponibile.");
+        }
+
+        return arrayOfProposals;
     }
 
 }

@@ -3,6 +3,10 @@ package com.artistcorner.controller.guicontroller.viewartgalleryproposals;
 import com.artistcorner.controller.applicationcontroller.ViewArtGalleryProposals;
 import com.artistcorner.engclasses.bean.User;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.model.ArtGallery;
@@ -36,6 +40,7 @@ public class GuiControllerViewArtGalleryProposals {
     public Button buttonAcceptProposal;
     public Button buttonRejectProposal;
     public Label labelLogOut;
+    public Pane paneExceptionLoad;
     ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
 
     public AnchorPane anchorParent;
@@ -87,7 +92,7 @@ public class GuiControllerViewArtGalleryProposals {
 
     }
 
-    public void getArtist(Artist loggedArtist) {
+    public void getArtist(Artist loggedArtist) throws IOException {
         art = loggedArtist;
         populateListView(loggedArtist);
     }
@@ -140,46 +145,62 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
-    public void populateListView(Artist art){
-        ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista());
-        ArrayList<ArtGallery> arrayOfArtGalleryOfProposal = new ArrayList<ArtGallery>();
+    public void populateListView(Artist art) throws IOException {
+        ViewArtGalleryProposals wap = new ViewArtGalleryProposals();
+        ArrayList<Proposal> arrayOfProposals = null;
 
-        for (Proposal n : arrayOfProposals) {
-            ArtGallery artG = ArtistDAO.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
-            listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
+        try {
+            arrayOfProposals = wap.retrieveArtGalleryProposals(art);
 
-            arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
-        }
+            ArrayList<ArtGallery> arrayOfArtGalleryOfProposal = new ArrayList<ArtGallery>();
 
-        listViewProposal.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                buttonAcceptProposal.setVisible(false);    // Reset della visualizzazione dei bottoni.
-                buttonRejectProposal.setVisible(false);
+            for (Proposal n : arrayOfProposals) {
+                ArtGallery artG = ArtistDAO.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+                listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
 
-                int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
-
-                ArtGallery currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
-                                                                                         // inizializzato precedentemente.
-                setWebMap(currentArtGallery.getIndirizzo());
-
-                Proposal currentProposal = arrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.
-                currentProposalId = currentProposal.getIdOfferta();
-
-                // Stati del flagAccettazione
-                //  0 : non inizializzato
-                //  1 : offerta accettata
-                //  2 : offerta rifiutata
-                if(currentProposal.getFlagAccettazione() == 0){
-                    buttonAcceptProposal.setVisible(true);
-                    buttonRejectProposal.setVisible(true);
-                }
-
-                labelNomeGalleria.setText(currentArtGallery.getNome());
-                labelDescrGalleria.setText(currentArtGallery.getDescrizione());
-                labelIndirizzoGalleria.setText(currentArtGallery.getIndirizzo());
+                arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
             }
-        });
+
+            ArrayList<Proposal> finalArrayOfProposals = arrayOfProposals;
+
+            listViewProposal.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    buttonAcceptProposal.setVisible(false);    // Reset della visualizzazione dei bottoni.
+                    buttonRejectProposal.setVisible(false);
+
+                    int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
+
+                    ArtGallery currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
+                                                                                             // inizializzato precedentemente.
+                    setWebMap(currentArtGallery.getIndirizzo());
+
+                    Proposal currentProposal = finalArrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.
+                    currentProposalId = currentProposal.getIdOfferta();
+
+                    // Stati del flagAccettazione
+                    //  0 : non inizializzato
+                    //  1 : offerta accettata
+                    //  2 : offerta rifiutata
+                    if(currentProposal.getFlagAccettazione() == 0){
+                        buttonAcceptProposal.setVisible(true);
+                        buttonRejectProposal.setVisible(true);
+                    }
+
+                    labelNomeGalleria.setText(currentArtGallery.getNome());
+                    labelDescrGalleria.setText(currentArtGallery.getDescrizione());
+                    labelIndirizzoGalleria.setText(currentArtGallery.getIndirizzo());
+                }
+            });
+
+        } catch (ProposalNotFoundException e) {
+            // Eccezione: Nessuna proposta trovata.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.PROPOSALNOTFOUND);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }
 
     }
 

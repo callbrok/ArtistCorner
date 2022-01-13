@@ -1,8 +1,6 @@
 package com.artistcorner.engclasses.others;
 
-import com.artistcorner.engclasses.exceptions.EmptyFieldExceptionView;
-import com.artistcorner.engclasses.exceptions.EmpyPathExceptionView;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.*;
 
 import java.io.IOException;
 
@@ -27,6 +25,15 @@ public class ExceptionsFactory {
 
             case 1:
                 return new EmpyPathExceptionView(etm);
+
+            case 2:
+                return new DuplicateArtWorkExceptionView(etm);
+
+            case 3:
+                return new ProposalNotFoundExceptionView(etm);
+
+            case 4:
+                return new SellArtWorkNotFoundExceptionView(etm);
 
             default:
                 return new EmptyFieldExceptionView(etm);

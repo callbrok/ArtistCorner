@@ -49,5 +49,11 @@ public class QueryArtist {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet selectArtWorkTitle(Statement stmt) throws SQLException  {
+        String sql = "SELECT DISTINCT titolo FROM opera ;";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 
 }

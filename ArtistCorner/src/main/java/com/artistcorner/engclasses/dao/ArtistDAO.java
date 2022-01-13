@@ -2,6 +2,7 @@ package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.UploadingArtWork;
 import com.artistcorner.engclasses.bean.User;
+import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.model.ArtGallery;
@@ -94,8 +95,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectSellArtWork(stmt, idUsr);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Sell ArtWork found");
-                throw e;
+                return null;
             }
 
             // riposizionamento del cursore
@@ -141,6 +141,7 @@ public class ArtistDAO {
 
 
     public static void saveArtWork(UploadingArtWork upArt) throws Exception {
+        Statement stmt = null;
         PreparedStatement prStmt = null;
         Connection conn = null;
         FileInputStream fis = null;
@@ -150,10 +151,27 @@ public class ArtistDAO {
             Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
             conn = ConnectProperties.getConnection();    // Apertura connessione
 
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // Check Duplicate ArtWork
+                ResultSet rs = QueryArtist.selectArtWorkTitle(stmt);
+                while (rs.next()) {
+                    // lettura delle colonne "by name"
+                    String artworkTitle = rs.getString("titolo");
+
+                    if (artworkTitle.equals(upArt.getTitolo())){
+                        throw new DuplicateArtWorkException("Opera attualmente già caricata.");
+                    }
+                }
+
+                rs.close();
+                stmt.close();
+
+
             File file = new File(upArt.getFilePath()); // Apre il file relativo al path passato.
             fis = new FileInputStream(file);
             prStmt = conn.prepareStatement(QueryArtist.insertArtWork());   // Prende la query SQL.
-
 
             // Setta i prepared statement.
             prStmt.setString(1, upArt.getTitolo());
@@ -174,6 +192,8 @@ public class ArtistDAO {
                 prStmt.close();
             if (conn != null)
                 conn.close();
+            if (stmt != null)
+                stmt.close();
         }
     }
 
@@ -251,8 +271,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectAllGalleryProposals(stmt, idUsr);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Proposal found");
-                throw e;
+                return null;
             }
 
             // riposizionamento del cursore
@@ -382,4 +401,9 @@ public class ArtistDAO {
 
         return artG;
     }
+
+
+
+
+
 }

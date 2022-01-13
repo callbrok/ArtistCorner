@@ -2,6 +2,7 @@ package com.artistcorner.controller.guicontroller.uploadartwork;
 
 import com.artistcorner.controller.applicationcontroller.UploadArtWork;
 import com.artistcorner.engclasses.bean.UploadingArtWork;
+import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -153,6 +154,13 @@ public class GuiControllerUploadArtwork {
             ExceptionView ev;
 
             ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        } catch (DuplicateArtWorkException e){
+            // Eccezione: Opera già caricata.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 
