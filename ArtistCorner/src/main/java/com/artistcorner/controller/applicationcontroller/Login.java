@@ -7,6 +7,7 @@ import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.LoginDAO;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
@@ -16,8 +17,9 @@ import java.io.IOException;
 public class Login {
 
 
-    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event) throws IOException, UserNotFoundException {
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
         SceneController sc = new SceneController();
+        SceneControllerMobile scm = new SceneControllerMobile();
 
         UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
 
@@ -31,7 +33,10 @@ public class Login {
             case "artista":
                 Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
                 ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
-                sc.switchToSceneMainArtista(event, loggedArtistBean);
+
+                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}
+                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}
+
                 break;
 
             case "galleria":

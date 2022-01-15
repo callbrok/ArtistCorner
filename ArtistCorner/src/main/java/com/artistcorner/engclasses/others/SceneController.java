@@ -29,6 +29,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
+
     public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
         root = loader.load();

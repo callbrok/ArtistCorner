@@ -137,7 +137,7 @@ public class GuiControllerViewArtGalleryProposals {
                 });
 
         paneInfoLoading.setVisible(true);              // Durante l'esecuzione del thread visualizza un messaggio di caricamento
-        webMap.getEngine().loadContent(omlc.makeMapHtml(luogo));      // Carica l'html della pagina
+        webMap.getEngine().loadContent(omlc.makeMapHtml(luogo, 422));      // Carica l'html della pagina
     }
 
     /**

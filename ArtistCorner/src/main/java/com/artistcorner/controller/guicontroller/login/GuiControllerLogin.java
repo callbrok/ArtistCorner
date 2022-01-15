@@ -65,7 +65,7 @@ public class GuiControllerLogin {
         UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
 
         try {
-            lg.credentialLogin(us, actionEvent);   // Passa le credenziali al controller applicativo per effettuare il login.
+            lg.credentialLogin(us, actionEvent, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
         }catch (UserNotFoundException e){
             labelExceptionLogin.setText(e.getMessage());
             paneExceptionLogin.setVisible(true);
