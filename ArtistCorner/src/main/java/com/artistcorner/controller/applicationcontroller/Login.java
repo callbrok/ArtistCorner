@@ -34,8 +34,8 @@ public class Login {
                 Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
                 ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
 
-                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}
-                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}
+                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
 
                 break;
 

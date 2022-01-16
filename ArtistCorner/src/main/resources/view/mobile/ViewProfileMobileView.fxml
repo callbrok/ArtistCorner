@@ -52,7 +52,7 @@
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <ScrollPane fx:id="scrollTileBlob" prefHeight="345.0" prefWidth="438.0" style="-fx-background-color: #ffffff;">
+                  <ScrollPane fx:id="scrollTileBlob" prefHeight="345.0" prefWidth="437.0" style="-fx-background-color: #ffffff;">
                      <content>
                         <TilePane fx:id="tilePaneBlob" alignment="CENTER" prefHeight="344.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" />
                      </content>
@@ -70,7 +70,7 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Button>
-      <AnchorPane fx:id="anchorPaneFocus" layoutX="17.0" layoutY="12.0" prefHeight="664.0" prefWidth="438.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
+      <AnchorPane fx:id="anchorPaneFocus" layoutX="16.0" layoutY="12.0" prefHeight="664.0" prefWidth="439.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
           <children>
               <ImageView fx:id="imageFocused" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
           </children>
