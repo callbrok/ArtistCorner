@@ -1,10 +1,13 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
+import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Buyer;
+import com.artistcorner.model.*;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -12,12 +15,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class GuiControllerBuyerSummary {
     public AnchorPane anchorParent;
     public Pane paneSearch;
     public Pane paneFavourites;
     public Pane paneComprate;
+    public ListView<String> listViewCompra;
     public Label labelSearch;
     public Label labelFavourites;
     public Label labelComprate;
@@ -27,7 +33,7 @@ public class GuiControllerBuyerSummary {
     public Button button1;
     public Button button2;
     public Button button3;
-    Buyer buy;
+    public Buyer buy;
 
 
     public void initialize(){
@@ -49,6 +55,7 @@ public class GuiControllerBuyerSummary {
 
     public void getBuyer(Buyer loggedBuyer) {
         buy = loggedBuyer;
+        inizializeOpereComprate();
     }
 
 
@@ -74,53 +81,29 @@ public class GuiControllerBuyerSummary {
         stage = (Stage) anchorParent.getScene().getWindow();
         stage.setIconified(true);
     }
-    public void switchToSearchArtWorkBuyer(MouseEvent mouseEvent) throws IOException {
+    public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
-        sc.switchToSceneSearchArtWorkBuyer(mouseEvent,buy);
+        sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
     }
 
-    public void switchToFavouritesBuyer(MouseEvent mouseEvent) throws IOException {
+    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
-        sc.switchToSceneFavouritesBuyer(mouseEvent,buy);
+        sc.switchToSceneFavouritesBuyer(actionEvent,buy);
     }
-    public void makeSearchPaneClickable(){
 
-        paneSearch.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToSceneSearchArtWorkBuyer(event, buy);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+    public void inizializeOpereComprate() {
+        ArrayList<Integer> arrayOfComprate = BuyerDAO.retrieveAllComprate(buy.getIdBuyer());
+        System.out.println(arrayOfComprate);
+        ArrayList<ArtWork> arrayFinal = new ArrayList<>();
+        for (int n : arrayOfComprate) {
+            ArtWork artwork = BuyerDAO.retrieveArtWorks(n, 0);
+            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
 
-        paneSearch.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            labelSearch.setTextFill(Color.rgb(209, 62, 10));
-        });
+            arrayFinal.add(artwork); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
+        }
 
-        paneSearch.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
-            labelSearch.setTextFill(Color.rgb(45, 132, 101));
-        });
+        // listViewCompra.getSelectionModel().selectedItemProperty().addListener( {
 
     }
-    public void makeFavouritesPaneClickable(){
 
-        paneFavourites.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToSceneFavouritesBuyer(event, buy);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        paneFavourites.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            labelFavourites.setTextFill(Color.rgb(209, 62, 10));
-        });
-
-        paneFavourites.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
-            labelFavourites.setTextFill(Color.rgb(45, 132, 101));
-        });
-
-    }
 }

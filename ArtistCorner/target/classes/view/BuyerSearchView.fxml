@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
@@ -50,18 +48,18 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <TextField fx:id="textField" layoutX="93.0" layoutY="56.0" onKeyPressed="#enterSearch" prefHeight="41.0" prefWidth="744.0" />
-            <Label layoutX="55.0" layoutY="19.0" prefHeight="34.0" prefWidth="310.0" text="Cerca Opera ">
+            <TextField fx:id="textField" layoutX="93.0" layoutY="56.0" onKeyPressed="#enterSearch" prefHeight="41.0" prefWidth="744.0" promptText="Cerca Opera per nome" />
+            <Label layoutX="55.0" layoutY="19.0" prefHeight="34.0" prefWidth="310.0" text="Cerca Opera " textFill="#39a67f">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="buttonCanc" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="799.0" layoutY="58.0" mnemonicParsing="false" onAction="#buttonCancOnClick" opacity="0.5" prefHeight="37.0" prefWidth="37.0" style="-fx-background-color: TRASPARENT;" text="X">
+            <Button fx:id="buttonCanc" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="808.0" layoutY="58.0" mnemonicParsing="false" onAction="#buttonCancOnClick" opacity="0.5" prefHeight="37.0" prefWidth="28.0" styleClass=".button" text="X">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="61.0" mnemonicParsing="false" onAction="#buttonSearchOnClick" opacity="0.25" prefHeight="32.0" prefWidth="26.0" style="-fx-background-color: TRASPARENT;">
+            <Button fx:id="buttonSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="61.0" mnemonicParsing="false" onAction="#buttonSearchOnClick" opacity="0.25" prefHeight="32.0" prefWidth="26.0" styleClass=".button">
                <graphic>
                   <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
                </graphic>
@@ -69,108 +67,6 @@
             <AnchorPane fx:id="anchorPane" layoutX="59.0" layoutY="120.0" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="783.0">
                <children>
                   <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" prefHeight="396.0" prefWidth="781.0" />
-                  <Pane fx:id="paneFound" layoutX="207.0" prefHeight="404.0" prefWidth="579.0" style="-fx-background-color: #ffffff;" visible="false">
-                     <children>
-                        <Label layoutX="23.0" layoutY="206.0" prefHeight="38.0" prefWidth="223.0" text="Nome Opera">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="artWorkImg" fitHeight="230.0" fitWidth="230.0" layoutX="313.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="labelArtWork" layoutX="24.0" layoutY="248.0" prefHeight="38.0" prefWidth="267.0" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="26.0" layoutY="291.0" prefHeight="17.0" prefWidth="135.0" text="Autore">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelArtist" layoutX="27.0" layoutY="333.0" prefHeight="38.0" prefWidth="222.0" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="19.0" layoutY="37.0" prefHeight="27.0" prefWidth="187.0" text="ID Opera">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelIdArtWork" layoutX="21.0" layoutY="80.0" prefHeight="38.0" prefWidth="155.0" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="19.0" layoutY="117.0" prefHeight="27.0" prefWidth="187.0" text="ID Artista">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelIdArtist" layoutX="22.0" layoutY="157.0" prefHeight="17.0" prefWidth="135.0" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="298.0" layoutY="255.0" prefHeight="27.0" prefWidth="187.0" text="Prezzo">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelPrice" layoutX="444.0" layoutY="256.0" prefHeight="35.0" prefWidth="120.0" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="buttonAcquista" layoutX="297.0" layoutY="306.0" mnemonicParsing="false" onAction="#compraArtWork" prefHeight="38.0" prefWidth="229.0" style="-fx-background-color: #39A67F;" text="Acquista per " textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="buttonFavourites" layoutX="298.0" layoutY="353.0" mnemonicParsing="false" onAction="#addArtWorkFavourites" prefHeight="38.0" prefWidth="229.0" style="-fx-background-color: Trasparent; -fx-border-color: #39A67F;" text="Aggiungi ai preferiti" textFill="#39a67f">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Label fx:id="labelPrice11" layoutX="413.0" layoutY="256.0" prefHeight="45.0" prefWidth="21.0" text="€" textFill="#39a67f">
-                           <font>
-                              <Font name="System Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="payPal" layoutX="298.0" layoutY="352.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="230.0" style="-fx-background-color: trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
-                           <graphic>
-                              <ImageView fx:id="payPalImg" fitHeight="30.0" fitWidth="115.0">
-                                 <image>
-                                    <Image url="@../img/PayPal.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="gPay" layoutX="297.0" layoutY="305.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
-                           <graphic>
-                              <ImageView fx:id="gPayImg" fitHeight="32.0" fitWidth="79.0">
-                                 <image>
-                                    <Image url="@../img/GPay.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="applePay" layoutX="415.0" layoutY="305.0" mnemonicParsing="false" onAction="#buttonPayOnClick" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: Trasparent; -fx-border-color: #39A67F;" styleClass="button" visible="false">
-                           <graphic>
-                              <ImageView fx:id="applePayImg" fitHeight="32.0" fitWidth="73.0">
-                                 <image>
-                                    <Image url="@../img/ApplePay.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Label fx:id="labelCheckoutCompleted" alignment="CENTER" contentDisplay="CENTER" layoutX="506.0" layoutY="306.0" prefHeight="88.0" prefWidth="230.0" text="Acquisto Completato !" textFill="#39a67f" visible="false">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
          </children>
@@ -183,7 +79,7 @@
          <graphic>
             <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
          </graphic></Button>
-      <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#switchToFavouritesBuyer" prefHeight="46.0" prefWidth="56.0">
+      <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" onAction="#switchToFavouritesBuyer" onMouseClicked="#switchToFavouritesBuyer" prefHeight="46.0" prefWidth="56.0">
          <graphic>
             <SVGPath content="M23,27l-8-7l-8,7V5c0-1.105,0.895-2,2-2h12c1.105,0,2,0.895,2,2V27z" />
          </graphic></Button>
