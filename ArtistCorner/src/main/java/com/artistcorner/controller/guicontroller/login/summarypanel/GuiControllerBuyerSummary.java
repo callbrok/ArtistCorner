@@ -1,5 +1,6 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
+import com.artistcorner.controller.applicationcontroller.SummaryBuyer;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.*;
@@ -55,7 +56,8 @@ public class GuiControllerBuyerSummary {
 
     public void getBuyer(Buyer loggedBuyer) {
         buy = loggedBuyer;
-        inizializeOpereComprate();
+        SummaryBuyer bs = new SummaryBuyer();
+        bs.inizializeOpereComprate(listViewCompra,buy);
     }
 
 
@@ -89,21 +91,6 @@ public class GuiControllerBuyerSummary {
     public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
         sc.switchToSceneFavouritesBuyer(actionEvent,buy);
-    }
-
-    public void inizializeOpereComprate() {
-        ArrayList<Integer> arrayOfComprate = BuyerDAO.retrieveAllComprate(buy.getIdBuyer());
-        System.out.println(arrayOfComprate);
-        ArrayList<ArtWork> arrayFinal = new ArrayList<>();
-        for (int n : arrayOfComprate) {
-            ArtWork artwork = BuyerDAO.retrieveArtWorks(n, 0);
-            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
-
-            arrayFinal.add(artwork); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
-        }
-
-        // listViewCompra.getSelectionModel().selectedItemProperty().addListener( {
-
     }
 
 }

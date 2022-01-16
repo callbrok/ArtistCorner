@@ -1,6 +1,7 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.listviewinizializer;
 
-import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.controller.applicationcontroller.ListViewInizilizer;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,11 +18,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ListViewInizializer {
+public class GuiControllerListViewInizializer {
+
+    public void buttonSwitch(Button button, String text) {
+        button.setText(text);
+    }
+
+    public void buttonDisable(Button button,Button button2) {
+        button.setVisible(false);button2.setDisable(true);
+    }
 
     public static class HBoxCell extends HBox {
         Label labelArtWorkName = new Label();
-        Label labelCompleted = new Label();
         Label labelArtistName = new Label();
         Button buttonAcquista = new Button();
         public Button buttonPreferiti = new Button();
@@ -30,7 +38,7 @@ public class ListViewInizializer {
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
-        public HBoxCell(String labelText, String labelText1, double price, Image img, int idOpera, String labelPreferiti, int idBuyer, ArrayList<Integer> arrayListArtWorkId) throws SQLException, IOException {
+        public HBoxCell(String function, String labelText, String labelText1, double price, Image img, int idOpera, String labelPreferiti, int idBuyer, ArrayList<Integer> arrayListArtWorkId) throws SQLException, IOException {
             super();
             ImageView imageView = new ImageView();
             imageView.setImage(img);
@@ -62,7 +70,7 @@ public class ListViewInizializer {
             labelArtistNameDefault.setAlignment(Pos.CENTER);
             labelArtistNameDefault.setPrefSize(100, 50);
             labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            buttonAcquista.setText("Acquista");
+            buttonAcquista.setText(function);
             buttonAcquista.setPrefSize(150, 50);
             buttonAcquista.setStyle(" -fx-font-size: 14px;");
             buttonPreferiti.setText(labelPreferiti);
@@ -70,17 +78,19 @@ public class ListViewInizializer {
             buttonPreferiti.setStyle("-fx-font-size: 14px;");
             VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
             vBox.setAlignment(Pos.CENTER);
-            ActionEvent actionEvent = new ActionEvent();
-            buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+            ListViewInizilizer lv = new ListViewInizilizer();
+            if(function.equals("Acquista")) {
+                buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
-                @Override
-                public void handle(ActionEvent arg0) {
-                    buttonPreferiti.setText("Paga con Carte");
-                    buttonAcquista.setText("Paga con PayPal");
-                    finishPayment(buttonAcquista,buttonPreferiti,idOpera,idBuyer,vBox);
-                }
+                    @Override
+                    public void handle(ActionEvent arg0) {
+                        buttonPreferiti.setText("Paga con Carte");
+                        buttonAcquista.setText("Paga con PayPal");
+                        lv.finishPayment(buttonAcquista, buttonPreferiti, idOpera, idBuyer);
+                    }
 
-            });
+                });
+            }
             if (arrayListArtWorkId.contains(idOpera)){
                 buttonPreferiti.setText("Rimuovi dai Preferiti");
             }
@@ -88,64 +98,14 @@ public class ListViewInizializer {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                    switch (buttonPreferiti.getText()){
-                        case "Rimuovi dai Preferiti":{
-                            try {
-                                BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                                buttonPreferiti.setText("Aggiungi ai Preferiti");
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                        case "Aggiungi ai Preferiti":{
-                            try {
-                                BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
-                            buttonPreferiti.setText("Rimuovi dai Preferiti");
-
-                        }
-                        default:
-                    }
+                    lv.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
                 }
-
             });
+
 
             this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
         }
 
-        public void finishPayment(Button buttonAcquista,Button buttonPreferiti,int idOpera,int idBuyer,VBox vBox){
-            buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent arg0) {
-                    try {
-                        BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-                        BuyerDAO.switchFlagVendibile(idOpera);
-                        BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-                        buttonAcquista.setText("Opera Acquistata!");buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            });
-            buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent arg0) {
-                    try {
-                        BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-                        BuyerDAO.switchFlagVendibile(idOpera);
-                        BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-                        buttonAcquista.setText("Opera Acquistata!");buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            });
-        }
     }
 
 }
