@@ -106,8 +106,9 @@ public class ArtistDAO {
                 int venduto = rs.getInt("flagVendibile");
                 double prezzo = rs.getDouble("prezzo");
                 int idOpera = rs.getInt("idOpera");
+                int artistaId = rs.getInt("artista");
 
-                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto);
+                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
                 listOfArtWork.add(at);
                 // System.out.println("id: " + idArtista + "  |  nome: " + nomeArtista);
 

@@ -1,41 +1,37 @@
 package com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
 
+import com.artistcorner.controller.applicationcontroller.ListViewInizializer;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerFavouritesBuyer {
 
         @FXML
         public AnchorPane anchorParent;
         public AnchorPane anchorPane1;
-        public ImageView artWorkImg1;
-        public Pane paneFound1;
         public Label labelLogOut;
-        public ListView<String> listView;
+        public ListView<ListViewInizializer.HBoxCell> listView;
         public Button button1;
         public Button button2;
         public Button button3;
@@ -46,16 +42,10 @@ public class GuiControllerFavouritesBuyer {
         public ImageView gPayImg;
         public ImageView payPalImg;
         public Label labelCheckoutCompleted;
-        public Label labelArtWork1;
-        public Label labelArtist1;
         public Label labelIdOpera1;
-        public Label labelIdArtist1;
-        public Label labelPrice1;
-        public Button buttonAcquista1;
-        public Button buttonRemFavourites1;
         private double x=0, y=0;
         Stage stage;
-        Buyer buy;
+        public Buyer buy;
 
 
         public void initialize() throws SQLException {
@@ -76,7 +66,7 @@ public class GuiControllerFavouritesBuyer {
 
         }
 
-        public void getBuyer(Buyer loggedBuyer) {
+        public void getBuyer(Buyer loggedBuyer) throws SQLException, IOException {
                 buy = loggedBuyer;
                 initializeListView();
         }
@@ -109,50 +99,30 @@ public class GuiControllerFavouritesBuyer {
                 button3.setTooltip(new Tooltip("Preferiti"));
         }
 
-        private void initializeListView() {
+        public void initializeListView() throws SQLException, IOException {
                 ArrayList<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
-                ObservableList<String> item = FXCollections.observableArrayList();
-                ArrayList<Double> priceList = new ArrayList<>();
-                for (int id1 : artWorkId) {  
-                        ArtWork query = BuyerDAO.retrieveArtWorks(id1);
-                        String artWorkName = query.getTitolo();
-                        priceList.add(query.getPrezzo());
-                        listView.setItems(item);
-                        item.add(artWorkName);
-                }
-                listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                        @Override
-                        public void changed(ObservableValue observableValue, Object o, Object t1) {
-                                int index = listView.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
-                                int artistId = BuyerDAO.retrieveArtistId(artWorkId.get(index));
-                                String artistName = BuyerDAO.retrieveArtistName(artistId);
-                                Blob immagine = BuyerDAO.retrieveImage(artWorkId.get(index));
-                                InputStream inputStream = null;
-                                try {
-                                        inputStream = immagine.getBinaryStream();
-                                } catch (SQLException e) {
-                                        e.printStackTrace();
-                                }
-                                Image image1 = new Image(inputStream, 100, 100, true, false);
-                                artWorkImg1.setImage(image1);labelArtWork1.setText(item.get(index));labelArtist1.setText(artistName);
-                                labelIdArtist1.setText(Integer.toString(artistId));labelIdOpera1.setText(Integer.toString(artWorkId.get(index)));
-                                buttonAcquista1.setText("Acquista per €"+ priceList.get(index));
-                                labelPrice1.setText(Double.toString(priceList.get(index)));
-                                paneFound1.setVisible(true);
+                ArtWork artWork =null;
+                Artist artist = null;
+                List<ListViewInizializer.HBoxCell> list = new ArrayList<>();
+                for (Integer integer : artWorkId) {
+                        Blob immagine = BuyerDAO.retrieveImage(integer);
+                        artWork = BuyerDAO.retrieveArtWorks(integer, 1);
+                        artist = BuyerDAO.retrieveArtistName(artWork.getArtistaId());
+                        InputStream inputStream = null;
+                        try {
+                                inputStream = immagine.getBinaryStream();
+                        } catch (SQLException e) {
+                                e.printStackTrace();
                         }
-                });
+                        Image image1 = new Image(inputStream, 100, 100, true, false);
+                        list.add(new ListViewInizializer.HBoxCell(artWork.getTitolo(), artist.getNome() + " " + artist.getCognome(), artWork.getPrezzo(), image1, artWork.getIdOpera(), "Rimuovi dai Preferiti", buy.getIdBuyer(),artWorkId));
+                }
+
+                ObservableList<ListViewInizializer.HBoxCell> myObservableList = FXCollections.observableList(list);
+                listView.setItems(myObservableList);
 
         }
-        public void removeArtWorkFavourites() throws SQLException {
-                BuyerDAO.removeArtWorkFromFavourites(Integer.parseInt(labelIdOpera1.getText()),buy.getIdBuyer());
-                buttonRemFavourites1.setText("Rimosso dai Preferiti");
-                initializeListView();
-        }
-        public void compraArtWork() {
-                buttonAcquista1.setVisible(false);buttonRemFavourites1.setVisible(false);
-                payPal.setVisible(true);gPay.setVisible(true);applePay.setVisible(true);
 
-        }
         public void buttonPayOnClick() throws SQLException {
                 BuyerDAO.addArtWorkComprata(Integer.parseInt(labelIdOpera1.getText()),buy.getIdBuyer());
                 BuyerDAO.switchFlagVendibile(Integer.parseInt(labelIdOpera1.getText()));
@@ -165,9 +135,9 @@ public class GuiControllerFavouritesBuyer {
                 sc.switchToSceneBuyerSummary(actionEvent,buy);
         }
 
-        public void switchToSearchArtWorkBuyer(MouseEvent mouseEvent) throws IOException {
+        public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
                 SceneController sc = new SceneController();
-                sc.switchToSceneSearchArtWorkBuyer(mouseEvent,buy);
+                sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
         }
 
 }

@@ -137,7 +137,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneSearchArtWorkBuyer(MouseEvent event, Buyer buy) throws IOException {
+    public void switchToSceneSearchArtWorkBuyer(ActionEvent event, Buyer buy) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSearchView.fxml"));
         root = loader.load();
 
@@ -150,7 +150,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneFavouritesBuyer(MouseEvent event, Buyer buy) throws IOException{
+    public void switchToSceneFavouritesBuyer(ActionEvent event, Buyer buy) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerFavouriteView.fxml"));
         root = loader.load();
 
@@ -162,6 +162,5 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
-
 
 }
