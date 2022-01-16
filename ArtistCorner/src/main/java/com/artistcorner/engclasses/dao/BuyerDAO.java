@@ -472,7 +472,6 @@ public class BuyerDAO {
 
 
     }
-
     public static ArrayList<Integer> retrieveAllComprate(int idBuyer) {
         ArrayList<Integer> comprate = new ArrayList<>();
         Statement stmt = null;

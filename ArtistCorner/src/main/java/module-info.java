@@ -58,4 +58,6 @@ module com.artistcorner {
 
     opens com.artistcorner.controller.guicontroller.mobile.viewsaleshistory to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.viewsaleshistory;
+    exports com.artistcorner.controller.guicontroller.listviewinizializer;
+    opens com.artistcorner.controller.guicontroller.listviewinizializer to javafx.fxml;
 }
