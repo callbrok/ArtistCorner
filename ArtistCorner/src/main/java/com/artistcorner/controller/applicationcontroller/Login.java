@@ -1,13 +1,16 @@
 package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.dao.LoginDAO;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
@@ -41,7 +44,8 @@ public class Login {
                 break;
 
             case "galleria":
-
+                ArtGalleryBean loggedGalleryBean = GalleryDAO.retrieveGallery(loggedUserBean);
+                sc.switchToSceneGallerySummary(event, loggedGalleryBean);
                 break;
 
             case "acquirente":

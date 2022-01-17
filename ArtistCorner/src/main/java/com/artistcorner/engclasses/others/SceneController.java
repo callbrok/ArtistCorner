@@ -3,14 +3,18 @@ package com.artistcorner.engclasses.others;
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
 import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
 import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
+import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary;
 import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
 import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
-import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer;
+import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
+import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
 import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer;
+import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
+import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.model.Artist;
+import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -143,7 +147,7 @@ public class SceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSearchView.fxml"));
         root = loader.load();
 
-        GuiControllerSearchArtWorkBuyer gcas = loader.getController();
+        GuiControllerViewSearchArtWorkBuyer gcas = loader.getController();
         gcas.getBuyer(buy);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -156,7 +160,7 @@ public class SceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerFavouriteView.fxml"));
         root = loader.load();
 
-        GuiControllerFavouritesBuyer gcas = loader.getController();
+        GuiControllerViewFavouritesBuyer gcas = loader.getController();
         gcas.getBuyer(buy);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -164,5 +168,41 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySearchView.fxml"));
+        root = loader.load();
 
+        GuiControllerViewSearchArtWorkGallery gcas = loader.getController();
+        gcas.getGallery(gal);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneGallerySummary(ActionEvent event, ArtGalleryBean gal) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySummaryView.fxml"));
+        root = loader.load();
+
+        GuiControllerGallerySummary gcas = loader.getController();
+        gcas.getGallery(gal);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGalleryProfiloView.fxml"));
+        root = loader.load();
+
+        GuiControllerViewProfiloGallery gcas = loader.getController();
+        gcas.getGallery(gal);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -1,9 +1,8 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.SummaryBuyer;
-import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.*;
+import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -12,12 +11,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class GuiControllerBuyerSummary {
     public AnchorPane anchorParent;
@@ -25,6 +23,7 @@ public class GuiControllerBuyerSummary {
     public Pane paneFavourites;
     public Pane paneComprate;
     public ListView<String> listViewCompra;
+    public Label labelUsernameDisplay;
     public Label labelSearch;
     public Label labelFavourites;
     public Label labelComprate;
@@ -34,12 +33,15 @@ public class GuiControllerBuyerSummary {
     public Button button1;
     public Button button2;
     public Button button3;
+    public SVGPath svgProfile;
     public Buyer buy;
 
 
     public void initialize(){
         makeDraggable();
         makeLogOut();
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
     public void makeLogOut(){
@@ -56,7 +58,8 @@ public class GuiControllerBuyerSummary {
 
     public void getBuyer(Buyer loggedBuyer) {
         buy = loggedBuyer;
-        SummaryBuyer bs = new SummaryBuyer();
+        labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
+        ViewBuyerSummary bs = new ViewBuyerSummary();
         bs.inizializeOpereComprate(listViewCompra,buy);
     }
 

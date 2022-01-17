@@ -358,8 +358,9 @@ public class BuyerDAO {
 
     }
 
-    public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
+    public static int removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
         Statement stmt = null;
+        int result=0;
         Connection conn = null;
 
         try {
@@ -370,7 +371,7 @@ public class BuyerDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
-            int result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
+            result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -381,6 +382,7 @@ public class BuyerDAO {
             if (conn != null)
                 conn.close();
         }
+        return result;
     }
 
     public static ArrayList<ArtWork> retrieveArtWorkByName(String input) {
@@ -488,7 +490,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectOpereComprate(stmt, idBuyer);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Buyer found");
+                Exception e = new Exception("No Buy History found");
                 throw e;
             }
 
