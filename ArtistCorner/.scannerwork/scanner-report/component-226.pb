@@ -1,0 +1,1 @@
+â 2javaXJhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ListViewInizilizer.java

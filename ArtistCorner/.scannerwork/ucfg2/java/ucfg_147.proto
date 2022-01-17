@@ -1,0 +1,65 @@
+
+_com.artistcorner.engclasses.query.QueryBuyer#removeOperaFromFavourites(Ljava/sql/Statement;II)Iv
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java/ /(/"1*°
+1v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(7Ï
+Ì
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(?
+%0java.lang.String"__concat*(&
+$DELETE FROM preferito WHERE opera ='*
+""Ï
+Ì
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(U
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+'AND acquirente = ¿
+¼
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(]
+%2java.lang.String"__concat*
+
+%1java.lang.String*
+""¾
+»
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(a
+%3java.lang.String"__concat*
+
+%2java.lang.String*
+;´
+±
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(b
+sqljava.lang.String"__id*
+
+%3java.lang.String¤
+¡
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java1 1(
+%4java.io.PrintStream"__id*
+""Ž‹
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java1 1(
+
+%5void"0java.io.PrintStream#println(Ljava/lang/String;)V*
+
+%4java.io.PrintStream*
+
+sqljava.lang.String2println(Ljava/lang/String;)™–
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java2 2(&	
+%6int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2!executeUpdate(Ljava/lang/String;)"€
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java2 2('
+"":
+stmtjava.sql.Statement:
+"":
+""B0".
+,com.artistcorner.engclasses.query.QueryBuyer

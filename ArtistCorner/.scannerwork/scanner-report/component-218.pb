@@ -1,0 +1,1 @@
+Ú 2javaXohrqsrc/main/java/com/artistcorner/controller/guicontroller/listviewinizializer/GuiControllerListViewInizializer.java

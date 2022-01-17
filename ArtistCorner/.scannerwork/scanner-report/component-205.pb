@@ -1,0 +1,1 @@
+Í 2javaXBhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

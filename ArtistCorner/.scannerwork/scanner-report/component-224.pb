@@ -1,0 +1,1 @@
+à 2javaXËhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java

@@ -3,6 +3,7 @@ package com.artistcorner.controller.guicontroller.getreccomandation;
 import com.artistcorner.controller.applicationcontroller.GetReccomandation;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
@@ -18,36 +19,58 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerGetReccomandation implements Serializable{
     @FXML
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
-    public Button button5;
-    public Button button6;
-
+    public Button button1Gr;
+    @FXML
+    public Button button2Gr;
+    @FXML
+    public Button button3Gr;
+    @FXML
+    public Button button4Gr;
+    @FXML
+    public Button button5Gr;
+    @FXML
+    public Button button6Gr;
+    @FXML
     public AnchorPane anchorParent;
+    @FXML
     public Label labelQuestion;
+    @FXML
     public Button buttonReset;
-    public AnchorPane anchorResult;
-    public Label labelResultSoggetto;
-    public Label labelResultCaract;
-    public Label labelResultStato;
-    public Label labelResultColori;
-    public Label labelResultStile;
+    @FXML
+    public AnchorPane anchorResultGr;
+    @FXML
+    public Label labelResultSoggettoGr;
+    @FXML
+    public Label labelResultCaractGr;
+    @FXML
+    public Label labelResultStatoGr;
+    @FXML
+    public Label labelResultColoriGr;
+    @FXML
+    public Label labelResultStileGr;
+    @FXML
     public Label labelLogOut;
+    @FXML
     public SVGPath svgProfile;
+    @FXML
     public Label labelUsernameDisplay;
 
-    private double x=0, y=0;
+    private double x=0;
+    private double y=0;
     private Stage stage;
 
+    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+
     GetReccomandation lc = new GetReccomandation();
-    ArrayList<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
+    List<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
     int idLivello; // Variabile che tiene conto del livello corrente dell'albero
     ArtistBean art;
     Nodo n;
@@ -58,19 +81,15 @@ public class GuiControllerGetReccomandation implements Serializable{
      */
     public void inizializeIdLivello() throws IOException, ClassNotFoundException {
         // Controlla prima se c'è un file su cui fare al deserializzazione
-        File f = new File("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt");
+        File f = new File(OBJECTNODO_PATH);
 
         if(f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
-            System.out.println("Retriving the Serialized Object nodo\n");
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH));
 
             String rispostaSerial = (String)in.readObject();
-            String s = (String)in.readObject();
             Nodo c2 = (Nodo)in.readObject();
-            System.out.println(s + "livello recuperato = " + c2.getIdProprio());
             in.close();
 
-            System.out.println(c2.getDomanda());
             lc.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
             labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
             idLivello = c2.getIdProprio(); // Prende l'id del nodo serializzato
@@ -81,23 +100,23 @@ public class GuiControllerGetReccomandation implements Serializable{
     }
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
+        anchorParent.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged(((event) -> {
+        anchorParent.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
-    public void exitWindow(ActionEvent actionEvent) {
+    public void exitWindow() {
         stage = (Stage) anchorParent.getScene().getWindow();
         stage.close();
     }
 
-    public void minimizeWindow(ActionEvent actionEvent) {
+    public void minimizeWindow() {
         stage = (Stage) anchorParent.getScene().getWindow();
         stage.setIconified(true);
     }
@@ -123,7 +142,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         labelQuestion.setAlignment(Pos.CENTER);
         labelQuestion.setMaxWidth(526);
         labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
-        anchorResult.setVisible(false);
+        anchorResultGr.setVisible(false);
 
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
@@ -135,12 +154,12 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Setta i tooltip su i bottoni del menu.
      */
     public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Carica Opera"));
-        button4.setTooltip(new Tooltip("Offerte Mostre"));
-        button5.setTooltip(new Tooltip("Opere Vendute"));
-        button6.setTooltip(new Tooltip("Cosa Disegno?"));
+        button1Gr.setTooltip(new Tooltip("Home"));
+        button2Gr.setTooltip(new Tooltip("Profilo"));
+        button3Gr.setTooltip(new Tooltip("Carica Opera"));
+        button4Gr.setTooltip(new Tooltip("Offerte Mostre"));
+        button5Gr.setTooltip(new Tooltip("Opere Vendute"));
+        button6Gr.setTooltip(new Tooltip("Cosa Disegno?"));
     }
 
     public void getArtist(ArtistBean loggedArtist) {
@@ -152,10 +171,8 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Serializza il nodo passato, come oggetto nel file "object.txt".
      */
     public void makeSerializable(Nodo n) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt"));
-        System.out.println("idlivello proprio : "+ n.getIdProprio()+ "\n");
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH));
         out.writeObject(lc.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
-        out.writeObject("Ultimo nodo:\n");
         out.writeObject(n);  // Serializza l'ultimo nodo
         out.close(); // Also flushes the output
     }
@@ -164,7 +181,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Visualizza il nodo corretto a seconda della risposta negativa e serializza il nodo corrente
      * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
      */
-    public void setAnswerNo(ActionEvent actionEvent) throws IOException {
+    public void setAnswerNo() throws IOException, GetRaccomandationProblemException {
         // In caso di risposta negativa
 
         n = lc.decisionTree("N", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
@@ -182,7 +199,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Visualizza il nodo corretto a seconda della risposta positiva e serializza il nodo corrente
      * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
      */
-    public void setAnswerYes(ActionEvent actionEvent) throws IOException {
+    public void setAnswerYes() throws IOException, GetRaccomandationProblemException {
         n = lc.decisionTree("Y", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
                                                              // (ritornato da decisionTree) relativo alla risposta fornita
 
@@ -198,7 +215,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Visualizza il nodo corretto a seconda della risposta randomica e serializza il nodo corrente
      * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
      */
-    public void setAnswerRand(ActionEvent actionEvent) throws IOException {
+    public void setAnswerRand() throws IOException, GetRaccomandationProblemException {
         n = lc.decisionTree("YN", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
                                                               // (ritornato da decisionTree) relativo alla risposta fornita
 
@@ -214,12 +231,12 @@ public class GuiControllerGetReccomandation implements Serializable{
         String[] soluzione = lc.getSolution();
 
         // Visualizza risposte.
-        anchorResult.setVisible(true);
-        labelResultSoggetto.setText(soluzione[0]);
-        labelResultCaract.setText(soluzione[1]);
-        labelResultStato.setText(soluzione[2]);
-        labelResultColori.setText(soluzione[3]);
-        labelResultStile.setText(soluzione[4]);
+        anchorResultGr.setVisible(true);
+        labelResultSoggettoGr.setText(soluzione[0]);
+        labelResultCaractGr.setText(soluzione[1]);
+        labelResultStatoGr.setText(soluzione[2]);
+        labelResultColoriGr.setText(soluzione[3]);
+        labelResultStileGr.setText(soluzione[4]);
     }
 
 
@@ -227,8 +244,7 @@ public class GuiControllerGetReccomandation implements Serializable{
      * Resetta l'algoritmo.
      */
     public void resetAlgo() throws IOException {
-        File f = new File("ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt");    // Cerca il file contenente l'oggetto serializzato e
-        f.delete();                                                                             // lo elimina
+        Files.delete(Path.of(OBJECTNODO_PATH));    // Cerca il file contenente l'oggetto serializzato e lo elimina
 
         buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
             SceneController sc = new SceneController();

@@ -1,0 +1,24 @@
+
+‰com.artistcorner.engclasses.others.ExceptionsTypeMenager#getUrl(Lcom/artistcorner/engclasses/others/ExceptionsTypeMenager;)Ljava/net/URL;‚
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java" "("1*Á
+1‚
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(*÷
+ô
+‚
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java#7 #(C
+%0java.lang.String"__id*O*M
+C
+subview8com.artistcorner.engclasses.others.ExceptionsTypeMenager"
+pathž›
+‚
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(D
+%1java.net.URL"=java.lang.Class#getResource(Ljava/lang/String;)Ljava/net/URL;*
+""*
+
+%0java.lang.String2getResource(Ljava/lang/String;)"›
+‚
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(E
+
+%1java.net.URL:C
+subview8com.artistcorner.engclasses.others.ExceptionsTypeMenagerB<":
+8com.artistcorner.engclasses.others.ExceptionsTypeMenager
