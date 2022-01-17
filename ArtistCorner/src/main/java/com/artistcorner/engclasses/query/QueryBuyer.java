@@ -68,4 +68,5 @@ public class QueryBuyer {
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
+
 }

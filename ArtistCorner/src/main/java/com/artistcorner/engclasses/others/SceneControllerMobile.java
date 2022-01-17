@@ -1,22 +1,12 @@
 package com.artistcorner.engclasses.others;
 
-import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
 import com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation;
 import com.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary;
 import com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork;
 import com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals;
 import com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile;
 import com.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory;
-import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
-import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
-import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
-import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

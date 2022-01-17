@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
-public class SummaryBuyer {
+public class ViewBuyerSummary {
 
     public void inizializeOpereComprate(ListView<String> listViewCompra, Buyer buy) {
         ArrayList<Integer> arrayOfComprate = BuyerDAO.retrieveAllComprate(buy.getIdBuyer());
