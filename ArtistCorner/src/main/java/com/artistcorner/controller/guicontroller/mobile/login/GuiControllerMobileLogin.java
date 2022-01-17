@@ -14,6 +14,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class GuiControllerMobileLogin {
     public AnchorPane anchorMain;
@@ -66,7 +67,7 @@ public class GuiControllerMobileLogin {
 
         try {
             lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.
-        }catch (UserNotFoundException e){
+        }catch (UserNotFoundException | SQLException e){
             labelExceptionLogin.setText(e.getMessage());
             paneExceptionLogin.setVisible(true);
         }

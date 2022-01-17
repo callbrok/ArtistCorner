@@ -78,7 +78,6 @@ public class ArtistDAO {
     }
 
 
-
     public static ArrayList<ArtWork> retrieveSellArtWorks(int idUsr){
         ArrayList<ArtWork> listOfArtWork = new ArrayList<ArtWork>();
         Statement stmt = null;
@@ -200,7 +199,7 @@ public class ArtistDAO {
 
 
 
-    public static ArrayList<Blob> retrieveAllArtWorksImage(int idUsr){
+    public static ArrayList<Blob> retrieveAllArtWorksImage(int idUsr, String lastAction){
         ArrayList<Blob> listOfArtWorksImage = new ArrayList<Blob>();
         Statement stmt = null;
         Connection conn = null;
@@ -213,7 +212,7 @@ public class ArtistDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryArtist.selectAllArtWorksImage(stmt, idUsr);
+            ResultSet rs = QueryArtist.selectAllArtWorksImage(stmt, idUsr, lastAction);
 
             if (!rs.first()){ // rs empty
                 return null;
@@ -255,7 +254,7 @@ public class ArtistDAO {
     }
 
 
-    public static ArrayList<Proposal> retrieveArtGalleryProposals(int idUsr){
+    public static ArrayList<Proposal> retrieveArtGalleryProposals(int idUsr, String lastAction){
         ArrayList<Proposal> listOfProposal = new ArrayList<Proposal>();
         Statement stmt = null;
         Connection conn = null;
@@ -268,7 +267,7 @@ public class ArtistDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryArtist.selectAllGalleryProposals(stmt, idUsr);
+            ResultSet rs = QueryArtist.selectAllGalleryProposals(stmt, idUsr, lastAction);
 
             if (!rs.first()){ // rs empty
                 return null;

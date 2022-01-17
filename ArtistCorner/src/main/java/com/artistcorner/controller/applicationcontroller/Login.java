@@ -13,11 +13,12 @@ import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Login {
 
 
-    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException, SQLException {
         SceneController sc = new SceneController();
         SceneControllerMobile scm = new SceneControllerMobile();
 

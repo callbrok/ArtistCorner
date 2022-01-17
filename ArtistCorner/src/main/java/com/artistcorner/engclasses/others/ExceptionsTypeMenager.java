@@ -9,7 +9,14 @@ public enum ExceptionsTypeMenager {
     DUPLICATEARTWORK(2, "/view/exceptions/DuplicateArtWorkException.fxml"),  //Opera già presente
     PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale
     SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"), // Nessun opera venduta
-    ARTWORKNOTFOUND(5, "/view/exceptions/ArtWorkNotFoundException.fxml"); // Nessun opera caricata
+    ARTWORKNOTFOUND(5, "/view/exceptions/ArtWorkNotFoundException.fxml"), // Nessun opera caricata
+
+    EMPTYFIELD_MOBILE(6, "/view/mobile/exceptions/EmptyFieldMobileException.fxml"),
+    EMPTYPATH_MOBILE(7, "/view/mobile/exceptions/EmptyPathMobileException.fxml"),
+    DUPLICATEARTWORK_MOBILE(8, "/view/mobile/exceptions/DuplicateArtWorkMobileException.fxml"),  //Opera già presente
+    PROPOSALNOTFOUND_MOBILE(9, "/view/mobile/exceptions/ProposalNotFoundMobileException.fxml"), // Nessuna proposta attuale
+    SELLARTNOTFOUND_MOBILE(10, "/view/mobile/exceptions/SellNotFoundMobileException.fxml"), // Nessun opera venduta
+    ARTWORKNOTFOUND_MOBILE(11, "/view/mobile/exceptions/ArtWorkNotFoundMobileException.fxml"); // Nessun opera caricata
     // Aggiungere errore per il recupero della serializzazione?
 
     private final int type;

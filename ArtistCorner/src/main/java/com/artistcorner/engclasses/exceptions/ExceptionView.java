@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ExceptionView {
+public abstract class ExceptionView {
     private Pane exceptionPane;
 
     public ExceptionView(ExceptionsTypeMenager etm){

@@ -221,7 +221,7 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
         SceneController sc = new SceneController();
         sc.switchToSceneMainArtista(event, art);
     }

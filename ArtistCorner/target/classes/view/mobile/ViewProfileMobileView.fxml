@@ -8,7 +8,7 @@
 
 <AnchorPane id="anchor" fx:id="anchorMain" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile">
     <children>
-        <Pane fx:id="paneExceptionLoad" layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
+        <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
             <Button layoutX="218.0" layoutY="85.0" mnemonicParsing="false" onAction="#switchToProfiloVenduto" prefHeight="40.0" prefWidth="46.0" styleClass="buttonInterface">
                 <graphic>
@@ -46,7 +46,7 @@
             </Button>
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="129.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="310.0" layoutY="85.0" prefHeight="40.0" prefWidth="128.0" style="-fx-background-color: #60b798;" />
-            <Pane layoutY="138.0" prefHeight="436.0" prefWidth="438.0">
+            <Pane fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="436.0" prefWidth="438.0">
                <children>
                   <Button layoutX="109.0" layoutY="365.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Log Out" textFill="WHITE">
                      <font>
@@ -70,7 +70,7 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Button>
-      <AnchorPane fx:id="anchorPaneFocus" layoutX="16.0" layoutY="12.0" prefHeight="664.0" prefWidth="439.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
+      <AnchorPane fx:id="anchorPaneFocus" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
           <children>
               <ImageView fx:id="imageFocused" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
           </children>

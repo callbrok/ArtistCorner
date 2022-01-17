@@ -14,7 +14,7 @@ public class ViewProfile {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        ArrayList<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista());  // Prendi tutte le opere caricate dall'artista.
+        ArrayList<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
 
         if(listOfArtWorksImage == null){
             throw new ArtWorkNotFoundException("Nessun opera caricata");

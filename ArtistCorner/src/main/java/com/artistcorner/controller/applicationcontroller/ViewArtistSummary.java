@@ -4,46 +4,38 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
-public class ViewArtGalleryProposals {
+public class ViewArtistSummary {
 
-    /**
-     * Genera il codice html per la visualizzazione dell'indirizzo passato.
-     */
-    public String makeMapHtml(String luogo, int dimWebPage){
 
-        String htmlMap="";
-        StringBuilder sb = new StringBuilder(htmlMap);
+    public ArrayList<Blob> retrieveAllArtWorksImage(ArtistBean artBean){
 
-        sb.append("<div style=\"margin-left:-8px; margin-top:-8px;\"><iframe width=\"" + dimWebPage + "px\" height=\"100%\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q=")
-                .append(luogo.replaceAll(" ", "%20"))  // Sostituisce gli spazi con "%20" per rispettare la semantica dell'url
-                .append("&t=&z=13&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"></iframe></div>");
+        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        htmlMap = sb.toString();
+        ArrayList<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
 
-        return htmlMap;
+        return listOfArtWorksImage;
     }
 
-    public ArrayList<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) throws ProposalNotFoundException {
+
+
+    public ArrayList<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) {
         Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<ProposalBean>();
 
-        ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
-
-        if(arrayOfProposals == null){
-            throw new ProposalNotFoundException("Nessuna proposta disponibile.");
-        }
+        ArrayList<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
 
         for (Proposal n : arrayOfProposals) {
             arrayOfProposalBeans.add(new ProposalBean(n.getIdOfferta(), n.getArtista(), n.getGalleria(), n.getFlagAccettazione()));
         }
-
 
         return arrayOfProposalBeans;
     }
@@ -54,5 +46,6 @@ public class ViewArtGalleryProposals {
         return new ArtGalleryBean(artG.getGalleria(), artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), artG.getUsername());
 
     }
+
 
 }

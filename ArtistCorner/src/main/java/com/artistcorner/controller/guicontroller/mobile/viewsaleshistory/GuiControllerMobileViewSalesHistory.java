@@ -99,7 +99,7 @@ public class GuiControllerMobileViewSalesHistory {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.SELLARTNOTFOUND);
+            ev = ef.createView(ExceptionsTypeMenager.SELLARTNOTFOUND_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
     }

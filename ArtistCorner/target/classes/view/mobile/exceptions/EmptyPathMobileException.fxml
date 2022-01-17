@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="436.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="35.0" layoutY="37.0" prefHeight="363.0" prefWidth="366.0" style="-fx-background-color: #d13e0a;">
+         <children>
+            <Label layoutX="35.0" layoutY="136.0" prefHeight="49.0" prefWidth="297.0" text="Per favore seleziona" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="131.0" layoutY="165.0" prefHeight="49.0" prefWidth="109.0" text="un file" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

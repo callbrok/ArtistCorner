@@ -205,7 +205,7 @@ public class GuiControllerMobileViewArtGalleryProposals {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.PROPOSALNOTFOUND);
+            ev = ef.createView(ExceptionsTypeMenager.PROPOSALNOTFOUND_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 

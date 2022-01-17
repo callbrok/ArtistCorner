@@ -51,22 +51,86 @@
             <Pane layoutX="331.0" layoutY="85.0" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #60b798;" />
             <Pane layoutY="138.0" prefHeight="436.0" prefWidth="438.0">
                <children>
-                  <Button layoutX="44.0" layoutY="270.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="102.0" styleClass="buttonInterface" text="Si" textFill="WHITE">
+                  <Button layoutX="44.0" layoutY="252.0" mnemonicParsing="false" onAction="#setAnswerYes" prefHeight="48.0" prefWidth="102.0" styleClass="buttonInterface" text="Si" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button layoutX="292.0" layoutY="270.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="102.0" styleClass="buttonInterface" text="No" textFill="WHITE">
+                  <Button layoutX="292.0" layoutY="252.0" mnemonicParsing="false" onAction="#setAnswerNo" prefHeight="48.0" prefWidth="102.0" styleClass="buttonInterface" text="No" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button layoutX="155.0" layoutY="270.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="129.0" styleClass="buttonInterface" text="Scegli per me" textFill="WHITE">
+                  <Button layoutX="155.0" layoutY="252.0" mnemonicParsing="false" onAction="#setAnswerRand" prefHeight="48.0" prefWidth="129.0" styleClass="buttonInterface" text="Scegli per me" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button layoutX="106.0" layoutY="327.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Ricomincia" textFill="WHITE">
+                  <Button fx:id="buttonReset" layoutX="106.0" layoutY="309.0" mnemonicParsing="false" onAction="#resetAlgo" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Ricomincia" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
+                  <Label fx:id="labelQuestion" layoutX="37.0" layoutY="64.0" prefHeight="106.0" prefWidth="362.0" text="Vuoi disegnare una persona?" textAlignment="CENTER" textFill="#2d8465">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                   <AnchorPane fx:id="anchorResult" prefHeight="238.0" prefWidth="438.0" style="-fx-background-color: #fff;">
+                       <children>
+                           <Label layoutX="82.0" prefHeight="46.0" prefWidth="303.0" text="Ti consiglio di disegnare" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="20.0" />
+                               </font>
+                           </Label>
+                           <Label layoutX="26.0" layoutY="38.0" prefHeight="46.0" prefWidth="183.0" text="Soggetto:" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="17.0" />
+                               </font>
+                           </Label>
+                           <Label layoutX="26.0" layoutY="76.0" prefHeight="46.0" prefWidth="173.0" text="Caratteristica:" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="17.0" />
+                               </font>
+                           </Label>
+                           <Label layoutX="26.0" layoutY="114.0" prefHeight="46.0" prefWidth="173.0" text="Stato:" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="17.0" />
+                               </font>
+                           </Label>
+                           <Label layoutX="27.0" layoutY="151.0" prefHeight="46.0" prefWidth="173.0" text="Colori:" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="17.0" />
+                               </font>
+                           </Label>
+                           <Label layoutX="28.0" layoutY="190.0" prefHeight="46.0" prefWidth="173.0" text="Stile:" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="17.0" />
+                               </font>
+                           </Label>
+                           <Label fx:id="labelResultSoggetto" layoutX="179.0" layoutY="35.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="15.0" />
+                               </font>
+                           </Label>
+                           <Label fx:id="labelResultCaract" layoutX="179.0" layoutY="72.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="15.0" />
+                               </font>
+                           </Label>
+                           <Label fx:id="labelResultStato" layoutX="179.0" layoutY="110.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="15.0" />
+                               </font>
+                           </Label>
+                           <Label fx:id="labelResultColori" layoutX="180.0" layoutY="147.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="15.0" />
+                               </font>
+                           </Label>
+                           <Label fx:id="labelResultStile" layoutX="180.0" layoutY="186.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
+                               <font>
+                                   <Font name="System Bold" size="15.0" />
+                               </font>
+                           </Label>
+                       </children>
+                   </AnchorPane>
                </children>
             </Pane>
          </children></Pane>

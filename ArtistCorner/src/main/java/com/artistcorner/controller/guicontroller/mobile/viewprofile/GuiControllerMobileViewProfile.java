@@ -131,7 +131,7 @@ public class GuiControllerMobileViewProfile {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
+            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
     }

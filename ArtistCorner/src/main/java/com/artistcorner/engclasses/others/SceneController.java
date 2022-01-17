@@ -30,7 +30,7 @@ public class SceneController {
     private Parent root;
 
 
-    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
+    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
         root = loader.load();
 

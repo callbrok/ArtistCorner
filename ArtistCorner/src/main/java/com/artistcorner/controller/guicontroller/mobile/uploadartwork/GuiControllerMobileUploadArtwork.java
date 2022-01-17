@@ -81,21 +81,21 @@ public class GuiControllerMobileUploadArtwork {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         } catch (FileNotFoundException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         } catch (DuplicateArtWorkException e){
             // Eccezione: Opera già caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
+            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 
