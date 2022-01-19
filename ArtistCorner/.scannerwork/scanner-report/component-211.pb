@@ -1,1 +1,1 @@
-Ó 2javaX´hrjsrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerArtistSummary.java
+Ó 2javaXIhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java

@@ -1,1 +1,0 @@
-¬ 2javaXhr2src/main/java/com/artistcorner/model/Proposal.java

@@ -51,6 +51,21 @@
     -fx-background-color: transparent;
 }
 
+.loggerButton SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
+.loggerButton:hover SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
+.loggerButton{
+    -fx-background-color: #ebad98;
+}
+
+.loggerButton:hover{
+    -fx-background-color: #ebad98;
+}
 
 /* Login */
 

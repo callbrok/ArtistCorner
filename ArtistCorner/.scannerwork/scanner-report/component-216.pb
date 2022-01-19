@@ -1,1 +1,1 @@
-Ø 2javaXchrmsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerFavouritesBuyer.java
+Ø 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

@@ -1,16 +1,16 @@
 
-Icom.artistcorner.engclasses.bean.Nodo#getSolutionPart()Ljava/lang/String;o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java (!"1*Ô
-1o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java, (8Ï
-Ì
-o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java, (8
-%0java.lang.String"__id*;*9'
-%com.artistcorner.engclasses.bean.Nodo"
-solutionPart"‹
-o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java% (9
+8com.artistcorner.model.Buyer#getNome()Ljava/lang/String;f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ("1*¨
+1f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java$ ((µ
+²
+f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java$ ((
+%0java.lang.String"__id***(
+com.artistcorner.model.Buyer"
+nome"‚
+f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ()
 
-%0java.lang.StringB)'
-%com.artistcorner.engclasses.bean.Nodo
+%0java.lang.StringB 
+com.artistcorner.model.Buyer

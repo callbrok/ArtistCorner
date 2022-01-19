@@ -3,6 +3,10 @@ module com.artistcorner {
     requires javafx.fxml;
     requires javafx.web;
     requires java.sql;
+    requires org.eclipse.jgit;
+    requires org.apache.commons.lang3;
+    requires org.slf4j.simple;
+    requires org.slf4j;
 
 
     opens com.artistcorner to javafx.fxml;
@@ -31,6 +35,9 @@ module com.artistcorner {
 
     opens com.artistcorner.controller.guicontroller.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.uploadartwork;
+
+    opens com.artistcorner.controller.guicontroller.viewloganalytics to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewloganalytics;
 
     opens com.artistcorner.controller.guicontroller.viewsearchartworkbuyer to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;

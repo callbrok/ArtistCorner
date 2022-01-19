@@ -1,1 +1,1 @@
-è 2javaX-hrRsrc/main/java/com/artistcorner/controller/applicationcontroller/SearchArtWork.java
+è 2javaXdhrisrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java

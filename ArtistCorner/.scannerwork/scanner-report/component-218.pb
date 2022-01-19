@@ -1,1 +1,1 @@
-Ú 2javaXohrqsrc/main/java/com/artistcorner/controller/guicontroller/listviewinizializer/GuiControllerListViewInizializer.java
+Ú 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

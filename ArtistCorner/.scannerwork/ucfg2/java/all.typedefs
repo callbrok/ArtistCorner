@@ -650,7 +650,22 @@ valueOf(J)-java.lang.String#valueOf(J)Ljava/lang/String;2
 checkIndex(II) java.lang.String#checkIndex(II)VX
 !<init>(Ljava/lang/StringBuilder;)3java.lang.String#<init>(Ljava/lang/StringBuilder;)V%
 value()java.lang.String#value()[B`
-%regionMatches(ZILjava/lang/String;II)7java.lang.String#regionMatches(ZILjava/lang/String;II)Z˜
+%regionMatches(ZILjava/lang/String;II)7java.lang.String#regionMatches(ZILjava/lang/String;II)Z˙
+
+hcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGalleryjava.lang.Objecté
+setTooltipMenu()zcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#setTooltipMenu()VÜ
+makeLogOut()vcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#makeLogOut()V~
+<init>()rcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#<init>()VÜ
+exitWindow()vcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#exitWindow()VÜ
+initialize()vcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#initialize()Vò
+buttonSearchOnClick()com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#buttonSearchOnClick()Vå
+makeDraggable()ycom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#makeDraggable()Vî
+buttonCancOnClick()}com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#buttonCancOnClick()Vé
+minimizeWindow()zcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery#minimizeWindow()V
+HBoxjava.lang.Objecty
+qcom.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery$HBoxCellHBox 
+EventHandlerjava.lang.Object
+oLcom/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery$6886;EventHandler˜
 /com.artistcorner.engclasses.bean.ArtGalleryBeanjava.lang.Objectÿ
 Q<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Çcom.artistcorner.engclasses.bean.ArtGalleryBean#<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Vb
 getIndirizzo()Pcom.artistcorner.engclasses.bean.ArtGalleryBean#getIndirizzo()Ljava/lang/String;`
@@ -668,7 +683,26 @@ Q<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
 exitWindow()icom.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile#exitWindow()Vy
 initialize()icom.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile#initialize()V
 makeDraggable()lcom.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile#makeDraggable()VÅ
-minimizeWindow()mcom.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile#minimizeWindow()Vá
+minimizeWindow()mcom.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile#minimizeWindow()V•
+Ecom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyerjava.lang.Object[
+<init>()Ocom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#<init>()Vm
+finishPayment(II)Xcom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#finishPayment(II)V…
+
+java.sql.SQLExceptionjava.lang.Iterablejava.lang.Exceptionü
+B<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/Throwable;)Yjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/Throwable;)Vù
+A<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Xjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)VB
+
+iterator()4java.sql.SQLException#iterator()Ljava/util/Iterator;u
+-<init>(Ljava/lang/String;Ljava/lang/String;I)Djava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;I)V+
+<init>()java.sql.SQLException#<init>()Vm
+)setNextException(Ljava/sql/SQLException;)@java.sql.SQLException#setNextException(Ljava/sql/SQLException;)V7
+getErrorCode()%java.sql.SQLException#getErrorCode()IO
+<init>(Ljava/lang/String;)1java.sql.SQLException#<init>(Ljava/lang/String;)VF
+getSQLState()5java.sql.SQLException#getSQLState()Ljava/lang/String;y
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Fjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)Vs
+,<init>(Ljava/lang/String;Ljava/lang/String;)Cjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;)VU
+getNextException()?java.sql.SQLException#getNextException()Ljava/sql/SQLException;U
+<init>(Ljava/lang/Throwable;)4java.sql.SQLException#<init>(Ljava/lang/Throwable;)Vá
 com.artistcorner.model.Artistjava.lang.Object}
 -<init>(ILjava/lang/String;Ljava/lang/String;)Lcom.artistcorner.model.Artist#<init>(ILjava/lang/String;Ljava/lang/String;)VL
 getCognome()<com.artistcorner.model.Artist#getCognome()Ljava/lang/String;F
@@ -851,16 +885,7 @@ AcheckMemberAccess(Ljava/lang/SecurityManager;ILjava/lang/Class;Z)Rjava.lang.Cl
 toGenericString()3java.lang.Class#toGenericString()Ljava/lang/String;¨
 :getMethodsRecursive(Ljava/lang/String;[Ljava/lang/Class;Z)njava.lang.Class#getMethodsRecursive(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/PublicMethods$MethodList;R
 getSimpleBinaryName0()8java.lang.Class#getSimpleBinaryName0()Ljava/lang/String;1
-isLocalClass()java.lang.Class#isLocalClass()ZË
-^com.artistcorner.controller.guicontroller.listviewinizializer.GuiControllerListViewInizializerjava.lang.Objectt
-<init>()hcom.artistcorner.controller.guicontroller.listviewinizializer.GuiControllerListViewInizializer#<init>()V
-HBoxjava.lang.Objecto
-gcom.artistcorner.controller.guicontroller.listviewinizializer.GuiControllerListViewInizializer$HBoxCellHBox 
-EventHandlerjava.lang.Objectu
-eLcom/artistcorner/controller/guicontroller/listviewinizializer/GuiControllerListViewInizializer$4380;EventHandleru
-eLcom/artistcorner/controller/guicontroller/listviewinizializer/GuiControllerListViewInizializer$4963;EventHandler™
-?com.artistcorner.controller.applicationcontroller.SearchArtWorkjava.lang.ObjectU
-<init>()Icom.artistcorner.controller.applicationcontroller.SearchArtWork#<init>()V∞
+isLocalClass()java.lang.Class#isLocalClass()Z∞
 Bcom.artistcorner.controller.applicationcontroller.ViewSalesHistoryjava.lang.ObjectX
 <init>()Lcom.artistcorner.controller.applicationcontroller.ViewSalesHistory#<init>()V≈
 ,com.artistcorner.engclasses.bean.ArtWorkBeanjava.lang.ObjectX
@@ -933,7 +958,189 @@ _com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMob
 uploadFile()mcom.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork#uploadFile()VÖ
 minimizeWindow()qcom.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork#minimizeWindow()V«
 :com.artistcorner.engclasses.exceptions.EmptyFieldExceptionjava.lang.Exceptiont
-<init>(Ljava/lang/String;)Vcom.artistcorner.engclasses.exceptions.EmptyFieldException#<init>(Ljava/lang/String;)V„
+<init>(Ljava/lang/String;)Vcom.artistcorner.engclasses.exceptions.EmptyFieldException#<init>(Ljava/lang/String;)VÂ
+\com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGalleryjava.lang.ObjectÇ
+setTooltipMenu()ncom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#setTooltipMenu()Vz
+makeLogOut()jcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#makeLogOut()Vr
+<init>()fcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#<init>()Vz
+exitWindow()jcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#exitWindow()Vz
+initialize()jcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#initialize()VÄ
+makeDraggable()mcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#makeDraggable()VÇ
+minimizeWindow()ncom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#minimizeWindow()Vî
+*com.artistcorner.engclasses.dao.GalleryDAOjava.lang.Objectj
+retrieveArtistId(I)Scom.artistcorner.engclasses.dao.GalleryDAO#retrieveArtistId(I)Ljava/util/ArrayList;@
+<init>()4com.artistcorner.engclasses.dao.GalleryDAO#<init>()VP
+addProposta(III)<com.artistcorner.engclasses.dao.GalleryDAO#addProposta(III)VT
+removeProposta(II)>com.artistcorner.engclasses.dao.GalleryDAO#removeProposta(II)I$
+java.sql.Wrapperjava.lang.Object“
+java.sql.Connectionjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseableu
+.setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Cjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Z°
+DsetShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Yjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Zë
+<setShardingKey(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;)Qjava.sql.Connection#setShardingKey(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;)Ve
+&setShardingKey(Ljava/sql/ShardingKey;);java.sql.Connection#setShardingKey(Ljava/sql/ShardingKey;)V5
+beginRequest()#java.sql.Connection#beginRequest()V1
+endRequest()!java.sql.Connection#endRequest()V⁄	
+java.sql.Statementjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseablef
+'executeLargeUpdate(Ljava/lang/String;I);java.sql.Statement#executeLargeUpdate(Ljava/lang/String;I)Jd
+&executeLargeUpdate(Ljava/lang/String;):java.sql.Statement#executeLargeUpdate(Ljava/lang/String;)Jh
+(executeLargeUpdate(Ljava/lang/String;[I)<java.sql.Statement#executeLargeUpdate(Ljava/lang/String;[I)J:
+getLargeMaxRows()%java.sql.Statement#getLargeMaxRows()Jw
+'enquoteNCharLiteral(Ljava/lang/String;)Ljava.sql.Statement#enquoteNCharLiteral(Ljava/lang/String;)Ljava/lang/String;B
+getLargeUpdateCount())java.sql.Statement#getLargeUpdateCount()Jd
+&isSimpleIdentifier(Ljava/lang/String;):java.sql.Statement#isSimpleIdentifier(Ljava/lang/String;)Zä
+9executeLargeUpdate(Ljava/lang/String;[Ljava/lang/String;)Mjava.sql.Statement#executeLargeUpdate(Ljava/lang/String;[Ljava/lang/String;)J?
+executeLargeBatch()(java.sql.Statement#executeLargeBatch()[Jm
+"enquoteLiteral(Ljava/lang/String;)Gjava.sql.Statement#enquoteLiteral(Ljava/lang/String;)Ljava/lang/String;<
+setLargeMaxRows(J)&java.sql.Statement#setLargeMaxRows(J)Vu
+&enquoteIdentifier(Ljava/lang/String;Z)Kjava.sql.Statement#enquoteIdentifier(Ljava/lang/String;Z)Ljava/lang/String;å
+java.util.Collectionjava.lang.Objectjava.lang.IterableJ
+spliterator()9java.util.Collection#spliterator()Ljava/util/Spliterator;j
+(removeIf(Ljava/util/function/Predicate;)>java.util.Collection#removeIf(Ljava/util/function/Predicate;)ZR
+parallelStream()>java.util.Collection#parallelStream()Ljava/util/stream/Stream;~
+)toArray(Ljava/util/function/IntFunction;)Qjava.util.Collection#toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;B
+stream()6java.util.Collection#stream()Ljava/util/stream/Stream;Æ
+java.util.Listjava.util.Collectionjava.lang.ObjectÕ
+îof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)≥java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;Q
+of([Ljava/lang/Object;)6java.util.List#of([Ljava/lang/Object;)Ljava/util/List;O
+of(Ljava/lang/Object;)5java.util.List#of(Ljava/lang/Object;)Ljava/util/List;Ñ
+pof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)èjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;ï
+∏of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)◊java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;+
+of()#java.util.List#of()Ljava/util/List;p
+.replaceAll(Ljava/util/function/UnaryOperator;)>java.util.List#replaceAll(Ljava/util/function/UnaryOperator;)Vó
+:of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Yjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;Ò
+¶of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)≈java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;ﬂ
+^of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)}java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;©
+Çof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)°java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;D
+spliterator()3java.util.List#spliterator()Ljava/util/Spliterator;s
+(of(Ljava/lang/Object;Ljava/lang/Object;)Gjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;L
+sort(Ljava/util/Comparator;),java.util.List#sort(Ljava/util/Comparator;)Vª
+Lof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)kjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;_
+copyOf(Ljava/util/Collection;)=java.util.List#copyOf(Ljava/util/Collection;)Ljava/util/List;*
+java.util.RandomAccessjava.lang.Object'
+java.lang.Cloneablejava.lang.Object‚
+
+java.util.AbstractCollectionjava.util.Collectionjava.lang.Objecth
+#containsAll(Ljava/util/Collection;)Ajava.util.AbstractCollection#containsAll(Ljava/util/Collection;)Z4
+	isEmpty()'java.util.AbstractCollection#isEmpty()Z^
+addAll(Ljava/util/Collection;)<java.util.AbstractCollection#addAll(Ljava/util/Collection;)ZG
+
+toString()9java.util.AbstractCollection#toString()Ljava/lang/String;d
+!removeAll(Ljava/util/Collection;)?java.util.AbstractCollection#removeAll(Ljava/util/Collection;)ZV
+remove(Ljava/lang/Object;)8java.util.AbstractCollection#remove(Ljava/lang/Object;)ZF
+	toArray()9java.util.AbstractCollection#toArray()[Ljava/lang/Object;l
+toArray([Ljava/lang/Object;)Ljava.util.AbstractCollection#toArray([Ljava/lang/Object;)[Ljava/lang/Object;Z
+contains(Ljava/lang/Object;):java.util.AbstractCollection#contains(Ljava/lang/Object;)Z@
+hugeCapacity(I)-java.util.AbstractCollection#hugeCapacity(I)Id
+!retainAll(Ljava/util/Collection;)?java.util.AbstractCollection#retainAll(Ljava/util/Collection;)Z†
+6finishToArray([Ljava/lang/Object;Ljava/util/Iterator;)fjava.util.AbstractCollection#finishToArray([Ljava/lang/Object;Ljava/util/Iterator;)[Ljava/lang/Object;2
+<init>()&java.util.AbstractCollection#<init>()VP
+add(Ljava/lang/Object;)5java.util.AbstractCollection#add(Ljava/lang/Object;)Z0
+clear()%java.util.AbstractCollection#clear()V±
+java.util.AbstractListjava.util.Listjava.util.AbstractCollectionP
+equals(Ljava/lang/Object;)2java.util.AbstractList#equals(Ljava/lang/Object;)Z:
+removeRange(II)'java.util.AbstractList#removeRange(II)VZ
+addAll(ILjava/util/Collection;)7java.util.AbstractList#addAll(ILjava/util/Collection;)ZL
+add(ILjava/lang/Object;)0java.util.AbstractList#add(ILjava/lang/Object;)VA
+subList(II)2java.util.AbstractList#subList(II)Ljava/util/List;O
+listIterator()=java.util.AbstractList#listIterator()Ljava/util/ListIterator;Z
+lastIndexOf(Ljava/lang/Object;)7java.util.AbstractList#lastIndexOf(Ljava/lang/Object;)I?
+	remove(I)2java.util.AbstractList#remove(I)Ljava/lang/Object;R
+indexOf(Ljava/lang/Object;)3java.util.AbstractList#indexOf(Ljava/lang/Object;)I0
+
+hashCode()"java.util.AbstractList#hashCode()IC
+
+iterator()5java.util.AbstractList#iterator()Ljava/util/Iterator;,
+<init>() java.util.AbstractList#<init>()V]
+set(ILjava/lang/Object;)Ajava.util.AbstractList#set(ILjava/lang/Object;)Ljava/lang/Object;H
+subListRangeCheck(III).java.util.AbstractList#subListRangeCheck(III)VQ
+listIterator(I)>java.util.AbstractList#listIterator(I)Ljava/util/ListIterator;B
+rangeCheckForAdd(I)+java.util.AbstractList#rangeCheckForAdd(I)VO
+outOfBoundsMsg(I):java.util.AbstractList#outOfBoundsMsg(I)Ljava/lang/String;J
+add(Ljava/lang/Object;)/java.util.AbstractList#add(Ljava/lang/Object;)Z*
+clear()java.util.AbstractList#clear()Vç'
+java.util.ArrayListjava.util.RandomAccessjava.util.Listjava.lang.Cloneablejava.util.AbstractListjava.io.SerializableM
+equals(Ljava/lang/Object;)/java.util.ArrayList#equals(Ljava/lang/Object;)Z7
+removeRange(II)$java.util.ArrayList#removeRange(II)V[
+!removeAll(Ljava/util/Collection;)6java.util.ArrayList#removeAll(Ljava/util/Collection;)ZM
+remove(Ljava/lang/Object;)/java.util.ArrayList#remove(Ljava/lang/Object;)ZL
+listIterator():java.util.ArrayList#listIterator()Ljava/util/ListIterator;=
+	toArray()0java.util.ArrayList#toArray()[Ljava/lang/Object;+
+	<init>(I)java.util.ArrayList#<init>(I)V7
+hugeCapacity(I)$java.util.ArrayList#hugeCapacity(I)Ie
+&forEach(Ljava/util/function/Consumer;);java.util.ArrayList#forEach(Ljava/util/function/Consumer;)Ve
+&equalsArrayList(Ljava/util/ArrayList;);java.util.ArrayList#equalsArrayList(Ljava/util/ArrayList;)Z)
+<init>()java.util.ArrayList#<init>()V6
+get(I),java.util.ArrayList#get(I)Ljava/lang/Object;g
+'readObject(Ljava/io/ObjectInputStream;)<java.util.ArrayList#readObject(Ljava/io/ObjectInputStream;)VL
+outOfBoundsMsg(I)7java.util.ArrayList#outOfBoundsMsg(I)Ljava/lang/String;'
+clear()java.util.ArrayList#clear()VI
+add(ILjava/lang/Object;)-java.util.ArrayList#add(ILjava/lang/Object;)V+
+	isEmpty()java.util.ArrayList#isEmpty()Z>
+subList(II)/java.util.ArrayList#subList(II)Ljava/util/List;W
+lastIndexOf(Ljava/lang/Object;)4java.util.ArrayList#lastIndexOf(Ljava/lang/Object;)Io
++add(Ljava/lang/Object;[Ljava/lang/Object;I)@java.util.ArrayList#add(Ljava/lang/Object;[Ljava/lang/Object;I)VO
+indexOf(Ljava/lang/Object;)0java.util.ArrayList#indexOf(Ljava/lang/Object;)I1
+trimToSize()!java.util.ArrayList#trimToSize()V]
+"indexOfRange(Ljava/lang/Object;II)7java.util.ArrayList#indexOfRange(Ljava/lang/Object;II)IK
+checkForComodification(I).java.util.ArrayList#checkForComodification(I)VZ
+set(ILjava/lang/Object;)>java.util.ArrayList#set(ILjava/lang/Object;)Ljava/lang/Object;N
+outOfBoundsMsg(II)8java.util.ArrayList#outOfBoundsMsg(II)Ljava/lang/String;G
+add(Ljava/lang/Object;),java.util.ArrayList#add(Ljava/lang/Object;)Z5
+newCapacity(I)#java.util.ArrayList#newCapacity(I)I8
+clone()-java.util.ArrayList#clone()Ljava/lang/Object;e
+&batchRemove(Ljava/util/Collection;ZII);java.util.ArrayList#batchRemove(Ljava/util/Collection;ZII)ZU
+<init>(Ljava/util/Collection;)3java.util.ArrayList#<init>(Ljava/util/Collection;)VÉ
+5replaceAllRange(Ljava/util/function/UnaryOperator;II)Jjava.util.ArrayList#replaceAllRange(Ljava/util/function/UnaryOperator;II)Vg
+'shiftTailOverGap([Ljava/lang/Object;II)<java.util.ArrayList#shiftTailOverGap([Ljava/lang/Object;II)V;
+ensureCapacity(I)&java.util.ArrayList#ensureCapacity(I)VF
+elementData(I)4java.util.ArrayList#elementData(I)Ljava/lang/Object;/
+setBit([JI) java.util.ArrayList#setBit([JI)V9
+grow(I).java.util.ArrayList#grow(I)[Ljava/lang/Object;c
+toArray([Ljava/lang/Object;)Cjava.util.ArrayList#toArray([Ljava/lang/Object;)[Ljava/lang/Object;<
+	remove(I)/java.util.ArrayList#remove(I)Ljava/lang/Object;Q
+contains(Ljava/lang/Object;)1java.util.ArrayList#contains(Ljava/lang/Object;)Zm
+*removeIf(Ljava/util/function/Predicate;II)?java.util.ArrayList#removeIf(Ljava/util/function/Predicate;II)Ze
+&lastIndexOfRange(Ljava/lang/Object;II);java.util.ArrayList#lastIndexOfRange(Ljava/lang/Object;II)I-
+
+hashCode()java.util.ArrayList#hashCode()Ii
+(removeIf(Ljava/util/function/Predicate;)=java.util.ArrayList#removeIf(Ljava/util/function/Predicate;)ZW
+equalsRange(Ljava/util/List;II)4java.util.ArrayList#equalsRange(Ljava/util/List;II)ZQ
+sort(Ljava/util/Comparator;)1java.util.ArrayList#sort(Ljava/util/Comparator;)VN
+listIterator(I);java.util.ArrayList#listIterator(I)Ljava/util/ListIterator;Y
+ fastRemove([Ljava/lang/Object;I)5java.util.ArrayList#fastRemove([Ljava/lang/Object;I)Vh
+elementAt([Ljava/lang/Object;I)Ejava.util.ArrayList#elementAt([Ljava/lang/Object;I)Ljava/lang/Object;?
+rangeCheckForAdd(I)(java.util.ArrayList#rangeCheckForAdd(I)V;
+checkInvariants()&java.util.ArrayList#checkInvariants()V;
+hashCodeRange(II)&java.util.ArrayList#hashCodeRange(II)IW
+addAll(ILjava/util/Collection;)4java.util.ArrayList#addAll(ILjava/util/Collection;)ZU
+addAll(Ljava/util/Collection;)3java.util.ArrayList#addAll(Ljava/util/Collection;)Z7
+grow()-java.util.ArrayList#grow()[Ljava/lang/Object;u
+.replaceAll(Ljava/util/function/UnaryOperator;)Cjava.util.ArrayList#replaceAll(Ljava/util/function/UnaryOperator;)V[
+!retainAll(Ljava/util/Collection;)6java.util.ArrayList#retainAll(Ljava/util/Collection;)Z*
+nBits(I)java.util.ArrayList#nBits(I)[J@
+
+iterator()2java.util.ArrayList#iterator()Ljava/util/Iterator;I
+spliterator()8java.util.ArrayList#spliterator()Ljava/util/Spliterator;1
+isClear([JI)!java.util.ArrayList#isClear([JI)Zk
+)writeObject(Ljava/io/ObjectOutputStream;)>java.util.ArrayList#writeObject(Ljava/io/ObjectOutputStream;)V%
+size()java.util.ArrayList#size()Iú
+java.sql.ResultSetjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseable†
+DupdateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;)Xjava.sql.ResultSet#updateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;)VÄ
+4updateObject(ILjava/lang/Object;Ljava/sql/SQLType;I)Hjava.sql.ResultSet#updateObject(ILjava/lang/Object;Ljava/sql/SQLType;I)V¢
+EupdateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;I)Yjava.sql.ResultSet#updateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;I)V~
+3updateObject(ILjava/lang/Object;Ljava/sql/SQLType;)Gjava.sql.ResultSet#updateObject(ILjava/lang/Object;Ljava/sql/SQLType;)V“
+&java.lang.ReflectiveOperationExceptionjava.lang.Exception<
+<init>()0java.lang.ReflectiveOperationException#<init>()V`
+<init>(Ljava/lang/String;)Bjava.lang.ReflectiveOperationException#<init>(Ljava/lang/String;)Vä
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Wjava.lang.ReflectiveOperationException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)Vf
+<init>(Ljava/lang/Throwable;)Ejava.lang.ReflectiveOperationException#<init>(Ljava/lang/Throwable;)Vç
+ java.lang.ClassNotFoundException&java.lang.ReflectiveOperationException6
+<init>()*java.lang.ClassNotFoundException#<init>()VN
+
+getCause()@java.lang.ClassNotFoundException#getCause()Ljava/lang/Throwable;Z
+<init>(Ljava/lang/String;)<java.lang.ClassNotFoundException#<init>(Ljava/lang/String;)VV
+getException()Djava.lang.ClassNotFoundException#getException()Ljava/lang/Throwable;Ñ
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Qjava.lang.ClassNotFoundException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V„
 com.artistcorner.model.ArtWorkjava.lang.Object<
 getIdOpera(),com.artistcorner.model.ArtWork#getIdOpera()I@
 getArtistaId().com.artistcorner.model.ArtWork#getArtistaId()I`
@@ -955,11 +1162,11 @@ ecom.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiController
 minimizeWindow()wcom.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory#minimizeWindow()VÍ
 ncom.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory$HBoxCellHBoxÒ
 ><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Æcom.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory$HBoxCell#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VT
-Ccom.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionViewExceptionViewÔ
+Ccom.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionViewExceptionViewÁ
 Zcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandationjava.lang.Objectjava.io.Serializablez
 setAnswerNo()icom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#setAnswerNo()VÄ
-setTooltipMenu()lcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#setTooltipMenu()Ví
-inizializeIdLivelloDesk()ucom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#inizializeIdLivelloDesk()V|
+setTooltipMenu()lcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#setTooltipMenu()Vä
+inizializeIdLivello()qcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#inizializeIdLivello()V|
 showSolution()jcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#showSolution()V~
 setAnswerRand()kcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#setAnswerRand()Vx
 makeLogOut()hcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#makeLogOut()Vp
@@ -1056,21 +1263,7 @@ println(C)java.io.PrintStream#println(C)VK
 1<init>(Ljava/io/OutputStream;ZLjava/lang/String;)Fjava.io.PrintStream#<init>(Ljava/io/OutputStream;ZLjava/lang/String;)VU
 <init>(Ljava/io/OutputStream;)3java.io.PrintStream#<init>(Ljava/io/OutputStream;)V/
 println([C) java.io.PrintStream#println([C)Vã
-9<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)Njava.io.PrintStream#<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)V$
-java.sql.Wrapperjava.lang.Object⁄	
-java.sql.Statementjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseablef
-'executeLargeUpdate(Ljava/lang/String;I);java.sql.Statement#executeLargeUpdate(Ljava/lang/String;I)Jd
-&executeLargeUpdate(Ljava/lang/String;):java.sql.Statement#executeLargeUpdate(Ljava/lang/String;)Jh
-(executeLargeUpdate(Ljava/lang/String;[I)<java.sql.Statement#executeLargeUpdate(Ljava/lang/String;[I)J:
-getLargeMaxRows()%java.sql.Statement#getLargeMaxRows()Jw
-'enquoteNCharLiteral(Ljava/lang/String;)Ljava.sql.Statement#enquoteNCharLiteral(Ljava/lang/String;)Ljava/lang/String;B
-getLargeUpdateCount())java.sql.Statement#getLargeUpdateCount()Jd
-&isSimpleIdentifier(Ljava/lang/String;):java.sql.Statement#isSimpleIdentifier(Ljava/lang/String;)Zä
-9executeLargeUpdate(Ljava/lang/String;[Ljava/lang/String;)Mjava.sql.Statement#executeLargeUpdate(Ljava/lang/String;[Ljava/lang/String;)J?
-executeLargeBatch()(java.sql.Statement#executeLargeBatch()[Jm
-"enquoteLiteral(Ljava/lang/String;)Gjava.sql.Statement#enquoteLiteral(Ljava/lang/String;)Ljava/lang/String;<
-setLargeMaxRows(J)&java.sql.Statement#setLargeMaxRows(J)Vu
-&enquoteIdentifier(Ljava/lang/String;Z)Kjava.sql.Statement#enquoteIdentifier(Ljava/lang/String;Z)Ljava/lang/String;ú
+9<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)Njava.io.PrintStream#<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)Vú
 8com.artistcorner.engclasses.others.SceneControllerMobilejava.lang.ObjectN
 <init>()Bcom.artistcorner.engclasses.others.SceneControllerMobile#<init>()VÚ
 Ncom.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfilejava.lang.Objectt
@@ -1110,8 +1303,7 @@ CcomputeIfPresent(Ljava/lang/Object;Ljava/util/function/BiFunction;)cjava.util.
 »of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Âjava.util.Map#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;π
 Lof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)ijava.util.Map#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;à
 2getOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Rjava.util.Map#getOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;}
-+entry(Ljava/lang/Object;Ljava/lang/Object;)Njava.util.Map#entry(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map$Entry;'
-java.lang.Cloneablejava.lang.ObjectT
++entry(Ljava/lang/Object;Ljava/lang/Object;)Njava.util.Map#entry(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map$Entry;T
 java.util.Dictionaryjava.lang.Object*
 <init>()java.util.Dictionary#<init>()Võ#
 java.util.Hashtablejava.lang.Cloneablejava.util.Mapjava.util.Dictionaryjava.io.Serializableø
@@ -1263,9 +1455,7 @@ HgetConnection(Ljava/lang/String;Ljava/util/Properties;Ljava/lang/Class;)tjava.
 Applicationjava.lang.Object«
 "com.artistcorner.MobileApplicationApplication8
 <init>(),com.artistcorner.MobileApplication#<init>()VZ
-main([Ljava/lang/String;)=com.artistcorner.MobileApplication#main([Ljava/lang/String;)VÆ
-Acom.artistcorner.controller.applicationcontroller.FavouritesBuyerjava.lang.ObjectW
-<init>()Kcom.artistcorner.controller.applicationcontroller.FavouritesBuyer#<init>()Vò	
+main([Ljava/lang/String;)=com.artistcorner.MobileApplication#main([Ljava/lang/String;)Vò	
 (com.artistcorner.engclasses.dao.BuyerDAOjava.lang.Objectî
 )retrieveArtWorkByName(Ljava/lang/String;)gcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorkByName(Ljava/lang/String;)Ljava/util/ArrayList;^
 retrieveArtWorks(II)Fcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorks(II)LArtWork;Z
@@ -1277,199 +1467,51 @@ Acom.artistcorner.controller.applicationcontroller.FavouritesBuyerjava.lang.Ob
 retrieveArtistName(I)Fcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtistName(I)LArtist;n
 retrieveAllComprate(I)Tcom.artistcorner.engclasses.dao.BuyerDAO#retrieveAllComprate(I)Ljava/util/ArrayList;j
 retrieveArtWorkId(I)Rcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorkId(I)Ljava/util/ArrayList;l
-removeArtWorkFromFavourites(II)Icom.artistcorner.engclasses.dao.BuyerDAO#removeArtWorkFromFavourites(II)V“
-java.sql.Connectionjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseableu
-.setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Cjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Z°
-DsetShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Yjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Zë
-<setShardingKey(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;)Qjava.sql.Connection#setShardingKey(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;)Ve
-&setShardingKey(Ljava/sql/ShardingKey;);java.sql.Connection#setShardingKey(Ljava/sql/ShardingKey;)V5
-beginRequest()#java.sql.Connection#beginRequest()V1
-endRequest()!java.sql.Connection#endRequest()Vú
-java.sql.ResultSetjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseable†
-DupdateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;)Xjava.sql.ResultSet#updateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;)VÄ
-4updateObject(ILjava/lang/Object;Ljava/sql/SQLType;I)Hjava.sql.ResultSet#updateObject(ILjava/lang/Object;Ljava/sql/SQLType;I)V¢
-EupdateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;I)Yjava.sql.ResultSet#updateObject(Ljava/lang/String;Ljava/lang/Object;Ljava/sql/SQLType;I)V~
-3updateObject(ILjava/lang/Object;Ljava/sql/SQLType;)Gjava.sql.ResultSet#updateObject(ILjava/lang/Object;Ljava/sql/SQLType;)V…
-
-java.sql.SQLExceptionjava.lang.Iterablejava.lang.Exceptionü
-B<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/Throwable;)Yjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/Throwable;)Vù
-A<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Xjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)VB
-
-iterator()4java.sql.SQLException#iterator()Ljava/util/Iterator;u
--<init>(Ljava/lang/String;Ljava/lang/String;I)Djava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;I)V+
-<init>()java.sql.SQLException#<init>()Vm
-)setNextException(Ljava/sql/SQLException;)@java.sql.SQLException#setNextException(Ljava/sql/SQLException;)V7
-getErrorCode()%java.sql.SQLException#getErrorCode()IO
-<init>(Ljava/lang/String;)1java.sql.SQLException#<init>(Ljava/lang/String;)VF
-getSQLState()5java.sql.SQLException#getSQLState()Ljava/lang/String;y
-/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Fjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)Vs
-,<init>(Ljava/lang/String;Ljava/lang/String;)Cjava.sql.SQLException#<init>(Ljava/lang/String;Ljava/lang/String;)VU
-getNextException()?java.sql.SQLException#getNextException()Ljava/sql/SQLException;U
-<init>(Ljava/lang/Throwable;)4java.sql.SQLException#<init>(Ljava/lang/Throwable;)V“
-&java.lang.ReflectiveOperationExceptionjava.lang.Exception<
-<init>()0java.lang.ReflectiveOperationException#<init>()V`
-<init>(Ljava/lang/String;)Bjava.lang.ReflectiveOperationException#<init>(Ljava/lang/String;)Vä
-/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Wjava.lang.ReflectiveOperationException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)Vf
-<init>(Ljava/lang/Throwable;)Ejava.lang.ReflectiveOperationException#<init>(Ljava/lang/Throwable;)Vç
- java.lang.ClassNotFoundException&java.lang.ReflectiveOperationException6
-<init>()*java.lang.ClassNotFoundException#<init>()VN
-
-getCause()@java.lang.ClassNotFoundException#getCause()Ljava/lang/Throwable;Z
-<init>(Ljava/lang/String;)<java.lang.ClassNotFoundException#<init>(Ljava/lang/String;)VV
-getException()Djava.lang.ClassNotFoundException#getException()Ljava/lang/Throwable;Ñ
-/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Qjava.lang.ClassNotFoundException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)Vå
-java.util.Collectionjava.lang.Objectjava.lang.IterableJ
-spliterator()9java.util.Collection#spliterator()Ljava/util/Spliterator;j
-(removeIf(Ljava/util/function/Predicate;)>java.util.Collection#removeIf(Ljava/util/function/Predicate;)ZR
-parallelStream()>java.util.Collection#parallelStream()Ljava/util/stream/Stream;~
-)toArray(Ljava/util/function/IntFunction;)Qjava.util.Collection#toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;B
-stream()6java.util.Collection#stream()Ljava/util/stream/Stream;Æ
-java.util.Listjava.util.Collectionjava.lang.ObjectÕ
-îof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)≥java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;Q
-of([Ljava/lang/Object;)6java.util.List#of([Ljava/lang/Object;)Ljava/util/List;O
-of(Ljava/lang/Object;)5java.util.List#of(Ljava/lang/Object;)Ljava/util/List;Ñ
-pof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)èjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;ï
-∏of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)◊java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;+
-of()#java.util.List#of()Ljava/util/List;p
-.replaceAll(Ljava/util/function/UnaryOperator;)>java.util.List#replaceAll(Ljava/util/function/UnaryOperator;)Vó
-:of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Yjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;Ò
-¶of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)≈java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;ﬂ
-^of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)}java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;©
-Çof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)°java.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;D
-spliterator()3java.util.List#spliterator()Ljava/util/Spliterator;s
-(of(Ljava/lang/Object;Ljava/lang/Object;)Gjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;L
-sort(Ljava/util/Comparator;),java.util.List#sort(Ljava/util/Comparator;)Vª
-Lof(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)kjava.util.List#of(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;_
-copyOf(Ljava/util/Collection;)=java.util.List#copyOf(Ljava/util/Collection;)Ljava/util/List;*
-java.util.RandomAccessjava.lang.Object‚
-
-java.util.AbstractCollectionjava.util.Collectionjava.lang.Objecth
-#containsAll(Ljava/util/Collection;)Ajava.util.AbstractCollection#containsAll(Ljava/util/Collection;)Z4
-	isEmpty()'java.util.AbstractCollection#isEmpty()Z^
-addAll(Ljava/util/Collection;)<java.util.AbstractCollection#addAll(Ljava/util/Collection;)ZG
-
-toString()9java.util.AbstractCollection#toString()Ljava/lang/String;d
-!removeAll(Ljava/util/Collection;)?java.util.AbstractCollection#removeAll(Ljava/util/Collection;)ZV
-remove(Ljava/lang/Object;)8java.util.AbstractCollection#remove(Ljava/lang/Object;)ZF
-	toArray()9java.util.AbstractCollection#toArray()[Ljava/lang/Object;l
-toArray([Ljava/lang/Object;)Ljava.util.AbstractCollection#toArray([Ljava/lang/Object;)[Ljava/lang/Object;Z
-contains(Ljava/lang/Object;):java.util.AbstractCollection#contains(Ljava/lang/Object;)Z@
-hugeCapacity(I)-java.util.AbstractCollection#hugeCapacity(I)Id
-!retainAll(Ljava/util/Collection;)?java.util.AbstractCollection#retainAll(Ljava/util/Collection;)Z†
-6finishToArray([Ljava/lang/Object;Ljava/util/Iterator;)fjava.util.AbstractCollection#finishToArray([Ljava/lang/Object;Ljava/util/Iterator;)[Ljava/lang/Object;2
-<init>()&java.util.AbstractCollection#<init>()VP
-add(Ljava/lang/Object;)5java.util.AbstractCollection#add(Ljava/lang/Object;)Z0
-clear()%java.util.AbstractCollection#clear()V±
-java.util.AbstractListjava.util.Listjava.util.AbstractCollectionP
-equals(Ljava/lang/Object;)2java.util.AbstractList#equals(Ljava/lang/Object;)Z:
-removeRange(II)'java.util.AbstractList#removeRange(II)VZ
-addAll(ILjava/util/Collection;)7java.util.AbstractList#addAll(ILjava/util/Collection;)ZL
-add(ILjava/lang/Object;)0java.util.AbstractList#add(ILjava/lang/Object;)VA
-subList(II)2java.util.AbstractList#subList(II)Ljava/util/List;O
-listIterator()=java.util.AbstractList#listIterator()Ljava/util/ListIterator;Z
-lastIndexOf(Ljava/lang/Object;)7java.util.AbstractList#lastIndexOf(Ljava/lang/Object;)I?
-	remove(I)2java.util.AbstractList#remove(I)Ljava/lang/Object;R
-indexOf(Ljava/lang/Object;)3java.util.AbstractList#indexOf(Ljava/lang/Object;)I0
-
-hashCode()"java.util.AbstractList#hashCode()IC
-
-iterator()5java.util.AbstractList#iterator()Ljava/util/Iterator;,
-<init>() java.util.AbstractList#<init>()V]
-set(ILjava/lang/Object;)Ajava.util.AbstractList#set(ILjava/lang/Object;)Ljava/lang/Object;H
-subListRangeCheck(III).java.util.AbstractList#subListRangeCheck(III)VQ
-listIterator(I)>java.util.AbstractList#listIterator(I)Ljava/util/ListIterator;B
-rangeCheckForAdd(I)+java.util.AbstractList#rangeCheckForAdd(I)VO
-outOfBoundsMsg(I):java.util.AbstractList#outOfBoundsMsg(I)Ljava/lang/String;J
-add(Ljava/lang/Object;)/java.util.AbstractList#add(Ljava/lang/Object;)Z*
-clear()java.util.AbstractList#clear()Vç'
-java.util.ArrayListjava.util.RandomAccessjava.util.Listjava.lang.Cloneablejava.util.AbstractListjava.io.SerializableM
-equals(Ljava/lang/Object;)/java.util.ArrayList#equals(Ljava/lang/Object;)Z7
-removeRange(II)$java.util.ArrayList#removeRange(II)V[
-!removeAll(Ljava/util/Collection;)6java.util.ArrayList#removeAll(Ljava/util/Collection;)ZM
-remove(Ljava/lang/Object;)/java.util.ArrayList#remove(Ljava/lang/Object;)ZL
-listIterator():java.util.ArrayList#listIterator()Ljava/util/ListIterator;=
-	toArray()0java.util.ArrayList#toArray()[Ljava/lang/Object;+
-	<init>(I)java.util.ArrayList#<init>(I)V7
-hugeCapacity(I)$java.util.ArrayList#hugeCapacity(I)Ie
-&forEach(Ljava/util/function/Consumer;);java.util.ArrayList#forEach(Ljava/util/function/Consumer;)Ve
-&equalsArrayList(Ljava/util/ArrayList;);java.util.ArrayList#equalsArrayList(Ljava/util/ArrayList;)Z)
-<init>()java.util.ArrayList#<init>()V6
-get(I),java.util.ArrayList#get(I)Ljava/lang/Object;g
-'readObject(Ljava/io/ObjectInputStream;)<java.util.ArrayList#readObject(Ljava/io/ObjectInputStream;)VL
-outOfBoundsMsg(I)7java.util.ArrayList#outOfBoundsMsg(I)Ljava/lang/String;'
-clear()java.util.ArrayList#clear()VI
-add(ILjava/lang/Object;)-java.util.ArrayList#add(ILjava/lang/Object;)V+
-	isEmpty()java.util.ArrayList#isEmpty()Z>
-subList(II)/java.util.ArrayList#subList(II)Ljava/util/List;W
-lastIndexOf(Ljava/lang/Object;)4java.util.ArrayList#lastIndexOf(Ljava/lang/Object;)Io
-+add(Ljava/lang/Object;[Ljava/lang/Object;I)@java.util.ArrayList#add(Ljava/lang/Object;[Ljava/lang/Object;I)VO
-indexOf(Ljava/lang/Object;)0java.util.ArrayList#indexOf(Ljava/lang/Object;)I1
-trimToSize()!java.util.ArrayList#trimToSize()V]
-"indexOfRange(Ljava/lang/Object;II)7java.util.ArrayList#indexOfRange(Ljava/lang/Object;II)IK
-checkForComodification(I).java.util.ArrayList#checkForComodification(I)VZ
-set(ILjava/lang/Object;)>java.util.ArrayList#set(ILjava/lang/Object;)Ljava/lang/Object;N
-outOfBoundsMsg(II)8java.util.ArrayList#outOfBoundsMsg(II)Ljava/lang/String;G
-add(Ljava/lang/Object;),java.util.ArrayList#add(Ljava/lang/Object;)Z5
-newCapacity(I)#java.util.ArrayList#newCapacity(I)I8
-clone()-java.util.ArrayList#clone()Ljava/lang/Object;e
-&batchRemove(Ljava/util/Collection;ZII);java.util.ArrayList#batchRemove(Ljava/util/Collection;ZII)ZU
-<init>(Ljava/util/Collection;)3java.util.ArrayList#<init>(Ljava/util/Collection;)VÉ
-5replaceAllRange(Ljava/util/function/UnaryOperator;II)Jjava.util.ArrayList#replaceAllRange(Ljava/util/function/UnaryOperator;II)Vg
-'shiftTailOverGap([Ljava/lang/Object;II)<java.util.ArrayList#shiftTailOverGap([Ljava/lang/Object;II)V;
-ensureCapacity(I)&java.util.ArrayList#ensureCapacity(I)VF
-elementData(I)4java.util.ArrayList#elementData(I)Ljava/lang/Object;/
-setBit([JI) java.util.ArrayList#setBit([JI)V9
-grow(I).java.util.ArrayList#grow(I)[Ljava/lang/Object;c
-toArray([Ljava/lang/Object;)Cjava.util.ArrayList#toArray([Ljava/lang/Object;)[Ljava/lang/Object;<
-	remove(I)/java.util.ArrayList#remove(I)Ljava/lang/Object;Q
-contains(Ljava/lang/Object;)1java.util.ArrayList#contains(Ljava/lang/Object;)Zm
-*removeIf(Ljava/util/function/Predicate;II)?java.util.ArrayList#removeIf(Ljava/util/function/Predicate;II)Ze
-&lastIndexOfRange(Ljava/lang/Object;II);java.util.ArrayList#lastIndexOfRange(Ljava/lang/Object;II)I-
-
-hashCode()java.util.ArrayList#hashCode()Ii
-(removeIf(Ljava/util/function/Predicate;)=java.util.ArrayList#removeIf(Ljava/util/function/Predicate;)ZW
-equalsRange(Ljava/util/List;II)4java.util.ArrayList#equalsRange(Ljava/util/List;II)ZQ
-sort(Ljava/util/Comparator;)1java.util.ArrayList#sort(Ljava/util/Comparator;)VN
-listIterator(I);java.util.ArrayList#listIterator(I)Ljava/util/ListIterator;Y
- fastRemove([Ljava/lang/Object;I)5java.util.ArrayList#fastRemove([Ljava/lang/Object;I)Vh
-elementAt([Ljava/lang/Object;I)Ejava.util.ArrayList#elementAt([Ljava/lang/Object;I)Ljava/lang/Object;?
-rangeCheckForAdd(I)(java.util.ArrayList#rangeCheckForAdd(I)V;
-checkInvariants()&java.util.ArrayList#checkInvariants()V;
-hashCodeRange(II)&java.util.ArrayList#hashCodeRange(II)IW
-addAll(ILjava/util/Collection;)4java.util.ArrayList#addAll(ILjava/util/Collection;)ZU
-addAll(Ljava/util/Collection;)3java.util.ArrayList#addAll(Ljava/util/Collection;)Z7
-grow()-java.util.ArrayList#grow()[Ljava/lang/Object;u
-.replaceAll(Ljava/util/function/UnaryOperator;)Cjava.util.ArrayList#replaceAll(Ljava/util/function/UnaryOperator;)V[
-!retainAll(Ljava/util/Collection;)6java.util.ArrayList#retainAll(Ljava/util/Collection;)Z*
-nBits(I)java.util.ArrayList#nBits(I)[J@
-
-iterator()2java.util.ArrayList#iterator()Ljava/util/Iterator;I
-spliterator()8java.util.ArrayList#spliterator()Ljava/util/Spliterator;1
-isClear([JI)!java.util.ArrayList#isClear([JI)Zk
-)writeObject(Ljava/io/ObjectOutputStream;)>java.util.ArrayList#writeObject(Ljava/io/ObjectOutputStream;)V%
-size()java.util.ArrayList#size()I”
+removeArtWorkFromFavourites(II)Icom.artistcorner.engclasses.dao.BuyerDAO#removeArtWorkFromFavourites(II)I”
 @com.artistcorner.engclasses.exceptions.DuplicateArtWorkExceptionjava.lang.Exceptionz
-<init>(Ljava/lang/String;)\com.artistcorner.engclasses.exceptions.DuplicateArtWorkException#<init>(Ljava/lang/String;)V‹
-Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummaryjava.lang.Objectn
-<init>()bcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#<init>()V˛
+<init>(Ljava/lang/String;)\com.artistcorner.engclasses.exceptions.DuplicateArtWorkException#<init>(Ljava/lang/String;)V¬
+Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummaryjava.lang.Objectv
+makeLogOut()fcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#makeLogOut()Vn
+<init>()bcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#<init>()Vv
+exitWindow()fcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#exitWindow()Vv
+initialize()fcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#initialize()V|
+makeDraggable()icom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#makeDraggable()V~
+minimizeWindow()jcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary#minimizeWindow()V˛
 com.artistcorner.model.Buyerjava.lang.Object|
 -<init>(ILjava/lang/String;Ljava/lang/String;)Kcom.artistcorner.model.Buyer#<init>(ILjava/lang/String;Ljava/lang/String;)VK
 getCognome();com.artistcorner.model.Buyer#getCognome()Ljava/lang/String;E
 	getNome()8com.artistcorner.model.Buyer#getNome()Ljava/lang/String;:
-getIdBuyer()*com.artistcorner.model.Buyer#getIdBuyer()Iê
+getIdBuyer()*com.artistcorner.model.Buyer#getIdBuyer()IÓ
+.com.artistcorner.engclasses.query.QueryGalleryjava.lang.ObjectÇ
+'insertProposal(Ljava/sql/Statement;III)Wcom.artistcorner.engclasses.query.QueryGallery#insertProposal(Ljava/sql/Statement;III)ID
+<init>()8com.artistcorner.engclasses.query.QueryGallery#<init>()Vì
+&selectProposal(Ljava/sql/Statement;II)icom.artistcorner.engclasses.query.QueryGallery#selectProposal(Ljava/sql/Statement;II)Ljava/sql/ResultSet;ë
+%selectArtistId(Ljava/sql/Statement;I)hcom.artistcorner.engclasses.query.QueryGallery#selectArtistId(Ljava/sql/Statement;I)Ljava/sql/ResultSet;±
+5selectGallery(Ljava/sql/Statement;Ljava/lang/String;)xcom.artistcorner.engclasses.query.QueryGallery#selectGallery(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;Ä
+&removeProposal(Ljava/sql/Statement;II)Vcom.artistcorner.engclasses.query.QueryGallery#removeProposal(Ljava/sql/Statement;II)Iê
 2com.artistcorner.engclasses.others.SceneControllerjava.lang.ObjectH
 <init>()<com.artistcorner.engclasses.others.SceneController#<init>()V≠
 4com.artistcorner.engclasses.exceptions.ExceptionViewjava.lang.Objectc
-getExceptionPane()Mcom.artistcorner.engclasses.exceptions.ExceptionView#getExceptionPane()LPane;‘
-Zcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyerjava.lang.ObjectÄ
-setTooltipMenu()lcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#setTooltipMenu()Vx
-makeLogOut()hcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#makeLogOut()Vp
-<init>()dcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#<init>()Vx
-exitWindow()hcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#exitWindow()Vx
-initialize()hcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#initialize()V~
-makeDraggable()kcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#makeDraggable()VÄ
-minimizeWindow()lcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerFavouritesBuyer#minimizeWindow()VX
-Gcom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionViewExceptionViewÜ
+getExceptionPane()Mcom.artistcorner.engclasses.exceptions.ExceptionView#getExceptionPane()LPane;X
+Gcom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionViewExceptionView“
+
+dcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyerjava.lang.Objectä
+setTooltipMenu()vcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#setTooltipMenu()VÇ
+makeLogOut()rcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#makeLogOut()Vz
+<init>()ncom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#<init>()VÇ
+exitWindow()rcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#exitWindow()VÇ
+initialize()rcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#initialize()Vî
+buttonSearchOnClick(){com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#buttonSearchOnClick()Và
+makeDraggable()ucom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#makeDraggable()Vê
+buttonCancOnClick()ycom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#buttonCancOnClick()Vä
+minimizeWindow()vcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#minimizeWindow()Vu
+mcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer$HBoxCellHBox{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$7558;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$7867;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$8330;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$8974;EventHandler¥
+Dcom.artistcorner.controller.applicationcontroller.ViewGallerySummaryjava.lang.ObjectZ
+<init>()Ncom.artistcorner.controller.applicationcontroller.ViewGallerySummary#<init>()VÜ
 com.artistcorner.model.Proposaljava.lang.Object=
 <init>(IIII)-com.artistcorner.model.Proposal#<init>(IIII)VO
 getFlagAccettazione()6com.artistcorner.model.Proposal#getFlagAccettazione()IA
@@ -1507,26 +1549,16 @@ Ocom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin
 makeDraggable()`com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#makeDraggable()Vu
 minimizeWindow()acom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#minimizeWindow()V™
 ?com.artistcorner.controller.applicationcontroller.UploadArtWorkjava.lang.ObjectU
-<init>()Icom.artistcorner.controller.applicationcontroller.UploadArtWork#<init>()Vß
-
-`com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyerjava.lang.ObjectÜ
-setTooltipMenu()rcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#setTooltipMenu()V~
-makeLogOut()ncom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#makeLogOut()Vv
-<init>()jcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#<init>()V~
-exitWindow()ncom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#exitWindow()V~
-initialize()ncom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#initialize()Vê
-buttonSearchOnClick()wcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#buttonSearchOnClick()VÑ
-makeDraggable()qcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#makeDraggable()Vå
-buttonCancOnClick()ucom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#buttonCancOnClick()VÜ
-minimizeWindow()rcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerSearchArtWorkBuyer#minimizeWindow()VÀ
+<init>()Icom.artistcorner.controller.applicationcontroller.UploadArtWork#<init>()V¿
+Jcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGalleryjava.lang.Object`
+<init>()Tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery#<init>()VÀ
 <com.artistcorner.engclasses.exceptions.UserNotFoundExceptionjava.lang.Exceptionv
 <init>(Ljava/lang/String;)Xcom.artistcorner.engclasses.exceptions.UserNotFoundException#<init>(Ljava/lang/String;)Vö
 7com.artistcorner.controller.applicationcontroller.Loginjava.lang.ObjectM
-<init>()Acom.artistcorner.controller.applicationcontroller.Login#<init>()V¥
-Dcom.artistcorner.controller.applicationcontroller.ListViewInizilizerjava.lang.ObjectZ
-<init>()Ncom.artistcorner.controller.applicationcontroller.ListViewInizilizer#<init>()V[
-KLcom/artistcorner/controller/applicationcontroller/ListViewInizilizer$1726;EventHandler[
-KLcom/artistcorner/controller/applicationcontroller/ListViewInizilizer$2341;EventHandler¨
+<init>()Acom.artistcorner.controller.applicationcontroller.Login#<init>()Vº
+Dcom.artistcorner.controller.applicationcontroller.ViewProfileGalleryjava.lang.ObjectZ
+<init>()Ncom.artistcorner.controller.applicationcontroller.ViewProfileGallery#<init>()VÖ
+retrieveArtistName(I)lcom.artistcorner.controller.applicationcontroller.ViewProfileGallery#retrieveArtistName(I)Ljava/lang/String;¨
 scom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposalsjava.lang.Objectâ
 <init>()}com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#<init>()Ví
 exitWindow()Åcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#exitWindow()Ví
@@ -1589,7 +1621,10 @@ toString())java.net.URL#toString()Ljava/lang/String;ú
 @<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)æcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals$HBoxCell#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)Vä
 zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5125;EventHandlerä
 zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5517;EventHandlerå
-zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$7129;ChangeListener„
+zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$7129;ChangeListenerÆ
+Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyerjava.lang.Object^
+<init>()Rcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#<init>()Vp
+finishPayment(II)[com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#finishPayment(II)V„
 )com.artistcorner.engclasses.dao.ArtistDAOjava.lang.Objectò
 -retrieveAllArtWorksImage(ILjava/lang/String;)gcom.artistcorner.engclasses.dao.ArtistDAO#retrieveAllArtWorksImage(ILjava/lang/String;)Ljava/util/List;?
 <init>()3com.artistcorner.engclasses.dao.ArtistDAO#<init>()VS
@@ -1720,7 +1755,22 @@ Wcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtis
 exitWindow()ecom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#exitWindow()Vu
 initialize()ecom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#initialize()V{
 makeDraggable()hcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#makeDraggable()V}
-minimizeWindow()icom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#minimizeWindow()V∑
+minimizeWindow()icom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#minimizeWindow()Vı
+^com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyerjava.lang.ObjectÑ
+setTooltipMenu()pcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#setTooltipMenu()V|
+makeLogOut()lcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#makeLogOut()Vt
+<init>()hcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#<init>()V|
+exitWindow()lcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#exitWindow()V|
+initialize()lcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#initialize()VÇ
+makeDraggable()ocom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#makeDraggable()VÑ
+minimizeWindow()pcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer#minimizeWindow()Vo
+gcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer$HBoxCellHBoxu
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$8047;EventHandleru
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$8468;EventHandleru
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$9127;EventHandlerv
+fLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$10043;EventHandler∞
+Bcom.artistcorner.controller.applicationcontroller.ViewBuyerSummaryjava.lang.ObjectX
+<init>()Lcom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#<init>()V∑
 Ccom.artistcorner.controller.applicationcontroller.ViewArtistSummaryjava.lang.ObjectY
 <init>()Mcom.artistcorner.controller.applicationcontroller.ViewArtistSummary#<init>()VÇ
 retrieveArtGallery(I)icom.artistcorner.controller.applicationcontroller.ViewArtistSummary#retrieveArtGallery(I)LArtGalleryBean;⁄
@@ -1729,6 +1779,4 @@ Ccom.artistcorner.controller.applicationcontroller.ViewArtistSummaryjava.lang.
 getFlagAccettazione()Dcom.artistcorner.engclasses.bean.ProposalBean#getFlagAccettazione()IO
 getIdOfferta()=com.artistcorner.engclasses.bean.ProposalBean#getIdOfferta()IM
 getGalleria()<com.artistcorner.engclasses.bean.ProposalBean#getGalleria()IK
-getArtista();com.artistcorner.engclasses.bean.ProposalBean#getArtista()I®
->com.artistcorner.controller.applicationcontroller.SummaryBuyerjava.lang.ObjectT
-<init>()Hcom.artistcorner.controller.applicationcontroller.SummaryBuyer#<init>()V
+getArtista();com.artistcorner.engclasses.bean.ProposalBean#getArtista()I

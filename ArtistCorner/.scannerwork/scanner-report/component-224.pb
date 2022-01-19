@@ -1,1 +1,1 @@
-à 2javaXËhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java
+à 2javaXBhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

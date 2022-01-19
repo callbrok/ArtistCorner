@@ -1,1 +1,1 @@
-È 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java
+È 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundException.java

@@ -1,16 +1,51 @@
 
-;com.artistcorner.model.Buyer#getCognome()Ljava/lang/String;f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ("1*«
-1f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-¸
-µ
-f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-
-%0java.lang.String"__id*-*+
-com.artistcorner.model.Buyer"	
-cognome"‚
-f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java (.
+kcom.artistcorner.engclasses.query.QueryBuyer#selectOpereComprate(Ljava/sql/Statement;I)Ljava/sql/ResultSet;v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaB B(0"1*Ô
+1v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(?Ó
+Ð
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(G
+%0java.lang.String"__concat*,*
+(SELECT * FROM compra WHERE acquirente = *
+""¾
+»
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(K
+%1java.lang.String"__concat*
 
-%0java.lang.StringB 
-com.artistcorner.model.Buyer
+%0java.lang.String*
+;´
+±
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(L
+sqljava.lang.String"__id*
+
+%1java.lang.String¤
+¡
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaD D(
+%2java.io.PrintStream"__id*
+""Ž‹
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaD D(
+
+%3void"0java.io.PrintStream#println(Ljava/lang/String;)V*
+
+%2java.io.PrintStream*
+
+sqljava.lang.String2println(Ljava/lang/String;)¹¶
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaE E(%
+%4java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"”
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaE E(&
+
+%4java.sql.ResultSet:
+stmtjava.sql.Statement:
+""B0".
+,com.artistcorner.engclasses.query.QueryBuyer

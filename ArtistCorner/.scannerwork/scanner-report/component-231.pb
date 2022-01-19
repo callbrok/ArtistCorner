@@ -1,1 +1,1 @@
-ç 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java
+ç 2javaX´hrjsrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerArtistSummary.java

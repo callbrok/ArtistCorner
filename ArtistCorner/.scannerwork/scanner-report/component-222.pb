@@ -1,1 +1,1 @@
-Þ 2javaXuhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java
+Þ 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

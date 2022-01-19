@@ -1,1 +1,1 @@
-å 2javaX:hrJsrc/main/java/com/artistcorner/controller/applicationcontroller/Login.java
+å 2javaXšhrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java

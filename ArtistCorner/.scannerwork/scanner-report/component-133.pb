@@ -1,1 +1,0 @@
-… 2cssXRhr&src/main/resources/css/artist/main.css

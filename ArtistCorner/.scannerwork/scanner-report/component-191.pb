@@ -1,1 +1,1 @@
-¿ 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java
+¿ 2javaXhr4src/main/java/com/artistcorner/model/ArtGallery.java

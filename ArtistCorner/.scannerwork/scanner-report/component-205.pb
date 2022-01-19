@@ -1,1 +1,2 @@
-Í 2javaXBhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+Í 2javaX
+hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java

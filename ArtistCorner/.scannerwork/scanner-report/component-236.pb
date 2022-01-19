@@ -1,1 +1,1 @@
-ì 2javaX¤hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java
+ì 2javaXÕhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java

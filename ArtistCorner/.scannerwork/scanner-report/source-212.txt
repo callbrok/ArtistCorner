@@ -1,96 +1,58 @@
-package com.artistcorner.controller.guicontroller.login.summarypanel;
+package com.artistcorner.engclasses.query;
 
-import com.artistcorner.controller.applicationcontroller.SummaryBuyer;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.*;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import com.artistcorner.model.Proposal;
 
-import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Statement;
 
-public class GuiControllerBuyerSummary {
-    public AnchorPane anchorParent;
-    public Pane paneSearch;
-    public Pane paneFavourites;
-    public Pane paneComprate;
-    public ListView<String> listViewCompra;
-    public Label labelSearch;
-    public Label labelFavourites;
-    public Label labelComprate;
-    public Label labelLogOut;
-    private double x=0, y=0;
-    private Stage stage;
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Buyer buy;
+public class QueryArtist {
 
-
-    public void initialize(){
-        makeDraggable();
-        makeLogOut();
+    public static ResultSet selectArtist(Statement stmt, String user) throws SQLException {
+        String sql = "SELECT * FROM artista WHERE username ='" + user + "';";
+        return stmt.executeQuery(sql);
     }
 
-    public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToLogin(event);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
+    public static ResultSet selectSellArtWork(Statement stmt, int idArtista) throws SQLException {
+        String sql = "SELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE artista =" + idArtista + ";";
+        return stmt.executeQuery(sql);
     }
 
-    public void getBuyer(Buyer loggedBuyer) {
-        buy = loggedBuyer;
-        SummaryBuyer bs = new SummaryBuyer();
-        bs.inizializeOpereComprate(listViewCompra,buy);
+    public static ResultSet selectAllArtWorksImage(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "';";
+
+        if(lastAction.equals("LAST")){sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "' ORDER BY idOpera DESC LIMIT 2;";}
+
+        return stmt.executeQuery(sql);
     }
 
+    public static ResultSet selectAllGalleryProposals(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "';";
 
-    private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
+        if(lastAction.equals("LAST")){sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "' ORDER BY idOfferta DESC LIMIT 4;";}
 
-        anchorParent.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
+        return stmt.executeQuery(sql);
     }
 
-    public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.close();
+    public static int updateProposal(Statement stmt, int idOfferta, int newFlag) throws SQLException  {
+        String updateStatement = String.format("UPDATE offerta SET flagAccettazione='%s' WHERE idOfferta = %s", newFlag, idOfferta);
+        return stmt.executeUpdate(updateStatement);
     }
 
-    public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.setIconified(true);
-    }
-    public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
+    public static String insertArtWork() throws SQLException {
+        return "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
     }
 
-    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneFavouritesBuyer(actionEvent,buy);
+    public static ResultSet selectArtGallery(Statement stmt, int artGallery) throws SQLException {
+        String sql = "SELECT * FROM galleria WHERE idGalleria ='" + artGallery + "';";
+        return stmt.executeQuery(sql);
     }
+
+    public static ResultSet selectArtWorkTitle(Statement stmt) throws SQLException  {
+        String sql = "SELECT DISTINCT titolo FROM opera ;";
+        return stmt.executeQuery(sql);
+    }
+
 
 }

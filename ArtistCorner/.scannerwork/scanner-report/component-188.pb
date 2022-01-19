@@ -1,1 +1,1 @@
-¼ 2javaXhrMsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldException.java
+¼ 2javaXhr0src/main/java/com/artistcorner/model/Artist.java

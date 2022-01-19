@@ -1,1 +1,1 @@
-Ù 2javaXwhrssrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerSearchArtWorkBuyer.java
+Ù 2javaX#hr?src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java

@@ -1,1 +1,1 @@
-Ë 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+Ë 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java

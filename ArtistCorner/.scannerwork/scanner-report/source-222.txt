@@ -1,116 +1,38 @@
-package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
+package com.artistcorner.engclasses.others;
 
-import com.artistcorner.controller.applicationcontroller.Login;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import java.net.URL;
 
-import java.io.IOException;
-import java.sql.SQLException;
+public enum ExceptionsTypeMenager {
 
-public class GuiControllerMobileArtistSummary {
-    @FXML
-    public AnchorPane anchorMain;
-    @FXML
-    public Pane paneIdeaButton;
-    @FXML
-    public ImageView imageGifButton;
-    @FXML
-    public Label labelAlgoritmo;
-    @FXML
-    public Label labelUsernameDisplay;
+    EMPTYFIELD(0, "/view/exceptions/EmptyFieldException.fxml"),
+    EMPTYPATH(1, "/view/exceptions/EmptyPathException.fxml"),
+    DUPLICATEARTWORK(2, "/view/exceptions/DuplicateArtWorkException.fxml"),  //Opera già presente
+    PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale
+    SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"), // Nessun opera venduta
+    ARTWORKNOTFOUND(5, "/view/exceptions/ArtWorkNotFoundException.fxml"), // Nessun opera caricata
 
-    private double x=0;
-    private double y=0;
-    private Stage stage;
+    EMPTYFIELD_MOBILE(6, "/view/mobile/exceptions/EmptyFieldMobileException.fxml"),
+    EMPTYPATH_MOBILE(7, "/view/mobile/exceptions/EmptyPathMobileException.fxml"),
+    DUPLICATEARTWORK_MOBILE(8, "/view/mobile/exceptions/DuplicateArtWorkMobileException.fxml"),  //Opera già presente
+    PROPOSALNOTFOUND_MOBILE(9, "/view/mobile/exceptions/ProposalNotFoundMobileException.fxml"), // Nessuna proposta attuale
+    SELLARTNOTFOUND_MOBILE(10, "/view/mobile/exceptions/SellNotFoundMobileException.fxml"), // Nessun opera venduta
+    ARTWORKNOTFOUND_MOBILE(11, "/view/mobile/exceptions/ArtWorkNotFoundMobileException.fxml"); // Nessun opera caricata
+    // Aggiungere errore per il recupero della serializzazione?
 
-    ArtistBean art;
+    private final int type;
+    private final String path;
 
-
-    public void initialize(){
-        makeDraggable();
-        makeGifPaneClickable();
-
+    private ExceptionsTypeMenager(int t, String p){
+        this.type = t;
+        this.path = p;
     }
 
-    public void getArtist(ArtistBean loggedArtist){
-        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    public int getType() {
+        return type;
     }
 
-    public void makeGifPaneClickable(){
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneControllerMobile sc = new SceneControllerMobile();
-            try {
-                sc.switchToSceneProfiloAlgoritmo(event, art);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
-
+    public static URL getUrl(ExceptionsTypeMenager subview){
+        return ExceptionsTypeMenager.class.getResource(subview.path);
     }
-
-    public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.close();
-    }
-
-    public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
-
-        anchorMain.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
-    }
-
-
-    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloArtista(actionEvent, art);
-    }
-
-    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloVenduto(actionEvent, art);
-    }
-
-    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
-    }
-
-    public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneUploadOpera(actionEvent, art);
-    }
-
-
-
 
 }

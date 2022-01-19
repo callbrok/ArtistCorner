@@ -52,6 +52,10 @@ public class Login {
                 Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
                 sc.switchToSceneBuyerSummary(event, loggedBuyer);
                 break;
+
+            case "analytics":
+                sc.switchToAnalytics(event);
+                break;
         }
 
     }

@@ -1,1 +1,1 @@
-½ 2javaXhrVsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtWorkNotFoundException.java
+½ 2javaXhr2src/main/java/com/artistcorner/model/Proposal.java

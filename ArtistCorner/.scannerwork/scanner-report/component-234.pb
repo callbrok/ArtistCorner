@@ -1,1 +1,1 @@
-ê 2javaX<hr\src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtGalleryProposals.java
+ê 2javaXîhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java

@@ -1,1 +1,1 @@
-Ã 2javaXhr?src/main/java/com/artistcorner/engclasses/query/QueryLogin.java
+Ã 2javaXõhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

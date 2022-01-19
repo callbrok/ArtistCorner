@@ -1,1 +1,1 @@
-Á 2javaXHhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java
+Á 2javaX–hr<src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

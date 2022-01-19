@@ -1,3 +1,3 @@
 »
-æDependencies/libraries were not provided for analysis of SOURCE files. The 'sonar.java.libraries' property is empty. Verify your configuration, as you might end up with less precise results.ÅΩØ»Ê/Ä
-wJavaScript/TypeScript/CSS rules were not executed. Error when running: 'node -v'. Is Node.js available during analysis?ú«Ø»Ê/
+æDependencies/libraries were not provided for analysis of SOURCE files. The 'sonar.java.libraries' property is empty. Verify your configuration, as you might end up with less precise results.⁄˘›»Ê/Ä
+wJavaScript/TypeScript/CSS rules were not executed. Error when running: 'node -v'. Is Node.js available during analysis?ÓÉﬁ»Ê/

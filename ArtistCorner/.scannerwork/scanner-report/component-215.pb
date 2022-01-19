@@ -1,1 +1,1 @@
-× 2javaXhrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java
+× 2javaXhr<src/main/java/com/artistcorner/engclasses/bean/UserBean.java

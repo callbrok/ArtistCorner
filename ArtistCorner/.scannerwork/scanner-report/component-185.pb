@@ -1,1 +1,1 @@
-¹ 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java
+¹ 2javaXhr-src/main/java/com/artistcorner/ClassTest.java

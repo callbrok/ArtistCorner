@@ -1,34 +1,84 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.login;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
+import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.sql.SQLException;
 
-public class ViewSalesHistory {
+public class GuiControllerLogin {
+    @FXML
+    public AnchorPane anchorParent;
+    @FXML
+    public SVGPath svgLogo;
+    @FXML
+    public TextField textFieldUsername;
+    @FXML
+    public TextField textFieldPassword;
+    @FXML
+    public Pane paneExceptionLogin;
+    @FXML
+    public Label labelExceptionLogin;
 
-    public List<ArtWorkBean> retrieveSellArtWorks(ArtistBean artBean) throws SellArtWorkNotFoundException {
+    private double x=0;
+    private double y=0;
+    private Stage stage;
 
-        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
+    Login lg = new Login();
 
-        List<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
-        ArrayList<ArtWorkBean> arrayOfArtworkBeans = new ArrayList<>();
+    public void initialize(){
+        makeDraggable();
 
-        if(arrayOfArtwork.isEmpty()){
-            throw new SellArtWorkNotFoundException("Nessuna opera venduta.");
-        }
-
-        for (ArtWork n : arrayOfArtwork) {
-            arrayOfArtworkBeans.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto()));
-        }
-
-        return arrayOfArtworkBeans;
+        labelExceptionLogin.setAlignment(Pos.CENTER);
+        labelExceptionLogin.setMaxWidth(259);
+        paneExceptionLogin.setVisible(false);
+        svgLogo.setScaleX(1.1);
+        svgLogo.setScaleY(1.1);
     }
 
+    private void makeDraggable(){
+        anchorParent.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
 
+        anchorParent.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+    public void exitWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public void sendData(ActionEvent actionEvent) throws IOException {
+        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
+
+        try {
+            lg.credentialLogin(us, actionEvent, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException | SQLException e){
+            labelExceptionLogin.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+
+    }
 }

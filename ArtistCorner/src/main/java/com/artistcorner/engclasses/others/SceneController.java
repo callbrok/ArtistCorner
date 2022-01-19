@@ -130,6 +130,16 @@ public class SceneController {
         stage.show();
     }
 
+    public void switchToAnalytics(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/view/ViewLogAnalytics.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void switchToSceneBuyerSummary(ActionEvent event, Buyer buy) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSummaryView.fxml"));
         root = loader.load();

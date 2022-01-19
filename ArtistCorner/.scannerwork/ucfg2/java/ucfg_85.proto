@@ -1,9 +1,16 @@
 
-9com.artistcorner.engclasses.bean.ArtWorkBean#getPrezzo()Dv
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java ("1*þ
-1v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java& (,"€
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java (-
-""B0.
-,com.artistcorner.engclasses.bean.ArtWorkBean
+Dcom.artistcorner.model.ArtGallery#getDescrizione()Ljava/lang/String;k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java ( "1*Ã
+1k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6Æ
+Ã
+k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6
+%0java.lang.String"__id*6*4#
+!com.artistcorner.model.ArtGallery"
+descrizione"‡
+k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java$ (7
+
+%0java.lang.StringB%#
+!com.artistcorner.model.ArtGallery

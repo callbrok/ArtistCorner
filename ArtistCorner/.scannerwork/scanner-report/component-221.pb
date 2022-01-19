@@ -1,1 +1,1 @@
-Ý 2javaX”hr†src/main/java/com/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals.java
+Ý 2javaX/hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

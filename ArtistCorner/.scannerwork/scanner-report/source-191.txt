@@ -1,27 +1,24 @@
-package com.artistcorner.engclasses.exceptions;
+package com.artistcorner.model;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+public class ArtGallery {
+    int galleria;
+    String nome;
+    String descrizione;
+    String indirizzo;
+    String username;
 
-import java.io.IOException;
-
-public abstract class ExceptionView {
-    private Pane exceptionPane;
-
-    public ExceptionView(ExceptionsTypeMenager etm){
-        try {
-            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
+        this.galleria = newGalleria;
+        this.nome = newNome;
+        this.descrizione = newDescrizione;
+        this.indirizzo = newIndirizzo;
+        this.username = newUsername;
     }
 
-    public Pane getExceptionPane(){ return exceptionPane;}
-
+    public int getGalleria() {return galleria;}
+    public String getNome() {return nome;}
+    public String getDescrizione() {return descrizione;}
+    public String getIndirizzo() {return indirizzo;}
+    public String getUsername() {return username;}
 
 }

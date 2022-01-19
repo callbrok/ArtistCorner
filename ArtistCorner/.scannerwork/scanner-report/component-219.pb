@@ -1,1 +1,1 @@
-Û 2javaX¥hrxsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsaleshistory/GuiControllerMobileViewSalesHistory.java
+Û 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java

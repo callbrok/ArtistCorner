@@ -1,1 +1,1 @@
-Ò 2javaXhrksrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java
+Ò 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateArtWorkException.java

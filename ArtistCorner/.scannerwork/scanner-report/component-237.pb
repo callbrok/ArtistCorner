@@ -1,1 +1,1 @@
-í 2javaX?hrsrc/main/java/module-info.java
+í 2javaXãhrwsrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java

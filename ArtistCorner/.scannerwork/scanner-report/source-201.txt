@@ -1,17 +1,10 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ArtistBean {
-    int idArtista;
-    String nome;
-    String cognome;
+public class ArtWorkNotFoundException extends  Exception{
 
-    public ArtistBean(int newId, String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = newId;
+    private static final long serialVersionUID = 1L;
+
+    public ArtWorkNotFoundException (String message) {
+        super(message);
     }
-
-    public String getNome() {return nome;}
-    public int getIdArtista() {return idArtista;}
-    public String getCognome() {return cognome;}
 }

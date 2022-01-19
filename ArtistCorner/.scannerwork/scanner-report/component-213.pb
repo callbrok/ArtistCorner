@@ -1,1 +1,1 @@
-Õ 2javaXUhrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java
+Õ 2javaX(hrAsrc/main/java/com/artistcorner/engclasses/query/QueryGallery.java

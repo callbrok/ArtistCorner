@@ -1,0 +1,1 @@
+g 2cssXRhr"target/classes/css/artist/main.css

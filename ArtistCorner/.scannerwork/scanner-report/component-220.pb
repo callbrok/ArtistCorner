@@ -1,1 +1,1 @@
-Ü 2javaX¯hrrsrc/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java
+Ü 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java

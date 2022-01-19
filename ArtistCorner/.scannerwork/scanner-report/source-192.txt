@@ -1,10 +1,30 @@
-package com.artistcorner.engclasses.exceptions;
+package com.artistcorner;
 
-public class DuplicateArtWorkException extends  Exception{
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-    private static final long serialVersionUID = 1L;
+import java.io.IOException;
 
-    public DuplicateArtWorkException (String message) {
-        super(message);
+public class MobileApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MobileApplication.class.getResource("/view/mobile/login/LoginMobileView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setTitle("Hello!");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }
+

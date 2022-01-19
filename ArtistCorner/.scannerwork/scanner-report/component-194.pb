@@ -1,1 +1,1 @@
-Â 2javaX;hr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java
+Â 2javaXLhr;src/main/java/com/artistcorner/engclasses/dao/LoginDAO.java

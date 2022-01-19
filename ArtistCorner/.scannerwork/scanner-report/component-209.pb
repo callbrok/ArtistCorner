@@ -1,1 +1,1 @@
-Ñ 2javaX‡hrysrc/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java
+Ñ 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

@@ -1,21 +1,8 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ProposalBean {
-    int idOfferta;
-    int artista;
-    int galleria;
-    int flagAccettazione;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    public  ProposalBean(int newId, int newArtista, int newGalleria, int newFlagAccettazione){
-        this.idOfferta = newId;
-        this.artista = newArtista;
-        this.galleria =  newGalleria;
-        this.flagAccettazione = newFlagAccettazione;
-    }
+public class ProposalNotFoundExceptionView extends ExceptionView{
 
-
-    public int getIdOfferta() {return idOfferta;}
-    public int getArtista() {return artista;}
-    public int getFlagAccettazione() {return flagAccettazione;}
-    public int getGalleria() {return galleria;}
+    public ProposalNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }
