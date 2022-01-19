@@ -4,6 +4,7 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryGallery;
+import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
@@ -14,8 +15,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GalleryDAO {
-    public static ArtGalleryBean retrieveGallery(UserBean loggedUserBean) {
-        ArtGalleryBean gal = null;
+    public static ArtGallery retrieveGallery(UserBean loggedUserBean) {
+        ArtGallery gal = null;
         Statement stmt = null;
         Connection conn = null;
 
@@ -43,7 +44,7 @@ public class GalleryDAO {
                 String descrizione = rs.getString("descrizione");
                 String indirizzo = rs.getString("indirizzo");
                 String username = rs.getString("username");
-                gal = new ArtGalleryBean(galleria,nome,descrizione,indirizzo,username);
+                gal = new ArtGallery(galleria,nome,descrizione,indirizzo,username);
 
 
             }while(rs.next());

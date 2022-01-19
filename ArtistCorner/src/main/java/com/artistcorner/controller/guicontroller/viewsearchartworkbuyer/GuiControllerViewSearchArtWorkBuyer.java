@@ -1,8 +1,13 @@
 package com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer;
+import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
+import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Buyer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,12 +27,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class GuiControllerViewSearchArtWorkBuyer {
     @FXML
     private AnchorPane anchorParent,anchorPane;
-    public Pane paneFound;
     public Label labelLogOut;
     public ListView<HBoxCell> listView;
     public Label labelUsernameDisplay;
@@ -40,7 +45,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
     public SVGPath svgProfile;
     private double x=0, y=0;
     Stage stage;
-    Buyer buy;
+    BuyerBean buy;
 
 
     public void initialize() throws SQLException {
@@ -63,7 +68,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
     }
 
-    public void getBuyer(Buyer loggedBuyer) {
+    public void getBuyer(BuyerBean loggedBuyer) {
         buy = loggedBuyer;
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
     }
@@ -111,19 +116,32 @@ public class GuiControllerViewSearchArtWorkBuyer {
             String input= textField.getText();
             anchorPane.setVisible(true);
             ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
-            sa.initializeListView(input,listView,buy);
+            List<HBoxInitializer> list = sa.initializeListView(input,buy);
+            List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list2 = new ArrayList<>();
+            for (int i = 0, listSize = list.size(); i < listSize; i++) {
+                HBoxInitializer e = list.get(i);
+                list2.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+            }
+            ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list2);
+            listView.setItems(myObservableList);
         }
     }
     public void buttonSearchOnClick() throws SQLException, IOException {
         String input= textField.getText();
-        anchorPane.setVisible(true);
-        paneFound.setVisible(false);
         ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
-        sa.initializeListView(input,listView,buy);
+        List<HBoxInitializer> list = sa.initializeListView(input,buy);
+        List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list2 = new ArrayList<>();
+        for (int i = 0, listSize = list.size(); i < listSize; i++) {
+            HBoxInitializer e = list.get(i);
+            list2.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+        }
+        ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list2);
+        listView.setItems(myObservableList);
     }
     public void buttonCancOnClick(){
         textField.setText("");
     }
+
     public static class HBoxCell extends HBox {
         Label labelArtWorkName = new Label();
         Label labelArtistName = new Label();
@@ -134,8 +152,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
-        public HBoxCell(String function, String labelText, String labelText1, double price, Image img, int idOpera, String labelPreferiti, int idBuyer, ArrayList<Integer> arrayListArtWorkId) throws SQLException, IOException {
-            super();
+        public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer,int idArtista, ArrayList<Integer> arrayListArtWorkId,String input) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(100);
@@ -166,7 +183,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
             labelArtistNameDefault.setAlignment(Pos.CENTER);
             labelArtistNameDefault.setPrefSize(100, 50);
             labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            buttonAcquista.setText(function);
+            buttonAcquista.setText("Acquista");
             buttonAcquista.setPrefSize(150, 50);
             buttonAcquista.setStyle(" -fx-font-size: 14px;");
             buttonPreferiti.setText(labelPreferiti);
@@ -175,35 +192,35 @@ public class GuiControllerViewSearchArtWorkBuyer {
             VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
             vBox.setAlignment(Pos.CENTER);
             ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
-            if(function.equals("Acquista")) {
-                buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
-                    @Override
-                    public void handle(ActionEvent arg0) {
-                        buttonPreferiti.setText("Paga con Carte");
-                        buttonAcquista.setText("Paga con PayPal");
-                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+            buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
-                            @Override
-                            public void handle(ActionEvent arg0) {
-                                sa.finishPayment( idOpera, idBuyer);
-                                buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                @Override
+                public void handle(ActionEvent arg0) {
+                    buttonPreferiti.setText("Paga con Carte");
+                    buttonAcquista.setText("Paga con PayPal");
+                    buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
-                            }
-                        });
-                        buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                            sa.finishPayment( idOpera, idBuyer);
+                            buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
 
-                            @Override
-                            public void handle(ActionEvent arg0) {
-                                sa.finishPayment( idOpera, idBuyer);
-                                buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
-                            }
-                        });
-                    }
+                        }
+                    });
+                    buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
 
-                });
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                            sa.finishPayment( idOpera, idBuyer);
+                            buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                        }
+                    });
+                }
 
-            }
+            });
+
+
 
             if (arrayListArtWorkId.contains(idOpera)){
                 buttonPreferiti.setText("Rimuovi dai Preferiti");

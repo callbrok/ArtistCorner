@@ -2,6 +2,7 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
@@ -44,13 +45,19 @@ public class Login {
                 break;
 
             case "galleria":
-                ArtGalleryBean loggedGalleryBean = GalleryDAO.retrieveGallery(loggedUserBean);
-                sc.switchToSceneGallerySummary(event, loggedGalleryBean);
+                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
+                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
+                if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
                 break;
 
             case "acquirente":
                 Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
-                sc.switchToSceneBuyerSummary(event, loggedBuyer);
+                BuyerBean loggedBuyerBean = new BuyerBean(loggedBuyer.getIdBuyer(),loggedBuyer.getNome(),loggedBuyer.getCognome());
+
+                if(flagInterface.equals("D")){sc.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.
+
                 break;
 
             case "analytics":
