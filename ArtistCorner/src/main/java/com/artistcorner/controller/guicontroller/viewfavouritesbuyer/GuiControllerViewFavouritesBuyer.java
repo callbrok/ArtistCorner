@@ -1,8 +1,13 @@
 package com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer;
+import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
+import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Buyer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,6 +31,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerViewFavouritesBuyer {
 
@@ -41,7 +47,7 @@ public class GuiControllerViewFavouritesBuyer {
         public Button button3;
         private double x=0, y=0;
         Stage stage;
-        public Buyer buy;
+        public BuyerBean buy;
 
 
         public void initialize() throws SQLException {
@@ -64,11 +70,18 @@ public class GuiControllerViewFavouritesBuyer {
 
         }
 
-        public void getBuyer(Buyer loggedBuyer) throws SQLException, IOException {
+        public void getBuyer(BuyerBean loggedBuyer) throws SQLException, IOException {
                 buy = loggedBuyer;
                 labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
                 ViewFavouritesBuyer fb = new ViewFavouritesBuyer();
-                fb.initializeListView(listView,buy);
+                List<HBoxInitializer> list = fb.initializeListView(buy);
+                List<HBoxCell> list2 = new ArrayList<>();
+                for (int i = 0, listSize = list.size(); i < listSize; i++) {
+                        HBoxInitializer e = list.get(i);
+                        list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+                }
+                ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
+                listView.setItems(myObservableList);
         }
 
         private void makeDraggable(){
@@ -118,7 +131,7 @@ public class GuiControllerViewFavouritesBuyer {
                 Label labelArtistNameDefault = new Label();
                 Label labelArtWorkDefault = new Label();
 
-                public HBoxCell(String function, String labelText, String labelText1, double price, Image img, int idOpera, String labelPreferiti, int idBuyer, ArrayList<Integer> arrayListArtWorkId) throws SQLException, IOException {
+                public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, ArrayList<Integer> arrayListArtWorkId, String input) throws SQLException, IOException {
                         super();
                         ImageView imageView = new ImageView();
                         imageView.setImage(img);
@@ -150,7 +163,7 @@ public class GuiControllerViewFavouritesBuyer {
                         labelArtistNameDefault.setAlignment(Pos.CENTER);
                         labelArtistNameDefault.setPrefSize(100, 50);
                         labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        buttonAcquista.setText(function);
+                        buttonAcquista.setText("Acquista");
                         buttonAcquista.setPrefSize(150, 50);
                         buttonAcquista.setStyle(" -fx-font-size: 14px;");
                         buttonPreferiti.setText(labelPreferiti);
@@ -159,51 +172,50 @@ public class GuiControllerViewFavouritesBuyer {
                         VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
                         vBox.setAlignment(Pos.CENTER);
                         ViewFavouritesBuyer lv = new ViewFavouritesBuyer();
-                        if(function.equals("Acquista")) {
-                                buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
-
-                                        @Override
-                                        public void handle(ActionEvent arg0) {
-                                                buttonPreferiti.setText("Paga con Carte");
-                                                buttonAcquista.setText("Paga con PayPal");
-                                                buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
-
-                                                        @Override
-                                                        public void handle(ActionEvent arg0) {
-                                                                lv.finishPayment( idOpera, idBuyer);
-                                                                buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
-
-                                                        }
-                                                });
-                                                buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
-
-                                                        @Override
-                                                        public void handle(ActionEvent arg0) {
-                                                                lv.finishPayment( idOpera, idBuyer);
-                                                                buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
-                                                        }
-                                                });
-                                        }
-
-                                });
-
-                        }
-
-                        if (arrayListArtWorkId.contains(idOpera)){
-                                buttonPreferiti.setText("Rimuovi dai Preferiti");
-                        }
-                        buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
                                 @Override
                                 public void handle(ActionEvent arg0) {
-                                        String answer = lv.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
-                                        buttonPreferiti.setText(answer);
+                                        buttonPreferiti.setText("Paga con Carte");
+                                        buttonAcquista.setText("Paga con PayPal");
+                                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+
+                                                @Override
+                                                public void handle(ActionEvent arg0) {
+                                                        lv.finishPayment( idOpera, idBuyer);
+                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+
+                                                }
+                                        });
+                                        buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+
+                                                @Override
+                                                public void handle(ActionEvent arg0) {
+                                                        lv.finishPayment( idOpera, idBuyer);
+                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                                                }
+                                        });
                                 }
+
                         });
 
 
-                        this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+
+                if (arrayListArtWorkId.contains(idOpera)){
+                        buttonPreferiti.setText("Rimuovi dai Preferiti");
                 }
+                buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                                String answer = lv.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
+                                buttonPreferiti.setText(answer);
+                        }
+                });
+
+
+                this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+        }
 
 
         }

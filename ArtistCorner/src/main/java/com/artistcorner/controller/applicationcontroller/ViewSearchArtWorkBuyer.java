@@ -1,7 +1,10 @@
 package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
@@ -22,10 +25,11 @@ import java.util.List;
 public class ViewSearchArtWorkBuyer {
 
 
-    public void initializeListView(String input, ListView<GuiControllerViewSearchArtWorkBuyer.HBoxCell> listView, Buyer buy) throws SQLException, IOException {
+    public List<HBoxInitializer> initializeListView(String input, BuyerBean buyer) throws SQLException, IOException {
+        Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
         ArrayList<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
         ArrayList<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
-        List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list = new ArrayList<>();
+        List<HBoxInitializer> list = new ArrayList<>();
         for (ArtWork work : artWorkList) {
             Blob immagine = BuyerDAO.retrieveImage(work.getIdOpera());
             Artist artist = BuyerDAO.retrieveArtistName(work.getArtistaId());
@@ -36,11 +40,10 @@ public class ViewSearchArtWorkBuyer {
                 e.printStackTrace();
             }
             Image image1 = new Image(inputStream, 100, 100, true, false);
-            list.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell("Acquista",work.getTitolo(), artist.getNome() + " " + artist.getCognome(), work.getPrezzo(), image1, work.getIdOpera(),"Aggiungi ai Preferiti", buy.getIdBuyer(),artWorkId));
+            HBoxInitializer hb = new HBoxInitializer(work.getTitolo(), artist.getNome() + " " + artist.getCognome(),image1, work.getIdOpera(), work.getPrezzo(),"Aggiungi ai Preferiti", buyer.getIdBuyer(), artist.getIdArtista(),artWorkId,input);
+            list.add(hb);
         }
-
-        ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list);
-        listView.setItems(myObservableList);
+        return list;
     }
 
     public String manageButtonClick(ActionEvent arg0, Button buttonAcquista, Button buttonPreferiti, int idOpera, int idBuyer ){

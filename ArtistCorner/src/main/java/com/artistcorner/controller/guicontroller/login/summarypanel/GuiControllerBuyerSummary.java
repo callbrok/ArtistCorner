@@ -1,6 +1,7 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
 import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class GuiControllerBuyerSummary {
     public Button button2;
     public Button button3;
     public SVGPath svgProfile;
-    public Buyer buy;
+    public BuyerBean buy;
 
 
     public void initialize(){
@@ -56,7 +57,7 @@ public class GuiControllerBuyerSummary {
 
     }
 
-    public void getBuyer(Buyer loggedBuyer) {
+    public void getBuyer(BuyerBean loggedBuyer) {
         buy = loggedBuyer;
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
         ViewBuyerSummary bs = new ViewBuyerSummary();

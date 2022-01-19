@@ -2,7 +2,10 @@ package com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.engclasses.others.SceneController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerViewSearchArtWorkGallery {
     @FXML
@@ -41,8 +45,8 @@ public class GuiControllerViewSearchArtWorkGallery {
     ArtGalleryBean gal;
 
 
-    public void initialize() throws SQLException {
 
+    public void initialize() throws SQLException {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
@@ -99,7 +103,15 @@ public class GuiControllerViewSearchArtWorkGallery {
             String input= textField.getText();
             anchorPane.setVisible(true);
             ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
-            saw.initializeListView(input,listView,gal);
+            List<HBoxInitializer> list = saw.initializeListView(input, gal);
+            List<HBoxCell> list2 = new ArrayList<>();
+            for (int i = 0, listSize = list.size(); i < listSize; i++) {
+               HBoxInitializer e = list.get(i);
+               list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+
+            }
+            ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
+            listView.setItems(myObservableList);
         }
     }
     public void buttonSearchOnClick() throws SQLException, IOException {
@@ -107,7 +119,15 @@ public class GuiControllerViewSearchArtWorkGallery {
         anchorPane.setVisible(true);
         paneFound.setVisible(false);
         ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
-        saw.initializeListView(input,listView,gal);
+        List<HBoxInitializer> list = saw.initializeListView(input, gal);
+        List<HBoxCell> list2 = new ArrayList<>();
+        for (int i = 0, listSize = list.size(); i < listSize; i++) {
+            HBoxInitializer e = list.get(i);
+            list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+
+        }
+        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
+        listView.setItems(myObservableList);
     }
     public void buttonCancOnClick(){
         textField.setText("");
@@ -121,34 +141,36 @@ public class GuiControllerViewSearchArtWorkGallery {
         SceneController sc = new SceneController();
         sc.switchToSceneGallerySummary(actionEvent,gal);
     }
-    public static class HBoxCell extends HBox {
+    public class HBoxCell extends HBox {
         Label labelArtWorkName = new Label();
         Label labelArtistName = new Label();
         public Button buttonOfferta = new Button();
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
-        public HBoxCell(String input,ListView<HBoxCell> listView , ArtGalleryBean gal,String labelText, String labelText1, Image img, int idOpera, String labelPreferiti, int idGallery,int idArtista,ArrayList<Integer> arrayListProposte) throws SQLException, IOException {
-            super();
+        public HBoxCell(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, ArrayList<Integer> arrayListProposte,String input) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
-            labelArtWorkName.setText(labelText);
+            labelArtWorkName.setText(labelTitolo);
             labelArtWorkName.setAlignment(Pos.CENTER);
             labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistName.setText(labelText1);
+            labelArtistName.setText(labelArtista);
             labelArtistName.setAlignment(Pos.CENTER);
             labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
             labelArtWorkName.setPrefSize(100, 50);
             labelArtistName.setPrefSize(100, 50);
             VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
-            vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
+            vBox1.setAlignment(Pos.CENTER);
+            vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
             HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
             HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
             VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
             vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setText("Titolo Opera: ");labelArtWorkDefault.setAlignment(Pos.CENTER);labelArtWorkDefault.setPrefSize(100, 50);
+            labelArtWorkDefault.setText("Titolo Opera: ");
+            labelArtWorkDefault.setAlignment(Pos.CENTER);
+            labelArtWorkDefault.setPrefSize(100, 50);
             labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
             HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
             labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
@@ -156,13 +178,13 @@ public class GuiControllerViewSearchArtWorkGallery {
             labelArtistNameDefault.setAlignment(Pos.CENTER);
             labelArtistNameDefault.setPrefSize(100, 50);
             labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            buttonOfferta.setText(labelPreferiti);
+            buttonOfferta.setText(labelButton);
             buttonOfferta.setPrefSize(150, 100);
             buttonOfferta.setStyle("-fx-font-size: 16px;");
             ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
 
-            if (arrayListProposte.contains(idArtista)){
-              buttonOfferta.setText("Ritira Proposta");
+            if (arrayListProposte.contains(idArtista)) {
+                buttonOfferta.setText("Ritira Proposta");
             }
             buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -170,13 +192,21 @@ public class GuiControllerViewSearchArtWorkGallery {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sa.manageButtonClick(buttonOfferta,idGallery,idArtista);
+                        answer = sa.manageButtonClick(buttonOfferta, idGallery, idArtista);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
                     buttonOfferta.setText(answer);
                     try {
-                        sa.initializeListView(input,listView,gal);
+                        List<HBoxInitializer> list = sa.initializeListView(input, gal);
+                        List<HBoxCell> list2 = new ArrayList<>();
+                        for (int i = 0, listSize = list.size(); i < listSize; i++) {
+                            HBoxInitializer e = list.get(i);
+                            list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+
+                        }
+                        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
+                        listView.setItems(myObservableList);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -184,9 +214,7 @@ public class GuiControllerViewSearchArtWorkGallery {
                     }
                 }
             });
-
-
-            this.getChildren().addAll(imageView, vBox2, vBox1,buttonOfferta);
+            this.getChildren().addAll(imageView, vBox2, vBox1, buttonOfferta);
         }
 
     }

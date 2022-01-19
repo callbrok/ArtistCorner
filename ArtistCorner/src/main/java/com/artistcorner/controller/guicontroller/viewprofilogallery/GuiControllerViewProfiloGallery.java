@@ -132,7 +132,7 @@ public class GuiControllerViewProfiloGallery {
         ArrayList<Proposal> listOfProposal = vp.retrieveProposal(gallery,1);  // Prendi tutte le opere caricate dall'artista.
         tilePane2.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
         tilePane2.setVgap(10);
-        for (Proposal b : listOfProposal){    // Scorre tutti i blob relativi all'artista.
+        for (Proposal b : listOfProposal){
 
 
             String string = vp.retrieveArtistName(b.getArtista());

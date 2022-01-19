@@ -14,6 +14,7 @@ import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiContr
 import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
@@ -140,7 +141,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneBuyerSummary(ActionEvent event, Buyer buy) throws IOException {
+    public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSummaryView.fxml"));
         root = loader.load();
 
@@ -153,7 +154,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneSearchArtWorkBuyer(ActionEvent event, Buyer buy) throws IOException {
+    public void switchToSceneSearchArtWorkBuyer(ActionEvent event, BuyerBean buy) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSearchView.fxml"));
         root = loader.load();
 
@@ -166,7 +167,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneFavouritesBuyer(ActionEvent event, Buyer buy) throws IOException, SQLException {
+    public void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerFavouriteView.fxml"));
         root = loader.load();
 
