@@ -1,1 +1,1 @@
-Ú 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java
+Ú 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java

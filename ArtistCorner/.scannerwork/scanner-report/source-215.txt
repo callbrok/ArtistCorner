@@ -1,23 +1,9 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class UserBean {
-    String username;
-    String password;
-    String role;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    public UserBean(String newUsername, String newPassword){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = "NULL";
-    }
+public class EmptyFieldExceptionView extends ExceptionView {
 
-    public UserBean(String newUsername, String newPassword, String newRole){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = newRole;
-    }
+    public EmptyFieldExceptionView(ExceptionsTypeMenager etm){super(etm);}
 
-    public String getUsername(){return username;}
-    public String getPassword(){return password;}
-    public String getRole() {return role;}
 }

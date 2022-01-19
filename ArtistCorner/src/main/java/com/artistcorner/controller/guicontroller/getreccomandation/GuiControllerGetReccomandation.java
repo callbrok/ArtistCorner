@@ -39,7 +39,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     @FXML
     public Button button6Gr;
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentReccD;
     @FXML
     public Label labelQuestion;
     @FXML
@@ -75,6 +75,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     ArtistBean art;
     Nodo n;
 
+
     /**
      * Deserializza lo stato dell'algoritmo di decisione, nel caso in cui il file contenente l'ultima istanza
      * serializzata ("object.txt") non fosse presente, inizializza l'algoritmo da zero.
@@ -100,24 +101,24 @@ public class GuiControllerGetReccomandation implements Serializable{
     }
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentReccD.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentReccD.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentReccD.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentReccD.getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -258,27 +259,27 @@ public class GuiControllerGetReccomandation implements Serializable{
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(event, art);
+        SceneController scrd = new SceneController();
+        scrd.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneController scrd = new SceneController();
+        scrd.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneController scrd = new SceneController();
+        scrd.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+        SceneController scrd = new SceneController();
+        scrd.switchToSceneProfiloOfferteMostre(event, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(event, art);
+        SceneController scrd = new SceneController();
+        scrd.switchToSceneProfiloVenduto(event, art);
     }
 }

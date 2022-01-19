@@ -1,64 +1,65 @@
 
-_com.artistcorner.engclasses.query.QueryBuyer#removeOperaFromFavourites(Ljava/sql/Statement;II)Iv
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java/ /(/"1*°
+fcom.artistcorner.engclasses.query.QueryBuyer#selectArtWork(Ljava/sql/Statement;II)Ljava/sql/ResultSet;v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java ()"1*ç
 1v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(7Ï
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (;Ï
 Ì
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(?
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (E
 %0java.lang.String"__concat*(&
-$DELETE FROM preferito WHERE opera ='*
-""Ï
-Ì
+$SELECT * FROM opera WHERE idOpera ='*
+""Ò
+Ï
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(U
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (_
 %1java.lang.String"__concat*
 
-%0java.lang.String*
-'AND acquirente = ¿
+%0java.lang.String*
+' AND flagVendibile =¿
 ¼
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(]
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (d
 %2java.lang.String"__concat*
 
 %1java.lang.String*
 ""¾
 »
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(a
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (h
 %3java.lang.String"__concat*
 
 %2java.lang.String*
 ;´
 ±
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java0 0(b
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (i
 sqljava.lang.String"__id*
 
 %3java.lang.String¤
 ¡
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java1 1(
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (
 %4java.io.PrintStream"__id*
 ""Ž‹
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java1 1(
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (
 
 %5void"0java.io.PrintStream#println(Ljava/lang/String;)V*
 
 %4java.io.PrintStream*
 
-sqljava.lang.String2println(Ljava/lang/String;)™–
+sqljava.lang.String2println(Ljava/lang/String;)¹¶
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java2 2(&	
-%6int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (%
+%6java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
 
 stmtjava.sql.Statement*
 
-sqljava.lang.String2!executeUpdate(Ljava/lang/String;)"€
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"”
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java2 2('
-"":
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (&
+
+%6java.sql.ResultSet:
 stmtjava.sql.Statement:
 "":
 ""B0".

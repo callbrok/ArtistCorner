@@ -837,6 +837,9 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 flexS1481(¸˜Ù±ñ(0À»Ê¢«,:AX5nzHve-NH3hzEYSh6u3
 flexS1952(è™¡®˜)0è™¡®˜):AX5nzHve-NH3hzEYSh6u;
 flexWithStatement(èšáÜï(0¨ÙáÜï(:AX5nzHve-NH3hzEYSh6u:
+csharpsquidS3925(˜‹¯Á½+0ø±òÌ+:AX5nzHve-NH3hzEYSh7L:
+csharpsquidS3442(€³í©+0€³í©+:AX5nzHve-NH3hzEYSh7L:
+csharpsquidS5753(Ðó¢©ò.0Ðó¢©ò.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4457(èÆåÄ¶,0èÆåÄ¶,:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2344(°À¨ú™*0°À¨ú™*:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3267(¥ßÏÅ/0ð¸ˆéÒ/:AX5nzHve-NH3hzEYSh7L:
@@ -862,7 +865,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 csharpsquidS2245(ˆ‰ñÚ,0ˆ‰ñÚ,:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4426(€¿åÄ¶,0¸ààÛ“/:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2486(ø¡™ªÙ)0°ÝÄøœ.:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS5753(Ðó¢©ò.0Ðó¢©ò.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3330(Ï²Þ„-0àãµá-:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS5766(ø¢å§°.0ø¢å§°.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2257(ÈÅ¿Æê.0ÈÅ¿Æê.:AX5nzHve-NH3hzEYSh7L:
@@ -922,8 +924,7 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 csharpsquidS3011(èÄÚ÷õ,0˜÷¬ò .:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1075(Øí›ÆØ+0Øí›ÆØ+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2178(ˆÙî–‡+0À³›à¶+:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS3260(ØãÏÅ/0ØãÏÅ/:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS3925(˜‹¯Á½+0ø±òÌ+:AX5nzHve-NH3hzEYSh7L9
+csharpsquidS3260(ØãÏÅ/0ØãÏÅ/:AX5nzHve-NH3hzEYSh7L9
 csharpsquidS101(€»Ì“Æ*0€»Ì“Æ*:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2699( ˆÂ–©-0 ˆÂ–©-:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3877(À³›à¶+0À³›à¶+:AX5nzHve-NH3hzEYSh7L:
@@ -938,7 +939,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 csharpsquidS2479(¨Ìµá-0¨Ìµá-:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2114(¨—æÇá+0¨—æÇá+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1144(Øô­Ä¹*0Øô­Ä¹*:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS3442(€³í©+0€³í©+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1264(˜îÅÐ¡,0˜îÅÐ¡,:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3443(Øô­Ä¹*0˜‹¯Á½+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3440(ÐÂþÐ*0ÐÂþÐ*:AX5nzHve-NH3hzEYSh7L:
@@ -1475,6 +1475,8 @@ typescriptS4140(ð¤ŠŽ”,0ð¤ŠŽ”,:AX5nzHve-NH3hzEYSh7H9
 typescriptS3863(ÈÊ±¨ú.0ÈÊ±¨ú.:AX5nzHve-NH3hzEYSh7H9
 
 typescriptS4156(°Ò±¨ú.0°Ò±¨ú.:AX5nzHve-NH3hzEYSh7H4
+vbnetS5753(¨¹ž©ò.0¨¹ž©ò.:AX5nzHve-NH3hzEYSh7J4
+vbnetS4275(È£‰Æî,0È£‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS1135(˜÷–åŽ-0˜÷–åŽ-:AX5nzHve-NH3hzEYSh7J4
 vbnetS1134(˜÷–åŽ-0˜÷–åŽ-:AX5nzHve-NH3hzEYSh7Jj
 vbnetS2068"4
@@ -1494,7 +1496,6 @@ typescriptS4156(°Ò±¨ú.0°Ò±¨ú.:AX5nzHve-NH3hzEYSh7H4
 vbnetS5542( þÑ˜ñ-0à»ÚÛ“/:AX5nzHve-NH3hzEYSh7J4
 vbnetS1313(È£‰Æî,0È£‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS4423(·¼Æê.0¸ìÜÛ“/:AX5nzHve-NH3hzEYSh7J4
-vbnetS5753(¨¹ž©ò.0¨¹ž©ò.:AX5nzHve-NH3hzEYSh7J4
 vbnetS4830(ÀÒ˜ñ-0ÀÒ˜ñ-:AX5nzHve-NH3hzEYSh7J4
 vbnetS2257(ÈÎ¼Æê.0ÈÎ¼Æê.:AX5nzHve-NH3hzEYSh7J4
 vbnetS4036(» ©ò.0» ©ò.:AX5nzHve-NH3hzEYSh7J4
@@ -1537,7 +1538,6 @@ typescriptS4156(°Ò±¨ú.0°Ò±¨ú.:AX5nzHve-NH3hzEYSh7H4
 vbnetS3981(àÀçÊû+0àÀçÊû+:AX5nzHve-NH3hzEYSh7J4
 vbnetS3869(È£‰Æî,0È£‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS2372(È¯Ž†+0È¯Ž†+:AX5nzHve-NH3hzEYSh7J4
-vbnetS4275(È£‰Æî,0È£‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS4136(ÐˆŸùÚ-0ÐˆŸùÚ-:AX5nzHve-NH3hzEYSh7J4
 vbnetS4210(à›‰Æî,0à›‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS2692(ÝƒŒù.0ÝƒŒù.:AX5nzHve-NH3hzEYSh7J4
@@ -3595,7 +3595,9 @@ ExclusionsTRUNCATE(¸˜Ù±ñ(0˜ŸŸ­ö*:AX5nzHve-NH3hzEYSh6r4
 	terraformS6252(¸Ò©®/0¸Ò©®/:AX5nzHve-NH3hzEYSh7D8
 	terraformS6255(¸Ò©®/0¸Ò©®/:AX5nzHve-NH3hzEYSh7D8
 	terraformS6265(¸Ò©®/0¸Ò©®/:AX5nzHve-NH3hzEYSh7D8
-	terraformS6281(¸Ò©®/0¸Ò©®/:AX5nzHve-NH3hzEYSh7D3
+	terraformS6281(¸Ò©®/0¸Ò©®/:AX5nzHve-NH3hzEYSh7DX
+abapS1545"#
+format[A-Z0-9_-]++|[a-z0-9_-]++(øƒíçñ*0øƒíçñ*:AX5nzHve-NH3hzEYSh693
 abapS4721(Èé„à²-0à÷ÇÜÛ.:AX5nzHve-NH3hzEYSh69[
 abapS2068"&
 credentialWordspassword,passwd,pwd(Èé„à²-0Èé„à²-:AX5nzHve-NH3hzEYSh693
@@ -3661,9 +3663,7 @@ ExclusionsTRUNCATE(¸˜Ù±ñ(0˜ŸŸ­ö*:AX5nzHve-NH3hzEYSh6r4
 abapS1507(èšáÜï(0øƒíçñ*:AX5nzHve-NH3hzEYSh693
 abapS1540(èšáÜï(0àðáÜï(:AX5nzHve-NH3hzEYSh69X
 abapS1544"#
-format^([A-Z0-9_]*|[a-z0-9_]*)$(èšáÜï(0øƒíçñ*:AX5nzHve-NH3hzEYSh69X
-abapS1545"#
-format[A-Z0-9_-]++|[a-z0-9_-]++(øƒíçñ*0øƒíçñ*:AX5nzHve-NH3hzEYSh69A
+format^([A-Z0-9_]*|[a-z0-9_]*)$(èšáÜï(0øƒíçñ*:AX5nzHve-NH3hzEYSh69A
 abapS1597"
 Maximum3(ãÁ‡Ë)0ãÁ‡Ë):AX5nzHve-NH3hzEYSh693
 abapS1669(èúÆ•”)0øƒíçñ*:AX5nzHve-NH3hzEYSh693

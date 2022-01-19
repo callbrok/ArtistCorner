@@ -1,1 +1,1 @@
-€ 2javaXhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewBuyerSummary.java
+€ 2javaXÉhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java

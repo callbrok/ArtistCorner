@@ -1,1 +1,1 @@
-ì 2javaXÕhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+ì 2javaXBhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

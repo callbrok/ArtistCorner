@@ -1,1 +1,1 @@
-Ø 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java
+Ø 2javaXhrMsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldException.java

@@ -33,17 +33,17 @@ import java.util.List;
 
 public class GuiControllerViewSalesHistory {
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentSHD;
     @FXML
-    public Button button1;
+    public Button button1SHD;
     @FXML
-    public Button button2;
+    public Button button2SHD;
     @FXML
-    public Button button3;
+    public Button button3SHD;
     @FXML
-    public Button button4;
+    public Button button4SHD;
     @FXML
-    public Button button5;
+    public Button button5SHD;
     @FXML
     public ListView listViewSale;
     @FXML
@@ -68,24 +68,24 @@ public class GuiControllerViewSalesHistory {
     ArtistBean art;
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentSHD.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentSHD.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentSHD.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentSHD.getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -155,35 +155,35 @@ public class GuiControllerViewSalesHistory {
     }
 
     public void initializeLineChart(){
-        // TODO
+        // DA FARE: Implement make line chart feature.
     }
 
     public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Carica Opera"));
-        button4.setTooltip(new Tooltip("Offerte Mostre"));
-        button5.setTooltip(new Tooltip("Opere Vendute"));
+        button1SHD.setTooltip(new Tooltip("Home"));
+        button2SHD.setTooltip(new Tooltip("Profilo"));
+        button3SHD.setTooltip(new Tooltip("Carica Opera"));
+        button4SHD.setTooltip(new Tooltip("Offerte Mostre"));
+        button5SHD.setTooltip(new Tooltip("Opere Vendute"));
     }
 
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(event, art);
+        SceneController scshd = new SceneController();
+        scshd.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneController scshd = new SceneController();
+        scshd.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneController scshd = new SceneController();
+        scshd.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+        SceneController scshd = new SceneController();
+        scshd.switchToSceneProfiloOfferteMostre(event, art);
     }
 }

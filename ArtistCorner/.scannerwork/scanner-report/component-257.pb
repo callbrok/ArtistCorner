@@ -1,1 +1,1 @@
-Å 2javaXhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java
+Å 2javaXÚhrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java

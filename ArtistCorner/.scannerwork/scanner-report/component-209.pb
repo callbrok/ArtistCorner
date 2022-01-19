@@ -1,1 +1,2 @@
-Ñ 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java
+Ñ 2javaX
+hr]src/main/java/com/artistcorner/engclasses/exceptions/ProposalsManagementProblemException.java

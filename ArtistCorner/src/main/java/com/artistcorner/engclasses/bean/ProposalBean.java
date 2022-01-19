@@ -6,11 +6,11 @@ public class ProposalBean {
     int galleria;
     int flagAccettazione;
 
-    public  ProposalBean(int newId, int newArtista, int newGalleria, int newFlagAccettazione){
-        this.idOfferta = newId;
-        this.artista = newArtista;
-        this.galleria =  newGalleria;
-        this.flagAccettazione = newFlagAccettazione;
+    public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
+        this.idOfferta = newIdB;
+        this.artista = newArtistaB;
+        this.galleria =  newGalleriaB;
+        this.flagAccettazione = newFlagAccettazioneB;
     }
 
 

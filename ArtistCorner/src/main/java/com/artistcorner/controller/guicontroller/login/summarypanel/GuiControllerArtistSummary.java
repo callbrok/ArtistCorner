@@ -29,7 +29,7 @@ import java.util.List;
 
 public class GuiControllerArtistSummary {
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentArtSumD;
     @FXML
     public ImageView imageGifButton;
     @FXML
@@ -105,12 +105,12 @@ public class GuiControllerArtistSummary {
 
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentArtSumD.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentArtSumD.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -118,12 +118,12 @@ public class GuiControllerArtistSummary {
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentArtSumD.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentArtSumD.getScene().getWindow();
         stage.setIconified(true);
     }
 

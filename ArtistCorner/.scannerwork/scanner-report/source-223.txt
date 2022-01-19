@@ -1,208 +1,58 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.query;
 
-import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary;
-import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
-import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
-import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
-import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
-import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
-import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Buyer;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import com.artistcorner.model.Proposal;
 
-import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public class SceneController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+public class QueryArtist {
 
-    public static  final String CSS_PATH = "/css/artist/main.css";
-
-
-    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
-        root = loader.load();
-
-        GuiControllerArtistSummary gcas = loader.getController();
-        gcas.getArtist(art);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    public static ResultSet selectArtist(Statement stmt, String user) throws SQLException {
+        String sql = "SELECT * FROM artista WHERE username ='" + user + "';";
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneProfiloArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewProfileView.fxml"));
-        root = loader.load();
-
-        GuiControllerViewProfile gcas = loader.getController();
-        gcas.getArtist(art);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    public static ResultSet selectSellArtWork(Statement stmt, int idArtista) throws SQLException {
+        String sql = "SELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE artista =" + idArtista + ";";
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GetReccomandationView.fxml"));
-        root = loader.load();
+    public static ResultSet selectAllArtWorksImage(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "';";
 
-        GuiControllerGetReccomandation gcas = loader.getController();
-        gcas.getArtist(art);
+        if(lastAction.equals("LAST")){sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "' ORDER BY idOpera DESC LIMIT 2;";}
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneProfiloVenduto(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewSalesHistoryView.fxml"));
-        root = loader.load();
+    public static ResultSet selectAllGalleryProposals(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "';";
 
-        GuiControllerViewSalesHistory gcas = loader.getController();
-        gcas.getArtist(art);
+        if(lastAction.equals("LAST")){sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "' ORDER BY idOfferta DESC LIMIT 4;";}
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneProfiloOfferteMostre(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewArtGalleryProposalsView.fxml"));
-        root = loader.load();
-
-        GuiControllerViewArtGalleryProposals gcas = loader.getController();
-        gcas.getArtist(art);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    public static int updateProposal(Statement stmt, int idOfferta, int newFlag) throws SQLException  {
+        String updateStatement = String.format("UPDATE offerta SET flagAccettazione='%s' WHERE idOfferta = %s", newFlag, idOfferta);
+        return stmt.executeUpdate(updateStatement);
     }
 
-    public void switchToSceneUploadOpera(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UploadArtWork.fxml"));
-        root = loader.load();
-
-        GuiControllerUploadArtwork gcas = loader.getController();
-        gcas.getArtist(art);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    public static String insertArtWork() throws SQLException {
+        return "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
     }
 
-    public void switchToLogin(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/view/login/LoginView.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
+    public static ResultSet selectArtGallery(Statement stmt, int artGallery) throws SQLException {
+        String sql = "SELECT * FROM galleria WHERE idGalleria ='" + artGallery + "';";
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneBuyerSummary(ActionEvent event, Buyer buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSummaryView.fxml"));
-        root = loader.load();
-
-        GuiControllerBuyerSummary gcas = loader.getController();
-        gcas.getBuyer(buy);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    public static ResultSet selectArtWorkTitle(Statement stmt) throws SQLException  {
+        String sql = "SELECT DISTINCT titolo FROM opera ;";
+        return stmt.executeQuery(sql);
     }
 
-    public void switchToSceneSearchArtWorkBuyer(ActionEvent event, Buyer buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSearchView.fxml"));
-        root = loader.load();
 
-        GuiControllerViewSearchArtWorkBuyer gcas = loader.getController();
-        gcas.getBuyer(buy);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToSceneFavouritesBuyer(ActionEvent event, Buyer buy) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerFavouriteView.fxml"));
-        root = loader.load();
-
-        GuiControllerViewFavouritesBuyer gcas = loader.getController();
-        gcas.getBuyer(buy);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySearchView.fxml"));
-        root = loader.load();
-
-        GuiControllerViewSearchArtWorkGallery gcas = loader.getController();
-        gcas.getGallery(gal);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToSceneGallerySummary(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySummaryView.fxml"));
-        root = loader.load();
-
-        GuiControllerGallerySummary gcas = loader.getController();
-        gcas.getGallery(gal);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGalleryProfiloView.fxml"));
-        root = loader.load();
-
-        GuiControllerViewProfiloGallery gcas = loader.getController();
-        gcas.getGallery(gal);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
 }

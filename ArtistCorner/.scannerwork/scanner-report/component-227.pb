@@ -1,1 +1,1 @@
-ã 2javaXÛhresrc/main/java/com/artistcorner/controller/guicontroller/uploadartwork/GuiControllerUploadArtwork.java
+ã 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

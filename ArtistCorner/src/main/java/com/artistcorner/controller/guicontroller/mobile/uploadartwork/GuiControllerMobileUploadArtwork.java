@@ -27,7 +27,7 @@ import java.sql.SQLException;
 
 public class GuiControllerMobileUploadArtwork {
     @FXML
-    public AnchorPane anchorMain;
+    public AnchorPane anchorMainUpM;
     @FXML
     public Label labelUsernameDisplay;
     @FXML
@@ -125,22 +125,22 @@ public class GuiControllerMobileUploadArtwork {
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainUpM.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainUpM.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainUpM.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainUpM.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -148,27 +148,27 @@ public class GuiControllerMobileUploadArtwork {
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneMainArtista(event, art);
+        SceneControllerMobile scum = new SceneControllerMobile();
+        scum.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneControllerMobile scum = new SceneControllerMobile();
+        scum.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneControllerMobile scum = new SceneControllerMobile();
+        scum.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloVenduto(event, art);
+        SceneControllerMobile scum = new SceneControllerMobile();
+        scum.switchToSceneProfiloVenduto(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+        SceneControllerMobile scum = new SceneControllerMobile();
+        scum.switchToSceneProfiloOfferteMostre(event, art);
     }
 }

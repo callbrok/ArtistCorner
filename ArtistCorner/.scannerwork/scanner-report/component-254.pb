@@ -1,1 +1,1 @@
-ş 2javaX<hr\src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtGalleryProposals.java
+ş 2javaXuhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java

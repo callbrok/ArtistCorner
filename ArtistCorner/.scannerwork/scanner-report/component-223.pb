@@ -1,1 +1,1 @@
-ß 2javaXÑhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+ß 2javaX;hr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java

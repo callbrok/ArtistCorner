@@ -1,1 +1,1 @@
-Ä 2javaX˜hr;src/main/java/com/artistcorner/engclasses/dao/BuyerDAO.java
+Ä 2javaXhr0src/main/java/com/artistcorner/model/Artist.java

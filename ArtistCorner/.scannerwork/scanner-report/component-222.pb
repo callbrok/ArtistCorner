@@ -1,1 +1,1 @@
-Þ 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+Þ 2javaXIhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java

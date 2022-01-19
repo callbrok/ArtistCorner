@@ -1,1 +1,1 @@
-è 2javaXdhrisrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java
+è 2javaX/hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

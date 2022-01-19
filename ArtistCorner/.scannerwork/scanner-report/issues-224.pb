@@ -1,6 +1,19 @@
 U
-javaS1118:Add a private constructor to hide the implicit public one. 2		 p
-javaS4507UMake sure this debug feature is deactivated before delivering the code in production. 2&& p
-javaS4507UMake sure this debug feature is deactivated before delivering the code in production. 2<< h
-javaS2095MUse try-with-resources or close this "FileInputStream" in a "finally" clause. 255 jh
-javaS2095MUse try-with-resources or close this "FileInputStream" in a "finally" clause. 2 j
+javaS1118:Add a private constructor to hide the implicit public one. 2 S
+javaS1069Replace this use of System.out or System.err by a logger. 2 ¥
+javaS2077?Make sure using a dynamically formatted SQL query is safe here. 2! $:I
+Gà
+
+ Q8SQL Query is dynamically formatted and assigned to 'sql'S
+javaS1069Replace this use of System.out or System.err by a logger. 2 ¥
+javaS2077?Make sure using a dynamically formatted SQL query is safe here. 2! $:I
+Gà h8SQL Query is dynamically formatted and assigned to 'sql'S
+javaS1069Replace this use of System.out or System.err by a logger. 2 ¥
+javaS2077?Make sure using a dynamically formatted SQL query is safe here. 2! $:I
+Gà Q8SQL Query is dynamically formatted and assigned to 'sql'S
+javaS1069Replace this use of System.out or System.err by a logger. 2 ²
+javaS2077?Make sure using a dynamically formatted SQL query is safe here. 2" 1:V
+Tà	! DSQL Query is dynamically formatted and assigned to 'updateStatement'S
+javaS1069Replace this use of System.out or System.err by a logger. 2$$ ¥
+javaS2077?Make sure using a dynamically formatted SQL query is safe here. 2%%! $:I
+Gà## l8SQL Query is dynamically formatted and assigned to 'sql'

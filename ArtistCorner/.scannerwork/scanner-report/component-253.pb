@@ -1,1 +1,1 @@
-ý 2javaXYhr[src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java
+ý 2javaX”hr†src/main/java/com/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals.java

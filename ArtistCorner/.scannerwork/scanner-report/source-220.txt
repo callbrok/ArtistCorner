@@ -1,17 +1,27 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ArtistBean {
-    int idArtista;
-    String nome;
-    String cognome;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-    public ArtistBean(int newId, String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = newId;
+import java.io.IOException;
+
+public abstract class ExceptionView {
+    private Pane exceptionPane;
+
+    public ExceptionView(ExceptionsTypeMenager etm){
+        try {
+            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getNome() {return nome;}
-    public int getIdArtista() {return idArtista;}
-    public String getCognome() {return cognome;}
+    public Pane getExceptionPane(){ return exceptionPane;}
+
+
 }

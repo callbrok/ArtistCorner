@@ -1,1 +1,1 @@
-î 2javaX¥hrxsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsaleshistory/GuiControllerMobileViewSalesHistory.java
+î 2javaX¾hrksrc/main/java/com/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory.java

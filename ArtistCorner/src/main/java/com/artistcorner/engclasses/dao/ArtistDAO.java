@@ -2,7 +2,10 @@ package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException;
+import com.artistcorner.engclasses.exceptions.ArtistNotFoundException;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.model.ArtGallery;
@@ -12,6 +15,8 @@ import com.artistcorner.model.Proposal;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +24,15 @@ import java.util.List;
 
 
 public class ArtistDAO {
+
+    private ArtistDAO(){
+        // Utility classes, which are collections of static members, are not meant to be instantiated. Even abstract utility classes,
+        // which can be extended, should not have public constructors.
+        //
+        // Java adds an implicit public constructor to every class which does not define at least one explicitly. Hence,
+        // at least one non-public constructor should be defined.
+        throw new IllegalStateException("Utility class");
+    }
 
     public static Artist retrieveArtist(UserBean usr){
         Artist ar = null;
@@ -36,7 +50,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectArtist(stmt, usr.getUsername());
 
             if (!rs.first()){ // rs empty
-                throw new Exception("No Artist found");
+                throw new ArtistNotFoundException("Artista non trovato");
             }
 
             // riposizionamento del cursore
@@ -53,10 +67,6 @@ public class ArtistDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -65,6 +75,7 @@ public class ArtistDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)
@@ -116,16 +127,15 @@ public class ArtistDAO {
             rs.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)
@@ -139,14 +149,14 @@ public class ArtistDAO {
     }
 
 
-    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws Exception {
+    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws SQLException {
         Statement stmt = null;
         PreparedStatement prStmt = null;
         Connection conn = null;
-        FileInputStream fis = null;
 
+        File file = new File(filePath); // Apre il file relativo al path passato.
 
-        try {
+        try(FileInputStream fis = new FileInputStream(new File(filePath))) {
             Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
             conn = ConnectProperties.getConnection();    // Apertura connessione
 
@@ -167,9 +177,6 @@ public class ArtistDAO {
                 rs.close();
                 stmt.close();
 
-
-            File file = new File(filePath); // Apre il file relativo al path passato.
-            fis = new FileInputStream(file);
             prStmt = conn.prepareStatement(QueryArtist.insertArtWork());   // Prende la query SQL.
 
             // Setta i prepared statement.
@@ -181,12 +188,10 @@ public class ArtistDAO {
 
             prStmt.executeUpdate();
             prStmt.close();
-            fis.close();
 
+        } catch (DuplicateArtWorkException | SQLException | ClassNotFoundException | IOException e2) {
+            e2.printStackTrace();
         } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            if (fis != null)
-                fis.close();
             if (prStmt != null)
                 prStmt.close();
             if (conn != null)
@@ -228,18 +233,15 @@ public class ArtistDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e3) {
+            e3.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)
@@ -287,18 +289,15 @@ public class ArtistDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e4) {
+            e4.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)
@@ -312,7 +311,7 @@ public class ArtistDAO {
     }
 
 
-    public static void updateProposal(int idOfferta, int newFlag) throws Exception {
+    public static void updateProposal(int idOfferta, int newFlag) throws SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -327,6 +326,10 @@ public class ArtistDAO {
 
             int result = QueryArtist.updateProposal(stmt, idOfferta, newFlag);
 
+            if(result == -1){throw new ProposalsManagementProblemException("Problema nella gestione della proposta della galleria");}
+
+        } catch (Exception e5){
+          e5.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -354,8 +357,7 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectArtGallery(stmt, idGallery);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Artist found");
-                throw e;
+                throw new ArtGalleryNotFoundException("Nessuna galleria trovata");
             }
 
             // riposizionamento del cursore
@@ -374,18 +376,15 @@ public class ArtistDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e6) {
+            e6.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)

@@ -1,1 +1,1 @@
-Õ 2javaX(hrAsrc/main/java/com/artistcorner/engclasses/query/QueryGallery.java
+Õ 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java

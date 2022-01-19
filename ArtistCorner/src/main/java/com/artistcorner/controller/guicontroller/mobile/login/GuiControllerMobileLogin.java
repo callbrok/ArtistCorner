@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 public class GuiControllerMobileLogin {
     @FXML
-    public AnchorPane anchorMain;
+    public AnchorPane anchorMainLoginMobile;
     @FXML
     public SVGPath svgLogo;
     @FXML
@@ -27,7 +27,7 @@ public class GuiControllerMobileLogin {
     @FXML
     public TextField textFieldPassword;
     @FXML
-    public Label labelExceptionLogin;
+    public Label labelExceptionLoginM;
     @FXML
     public Pane paneExceptionLogin;
 
@@ -41,30 +41,30 @@ public class GuiControllerMobileLogin {
     public void initialize(){
         makeDraggable();
 
-        labelExceptionLogin.setAlignment(Pos.CENTER);
-        labelExceptionLogin.setMaxWidth(320);
+        labelExceptionLoginM.setAlignment(Pos.CENTER);
+        labelExceptionLoginM.setMaxWidth(320);
         paneExceptionLogin.setVisible(false);
         svgLogo.setScaleX(1.3);
         svgLogo.setScaleY(1.3);
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainLoginMobile.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainLoginMobile.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -77,7 +77,7 @@ public class GuiControllerMobileLogin {
         try {
             lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.
         }catch (UserNotFoundException | SQLException e){
-            labelExceptionLogin.setText(e.getMessage());
+            labelExceptionLoginM.setText(e.getMessage());
             paneExceptionLogin.setVisible(true);
         }
 

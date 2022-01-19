@@ -35,7 +35,7 @@ import java.util.*;
 
 public class GuiControllerViewLogAnalytics {
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentLog;
     @FXML
     public Label labelLogOut;
     @FXML
@@ -70,7 +70,7 @@ public class GuiControllerViewLogAnalytics {
 
     
     public Dialog showCommitDialog(List<Commit> listOfCommit, String date){
-        Dialog<String> dialog = new Dialog<String>();
+        Dialog<String> dialog = new Dialog<>();
         ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
 
         String dateToCompare = date;
@@ -97,9 +97,6 @@ public class GuiControllerViewLogAnalytics {
 
     public void initChart() throws GitAPIException, IOException {
         ViewLogAnalytics vla = new ViewLogAnalytics();
-
-        CategoryAxis xAxis = new CategoryAxis();
-        NumberAxis yAxis = new NumberAxis();
 
         XYChart.Series<String, Double> series = new XYChart.Series();
         XYChart.Series<String, Double> series1 = new XYChart.Series();
@@ -157,12 +154,12 @@ public class GuiControllerViewLogAnalytics {
 
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((eventUpload -> {
+        anchorParentLog.setOnMousePressed((eventUpload -> {
             xUpload=eventUpload.getSceneX();
             yUpload= eventUpload.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((eventUpload -> {
+        anchorParentLog.setOnMouseDragged((eventUpload -> {
             stage = (Stage) ((Node)eventUpload.getSource()).getScene().getWindow();
             stage.setX(eventUpload.getScreenX() - xUpload);
             stage.setY(eventUpload.getScreenY() - yUpload);
@@ -170,12 +167,12 @@ public class GuiControllerViewLogAnalytics {
     }
 
     public void exitWindowUpload() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentLog.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentLog.getScene().getWindow();
         stage.setIconified(true);
     }
 

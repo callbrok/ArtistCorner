@@ -1,1 +1,1 @@
-Ü 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java
+Ü 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

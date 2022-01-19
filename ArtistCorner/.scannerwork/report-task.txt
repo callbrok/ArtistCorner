@@ -1,7 +1,7 @@
 organization=callbrok
 projectKey=callbrok_ArtistCorner
 serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.26091
+serverVersion=8.0.0.26149
 dashboardUrl=https://sonarcloud.io/dashboard?id=callbrok_ArtistCorner
-ceTaskId=AX5pF4pTWdhF5yJlpY6l
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AX5pF4pTWdhF5yJlpY6l
+ceTaskId=AX5yQRpg6Kmw9jqk2hO8
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AX5yQRpg6Kmw9jqk2hO8

@@ -1,1 +1,1 @@
-Å 2javaXhrOsrc/main/java/com/artistcorner/engclasses/exceptions/UserNotFoundException.java
+Å 2javaXhr2src/main/java/com/artistcorner/model/Proposal.java

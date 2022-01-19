@@ -1,1 +1,1 @@
-Ó 2javaXIhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java
+Ó 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundException.java

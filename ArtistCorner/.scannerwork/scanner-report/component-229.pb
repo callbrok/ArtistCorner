@@ -1,1 +1,1 @@
-å 2javaXšhrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java
+å 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

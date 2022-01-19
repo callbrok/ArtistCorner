@@ -1,1 +1,1 @@
-÷ 2javaXXhrXsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java
+÷ 2javaXëhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java

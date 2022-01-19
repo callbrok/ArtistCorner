@@ -42,8 +42,43 @@ Xcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSal
 makeDraggable()icom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#makeDraggable()V~
 minimizeWindow()jcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#minimizeWindow()V"
 ChangeListenerjava.lang.Objectq
-_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4030;ChangeListener(
-java.io.Serializablejava.lang.Objecté
+_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4060;ChangeListener(
+java.io.Serializablejava.lang.Object√
+java.lang.Throwablejava.lang.Objectjava.io.Serializable;
+printStackTrace()&java.lang.Throwable#printStackTrace()VZ
+getOurStackTrace()Djava.lang.Throwable#getOurStackTrace()[Ljava/lang/StackTraceElement;¡
+ìprintEnclosedStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;[Ljava/lang/StackTraceElement;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)®java.lang.Throwable#printEnclosedStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;[Ljava/lang/StackTraceElement;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)V>
+
+toString()0java.lang.Throwable#toString()Ljava/lang/String;w
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Djava.lang.Throwable#<init>(Ljava/lang/String;Ljava/lang/Throwable;)VB
+getMessage()2java.lang.Throwable#getMessage()Ljava/lang/String;Q
+fillInStackTrace();java.lang.Throwable#fillInStackTrace()Ljava/lang/Throwable;s
+-setStackTrace([Ljava/lang/StackTraceElement;)Bjava.lang.Throwable#setStackTrace([Ljava/lang/StackTraceElement;)Va
+$addSuppressed(Ljava/lang/Throwable;)9java.lang.Throwable#addSuppressed(Ljava/lang/Throwable;)Vç
+:printStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;)Ojava.lang.Throwable#printStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;)Vm
+ initCause(Ljava/lang/Throwable;)Ijava.lang.Throwable#initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;)
+<init>()java.lang.Throwable#<init>()VT
+getStackTrace()Ajava.lang.Throwable#getStackTrace()[Ljava/lang/StackTraceElement;A
+
+getCause()3java.lang.Throwable#getCause()Ljava/lang/Throwable;e
+&printStackTrace(Ljava/io/PrintStream;);java.lang.Throwable#printStackTrace(Ljava/io/PrintStream;)Vg
+'readObject(Ljava/io/ObjectInputStream;)<java.lang.Throwable#readObject(Ljava/io/ObjectInputStream;)VM
+<init>(Ljava/lang/String;)/java.lang.Throwable#<init>(Ljava/lang/String;)VT
+getLocalizedMessage();java.lang.Throwable#getLocalizedMessage()Ljava/lang/String;e
+&printStackTrace(Ljava/io/PrintWriter;);java.lang.Throwable#printStackTrace(Ljava/io/PrintWriter;)V{
+1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Fjava.lang.Throwable#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VS
+fillInStackTrace(I)<java.lang.Throwable#fillInStackTrace(I)Ljava/lang/Throwable;S
+<init>(Ljava/lang/Throwable;)2java.lang.Throwable#<init>(Ljava/lang/Throwable;)Vk
+)writeObject(Ljava/io/ObjectOutputStream;)>java.lang.Throwable#writeObject(Ljava/io/ObjectOutputStream;)VL
+getSuppressed()9java.lang.Throwable#getSuppressed()[Ljava/lang/Throwable;Ô
+java.lang.Exceptionjava.lang.Throwable)
+<init>()java.lang.Exception#<init>()VM
+<init>(Ljava/lang/String;)/java.lang.Exception#<init>(Ljava/lang/String;)Vw
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Djava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V{
+1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Fjava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VS
+<init>(Ljava/lang/Throwable;)2java.lang.Exception#<init>(Ljava/lang/Throwable;)V◊
+Bcom.artistcorner.engclasses.exceptions.ArtGalleryNotFoundExceptionjava.lang.Exception|
+<init>(Ljava/lang/String;)^com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException#<init>(Ljava/lang/String;)Vé
 gcom.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandationjava.lang.Objectjava.io.Serializableá
 setAnswerNo()vcom.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation#setAnswerNo()Vó
 inizializeIdLivello()~com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation#inizializeIdLivello()Vâ
@@ -336,40 +371,7 @@ NnewDirectoryStream(Ljava/nio/file/Path;Ljava/nio/file/DirectoryStream$Filter;)
 nwriteString(Ljava/nio/file/Path;Ljava/lang/CharSequence;Ljava/nio/charset/Charset;[Ljava/nio/file/OpenOption;)ñjava.nio.file.Files#writeString(Ljava/nio/file/Path;Ljava/lang/CharSequence;Ljava/nio/charset/Charset;[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;y
 0copy(Ljava/nio/file/Path;Ljava/io/OutputStream;)Ejava.nio.file.Files#copy(Ljava/nio/file/Path;Ljava/io/OutputStream;)JÊ
 PreadAttributes(Ljava/nio/file/Path;Ljava/lang/Class;[Ljava/nio/file/LinkOption;)ëjava.nio.file.Files#readAttributes(Ljava/nio/file/Path;Ljava/lang/Class;[Ljava/nio/file/LinkOption;)Ljava/nio/file/attribute/BasicFileAttributes;Ô
-asetAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)âjava.nio.file.Files#setAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)Ljava/nio/file/Path;√
-java.lang.Throwablejava.lang.Objectjava.io.Serializable;
-printStackTrace()&java.lang.Throwable#printStackTrace()VZ
-getOurStackTrace()Djava.lang.Throwable#getOurStackTrace()[Ljava/lang/StackTraceElement;¡
-ìprintEnclosedStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;[Ljava/lang/StackTraceElement;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)®java.lang.Throwable#printEnclosedStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;[Ljava/lang/StackTraceElement;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)V>
-
-toString()0java.lang.Throwable#toString()Ljava/lang/String;w
-/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Djava.lang.Throwable#<init>(Ljava/lang/String;Ljava/lang/Throwable;)VB
-getMessage()2java.lang.Throwable#getMessage()Ljava/lang/String;Q
-fillInStackTrace();java.lang.Throwable#fillInStackTrace()Ljava/lang/Throwable;s
--setStackTrace([Ljava/lang/StackTraceElement;)Bjava.lang.Throwable#setStackTrace([Ljava/lang/StackTraceElement;)Va
-$addSuppressed(Ljava/lang/Throwable;)9java.lang.Throwable#addSuppressed(Ljava/lang/Throwable;)Vç
-:printStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;)Ojava.lang.Throwable#printStackTrace(Ljava/lang/Throwable$PrintStreamOrWriter;)Vm
- initCause(Ljava/lang/Throwable;)Ijava.lang.Throwable#initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;)
-<init>()java.lang.Throwable#<init>()VT
-getStackTrace()Ajava.lang.Throwable#getStackTrace()[Ljava/lang/StackTraceElement;A
-
-getCause()3java.lang.Throwable#getCause()Ljava/lang/Throwable;e
-&printStackTrace(Ljava/io/PrintStream;);java.lang.Throwable#printStackTrace(Ljava/io/PrintStream;)Vg
-'readObject(Ljava/io/ObjectInputStream;)<java.lang.Throwable#readObject(Ljava/io/ObjectInputStream;)VM
-<init>(Ljava/lang/String;)/java.lang.Throwable#<init>(Ljava/lang/String;)VT
-getLocalizedMessage();java.lang.Throwable#getLocalizedMessage()Ljava/lang/String;e
-&printStackTrace(Ljava/io/PrintWriter;);java.lang.Throwable#printStackTrace(Ljava/io/PrintWriter;)V{
-1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Fjava.lang.Throwable#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VS
-fillInStackTrace(I)<java.lang.Throwable#fillInStackTrace(I)Ljava/lang/Throwable;S
-<init>(Ljava/lang/Throwable;)2java.lang.Throwable#<init>(Ljava/lang/Throwable;)Vk
-)writeObject(Ljava/io/ObjectOutputStream;)>java.lang.Throwable#writeObject(Ljava/io/ObjectOutputStream;)VL
-getSuppressed()9java.lang.Throwable#getSuppressed()[Ljava/lang/Throwable;Ô
-java.lang.Exceptionjava.lang.Throwable)
-<init>()java.lang.Exception#<init>()VM
-<init>(Ljava/lang/String;)/java.lang.Exception#<init>(Ljava/lang/String;)Vw
-/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Djava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V{
-1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Fjava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VS
-<init>(Ljava/lang/Throwable;)2java.lang.Exception#<init>(Ljava/lang/Throwable;)V—
+asetAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)âjava.nio.file.Files#setAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)Ljava/nio/file/Path;—
 ?com.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionjava.lang.Exceptiony
 <init>(Ljava/lang/String;)[com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException#<init>(Ljava/lang/String;)VŸ
 Ccom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionjava.lang.Exception}
@@ -379,7 +381,12 @@ Ccom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionjava.lang.
 getPassword()Icom.artistcorner.engclasses.bean.UserBean#getPassword()Ljava/lang/String;´
 ><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)icom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VZ
 getUsername()Icom.artistcorner.engclasses.bean.UserBean#getUsername()Ljava/lang/String;á
-,<init>(Ljava/lang/String;Ljava/lang/String;)Wcom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;)Vˆ
+,<init>(Ljava/lang/String;Ljava/lang/String;)Wcom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;)VÒ
+)com.artistcorner.engclasses.others.Commitjava.lang.Object´
+><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)icom.artistcorner.engclasses.others.Commit#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VR
+	getData()Ecom.artistcorner.engclasses.others.Commit#getData()Ljava/lang/String;R
+	getNome()Ecom.artistcorner.engclasses.others.Commit#getNome()Ljava/lang/String;\
+getMessaggio()Jcom.artistcorner.engclasses.others.Commit#getMessaggio()Ljava/lang/String;ˆ
 Ccom.artistcorner.controller.applicationcontroller.GetReccomandationjava.lang.Objectu
 getSolution()dcom.artistcorner.controller.applicationcontroller.GetReccomandation#getSolution()[Ljava/lang/String;Y
 <init>()Mcom.artistcorner.controller.applicationcontroller.GetReccomandation#<init>()V±
@@ -1467,7 +1474,19 @@ HgetConnection(Ljava/lang/String;Ljava/util/Properties;Ljava/lang/Class;)tjava.
 retrieveArtistName(I)Fcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtistName(I)LArtist;n
 retrieveAllComprate(I)Tcom.artistcorner.engclasses.dao.BuyerDAO#retrieveAllComprate(I)Ljava/util/ArrayList;j
 retrieveArtWorkId(I)Rcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorkId(I)Ljava/util/ArrayList;l
-removeArtWorkFromFavourites(II)Icom.artistcorner.engclasses.dao.BuyerDAO#removeArtWorkFromFavourites(II)I”
+removeArtWorkFromFavourites(II)Icom.artistcorner.engclasses.dao.BuyerDAO#removeArtWorkFromFavourites(II)I≈
+Xcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalyticsjava.lang.ObjectÇ
+exitWindowUpload()lcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#exitWindowUpload()Vv
+makeLogOut()fcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#makeLogOut()Vt
+initChart()ecom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#initChart()Vn
+<init>()bcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#<init>()Vv
+initialize()fcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#initialize()V|
+makeDraggable()icom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#makeDraggable()V~
+minimizeWindow()jcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics#minimizeWindow()Vo
+_Lcom/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics$4415;EventHandlero
+_Lcom/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics$4948;EventHandlerË
+Jcom.artistcorner.engclasses.exceptions.ProposalsManagementProblemExceptionjava.lang.ExceptionÑ
+<init>(Ljava/lang/String;)fcom.artistcorner.engclasses.exceptions.ProposalsManagementProblemException#<init>(Ljava/lang/String;)V”
 @com.artistcorner.engclasses.exceptions.DuplicateArtWorkExceptionjava.lang.Exceptionz
 <init>(Ljava/lang/String;)\com.artistcorner.engclasses.exceptions.DuplicateArtWorkException#<init>(Ljava/lang/String;)V¬
 Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummaryjava.lang.Objectv
@@ -1492,7 +1511,9 @@ Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGalle
 2com.artistcorner.engclasses.others.SceneControllerjava.lang.ObjectH
 <init>()<com.artistcorner.engclasses.others.SceneController#<init>()V≠
 4com.artistcorner.engclasses.exceptions.ExceptionViewjava.lang.Objectc
-getExceptionPane()Mcom.artistcorner.engclasses.exceptions.ExceptionView#getExceptionPane()LPane;X
+getExceptionPane()Mcom.artistcorner.engclasses.exceptions.ExceptionView#getExceptionPane()LPane;œ
+>com.artistcorner.engclasses.exceptions.ArtistNotFoundExceptionjava.lang.Exceptionx
+<init>(Ljava/lang/String;)Zcom.artistcorner.engclasses.exceptions.ArtistNotFoundException#<init>(Ljava/lang/String;)VX
 Gcom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionViewExceptionView“
 
 dcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyerjava.lang.Objectä
@@ -1619,9 +1640,9 @@ toString())java.net.URL#toString()Ljava/lang/String;ú
 	getPort()java.net.URL#getPort()Iä
 |com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals$HBoxCellHBoxÉ
 @<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)æcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals$HBoxCell#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)Vä
-zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5125;EventHandlerä
-zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5517;EventHandlerå
-zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$7129;ChangeListenerÆ
+zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5130;EventHandlerä
+zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5522;EventHandlerå
+zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$7134;ChangeListenerÆ
 Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyerjava.lang.Object^
 <init>()Rcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#<init>()Vp
 finishPayment(II)[com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#finishPayment(II)V„
@@ -1631,7 +1652,18 @@ Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyerjava.
 updateProposal(II)=com.artistcorner.engclasses.dao.ArtistDAO#updateProposal(II)Vl
 retrieveSellArtWorks(I)Qcom.artistcorner.engclasses.dao.ArtistDAO#retrieveSellArtWorks(I)Ljava/util/List;û
 0retrieveArtGalleryProposals(ILjava/lang/String;)jcom.artistcorner.engclasses.dao.ArtistDAO#retrieveArtGalleryProposals(ILjava/lang/String;)Ljava/util/List;d
-retrieveArtGallery(I)Kcom.artistcorner.engclasses.dao.ArtistDAO#retrieveArtGallery(I)LArtGallery;◊M
+retrieveArtGallery(I)Kcom.artistcorner.engclasses.dao.ArtistDAO#retrieveArtGallery(I)LArtGallery;ö
+java.lang.RuntimeExceptionjava.lang.Exception0
+<init>()$java.lang.RuntimeException#<init>()VT
+<init>(Ljava/lang/String;)6java.lang.RuntimeException#<init>(Ljava/lang/String;)V~
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Kjava.lang.RuntimeException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)VÇ
+1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Mjava.lang.RuntimeException#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VZ
+<init>(Ljava/lang/Throwable;)9java.lang.RuntimeException#<init>(Ljava/lang/Throwable;)V∂
+java.lang.IllegalStateExceptionjava.lang.RuntimeException5
+<init>())java.lang.IllegalStateException#<init>()VY
+<init>(Ljava/lang/String;);java.lang.IllegalStateException#<init>(Ljava/lang/String;)VÉ
+/<init>(Ljava/lang/String;Ljava/lang/Throwable;)Pjava.lang.IllegalStateException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V_
+<init>(Ljava/lang/Throwable;)>java.lang.IllegalStateException#<init>(Ljava/lang/Throwable;)V◊M
 java.util.Collectionsjava.lang.Object£
 =checkedMap(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)bjava.util.Collections#checkedMap(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)Ljava/util/Map;ñ
 2unmodifiableNavigableMap(Ljava/util/NavigableMap;)`java.util.Collections#unmodifiableNavigableMap(Ljava/util/NavigableMap;)Ljava/util/NavigableMap;g
@@ -1747,7 +1779,11 @@ Vcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyer
 !com.artistcorner.HelloApplicationApplication7
 <init>()+com.artistcorner.HelloApplication#<init>()VY
 main([Ljava/lang/String;)<com.artistcorner.HelloApplication#main([Ljava/lang/String;)VO
->com.artistcorner.engclasses.exceptions.EmptyFieldExceptionViewExceptionView«
+>com.artistcorner.engclasses.exceptions.EmptyFieldExceptionViewExceptionView¿
+Bcom.artistcorner.controller.applicationcontroller.ViewLogAnalyticsjava.lang.ObjectX
+<init>()Lcom.artistcorner.controller.applicationcontroller.ViewLogAnalytics#<init>()VÖ
+initializeCommitArray()jcom.artistcorner.controller.applicationcontroller.ViewLogAnalytics#initializeCommitArray()Ljava/util/List;Ö
+pathSystemOSSwitcher()kcom.artistcorner.controller.applicationcontroller.ViewLogAnalytics#pathSystemOSSwitcher()Ljava/lang/String;«
 Wcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummaryjava.lang.Objectâ
 makeGifPaneClickable()ocom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#makeGifPaneClickable()Vu
 makeLogOut()ecom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary#makeLogOut()Vm

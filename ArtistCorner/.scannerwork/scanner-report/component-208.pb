@@ -1,1 +1,2 @@
-Ð 2javaX	hrVsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundExceptionView.java
+Ð 2javaX
+hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java

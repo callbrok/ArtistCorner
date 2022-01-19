@@ -1,24 +1,16 @@
 
-‰com.artistcorner.engclasses.others.ExceptionsTypeMenager#getUrl(Lcom/artistcorner/engclasses/others/ExceptionsTypeMenager;)Ljava/net/URL;‚
-x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java" "("1*Á
-1‚
-x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(*÷
-ô
-‚
-x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java#7 #(C
-%0java.lang.String"__id*O*M
-C
-subview8com.artistcorner.engclasses.others.ExceptionsTypeMenager"
-pathž›
-‚
-x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(D
-%1java.net.URL"=java.lang.Class#getResource(Ljava/lang/String;)Ljava/net/URL;*
-""*
+Dcom.artistcorner.model.ArtGallery#getDescrizione()Ljava/lang/String;k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java ( "1*Ã
+1k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6Æ
+Ã
+k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6
+%0java.lang.String"__id*6*4#
+!com.artistcorner.model.ArtGallery"
+descrizione"‡
+k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java$ (7
 
-%0java.lang.String2getResource(Ljava/lang/String;)"›
-‚
-x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java# #(E
-
-%1java.net.URL:C
-subview8com.artistcorner.engclasses.others.ExceptionsTypeMenagerB<":
-8com.artistcorner.engclasses.others.ExceptionsTypeMenager
+%0java.lang.StringB%#
+!com.artistcorner.model.ArtGallery

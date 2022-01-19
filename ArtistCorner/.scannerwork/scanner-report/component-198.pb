@@ -1,1 +1,1 @@
-Æ 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateArtWorkExceptionView.java
+Æ 2javaXhr1src/main/java/com/artistcorner/model/ArtWork.java

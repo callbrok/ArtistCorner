@@ -1,163 +1,194 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
 
-import com.artistcorner.engclasses.bean.Nodo;
-import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
+import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.others.SceneController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
-public class GetReccomandation {
-    // Inizializza la risposta dell'algoritmo.
-    public static final String NO_ANSWER = "Nessuna Risposta";
+public class GuiControllerViewSearchArtWorkGallery {
+    @FXML
+    private AnchorPane anchorParent,anchorPane;
+    public Pane paneFound;
+    public Label labelLogOut;
+    public ListView<HBoxCell> listView;
+    public TextField textField;
+    public Button buttonSearch;
+    public Label labelUsernameDisplay;
+    public Button buttonCanc;
+    public SVGPath svgProfile;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    private double x=0, y=0;
+    Stage stage;
+    ArtGalleryBean gal;
 
-    String[] risposta = {NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER};
 
-    /**
-     * Inizializza l'albero con i nodi, presi dal file "treeStructure.txt".
-     */
-    public List<Nodo> initializeTreeTxt(){
-        ArrayList<Nodo> arraylist = new ArrayList<>();
+    public void initialize() throws SQLException {
 
-        String line = "";
-        String splitBy = ",";
-
-        try {
-            //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("ArtistCorner/src/main/resources/auxiliaryfacilities/treeStructure.txt"));
-            while ((line = br.readLine()) != null)
-            //returns a Boolean value
-            {
-                if (line.charAt(0) == '/'){continue;}  // salta le righe di commento nel file di testo
-
-                String[] nodo = line.split(splitBy);   // tokenizza la linea tramite il delimitatore ','
-
-                int idAppartenenza = Integer.parseInt(nodo[0]);
-                int idProprio = Integer.parseInt(nodo[1]);
-                String decisione = nodo[2];
-                String domanda = nodo[3];
-                String parteSoluzione = nodo[4];
-                String key = nodo[5];
-
-                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda, parteSoluzione, key));   // inizializza un singolo nodo dell'albero
-
-            }
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        return arraylist;
+        makeDraggable();
+        setTooltipMenu();
+        makeLogOut();
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
-    /**
-     * Ritorna il nodo da visualizzare a video.
-     */
-    public Nodo decisionTree(String str, List<Nodo> arraylist, int idLivello) throws GetRaccomandationProblemException {
-        Nodo errorNode = new Nodo(0, 0, "Error", "FINE DELL'ALBERO","ULTIMO NODO", "");
-        Nodo currentNode = getCurrentNode(idLivello, arraylist); // Prende il nodo corrente.
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-        String [] arrRandAns = {"Y", "N"};
-        Random random = new Random();
-        int select = random.nextInt(arrRandAns.length);
-        String randomChoice = arrRandAns[select];  // Inizializza la scelta randomica.
+    }
 
-        if (str.equals("Y")) {
-            // Passa l'identificativo della soluzione e la parte della soluzione del nodo corrente.
-            createSolution(currentNode.getSolutionPart(), currentNode.getKeyObj());
-            for (Nodo n : arraylist) {    // Scorre tra tutti i nodi dell'albero associati ad una risposta affermativa.
+    public void getGallery(ArtGalleryBean loggedGallery) {
+        gal = loggedGallery;
+        labelUsernameDisplay.setText(gal.getNome());
+    }
 
-                // Se il nodo di risposta affermativa ha come padre il nodo corrente identificato dall'idLivello.
-                if (n.getDecisione().contains("Y") && n.getIdAppartenenza() == idLivello) {
+    private void makeDraggable(){
+        anchorParent.setOnMousePressed(((event) -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
 
-                    return n;      // Ritorna il nodo successivo per mostrarlo a video.
+        anchorParent.setOnMouseDragged(((event) -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+    public void exitWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.setIconified(true);
+    }
+    public void setTooltipMenu(){
+        button1.setTooltip(new Tooltip("Home"));
+        button2.setTooltip(new Tooltip("Cerca Opera"));
+        button3.setTooltip(new Tooltip("Preferiti"));
+    }
+    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException {
+        if(keyEvent.getCode()== KeyCode.ENTER){
+            String input= textField.getText();
+            anchorPane.setVisible(true);
+            ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
+            saw.initializeListView(input,listView,gal);
+        }
+    }
+    public void buttonSearchOnClick() throws SQLException, IOException {
+        String input= textField.getText();
+        anchorPane.setVisible(true);
+        paneFound.setVisible(false);
+        ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
+        saw.initializeListView(input,listView,gal);
+    }
+    public void buttonCancOnClick(){
+        textField.setText("");
+    }
+
+    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloGallery(actionEvent,gal);
+    }
+    public void switchToGallerySummary(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneGallerySummary(actionEvent,gal);
+    }
+    public static class HBoxCell extends HBox {
+        Label labelArtWorkName = new Label();
+        Label labelArtistName = new Label();
+        public Button buttonOfferta = new Button();
+        Label labelArtistNameDefault = new Label();
+        Label labelArtWorkDefault = new Label();
+
+        public HBoxCell(String input,ListView<HBoxCell> listView , ArtGalleryBean gal,String labelText, String labelText1, Image img, int idOpera, String labelPreferiti, int idGallery,int idArtista,ArrayList<Integer> arrayListProposte) throws SQLException, IOException {
+            super();
+            ImageView imageView = new ImageView();
+            imageView.setImage(img);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            labelArtWorkName.setText(labelText);
+            labelArtWorkName.setAlignment(Pos.CENTER);
+            labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtistName.setText(labelText1);
+            labelArtistName.setAlignment(Pos.CENTER);
+            labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
+            labelArtWorkName.setPrefSize(100, 50);
+            labelArtistName.setPrefSize(100, 50);
+            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
+            vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
+            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
+            HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
+            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
+            vBox2.setAlignment(Pos.CENTER);
+            labelArtWorkDefault.setText("Titolo Opera: ");labelArtWorkDefault.setAlignment(Pos.CENTER);labelArtWorkDefault.setPrefSize(100, 50);
+            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
+            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            labelArtistNameDefault.setText("Nome Autore: ");
+            labelArtistNameDefault.setAlignment(Pos.CENTER);
+            labelArtistNameDefault.setPrefSize(100, 50);
+            labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            buttonOfferta.setText(labelPreferiti);
+            buttonOfferta.setPrefSize(150, 100);
+            buttonOfferta.setStyle("-fx-font-size: 16px;");
+            ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
+
+            if (arrayListProposte.contains(idArtista)){
+              buttonOfferta.setText("Ritira Proposta");
+            }
+            buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    String answer = null;
+                    try {
+                        answer = sa.manageButtonClick(buttonOfferta,idGallery,idArtista);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    buttonOfferta.setText(answer);
+                    try {
+                        sa.initializeListView(input,listView,gal);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }
-
-        if (str.equals("N")) {
-            for (Nodo n : arraylist) {
-                if (n.getDecisione().contains("N") && n.getIdAppartenenza() == idLivello) {
-                    return n;
-                }
-            }
-        }
-
-        if (str.equals("YN")) {
-            // Passa l'identificativo della soluzione e la parte della soluzione del nodo corrente.
-            if(randomChoice.equals("Y")){createSolution(currentNode.getSolutionPart(), currentNode.getKeyObj());}
-
-            for (Nodo n : arraylist) {
-                if (n.getDecisione().contains(randomChoice) && n.getIdAppartenenza() == idLivello) {
-                    return n;
-                }
-            }
-        }
-
-        return errorNode; // mostra nodo di fine albero
-    }
+            });
 
 
-    public Nodo getCurrentNode(int idLivello, List<Nodo> arraylist){
-        // Scorre tutti i nodi e ne ritorna quello con idProprio + idLivello, ergo il
-        // nodo corrente.
-        for (Nodo n : arraylist) {
-            if (n.getIdProprio() == idLivello) {
-                return n;
-            }
-        }
-        return null;
-    }
-
-    // Ritorna la soluzione.
-    public String[] getSolution(){ return risposta;}
-
-    // Ritorna la soluzione per la serializzazione.
-    public String getSerialSolution(){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for(int i=0;i<risposta.length;i++){
-            stringBuilder.append(risposta[i]);
-            stringBuilder.append("-");
-        }
-
-        return stringBuilder.toString();
-    }
-
-    // Setta la risposta.
-    public void setSerialSolution( String serialRisposta){
-        risposta = serialRisposta.split("-", risposta.length);
-    }
-
-
-    public void createSolution(String sol, String key) throws GetRaccomandationProblemException {
-        // A seconda della key associata alla domanda inserisco una parte della
-        // soluzione nella stringa apposita.
-        switch (key){
-            case "[A]":
-                risposta[0] = sol;
-                break;
-            case "[W]":
-                risposta[1] = sol;
-                break;
-            case "[S]":
-                risposta[2] = sol;
-                break;
-            case "[D]":
-                risposta[3] = sol;
-                break;
-            case "[R]":
-                risposta[4] = sol;
-                break;
-            default:
-                throw new GetRaccomandationProblemException("Problema nella compilazione della risposta");
+            this.getChildren().addAll(imageView, vBox2, vBox1,buttonOfferta);
         }
 
     }
-
-
 
 }

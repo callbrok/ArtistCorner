@@ -1,1 +1,1 @@
-æ 2javaXahrksrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java
+æ 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java

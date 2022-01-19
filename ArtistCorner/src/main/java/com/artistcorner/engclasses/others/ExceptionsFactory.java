@@ -17,7 +17,7 @@ public class ExceptionsFactory {
         return instance;
     }
 
-    public ExceptionView createView(ExceptionsTypeMenager etm) throws IOException {
+    public ExceptionView createView(ExceptionsTypeMenager etm) {
 
         switch(etm.getType()) {
             case 0: case 6:

@@ -1,1 +1,1 @@
-ƒ 2javaXDhrsrc/main/java/module-info.java
+ƒ 2javaXhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java

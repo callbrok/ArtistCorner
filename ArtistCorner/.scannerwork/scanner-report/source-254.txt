@@ -1,59 +1,116 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.controller.applicationcontroller.Login;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.ProposalBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
+import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.sql.SQLException;
 
-public class ViewArtGalleryProposals {
+public class GuiControllerMobileArtistSummary {
+    @FXML
+    public AnchorPane anchorMainASummaryM;
+    @FXML
+    public Pane paneIdeaButton;
+    @FXML
+    public ImageView imageGifButton;
+    @FXML
+    public Label labelAlgoritmo;
+    @FXML
+    public Label labelUsernameDisplay;
 
-    /**
-     * Genera il codice html per la visualizzazione dell'indirizzo passato.
-     */
-    public String makeMapHtml(String luogo, int dimWebPage){
+    private double x=0;
+    private double y=0;
+    private Stage stage;
 
-        String htmlMap="";
-        StringBuilder sb = new StringBuilder(htmlMap);
-
-        sb.append("<div style=\"margin-left:-8px; margin-top:-8px;\"><iframe width=\"" + dimWebPage + "px\" height=\"100%\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q=")
-                .append(luogo.replace(" ", "%20"))  // Sostituisce gli spazi con "%20" per rispettare la semantica dell'url
-                .append("&t=&z=13&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"></iframe></div>");
-
-        htmlMap = sb.toString();
-
-        return htmlMap;
-    }
-
-    public List<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) throws ProposalNotFoundException {
-        Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
-        ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
-
-        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
-
-        if(arrayOfProposals.isEmpty()){
-            throw new ProposalNotFoundException("Nessuna proposta disponibile.");
-        }
-
-        for (Proposal n : arrayOfProposals) {
-            arrayOfProposalBeans.add(new ProposalBean(n.getIdOfferta(), n.getArtista(), n.getGalleria(), n.getFlagAccettazione()));
-        }
+    ArtistBean art;
 
 
-        return arrayOfProposalBeans;
-    }
-
-    public ArtGalleryBean retrieveArtGallery(int galleria){
-        ArtGallery artG = ArtistDAO.retrieveArtGallery(galleria);   // Fai un retrieve della galleria associata alla proposta.
-
-        return new ArtGalleryBean(artG.getGalleria(), artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), artG.getUsername());
+    public void initialize(){
+        makeDraggable();
+        makeGifPaneClickable();
 
     }
+
+    public void getArtist(ArtistBean loggedArtist){
+        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    }
+
+    public void makeGifPaneClickable(){
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneControllerMobile sc = new SceneControllerMobile();
+            try {
+                sc.switchToSceneProfiloAlgoritmo(event, art);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
+
+    }
+
+    public void exitWindow() {
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    private void makeDraggable(){
+        anchorMainASummaryM.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainASummaryM.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloArtista(actionEvent, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloVenduto(actionEvent, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneUploadOpera(actionEvent, art);
+    }
+
+
+
 
 }

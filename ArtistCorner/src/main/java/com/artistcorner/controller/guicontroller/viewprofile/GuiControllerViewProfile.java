@@ -36,17 +36,17 @@ import java.util.List;
 public class GuiControllerViewProfile {
 
     @FXML
-    public Button button1;
+    public Button button1VP;
     @FXML
-    public Button button2;
+    public Button button2VP;
     @FXML
-    public Button button3;
+    public Button button3VP;
     @FXML
-    public Button button4;
+    public Button button4VP;
     @FXML
-    public Button button5;
+    public Button button5VP;
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentViewDes;
     @FXML
     public AnchorPane anchorPaneFocus;
     @FXML
@@ -76,24 +76,24 @@ public class GuiControllerViewProfile {
     }
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentViewDes.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentViewDes.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentViewDes.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentViewDes.getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -157,15 +157,12 @@ public class GuiControllerViewProfile {
             tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
             tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
 
-            EventHandler<MouseEvent> mouseHandler = new EventHandler<>() {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                @Override
-                public void handle(MouseEvent t) {
-                    ImageView imageView = (ImageView) t.getSource();  // Prende l'imageView collegata all'evento.
+            EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
+                    ImageView imageView = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
 
                     imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
                     centerImage(imageFocused);                     // Centra l'immagine.
                     anchorPaneFocus.setVisible(true);
-                }
             };
 
             anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
@@ -202,32 +199,32 @@ public class GuiControllerViewProfile {
 
 
     public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Carica Opera"));
-        button4.setTooltip(new Tooltip("Offerte Mostre"));
-        button5.setTooltip(new Tooltip("Opere Vendute"));
+        button1VP.setTooltip(new Tooltip("Home"));
+        button2VP.setTooltip(new Tooltip("Profilo"));
+        button3VP.setTooltip(new Tooltip("Carica Opera"));
+        button4VP.setTooltip(new Tooltip("Offerte Mostre"));
+        button5VP.setTooltip(new Tooltip("Opere Vendute"));
     }
 
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(event, art);
+        SceneController scvpd = new SceneController();
+        scvpd.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneController scvpd = new SceneController();
+        scvpd.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneController scvpd = new SceneController();
+        scvpd.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(event, art);
+        SceneController scvpd = new SceneController();
+        scvpd.switchToSceneProfiloVenduto(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {

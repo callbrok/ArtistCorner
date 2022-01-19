@@ -1,1 +1,1 @@
-ÿ 2javaXChr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java
+ÿ 2javaXVhrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java

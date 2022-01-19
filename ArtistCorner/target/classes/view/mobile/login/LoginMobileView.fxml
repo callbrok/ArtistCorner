@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="anchor" fx:id="anchorMain" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin">
+<AnchorPane id="anchor" fx:id="anchorMainLoginMobile" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin">
    <children>
       <Pane layoutX="3.0" layoutY="42.0" prefHeight="634.0" prefWidth="469.0" styleClass="pane">
          <children>
@@ -15,7 +15,7 @@
             <Button layoutX="118.0" layoutY="366.0" mnemonicParsing="false" onAction="#sendData" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Log In" />
             <Pane fx:id="paneExceptionLogin" layoutX="68.0" layoutY="453.0" prefHeight="143.0" prefWidth="336.0" style="-fx-background-color: #d13e0a;">
                <children>
-                  <Label fx:id="labelExceptionLogin" layoutX="7.0" layoutY="19.0" prefHeight="101.0" prefWidth="320.0" text="Label" textFill="WHITE">
+                  <Label fx:id="labelExceptionLoginM" layoutX="7.0" layoutY="19.0" prefHeight="101.0" prefWidth="320.0" text="Label" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

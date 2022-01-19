@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 public class GuiControllerLogin {
     @FXML
-    public AnchorPane anchorParent;
+    public AnchorPane anchorParentLoginD;
     @FXML
     public SVGPath svgLogo;
     @FXML
@@ -48,12 +48,12 @@ public class GuiControllerLogin {
     }
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentLoginD.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentLoginD.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -61,12 +61,12 @@ public class GuiControllerLogin {
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentLoginD.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentLoginD.getScene().getWindow();
         stage.setIconified(true);
     }
 

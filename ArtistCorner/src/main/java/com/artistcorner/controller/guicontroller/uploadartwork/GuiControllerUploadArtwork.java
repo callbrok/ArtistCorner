@@ -133,16 +133,18 @@ public class GuiControllerUploadArtwork {
         fileChooser.getExtensionFilters().add(extFilter);
 
         File selectedFile = fileChooser.showOpenDialog(stage);
-        filePath = selectedFile.toString();   // Setta il path dell'immagine nella bean.
+
+        filePath = selectedFile.toString();
+
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
     }
 
     public void initDragAndDrop(){
-        //TODO Implement Drag and Drop Feature.
+        //Implement Drag and Drop Feature.
 
     }
 
-    public void uploadFile() throws Exception {
+    public void uploadFile() {
         UploadArtWork upawDesk = new UploadArtWork();
         int flagVendibile;
         double prezzo;

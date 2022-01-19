@@ -26,7 +26,7 @@ import java.util.List;
 
 public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
-    public AnchorPane anchorMain;
+    public AnchorPane anchorMainMobile;
     @FXML
     public Label labelUsernameDisplay;
     @FXML
@@ -52,11 +52,12 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     private double y=0;
     private Stage stage;
 
-    GetReccomandation lc = new GetReccomandation();
-    List<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
-    int idLivello; // Variabile che tiene conto del livello corrente dell'albero
+    GetReccomandation lcm = new GetReccomandation();
+    List<Nodo> arraylistM = lcm.initializeTreeTxt(); // Inizializza albero
+    int idLivelloMobile; // Variabile che tiene conto del livello corrente dell'albero
     ArtistBean art;
     Nodo n;
+
 
     /**
      * Deserializza lo stato dell'algoritmo di decisione, nel caso in cui il file contenente l'ultima istanza
@@ -73,11 +74,11 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
             Nodo c2 = (Nodo)in.readObject();
             in.close();
 
-            lc.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
+            lcm.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
             labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
-            idLivello = c2.getIdProprio(); // Prende l'id del nodo serializzato
+            idLivelloMobile = c2.getIdProprio(); // Prende l'id del nodo serializzato
         } else {
-            idLivello = 1; // Inizializzazione dell'algoritmo al primo nodo
+            idLivelloMobile = 1; // Inizializzazione dell'algoritmo al primo nodo
         }
 
     }
@@ -104,7 +105,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      */
     public void makeSerializable(Nodo n) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH));
-        out.writeObject(lc.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
+        out.writeObject(lcm.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
         out.writeObject(n);  // Serializza l'ultimo nodo
         out.close(); // Also flushes the output
     }
@@ -116,13 +117,13 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     public void setAnswerNo() throws IOException, GetRaccomandationProblemException {
         // In caso di risposta negativa
 
-        n = lc.decisionTree("N", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        n = lcm.decisionTree("N", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
         // (ritornato da decisionTree) relativo alla risposta fornita
 
         if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
 
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
-        idLivello = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
         makeSerializable(n);                                 // Serializza il nodo corrente
     }
@@ -132,13 +133,13 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
      */
     public void setAnswerYes() throws IOException, GetRaccomandationProblemException {
-        n = lc.decisionTree("Y", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        n = lcm.decisionTree("Y", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
         // (ritornato da decisionTree) relativo alla risposta fornita
 
         if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
 
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
-        idLivello = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
         makeSerializable(n);                                 // Serializza il nodo corrente
     }
@@ -148,19 +149,19 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
      */
     public void setAnswerRand() throws IOException, GetRaccomandationProblemException {
-        n = lc.decisionTree("YN", arraylist, idLivello);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        n = lcm.decisionTree("YN", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
         // (ritornato da decisionTree) relativo alla risposta fornita
 
         if(n.getIdProprio() == 0){showSolution();}            // Se viene tornato il nodo di fine albero, mostro la soluzione.
 
         labelQuestion.setText(n.getDomanda());                // Setta la label con la domanda ricavata dal nodo figlio ritornato
-        idLivello = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+        idLivelloMobile = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
         makeSerializable(n);                                  // Serializza il nodo corrente
     }
 
     public void showSolution(){
-        String[] soluzione = lc.getSolution();
+        String[] soluzione = lcm.getSolution();
 
         // Visualizza risposte.
         anchorResult.setVisible(true);
@@ -191,22 +192,22 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
 
 
     public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainMobile.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainMobile.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -214,27 +215,27 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneMainArtista(event, art);
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloVenduto(event, art);
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloVenduto(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloOfferteMostre(event, art);
     }
 }

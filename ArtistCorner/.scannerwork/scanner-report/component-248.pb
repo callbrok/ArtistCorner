@@ -1,1 +1,1 @@
-ø 2javaX4hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewArtistSummary.java
+ø 2javaXžhrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java

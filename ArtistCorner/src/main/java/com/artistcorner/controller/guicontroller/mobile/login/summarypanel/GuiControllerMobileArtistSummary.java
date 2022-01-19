@@ -21,7 +21,7 @@ import java.sql.SQLException;
 
 public class GuiControllerMobileArtistSummary {
     @FXML
-    public AnchorPane anchorMain;
+    public AnchorPane anchorMainASummaryM;
     @FXML
     public Pane paneIdeaButton;
     @FXML
@@ -67,22 +67,22 @@ public class GuiControllerMobileArtistSummary {
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainASummaryM.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainASummaryM.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);

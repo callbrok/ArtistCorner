@@ -1,1 +1,1 @@
-‚ 2javaX¤hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java
+‚ 2javaXÃhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java

@@ -31,15 +31,15 @@ import java.util.List;
 
 public class GuiControllerMobileViewProfile {
     @FXML
-    public AnchorPane anchorMain;
+    public AnchorPane anchorMainViewM;
     @FXML
     public Label labelUsernameDisplay;
     @FXML
-    public TilePane tilePaneBlob;
+    public TilePane tilePaneBlobM;
     @FXML
-    public AnchorPane anchorPaneFocus;
+    public AnchorPane anchorPaneFocusM;
     @FXML
-    public ImageView imageFocused;
+    public ImageView imageFocusedM;
     @FXML
     public Pane paneExceptionLoad;
     @FXML
@@ -60,7 +60,7 @@ public class GuiControllerMobileViewProfile {
 
 
     public void initialize(){
-        anchorPaneFocus.setVisible(false);
+        anchorPaneFocusM.setVisible(false);
         scrollTileBlob.setFitToWidth(true);
         scrollTileBlob.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         makeDraggable();
@@ -69,24 +69,24 @@ public class GuiControllerMobileViewProfile {
     public void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
         if (img != null) {
-            double w = 0;
-            double h = 0;
+            double wM = 0;
+            double hM = 0;
 
-            double ratioX = imageView.getFitWidth() / img.getWidth();
-            double ratioY = imageView.getFitHeight() / img.getHeight();
+            double ratioXM = imageView.getFitWidth() / img.getWidth();
+            double ratioYM = imageView.getFitHeight() / img.getHeight();
 
             double reducCoeff = 0;
-            if(ratioX >= ratioY) {
-                reducCoeff = ratioY;
+            if(ratioXM >= ratioYM) {
+                reducCoeff = ratioYM;
             } else {
-                reducCoeff = ratioX;
+                reducCoeff = ratioXM;
             }
 
-            w = img.getWidth() * reducCoeff;
-            h = img.getHeight() * reducCoeff;
+            wM = img.getWidth() * reducCoeff;
+            hM = img.getHeight() * reducCoeff;
 
-            imageView.setX((imageView.getFitWidth() - w) / 2);
-            imageView.setY((imageView.getFitHeight() - h) / 2);
+            imageView.setX((imageView.getFitWidth() - wM) / 2);
+            imageView.setY((imageView.getFitHeight() - hM) / 2);
 
         }
     }
@@ -99,21 +99,19 @@ public class GuiControllerMobileViewProfile {
         try {
             listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
 
-            tilePaneBlob.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
-            tilePaneBlob.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
+            tilePaneBlobM.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
+            tilePaneBlobM.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
 
-            EventHandler<MouseEvent> mouseHandler = new EventHandler<>() {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                @Override
-                public void handle(MouseEvent t) {
-                    ImageView imageView = (ImageView) t.getSource();  // Prende l'imageView collegata all'evento.
+            // Crea un EventHandler sull'imageView all'interno del tilePane.
+            EventHandler<MouseEvent> mouseHandler = t -> {
+                ImageView imageView = (ImageView)t.getSource();  // Prende l'imageView collegata all'evento.
 
-                    imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                    centerImage(imageFocused);                     // Centra l'immagine.
-                    anchorPaneFocus.setVisible(true);
-                }
+                imageFocusedM.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
+                centerImage(imageFocusedM);                     // Centra l'immagine.
+                anchorPaneFocusM.setVisible(true);
             };
 
-            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
+            anchorPaneFocusM.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocusM.setVisible(false));
 
             for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
 
@@ -132,7 +130,7 @@ public class GuiControllerMobileViewProfile {
                 imageThumb.setImage(image);
 
                 imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
+                tilePaneBlobM.getChildren().add(imageThumb);   // Popola la tilePane.
             }
 
         } catch (ArtWorkNotFoundException e) {
@@ -148,22 +146,22 @@ public class GuiControllerMobileViewProfile {
 
 
     public void exitWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainViewM.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainViewM.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainViewM.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainViewM.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -171,32 +169,32 @@ public class GuiControllerMobileViewProfile {
     }
 
     public void makeLogOut(ActionEvent event) throws IOException {
-        SceneControllerMobile sm = new SceneControllerMobile();
-        sm.switchToLogin(event);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToLogin(event);
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneMainArtista(event, art);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloArtista(event, art);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneUploadOpera(event, art);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToSceneUploadOpera(event, art);
     }
 
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloVenduto(event, art);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToSceneProfiloVenduto(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+        SceneControllerMobile smvm = new SceneControllerMobile();
+        smvm.switchToSceneProfiloOfferteMostre(event, art);
     }
 }
