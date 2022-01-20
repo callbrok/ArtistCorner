@@ -1,1 +1,1 @@
-ù 2javaXÕhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+ù 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateArtWorkExceptionView.java

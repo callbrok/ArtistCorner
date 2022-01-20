@@ -1,0 +1,1 @@
+£ 2javaXahrksrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java

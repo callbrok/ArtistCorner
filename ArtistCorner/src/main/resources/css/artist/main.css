@@ -52,7 +52,7 @@
 }
 
 .loggerButton SVGPath{
-    -fx-fill:  #d13e0a;
+    -fx-fill:  #e38b6c;
 }
 
 .loggerButton:hover SVGPath{
@@ -60,10 +60,26 @@
 }
 
 .loggerButton{
-    -fx-background-color: #ebad98;
+    -fx-background-color: #ffffff;
 }
 
 .loggerButton:hover{
+    -fx-background-color: #ebad98;
+}
+
+.loggerButtonOnButton SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
+.loggerButtonOnButton:hover SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
+.loggerButtonOnButton{
+    -fx-background-color: #ebad98;
+}
+
+.loggerButtonOnButton:hover{
     -fx-background-color: #ebad98;
 }
 

@@ -1,10 +1,10 @@
 package com.artistcorner.model;
 
 public class Proposal {
-    int idOfferta;
-    int artista;
-    int galleria;
-    int flagAccettazione;
+    private int idOfferta;
+    private  int artista;
+    private int galleria;
+    private  int flagAccettazione;
 
     public  Proposal(int newId, int newArtista, int newGalleria, int newFlagAccettazione){
         this.idOfferta = newId;

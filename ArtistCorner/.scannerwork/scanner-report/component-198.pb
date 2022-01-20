@@ -1,1 +1,0 @@
-Æ 2javaXhr1src/main/java/com/artistcorner/model/ArtWork.java

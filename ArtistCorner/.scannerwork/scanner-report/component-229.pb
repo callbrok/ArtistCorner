@@ -1,1 +1,0 @@
-å 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

@@ -1,16 +1,16 @@
 
-9com.artistcorner.model.Artist#getNome()Ljava/lang/String;g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java ("1*¬
-1g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java$ ((·
-´
-g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java$ ((
-%0java.lang.String"__id*+*)
-com.artistcorner.model.Artist"
-nome"ƒ
-g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java ()
+Gcom.artistcorner.engclasses.bean.ArtistBean#getNome()Ljava/lang/String;u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java ("1*ä
+1u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java$ ((Ó
+Ð
+u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java$ ((
+%0java.lang.String"__id*9*7-
++com.artistcorner.engclasses.bean.ArtistBean"
+nome"‘
+u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java ()
 
-%0java.lang.StringB!
-com.artistcorner.model.Artist
+%0java.lang.StringB/-
++com.artistcorner.engclasses.bean.ArtistBean

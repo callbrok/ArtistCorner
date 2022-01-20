@@ -1,23 +1,23 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Buyer;
-import javafx.scene.control.ListView;
+public class UserBean {
+    private String username;
+    private String password;
+    private String role;
 
-import java.util.ArrayList;
-
-public class ViewBuyerSummary {
-
-    public void inizializeOpereComprate(ListView<String> listViewCompra, Buyer buy) {
-        ArrayList<Integer> arrayOfComprate = BuyerDAO.retrieveAllComprate(buy.getIdBuyer());
-        ArrayList<ArtWork> arrayFinal = new ArrayList<>();
-        for (int n : arrayOfComprate) {
-            ArtWork artwork = BuyerDAO.retrieveArtWorks(n, 0);
-            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
-
-            arrayFinal.add(artwork);
-        }
-
+    public UserBean(String newUsernameB, String newPasswordB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
+        this.role = "NULL";
     }
+
+    public UserBean(String newUsernameB, String newPasswordB, String newRoleB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
+        this.role = newRoleB;
+    }
+
+    public String getUsername(){return username;}
+    public String getPassword(){return password;}
+    public String getRole() {return role;}
 }

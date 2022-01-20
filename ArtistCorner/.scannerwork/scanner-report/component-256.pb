@@ -1,1 +1,1 @@
-€ 2javaXÉhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java
+€ 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java

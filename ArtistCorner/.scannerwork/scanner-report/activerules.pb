@@ -275,7 +275,12 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 apexS101"
 format^[A-Z][a-zA-Z0-9_]*$(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
 apexS2757(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
-apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v[
+apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6vH
+javaS5843"
+maxComplexity20(øœ÷ã¶.0øœ÷ã¶.:AX5nzHve-NH3hzEYSh7K3
+javaS4544(À‚ñÙÎ,0À‚ñÙÎ,:AX5nzHve-NH3hzEYSh7K3
+javaS2122(ø•à©Ä)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
+javaS6217(˜’µµç/0˜’µµç/:AX5nzHve-NH3hzEYSh7K[
 javaS115"'
 format^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$(¸˜Ù±ñ(0àå‰ºì*:AX5nzHve-NH3hzEYSh7KQ
 javaS107"
@@ -322,7 +327,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS1181(¸˜Ù±ñ(0°õ‰ºì*:AX5nzHve-NH3hzEYSh7K3
 javaS5876(È„¥™Ð.0È„¥™Ð.:AX5nzHve-NH3hzEYSh7K3
 javaS4423(ˆ¤Þ¹¯,0ðÃù–’/:AX5nzHve-NH3hzEYSh7K3
-javaS4544(À‚ñÙÎ,0À‚ñÙÎ,:AX5nzHve-NH3hzEYSh7K3
 javaS2245(À•ŠñÚ,0À•ŠñÚ,:AX5nzHve-NH3hzEYSh7K3
 javaS4426(°½Î½,0èœù–’/:AX5nzHve-NH3hzEYSh7K3
 javaS4425(°½Î½,0°½Î½,:AX5nzHve-NH3hzEYSh7K3
@@ -619,9 +623,7 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS6213( ã›ÊŽ/0 ã›ÊŽ/:AX5nzHve-NH3hzEYSh7K3
 javaS3551(¸—ïŸ‰-0¸—ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
 javaS2165(ø•à©Ä)0€…Šºì*:AX5nzHve-NH3hzEYSh7K3
-javaS6103(ÐòØ«ð.0ÐòØ«ð.:AX5nzHve-NH3hzEYSh7KH
-javaS5843"
-maxComplexity20(øœ÷ã¶.0øœ÷ã¶.:AX5nzHve-NH3hzEYSh7K3
+javaS6103(ÐòØ«ð.0ÐòØ«ð.:AX5nzHve-NH3hzEYSh7K3
 javaS5411(È²–£Ë-0È²–£Ë-:AX5nzHve-NH3hzEYSh7K3
 javaS4454(ÀÍš¿¦,0ÀÍš¿¦,:AX5nzHve-NH3hzEYSh7K3
 javaS2129(øØóÅæ*0 òÌäµ+:AX5nzHve-NH3hzEYSh7K3
@@ -701,7 +703,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS2390(€Ö»Ÿ²+0˜£ŸÆØ+:AX5nzHve-NH3hzEYSh7K3
 javaS1158(¸˜Ù±ñ(0°õ‰ºì*:AX5nzHve-NH3hzEYSh7K3
 javaS1157(¸˜Ù±ñ(0°õ‰ºì*:AX5nzHve-NH3hzEYSh7K3
-javaS2122(ø•à©Ä)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS1155(¸˜Ù±ñ(0°õ‰ºì*:AX5nzHve-NH3hzEYSh7K3
 javaS2123(àà©Ä)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS1153(¸˜Ù±ñ(0¸¢ü Ì*:AX5nzHve-NH3hzEYSh7K3
@@ -729,7 +730,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS1201(¸˜Ù±ñ(0™öÙ—*:AX5nzHve-NH3hzEYSh7K3
 javaS3626(¸”Þ¹¯,0¸”Þ¹¯,:AX5nzHve-NH3hzEYSh7K3
 javaS1940( ¿×¿Å*0¸¢ü Ì*:AX5nzHve-NH3hzEYSh7K3
-javaS2912(èÄÙŠÝ)0èŒŠºì*:AX5nzHve-NH3hzEYSh7K3
 javaS1905(€µƒž)0Èóû Ì*:AX5nzHve-NH3hzEYSh7K3
 javaS4065( Ç ÆØ+0 Ç ÆØ+:AX5nzHve-NH3hzEYSh7K3
 javaS5164(¸ä•£Ë-0¸ä•£Ë-:AX5nzHve-NH3hzEYSh7K3
@@ -1649,7 +1649,9 @@ common-phpDuplicatedBlocks(˜¦°Â„+0˜¦°Â„+:AX5nzHve-NH3hzEYSh7F=
 phpsecurityS5883(ØØþ¹Ô/0ØØþ¹Ô/:AX5nzHve-NH3hzEYSh7F:
 phpsecurityS2076( ¦¬Ä›-0 ¦¬Ä›-:AX5nzHve-NH3hzEYSh7F:
 phpsecurityS5334( ·Áéº-0 ·Áéº-:AX5nzHve-NH3hzEYSh7F:
-phpsecurityS6350(à‚þ¹Ô/0à‚þ¹Ô/:AX5nzHve-NH3hzEYSh7F4
+phpsecurityS6350(à‚þ¹Ô/0à‚þ¹Ô/:AX5nzHve-NH3hzEYSh7FR
+swiftS114"
+format^[A-Z][a-zA-Z0-9]*$(°Ž²ç)0°Ž²ç):AX5nzHve-NH3hzEYSh644
 swiftS1301(Àü€ÁÂ)0Àü€ÁÂ):AX5nzHve-NH3hzEYSh644
 swiftS2094(Àü€ÁÂ)0„ïÇá+:AX5nzHve-NH3hzEYSh64R
 swiftS116"
@@ -1699,9 +1701,7 @@ common-phpDuplicatedBlocks(˜¦°Â„+0˜¦°Â„+:AX5nzHve-NH3hzEYSh7F=
 swiftS1125(€¶èÄ¶,0€¶èÄ¶,:AX5nzHve-NH3hzEYSh644
 swiftS1133(Àü€ÁÂ)0Àü€ÁÂ):AX5nzHve-NH3hzEYSh644
 swiftS1134(Àü€ÁÂ)0Àü€ÁÂ):AX5nzHve-NH3hzEYSh644
-swiftS1135(È‡Ž²ç)0È‡Ž²ç):AX5nzHve-NH3hzEYSh64R
-swiftS114"
-format^[A-Z][a-zA-Z0-9]*$(°Ž²ç)0°Ž²ç):AX5nzHve-NH3hzEYSh644
+swiftS1135(È‡Ž²ç)0È‡Ž²ç):AX5nzHve-NH3hzEYSh644
 swiftS1144(˜Ç–’ì*0˜Ç–’ì*:AX5nzHve-NH3hzEYSh64R
 swiftS117"
 format^[a-z][a-zA-Z0-9]*$(¨üîÇá+0¨üîÇá+:AX5nzHve-NH3hzEYSh644

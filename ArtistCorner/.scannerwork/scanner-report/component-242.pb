@@ -1,1 +1,1 @@
-ò 2javaXšhrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java
+ò 2javaXhr4src/main/java/com/artistcorner/model/ArtGallery.java

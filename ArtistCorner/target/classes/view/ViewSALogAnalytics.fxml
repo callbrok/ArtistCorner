@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorParentLogSA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewSALogAnalytics">
+    <children>
+        <Pane prefHeight="170.0" prefWidth="998.0" style="-fx-background-color: #e38b6c;">
+            <children>
+                <Label layoutX="34.0" layoutY="36.0" prefHeight="53.0" prefWidth="233.0" text="Artist Corner" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </Label>
+                <Button layoutX="969.0" layoutY="3.0" mnemonicParsing="false" onAction="#exitWindowUpload" styleClass="buttonChange" text="x" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Button>
+                <Button layoutX="945.0" layoutY="3.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="buttonChange" text="-" textFill="WHITE" />
+            </children>
+
+            <SVGPath fx:id="svgProfile" content="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256c2.581,0,5.099-0.32,7.68-0.384l0.896,0.171    c0.704,0.128,1.387,0.213,2.091,0.213c0.981,0,1.984-0.128,2.923-0.405l1.195-0.341C405.056,503.509,512,392.171,512,256    C512,114.837,397.163,0,256,0z M408.149,434.325c-1.003-3.264-3.264-6.016-6.549-7.104l-56.149-18.688    c-19.605-8.171-28.736-39.552-30.869-52.139c14.528-13.504,27.947-33.621,27.947-51.797c0-6.187,1.749-8.555,1.408-8.619    c3.328-0.832,6.037-3.2,7.317-6.379c1.045-2.624,10.24-26.069,10.24-41.877c0-0.875-0.107-1.749-0.32-2.581    c-1.344-5.355-4.48-10.752-9.173-14.123v-49.664c0-30.699-9.344-43.563-19.243-51.008c-2.219-15.275-18.581-44.992-76.757-44.992    c-59.477,0-96,55.915-96,96v49.664c-4.693,3.371-7.829,8.768-9.173,14.123c-0.213,0.853-0.32,1.728-0.32,2.581    c0,15.808,9.195,39.253,10.24,41.877c1.28,3.179,2.965,5.205,6.293,6.037c0.683,0.405,2.432,2.795,2.432,8.96    c0,18.176,13.419,38.293,27.947,51.797c-2.112,12.565-11.157,43.925-30.144,51.861l-56.896,18.965    c-3.264,1.088-5.611,3.776-6.635,7.04C53.376,391.189,21.291,327.317,21.291,256c0-129.387,105.28-234.667,234.667-234.667    S490.624,126.613,490.624,256C490.667,327.339,458.56,391.253,408.149,434.325z" fill="#d13e0a" layoutX="527.0" layoutY="-189.0" />
+            <Label fx:id="labelUsernameDisplay" layoutX="811.0" layoutY="50.0" text="Analytics" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="labelLogOut" layoutX="811.0" layoutY="68.0" text="LOGOUT" textFill="WHITE">
+                <font>
+                    <Font size="10.0" />
+                </font>
+            </Label>
+
+
+
+        </Pane>
+        <Pane id="mainPane" fx:id="paneExceptionLoad" layoutX="56.0" layoutY="127.0" prefHeight="539.0" prefWidth="889.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow height="10.0" radius="4.5" width="10.0" />
+            </effect>
+         <children>
+            <LineChart fx:id="lineChartSA" layoutX="14.0" layoutY="15.0" prefHeight="512.0" prefWidth="861.0">
+              <xAxis>
+                <CategoryAxis fx:id="xAxisChart" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxisChart" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+        </Pane>
+        <Button layoutX="-1.0" layoutY="170.0" mnemonicParsing="false" onAction="#goToMainLog" prefHeight="46.0" prefWidth="56.0" styleClass="loggerButton">
+            <graphic>
+                <SVGPath content="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </graphic></Button>
+      <Button layoutX="-1.0" layoutY="216.0" mnemonicParsing="false"  prefHeight="46.0" prefWidth="56.0" styleClass="loggerButtonOnButton">
+         <graphic>
+            <SVGPath content="M18.799 7.038c-.496-.535-.799-1.252-.799-2.038 0-1.656 1.344-3 3-3s3 1.344 3 3-1.344 3-3 3c-.146 0-.29-.01-.431-.031l-3.333 6.032c.475.53.764 1.231.764 1.999 0 1.656-1.344 3-3 3s-3-1.344-3-3c0-.583.167-1.127.455-1.587l-2.565-3.547c-.281.087-.58.134-.89.134l-.368-.022-3.355 6.069c.451.525.723 1.208.723 1.953 0 1.656-1.344 3-3 3s-3-1.344-3-3 1.344-3 3-3c.186 0 .367.017.543.049l3.298-5.967c-.52-.539-.841-1.273-.841-2.082 0-1.656 1.344-3 3-3s3 1.344 3 3c0 .617-.187 1.191-.507 1.669l2.527 3.495c.307-.106.637-.164.98-.164.164 0 .325.013.482.039l3.317-6.001zm-3.799 7.962c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm-6-8c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" />
+         </graphic>
+      </Button>
+
+
+
+    </children>
+</AnchorPane>

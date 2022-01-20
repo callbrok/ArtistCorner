@@ -1,1 +1,1 @@
-ð 2javaX¿hrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java
+ð 2javaXhr2src/main/java/com/artistcorner/model/Proposal.java

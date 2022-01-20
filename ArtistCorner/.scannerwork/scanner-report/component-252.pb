@@ -1,1 +1,2 @@
-ü 2javaX¯hrrsrc/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java
+ü 2javaX
+hr]src/main/java/com/artistcorner/engclasses/exceptions/ProposalsManagementProblemException.java

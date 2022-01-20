@@ -1,1 +1,1 @@
-ç 2javaXChr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java
+ç 2javaXhr?src/main/java/com/artistcorner/engclasses/query/QueryLogin.java

@@ -1,1 +1,1 @@
-Å 2javaXÚhrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java
+Å 2javaX	hrZsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtWorkNotFoundExceptionView.java

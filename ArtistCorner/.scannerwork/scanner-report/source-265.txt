@@ -1,34 +1,10 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
+public class DuplicateArtWorkException extends  Exception{
 
-import java.util.ArrayList;
-import java.util.List;
+    private static final long serialVersionUID = 1L;
 
-public class ViewSalesHistory {
-
-    public List<ArtWorkBean> retrieveSellArtWorks(ArtistBean artBean) throws SellArtWorkNotFoundException {
-
-        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
-
-        List<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
-        ArrayList<ArtWorkBean> arrayOfArtworkBeans = new ArrayList<>();
-
-        if(arrayOfArtwork.isEmpty()){
-            throw new SellArtWorkNotFoundException("Nessuna opera venduta.");
-        }
-
-        for (ArtWork n : arrayOfArtwork) {
-            arrayOfArtworkBeans.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto()));
-        }
-
-        return arrayOfArtworkBeans;
+    public DuplicateArtWorkException (String message) {
+        super(message);
     }
-
-
 }

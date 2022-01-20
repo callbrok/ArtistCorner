@@ -1,1 +1,1 @@
-þ 2javaXuhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java
+þ 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundException.java

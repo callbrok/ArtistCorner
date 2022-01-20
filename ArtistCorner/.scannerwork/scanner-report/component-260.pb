@@ -1,1 +1,1 @@
-„ 2javaXXhrXsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java
+„ 2javaXhrVsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtWorkNotFoundException.java

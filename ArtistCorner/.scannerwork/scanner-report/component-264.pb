@@ -1,1 +1,2 @@
-ˆ 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java
+ˆ 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java

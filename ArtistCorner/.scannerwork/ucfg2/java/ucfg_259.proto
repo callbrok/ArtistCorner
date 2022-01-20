@@ -1,16 +1,16 @@
 
-Ccom.artistcorner.engclasses.bean.Nodo#getKeyObj()Ljava/lang/String;o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java ("1*Œ
-1o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java& (,…
-∆
-o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java& (,
-%0java.lang.String"__id*5*3'
-%com.artistcorner.engclasses.bean.Nodo"
-keyObj"ã
-o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java (-
+Icom.artistcorner.engclasses.bean.BuyerBean#getCognome()Ljava/lang/String;t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*„
+1t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-‘
+—
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-
+%0java.lang.String"__id*;*9,
+*com.artistcorner.engclasses.bean.BuyerBean"	
+cognome"ê
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java (.
 
-%0java.lang.StringB)'
-%com.artistcorner.engclasses.bean.Nodo
+%0java.lang.StringB.,
+*com.artistcorner.engclasses.bean.BuyerBean

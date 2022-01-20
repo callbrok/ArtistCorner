@@ -1,1 +1,1 @@
-‹ 2javaX<hr\src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtGalleryProposals.java
+‹ 2javaXJhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java

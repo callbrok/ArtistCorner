@@ -1,1 +1,1 @@
-ú 2javaXãhrwsrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java
+ú 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundExceptionView.java

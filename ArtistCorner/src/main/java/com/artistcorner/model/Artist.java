@@ -1,14 +1,20 @@
 package com.artistcorner.model;
 
 public class Artist {
-    int idArtista;
-    String nome;
-    String cognome;
+    private int idArtista;
+    private String nome;
+    private String cognome;
 
     public Artist(int newId, String newNome, String newCognome){
         this.nome = newNome;
         this.cognome = newCognome;
         this.idArtista = newId;
+    }
+
+    public Artist(String newNome, String newCognome){
+        this.nome = newNome;
+        this.cognome = newCognome;
+        this.idArtista = 0;
     }
 
     public String getNome() {return nome;}

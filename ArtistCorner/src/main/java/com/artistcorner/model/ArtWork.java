@@ -1,11 +1,11 @@
 package com.artistcorner.model;
 
 public class ArtWork {
-    int idOpera;
-    String titolo;
-    double prezzo;
-    int flagVenduto;
-    int artistaId;
+    private int idOpera;
+    private String titolo;
+    private double prezzo;
+    private int flagVenduto;
+    private  int artistaId;
 
     public ArtWork(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVenduto,int newArtistaId){
         this.idOpera=newIdOpera;

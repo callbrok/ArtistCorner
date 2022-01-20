@@ -1,10 +1,10 @@
 package com.artistcorner.engclasses.bean;
 
 public class ArtWorkBean {
-    int idOpera;
-    String titolo;
-    double prezzo;
-    int flagVendibile;
+    private int idOpera;
+    private String titolo;
+    private double prezzo;
+    private int flagVendibile;
 
     public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile){
         this.idOpera=newIdOpera;

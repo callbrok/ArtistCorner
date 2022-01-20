@@ -1,1 +1,1 @@
-ê 2javaX§hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java
+ê 2javaX#hr?src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java

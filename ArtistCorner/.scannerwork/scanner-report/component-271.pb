@@ -1,1 +1,1 @@
-è 2javaXhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java
+è 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

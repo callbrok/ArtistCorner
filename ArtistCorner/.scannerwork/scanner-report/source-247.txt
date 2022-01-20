@@ -1,234 +1,535 @@
-package com.artistcorner.controller.guicontroller.viewprofile;
+package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.controller.applicationcontroller.ViewProfile;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
-import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.others.ConnectProperties;
+import com.artistcorner.engclasses.query.QueryBuyer;
+import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.shape.SVGPath;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
+import com.artistcorner.model.Buyer;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class GuiControllerViewProfile {
+public class BuyerDAO {
 
-    @FXML
-    public Button button1VP;
-    @FXML
-    public Button button2VP;
-    @FXML
-    public Button button3VP;
-    @FXML
-    public Button button4VP;
-    @FXML
-    public Button button5VP;
-    @FXML
-    public AnchorPane anchorParentViewDes;
-    @FXML
-    public AnchorPane anchorPaneFocus;
-    @FXML
-    public ImageView imageFocused;
-    @FXML
-    public TilePane tilePaneBlob;
-    @FXML
-    public Label labelLogOut;
-    @FXML
-    public SVGPath svgProfile;
-    @FXML
-    public Label labelUsernameDisplay;
-    @FXML
-    public Pane paneExceptionLoad;
-
-    private double x=0;
-    private double y=0;
-    private Stage stage;
-
-    ArtistBean art;
-
-
-    public void getArtist(ArtistBean loggedArtist) throws SQLException, IOException {
-        art = loggedArtist;
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
-        initializeTilePane(loggedArtist);
-    }
-
-    private void makeDraggable(){
-        anchorParentViewDes.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
-
-        anchorParentViewDes.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
-    }
-    public void exitWindow() {
-        stage = (Stage) anchorParentViewDes.getScene().getWindow();
-        stage.close();
-    }
-
-    public void minimizeWindow() {
-        stage = (Stage) anchorParentViewDes.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToLogin(event);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-    }
-
-
-    public void initialize() throws SQLException {
-        anchorPaneFocus.setVisible(false);
-
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
-
-        makeDraggable();
-        setTooltipMenu();
-        makeLogOut();
-    }
-
-    public void centerImage(ImageView imageView) {
-        Image img = imageView.getImage();
-        if (img != null) {
-            double w = 0;
-            double h = 0;
-
-            double ratioX = imageView.getFitWidth() / img.getWidth();
-            double ratioY = imageView.getFitHeight() / img.getHeight();
-
-            double reducCoeff = 0;
-            if(ratioX >= ratioY) {
-                reducCoeff = ratioY;
-            } else {
-                reducCoeff = ratioX;
-            }
-
-            w = img.getWidth() * reducCoeff;
-            h = img.getHeight() * reducCoeff;
-
-            imageView.setX((imageView.getFitWidth() - w) / 2);
-            imageView.setY((imageView.getFitHeight() - h) / 2);
-
-        }
-    }
-
-
-    private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
-        ViewProfile vp = new ViewProfile();
-        List<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
+    public static Buyer retrieveBuyer(UserBean usr){
+        Buyer bu = null;
+        Statement stmt = null;
+        Connection conn = null;
 
         try {
-            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
 
-            tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
-            tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
 
-            EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                    ImageView imageView = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectBuyer(stmt, usr.getUsername());
 
-                    imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                    centerImage(imageFocused);                     // Centra l'immagine.
-                    anchorPaneFocus.setVisible(true);
-            };
-
-            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
-
-            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
-
-                InputStream inputStream = b.getBinaryStream();
-
-                /*1)preserveRatio:
-                Indicates whether to preserve the aspect ratio of the source image when scaling to
-                fit the image within the fitting bounding box.
-
-                2)smooth:
-                Indicates whether to use a better quality filtering algorithm or a faster one when transforming
-                or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
-                Image image = new Image(inputStream, 100, 100, true, false);
-
-                ImageView imageThumb = new ImageView();
-                imageThumb.setImage(image);
-
-                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No Buyer found");
+                throw e;
             }
 
-        } catch (ArtWorkNotFoundException e) {
-            // Eccezione: Campi lasciati vuoti.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String cognomeBuyer = rs.getString("cognome");
+                String nomeBuyer = rs.getString("nome");
+                int idBuyer = rs.getInt("idCompratore");
 
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+                bu = new Buyer(idBuyer,nomeBuyer, cognomeBuyer);
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
         }
+
+        return bu;
+    }
+    public static ArtWork retrieveArtWorks(int idUsr,int flag){
+        ArtWork artWork=null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectArtWork(stmt, idUsr,flag);
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No ArtWork found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String titolo = rs.getString("titolo");
+                int venduto = rs.getInt("flagVendibile");
+                double prezzo = rs.getDouble("prezzo");
+                int idOpera = rs.getInt("idOpera");
+                int artistaId = rs.getInt("artista");
+
+                artWork = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return artWork;
+    }
+
+    public static Blob retrieveImage(int idArtWork){
+        Blob immagine =null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectImage(stmt, idArtWork);
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No Blob found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                immagine = rs.getBlob("immagine");
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return immagine;
     }
 
 
-    public void setTooltipMenu(){
-        button1VP.setTooltip(new Tooltip("Home"));
-        button2VP.setTooltip(new Tooltip("Profilo"));
-        button3VP.setTooltip(new Tooltip("Carica Opera"));
-        button4VP.setTooltip(new Tooltip("Offerte Mostre"));
-        button5VP.setTooltip(new Tooltip("Opere Vendute"));
+
+
+    public static Artist retrieveArtistName(int idUsr) {
+        Artist artist = null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectAllArtistName(stmt, idUsr);
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No Artist Name found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String name = rs.getString("nome");
+                String cognome = rs.getString("cognome");
+                artist = new Artist(idUsr,name,cognome);
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return artist;
+
+    }
+
+    public static ArrayList<Integer> retrieveArtWorkId(int idUsr) {
+        ArrayList<Integer> listOfArtWorkId = new ArrayList<Integer>();
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectArtWorkId(stmt, idUsr);
+
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No ArtWork ID  found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                int name = rs.getInt("opera");
+                ArtWork artWork = new ArtWork(name,null,0,0,0);
+                listOfArtWorkId.add(artWork.getIdOpera());
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return listOfArtWorkId;
     }
 
 
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneMainArtista(event, art);
+    public static void addArtWorkComprata(int artWorkId, int idBuyer) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryBuyer.insertOperaComprata(stmt,artWorkId, idBuyer);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+
     }
 
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneProfiloArtista(event, art);
+    public static void switchFlagVendibile(int idOpera) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryBuyer.switchFlagVendibile(stmt,idOpera);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+
     }
 
-    public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneUploadOpera(event, art);
+    public static int removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
+        Statement stmt = null;
+        int result=0;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+        return result;
     }
 
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneProfiloVenduto(event, art);
+    public static ArrayList<ArtWork> retrieveArtWorkByName(String input) {
+        input= input.replaceAll("","$0%");
+        ArrayList<ArtWork> artWork = new ArrayList<>();
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectArtWorkByName(stmt, input);
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No ArtWork found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String titolo = rs.getString("titolo");
+                int venduto = rs.getInt("flagVendibile");
+                double prezzo = rs.getDouble("prezzo");
+                int idOpera = rs.getInt("idOpera");
+                int artistaId = rs.getInt("artista");
+
+                ArtWork art = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
+                artWork.add(art);
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return artWork;
     }
 
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
+    public static void addArtWorkToFavourites(int artWorkId, int idBuyer) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryBuyer.insertOperaFavourites(stmt,artWorkId, idBuyer);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+
+    }
+    public static ArrayList<Integer> retrieveAllComprate(int idBuyer) {
+        ArrayList<Integer> comprate = new ArrayList<>();
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectOpereComprate(stmt, idBuyer);
+
+            if (!rs.first()){ // rs empty
+                Exception e = new Exception("No Buy History found");
+                throw e;
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                int operaId = rs.getInt("opera");
+
+                comprate.add(operaId);
+
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return comprate;
+
     }
 }
+

@@ -1,88 +1,72 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.query;
 
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Buyer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Statement;
 
-public class ViewSearchArtWorkBuyer {
+public class QueryBuyer {
 
-
-    public void initializeListView(String input, ListView<GuiControllerViewSearchArtWorkBuyer.HBoxCell> listView, Buyer buy) throws SQLException, IOException {
-        ArrayList<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
-        ArrayList<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
-        List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list = new ArrayList<>();
-        for (ArtWork work : artWorkList) {
-            Blob immagine = BuyerDAO.retrieveImage(work.getIdOpera());
-            Artist artist = BuyerDAO.retrieveArtistName(work.getArtistaId());
-            InputStream inputStream = null;
-            try {
-                inputStream = immagine.getBinaryStream();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            Image image1 = new Image(inputStream, 100, 100, true, false);
-            list.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell("Acquista",work.getTitolo(), artist.getNome() + " " + artist.getCognome(), work.getPrezzo(), image1, work.getIdOpera(),"Aggiungi ai Preferiti", buy.getIdBuyer(),artWorkId));
-        }
-
-        ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list);
-        listView.setItems(myObservableList);
+    public static ResultSet selectBuyer(Statement stmt, String user) throws SQLException {
+        String sql = "SELECT * FROM acquirente WHERE username ='" + user + "';";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+    public static ResultSet selectArtWorkId(Statement stmt, int idBuyer) throws SQLException {
+        String sql = "SELECT * FROM preferito WHERE acquirente ='" + idBuyer  + "';";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
     }
 
-    public String manageButtonClick(ActionEvent arg0, Button buttonAcquista, Button buttonPreferiti, int idOpera, int idBuyer ){
-
-        switch (buttonPreferiti.getText()){
-            case "Rimuovi dai Preferiti":{
-                try {
-                    BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                    return "Aggiungi ai Preferiti";
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-
-            }
-            case "Aggiungi ai Preferiti":{
-                try {
-                    BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                    return "Rimuovi dai Preferiti";
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-
-            }
-            default:
-        }
-        return "Rimuovi dai Preferiti";
+    public static ResultSet selectArtWork(Statement stmt, int idOpera,int flag) throws SQLException {
+        String sql = "SELECT * FROM opera WHERE idOpera ='" + idOpera + "' AND flagVendibile ="+flag+";";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
     }
 
+    public static ResultSet selectImage(Statement stmt, int idBuyer) throws SQLException {
+        String sql = "SELECT immagine FROM opera WHERE idOpera ='" + idBuyer + "' AND flagVendibile =1;";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
 
-    public void finishPayment(int idOpera, int idBuyer){
+    public static ResultSet selectAllArtistName(Statement stmt, int idArtista) throws SQLException {
+        String sql = "SELECT * FROM artista WHERE idArtista ='" + idArtista + "';";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+    public static int insertOperaComprata(Statement stmt, int idOpera, int idBuyer) throws SQLException {
+        String updateStatement = "INSERT INTO compra(opera,acquirente) VALUES ('"+idOpera+"','"+idBuyer+"');";
+        System.out.println(updateStatement);
+        return stmt.executeUpdate(updateStatement);
+    }
+    public static int switchFlagVendibile(Statement stmt, int idOpera) throws SQLException {
+        String sql="UPDATE opera SET flagVendibile = 0 WHERE idOpera ="+idOpera+";";
+        System.out.println(sql);
+        return stmt.executeUpdate(sql);
+    }
+    public static int removeOperaFromFavourites(Statement stmt, int idOpera, int idBuyer) throws SQLException {
+    String sql = "DELETE FROM preferito WHERE opera ='"+idOpera+ "'AND acquirente = "+idBuyer+";";
+    System.out.println(sql);
+        return stmt.executeUpdate(sql);
+    }
 
-        try {
-            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-            BuyerDAO.switchFlagVendibile(idOpera);
-            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+    public static ResultSet selectArtWorkByName(Statement stmt, String input) throws SQLException {
+        String sql = "SELECT * FROM opera WHERE titolo LIKE'" +input+ "' AND flagVendibile =1;";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+    }
 
-        }
+    public static int insertOperaFavourites(Statement stmt, int idOpera, int idBuyer) throws SQLException {
+        String updateStatement = "INSERT INTO preferito(opera,acquirente) VALUES ('"+idOpera+ "','" +idBuyer+"');";
+        System.out.println(updateStatement);
+        return stmt.executeUpdate(updateStatement);
+    }
+
+    public static  ResultSet selectOpereComprate(Statement stmt ,int idBuyer) throws SQLException {
+        String sql = "SELECT * FROM compra WHERE acquirente = "+idBuyer+";";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
     }
 
 }

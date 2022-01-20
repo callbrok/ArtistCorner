@@ -9,16 +9,26 @@
     <children>
         <AnchorPane layoutY="31.0" prefHeight="340.0" prefWidth="829.0" style="-fx-background-color: #fff;">
             <children>
-                <Button layoutY="90.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Log In" />
-                <Button layoutY="129.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Sign Up" />
-                <TextField fx:id="textFieldUsername" layoutX="495.0" layoutY="121.0" prefHeight="39.0" prefWidth="293.0" promptText="Username" />
-                <TextField fx:id="textFieldPassword" layoutX="495.0" layoutY="187.0" prefHeight="39.0" prefWidth="293.0" promptText="Password" />
-                <Label layoutX="591.0" layoutY="42.0" prefHeight="45.0" prefWidth="89.0" text="Log In" textFill="#39A67F">
-                    <font>
-                        <Font size="23.0" />
-                    </font>
-                </Label>
-            <Button layoutX="495.0" layoutY="252.0" mnemonicParsing="false" onAction="#sendData" prefHeight="45.0" prefWidth="293.0" text="LogIn" />
+                <Button fx:id="buttonMenuLogIn" layoutY="90.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Log In" />
+                <Button layoutY="129.0" mnemonicParsing="false" onAction="#changeToRegister" prefHeight="39.0" prefWidth="142.0" text="Sign In" />
+            <AnchorPane fx:id="anchorSummarySignUp" layoutX="453.0" prefHeight="340.0" prefWidth="376.0" style="-fx-background-color: #ffffff;">
+                <children>
+                    <Button layoutX="67.0" layoutY="80.0" mnemonicParsing="false" onAction="#goToArtistSignUp" prefHeight="48.0" prefWidth="243.0" text="Come Artista" />
+                    <Button layoutX="67.0" layoutY="142.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0" text="Come Galleria" />
+                    <Button layoutX="67.0" layoutY="206.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0" text="Come Acquirente" />
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorSignUp" layoutX="453.0" prefHeight="340.0" prefWidth="376.0">
+               <children>
+                  <Button layoutX="34.0" layoutY="247.0" mnemonicParsing="false" onAction="#sendData" prefHeight="45.0" prefWidth="293.0" text="LogIn" />
+                      <TextField fx:id="textFieldUsername" layoutX="34.0" layoutY="110.0" prefHeight="39.0" prefWidth="293.0" promptText="Username" />
+                      <PasswordField fx:id="textFieldPassword" layoutX="34.0" layoutY="172.0" prefHeight="39.0" prefWidth="293.0" promptText="Password" />
+                      <Label layoutX="144.0" layoutY="30.0" prefHeight="45.0" prefWidth="89.0" text="Log In" textFill="#39A67F">
+                          <font>
+                              <Font size="23.0" />
+                          </font>
+                      </Label>
+               </children></AnchorPane>
             </children></AnchorPane>
         <AnchorPane layoutX="141.0" layoutY="-1.0" prefHeight="400.0" prefWidth="312.0" style="-fx-background-color: #39A67F;">
             <children>

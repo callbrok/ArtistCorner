@@ -11,6 +11,10 @@ import java.sql.Statement;
 
 public class LoginDAO {
 
+    private LoginDAO(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static UserBean retrieveUser(UserBean userBean){
         UserBean loggedUserBean = null;
         Statement stmt = null;
@@ -46,22 +50,23 @@ public class LoginDAO {
             rs.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException el) {
+            el.printStackTrace();
+        } catch (Exception el1) {
+            el1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se2l) {
+                se2l.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException sel) {
+                sel.printStackTrace();
             }
         }
 

@@ -1,23 +1,23 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
+public class ArtGalleryBean {
+    int galleria;
+    String nome;
+    String descrizione;
+    String indirizzo;
+    String username;
 
-import java.util.ArrayList;
-
-public class ViewProfileGallery {
-
-    public String retrieveArtistName(int idArtista) {
-        Artist name =BuyerDAO.retrieveArtistName(idArtista);
-        String artistname = name.getNome()+" "+name.getCognome();
-        return artistname;
+    public  ArtGalleryBean(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
+        this.galleria = newGalleria;
+        this.nome = newNome;
+        this.descrizione = newDescrizione;
+        this.indirizzo = newIndirizzo;
+        this.username = newUsername;
     }
 
-    public ArrayList<Proposal> retrieveProposal(ArtGalleryBean gallery,int flag){
-        ArrayList<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag);
-        return proposal;
-    }
+    public int getGalleria() {return galleria;}
+    public String getNome() {return nome;}
+    public String getDescrizione() {return descrizione;}
+    public String getIndirizzo() {return indirizzo;}
+    public String getUsername() {return username;}
 }

@@ -1,33 +1,27 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
-import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
+public abstract class ExceptionView {
+    private Pane exceptionPane;
 
-public class UploadArtWork {
-
-    public void uploadImage(ArtWorkBean upArt, int idArtista, String filePath) throws DuplicateArtWorkException, FileNotFoundException, EmptyFieldException{
-        // Dato che uploadImage non cattura l'eccezzione EmptyFieldExceptio
-        // lo metto in throws.
-
-
-        if(upArt.getTitolo().equals("")) {
-            throw new EmptyFieldException("Lasciati campi per l'upload vuoti.");
-        }
-
-
+    public ExceptionView(ExceptionsTypeMenager etm){
         try {
-            ArtistDAO.saveArtWork(upArt, idArtista, filePath);
-        } catch (Exception e) {
+            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
+    public Pane getExceptionPane(){ return exceptionPane;}
 
 
 }

@@ -1,10 +1,10 @@
 package com.artistcorner.engclasses.bean;
 
 public class ProposalBean {
-    int idOfferta;
-    int artista;
-    int galleria;
-    int flagAccettazione;
+    private int idOfferta;
+    private int artista;
+    private  int galleria;
+    private int flagAccettazione;
 
     public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
         this.idOfferta = newIdB;

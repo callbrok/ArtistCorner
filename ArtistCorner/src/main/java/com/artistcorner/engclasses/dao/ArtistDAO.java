@@ -2,16 +2,10 @@ package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException;
-import com.artistcorner.engclasses.exceptions.ArtistNotFoundException;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
-import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
+import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
+import com.artistcorner.model.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -89,6 +83,38 @@ public class ArtistDAO {
     }
 
 
+    public static void insertArtist(User user, Artist art) throws SQLException {
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryArtist.insertUser(stmt, user);
+
+            result = QueryArtist.insertArtist(stmt, art, user.getUsername());
+
+            if(result == -1){throw new AddArtistException("Impossibile aggiungere artista");}
+
+        } catch (Exception e5){
+            e5.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+    }
+
+
     public static List<ArtWork> retrieveSellArtWorks(int idUsr){
         ArrayList<ArtWork> listOfArtWork = new ArrayList<>();
         Statement stmt = null;
@@ -134,14 +160,14 @@ public class ArtistDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
+            } catch (SQLException se3) {
+                se3.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se4) {
+                se4.printStackTrace();
             }
         }
 
@@ -240,14 +266,14 @@ public class ArtistDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
+            } catch (SQLException se5) {
+                se5.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se6) {
+                se6.printStackTrace();
             }
         }
 
@@ -296,14 +322,14 @@ public class ArtistDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
+            } catch (SQLException se7) {
+                se7.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se8) {
+                se8.printStackTrace();
             }
         }
 
@@ -383,14 +409,14 @@ public class ArtistDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
+            } catch (SQLException se9) {
+                se9.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se10) {
+                se10.printStackTrace();
             }
         }
 

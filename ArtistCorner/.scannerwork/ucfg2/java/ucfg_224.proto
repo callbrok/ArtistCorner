@@ -1,51 +1,85 @@
 
-hcom.artistcorner.engclasses.query.QueryGallery#selectArtistId(Ljava/sql/Statement;I)Ljava/sql/ResultSet;x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (*"1*‰
-1x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (>‘
-—
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (I
-%0java.lang.String"__concat*+)
-'SELECT * FROM offerta WHERE galleria ='*
-""¡
-æ
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (Q
-%1java.lang.String"__concat*
+[com.artistcorner.engclasses.others.ConnectProperties#getDriverClassName()Ljava/lang/String;~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java1 1(+"8*”
+2~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java; ;(8»
+≈
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java; ;(8#
+driverClassNamejava.lang.String"__id*
 
-%0java.lang.String*
-';∂
-≥
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (R
-sqljava.lang.String"__id*
-
-%1java.lang.String¶
-£
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (
-%2java.io.PrintStream"__id*
-""êç
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (
-
-%3void"0java.io.PrintStream#println(Ljava/lang/String;)V*
-
-%2java.io.PrintStream*
-
-sqljava.lang.String2println(Ljava/lang/String;)ª∏
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (%
-%4java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+%5java.lang.String*
+1*ª
+4~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java; ;("∞≠
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java; ;(8
+%5java.lang.String"Fjava.util.Properties#getProperty(Ljava/lang/String;)Ljava/lang/String;*
+
+propjava.util.Properties*
+
+driver2getProperty(Ljava/lang/String;)*
+2*Û
+5~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java7 7(/≈
+¬
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java7 7(/
+propjava.util.Properties"__id*
 
-stmtjava.sql.Statement*
-
-sqljava.lang.String2 executeQuery(Ljava/lang/String;)"ñ
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (&
-
-%4java.sql.ResultSet:
-stmtjava.sql.Statement:
-""B2"0
-.com.artistcorner.engclasses.query.QueryGallery
+%2java.util.Properties†ù
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java8 8(
+
+%4void"1java.util.Properties#load(Ljava/io/InputStream;)V*
+
+propjava.util.Properties*
+
+fsjava.io.FileInputStream2load(Ljava/io/InputStream;)*
+4*÷
+6~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java4 4(u…
+∆
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java4 4(u
+fsjava.io.FileInputStream"__id*
+
+%0java.io.FileInputStreamµ≤
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java7" 7(,
+%2java.util.Properties"java.util.Properties«
+ƒ
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java7 7(.
+%3"java.util.Properties#<init>()V*
+
+%2java.util.Properties*
+5*Î
+7~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java45 4(tª∏
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java4% 4(4
+%0java.io.FileInputStream"java.io.FileInputStream¢
+ü
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java4! 4(u
+%1"3java.io.FileInputStream#<init>(Ljava/lang/String;)V*
+
+%0java.io.FileInputStream*A?
+=ArtistCorner/src/main/resources/dbproperties/login.properties*
+6*“
+8~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java2 2(4«
+ƒ
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.java2 2(5#
+driverClassNamejava.lang.String"__id*
+NO DRIVER SPECIFIED*
+7*≠
+1~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.javaA A("ß
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ConnectProperties.javaA A(%
+#
+driverClassNamejava.lang.StringB8"6
+4com.artistcorner.engclasses.others.ConnectProperties

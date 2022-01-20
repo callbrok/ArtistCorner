@@ -1,1 +1,1 @@
-ƒ 2javaXhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java
+ƒ 2javaXhrMsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldException.java

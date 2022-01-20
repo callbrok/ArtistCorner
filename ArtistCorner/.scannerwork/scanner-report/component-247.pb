@@ -1,1 +1,1 @@
-÷ 2javaXëhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
+÷ 2javaX˜hr;src/main/java/com/artistcorner/engclasses/dao/BuyerDAO.java

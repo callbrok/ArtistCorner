@@ -1,0 +1,1 @@
+— 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

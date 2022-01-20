@@ -1,6 +1,9 @@
 package com.artistcorner.engclasses.query;
 
+import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
+import com.artistcorner.model.User;
+import javafx.scene.shape.ArcTo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +12,21 @@ import java.sql.Statement;
 
 public class QueryArtist {
 
+    private QueryArtist(){throw new IllegalStateException("Utility Query Artist class");}
+
     public static ResultSet selectArtist(Statement stmt, String user) throws SQLException {
         String sql = "SELECT * FROM artista WHERE username ='" + user + "';";
         return stmt.executeQuery(sql);
+    }
+
+    public static int insertUser(Statement stmt, User userInsert) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO utente (username, password, ruolo) VALUES ('%s','%s','%s')", userInsert.getUsername(), userInsert.getPassword(), userInsert.getRole());
+        return stmt.executeUpdate(insertStatement);
+    }
+
+    public static int insertArtist(Statement stmt, Artist artistInsert, String username) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO artista (nome, cognome, username) VALUES ('%s','%s','%s')", artistInsert.getNome(), artistInsert.getCognome(), username);
+        return stmt.executeUpdate(insertStatement);
     }
 
     public static ResultSet selectSellArtWork(Statement stmt, int idArtista) throws SQLException {
@@ -40,7 +55,7 @@ public class QueryArtist {
         return stmt.executeUpdate(updateStatement);
     }
 
-    public static String insertArtWork() throws SQLException {
+    public static String insertArtWork() {
         return "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
     }
 

@@ -1,0 +1,25 @@
+package com.artistcorner.controller.applicationcontroller;
+
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.query.QueryArtist;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.User;
+
+import java.sql.SQLException;
+
+public class SignUp {
+
+    public void registerArtist(UserBean user, ArtistBean art){
+        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole());
+        Artist artistToAdd = new Artist(art.getNome(), art.getCognome());
+
+        try {
+            ArtistDAO.insertArtist(userToAdd, artistToAdd);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

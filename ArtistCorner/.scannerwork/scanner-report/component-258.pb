@@ -1,1 +1,2 @@
-‚ 2javaXÃhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java
+‚ 2javaX
+hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java

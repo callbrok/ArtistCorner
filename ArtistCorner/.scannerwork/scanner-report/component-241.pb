@@ -1,1 +1,1 @@
-ñ 2javaX‡hrysrc/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java
+ñ 2javaXhr1src/main/java/com/artistcorner/model/ArtWork.java

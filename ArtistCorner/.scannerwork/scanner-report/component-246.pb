@@ -1,1 +1,1 @@
-ö 2javaXUhrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java
+ö 2javaXöhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

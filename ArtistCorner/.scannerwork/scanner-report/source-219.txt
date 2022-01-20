@@ -1,8 +1,0 @@
-package com.artistcorner.engclasses.exceptions;
-
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
-
-public class ArtWorkNotFoundExceptionView extends ExceptionView{
-
-    public ArtWorkNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
-}

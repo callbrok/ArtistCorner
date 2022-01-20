@@ -1,1 +1,1 @@
-ì 2javaXBhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+ì 2javaXhr4src/main/java/com/artistcorner/HelloApplication.java

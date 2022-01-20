@@ -1,1 +1,1 @@
-ô 2javaX´hrjsrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerArtistSummary.java
+ô 2javaX¯hr<src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

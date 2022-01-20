@@ -1,20 +1,20 @@
 package com.artistcorner.engclasses.bean;
 
 public class UserBean {
-    String username;
-    String password;
-    String role;
+    private String username;
+    private String password;
+    private String role;
 
-    public UserBean(String newUsername, String newPassword){
-        this.username = newUsername;
-        this.password = newPassword;
+    public UserBean(String newUsernameB, String newPasswordB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
         this.role = "NULL";
     }
 
-    public UserBean(String newUsername, String newPassword, String newRole){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = newRole;
+    public UserBean(String newUsernameB, String newPasswordB, String newRoleB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
+        this.role = newRoleB;
     }
 
     public String getUsername(){return username;}
