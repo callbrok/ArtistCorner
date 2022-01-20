@@ -1,1 +1,1 @@
-˜ 2javaXhr<src/main/java/com/artistcorner/engclasses/others/Commit.java
+˜ 2javaXhr<src/main/java/com/artistcorner/engclasses/bean/UserBean.java

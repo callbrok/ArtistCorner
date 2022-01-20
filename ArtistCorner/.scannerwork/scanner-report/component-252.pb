@@ -1,2 +1,1 @@
-ü 2javaX
-hr]src/main/java/com/artistcorner/engclasses/exceptions/ProposalsManagementProblemException.java
+ü 2javaXÇhr<src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

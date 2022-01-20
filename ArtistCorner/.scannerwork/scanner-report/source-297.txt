@@ -1,224 +1,226 @@
-package com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
+package com.artistcorner.controller.guicontroller.viewloganalytics;
 
-import com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.others.HBoxInitializer;
+import com.artistcorner.controller.applicationcontroller.ViewLogAnalytics;
+import com.artistcorner.engclasses.others.Commit;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Buyer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.chart.*;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+import org.eclipse.jgit.api.errors.GitAPIException;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiControllerViewFavouritesBuyer {
+public class GuiControllerViewSALogAnalytics {
+    @FXML
+    private LineChart lineChartSA;
+    @FXML
+    private CategoryAxis xAxisChart;
+    @FXML
+    public NumberAxis yAxisChart;
+    @FXML
+    private AnchorPane anchorParentLogSA;
+    @FXML
+    private Label labelLogOut;
+    @FXML
+    private SVGPath svgProfile;
 
-        @FXML
-        public AnchorPane anchorParent;
-        public AnchorPane anchorPane1;
-        public Label labelLogOut;
-        public ListView<HBoxCell> listView;
-        public Label labelUsernameDisplay;
-        public SVGPath svgProfile;
-        public Button button1;
-        public Button button2;
-        public Button button3;
-        private double x=0, y=0;
-        Stage stage;
-        public BuyerBean buy;
+    private double xUpload=0;
+    private double yUpload=0;
+    private Stage stage;
 
 
-        public void initialize() throws SQLException {
-                makeDraggable();
-                setTooltipMenu();
-                makeLogOut();
-                svgProfile.setScaleX(0.07);
-                svgProfile.setScaleY(0.07);
+    public void initialize() throws GitAPIException, IOException {
+        makeDraggable();
+        makeLogOut();
+        initChart();
 
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
+    }
+
+
+    public double commitCounter(List<Commit> listOfCommit, String data){
+        double counter = 0;
+
+        String dateToCompare = data.substring(0, 8);
+
+        for (Commit cmt : listOfCommit) {
+            if(cmt.getData().substring(0,8).equals(dateToCompare)){counter=counter+1;}
         }
-        public void makeLogOut(){
-                labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                        SceneController sc = new SceneController();
-                        try {
-                                sc.switchToLogin(event);
-                        } catch (IOException e) {
-                                e.printStackTrace();
-                        }
-                });
 
-        }
+        return counter;
+    }
 
-        public void getBuyer(BuyerBean loggedBuyer) throws SQLException, IOException {
-                buy = loggedBuyer;
-                labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
-                ViewFavouritesBuyer fb = new ViewFavouritesBuyer();
-                List<HBoxInitializer> list = fb.initializeListView(buy);
-                List<HBoxCell> list2 = new ArrayList<>();
-                for (int i = 0, listSize = list.size(); i < listSize; i++) {
-                        HBoxInitializer e = list.get(i);
-                        list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+
+    public void initChart() throws GitAPIException, IOException {
+
+        ViewLogAnalytics vla = new ViewLogAnalytics();
+
+        XYChart.Series<String, Double> series1 = new XYChart.Series();   // Andamento Commit.
+
+        XYChart.Series<String, Double> series2 = new XYChart.Series();   // Media Commit.
+        XYChart.Series<String, Double> series3 = new XYChart.Series();   // Upper Limit.
+        XYChart.Series<String, Double> series4 = new XYChart.Series();   // Lower Limit.
+
+        yAxisChart.setLabel("Numero Commit");
+        yAxisChart.setTickUnit(1);
+        series1.setName("Number of Commit");
+        series2.setName("Center Line");
+        series3.setName("Upper Control Limit");
+        series4.setName("Lower Control Limit");
+
+        int dayCounter = 0;
+        double sumNumberCommit = 0;
+        double averageCommit = 0;
+        double stdv = 0;
+        double stdvSum = 0;
+        double upperLimit = 0;
+        double lowerLimit = 0;
+
+        List<Double> listValue = new ArrayList<>();
+
+        List<Commit> listOfCommit = vla.initializeCommitArray();
+
+        // Scorre la lista dei commit ed inizializza il grafico principale.
+        for (int i=0; i < listOfCommit.size(); i++) {
+            Commit cmtPrevious = null;
+            Commit cmt = listOfCommit.get(i);
+
+            double numberCommit = commitCounter(listOfCommit, cmt.getData());
+            String data = cmt.getData().substring(0,8);
+
+            if(i>0){   // Salta inserimenti duplicati nel grafico
+                cmtPrevious = listOfCommit.get(i-1);
+                String previousData = cmtPrevious.getData().substring(0,8);
+
+                if(data.equals(previousData)){
+                    continue;
                 }
-                ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
-                listView.setItems(myObservableList);
+            }
+
+            dayCounter = dayCounter +1;   // Conta il numero totale dei giorni in cui sono stati effetuati i commit.
+            sumNumberCommit = sumNumberCommit + numberCommit;   // Somma il numero di tutti i commit giorno per giorno.
+            listValue.add(numberCommit);  // Aggiunge ad un lista il numero dei commit per ogni giorno analizzato.
+
+            series1.getData().add(new XYChart.Data<String, Double>(data, numberCommit));
         }
 
-        private void makeDraggable(){
-                anchorParent.setOnMousePressed(((event) -> {
-                        x=event.getSceneX();
-                        y= event.getSceneY();
-                }));
+        averageCommit = sumNumberCommit / dayCounter;
+        
 
-                anchorParent.setOnMouseDragged(((event) -> {
-                        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenY() - y);
-                }));
+        //Calcola deviazione standard
+        for (int i=0; i < listValue.size(); i++) {
+            stdvSum += Math.pow((listValue.get(i) - averageCommit),2);
         }
 
-        public void exitWindow() {
-                stage = (Stage) anchorParent.getScene().getWindow();
-                stage.close();
-        }
+        stdv = Math.sqrt(stdvSum / (listValue.size() - 1));  // Deviazione Standard.
 
-        public void minimizeWindow() {
-                stage = (Stage) anchorParent.getScene().getWindow();
-                stage.setIconified(true);
-        }
-        public void setTooltipMenu(){
-                button1.setTooltip(new Tooltip("Home"));
-                button2.setTooltip(new Tooltip("Cerca Opera"));
-                button3.setTooltip(new Tooltip("Preferiti"));
-        }
-
-        public void switchToBuyerSummary(ActionEvent actionEvent) throws IOException {
-                SceneController sc = new SceneController();
-                sc.switchToSceneBuyerSummary(actionEvent,buy);
-        }
-
-        public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
-                SceneController sc = new SceneController();
-                sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
-        }
-        public static class HBoxCell extends HBox {
-                Label labelArtWorkName = new Label();
-                Label labelArtistName = new Label();
-                Button buttonAcquista = new Button();
-                public Button buttonPreferiti = new Button();
-                Label prezzo = new Label();
-                Label prezzo1 = new Label();
-                Label labelArtistNameDefault = new Label();
-                Label labelArtWorkDefault = new Label();
-
-                public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, ArrayList<Integer> arrayListArtWorkId, String input) throws SQLException, IOException {
-                        super();
-                        ImageView imageView = new ImageView();
-                        imageView.setImage(img);
-                        imageView.setFitHeight(100);
-                        imageView.setFitWidth(100);
-                        labelArtWorkName.setText(labelText);
-                        labelArtWorkName.setAlignment(Pos.CENTER);
-                        labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-                        labelArtistName.setText(labelText1);
-                        labelArtistName.setAlignment(Pos.CENTER);
-                        labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-                        labelArtWorkName.setPrefSize(100, 50);
-                        labelArtistName.setPrefSize(100, 50);
-                        prezzo.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
-                        prezzo.setMaxWidth(Double.MAX_VALUE);
-                        prezzo.setText("€ " + Double.toString(price));prezzo.setPrefSize(100, 100);prezzo.setAlignment(Pos.CENTER);
-                        prezzo1.setText("Prezzo Opera: ");prezzo1.setPrefSize(100, 100);prezzo1.setAlignment(Pos.CENTER);prezzo1.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
-                        VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
-                        vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
-                        HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-                        HBox.setMargin(vBox1, new Insets(10, 25, 10, 25));
-                        VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
-                        vBox2.setAlignment(Pos.CENTER);
-                        labelArtWorkDefault.setText("Titolo Opera: ");labelArtWorkDefault.setAlignment(Pos.CENTER);labelArtWorkDefault.setPrefSize(100, 50);
-                        labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-                        labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        labelArtistNameDefault.setText("Nome Autore: ");
-                        labelArtistNameDefault.setAlignment(Pos.CENTER);
-                        labelArtistNameDefault.setPrefSize(100, 50);
-                        labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        buttonAcquista.setText("Acquista");
-                        buttonAcquista.setPrefSize(150, 50);
-                        buttonAcquista.setStyle(" -fx-font-size: 14px;");
-                        buttonPreferiti.setText(labelPreferiti);
-                        buttonPreferiti.setPrefSize(150, 50);
-                        buttonPreferiti.setStyle("-fx-font-size: 14px;");
-                        VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
-                        vBox.setAlignment(Pos.CENTER);
-                        ViewFavouritesBuyer lv = new ViewFavouritesBuyer();
-                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
-
-                                @Override
-                                public void handle(ActionEvent arg0) {
-                                        buttonPreferiti.setText("Paga con Carte");
-                                        buttonAcquista.setText("Paga con PayPal");
-                                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
-
-                                                @Override
-                                                public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOpera, idBuyer);
-                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
-
-                                                }
-                                        });
-                                        buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
-
-                                                @Override
-                                                public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOpera, idBuyer);
-                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
-                                                }
-                                        });
-                                }
-
-                        });
+        upperLimit = averageCommit + (3*stdv);  // Limite Superiore
+        lowerLimit = averageCommit - (3*stdv);  // Limite Inferiore
 
 
+        // Scorre la lista dei commit ed inizializza i grafici bounder.
+        for (int i=0; i < listOfCommit.size(); i++) {
+            Commit cmtPrevious = null;
+            Commit cmt = listOfCommit.get(i);
 
-                if (arrayListArtWorkId.contains(idOpera)){
-                        buttonPreferiti.setText("Rimuovi dai Preferiti");
+            String data = cmt.getData().substring(0,8);
+
+            if(i>0){   // Salta inserimenti duplicati nel grafico
+                cmtPrevious = listOfCommit.get(i-1);
+                String previousData = cmtPrevious.getData().substring(0,8);
+
+                if(data.equals(previousData)){
+                    continue;
                 }
-                buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+            }
 
-                        @Override
-                        public void handle(ActionEvent arg0) {
-                                String answer = lv.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
-                                buttonPreferiti.setText(answer);
-                        }
-                });
-
-
-                this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+            series2.getData().add(new XYChart.Data<String, Double>(data, averageCommit));
+            series3.getData().add(new XYChart.Data<String, Double>(data, upperLimit));
+            series4.getData().add(new XYChart.Data<String, Double>(data, lowerLimit));
         }
 
 
+        // Setta il grafico con i dati passati.
+        lineChartSA.getData().addAll(series1, series2, series3, series4);
+        
+
+        //Personalizza Grafico
+        yAxisChart.setAutoRanging(false);
+        yAxisChart.setLowerBound(lowerLimit - 2);
+        yAxisChart.setUpperBound(upperLimit + 2);
+
+
+        // Rimuove nodi grafici dalle serie del lineChart.
+        for (XYChart.Data<String, Double> data : series2.getData()) {
+            StackPane stackPane = (StackPane) data.getNode();
+            stackPane.setVisible(false);
+        }
+        for (XYChart.Data<String, Double> data : series3.getData()) {
+            StackPane stackPane = (StackPane) data.getNode();
+            stackPane.setVisible(false);
+        }
+        for (XYChart.Data<String, Double> data : series4.getData()) {
+            StackPane stackPane = (StackPane) data.getNode();
+            stackPane.setVisible(false);
         }
 
+    }
 
+
+    private void makeDraggable(){
+        anchorParentLogSA.setOnMousePressed((eventUpload -> {
+            xUpload=eventUpload.getSceneX();
+            yUpload= eventUpload.getSceneY();
+        }));
+
+        anchorParentLogSA.setOnMouseDragged((eventUpload -> {
+            stage = (Stage) ((Node)eventUpload.getSource()).getScene().getWindow();
+            stage.setX(eventUpload.getScreenX() - xUpload);
+            stage.setY(eventUpload.getScreenY() - yUpload);
+        }));
+    }
+
+    public void exitWindowUpload() {
+        stage = (Stage) anchorParentLogSA.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParentLogSA.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+
+    public void goToMainLog(ActionEvent event) throws IOException {
+        SceneController scsam = new SceneController();
+        scsam.switchToAnalytics(event);
+    }
 }

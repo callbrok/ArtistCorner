@@ -2,7 +2,7 @@ package com.artistcorner.engclasses.exceptions;
 
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-public class SellArtWorkNotFoundExceptionView extends ExceptionView{
+public class DuplicateArtWorkExceptionView extends ExceptionView{
 
-    public SellArtWorkNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public DuplicateArtWorkExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

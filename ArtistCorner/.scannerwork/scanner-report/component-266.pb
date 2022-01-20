@@ -1,1 +1,1 @@
-Š 2javaXIhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java
+Š 2javaX	hrZsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtWorkNotFoundExceptionView.java

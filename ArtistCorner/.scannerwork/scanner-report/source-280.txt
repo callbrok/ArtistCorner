@@ -1,17 +1,23 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.bean;
 
-public class Commit {
-    String nome;
-    String data;
-    String messaggio;
+public class UserBean {
+    private String username;
+    private String password;
+    private String role;
 
-    public Commit(String newNome, String newData, String newMessage){
-        this.nome = newNome;
-        this.data = newData;
-        this.messaggio = newMessage;
+    public UserBean(String newUsernameB, String newPasswordB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
+        this.role = "NULL";
     }
 
-    public String getNome() {return nome;}
-    public String getData() {return data;}
-    public String getMessaggio() {return messaggio;}
+    public UserBean(String newUsernameB, String newPasswordB, String newRoleB){
+        this.username = newUsernameB;
+        this.password = newPasswordB;
+        this.role = newRoleB;
+    }
+
+    public String getUsername(){return username;}
+    public String getPassword(){return password;}
+    public String getRole() {return role;}
 }

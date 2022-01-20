@@ -1,1 +1,1 @@
-§ 2javaXëhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
+§ 2javaXÞhresrc/main/java/com/artistcorner/controller/guicontroller/uploadartwork/GuiControllerUploadArtwork.java

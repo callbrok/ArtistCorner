@@ -1,200 +1,243 @@
-package com.artistcorner.controller.guicontroller.mobile.viewprofile;
+package com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
 
-import com.artistcorner.controller.applicationcontroller.ViewProfile;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer;
+import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
+import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.model.Buyer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.*;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiControllerMobileViewProfile {
-    @FXML
-    private AnchorPane anchorMainViewM;
-    @FXML
-    private Label labelUsernameDisplay;
-    @FXML
-    private TilePane tilePaneBlobM;
-    @FXML
-    private AnchorPane anchorPaneFocusM;
-    @FXML
-    private ImageView imageFocusedM;
-    @FXML
-    private Pane paneExceptionLoad;
-    @FXML
-    private ScrollPane scrollTileBlob;
 
-    private double x=0;
-    private double y=0;
-    private Stage stage;
-
-    private ArtistBean art;
+public class GuiControllerViewSearchArtWorkBuyer {
+    @FXML
+    private AnchorPane anchorParent,anchorPane;
+    public Label labelLogOut;
+    public ListView<HBoxCell> listView;
+    public Label labelUsernameDisplay;
+    public TextField textField;
+    public Button buttonSearch;
+    public Button buttonCanc;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public SVGPath svgProfile;
+    private double x=0, y=0;
+    Stage stage;
+    BuyerBean buy;
 
 
-    public void getArtist(ArtistBean loggedArtist) throws SQLException, IOException {
-        art = loggedArtist;
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
-        initializeTilePane(loggedArtist);
-    }
-
-
-    public void initialize(){
-        anchorPaneFocusM.setVisible(false);
-        scrollTileBlob.setFitToWidth(true);
-        scrollTileBlob.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+    public void initialize() throws SQLException {
         makeDraggable();
+        setTooltipMenu();
+        makeLogOut();
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
-    public void centerImage(ImageView imageView) {
-        Image img = imageView.getImage();
-        if (img != null) {
-            double wM = 0;
-            double hM = 0;
-
-            double ratioXM = imageView.getFitWidth() / img.getWidth();
-            double ratioYM = imageView.getFitHeight() / img.getHeight();
-
-            double reducCoeff = 0;
-            if(ratioXM >= ratioYM) {
-                reducCoeff = ratioYM;
-            } else {
-                reducCoeff = ratioXM;
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        });
 
-            wM = img.getWidth() * reducCoeff;
-            hM = img.getHeight() * reducCoeff;
-
-            imageView.setX((imageView.getFitWidth() - wM) / 2);
-            imageView.setY((imageView.getFitHeight() - hM) / 2);
-
-        }
     }
 
-
-    private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
-        ViewProfile vp = new ViewProfile();
-        List<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
-
-        try {
-            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
-
-            tilePaneBlobM.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
-            tilePaneBlobM.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
-
-            // Crea un EventHandler sull'imageView all'interno del tilePane.
-            EventHandler<MouseEvent> mouseHandler = t -> {
-                ImageView imageView = (ImageView)t.getSource();  // Prende l'imageView collegata all'evento.
-
-                imageFocusedM.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                centerImage(imageFocusedM);                     // Centra l'immagine.
-                anchorPaneFocusM.setVisible(true);
-            };
-
-            anchorPaneFocusM.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocusM.setVisible(false));
-
-            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
-
-                InputStream inputStream = b.getBinaryStream();
-
-                /*1)preserveRatio:
-                Indicates whether to preserve the aspect ratio of the source image when scaling to
-                fit the image within the fitting bounding box.
-
-                2)smooth:
-                Indicates whether to use a better quality filtering algorithm or a faster one when transforming
-                or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
-                Image image = new Image(inputStream, 130, 130, true, false);
-
-                ImageView imageThumb = new ImageView();
-                imageThumb.setImage(image);
-
-                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlobM.getChildren().add(imageThumb);   // Popola la tilePane.
-            }
-
-        } catch (ArtWorkNotFoundException e) {
-            // Eccezione: Campi lasciati vuoti.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }
-    }
-
-
-
-    public void exitWindow() {
-        stage = (Stage) anchorMainViewM.getScene().getWindow();
-        stage.close();
-    }
-
-    public void minimizeWindow() {
-        stage = (Stage) anchorMainViewM.getScene().getWindow();
-        stage.setIconified(true);
+    public void getBuyer(BuyerBean loggedBuyer) {
+        buy = loggedBuyer;
+        labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
     }
 
     private void makeDraggable(){
-        anchorMainViewM.setOnMousePressed((event -> {
+        anchorParent.setOnMousePressed(((event) -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMainViewM.setOnMouseDragged((event -> {
+        anchorParent.setOnMouseDragged(((event) -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
 
-    public void makeLogOut(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToLogin(event);
+    public void exitWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.close();
     }
 
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneMainArtista(event, art);
+    public void minimizeWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.setIconified(true);
+    }
+    public void setTooltipMenu(){
+        button1.setTooltip(new Tooltip("Home"));
+        button2.setTooltip(new Tooltip("Cerca Opera"));
+        button3.setTooltip(new Tooltip("Preferiti"));
     }
 
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloArtista(event, art);
+    public void switchToBuyerSummary(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneBuyerSummary(actionEvent,buy);
     }
 
-    public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneUploadOpera(event, art);
+    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneFavouritesBuyer(actionEvent,buy);
     }
 
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloVenduto(event, art);
+    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException {
+        if(keyEvent.getCode()== KeyCode.ENTER){
+            String input= textField.getText();
+            anchorPane.setVisible(true);
+            ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
+            List<HBoxInitializer> list = sa.initializeListView(input,buy);
+            List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list2 = new ArrayList<>();
+            for (int i = 0, listSize = list.size(); i < listSize; i++) {
+                HBoxInitializer e = list.get(i);
+                list2.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+            }
+            ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list2);
+            listView.setItems(myObservableList);
+        }
+    }
+    public void buttonSearchOnClick() throws SQLException, IOException {
+        String input= textField.getText();
+        ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
+        List<HBoxInitializer> list = sa.initializeListView(input,buy);
+        List<GuiControllerViewSearchArtWorkBuyer.HBoxCell> list2 = new ArrayList<>();
+        for (int i = 0, listSize = list.size(); i < listSize; i++) {
+            HBoxInitializer e = list.get(i);
+            list2.add(new GuiControllerViewSearchArtWorkBuyer.HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
+        }
+        ObservableList<GuiControllerViewSearchArtWorkBuyer.HBoxCell> myObservableList = FXCollections.observableList(list2);
+        listView.setItems(myObservableList);
+    }
+    public void buttonCancOnClick(){
+        textField.setText("");
     }
 
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloOfferteMostre(event, art);
+    public static class HBoxCell extends HBox {
+        Label labelArtWorkName = new Label();
+        Label labelArtistName = new Label();
+        Button buttonAcquista = new Button();
+        public Button buttonPreferiti = new Button();
+        Label prezzo = new Label();
+        Label prezzo1 = new Label();
+        Label labelArtistNameDefault = new Label();
+        Label labelArtWorkDefault = new Label();
+
+        public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer,int idArtista, ArrayList<Integer> arrayListArtWorkId,String input) throws SQLException, IOException {
+            ImageView imageView = new ImageView();
+            imageView.setImage(img);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            labelArtWorkName.setText(labelText);
+            labelArtWorkName.setAlignment(Pos.CENTER);
+            labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtistName.setText(labelText1);
+            labelArtistName.setAlignment(Pos.CENTER);
+            labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
+            labelArtWorkName.setPrefSize(100, 50);
+            labelArtistName.setPrefSize(100, 50);
+            prezzo.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
+            prezzo.setMaxWidth(Double.MAX_VALUE);
+            prezzo.setText("€ " + Double.toString(price));prezzo.setPrefSize(100, 100);prezzo.setAlignment(Pos.CENTER);
+            prezzo1.setText("Prezzo Opera: ");prezzo1.setPrefSize(100, 100);prezzo1.setAlignment(Pos.CENTER);prezzo1.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
+            vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
+            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
+            HBox.setMargin(vBox1, new Insets(10, 25, 10, 25));
+            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
+            vBox2.setAlignment(Pos.CENTER);
+            labelArtWorkDefault.setText("Titolo Opera: ");labelArtWorkDefault.setAlignment(Pos.CENTER);labelArtWorkDefault.setPrefSize(100, 50);
+            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
+            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            labelArtistNameDefault.setText("Nome Autore: ");
+            labelArtistNameDefault.setAlignment(Pos.CENTER);
+            labelArtistNameDefault.setPrefSize(100, 50);
+            labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            buttonAcquista.setText("Acquista");
+            buttonAcquista.setPrefSize(150, 50);
+            buttonAcquista.setStyle(" -fx-font-size: 14px;");
+            buttonPreferiti.setText(labelPreferiti);
+            buttonPreferiti.setPrefSize(150, 50);
+            buttonPreferiti.setStyle("-fx-font-size: 14px;");
+            VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
+            vBox.setAlignment(Pos.CENTER);
+            ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
+
+            buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    buttonPreferiti.setText("Paga con Carte");
+                    buttonAcquista.setText("Paga con PayPal");
+                    buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                            sa.finishPayment( idOpera, idBuyer);
+                            buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+
+                        }
+                    });
+                    buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                            sa.finishPayment( idOpera, idBuyer);
+                            buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                        }
+                    });
+                }
+
+            });
+
+
+
+            if (arrayListArtWorkId.contains(idOpera)){
+                buttonPreferiti.setText("Rimuovi dai Preferiti");
+            }
+            buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    String answer = sa.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
+                    buttonPreferiti.setText(answer);
+                }
+            });
+
+
+            this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+        }
+
     }
+
 }

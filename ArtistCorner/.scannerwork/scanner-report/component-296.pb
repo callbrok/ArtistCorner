@@ -1,1 +1,1 @@
-¨ 2javaXÄhrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java
+¨ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java

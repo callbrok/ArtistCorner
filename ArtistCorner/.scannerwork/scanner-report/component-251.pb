@@ -1,2 +1,1 @@
-û 2javaX
-hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java
+û 2javaXhr5src/main/java/com/artistcorner/MobileApplication.java

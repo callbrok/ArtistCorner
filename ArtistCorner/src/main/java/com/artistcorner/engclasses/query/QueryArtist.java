@@ -19,6 +19,11 @@ public class QueryArtist {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet selectUsername(Statement stmt) throws SQLException {
+        String sql = "SELECT username FROM utente ;";
+        return stmt.executeQuery(sql);
+    }
+
     public static int insertUser(Statement stmt, User userInsert) throws SQLException  {
         String insertStatement = String.format("INSERT INTO utente (username, password, ruolo) VALUES ('%s','%s','%s')", userInsert.getUsername(), userInsert.getPassword(), userInsert.getRole());
         return stmt.executeUpdate(insertStatement);

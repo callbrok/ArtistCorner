@@ -1,1 +1,0 @@
-ò 2javaXhr4src/main/java/com/artistcorner/model/ArtGallery.java

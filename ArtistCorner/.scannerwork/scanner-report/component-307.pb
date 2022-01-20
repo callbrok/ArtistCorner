@@ -1,1 +1,1 @@
-³ 2javaXjhrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java
+³ 2javaXáhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java

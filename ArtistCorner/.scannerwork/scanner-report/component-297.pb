@@ -1,1 +1,1 @@
-© 2javaXáhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+© 2javaXãhrmsrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java

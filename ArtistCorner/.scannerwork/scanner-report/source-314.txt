@@ -1,26 +1,116 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.model.*;
-import javafx.scene.control.ListView;
+import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.sql.SQLException;
 
-public class ViewGallerySummary {
+public class GuiControllerMobileArtistSummary {
+    @FXML
+    private AnchorPane anchorMainASummaryM;
+    @FXML
+    private Pane paneIdeaButton;
+    @FXML
+    private ImageView imageGifButton;
+    @FXML
+    private Label labelAlgoritmo;
+    @FXML
+    private Label labelUsernameDisplay;
 
-    public void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
-        ArrayList<Proposal> arrayOfProposal = GalleryDAO.retrieveProposal(gal,0);
-        ArrayList<String> arrayFinal = new ArrayList<>();
-        for (Proposal n : arrayOfProposal) {
-            Artist artist = BuyerDAO.retrieveArtistName(n.getArtista());
-            String artistName =  artist.getNome()+" "+artist.getCognome();
-            listViewOfferte.getItems().add("Offerta inviata in attesa di risposta per Artista :  " + artistName);  // Popola la listView.
+    private double x=0;
+    private double y=0;
+    private Stage stage;
 
-             arrayFinal.add(artistName);
-        }
+    private ArtistBean art;
+
+
+    public void initialize(){
+        makeDraggable();
+        makeGifPaneClickable();
+
     }
+
+    public void getArtist(ArtistBean loggedArtist){
+        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    }
+
+    public void makeGifPaneClickable(){
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneControllerMobile sc = new SceneControllerMobile();
+            try {
+                sc.switchToSceneProfiloAlgoritmo(event, art);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
+
+    }
+
+    public void exitWindow() {
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    private void makeDraggable(){
+        anchorMainASummaryM.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainASummaryM.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloArtista(actionEvent, art);
+    }
+
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloVenduto(actionEvent, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneUploadOpera(actionEvent, art);
+    }
+
+
 
 
 }

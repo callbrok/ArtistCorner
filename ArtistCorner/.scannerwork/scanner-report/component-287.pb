@@ -1,1 +1,1 @@
-Ÿ 2javaXãhrmsrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java
+Ÿ 2javaX/hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

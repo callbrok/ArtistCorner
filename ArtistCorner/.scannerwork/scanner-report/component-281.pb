@@ -1,1 +1,1 @@
-™ 2javaXæhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+™ 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

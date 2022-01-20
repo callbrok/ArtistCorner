@@ -1,1 +1,2 @@
-‹ 2javaXJhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java
+‹ 2javaX
+hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java

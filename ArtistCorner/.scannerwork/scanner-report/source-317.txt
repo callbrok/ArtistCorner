@@ -1,72 +1,105 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.mobile.login;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.controller.applicationcontroller.Login;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.engclasses.dao.LoginDAO;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
-import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
-public class Login {
+public class GuiControllerMobileLogin {
+    @FXML
+    private PasswordField textFieldPassword;
+    @FXML
+    private AnchorPane anchorSwitchSignUp;
+    @FXML
+    private AnchorPane paneRegister;
+    @FXML
+    private AnchorPane anchorMainLoginMobile;
+    @FXML
+    private SVGPath svgLogo;
+    @FXML
+    private TextField textFieldUsername;
+    @FXML
+    private Label labelExceptionLoginM;
+    @FXML
+    private Pane paneExceptionLogin;
+
+    private double x=0;
+    private double y=0;
+    private Stage stage;
+
+    private Login lg = new Login();
 
 
-    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException, SQLException {
-        SceneController sc = new SceneController();
-        SceneControllerMobile scm = new SceneControllerMobile();
+    public void initialize(){
+        makeDraggable();
 
-        UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
+        paneRegister.setVisible(false);
 
-        // Eccezione: Inserito utente non valido.
-        if(loggedUserBean == null){
-            throw new UserNotFoundException("Inserito utente non valido");
-        }
+        labelExceptionLoginM.setAlignment(Pos.CENTER);
+        labelExceptionLoginM.setMaxWidth(320);
+        paneExceptionLogin.setVisible(false);
+        svgLogo.setScaleX(1.3);
+        svgLogo.setScaleY(1.3);
+    }
 
-        switch (loggedUserBean.getRole()){
-            // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
-            case "artista":
-                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
-                ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
+    public void exitWindow() {
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
+        stage.close();
+    }
 
-                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
+    public void minimizeWindow() {
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
-                break;
+    private void makeDraggable(){
+        anchorMainLoginMobile.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
 
-            case "galleria":
-                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
-                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
-                if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
-                break;
+        anchorMainLoginMobile.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
 
-            case "acquirente":
-                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
-                BuyerBean loggedBuyerBean = new BuyerBean(loggedBuyer.getIdBuyer(),loggedBuyer.getNome(),loggedBuyer.getCognome());
+    public void sendData(ActionEvent actionEvent) throws IOException {
+        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
 
-                if(flagInterface.equals("D")){sc.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.
-
-                break;
-
-            case "analytics":
-                sc.switchToAnalytics(event);
-                break;
+        try {
+            lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException | SQLException e){
+            labelExceptionLoginM.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
         }
 
     }
 
+    public void openRegisterSummary() {
+        paneRegister.setVisible(true);
+    }
 
+    public void switchToArtistSignUp() throws IOException {
+        paneRegister.setVisible(false);
 
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpArtistMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
 }

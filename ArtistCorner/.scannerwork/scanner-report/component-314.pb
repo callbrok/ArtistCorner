@@ -1,1 +1,1 @@
-º 2javaXhrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java
+º 2javaXuhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java

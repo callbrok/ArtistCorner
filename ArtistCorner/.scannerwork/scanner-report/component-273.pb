@@ -1,1 +1,2 @@
-‘ 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java
+‘ 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java

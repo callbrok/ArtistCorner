@@ -1,51 +1,16 @@
 
-hcom.artistcorner.engclasses.query.QueryGallery#selectArtistId(Ljava/sql/Statement;I)Ljava/sql/ResultSet;x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (*"1*‰
-1x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (>‘
+Icom.artistcorner.engclasses.bean.BuyerBean#getCognome()Ljava/lang/String;t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*„
+1t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-‘
 —
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (I
-%0java.lang.String"__concat*+)
-'SELECT * FROM offerta WHERE galleria ='*
-""¡
-æ
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (Q
-%1java.lang.String"__concat*
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-
+%0java.lang.String"__id*;*9,
+*com.artistcorner.engclasses.bean.BuyerBean"	
+cognome"ê
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java (.
 
-%0java.lang.String*
-';∂
-≥
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (R
-sqljava.lang.String"__id*
-
-%1java.lang.String¶
-£
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (
-%2java.io.PrintStream"__id*
-""êç
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (
-
-%3void"0java.io.PrintStream#println(Ljava/lang/String;)V*
-
-%2java.io.PrintStream*
-
-sqljava.lang.String2println(Ljava/lang/String;)ª∏
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (%
-%4java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
-
-stmtjava.sql.Statement*
-
-sqljava.lang.String2 executeQuery(Ljava/lang/String;)"ñ
-x
-n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (&
-
-%4java.sql.ResultSet:
-stmtjava.sql.Statement:
-""B2"0
-.com.artistcorner.engclasses.query.QueryGallery
+%0java.lang.StringB.,
+*com.artistcorner.engclasses.bean.BuyerBean

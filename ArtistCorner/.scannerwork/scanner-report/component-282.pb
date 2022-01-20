@@ -1,1 +1,1 @@
-š 2javaXEhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+š 2javaX#hr?src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java

@@ -5,6 +5,7 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
@@ -45,7 +46,7 @@ public class GuiControllerMobileUploadArtwork {
     private double y=0;
     private Stage stage;
 
-    private String filePath;
+    private String filePath="";
     private ArtistBean art;
 
 
@@ -67,7 +68,7 @@ public class GuiControllerMobileUploadArtwork {
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
     }
 
-    public void uploadFile() throws IOException {
+    public void uploadFile(){
         UploadArtWork upaw = new UploadArtWork();
         int flagVendibile;
         double prezzo;
@@ -93,7 +94,7 @@ public class GuiControllerMobileUploadArtwork {
 
             ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (FileNotFoundException e) {
+        } catch (EmptyPathException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;

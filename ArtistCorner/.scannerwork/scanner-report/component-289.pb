@@ -1,1 +1,1 @@
-¡ 2javaXšhrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java
+¡ 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

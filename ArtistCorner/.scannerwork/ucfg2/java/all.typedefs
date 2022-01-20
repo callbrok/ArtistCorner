@@ -357,9 +357,7 @@ Xcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSal
 makeDraggable()icom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#makeDraggable()V~
 minimizeWindow()jcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#minimizeWindow()V"
 ChangeListenerjava.lang.Objectq
-_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4082;ChangeListenerú
-8com.artistcorner.controller.applicationcontroller.SignUpjava.lang.ObjectN
-<init>()Bcom.artistcorner.controller.applicationcontroller.SignUp#<init>()V√
+_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4082;ChangeListener√
 java.lang.Throwablejava.lang.Objectjava.io.Serializable;
 printStackTrace()&java.lang.Throwable#printStackTrace()VZ
 getOurStackTrace()Djava.lang.Throwable#getOurStackTrace()[Ljava/lang/StackTraceElement;¡
@@ -392,7 +390,11 @@ getCause()3java.lang.Throwable#getCause()Ljava/lang/Throwable;e
 <init>(Ljava/lang/String;)/java.lang.Exception#<init>(Ljava/lang/String;)Vw
 /<init>(Ljava/lang/String;Ljava/lang/Throwable;)Djava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V{
 1<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)Fjava.lang.Exception#<init>(Ljava/lang/String;Ljava/lang/Throwable;ZZ)VS
-<init>(Ljava/lang/Throwable;)2java.lang.Exception#<init>(Ljava/lang/Throwable;)V◊
+<init>(Ljava/lang/Throwable;)2java.lang.Exception#<init>(Ljava/lang/Throwable;)V≈
+9com.artistcorner.engclasses.exceptions.EmptyPathExceptionjava.lang.Exceptions
+<init>(Ljava/lang/String;)Ucom.artistcorner.engclasses.exceptions.EmptyPathException#<init>(Ljava/lang/String;)Vú
+8com.artistcorner.controller.applicationcontroller.SignUpjava.lang.ObjectN
+<init>()Bcom.artistcorner.controller.applicationcontroller.SignUp#<init>()V◊
 Bcom.artistcorner.engclasses.exceptions.ArtGalleryNotFoundExceptionjava.lang.Exception|
 <init>(Ljava/lang/String;)^com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException#<init>(Ljava/lang/String;)Vé
 gcom.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandationjava.lang.Objectjava.io.Serializableá
@@ -990,7 +992,10 @@ Q<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
 getUsername()Ocom.artistcorner.engclasses.bean.ArtGalleryBean#getUsername()Ljava/lang/String;O
 getGalleria()>com.artistcorner.engclasses.bean.ArtGalleryBean#getGalleria()IX
 	getNome()Kcom.artistcorner.engclasses.bean.ArtGalleryBean#getNome()Ljava/lang/String;f
-getDescrizione()Rcom.artistcorner.engclasses.bean.ArtGalleryBean#getDescrizione()Ljava/lang/String;⁄
+getDescrizione()Rcom.artistcorner.engclasses.bean.ArtGalleryBean#getDescrizione()Ljava/lang/String;≠
+TestUploadArtWorkjava.lang.Object'
+<init>()TestUploadArtWork#<init>()V]
+#testUploadArtWorkImageNotSelected()6TestUploadArtWork#testUploadArtWorkImageNotSelected()V⁄
 +com.artistcorner.engclasses.bean.ArtistBeanjava.lang.Objectã
 -<init>(ILjava/lang/String;Ljava/lang/String;)Zcom.artistcorner.engclasses.bean.ArtistBean#<init>(ILjava/lang/String;Ljava/lang/String;)VZ
 getCognome()Jcom.artistcorner.engclasses.bean.ArtistBean#getCognome()Ljava/lang/String;â
@@ -1428,9 +1433,10 @@ Ncom.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile
 exitWindow()\com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile#exitWindow()Vl
 initialize()\com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile#initialize()Vr
 makeDraggable()_com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile#makeDraggable()Vt
-minimizeWindow()`com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile#minimizeWindow()V 
+minimizeWindow()`com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile#minimizeWindow()V∫
 Pcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileSignUpjava.lang.Objectf
-<init>()Zcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileSignUp#<init>()V|
+<init>()Zcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileSignUp#<init>()Vn
+initialize()^com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileSignUp#initialize()V|
 registerArtistMob()ecom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileSignUp#registerArtistMob()VÄ
 ccom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileBuyerSummaryjava.lang.Objecty
 <init>()mcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileBuyerSummary#<init>()VÅ
@@ -1439,7 +1445,96 @@ ccom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControll
 4com.artistcorner.engclasses.others.ConnectPropertiesjava.lang.Objects
 getDriverClassName()[com.artistcorner.engclasses.others.ConnectProperties#getDriverClassName()Ljava/lang/String;J
 <init>()>com.artistcorner.engclasses.others.ConnectProperties#<init>()Vl
-getConnection()Ycom.artistcorner.engclasses.others.ConnectProperties#getConnection()Ljava/sql/Connection;Œ1
+getConnection()Ycom.artistcorner.engclasses.others.ConnectProperties#getConnection()Ljava/sql/Connection;èT
+java.lang.ClassLoaderjava.lang.Object•
+EcheckPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)\java.lang.ClassLoader#checkPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vâ
+7trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)Njava.lang.ClassLoader#trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)ZU
+initializeJavaAssertionMaps()4java.lang.ClassLoader#initializeJavaAssertionMaps()V}
+&getSystemResources(Ljava/lang/String;)Sjava.lang.ClassLoader#getSystemResources(Ljava/lang/String;)Ljava/util/Enumeration;o
+getBuiltinPlatformClassLoader()Ljava.lang.ClassLoader#getBuiltinPlatformClassLoader()Ljava/lang/ClassLoader;Ü
+mdefineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)îjava.lang.ClassLoader#defineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;q
+ getResources(Ljava/lang/String;)Mjava.lang.ClassLoader#getResources(Ljava/lang/String;)Ljava/util/Enumeration;q
+#findLoadedClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findLoadedClass(Ljava/lang/String;)Ljava/lang/Class;G
+
+packages()9java.lang.ClassLoader#packages()Ljava/util/stream/Stream;Â
+õdefinePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)ƒjava.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)Ljava/lang/Package;¢
+;defineClassSourceLocation(Ljava/security/ProtectionDomain;)cjava.lang.ClassLoader#defineClassSourceLocation(Ljava/security/ProtectionDomain;)Ljava/lang/String;>
+	getName()1java.lang.ClassLoader#getName()Ljava/lang/String;~
+*checkCreateClassLoader(Ljava/lang/String;)Pjava.lang.ClassLoader#checkCreateClassLoader(Ljava/lang/String;)Ljava/lang/Void;+
+<init>()java.lang.ClassLoader#<init>()VÇ
+ createOrGetClassLoaderValueMap()^java.lang.ClassLoader#createOrGetClassLoaderValueMap()Ljava/util/concurrent/ConcurrentHashMap;K
+nativeLibraries()6java.lang.ClassLoader#nativeLibraries()Ljava/util/Map;}
+1<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Hjava.lang.ClassLoader#<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Vh
+ findResource(Ljava/lang/String;)Djava.lang.ClassLoader#findResource(Ljava/lang/String;)Ljava/net/URL;ã
+8checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)Ojava.lang.ClassLoader#checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)VM
+defineClass([BII)8java.lang.ClassLoader#defineClass([BII)Ljava/lang/Class;a
+getPlatformClassLoader()Ejava.lang.ClassLoader#getPlatformClassLoader()Ljava/lang/ClassLoader;}
+'getResourceAsStream(Ljava/lang/String;)Rjava.lang.ClassLoader#getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;o
+*desiredAssertionStatus(Ljava/lang/String;)Ajava.lang.ClassLoader#desiredAssertionStatus(Ljava/lang/String;)ZH
+getPackages()7java.lang.ClassLoader#getPackages()[Ljava/lang/Package;É
+,findBootstrapClassOrNull(Ljava/lang/String;)Sjava.lang.ClassLoader#findBootstrapClassOrNull(Ljava/lang/String;)Ljava/lang/Class;{
+0setSigners(Ljava/lang/Class;[Ljava/lang/Object;)Gjava.lang.ClassLoader#setSigners(Ljava/lang/Class;[Ljava/lang/Object;)VW
+systemNativeLibraries()<java.lang.ClassLoader#systemNativeLibraries()Ljava/util/Map;Q
+registerAsParallelCapable()2java.lang.ClassLoader#registerAsParallelCapable()ZV
+getDefinedPackages()>java.lang.ClassLoader#getDefinedPackages()[Ljava/lang/Package;Ö
+5findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Ljava.lang.ClassLoader#findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Jr
+%getSystemResource(Ljava/lang/String;)Ijava.lang.ClassLoader#getSystemResource(Ljava/lang/String;)Ljava/net/URL;s
+,setClassAssertionStatus(Ljava/lang/String;Z)Cjava.lang.ClassLoader#setClassAssertionStatus(Ljava/lang/String;Z)Vg
+loadClass(Ljava/lang/String;Z)Ejava.lang.ClassLoader#loadClass(Ljava/lang/String;Z)Ljava/lang/Class;g
+retrieveDirectives()Ojava.lang.ClassLoader#retrieveDirectives()Ljava/lang/AssertionStatusDirectives;_
+initSystemClassLoader()Djava.lang.ClassLoader#initSystemClassLoader()Ljava/lang/ClassLoader;e
+loadClass(Ljava/lang/String;)Djava.lang.ClassLoader#loadClass(Ljava/lang/String;)Ljava/lang/Class;æ
+BpreDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)xjava.lang.ClassLoader#preDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)Ljava/security/ProtectionDomain;±
+CdefineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class;q
+"initializePath(Ljava/lang/String;)Kjava.lang.ClassLoader#initializePath(Ljava/lang/String;)[Ljava/lang/String;w
+&findBootstrapClass(Ljava/lang/String;)Mjava.lang.ClassLoader#findBootstrapClass(Ljava/lang/String;)Ljava/lang/Class;Q
+addClass(Ljava/lang/Class;)2java.lang.ClassLoader#addClass(Ljava/lang/Class;)VY
+isRegisteredAsParallelCapable()6java.lang.ClassLoader#isRegisteredAsParallelCapable()ZZ
+checkCreateClassLoader()>java.lang.ClassLoader#checkCreateClassLoader()Ljava/lang/Void;s
+!findResources(Ljava/lang/String;)Njava.lang.ClassLoader#findResources(Ljava/lang/String;)Ljava/util/Enumeration;e
+findClass(Ljava/lang/String;)Djava.lang.ClassLoader#findClass(Ljava/lang/String;)Ljava/lang/Class;G
+getParent()8java.lang.ClassLoader#getParent()Ljava/lang/ClassLoader;q
+#defineClass(Ljava/lang/String;[BII)Jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BII)Ljava/lang/Class;ú
+5getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)cjava.lang.ClassLoader#getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/NamedPackage;”
+TdefineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;){java.lang.ClassLoader#defineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;)Ljava/lang/Class;s
+!getClassLoader(Ljava/lang/Class;)Njava.lang.ClassLoader#getClassLoader(Ljava/lang/Class;)Ljava/lang/ClassLoader;U
+checkName(Ljava/lang/String;)4java.lang.ClassLoader#checkName(Ljava/lang/String;)ZY
+resolveClass(Ljava/lang/Class;)6java.lang.ClassLoader#resolveClass(Ljava/lang/Class;)V=
+registerNatives()(java.lang.ClassLoader#registerNatives()Vu
+-loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Djava.lang.ClassLoader#loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Zπ
+OneedsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)fjava.lang.ClassLoader#needsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Zü
+BpostDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Yjava.lang.ClassLoader#postDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vm
+ definePackage(Ljava/lang/Class;)Ijava.lang.ClassLoader#definePackage(Ljava/lang/Class;)Ljava/lang/Package;ª
+PcompareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)gjava.lang.ClassLoader#compareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)ZY
+<init>(Ljava/lang/ClassLoader;)6java.lang.ClassLoader#<init>(Ljava/lang/ClassLoader;)VS
+setDefaultAssertionStatus(Z)3java.lang.ClassLoader#setDefaultAssertionStatus(Z)Vq
+#findSystemClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findSystemClass(Ljava/lang/String;)Ljava/lang/Class;p
+"findBuiltinLib(Ljava/lang/String;)Jjava.lang.ClassLoader#findBuiltinLib(Ljava/lang/String;)Ljava/lang/String;s
+$findLoadedClass0(Ljava/lang/String;)Kjava.lang.ClassLoader#findLoadedClass0(Ljava/lang/String;)Ljava/lang/Class;å
+2findResource(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findResource(Ljava/lang/String;Ljava/lang/String;)Ljava/net/URL;â
+/findClass(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findClass(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;ì
+3definePackage(Ljava/lang/String;Ljava/lang/Module;)\java.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/Package;â
+/loadClass(Ljava/lang/Module;Ljava/lang/String;)Vjava.lang.ClassLoader#loadClass(Ljava/lang/Module;Ljava/lang/String;)Ljava/lang/Class;f
+getResource(Ljava/lang/String;)Cjava.lang.ClassLoader#getResource(Ljava/lang/String;)Ljava/net/URL;z
+'getClassLoadingLock(Ljava/lang/String;)Ojava.lang.ClassLoader#getClassLoadingLock(Ljava/lang/String;)Ljava/lang/Object;]
+getSystemClassLoader()Cjava.lang.ClassLoader#getSystemClassLoader()Ljava/lang/ClassLoader;}
+1loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Hjava.lang.ClassLoader#loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Ve
+getBuiltinAppClassLoader()Gjava.lang.ClassLoader#getBuiltinAppClassLoader()Ljava/lang/ClassLoader;a
+#isAncestor(Ljava/lang/ClassLoader;):java.lang.ClassLoader#isAncestor(Ljava/lang/ClassLoader;)Zw
+.setPackageAssertionStatus(Ljava/lang/String;Z)Ejava.lang.ClassLoader#setPackageAssertionStatus(Ljava/lang/String;Z)Vw
+%getDefinedPackage(Ljava/lang/String;)Njava.lang.ClassLoader#getDefinedPackage(Ljava/lang/String;)Ljava/lang/Package;j
+findLibrary(Ljava/lang/String;)Gjava.lang.ClassLoader#findLibrary(Ljava/lang/String;)Ljava/lang/String;â
+-getSystemResourceAsStream(Ljava/lang/String;)Xjava.lang.ClassLoader#getSystemResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;P
+getUnnamedModule():java.lang.ClassLoader#getUnnamedModule()Ljava/lang/Module;≠
+ÄdefineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)ßjava.lang.ClassLoader#defineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;8
+name().java.lang.ClassLoader#name()Ljava/lang/String;i
+getPackage(Ljava/lang/String;)Gjava.lang.ClassLoader#getPackage(Ljava/lang/String;)Ljava/lang/Package;m
+resources(Ljava/lang/String;)Ljava.lang.ClassLoader#resources(Ljava/lang/String;)Ljava/util/stream/Stream;ª
+GtoPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)pjava.lang.ClassLoader#toPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)Ljava/lang/Package;G
+clearAssertionStatus()-java.lang.ClassLoader#clearAssertionStatus()Vp
+"nameAndId(Ljava/lang/ClassLoader;)Jjava.lang.ClassLoader#nameAndId(Ljava/lang/ClassLoader;)Ljava/lang/String;£
+DcheckClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)[java.lang.ClassLoader#checkClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)Vù
+A<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)Xjava.lang.ClassLoader#<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)VŒ1
 java.util.Mapjava.lang.ObjectÜ
 1putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Qjava.util.Map#putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;§
 @computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)`java.util.Map#computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;À
@@ -1660,7 +1755,10 @@ Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGalle
 -<init>(ILjava/lang/String;Ljava/lang/String;)Ycom.artistcorner.engclasses.bean.BuyerBean#<init>(ILjava/lang/String;Ljava/lang/String;)VY
 getCognome()Icom.artistcorner.engclasses.bean.BuyerBean#getCognome()Ljava/lang/String;S
 	getNome()Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;H
-getIdBuyer()8com.artistcorner.engclasses.bean.BuyerBean#getIdBuyer()IÓ
+getIdBuyer()8com.artistcorner.engclasses.bean.BuyerBean#getIdBuyer()Iï
+	TestLoginjava.lang.Object
+<init>()TestLogin#<init>()VU
+#testDesktopLoginInvalidArtistUser().TestLogin#testDesktopLoginInvalidArtistUser()VÓ
 .com.artistcorner.engclasses.query.QueryGalleryjava.lang.ObjectÇ
 'insertProposal(Ljava/sql/Statement;III)Wcom.artistcorner.engclasses.query.QueryGallery#insertProposal(Ljava/sql/Statement;III)ID
 <init>()8com.artistcorner.engclasses.query.QueryGallery#<init>()Vì
@@ -1698,14 +1796,14 @@ Dcom.artistcorner.controller.applicationcontroller.ViewGallerySummaryjava.lang
 getFlagAccettazione()6com.artistcorner.model.Proposal#getFlagAccettazione()IA
 getIdOfferta()/com.artistcorner.model.Proposal#getIdOfferta()I?
 getGalleria().com.artistcorner.model.Proposal#getGalleria()I=
-getArtista()-com.artistcorner.model.Proposal#getArtista()I˚
-
+getArtista()-com.artistcorner.model.Proposal#getArtista()Iå
 -com.artistcorner.engclasses.query.QueryArtistjava.lang.Objectb
 insertArtWork()Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;ñ
 (selectSellArtWork(Ljava/sql/Statement;I)jcom.artistcorner.engclasses.query.QueryArtist#selectSellArtWork(Ljava/sql/Statement;I)Ljava/sql/ResultSet;≈
 ?selectAllArtWorksImage(Ljava/sql/Statement;ILjava/lang/String;)Åcom.artistcorner.engclasses.query.QueryArtist#selectAllArtWorksImage(Ljava/sql/Statement;ILjava/lang/String;)Ljava/sql/ResultSet;C
 <init>()7com.artistcorner.engclasses.query.QueryArtist#<init>()VÆ
-4selectArtist(Ljava/sql/Statement;Ljava/lang/String;)vcom.artistcorner.engclasses.query.QueryArtist#selectArtist(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;î
+4selectArtist(Ljava/sql/Statement;Ljava/lang/String;)vcom.artistcorner.engclasses.query.QueryArtist#selectArtist(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;é
+$selectUsername(Ljava/sql/Statement;)fcom.artistcorner.engclasses.query.QueryArtist#selectUsername(Ljava/sql/Statement;)Ljava/sql/ResultSet;î
 'selectArtGallery(Ljava/sql/Statement;I)icom.artistcorner.engclasses.query.QueryArtist#selectArtGallery(Ljava/sql/Statement;I)Ljava/sql/ResultSet;ñ
 (selectArtWorkTitle(Ljava/sql/Statement;)jcom.artistcorner.engclasses.query.QueryArtist#selectArtWorkTitle(Ljava/sql/Statement;)Ljava/sql/ResultSet;À
 BselectAllGalleryProposals(Ljava/sql/Statement;ILjava/lang/String;)Ñcom.artistcorner.engclasses.query.QueryArtist#selectAllGalleryProposals(Ljava/sql/Statement;ILjava/lang/String;)Ljava/sql/ResultSet;
@@ -1743,7 +1841,11 @@ tcom.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControl
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$7450;EventHandlerÇ
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$7739;EventHandlerÇ
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$8544;EventHandlerÇ
-rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$9512;EventHandlerÀ
+rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$9512;EventHandler§
+
+TestSignUpjava.lang.Object 
+<init>()TestSignUp#<init>()Vb
+)testRegistrationDuplicateArtistUsername()5TestSignUp#testRegistrationDuplicateArtistUsername()VÀ
 <com.artistcorner.engclasses.exceptions.UserNotFoundExceptionjava.lang.Exceptionv
 <init>(Ljava/lang/String;)Xcom.artistcorner.engclasses.exceptions.UserNotFoundException#<init>(Ljava/lang/String;)V¨
 com.artistcorner.model.Userjava.lang.ObjectD
@@ -1753,9 +1855,10 @@ rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiContro
 getUsername();com.artistcorner.model.User#getUsername()Ljava/lang/String;y
 ,<init>(Ljava/lang/String;Ljava/lang/String;)Icom.artistcorner.model.User#<init>(Ljava/lang/String;Ljava/lang/String;)Vö
 7com.artistcorner.controller.applicationcontroller.Loginjava.lang.ObjectM
-<init>()Acom.artistcorner.controller.applicationcontroller.Login#<init>()Vù
+<init>()Acom.artistcorner.controller.applicationcontroller.Login#<init>()VÄ
 Ccom.artistcorner.controller.guicontroller.login.GuiControllerSignUpjava.lang.ObjectY
-<init>()Mcom.artistcorner.controller.guicontroller.login.GuiControllerSignUp#<init>()Vi
+<init>()Mcom.artistcorner.controller.guicontroller.login.GuiControllerSignUp#<init>()Va
+initialize()Qcom.artistcorner.controller.guicontroller.login.GuiControllerSignUp#initialize()Vi
 registerArtist()Ucom.artistcorner.controller.guicontroller.login.GuiControllerSignUp#registerArtist()Vº
 Dcom.artistcorner.controller.applicationcontroller.ViewProfileGalleryjava.lang.ObjectZ
 <init>()Ncom.artistcorner.controller.applicationcontroller.ViewProfileGallery#<init>()VÖ
@@ -2001,7 +2104,9 @@ Bcom.artistcorner.controller.applicationcontroller.ViewBuyerSummaryjava.lang.O
 <init>()Lcom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#<init>()V∑
 Ccom.artistcorner.controller.applicationcontroller.ViewArtistSummaryjava.lang.ObjectY
 <init>()Mcom.artistcorner.controller.applicationcontroller.ViewArtistSummary#<init>()VÇ
-retrieveArtGallery(I)icom.artistcorner.controller.applicationcontroller.ViewArtistSummary#retrieveArtGallery(I)LArtGalleryBean;⁄
+retrieveArtGallery(I)icom.artistcorner.controller.applicationcontroller.ViewArtistSummary#retrieveArtGallery(I)LArtGalleryBean;Õ
+=com.artistcorner.engclasses.exceptions.DuplicateUserExceptionjava.lang.Exceptionw
+<init>(Ljava/lang/String;)Ycom.artistcorner.engclasses.exceptions.DuplicateUserException#<init>(Ljava/lang/String;)V⁄
 -com.artistcorner.engclasses.bean.ProposalBeanjava.lang.ObjectK
 <init>(IIII);com.artistcorner.engclasses.bean.ProposalBean#<init>(IIII)V]
 getFlagAccettazione()Dcom.artistcorner.engclasses.bean.ProposalBean#getFlagAccettazione()IO

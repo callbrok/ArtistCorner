@@ -5,6 +5,7 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
@@ -61,7 +62,7 @@ public class GuiControllerUploadArtwork {
     private double yUpload=0;
     private Stage stage;
 
-    private String filePath;
+    private String filePath="";
     private ArtistBean art;
 
 
@@ -144,7 +145,7 @@ public class GuiControllerUploadArtwork {
 
     }
 
-    public void uploadFile() {
+    public void uploadFile(){
         UploadArtWork upawDesk = new UploadArtWork();
         int flagVendibile;
         double prezzo;
@@ -170,14 +171,14 @@ public class GuiControllerUploadArtwork {
 
             ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (FileNotFoundException e) {
+        }catch (EmptyPathException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
             ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (DuplicateArtWorkException e){
+        }catch (DuplicateArtWorkException e){
             // Eccezione: Opera già caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;

@@ -1,1 +1,1 @@
-Å 2javaXChr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java
+Å 2javaXShrXsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java

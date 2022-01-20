@@ -1,23 +1,73 @@
 
-jcom.artistcorner.engclasses.query.QueryArtist#selectArtWorkTitle(Ljava/sql/Statement;)Ljava/sql/ResultSet;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaC C(."1*ò
+Åcom.artistcorner.engclasses.query.QueryArtist#selectAllArtWorksImage(Ljava/sql/Statement;ILjava/lang/String;)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java* *(2"3*ˆ
+2w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java-, -(Y◊
+‘
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java-, -(e
+%3java.lang.String"__concat*/-
++SELECT immagine FROM opera WHERE artista ='*
+""ﬂ
+‹
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java-, -(ä
+%4java.lang.String"__concat*
+
+%3java.lang.String*$"
+ ' ORDER BY idOpera DESC LIMIT 2;∂
+≥
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java-& -(ä
+sqljava.lang.String"__id*
+
+%4java.lang.String*
+1*›
+3w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java+ +(B◊
+‘
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java+ +(N
+%0java.lang.String"__concat*/-
++SELECT immagine FROM opera WHERE artista ='*
+""¿
+Ω
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java+ +(U
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';µ
+≤
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java+ +(V
+sqljava.lang.String"__id*
+
+%1java.lang.StringÅ˛
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java- -($
+%2boolean",java.lang.String#equals(Ljava/lang/Object;)Z* 
+
+
+lastActionjava.lang.String*
+LAST2equals(Ljava/lang/Object;)*
+2
+1*—
 1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaD D(:ƒ
-¡
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java/ /(∫∑
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaD D(;
-sqljava.lang.String"__id*'%
-#SELECT DISTINCT titolo FROM opera ;∫∑
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaE E(%
-%0java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java/ /(%
+%5java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
 
 stmtjava.sql.Statement*
 
 sqljava.lang.String2 executeQuery(Ljava/lang/String;)"ï
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaE E(&
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java/ /(&
 
-%0java.sql.ResultSet:
-stmtjava.sql.StatementB1"/
+%5java.sql.ResultSet:
+stmtjava.sql.Statement:
+"":
+
+lastActionjava.lang.StringB1"/
 -com.artistcorner.engclasses.query.QueryArtist

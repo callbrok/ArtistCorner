@@ -1,1 +1,1 @@
-É 2javaXWhrsrc/main/java/module-info.java
+É 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java

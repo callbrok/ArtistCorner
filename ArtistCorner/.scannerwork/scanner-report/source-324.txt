@@ -1,25 +1,26 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.User;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.model.*;
+import javafx.scene.control.ListView;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class SignUp {
+public class ViewGallerySummary {
 
-    public void registerArtist(UserBean user, ArtistBean art){
-        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole());
-        Artist artistToAdd = new Artist(art.getNome(), art.getCognome());
+    public void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
+        ArrayList<Proposal> arrayOfProposal = GalleryDAO.retrieveProposal(gal,0);
+        ArrayList<String> arrayFinal = new ArrayList<>();
+        for (Proposal n : arrayOfProposal) {
+            Artist artist = BuyerDAO.retrieveArtistName(n.getArtista());
+            String artistName =  artist.getNome()+" "+artist.getCognome();
+            listViewOfferte.getItems().add("Offerta inviata in attesa di risposta per Artista :  " + artistName);  // Popola la listView.
 
-        try {
-            ArtistDAO.insertArtist(userToAdd, artistToAdd);
-        } catch (SQLException e) {
-            e.printStackTrace();
+             arrayFinal.add(artistName);
         }
     }
+
 
 }

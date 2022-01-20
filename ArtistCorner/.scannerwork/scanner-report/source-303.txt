@@ -1,46 +1,100 @@
-package com.artistcorner.controller.guicontroller.mobile.login;
+package com.artistcorner.controller.guicontroller.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.SignUp;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class GuiControllerMobileSignUp {
-    @FXML
-    private TextField textFieldUserArtistMob;
-    @FXML
-    private TextField textFieldPassArtistMob;
-    @FXML
-    private TextField textFieldNomeArtistMob;
-    @FXML
-    private TextField textFieldCognomeArtistMob;
+public class GuiControllerBuyerSummary {
+    public AnchorPane anchorParent;
+    public Pane paneSearch;
+    public Pane paneFavourites;
+    public Pane paneComprate;
+    public ListView<String> listViewCompra;
+    public Label labelUsernameDisplay;
+    public Label labelSearch;
+    public Label labelFavourites;
+    public Label labelComprate;
+    public Label labelLogOut;
+    private double x=0, y=0;
+    private Stage stage;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public SVGPath svgProfile;
+    public BuyerBean buy;
 
-    private SignUp signUpM = new SignUp();
 
-    public void registerArtistMob() {
-        UserBean userReg = new UserBean(textFieldUserArtistMob.getText(), textFieldPassArtistMob.getText(), "artista");
-        ArtistBean artistReg = new ArtistBean(textFieldNomeArtistMob.getText(), textFieldCognomeArtistMob.getText());
+    public void initialize(){
+        makeDraggable();
+        makeLogOut();
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
+    }
 
-        signUpM.registerArtist(userReg, artistReg);
+    public void makeLogOut(){
+        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-        textFieldUserArtistMob.clear();
-        textFieldPassArtistMob.clear();
-        textFieldNomeArtistMob.clear();
-        textFieldCognomeArtistMob.clear();
+    }
+
+    public void getBuyer(BuyerBean loggedBuyer) {
+        buy = loggedBuyer;
+        labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
+        ViewBuyerSummary bs = new ViewBuyerSummary();
+        bs.inizializeOpereComprate(listViewCompra,buy);
     }
 
 
-    public void returnToLogin(ActionEvent event) throws IOException {
-        SceneControllerMobile scngp = new SceneControllerMobile();
-        scngp.switchToLogin(event);
+    private void makeDraggable(){
+        anchorParent.setOnMousePressed(((event) -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorParent.setOnMouseDragged(((event) -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
     }
+
+    public void exitWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParent.getScene().getWindow();
+        stage.setIconified(true);
+    }
+    public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
+    }
+
+    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneFavouritesBuyer(actionEvent,buy);
+    }
+
 }

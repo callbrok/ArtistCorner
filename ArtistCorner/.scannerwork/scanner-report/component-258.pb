@@ -1,2 +1,2 @@
 ‚ 2javaX
-hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyPathException.java

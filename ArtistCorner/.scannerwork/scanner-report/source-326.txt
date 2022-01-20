@@ -1,25 +1,51 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Buyer;
-import javafx.scene.control.ListView;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.ProposalBean;
+import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.model.ArtGallery;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Proposal;
 
+import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ViewBuyerSummary {
+public class ViewArtistSummary {
 
-    public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy) {
-        Buyer buyer = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
-        ArrayList<Integer> arrayOfComprate = BuyerDAO.retrieveAllComprate(buyer.getIdBuyer());
-        ArrayList<ArtWork> arrayFinal = new ArrayList<>();
-        for (int n : arrayOfComprate) {
-            ArtWork artwork = BuyerDAO.retrieveArtWorks(n, 0);
-            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
 
-            arrayFinal.add(artwork);
-        }
+    public List<Blob> retrieveAllArtWorksImage(ArtistBean artBean){
+
+        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
+
+        return ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
 
     }
+
+
+
+    public List<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) {
+        Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
+        ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
+
+        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
+
+        for (Proposal n : arrayOfProposals) {
+            arrayOfProposalBeans.add(new ProposalBean(n.getIdOfferta(), n.getArtista(), n.getGalleria(), n.getFlagAccettazione()));
+        }
+
+        return arrayOfProposalBeans;
+    }
+
+    public ArtGalleryBean retrieveArtGallery(int galleria){
+        ArtGallery artG = ArtistDAO.retrieveArtGallery(galleria);   // Fai un retrieve della galleria associata alla proposta.
+
+        return new ArtGalleryBean(artG.getGalleria(), artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), artG.getUsername());
+
+    }
+
+
 }

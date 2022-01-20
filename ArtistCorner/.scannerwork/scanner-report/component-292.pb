@@ -1,1 +1,1 @@
-¤ 2javaX´hrjsrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerArtistSummary.java
+¤ 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

@@ -1,27 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+public class ArtWorkNotFoundException extends  Exception{
 
-import java.io.IOException;
+    private static final long serialVersionUID = 1L;
 
-public abstract class ExceptionView {
-    private Pane exceptionPane;
-
-    public ExceptionView(ExceptionsTypeMenager etm){
-        try {
-            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ArtWorkNotFoundException (String message) {
+        super(message);
     }
-
-    public Pane getExceptionPane(){ return exceptionPane;}
-
-
 }

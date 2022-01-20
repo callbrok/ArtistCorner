@@ -1,34 +1,27 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ArtWorkBean {
-    private int idOpera;
-    private String titolo;
-    private double prezzo;
-    private int flagVendibile;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
+import java.io.IOException;
+
+public abstract class ExceptionView {
+    private Pane exceptionPane;
+
+    public ExceptionView(ExceptionsTypeMenager etm){
+        try {
+            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile){
-        this.idOpera=0;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-    }
+    public Pane getExceptionPane(){ return exceptionPane;}
 
-    public void setIdOpera(int idOpera) {this.idOpera = idOpera;}
-    public void setTitolo(String titolo) {this.titolo = titolo;}
-    public void setPrezzo(double prezzo) {this.prezzo = prezzo;}
-    public void setFlagVendibile(int flagVenduto) {this.flagVendibile = flagVenduto;}
 
-    public double getPrezzo() {return prezzo;}
-    public int getFlagVendibile() {return flagVendibile;}
-    public int getIdOpera() {return idOpera;}
-    public String getTitolo() {return titolo;}
 }
-
-

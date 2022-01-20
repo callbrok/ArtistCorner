@@ -1,87 +1,28 @@
-module com.artistcorner {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires javafx.web;
-    requires java.sql;
-    requires org.eclipse.jgit;
-    requires org.apache.commons.lang3;
-    requires org.slf4j.simple;
-    requires org.slf4j;
+package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.model.Artist;
 
-    opens com.artistcorner to javafx.fxml;
-    exports com.artistcorner;
+import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
-    opens com.artistcorner.controller.guicontroller.login.summarypanel to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.login.summarypanel;
+public class ViewProfile {
 
-    opens com.artistcorner.controller.guicontroller.login to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.login;
+    public List<Blob> retrieveAllArtWorksImage(ArtistBean artBean) throws ArtWorkNotFoundException {
 
-    opens com.artistcorner.controller.applicationcontroller to javafx.fxml;
-    exports com.artistcorner.controller.applicationcontroller;
+        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-    opens com.artistcorner.controller.guicontroller.getreccomandation to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.getreccomandation;
+        List<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
 
-    opens com.artistcorner.controller.guicontroller.viewartgalleryproposals to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewartgalleryproposals;
+        if(listOfArtWorksImage.isEmpty()){
+            throw new ArtWorkNotFoundException("Nessun opera caricata");
+        }
 
-    opens com.artistcorner.controller.guicontroller.viewprofile to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewprofile;
+        return listOfArtWorksImage;
 
-    opens com.artistcorner.controller.guicontroller.viewsaleshistory to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsaleshistory;
-
-    opens com.artistcorner.controller.guicontroller.uploadartwork to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.uploadartwork;
-
-    opens com.artistcorner.controller.guicontroller.viewloganalytics to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewloganalytics;
-
-    opens com.artistcorner.controller.guicontroller.viewsearchartworkbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
-
-    opens com.artistcorner.controller.guicontroller.viewfavouritesbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
-
-    opens com.artistcorner.controller.guicontroller.viewsearchartworkgallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
-
-    opens com.artistcorner.controller.guicontroller.viewprofilogallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewprofilogallery;
-
-    opens com.artistcorner.controller.guicontroller.mobile.login to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.login;
-
-    opens com.artistcorner.controller.guicontroller.mobile.login.summarypanel to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
-
-    opens com.artistcorner.controller.guicontroller.mobile.getreccomandation to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.getreccomandation;
-
-    opens com.artistcorner.controller.guicontroller.mobile.uploadartwork to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.uploadartwork;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewprofile to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewprofile;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewsaleshistory to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsaleshistory;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery;
-
-    opens com.artistcorner.controller.guicontroller.mobile.viewprofilogallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewprofilogallery;
+    }
 
 }

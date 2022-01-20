@@ -1,21 +1,9 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ProposalBean {
-    private int idOfferta;
-    private int artista;
-    private  int galleria;
-    private int flagAccettazione;
+public class AddArtistException extends Exception{
+    private static final long serialVersionUID = 1L;
 
-    public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
-        this.idOfferta = newIdB;
-        this.artista = newArtistaB;
-        this.galleria =  newGalleriaB;
-        this.flagAccettazione = newFlagAccettazioneB;
+    public AddArtistException (String message) {
+        super(message);
     }
-
-
-    public int getIdOfferta() {return idOfferta;}
-    public int getArtista() {return artista;}
-    public int getFlagAccettazione() {return flagAccettazione;}
-    public int getGalleria() {return galleria;}
 }

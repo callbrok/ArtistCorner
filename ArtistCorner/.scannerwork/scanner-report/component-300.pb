@@ -1,1 +1,1 @@
-¬ 2javaX¯hrrsrc/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java
+¬ 2javaX:hrVsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerSignUp.java

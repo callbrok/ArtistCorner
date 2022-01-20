@@ -1,34 +1,35 @@
 
-kcom.artistcorner.engclasses.query.QueryBuyer#selectOpereComprate(Ljava/sql/Statement;I)Ljava/sql/ResultSet;v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaB B(0"1*Ô
+|com.artistcorner.engclasses.query.QueryBuyer#selectArtWorkByName(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java5 5(/"1*ý
 1v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(?Ó
-Ð
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6 6(=æ
+ã
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(G
-%0java.lang.String"__concat*,*
-(SELECT * FROM compra WHERE acquirente = *
-""¾
-»
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6 6(D
+%0java.lang.String"__concat**(
+&SELECT * FROM opera WHERE titolo LIKE'*
+
+inputjava.lang.StringÔ
+Ñ
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(K
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6 6(_
 %1java.lang.String"__concat*
 
-%0java.lang.String*
-;´
+%0java.lang.String*
+' AND flagVendibile =1;´
 ±
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaC C(L
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6 6(`
 sqljava.lang.String"__id*
 
 %1java.lang.String¤
 ¡
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaD D(
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java7 7(
 %2java.io.PrintStream"__id*
 ""Ž‹
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaD D(
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java7 7(
 
 %3void"0java.io.PrintStream#println(Ljava/lang/String;)V*
 
@@ -36,16 +37,16 @@ l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/eng
 
 sqljava.lang.String2println(Ljava/lang/String;)¹¶
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaE E(%
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java8 8(%
 %4java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
 
 stmtjava.sql.Statement*
 
 sqljava.lang.String2 executeQuery(Ljava/lang/String;)"”
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.javaE E(&
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java8 8(&
 
 %4java.sql.ResultSet:
-stmtjava.sql.Statement:
-""B0".
+stmtjava.sql.Statement:
+inputjava.lang.StringB0".
 ,com.artistcorner.engclasses.query.QueryBuyer

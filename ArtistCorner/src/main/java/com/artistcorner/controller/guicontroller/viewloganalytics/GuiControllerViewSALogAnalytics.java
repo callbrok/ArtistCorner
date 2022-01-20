@@ -79,7 +79,7 @@ public class GuiControllerViewSALogAnalytics {
 
         yAxisChart.setLabel("Numero Commit");
         yAxisChart.setTickUnit(1);
-        series1.setName("Commit");
+        series1.setName("Number of Commit");
         series2.setName("Center Line");
         series3.setName("Upper Control Limit");
         series4.setName("Lower Control Limit");

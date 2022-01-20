@@ -1,1 +1,1 @@
-õ 2javaXQhr;src/main/java/com/artistcorner/engclasses/dao/LoginDAO.java
+õ 2javaXhr.src/main/java/com/artistcorner/model/User.java

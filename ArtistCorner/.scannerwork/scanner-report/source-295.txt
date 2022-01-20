@@ -1,104 +1,96 @@
-package com.artistcorner.controller.guicontroller.viewprofile;
+package com.artistcorner.controller.guicontroller.uploadartwork;
 
-import com.artistcorner.controller.applicationcontroller.ViewProfile;
+import com.artistcorner.controller.applicationcontroller.UploadArtWork;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.shape.SVGPath;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class GuiControllerViewProfile {
-
+public class GuiControllerUploadArtwork {
     @FXML
-    private Button button1VP;
+    private Button button1Up;
     @FXML
-    private Button button2VP;
+    private Button button2Up;
     @FXML
-    private Button button3VP;
+    private Button button3Up;
     @FXML
-    private Button button4VP;
+    private Button button4Up;
     @FXML
-    private Button button5VP;
+    private Button button5Up;
     @FXML
-    private AnchorPane anchorParentViewDes;
+    private AnchorPane anchorParentUpload;
     @FXML
-    private AnchorPane anchorPaneFocus;
+    private TextField textFieldTitle;
     @FXML
-    private ImageView imageFocused;
+    private TextField textFieldPrice;
     @FXML
-    private TilePane tilePaneBlob;
+    private Label labelFilePath;
     @FXML
-    private Label labelLogOut;
+    private AnchorPane anchorPaneDragAndDrop;
+    @FXML
+    private Pane paneExceptionLoad;
     @FXML
     private SVGPath svgProfile;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
-    private Pane paneExceptionLoad;
+    private Label labelLogOutUpload;
+    @FXML
+    private RadioButton radioBtmSellUpload;
 
-    private double x=0;
-    private double y=0;
+    private double xUpload=0;
+    private double yUpload=0;
     private Stage stage;
 
+    private String filePath="";
     private ArtistBean art;
 
 
-    public void getArtist(ArtistBean loggedArtist) throws SQLException, IOException {
-        art = loggedArtist;
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
-        initializeTilePane(loggedArtist);
-    }
-
     private void makeDraggable(){
-        anchorParentViewDes.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+        anchorParentUpload.setOnMousePressed((eventUpload -> {
+            xUpload=eventUpload.getSceneX();
+            yUpload= eventUpload.getSceneY();
         }));
 
-        anchorParentViewDes.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorParentUpload.setOnMouseDragged((eventUpload -> {
+            stage = (Stage) ((Node)eventUpload.getSource()).getScene().getWindow();
+            stage.setX(eventUpload.getScreenX() - xUpload);
+            stage.setY(eventUpload.getScreenY() - yUpload);
         }));
     }
-    public void exitWindow() {
-        stage = (Stage) anchorParentViewDes.getScene().getWindow();
+    
+    public void exitWindowUpload() {
+        stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParentViewDes.getScene().getWindow();
+        stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.setIconified(true);
     }
 
     public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        labelLogOutUpload.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
                 sc.switchToLogin(event);
@@ -110,125 +102,120 @@ public class GuiControllerViewProfile {
     }
 
 
-    public void initialize() throws SQLException {
-        anchorPaneFocus.setVisible(false);
-
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
-
+    public void initialize(){
+        initDragAndDrop();
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+
+        svgProfile.setScaleX(0.07);
+        svgProfile.setScaleY(0.07);
     }
 
-    public void centerImage(ImageView imageView) {
-        Image img = imageView.getImage();
-        if (img != null) {
-            double w = 0;
-            double h = 0;
+    public void setTooltipMenu(){
+        button1Up.setTooltip(new Tooltip("Home"));
+        button2Up.setTooltip(new Tooltip("Profilo"));
+        button3Up.setTooltip(new Tooltip("Carica Opera"));
+        button4Up.setTooltip(new Tooltip("Offerte Mostre"));
+        button5Up.setTooltip(new Tooltip("Opere Vendute"));
+    }
 
-            double ratioX = imageView.getFitWidth() / img.getWidth();
-            double ratioY = imageView.getFitHeight() / img.getHeight();
+    public void getArtist(ArtistBean loggedArtist) {
+        art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    }
 
-            double reducCoeff = 0;
-            if(ratioX >= ratioY) {
-                reducCoeff = ratioY;
-            } else {
-                reducCoeff = ratioX;
-            }
+    public void selectFile(ActionEvent event) {
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
 
-            w = img.getWidth() * reducCoeff;
-            h = img.getHeight() * reducCoeff;
+        // Impone la selezione di soli file di tipo immagine.
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp");
+        fileChooser.getExtensionFilters().add(extFilter);
 
-            imageView.setX((imageView.getFitWidth() - w) / 2);
-            imageView.setY((imageView.getFitHeight() - h) / 2);
+        File selectedFile = fileChooser.showOpenDialog(stage);
 
+        filePath = selectedFile.toString();
+
+        labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
+    }
+
+    public void initDragAndDrop(){
+        //Implement Drag and Drop Feature.
+
+    }
+
+    public void uploadFile(){
+        UploadArtWork upawDesk = new UploadArtWork();
+        int flagVendibile;
+        double prezzo;
+
+        // Stati di flagVendibile
+        //  0 : opera non acquistabile
+        //  1 : opera acquistabile
+        if (radioBtmSellUpload.isSelected()) {
+            flagVendibile=1;
+            prezzo = Double.parseDouble(textFieldPrice.getText());
+        } else {
+            flagVendibile = 0;
+            prezzo = 0;
         }
-    }
-
-
-    private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
-        ViewProfile vp = new ViewProfile();
-        List<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
 
         try {
-            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
-
-            tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
-            tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
-
-            EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                    ImageView imageView = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
-
-                    imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                    centerImage(imageFocused);                     // Centra l'immagine.
-                    anchorPaneFocus.setVisible(true);
-            };
-
-            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
-
-            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
-
-                InputStream inputStream = b.getBinaryStream();
-
-                /*1)preserveRatio:
-                Indicates whether to preserve the aspect ratio of the source image when scaling to
-                fit the image within the fitting bounding box.
-
-                2)smooth:
-                Indicates whether to use a better quality filtering algorithm or a faster one when transforming
-                or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
-                Image image = new Image(inputStream, 100, 100, true, false);
-
-                ImageView imageThumb = new ImageView();
-                imageThumb.setImage(image);
-
-                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
-            }
-
-        } catch (ArtWorkNotFoundException e) {
+            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile);
+            upawDesk.uploadImage(upArtWork, art.getIdArtista(), filePath);
+        } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }catch (EmptyPathException e) {
+            // Eccezione: File non selezionato.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }catch (DuplicateArtWorkException e){
+            // Eccezione: Opera già caricata.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
+
+        resetForm();
     }
 
-
-    public void setTooltipMenu(){
-        button1VP.setTooltip(new Tooltip("Home"));
-        button2VP.setTooltip(new Tooltip("Profilo"));
-        button3VP.setTooltip(new Tooltip("Carica Opera"));
-        button4VP.setTooltip(new Tooltip("Offerte Mostre"));
-        button5VP.setTooltip(new Tooltip("Opere Vendute"));
+    public void resetForm(){
+        labelFilePath.setText("");
+        textFieldPrice.setText("");
+        textFieldTitle.setText("");
     }
 
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneMainArtista(event, art);
+        SceneController sc = new SceneController();
+        sc.switchToSceneMainArtista(event, art);
     }
 
     public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneProfiloArtista(event, art);
-    }
-
-    public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneUploadOpera(event, art);
-    }
-
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController scvpd = new SceneController();
-        scvpd.switchToSceneProfiloVenduto(event, art);
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloArtista(event, art);
     }
 
     public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloOfferteMostre(event, art);
     }
+
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloVenduto(event, art);
+    }
+
+
 }

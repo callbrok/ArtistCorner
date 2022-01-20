@@ -1,9 +1,23 @@
 
-:com.artistcorner.engclasses.bean.Nodo#getIdAppartenenza()Io
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java ( "1*ï
-1o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java+ (9"y
-o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java$ (:
-""B)'
-%com.artistcorner.engclasses.bean.Nodo
+jcom.artistcorner.engclasses.query.QueryArtist#selectArtWorkTitle(Ljava/sql/Statement;)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaH H(."1*˜
+1w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaI I(:Ä
+Á
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaI I(;
+sqljava.lang.String"__id*'%
+#SELECT DISTINCT titolo FROM opera ;º·
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaJ J(%
+%0java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaJ J(&
+
+%0java.sql.ResultSet:
+stmtjava.sql.StatementB1"/
+-com.artistcorner.engclasses.query.QueryArtist

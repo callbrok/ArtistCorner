@@ -1,1 +1,1 @@
-´ 2javaXÉhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java
+´ 2javaXôhrwsrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java

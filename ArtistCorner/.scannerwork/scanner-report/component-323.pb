@@ -1,1 +1,1 @@
-Ã 2javaXBhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewLogAnalytics.java
+Ã 2javaXßhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java

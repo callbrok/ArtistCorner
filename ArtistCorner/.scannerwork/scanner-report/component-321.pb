@@ -1,1 +1,1 @@
-Á 2javaX\hr[src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java
+Á 2javaXßhr„src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer.java

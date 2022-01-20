@@ -1,48 +1,9 @@
 
-xcom.artistcorner.engclasses.others.ExceptionsFactory#getInstance()Lcom/artistcorner/engclasses/others/ExceptionsFactory;~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java1 (<"3*š
-2~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.õò
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (,:
-%14com.artistcorner.engclasses.others.ExceptionsFactory"4com.artistcorner.engclasses.others.ExceptionsFactory‡
-„
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.
-%2">com.artistcorner.engclasses.others.ExceptionsFactory#<init>()V*<
-:
-%14com.artistcorner.engclasses.others.ExceptionsFactory
-Š
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.D6
-4com.artistcorner.engclasses.others.ExceptionsFactory"
-
-instance"__id*<
-:
-%14com.artistcorner.engclasses.others.ExceptionsFactory*
-1*›
-3~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (
-Š
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (:
-%04com.artistcorner.engclasses.others.ExceptionsFactory"__id*F*D6
-4com.artistcorner.engclasses.others.ExceptionsFactory"
-
-instance*
-2
-1*Ô
-1~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (
-Š
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (:
-%34com.artistcorner.engclasses.others.ExceptionsFactory"__id*F*D6
-4com.artistcorner.engclasses.others.ExceptionsFactory"
-
-instance"¾
-~
-t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (<
-:
-%34com.artistcorner.engclasses.others.ExceptionsFactoryB8"6
-4com.artistcorner.engclasses.others.ExceptionsFactory
+Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java? ?(&"1*Ø
+1w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java@ @(k"Ù
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java@ @(l^\
+ZINSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)B1"/
+-com.artistcorner.engclasses.query.QueryArtist

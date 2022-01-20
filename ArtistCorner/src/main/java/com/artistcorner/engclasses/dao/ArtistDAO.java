@@ -83,7 +83,7 @@ public class ArtistDAO {
     }
 
 
-    public static void insertArtist(User user, Artist art) throws SQLException {
+    public static void insertArtist(User user, Artist art) throws DuplicateUserException, SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -91,18 +91,27 @@ public class ArtistDAO {
         try {
             Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
             conn = ConnectProperties.getConnection();    // Apertura connessione
-
-            // STEP 4.1: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
                     ResultSet.CONCUR_READ_ONLY);
 
-            int result = QueryArtist.insertUser(stmt, user);
 
+            // Check Duplicate User
+            ResultSet rs = QueryArtist.selectUsername(stmt);
+            while (rs.next()) {
+                // lettura delle colonne "by name"
+                String usernameRetrived = rs.getString("username");
+
+                if (usernameRetrived.equals(user.getUsername())){
+                    throw new DuplicateUserException("Username attualmente già in uso.");
+                }
+            }
+
+            int result = QueryArtist.insertUser(stmt, user);
             result = QueryArtist.insertArtist(stmt, art, user.getUsername());
 
             if(result == -1){throw new AddArtistException("Impossibile aggiungere artista");}
 
-        } catch (Exception e5){
+        } catch (SQLException | AddArtistException | ClassNotFoundException e5){
             e5.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
@@ -175,7 +184,7 @@ public class ArtistDAO {
     }
 
 
-    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws SQLException {
+    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws DuplicateArtWorkException{
         Statement stmt = null;
         PreparedStatement prStmt = null;
         Connection conn = null;
@@ -215,15 +224,30 @@ public class ArtistDAO {
             prStmt.executeUpdate();
             prStmt.close();
 
-        } catch (DuplicateArtWorkException | SQLException | ClassNotFoundException | IOException e2) {
+        } catch ( SQLException | ClassNotFoundException | IOException e2) {
             e2.printStackTrace();
         } finally {
-            if (prStmt != null)
-                prStmt.close();
-            if (conn != null)
-                conn.close();
-            if (stmt != null)
-                stmt.close();
+            if (prStmt != null) {
+                try {
+                    prStmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

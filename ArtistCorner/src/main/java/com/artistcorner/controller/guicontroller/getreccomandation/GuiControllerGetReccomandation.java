@@ -62,6 +62,7 @@ public class GuiControllerGetReccomandation implements Serializable{
     private Stage stage;
 
     public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+    public static final String FONT_RESULT = "System";
 
     private GetReccomandation lc = new GetReccomandation();
     private List<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
@@ -82,11 +83,12 @@ public class GuiControllerGetReccomandation implements Serializable{
             try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH))) {
                 String rispostaSerial = (String) in.readObject();
                 Nodo c2 = (Nodo) in.readObject();
-                in.close();
 
                 lc.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
                 labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
                 idLivello = c2.getIdProprio(); // Prende l'id del nodo serializzato
+
+                if(idLivello == 0){showSolution();}
             }
         } else {
             idLivello = 1; // Inizializzazione dell'algoritmo al primo nodo
@@ -222,7 +224,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         makeSerializable(n);                                  // Serializza il nodo corrente
     }
 
-    public void showSolution(){
+    public void showSolution() throws IOException {
         String[] soluzione = lc.getSolution();
 
         Text textPREResult1 = new Text("Ti consiglio di disegnare ");
@@ -230,14 +232,14 @@ public class GuiControllerGetReccomandation implements Serializable{
 
         textResult1.setFill(Color.rgb(209, 62, 10));
         textPREResult1.setFill(Color.rgb(45, 132, 101));
-        textResult1.setFont(Font.font("System", FontWeight.BOLD, 34));
-        textPREResult1.setFont(Font.font("System", FontWeight.BOLD, 34));
+        textResult1.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
+        textPREResult1.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
         if(!soluzione[0].equals("Nessuna Risposta")){textResult1.setText(soluzione[0]);}
 
         Text textResult2 = new Text("");
         textResult2.setFill(Color.rgb(209, 62, 10));
-        textResult2.setFont(Font.font("System", FontWeight.BOLD, 34));
+        textResult2.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
         if(!soluzione[1].equals("Nessuna Risposta")){textResult2.setText(" " + soluzione[1]);}
 
@@ -246,8 +248,8 @@ public class GuiControllerGetReccomandation implements Serializable{
 
         textResult3.setFill(Color.rgb(209, 62, 10));
         textPREResult3.setFill(Color.rgb(45, 132, 101));
-        textResult3.setFont(Font.font("System", FontWeight.BOLD, 34));
-        textPREResult3.setFont(Font.font("System", FontWeight.BOLD, 34));
+        textResult3.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
+        textPREResult3.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
         if(!soluzione[2].equals("Nessuna Risposta")){textResult3.setText(soluzione[2]); textPREResult3.setText(" in moto ");}
 
@@ -256,8 +258,8 @@ public class GuiControllerGetReccomandation implements Serializable{
 
         textResult4.setFill(Color.rgb(209, 62, 10));
         textPREResult4.setFill(Color.rgb(45, 132, 101));
-        textResult4.setFont(Font.font("System", FontWeight.BOLD, 34));
-        textPREResult4.setFont(Font.font("System", FontWeight.BOLD, 34));
+        textResult4.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
+        textPREResult4.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
         if(!soluzione[3].equals("Nessuna Risposta")){textResult4.setText(soluzione[3]); textPREResult4.setText(", dai colori ");}
 
@@ -266,8 +268,8 @@ public class GuiControllerGetReccomandation implements Serializable{
 
         textResult5.setFill(Color.rgb(209, 62, 10));
         textPREResult5.setFill(Color.rgb(45, 132, 101));
-        textResult5.setFont(Font.font("System", FontWeight.BOLD, 34));
-        textPREResult5.setFont(Font.font("System", FontWeight.BOLD, 34));
+        textResult5.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
+        textPREResult5.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
         if(!soluzione[4].equals("Nessuna Risposta")){textResult5.setText(soluzione[4]); textPREResult5.setText(" con uno stile ");}
 

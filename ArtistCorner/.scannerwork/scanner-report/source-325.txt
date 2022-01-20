@@ -1,14 +1,13 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.others.HBoxInitializer;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
@@ -18,14 +17,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewSearchArtWorkGallery {
-    public List<HBoxInitializer> initializeListView(String input, ArtGalleryBean gal) throws SQLException, IOException {
-        ArrayList<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
-        ArrayList<Integer> artistIdList = GalleryDAO.retrieveArtistId(gal.getGalleria());
+public class ViewFavouritesBuyer {
+
+    public List<HBoxInitializer> initializeListView(BuyerBean buyer) throws SQLException, IOException {
+        Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
+        ArrayList<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
         List<HBoxInitializer> list = new ArrayList<>();
-        for (ArtWork work : artWorkList) {
-            Blob immagine = BuyerDAO.retrieveImage(work.getIdOpera());
-            Artist artist = BuyerDAO.retrieveArtistName(work.getArtistaId());
+        for (Integer integer : artWorkId) {
+            Blob immagine = BuyerDAO.retrieveImage(integer);
+            ArtWork artWork = BuyerDAO.retrieveArtWorks(integer, 1);
+            Artist artist = BuyerDAO.retrieveArtistName(artWork.getArtistaId());
             InputStream inputStream = null;
             try {
                 inputStream = immagine.getBinaryStream();
@@ -33,34 +34,49 @@ public class ViewSearchArtWorkGallery {
                 e.printStackTrace();
             }
             Image image1 = new Image(inputStream, 100, 100, true, false);
-            HBoxInitializer hb = new HBoxInitializer(work.getTitolo(), artist.getNome() + " " + artist.getCognome(),image1, work.getIdOpera(), work.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input);
-            list.add(hb);
-            System.out.println(hb.getLabelArtista());
+            list.add(new HBoxInitializer(artWork.getTitolo(), artist.getNome() + " " + artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", buyer.getIdBuyer(), artist.getIdArtista(),artWorkId,""));
         }
+
         return list;
     }
+    public String manageButtonClick(ActionEvent arg0, Button buttonAcquista, Button buttonPreferiti, int idOpera, int idBuyer ){
 
-    public String manageButtonClick(Button buttonPreferiti, int idGallery, int idArtista) throws SQLException {
-        int flag =0;
         switch (buttonPreferiti.getText()){
-            case "Ritira Proposta":{
-                GalleryDAO.removeProposta(idGallery,idArtista);
-                return "Invia Proposta";
-               // break;
+            case "Rimuovi dai Preferiti":{
+                try {
+                    BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
+                    return "Aggiungi ai Preferiti";
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
 
             }
-            case "Invia Proposta":{
-                GalleryDAO.addProposta(idGallery,idArtista,flag);
-                return "Ritira Proposta";
-             //   break;
+            case "Aggiungi ai Preferiti":{
+                try {
+                    BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
+                    return "Rimuovi dai Preferiti";
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+               break;
 
             }
             default:
         }
-        return "Ritira Proposta";
+        return "Rimuovi dai Preferiti";
     }
 
+    public void finishPayment(int idOpera, int idBuyer){
 
+                try {
+                    BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
+                    BuyerDAO.switchFlagVendibile(idOpera);
+                    BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+    }
 }
-
-

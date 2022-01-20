@@ -1,10 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class EmptyFieldException extends Exception{
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    private static final long serialVersionUID = 1L;
+public class ProposalNotFoundExceptionView extends ExceptionView{
 
-    public EmptyFieldException (String message) {
-        super(message);
-    }
+    public ProposalNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

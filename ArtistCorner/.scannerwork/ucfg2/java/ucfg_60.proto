@@ -1,16 +1,16 @@
 
-Jcom.artistcorner.engclasses.others.Commit#getMessaggio()Ljava/lang/String;s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ("1*á
+Ecom.artistcorner.engclasses.others.Commit#getData()Ljava/lang/String;s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ("1*Ü
 1s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java) (2Ô
-Ñ
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((Ï
+Ì
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java) (2
-%0java.lang.String"__id*<*:+
-)com.artistcorner.engclasses.others.Commit"
-	messaggio"
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((
+%0java.lang.String"__id*7*5+
+)com.artistcorner.engclasses.others.Commit"
+data"
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java" (3
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ()
 
 %0java.lang.StringB-+
 )com.artistcorner.engclasses.others.Commit

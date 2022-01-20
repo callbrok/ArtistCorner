@@ -1,1 +1,1 @@
-¥ 2javaXehrisrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java
+¥ 2javaXährKsrc/main/java/com/artistcorner/engclasses/others/SceneControllerMobile.java

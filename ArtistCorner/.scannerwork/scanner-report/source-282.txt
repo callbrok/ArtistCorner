@@ -1,68 +1,34 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.bean;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
+public class ArtWorkBean {
+    private int idOpera;
+    private String titolo;
+    private double prezzo;
+    private int flagVendibile;
 
-public class ConnectProperties {
-
-    private ConnectProperties(){
-        throw new IllegalStateException("Utility Cconnect class");
+    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile){
+        this.idOpera=newIdOpera;
+        this.titolo=newTitolo;
+        this.prezzo=newPrezzo;
+        this.flagVendibile=newFlagVendibile;
     }
 
-    /**
-     * Prende i valori nel file "login.properties" per effettuare la connessione al DBMS.
-     */
-    public static Connection getConnection(){
-        Connection conn = null;
-
-        try(FileInputStream fs = new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties")){
-
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(fs);
-
-            // assign db parameters
-            String dbhostname = prop.getProperty("hostname");
-            String dbname = prop.getProperty("dbname");
-            String dbusername = prop.getProperty("username");
-            String dbpassword = prop.getProperty("password");
-            String dbdriverused = prop.getProperty("driverused");
-
-            String dburl = "jdbc:" + dbdriverused + "://" + dbhostname + ":3306/" + dbname;
-
-
-            // create a connection to the database
-            conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
-
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
-        return conn;
+    public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile){
+        this.idOpera=0;
+        this.titolo=newTitolo;
+        this.prezzo=newPrezzo;
+        this.flagVendibile=newFlagVendibile;
     }
 
-    /**
-     * Ritorna il nome del driver jdbc da utilizzare, leggendo il file "login.properties".
-     */
-    public static String getDriverClassName(){
-        String driverClassName="NO DRIVER SPECIFIED";
+    public void setIdOpera(int idOpera) {this.idOpera = idOpera;}
+    public void setTitolo(String titolo) {this.titolo = titolo;}
+    public void setPrezzo(double prezzo) {this.prezzo = prezzo;}
+    public void setFlagVendibile(int flagVenduto) {this.flagVendibile = flagVenduto;}
 
-        try(FileInputStream fs = new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties")){
-
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(fs);
-
-            // assign db parameters
-            driverClassName = prop.getProperty("driver");
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return driverClassName;
-    }
-
+    public double getPrezzo() {return prezzo;}
+    public int getFlagVendibile() {return flagVendibile;}
+    public int getIdOpera() {return idOpera;}
+    public String getTitolo() {return titolo;}
 }
+
+

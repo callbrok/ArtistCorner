@@ -1,1 +1,1 @@
-‰ 2cssX_hr"target/classes/css/mobile/main.css
+‰ 2cssXqhr"target/classes/css/artist/main.css

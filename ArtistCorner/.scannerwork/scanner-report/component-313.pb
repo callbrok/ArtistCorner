@@ -1,1 +1,1 @@
-¹ 2javaXßhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java
+¹ 2javaX@hrcsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileSignUp.java

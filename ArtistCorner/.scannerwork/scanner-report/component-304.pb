@@ -1,1 +1,1 @@
-° 2javaXuhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java
+° 2javaXzhrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java

@@ -3,5 +3,5 @@ projectKey=callbrok_ArtistCorner
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.26204
 dashboardUrl=https://sonarcloud.io/dashboard?id=callbrok_ArtistCorner
-ceTaskId=AX53PZyw5junTaDxXehE
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AX53PZyw5junTaDxXehE
+ceTaskId=AX55UcML1vICb2Vn3NSO
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AX55UcML1vICb2Vn3NSO

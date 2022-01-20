@@ -1,2 +1,1 @@
-ˆ 2javaX
-hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java
+ˆ 2javaXhr[src/main/java/com/artistcorner/engclasses/exceptions/GetRaccomandationProblemException.java

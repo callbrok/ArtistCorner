@@ -17,12 +17,13 @@ public class ConnectProperties {
      */
     public static Connection getConnection(){
         Connection conn = null;
+        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
 
-        try(FileInputStream fs = new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties")){
+        try{
 
             // load the properties file
             Properties prop = new Properties();
-            prop.load(fs);
+            prop.load(stream);
 
             // assign db parameters
             String dbhostname = prop.getProperty("hostname");
@@ -48,12 +49,13 @@ public class ConnectProperties {
      */
     public static String getDriverClassName(){
         String driverClassName="NO DRIVER SPECIFIED";
+        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
 
-        try(FileInputStream fs = new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties")){
+        try{
 
             // load the properties file
             Properties prop = new Properties();
-            prop.load(fs);
+            prop.load(stream);
 
             // assign db parameters
             driverClassName = prop.getProperty("driver");
