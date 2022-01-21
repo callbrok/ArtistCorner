@@ -1,9 +1,73 @@
 
-Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java? ?(&"1*ÿ
-1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java@ @(k"Ÿ
+Ñcom.artistcorner.engclasses.query.QueryArtist#selectAllGalleryProposals(Ljava/sql/Statement;ILjava/lang/String;)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java2 2(5"3*Û
+2w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5, 5(T“
+œ
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java@ @(l^\
-ZINSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)B1"/
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5, 5(`
+%3java.lang.String"__concat**(
+&SELECT * FROM offerta WHERE artista ='*
+""·
+ﬁ
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5, 5(á
+%4java.lang.String"__concat*
+
+%3java.lang.String*&$
+"' ORDER BY idOfferta DESC LIMIT 4;∂
+≥
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5& 5(á
+sqljava.lang.String"__id*
+
+%4java.lang.String*
+1*ÿ
+3w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java3 3(=“
+œ
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java3 3(I
+%0java.lang.String"__concat**(
+&SELECT * FROM offerta WHERE artista ='*
+""¿
+Ω
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java3 3(P
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';µ
+≤
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java3 3(Q
+sqljava.lang.String"__id*
+
+%1java.lang.StringÅ˛
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5 5($
+%2boolean",java.lang.String#equals(Ljava/lang/Object;)Z* 
+
+
+lastActionjava.lang.String*
+LAST2equals(Ljava/lang/Object;)*
+2
+1*—
+1w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7 7(∫∑
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7 7(%
+%5java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"ï
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7 7(&
+
+%5java.sql.ResultSet:
+stmtjava.sql.Statement:
+"":
+
+lastActionjava.lang.StringB1"/
 -com.artistcorner.engclasses.query.QueryArtist

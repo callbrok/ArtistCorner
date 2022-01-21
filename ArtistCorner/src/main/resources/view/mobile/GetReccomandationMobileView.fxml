@@ -73,63 +73,9 @@
                      </font>
                   </Label>
                    <AnchorPane fx:id="anchorResult" prefHeight="304.0" prefWidth="438.0" style="-fx-background-color: #fff;">
-                       <children>
-                           <Label layoutX="82.0" layoutY="23.0" prefHeight="46.0" prefWidth="303.0" text="Ti consiglio di disegnare" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="20.0" />
-                               </font>
-                           </Label>
-                           <Label layoutX="26.0" layoutY="74.0" prefHeight="46.0" prefWidth="183.0" text="Soggetto:" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="17.0" />
-                               </font>
-                           </Label>
-                           <Label layoutX="26.0" layoutY="112.0" prefHeight="46.0" prefWidth="173.0" text="Caratteristica:" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="17.0" />
-                               </font>
-                           </Label>
-                           <Label layoutX="26.0" layoutY="150.0" prefHeight="46.0" prefWidth="173.0" text="Stato:" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="17.0" />
-                               </font>
-                           </Label>
-                           <Label layoutX="27.0" layoutY="187.0" prefHeight="46.0" prefWidth="173.0" text="Colori:" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="17.0" />
-                               </font>
-                           </Label>
-                           <Label layoutX="28.0" layoutY="226.0" prefHeight="46.0" prefWidth="173.0" text="Stile:" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="17.0" />
-                               </font>
-                           </Label>
-                           <Label fx:id="labelResultSoggetto" layoutX="179.0" layoutY="71.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="15.0" />
-                               </font>
-                           </Label>
-                           <Label fx:id="labelResultCaract" layoutX="179.0" layoutY="108.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="15.0" />
-                               </font>
-                           </Label>
-                           <Label fx:id="labelResultStato" layoutX="179.0" layoutY="146.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="15.0" />
-                               </font>
-                           </Label>
-                           <Label fx:id="labelResultColori" layoutX="180.0" layoutY="183.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="15.0" />
-                               </font>
-                           </Label>
-                           <Label fx:id="labelResultStile" layoutX="180.0" layoutY="222.0" prefHeight="46.0" prefWidth="257.0" textAlignment="CENTER" textFill="#2d8465">
-                               <font>
-                                   <Font name="System Bold" size="15.0" />
-                               </font>
-                           </Label>
-                       </children>
+                     <children>
+                        <TextFlow fx:id="textFlowResultMobile" layoutX="32.0" layoutY="106.0" prefHeight="166.0" prefWidth="376.0" />
+                     </children>
                    </AnchorPane>
                </children>
             </Pane>

@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -26,6 +27,8 @@ import java.util.List;
 
 public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
+    private TextFlow textFlowResultMobile;
+    @FXML
     private AnchorPane anchorMainMobile;
     @FXML
     private Label labelUsernameDisplay;
@@ -34,19 +37,11 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
     private AnchorPane anchorResult;
     @FXML
-    private Label labelResultSoggetto;
-    @FXML
-    private Label labelResultCaract;
-    @FXML
-    private Label labelResultStato;
-    @FXML
-    private Label labelResultColori;
-    @FXML
-    private Label labelResultStile;
-    @FXML
     private Button buttonReset;
 
     public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+    public static final String FONT_RESULT = "System";
+    public static final String NOTHING_ANSW = "Nessuna Risposta";
 
     private double x=0;
     private double y=0;
@@ -76,6 +71,8 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
                 lcm.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
                 labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
                 idLivelloMobile = c2.getIdProprio(); // Prende l'id del nodo serializzato
+
+                if(idLivelloMobile == 0){showSolution();}
             }
         } else {
             idLivelloMobile = 1; // Inizializzazione dell'algoritmo al primo nodo
@@ -163,13 +160,58 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     public void showSolution(){
         String[] soluzione = lcm.getSolution();
 
-        // Visualizza risposte.
+        Text textPREResult1Mob = new Text("Ti consiglio di disegnare ");
+        Text textResult1Mob = new Text("qualcosa (non hai risposto)");
+
+        textResult1Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult1Mob.setFill(Color.rgb(45, 132, 101));
+        textResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[0].equals(NOTHING_ANSW)){textResult1Mob.setText(soluzione[0]);}
+
+        Text textResult2Mob = new Text("");
+        textResult2Mob.setFill(Color.rgb(209, 62, 10));
+        textResult2Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[1].equals(NOTHING_ANSW)){textResult2Mob.setText(" " + soluzione[1]);}
+
+        Text textPREResult3Mob = new Text("");
+        Text textResult3Mob = new Text("");
+
+        textResult3Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult3Mob.setFill(Color.rgb(45, 132, 101));
+        textResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[2].equals(NOTHING_ANSW)){textResult3Mob.setText(soluzione[2]); textPREResult3Mob.setText(" in moto ");}
+
+        Text textPREResult4Mob = new Text("");
+        Text textResult4Mob = new Text("");
+
+        textResult4Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult4Mob.setFill(Color.rgb(45, 132, 101));
+        textResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[3].equals(NOTHING_ANSW)){textResult4Mob.setText(soluzione[3]); textPREResult4Mob.setText(", dai colori ");}
+
+        Text textPREResult5Mob = new Text("");
+        Text textResult5Mob = new Text("");
+
+        textResult5Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult5Mob.setFill(Color.rgb(45, 132, 101));
+        textResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[4].equals(NOTHING_ANSW)){textResult5Mob.setText(soluzione[4]); textPREResult5Mob.setText(" con uno stile ");}
+
+
+        textFlowResultMobile.getChildren().addAll(textPREResult1Mob, textResult1Mob, textResult2Mob, textPREResult3Mob, textResult3Mob, textPREResult4Mob, textResult4Mob, textPREResult5Mob, textResult5Mob);
+        textFlowResultMobile.setTextAlignment(TextAlignment.CENTER);
+
+
         anchorResult.setVisible(true);
-        labelResultSoggetto.setText(soluzione[0]);
-        labelResultCaract.setText(soluzione[1]);
-        labelResultStato.setText(soluzione[2]);
-        labelResultColori.setText(soluzione[3]);
-        labelResultStile.setText(soluzione[4]);
     }
 
 

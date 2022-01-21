@@ -1,18 +1,17 @@
 
-lcom.artistcorner.controller.applicationcontroller.ViewProfileGallery#retrieveArtistName(I)Ljava/lang/String;è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java ($"1*í
-1è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java (√
-¿
-è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java (A
+;com.artistcorner.model.User#getPassword()Ljava/lang/String;e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ("1*®
+1e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java' (/∑
+¥
+e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java' (/
+%0java.lang.String"__id*-*+
+com.artistcorner.model.User"
 
-artistnamejava.lang.String"__id*
-"""¥
-è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java ( 
-
-
-artistnamejava.lang.String:
-""BHF
-Dcom.artistcorner.controller.applicationcontroller.ViewProfileGallery
+password"Å
+e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java  (0
+
+%0java.lang.StringB
+com.artistcorner.model.User

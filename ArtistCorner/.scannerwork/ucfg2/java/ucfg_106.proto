@@ -1,17 +1,16 @@
 
-Acom.artistcorner.model.ArtGallery#getUsername()Ljava/lang/String;k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java ("1*À
+Dcom.artistcorner.model.ArtGallery#getDescrizione()Ljava/lang/String;k
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java ( "1*Ã
 1k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java( (0Ã
-À
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6Æ
+Ã
 k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java( (0
-%0java.lang.String"__id*3*1#
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java+ (6
+%0java.lang.String"__id*6*4#
 !com.artistcorner.model.ArtGallery"
-
-username"‡
+descrizione"‡
 k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java! (1
+a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java$ (7
 
 %0java.lang.StringB%#
 !com.artistcorner.model.ArtGallery

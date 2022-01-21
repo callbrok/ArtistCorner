@@ -1,17 +1,16 @@
 
-dcom.artistcorner.controller.applicationcontroller.GetReccomandation#getSolution()[Ljava/lang/String;é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javat t("1*“
-1é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javat* t(2ã
-à
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javat* t(2
-%0java.lang.String[]"__id*U*SE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation"
-
-risposta"≠
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javat# t(3
-
-%0java.lang.String[]BGE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation
+Ecom.artistcorner.engclasses.others.Commit#getData()Ljava/lang/String;s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ("1*‹
+1s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((œ
+Ã
+s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((
+%0java.lang.String"__id*7*5+
+)com.artistcorner.engclasses.others.Commit"
+data"è
+s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ()
+
+%0java.lang.StringB-+
+)com.artistcorner.engclasses.others.Commit

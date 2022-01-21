@@ -48,6 +48,10 @@
  -fx-background-radius: 0;
 }
 
+.buttonPane SVGPath{
+    -fx-fill:  #277458;
+}
+
 .buttonPane:hover{
  -fx-background-color: #88c9b2;
 }

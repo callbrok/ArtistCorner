@@ -21,7 +21,6 @@ public class TestUploadArtWork {
 
         ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1);
 
-        // Artist with user artista1 already exist.
         try {
             upju.uploadImage(artWorkToCheck, 5,"");
         } catch (DuplicateArtWorkException | EmptyFieldException e) {

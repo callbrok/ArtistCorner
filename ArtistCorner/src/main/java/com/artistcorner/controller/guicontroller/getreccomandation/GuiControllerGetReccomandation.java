@@ -63,6 +63,7 @@ public class GuiControllerGetReccomandation implements Serializable{
 
     public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
     public static final String FONT_RESULT = "System";
+    public static final String NOTHING_ANSW = "Nessuna Risposta";
 
     private GetReccomandation lc = new GetReccomandation();
     private List<Nodo> arraylist = lc.initializeTreeTxt(); // Inizializza albero
@@ -235,13 +236,13 @@ public class GuiControllerGetReccomandation implements Serializable{
         textResult1.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
         textPREResult1.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
-        if(!soluzione[0].equals("Nessuna Risposta")){textResult1.setText(soluzione[0]);}
+        if(!soluzione[0].equals(NOTHING_ANSW)){textResult1.setText(soluzione[0]);}
 
         Text textResult2 = new Text("");
         textResult2.setFill(Color.rgb(209, 62, 10));
         textResult2.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
-        if(!soluzione[1].equals("Nessuna Risposta")){textResult2.setText(" " + soluzione[1]);}
+        if(!soluzione[1].equals(NOTHING_ANSW)){textResult2.setText(" " + soluzione[1]);}
 
         Text textPREResult3 = new Text("");
         Text textResult3 = new Text("");
@@ -251,7 +252,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         textResult3.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
         textPREResult3.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
-        if(!soluzione[2].equals("Nessuna Risposta")){textResult3.setText(soluzione[2]); textPREResult3.setText(" in moto ");}
+        if(!soluzione[2].equals(NOTHING_ANSW)){textResult3.setText(soluzione[2]); textPREResult3.setText(" in moto ");}
 
         Text textPREResult4 = new Text("");
         Text textResult4 = new Text("");
@@ -261,7 +262,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         textResult4.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
         textPREResult4.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
-        if(!soluzione[3].equals("Nessuna Risposta")){textResult4.setText(soluzione[3]); textPREResult4.setText(", dai colori ");}
+        if(!soluzione[3].equals(NOTHING_ANSW)){textResult4.setText(soluzione[3]); textPREResult4.setText(", dai colori ");}
 
         Text textPREResult5 = new Text("");
         Text textResult5 = new Text("");
@@ -271,7 +272,7 @@ public class GuiControllerGetReccomandation implements Serializable{
         textResult5.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
         textPREResult5.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 34));
 
-        if(!soluzione[4].equals("Nessuna Risposta")){textResult5.setText(soluzione[4]); textPREResult5.setText(" con uno stile ");}
+        if(!soluzione[4].equals(NOTHING_ANSW)){textResult5.setText(soluzione[4]); textPREResult5.setText(" con uno stile ");}
 
 
         textFlowResult.getChildren().addAll(textPREResult1, textResult1, textResult2, textPREResult3, textResult3, textPREResult4, textResult4, textPREResult5, textResult5);

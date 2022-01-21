@@ -63,7 +63,7 @@ public class GuiControllerArtistSummary {
         svgProfile.setScaleY(0.07);
     }
 
-    public void getArtist(ArtistBean loggedArtist) throws SQLException {
+    public void getArtist(ArtistBean loggedArtist) {
         art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
 
@@ -83,7 +83,7 @@ public class GuiControllerArtistSummary {
     }
 
 
-    public void initTileLastArt(ArtistBean art) throws SQLException {
+    public void initTileLastArt(ArtistBean art) {
         List<Blob> listOfArtWorksImage = vps.retrieveAllArtWorksImage(art);  // Prendi tutte le opere caricate dall'artista.
 
         tilePaneLastArt.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
@@ -91,7 +91,12 @@ public class GuiControllerArtistSummary {
 
         for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
 
-            InputStream inputStream = b.getBinaryStream();
+            InputStream inputStream = null;
+            try {
+                inputStream = b.getBinaryStream();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             Image image = new Image(inputStream, 200, 200, true, false);
 

@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
@@ -21,6 +19,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class GuiControllerMobileLogin {
+    @FXML
+    private SVGPath svgGoogle;
     @FXML
     private PasswordField textFieldPassword;
     @FXML
@@ -53,8 +53,11 @@ public class GuiControllerMobileLogin {
         labelExceptionLoginM.setAlignment(Pos.CENTER);
         labelExceptionLoginM.setMaxWidth(320);
         paneExceptionLogin.setVisible(false);
-        svgLogo.setScaleX(1.3);
-        svgLogo.setScaleY(1.3);
+        svgLogo.setScaleX(1.2);
+        svgLogo.setScaleY(1.2);
+
+        svgGoogle.setScaleX(1.3);
+        svgGoogle.setScaleY(1.3);
     }
 
     public void exitWindow() {
@@ -85,7 +88,7 @@ public class GuiControllerMobileLogin {
 
         try {
             lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.
-        }catch (UserNotFoundException | SQLException e){
+        }catch (UserNotFoundException e){
             labelExceptionLoginM.setText(e.getMessage());
             paneExceptionLogin.setVisible(true);
         }
@@ -101,5 +104,29 @@ public class GuiControllerMobileLogin {
 
         AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpArtistMobileView.fxml")));
         anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
+
+    public void openDialogLoginFbMobile() {
+        Dialog<String> dialog = new Dialog<>();
+        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
+
+        dialog.setTitle("Login");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Login con Facebook");
+
+        dialog.showAndWait();
+    }
+
+    public void openDialogLoginGoogleMobile() {
+        Dialog<String> dialog = new Dialog<>();
+        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
+
+        dialog.setTitle("Login");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Login con Google");
+
+        dialog.showAndWait();
     }
 }

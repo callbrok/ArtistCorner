@@ -2698,6 +2698,7 @@ tssecurityS6096(¸ֹל¬ז.0¸ֹל¬ז.:AX5nzHve-NH3hzEYSh7H5
  roslyn.sonaranalyzer.security.csS5334(˜ד®¨ת.0˜ד®¨ת.:AX5nzHve-NH3hzEYSh7LO
  roslyn.sonaranalyzer.security.csS6350(״Þü¹װ/0״Þü¹װ/:AX5nzHve-NH3hzEYSh7LO
  roslyn.sonaranalyzer.security.csS6096(אָ¯¨ת.0אָ¯¨ת.:AX5nzHve-NH3hzEYSh7L3
+tsqlS2737(רח™¿¦,0רח™¿¦,:AX5nzHve-NH3hzEYSh633
 tsqlS1135(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh633
 tsqlS1134(רח™¿¦,0רח™¿¦,:AX5nzHve-NH3hzEYSh63[
 tsqlS2068"&
@@ -2725,7 +2726,6 @@ tssecurityS6096(¸ֹל¬ז.0¸ֹל¬ז.:AX5nzHve-NH3hzEYSh7H5
 tsqlS1116(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh633
 tsqlS1764(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh633
 tsqlS1763(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh633
-tsqlS2737(רח™¿¦,0רח™¿¦,:AX5nzHve-NH3hzEYSh633
 tsqlS1523(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh633
 tsqlS4790(ָ…ֶÜÛ.0ָ…ֶÜÛ.:AX5nzHve-NH3hzEYSh633
 tsqlS4075(ˆûהַב+0ˆûהַב+:AX5nzHve-NH3hzEYSh632

@@ -57,7 +57,7 @@ public class GuiControllerViewArtGalleryProposals {
     @FXML
     private Label labelUsernameDisplay;
     @FXML
-    private AnchorPane anchorParent;
+    private AnchorPane anchorParentPrpDesk;
     @FXML
     private Button button1;
     @FXML
@@ -82,24 +82,24 @@ public class GuiControllerViewArtGalleryProposals {
     private int currentProposalId;
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed((event -> {
+        anchorParentPrpDesk.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged((event -> {
+        anchorParentPrpDesk.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
     }
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentPrpDesk.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
+        stage = (Stage) anchorParentPrpDesk.getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -231,11 +231,11 @@ public class GuiControllerViewArtGalleryProposals {
     }
 
 
-    public void acceptProposal() throws Exception {
+    public void acceptProposal() throws SQLException {
         ArtistDAO.updateProposal(currentProposalId, 1);
     }
 
-    public void rejectProposal() throws Exception {
+    public void rejectProposal() throws SQLException {
         ArtistDAO.updateProposal(currentProposalId, 2);
     }
 

@@ -37,7 +37,7 @@ public class SceneController {
     public static  final String CSS_PATH = "/css/artist/main.css";
 
 
-    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
+    public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
         root = loader.load();
 

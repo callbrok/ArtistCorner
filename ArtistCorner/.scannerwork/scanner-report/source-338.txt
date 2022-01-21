@@ -100,7 +100,9 @@ public class GetReccomandation {
         return errorNode; // mostra nodo di fine albero
     }
 
-
+    /**
+     * Ritorna il nodo corrente.
+     */
     public Nodo getCurrentNode(int idLivello, List<Nodo> arraylist){
         // Scorre tutti i nodi e ne ritorna quello con idProprio + idLivello, ergo il
         // nodo corrente.
@@ -112,7 +114,9 @@ public class GetReccomandation {
         return null;
     }
 
-    // Ritorna la soluzione.
+    /**
+     * Ritorna la soluzione.
+     */
     public String[] getSolution(){ return risposta;}
 
     // Ritorna la soluzione per la serializzazione.
@@ -127,13 +131,17 @@ public class GetReccomandation {
         return stringBuilder.toString();
     }
 
-    // Setta la risposta.
+    /**
+     * Imposta la risposta.
+     */
     public void setSerialSolution( String serialRisposta){
         risposta = serialRisposta.split("-", risposta.length);
         risposta[4] = risposta[4].substring(0, risposta[4].length()-1);
     }
 
-
+    /**
+     * Crea la soluzione.
+     */
     public void createSolution(String sol, String key) throws GetRaccomandationProblemException {
         // A seconda della key associata alla domanda inserisco una parte della
         // soluzione nella stringa apposita.

@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class Login {
 
 
-    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException, SQLException {
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
         SceneController sc = new SceneController();
         SceneControllerMobile scm = new SceneControllerMobile();
 

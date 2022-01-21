@@ -1,16 +1,9 @@
 
-;com.artistcorner.model.Buyer#getCognome()Ljava/lang/String;f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ("1*«
+*com.artistcorner.model.Buyer#getIdBuyer()If
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ("1*Ý
 1f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-¸
-µ
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java$ (+"p
 f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-
-%0java.lang.String"__id*-*+
-com.artistcorner.model.Buyer"	
-cognome"‚
-f
-\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java (.
-
-%0java.lang.StringB 
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java (,
+""B 
 com.artistcorner.model.Buyer
