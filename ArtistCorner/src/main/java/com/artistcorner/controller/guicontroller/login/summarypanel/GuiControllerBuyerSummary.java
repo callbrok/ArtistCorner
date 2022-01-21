@@ -1,8 +1,15 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
 import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -17,6 +24,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerBuyerSummary {
     public AnchorPane anchorParent;
@@ -61,7 +70,7 @@ public class GuiControllerBuyerSummary {
         buy = loggedBuyer;
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
         ViewBuyerSummary bs = new ViewBuyerSummary();
-        bs.inizializeOpereComprate(listViewCompra,buy);
+        inizializeOpereComprate(listViewCompra,buy);
     }
 
 
@@ -95,6 +104,19 @@ public class GuiControllerBuyerSummary {
     public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
         sc.switchToSceneFavouritesBuyer(actionEvent,buy);
+    }
+    public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy)  {
+        Buyer buyer = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
+        ViewBuyerSummary vbs = new ViewBuyerSummary();
+        List<Integer> arrayOfComprate = vbs.retrieveAllComprate(buyer.getIdBuyer());
+        List<ArtWorkBean> arrayFinal = new ArrayList<>();
+        for (int n : arrayOfComprate) {
+            ArtWorkBean artwork = vbs.retrieveArtWorks(n, 0);
+            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
+
+            arrayFinal.add(artwork);
+        }
+
     }
 
 }

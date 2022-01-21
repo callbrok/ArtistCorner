@@ -2,10 +2,14 @@ package com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.others.HBoxInitializer;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,9 +25,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerViewSearchArtWorkGallery {
@@ -40,6 +46,8 @@ public class GuiControllerViewSearchArtWorkGallery {
     public Button button1;
     public Button button2;
     public Button button3;
+    @FXML
+    private Pane paneExceptionLoad;
     private double x=0, y=0;
     Stage stage;
     ArtGalleryBean gal;
@@ -102,32 +110,14 @@ public class GuiControllerViewSearchArtWorkGallery {
         if(keyEvent.getCode()== KeyCode.ENTER){
             String input= textField.getText();
             anchorPane.setVisible(true);
-            ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
-            List<HBoxInitializer> list = saw.initializeListView(input, gal);
-            List<HBoxCell> list2 = new ArrayList<>();
-            for (int i = 0, listSize = list.size(); i < listSize; i++) {
-               HBoxInitializer e = list.get(i);
-               list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
-
-            }
-            ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
-            listView.setItems(myObservableList);
+            populateListView(input);
         }
     }
-    public void buttonSearchOnClick() throws SQLException, IOException {
+    public void buttonSearchOnClick() throws SQLException, IOException{
         String input= textField.getText();
         anchorPane.setVisible(true);
         paneFound.setVisible(false);
-        ViewSearchArtWorkGallery saw = new ViewSearchArtWorkGallery();
-        List<HBoxInitializer> list = saw.initializeListView(input, gal);
-        List<HBoxCell> list2 = new ArrayList<>();
-        for (int i = 0, listSize = list.size(); i < listSize; i++) {
-            HBoxInitializer e = list.get(i);
-            list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
-
-        }
-        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
-        listView.setItems(myObservableList);
+        populateListView(input);
     }
     public void buttonCancOnClick(){
         textField.setText("");
@@ -148,7 +138,7 @@ public class GuiControllerViewSearchArtWorkGallery {
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
-        public HBoxCell(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, ArrayList<Integer> arrayListProposte,String input) throws SQLException, IOException {
+        public HBoxCell(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(100);
@@ -184,6 +174,7 @@ public class GuiControllerViewSearchArtWorkGallery {
             ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
 
             if (arrayListProposte.contains(idArtista)) {
+                System.out.println(arrayListProposte);
                 buttonOfferta.setText("Ritira Proposta");
             }
             buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
@@ -198,25 +189,48 @@ public class GuiControllerViewSearchArtWorkGallery {
                     }
                     buttonOfferta.setText(answer);
                     try {
-                        List<HBoxInitializer> list = sa.initializeListView(input, gal);
-                        List<HBoxCell> list2 = new ArrayList<>();
-                        for (int i = 0, listSize = list.size(); i < listSize; i++) {
-                            HBoxInitializer e = list.get(i);
-                            list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
-
-                        }
-                        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
-                        listView.setItems(myObservableList);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                        populateListView(input);
+                    } catch (SQLException | IOException e) {
                         e.printStackTrace();
                     }
+
                 }
             });
             this.getChildren().addAll(imageView, vBox2, vBox1, buttonOfferta);
         }
 
+    }
+    public void populateListView(String input) throws SQLException, IOException {
+        if (listView.getItems().size()!=0){
+            listView.getItems().clear();
+        }
+        ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
+        ArtistBean artist=null;
+        Blob artWorkBlob =null;
+
+        try{
+            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input);
+            List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
+            for (ArtWorkBean artWork: arrayOfArtWork) {
+                artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
+                artist = vsg.retrieveGallerySearchArtistName(artWork);
+                InputStream inputStream = null;
+                try {
+                    inputStream = artWorkBlob.getBinaryStream();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                Image image1 = new Image(inputStream, 100, 100, true, false);
+                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
+
+            }
+        } catch ( ArtWorkNotFoundException throwables) {
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }
     }
 
 }

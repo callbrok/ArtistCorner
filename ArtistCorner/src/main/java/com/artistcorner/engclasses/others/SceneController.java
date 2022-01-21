@@ -15,8 +15,6 @@ import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiCon
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

@@ -40,7 +40,7 @@
 
 
       </Pane>
-      <Pane id="mainPane" layoutX="55.0" layoutY="127.0" prefHeight="539.0" prefWidth="889.0" style="-fx-background-color: #fff;">
+      <Pane id="mainPane" fx:id="paneExceptionLoad" layoutX="55.0" layoutY="127.0" prefHeight="539.0" prefWidth="889.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>

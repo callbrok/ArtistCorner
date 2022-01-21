@@ -29,7 +29,7 @@ public class QueryBuyer {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet selectAllArtistName(Statement stmt, int idArtista) throws SQLException {
+    public static ResultSet selectAllArtist(Statement stmt, int idArtista) throws SQLException {
         String sql = "SELECT * FROM artista WHERE idArtista ='" + idArtista + "';";
         System.out.println(sql);
         return stmt.executeQuery(sql);
