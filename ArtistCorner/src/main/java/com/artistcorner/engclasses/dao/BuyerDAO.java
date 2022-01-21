@@ -1,13 +1,18 @@
 package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryBuyer;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
+
+import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BuyerDAO {
 
@@ -27,8 +32,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectBuyer(stmt, usr.getUsername());
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Buyer found");
-                throw e;
+                throw new BuyerNotFoundException("Acquirente non trovato");
             }
 
             // riposizionamento del cursore
@@ -46,10 +50,6 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -85,8 +85,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectArtWork(stmt, idUsr,flag);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork found");
-                throw e;
+                throw new ArtWorkNotFoundException("Opera non trovata");
             }
 
             // riposizionamento del cursore
@@ -106,12 +105,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -146,8 +141,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectImage(stmt, idArtWork);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Blob found");
-                throw e;
+                throw new ArtWorkNotFoundException("nessuna Opera caricata");
             }
 
             // riposizionamento del cursore
@@ -161,12 +155,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e2) {
+            e2.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -188,7 +178,7 @@ public class BuyerDAO {
 
 
 
-    public static Artist retrieveArtistName(int idUsr) {
+    public static Artist retrieveArtist(int idUsr) {
         Artist artist = null;
         Statement stmt = null;
         Connection conn = null;
@@ -201,11 +191,10 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryBuyer.selectAllArtistName(stmt, idUsr);
+            ResultSet rs = QueryBuyer.selectAllArtist(stmt, idUsr);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Artist Name found");
-                throw e;
+               throw new ArtistNotFoundException("Artista non trovato");
             }
 
             // riposizionamento del cursore
@@ -221,12 +210,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e3) {
+            e3.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -246,8 +231,8 @@ public class BuyerDAO {
 
     }
 
-    public static ArrayList<Integer> retrieveArtWorkId(int idUsr) {
-        ArrayList<Integer> listOfArtWorkId = new ArrayList<Integer>();
+    public static List<Integer> retrieveArtWorkId(int idUsr) {
+        List<Integer> listOfArtWorkId = new ArrayList<Integer>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -263,8 +248,7 @@ public class BuyerDAO {
 
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork ID  found");
-                throw e;
+                return Collections.emptyList();
             }
 
             // riposizionamento del cursore
@@ -279,12 +263,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e4) {
+            e4.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -317,9 +297,11 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.insertOperaComprata(stmt,artWorkId, idBuyer);
+            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            }
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e5) {
+            e5.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -344,9 +326,12 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.switchFlagVendibile(stmt,idOpera);
+            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            }
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e6) {
+            e6.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -358,7 +343,7 @@ public class BuyerDAO {
 
     }
 
-    public static int removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
+    public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
         Statement stmt = null;
         int result=0;
         Connection conn = null;
@@ -372,9 +357,10 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            }
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e7) {
+            e7.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -382,12 +368,11 @@ public class BuyerDAO {
             if (conn != null)
                 conn.close();
         }
-        return result;
     }
 
-    public static ArrayList<ArtWork> retrieveArtWorkByName(String input) {
+    public static List<ArtWork> retrieveArtWorkByName(String input) {
         input= input.replaceAll("","$0%");
-        ArrayList<ArtWork> artWork = new ArrayList<>();
+        List<ArtWork> artWork = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -402,8 +387,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectArtWorkByName(stmt, input);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No ArtWork found");
-                throw e;
+               return Collections.emptyList();
             }
 
             // riposizionamento del cursore
@@ -424,12 +408,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e9) {
+            e9.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -461,9 +441,11 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.insertOperaFavourites(stmt,artWorkId, idBuyer);
+            if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
+            }
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | FavouritesManagementProblemException e10) {
+            e10.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -474,8 +456,8 @@ public class BuyerDAO {
 
 
     }
-    public static ArrayList<Integer> retrieveAllComprate(int idBuyer) {
-        ArrayList<Integer> comprate = new ArrayList<>();
+    public static List<Integer> retrieveAllComprate(int idBuyer) {
+        List<Integer> comprate = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -490,8 +472,7 @@ public class BuyerDAO {
             ResultSet rs = QueryBuyer.selectOpereComprate(stmt, idBuyer);
 
             if (!rs.first()){ // rs empty
-                Exception e = new Exception("No Buy History found");
-                throw e;
+                return Collections.emptyList();
             }
 
             // riposizionamento del cursore
@@ -507,12 +488,8 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e11) {
+            e11.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {

@@ -70,6 +70,7 @@ public class GuiControllerMobileViewArtGalleryProposals {
          * L'html nella WebView viene caricato ed interpretato da un thread in background il cui progresso
          * rintracciabile tramite il metodo getLoadWorker().
          */
+
         webMap.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
                     if (newValue == Worker.State.SUCCEEDED) {       // Identifica il completamento del thread
@@ -109,7 +110,6 @@ public class GuiControllerMobileViewArtGalleryProposals {
             vBoxInfo.setSpacing(10);
             vBoxInfo.setAlignment(Pos.TOP_LEFT);
 
-
             buttonAccept.setText("Accetta");
             buttonRecline.setText("Rifiuta");
 
@@ -118,7 +118,6 @@ public class GuiControllerMobileViewArtGalleryProposals {
 
             buttonAccept.setMaxWidth(100);
             buttonRecline.setMaxWidth(100);
-
 
             VBox vBoxAction = new VBox(buttonAccept, buttonRecline);
             vBoxAction.setSpacing(10);

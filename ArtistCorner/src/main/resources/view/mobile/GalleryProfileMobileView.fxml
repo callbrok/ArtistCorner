@@ -54,13 +54,13 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="labelAttesa" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="212.0" prefHeight="35.0" prefWidth="396.0" text="Richieste accettate" textFill="#39a67f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Label fx:id="labelAttesa" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="349.0" prefHeight="35.0" prefWidth="396.0" text="Richieste accettate" textFill="#39a67f">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
          </children></Pane>
         <Button layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="16.0" prefWidth="0.0" styleClass="buttonTopBar" text="X">
             <font>

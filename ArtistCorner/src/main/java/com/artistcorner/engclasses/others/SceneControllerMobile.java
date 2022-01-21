@@ -135,7 +135,7 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException {
+    public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/BuyerSummaryMobileView.fxml"));
         root = loader.load();
 
@@ -167,7 +167,7 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException {
+    public void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/BuyerFavouritesMobileView.fxml"));
         root = loader.load();
 
@@ -182,7 +182,7 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException {
+    public void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/GalleryProfileMobileView.fxml"));
         root = loader.load();
 

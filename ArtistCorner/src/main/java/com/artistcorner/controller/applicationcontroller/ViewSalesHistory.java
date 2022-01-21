@@ -24,7 +24,7 @@ public class ViewSalesHistory {
         }
 
         for (ArtWork n : arrayOfArtwork) {
-            arrayOfArtworkBeans.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto()));
+            arrayOfArtworkBeans.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto(),n.getArtistaId()));
         }
 
         return arrayOfArtworkBeans;

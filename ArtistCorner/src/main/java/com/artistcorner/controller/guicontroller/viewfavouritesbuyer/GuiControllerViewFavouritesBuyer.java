@@ -1,13 +1,14 @@
 package com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.others.HBoxInitializer;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.others.ExceptionsFactory;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Buyer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,16 +22,14 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerViewFavouritesBuyer {
@@ -46,6 +45,8 @@ public class GuiControllerViewFavouritesBuyer {
         public Button button2;
         public Button button3;
         private double x=0, y=0;
+        @FXML
+        private Pane paneExceptionLoad;
         Stage stage;
         public BuyerBean buy;
 
@@ -73,15 +74,7 @@ public class GuiControllerViewFavouritesBuyer {
         public void getBuyer(BuyerBean loggedBuyer) throws SQLException, IOException {
                 buy = loggedBuyer;
                 labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
-                ViewFavouritesBuyer fb = new ViewFavouritesBuyer();
-                List<HBoxInitializer> list = fb.initializeListView(buy);
-                List<HBoxCell> list2 = new ArrayList<>();
-                for (int i = 0, listSize = list.size(); i < listSize; i++) {
-                        HBoxInitializer e = list.get(i);
-                        list2.add(new HBoxCell(e.getLabelTitolo(), e.getLabelArtista(), e.getImg(), e.getIdOpera(), e.getPrice(), e.getLabelButton(), e.getIdUser(), e.getIdArtista(), e.getArrayList(),e.getInput()));
-                }
-                ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list2);
-                listView.setItems(myObservableList);
+                populateListView();
         }
 
         private void makeDraggable(){
@@ -131,7 +124,7 @@ public class GuiControllerViewFavouritesBuyer {
                 Label labelArtistNameDefault = new Label();
                 Label labelArtWorkDefault = new Label();
 
-                public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, ArrayList<Integer> arrayListArtWorkId, String input) throws SQLException, IOException {
+                public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input) throws SQLException, IOException {
                         super();
                         ImageView imageView = new ImageView();
                         imageView.setImage(img);
@@ -147,7 +140,7 @@ public class GuiControllerViewFavouritesBuyer {
                         labelArtistName.setPrefSize(100, 50);
                         prezzo.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
                         prezzo.setMaxWidth(Double.MAX_VALUE);
-                        prezzo.setText("€ " + Double.toString(price));prezzo.setPrefSize(100, 100);prezzo.setAlignment(Pos.CENTER);
+                        prezzo.setText("€ " + price);prezzo.setPrefSize(100, 100);prezzo.setAlignment(Pos.CENTER);
                         prezzo1.setText("Prezzo Opera: ");prezzo1.setPrefSize(100, 100);prezzo1.setAlignment(Pos.CENTER);prezzo1.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
                         VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
                         vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
@@ -203,6 +196,7 @@ public class GuiControllerViewFavouritesBuyer {
 
                 if (arrayListArtWorkId.contains(idOpera)){
                         buttonPreferiti.setText("Rimuovi dai Preferiti");
+                        System.out.println(arrayListArtWorkId);
                 }
                 buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -218,6 +212,37 @@ public class GuiControllerViewFavouritesBuyer {
         }
 
 
+        }
+        public void populateListView() throws SQLException, IOException {
+                ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
+                List<Integer> arrayOfArtWorkId;
+                ArtistBean artist=null;
+                Blob artWorkBlob =null;
+
+                try{
+                        arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
+                        for (Integer i: arrayOfArtWorkId) {
+                                ArtWorkBean artWork = vfb.retrieveArtWork(buy, i);
+                                artWorkBlob = vfb.retrieveArtWorkBlob(i);
+                                artist = vfb.retrieveArtistName(artWork);
+                                InputStream inputStream = null;
+                                try {
+                                        inputStream = artWorkBlob.getBinaryStream();
+                                } catch (SQLException e) {
+                                        e.printStackTrace();
+                                }
+                                Image image1 = new Image(inputStream, 100, 100, true, false);
+                                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,""));
+
+                        }
+
+
+                }catch (ArtWorkNotFoundException e) {
+                ExceptionsFactory ef = ExceptionsFactory.getInstance();
+                ExceptionView ev;
+                ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
+                paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+                }
         }
 
 

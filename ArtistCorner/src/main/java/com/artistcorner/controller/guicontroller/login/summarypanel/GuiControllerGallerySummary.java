@@ -2,6 +2,9 @@ package com.artistcorner.controller.guicontroller.login.summarypanel;
 
 import com.artistcorner.controller.applicationcontroller.ViewGallerySummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.ProposalBean;
+import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiControllerGallerySummary {
     public AnchorPane anchorParent;
@@ -33,6 +38,8 @@ public class GuiControllerGallerySummary {
     public Button button1;
     public Button button2;
     public Button button3;
+    @FXML
+    private Pane paneExceptionLoad;
     public ArtGalleryBean gal;
 
 
@@ -55,11 +62,12 @@ public class GuiControllerGallerySummary {
 
     }
 
-    public void getGallery(ArtGalleryBean loggedGallery) {
+    public void getGallery(ArtGalleryBean loggedGallery){
         gal = loggedGallery;
         labelUsernameDisplay.setText(gal.getNome());
         ViewGallerySummary bs = new ViewGallerySummary();
-        bs.inizializeOfferteInviate(listViewOfferte,gal);
+        inizializeOfferteInviate(listViewOfferte,gal);
+        paneExceptionLoad.setPrefSize(708,250);
     }
 
 
@@ -92,5 +100,18 @@ public class GuiControllerGallerySummary {
     public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloGallery(actionEvent,gal);
+    }
+
+    private void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
+        ViewGallerySummary vgs = new ViewGallerySummary();
+        List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
+        ArrayList<String> arrayFinal = new ArrayList<>();
+        for (ProposalBean n : arrayOfProposal) {
+            ArtistBean artist = vgs.retrieveArtistNameGallerySum(n.getArtista());
+            String artistName = artist.getNome() + " " + artist.getCognome();
+            listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistName);  // Popola la listView.
+
+            arrayFinal.add(artistName);
+        }
     }
 }

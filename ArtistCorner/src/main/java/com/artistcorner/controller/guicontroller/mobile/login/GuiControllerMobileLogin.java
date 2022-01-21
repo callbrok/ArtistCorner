@@ -2,6 +2,8 @@ package com.artistcorner.controller.guicontroller.mobile.login;
 
 import com.artistcorner.controller.applicationcontroller.Login;
 import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
