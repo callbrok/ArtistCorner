@@ -4,12 +4,10 @@ import com.artistcorner.controller.applicationcontroller.ViewGallerySummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
-import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -20,38 +18,37 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerGallerySummary {
-    public AnchorPane anchorParent;
-    public Pane paneSearch;
-    public Pane paneFavourites;
-    public Pane paneComprate;
-    public ListView<String> listViewOfferte;
+
     @FXML
-    Label labelUsernameDisplay;
-    public Label labelLogOut;
-    private double x=0, y=0;
-    private Stage stage;
-    public SVGPath svgProfile;
-    public Button button1;
-    public Button button2;
-    public Button button3;
+    private AnchorPane anchorParentGallery;
+    @FXML
+    private ListView<String> listViewOfferte;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private Label labelLogOutGallery;
+    private double x=0;
+    private double y=0;
+    private Stage stageGallery;
+    @FXML
+    private SVGPath svgProfileGallery;
     @FXML
     private Pane paneExceptionLoad;
-    public ArtGalleryBean gal;
+    ArtGalleryBean gal;
 
 
     public void initialize(){
         makeDraggable();
-        makeLogOut();
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
+        makeLogOutGallery();
+        svgProfileGallery.setScaleX(0.07);
+        svgProfileGallery.setScaleY(0.07);
     }
 
-    public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+    public void makeLogOutGallery(){
+        labelLogOutGallery.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
                 sc.switchToLogin(event);
@@ -65,33 +62,43 @@ public class GuiControllerGallerySummary {
     public void getGallery(ArtGalleryBean loggedGallery){
         gal = loggedGallery;
         labelUsernameDisplay.setText(gal.getNome());
-        ViewGallerySummary bs = new ViewGallerySummary();
-        inizializeOfferteInviate(listViewOfferte,gal);
+        initializeOfferteInviate(listViewOfferte,gal);
         paneExceptionLoad.setPrefSize(708,250);
     }
 
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+
+        anchorParentGallery.setOnMouseDragged((eventDraggableDrag -> {
+            stageGallery = (Stage) ((Node)eventDraggableDrag.getSource()).getScene().getWindow();
+            stageGallery.setX(eventDraggableDrag.getScreenX() - x);
+            stageGallery.setY(eventDraggableDrag.getScreenY() - y);
         }));
 
-        anchorParent.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorParentGallery.setOnMousePressed((eventDraggablePressed -> {
+            x=eventDraggablePressed.getSceneX();
+            y= eventDraggablePressed.getSceneY();
         }));
+
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.close();
+        stageGallery = (Stage) anchorParentGallery.getScene().getWindow();
+        stageGallery.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.setIconified(true);
+        stageGallery = (Stage) anchorParentGallery.getScene().getWindow();
+        stageGallery.setIconified(true);
+    }
+    private void initializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
+        ViewGallerySummary vgs = new ViewGallerySummary();
+        List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
+        for (ProposalBean n : arrayOfProposal) {
+            ArtistBean artistProposal = vgs.retrieveArtistNameGallerySum(n.getArtista());
+            String artistNameProposal = artistProposal.getNome() + " " + artistProposal.getCognome();
+            listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistNameProposal);  // Popola la listView.
+        }
     }
     public void switchToSearchArtWorkGallery(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
@@ -102,16 +109,4 @@ public class GuiControllerGallerySummary {
         sc.switchToSceneProfiloGallery(actionEvent,gal);
     }
 
-    private void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
-        ViewGallerySummary vgs = new ViewGallerySummary();
-        List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
-        ArrayList<String> arrayFinal = new ArrayList<>();
-        for (ProposalBean n : arrayOfProposal) {
-            ArtistBean artist = vgs.retrieveArtistNameGallerySum(n.getArtista());
-            String artistName = artist.getNome() + " " + artist.getCognome();
-            listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistName);  // Popola la listView.
-
-            arrayFinal.add(artistName);
-        }
-    }
 }

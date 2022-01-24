@@ -14,13 +14,11 @@ import java.util.List;
 public class ViewBuyerSummary {
 
     public List<Integer> retrieveAllComprate(int idBuyer)  {
-        List<Integer> arrayComprate = BuyerDAO.retrieveAllComprate(idBuyer);
-        return arrayComprate;
+        return BuyerDAO.retrieveAllComprate(idBuyer);
     }
 
     public ArtWorkBean retrieveArtWorks(int integer,int flag) {
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, flag);
-        ArtWorkBean artWorkBean = new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
-        return artWorkBean;
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
     }
 }

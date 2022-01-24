@@ -3,20 +3,14 @@ package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,58 +19,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerMobileBuyerSummary {
-    public AnchorPane anchorMain;
-    public Label labelUsernameDisplay;
-    public ListView<String> listViewCompra;
-    public Button button1;
-    public Button button2;
-    public Label labelComprate;
-    private double x=0, y=0;
-    private Stage stage;
+
     @FXML
-    private Pane paneExceptionLoad;
+    private AnchorPane anchorMainSummary;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private ListView<String> listViewCompra;
+    private double x=0;
+    private double y=0;
+    private Stage stageSummary;
 
     BuyerBean buy;
 
+    public void getBuyer(BuyerBean loggedBuyer) {
+        buy = loggedBuyer;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
+        labelUsernameDisplay.setText(buy.getNome() + " " + buy.getCognome());
+        listViewCompra.setStyle("-fx-font-size: 10px");
+        inizializeOpereComprate(listViewCompra,buy);
+    }
 
     public void initialize(){
         makeDraggable();
     }
 
-    public void makeLogOut(ActionEvent event) throws IOException {
+    public void makeLogOut(ActionEvent eventLogOut) throws IOException {
         SceneControllerMobile sm = new SceneControllerMobile();
-        sm.switchToLogin(event);
+        sm.switchToLogin(eventLogOut);
     }
 
-    public void getBuyer(BuyerBean loggedBuyer) {
-        buy = loggedBuyer;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
-        labelUsernameDisplay.setText(buy.getNome() + " " + buy.getCognome());
-        ViewBuyerSummary bs = new ViewBuyerSummary();
-        listViewCompra.setStyle("-fx-font-size: 10px");
-        inizializeOpereComprate(listViewCompra,buy);
+    public void exitWindow() {
+        stageSummary = (Stage) anchorMainSummary.getScene().getWindow();
+        stageSummary.close();
     }
-
-    public void exitWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.close();
-    }
-
-    public void minimizeWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
     private void makeDraggable(){
-        anchorMain.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+        anchorMainSummary.setOnMousePressed((eventPressScene -> {
+            x=eventPressScene.getSceneX();
+            y= eventPressScene.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorMainSummary.setOnMouseDragged((eventDragScene -> {
+            stageSummary = (Stage) ((Node)eventDragScene.getSource()).getScene().getWindow();
+            stageSummary.setX(eventDragScene.getScreenX() - x);
+            stageSummary.setY(eventDragScene.getScreenY() - y);
         }));
+    }
+
+    public void minimizeWindow() {
+        stageSummary = (Stage) anchorMainSummary.getScene().getWindow();
+        stageSummary.setIconified(true);
     }
 
     public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {

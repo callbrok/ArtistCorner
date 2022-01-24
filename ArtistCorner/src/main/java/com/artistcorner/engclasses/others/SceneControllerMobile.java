@@ -135,23 +135,6 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/BuyerSummaryMobileView.fxml"));
-        root = loader.load();
-
-        GuiControllerMobileBuyerSummary gcas = loader.getController();
-        gcas.getBuyer(buy);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-
     public void switchToSceneSearchArtWorkBuyer(ActionEvent event, BuyerBean buy) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/BuyerSearchMobileView.fxml"));
         root = loader.load();
@@ -161,10 +144,26 @@ public class SceneControllerMobile {
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/BuyerSummaryMobileView.fxml"));
+        root = loader.load();
+
+        GuiControllerMobileBuyerSummary gcas = loader.getController();
+        gcas.getBuyer(buy);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     public void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException{
@@ -176,7 +175,7 @@ public class SceneControllerMobile {
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
@@ -191,7 +190,7 @@ public class SceneControllerMobile {
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
@@ -206,7 +205,7 @@ public class SceneControllerMobile {
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
@@ -219,7 +218,7 @@ public class SceneControllerMobile {
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();

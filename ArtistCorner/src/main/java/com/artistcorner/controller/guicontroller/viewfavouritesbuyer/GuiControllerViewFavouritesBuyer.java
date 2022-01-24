@@ -35,32 +35,41 @@ import java.util.List;
 public class GuiControllerViewFavouritesBuyer {
 
         @FXML
-        public AnchorPane anchorParent;
-        public AnchorPane anchorPane1;
-        public Label labelLogOut;
-        public ListView<HBoxCell> listView;
-        public Label labelUsernameDisplay;
-        public SVGPath svgProfile;
-        public Button button1;
-        public Button button2;
-        public Button button3;
-        private double x=0, y=0;
+        private AnchorPane anchorParentFavDesk;
+        @FXML
+        private Label labelLogOutFavDesk;
+        @FXML
+        private ListView<HBoxCell> listView;
+        @FXML
+        private Label labelUsernameDisplay;
+        @FXML
+        private SVGPath svgProfileFavDesk;
+        @FXML
+        private Button button1;
+        @FXML
+        private Button button2;
+        @FXML
+        private Button button3;
+        private double x=0;
+        private double y=0;
         @FXML
         private Pane paneExceptionLoad;
-        Stage stage;
-        public BuyerBean buy;
+        @FXML
+        private Stage stageFavDesk;
+
+        BuyerBean buy;
 
 
         public void initialize() throws SQLException {
                 makeDraggable();
                 setTooltipMenu();
-                makeLogOut();
-                svgProfile.setScaleX(0.07);
-                svgProfile.setScaleY(0.07);
+                makeLogOutFavDesk();
+                svgProfileFavDesk.setScaleX(0.07);
+                svgProfileFavDesk.setScaleY(0.07);
 
         }
-        public void makeLogOut(){
-                labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        public void makeLogOutFavDesk(){
+                labelLogOutFavDesk.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                         SceneController sc = new SceneController();
                         try {
                                 sc.switchToLogin(event);
@@ -78,27 +87,27 @@ public class GuiControllerViewFavouritesBuyer {
         }
 
         private void makeDraggable(){
-                anchorParent.setOnMousePressed(((event) -> {
-                        x=event.getSceneX();
-                        y= event.getSceneY();
+                anchorParentFavDesk.setOnMousePressed((eventFav -> {
+                        x=eventFav.getSceneX();
+                        y= eventFav.getSceneY();
                 }));
 
-                anchorParent.setOnMouseDragged(((event) -> {
-                        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenY() - y);
+                anchorParentFavDesk.setOnMouseDragged((eventFav -> {
+                        stageFavDesk = (Stage) ((Node)eventFav.getSource()).getScene().getWindow();
+                        stageFavDesk.setX(eventFav.getScreenX() - x);
+                        stageFavDesk.setY(eventFav.getScreenY() - y);
                 }));
+        }
+        public void minimizeWindow() {
+                stageFavDesk = (Stage) anchorParentFavDesk.getScene().getWindow();
+                stageFavDesk.setIconified(true);
         }
 
         public void exitWindow() {
-                stage = (Stage) anchorParent.getScene().getWindow();
-                stage.close();
+                stageFavDesk = (Stage) anchorParentFavDesk.getScene().getWindow();
+                stageFavDesk.close();
         }
 
-        public void minimizeWindow() {
-                stage = (Stage) anchorParent.getScene().getWindow();
-                stage.setIconified(true);
-        }
         public void setTooltipMenu(){
                 button1.setTooltip(new Tooltip("Home"));
                 button2.setTooltip(new Tooltip("Cerca Opera"));
@@ -115,124 +124,126 @@ public class GuiControllerViewFavouritesBuyer {
                 sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
         }
         public static class HBoxCell extends HBox {
-                Label labelArtWorkName = new Label();
-                Label labelArtistName = new Label();
-                Button buttonAcquista = new Button();
-                public Button buttonPreferiti = new Button();
-                Label prezzo = new Label();
-                Label prezzo1 = new Label();
-                Label labelArtistNameDefault = new Label();
-                Label labelArtWorkDefault = new Label();
+                Label labelArtWorkNameFavDesk = new Label();
+                Label labelArtistNameFavDesk = new Label();
+                Button buttonAcquistaFavDesk = new Button();
+                Button buttonPreferitiFavDesk = new Button();
+                Label prezzoFavDesk = new Label();
+                Label priceDefault = new Label();
+                Label labelArtistNameDefaultFav = new Label();
+                Label labelArtWorkDefaultFav = new Label();
 
-                public HBoxCell(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input) throws SQLException, IOException {
+                public HBoxCell(String artWorkFavText, String artistFavText, Image imageFav, int idOperaFav, double priceFav, String preferitiText, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdFavDesk, String input) throws SQLException, IOException {
                         super();
                         ImageView imageView = new ImageView();
-                        imageView.setImage(img);
+                        imageView.setImage(imageFav);
                         imageView.setFitHeight(100);
                         imageView.setFitWidth(100);
-                        labelArtWorkName.setText(labelText);
-                        labelArtWorkName.setAlignment(Pos.CENTER);
-                        labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-                        labelArtistName.setText(labelText1);
-                        labelArtistName.setAlignment(Pos.CENTER);
-                        labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-                        labelArtWorkName.setPrefSize(100, 50);
-                        labelArtistName.setPrefSize(100, 50);
-                        prezzo.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
-                        prezzo.setMaxWidth(Double.MAX_VALUE);
-                        prezzo.setText("€ " + price);prezzo.setPrefSize(100, 100);prezzo.setAlignment(Pos.CENTER);
-                        prezzo1.setText("Prezzo Opera: ");prezzo1.setPrefSize(100, 100);prezzo1.setAlignment(Pos.CENTER);prezzo1.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
-                        VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
+                        labelArtWorkNameFavDesk.setText(artWorkFavText);
+                        labelArtWorkNameFavDesk.setAlignment(Pos.CENTER);
+                        labelArtWorkNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+                        labelArtistNameFavDesk.setText(artistFavText);
+                        labelArtistNameFavDesk.setAlignment(Pos.CENTER);
+                        labelArtistNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
+                        labelArtWorkNameFavDesk.setPrefSize(100, 50);
+                        labelArtistNameFavDesk.setPrefSize(100, 50);
+                        prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
+                        prezzoFavDesk.setMaxWidth(Double.MAX_VALUE);
+                        prezzoFavDesk.setText("€ " + priceFav);
+                        prezzoFavDesk.setPrefSize(100, 100);
+                        prezzoFavDesk.setAlignment(Pos.CENTER);
+                        priceDefault.setText("Prezzo Opera: ");
+                        priceDefault.setPrefSize(100, 100);
+                        priceDefault.setAlignment(Pos.CENTER);
+                        priceDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+                        VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk);
                         vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
-                        HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
+                        HBox.setHgrow(labelArtWorkNameFavDesk, Priority.ALWAYS);
                         HBox.setMargin(vBox1, new Insets(10, 25, 10, 25));
-                        VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
+                        VBox vBox2 = new VBox(labelArtWorkDefaultFav, labelArtistNameDefaultFav);
                         vBox2.setAlignment(Pos.CENTER);
-                        labelArtWorkDefault.setText("Titolo Opera: ");labelArtWorkDefault.setAlignment(Pos.CENTER);labelArtWorkDefault.setPrefSize(100, 50);
-                        labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+                        labelArtWorkDefaultFav.setText("Titolo Opera: ");
+                        labelArtWorkDefaultFav.setAlignment(Pos.CENTER);
+                        labelArtWorkDefaultFav.setPrefSize(100, 50);
+                        String fontdef = "-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
+                        labelArtWorkDefaultFav.setStyle(fontdef);
                         HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-                        labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        labelArtistNameDefault.setText("Nome Autore: ");
-                        labelArtistNameDefault.setAlignment(Pos.CENTER);
-                        labelArtistNameDefault.setPrefSize(100, 50);
-                        labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-                        buttonAcquista.setText("Acquista");
-                        buttonAcquista.setPrefSize(150, 50);
-                        buttonAcquista.setStyle(" -fx-font-size: 14px;");
-                        buttonPreferiti.setText(labelPreferiti);
-                        buttonPreferiti.setPrefSize(150, 50);
-                        buttonPreferiti.setStyle("-fx-font-size: 14px;");
-                        VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
+                        labelArtistNameDefaultFav.setText("Nome Autore: ");
+                        labelArtistNameDefaultFav.setAlignment(Pos.CENTER);
+                        labelArtistNameDefaultFav.setPrefSize(100, 50);
+                        labelArtistNameDefaultFav.setStyle(fontdef);
+                        buttonAcquistaFavDesk.setText("Acquista");
+                        buttonAcquistaFavDesk.setPrefSize(150, 50);
+                        buttonAcquistaFavDesk.setStyle(" -fx-font-size: 14px;");
+                        buttonPreferitiFavDesk.setText(preferitiText);
+                        buttonPreferitiFavDesk.setPrefSize(150, 50);
+                        buttonPreferitiFavDesk.setStyle("-fx-font-size: 14px;");
+                        VBox vBox = new VBox(buttonAcquistaFavDesk, buttonPreferitiFavDesk);
                         vBox.setAlignment(Pos.CENTER);
                         ViewFavouritesBuyer lv = new ViewFavouritesBuyer();
-                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+                        buttonAcquistaFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
                                 @Override
                                 public void handle(ActionEvent arg0) {
-                                        buttonPreferiti.setText("Paga con Carte");
-                                        buttonAcquista.setText("Paga con PayPal");
-                                        buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
+                                        buttonPreferitiFavDesk.setText("Paga con Carte");
+                                        buttonAcquistaFavDesk.setText("Paga con PayPal");
+                                        buttonAcquistaFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOpera, idBuyer);
-                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                                                        lv.finishPayment( idOperaFav, idBuyer);
+                                                        buttonAcquistaFavDesk.setDisable(true);
+                                                        buttonPreferitiFavDesk.setVisible(false);
+                                                        buttonAcquistaFavDesk.setText("Opera Acquistata!");
 
                                                 }
                                         });
-                                        buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+                                        buttonPreferitiFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOpera, idBuyer);
-                                                        buttonAcquista.setDisable(true);buttonPreferiti.setVisible(false);buttonAcquista.setText("Opera Acquistata!");
+                                                        lv.finishPayment( idOperaFav, idBuyer);
+                                                        buttonAcquistaFavDesk.setDisable(true);
+                                                        buttonPreferitiFavDesk.setVisible(false);
+                                                        buttonAcquistaFavDesk.setText("Opera Acquistata!");
                                                 }
                                         });
                                 }
 
                         });
 
-
-
-                if (arrayListArtWorkId.contains(idOpera)){
-                        buttonPreferiti.setText("Rimuovi dai Preferiti");
-                        System.out.println(arrayListArtWorkId);
+                if (arrayListArtWorkIdFavDesk.contains(idOperaFav)){
+                        buttonPreferitiFavDesk.setText("Rimuovi dai Preferiti");
                 }
-                buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
+                buttonPreferitiFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                                String answer = lv.manageButtonClick(arg0,buttonAcquista,buttonPreferiti,idOpera,idBuyer);
-                                buttonPreferiti.setText(answer);
+                                String answer = lv.manageButtonClick(buttonPreferitiFavDesk,idOperaFav,idBuyer);
+                                buttonPreferitiFavDesk.setText(answer);
                         }
                 });
 
 
-                this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+                this.getChildren().addAll(imageView, vBox2, vBox1, priceDefault, prezzoFavDesk, vBox);
         }
 
 
         }
         public void populateListView() throws SQLException, IOException {
                 ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
-                List<Integer> arrayOfArtWorkId;
-                ArtistBean artist=null;
-                Blob artWorkBlob =null;
+                List<Integer> arrayOfArtWorkIdFav;
+                ArtistBean artistFav=null;
+                Blob artWorkBlobFav =null;
 
                 try{
-                        arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
-                        for (Integer i: arrayOfArtWorkId) {
-                                ArtWorkBean artWork = vfb.retrieveArtWork(buy, i);
-                                artWorkBlob = vfb.retrieveArtWorkBlob(i);
-                                artist = vfb.retrieveArtistName(artWork);
-                                InputStream inputStream = null;
-                                try {
-                                        inputStream = artWorkBlob.getBinaryStream();
-                                } catch (SQLException e) {
-                                        e.printStackTrace();
-                                }
-                                Image image1 = new Image(inputStream, 100, 100, true, false);
-                                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,""));
+                        arrayOfArtWorkIdFav = vfb.retrieveArtWorkId(buy);
+                        for (Integer i: arrayOfArtWorkIdFav) {
+                                ArtWorkBean artWorkFav = vfb.retrieveArtWork(i);
+                                artWorkBlobFav = vfb.retrieveArtWorkBlob(i);
+                                artistFav = vfb.retrieveArtistName(artWorkFav);
+                                Image image1 = extractImage(artWorkBlobFav);
+                                listView.getItems().add(new HBoxCell(artWorkFav.getTitolo(), artistFav.getNome()+" "+artistFav.getCognome(),image1, artWorkFav.getIdOpera(), artWorkFav.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistFav.getIdArtista(),arrayOfArtWorkIdFav,""));
 
                         }
 
@@ -244,6 +255,16 @@ public class GuiControllerViewFavouritesBuyer {
                 paneExceptionLoad.getChildren().add(ev.getExceptionPane());
                 }
         }
+        private Image extractImage(Blob blob3){
+                InputStream inputStream3 = null;
+                try {
+                        inputStream3 = blob3.getBinaryStream();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+                assert inputStream3 != null;
+                return new Image(inputStream3, 100, 100, true, false);
 
+        }
 
 }

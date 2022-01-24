@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor" fx:id="anchorMain" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewprofilogallery.GuiControllerMobileViewProfiloGallery">
+<AnchorPane id="anchor" fx:id="anchorMainProfGal" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewprofilogallery.GuiControllerMobileViewProfiloGallery">
     <children>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
@@ -47,14 +47,14 @@
             <Pane layoutX="264.0" layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane id="error" fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="446.0" prefWidth="438.0">
                <children>
-                  <TilePane fx:id="tilePane2" layoutX="8.0" layoutY="251.0" prefHeight="188.0" prefWidth="420.0" />
-                  <TilePane fx:id="tilePane" layoutX="6.0" layoutY="38.0" prefHeight="168.0" prefWidth="420.0" />
+                  <TilePane fx:id="tilePaneAcceptedMobile" layoutX="8.0" layoutY="256.0" prefHeight="175.0" prefWidth="420.0" />
+                  <TilePane fx:id="tilePanePendingMobile" layoutX="6.0" layoutY="39.0" prefHeight="175.0" prefWidth="420.0" />
                   <Label fx:id="labelInviate" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" prefHeight="35.0" prefWidth="407.0" text="Richieste in attesa di risposta" textFill="#39a67f">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelAttesa" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="212.0" prefHeight="35.0" prefWidth="396.0" text="Richieste accettate" textFill="#39a67f">
+                  <Label fx:id="labelAttesa" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="218.0" prefHeight="35.0" prefWidth="396.0" text="Richieste accettate" textFill="#39a67f">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

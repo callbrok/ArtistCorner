@@ -8,13 +8,19 @@ import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 
-import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class BuyerDAO {
+
+    public static final String BUY_PROBLEM = "Problema nella gestione dell'acquisto";
+
+    private BuyerDAO(){
+
+        throw new IllegalStateException("Utility class");
+    }
 
     public static Buyer retrieveBuyer(UserBean usr){
         Buyer bu = null;
@@ -50,20 +56,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se21) {
+                se21.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se1) {
+                se1.printStackTrace();
             }
         }
 
@@ -105,20 +112,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        } catch (Exception ex1) {
+            ex1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se22) {
+                se22.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
             }
         }
 
@@ -155,20 +163,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e2) {
-            e2.printStackTrace();
+        } catch (Exception ex2) {
+            ex2.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se23) {
+                se23.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se3) {
+                se3.printStackTrace();
             }
         }
 
@@ -210,20 +219,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e3) {
-            e3.printStackTrace();
+        } catch (Exception ex3) {
+            ex3.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se24) {
+                se24.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se4) {
+                se4.printStackTrace();
             }
         }
 
@@ -232,7 +242,7 @@ public class BuyerDAO {
     }
 
     public static List<Integer> retrieveArtWorkId(int idUsr) {
-        List<Integer> listOfArtWorkId = new ArrayList<Integer>();
+        List<Integer> listOfArtWorkId = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -263,20 +273,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e4) {
-            e4.printStackTrace();
+        } catch (Exception ex4) {
+            ex4.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se25) {
+                se25.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se5) {
+                se5.printStackTrace();
             }
         }
 
@@ -297,11 +308,11 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.insertOperaComprata(stmt,artWorkId, idBuyer);
-            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            if (result==-1){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
             }
 
-        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e5) {
-            e5.printStackTrace();
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException ex5) {
+            ex5.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -326,12 +337,12 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.switchFlagVendibile(stmt,idOpera);
-            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            if (result==-1){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
             }
 
 
-        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e6) {
-            e6.printStackTrace();
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException ex6) {
+            ex6.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -345,7 +356,7 @@ public class BuyerDAO {
 
     public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
         Statement stmt = null;
-        int result=0;
+        int result;
         Connection conn = null;
 
         try {
@@ -357,10 +368,10 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
-            if (result==-1){throw new BuyArtWorkManagementProblemException("Problema nella gestione dell'acquisto");
+            if (result==-1){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
             }
-        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException e7) {
-            e7.printStackTrace();
+        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException ex7) {
+            ex7.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -371,7 +382,7 @@ public class BuyerDAO {
     }
 
     public static List<ArtWork> retrieveArtWorkByName(String input) {
-        input= input.replaceAll("","$0%");
+        input= input.replace("","%");
         List<ArtWork> artWork = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
@@ -408,20 +419,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e9) {
-            e9.printStackTrace();
+        } catch (Exception ex9) {
+            ex9.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se26) {
+                se26.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se6) {
+                se6.printStackTrace();
             }
         }
 
@@ -444,8 +456,8 @@ public class BuyerDAO {
             if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
             }
 
-        } catch (ClassNotFoundException | FavouritesManagementProblemException e10) {
-            e10.printStackTrace();
+        } catch (ClassNotFoundException | FavouritesManagementProblemException ex10) {
+            ex10.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -488,20 +500,21 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e11) {
-            e11.printStackTrace();
+        } catch (Exception ex11) {
+            ex11.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException se27) {
+                se27.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se7) {
+                se7.printStackTrace();
             }
         }
 

@@ -3,59 +3,49 @@ package com.artistcorner.controller.guicontroller.login.summarypanel;
 import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerBuyerSummary {
-    public AnchorPane anchorParent;
-    public Pane paneSearch;
-    public Pane paneFavourites;
-    public Pane paneComprate;
-    public ListView<String> listViewCompra;
-    public Label labelUsernameDisplay;
-    public Label labelSearch;
-    public Label labelFavourites;
-    public Label labelComprate;
-    public Label labelLogOut;
-    private double x=0, y=0;
-    private Stage stage;
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public SVGPath svgProfile;
-    public BuyerBean buy;
+    @FXML
+    private AnchorPane anchorParentBuyer;
+    @FXML
+    private ListView<String> listViewCompra;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private Label labelLogOutBuyerSum;
+    private double x=0;
+    private double y=0;
+    @FXML
+    private Stage stageBuyer;
+    @FXML
+    private SVGPath svgProfileBuyerSum;
+    private BuyerBean buy;
 
 
     public void initialize(){
         makeDraggable();
-        makeLogOut();
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
+        makeLogOutBuyer();
+        svgProfileBuyerSum.setScaleX(0.07);
+        svgProfileBuyerSum.setScaleY(0.07);
     }
 
-    public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+    public void makeLogOutBuyer(){
+        labelLogOutBuyerSum.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
                 sc.switchToLogin(event);
@@ -69,33 +59,33 @@ public class GuiControllerBuyerSummary {
     public void getBuyer(BuyerBean loggedBuyer) {
         buy = loggedBuyer;
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
-        ViewBuyerSummary bs = new ViewBuyerSummary();
-        inizializeOpereComprate(listViewCompra,buy);
+        initializeOpereComprate(listViewCompra,buy);
     }
 
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+        anchorParentBuyer.setOnMousePressed((eventPressBuy -> {
+            x=eventPressBuy.getSceneX();
+            y= eventPressBuy.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorParentBuyer.setOnMouseDragged((eventDragBuy -> {
+            stageBuyer = (Stage) ((Node)eventDragBuy.getSource()).getScene().getWindow();
+            stageBuyer.setX(eventDragBuy.getScreenX() - x);
+            stageBuyer.setY(eventDragBuy.getScreenY() - y);
         }));
-    }
-
-    public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.setIconified(true);
+        stageBuyer = (Stage) anchorParentBuyer.getScene().getWindow();
+        stageBuyer.setIconified(true);
     }
+
+    public void exitWindow() {
+        stageBuyer = (Stage) anchorParentBuyer.getScene().getWindow();
+        stageBuyer.close();
+    }
+
     public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
         sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
@@ -105,18 +95,14 @@ public class GuiControllerBuyerSummary {
         SceneController sc = new SceneController();
         sc.switchToSceneFavouritesBuyer(actionEvent,buy);
     }
-    public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy)  {
-        Buyer buyer = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
+    public void initializeOpereComprate(ListView<String> listViewComprate, BuyerBean buy)  {
         ViewBuyerSummary vbs = new ViewBuyerSummary();
-        List<Integer> arrayOfComprate = vbs.retrieveAllComprate(buyer.getIdBuyer());
-        List<ArtWorkBean> arrayFinal = new ArrayList<>();
-        for (int n : arrayOfComprate) {
-            ArtWorkBean artwork = vbs.retrieveArtWorks(n, 0);
-            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
-
-            arrayFinal.add(artwork);
+        Buyer buyer = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
+        List<Integer> arrayOfComprateD = vbs.retrieveAllComprate(buyer.getIdBuyer());
+        for (int n : arrayOfComprateD) {
+            ArtWorkBean artworkComprata = vbs.retrieveArtWorks(n, 0);
+            listViewComprate.getItems().add("Titolo Opera:  " + artworkComprata.getTitolo() + "     Prezzo di acquisto:   € " + artworkComprata.getPrezzo());  // Popola la listView.
         }
-
     }
 
 }

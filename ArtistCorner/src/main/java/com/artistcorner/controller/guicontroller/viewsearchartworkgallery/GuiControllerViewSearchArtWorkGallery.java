@@ -6,7 +6,6 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
@@ -34,33 +33,32 @@ import java.util.List;
 
 public class GuiControllerViewSearchArtWorkGallery {
     @FXML
-    private AnchorPane anchorParent,anchorPane;
-    public Pane paneFound;
-    public Label labelLogOut;
-    public ListView<HBoxCell> listView;
-    public TextField textField;
-    public Button buttonSearch;
-    public Label labelUsernameDisplay;
-    public Button buttonCanc;
-    public SVGPath svgProfile;
-    public Button button1;
-    public Button button2;
-    public Button button3;
+    private AnchorPane anchorParentSearchGal;
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private Label labelLogOut;
+    @FXML
+    private ListView<HBoxCell> listView;
+    @FXML
+    private TextField textField;
+    @FXML
+    private Button button3;
+    @FXML
+    private SVGPath svgProfileSearchGal;
+    @FXML
+    private Button button1;
+    @FXML
+    private Button button2;
     @FXML
     private Pane paneExceptionLoad;
-    private double x=0, y=0;
-    Stage stage;
+    private double x=0;
+    private double y=0;
+    Stage stageSearchGal;
     ArtGalleryBean gal;
 
-
-
-    public void initialize() throws SQLException {
-        makeDraggable();
-        setTooltipMenu();
-        makeLogOut();
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
-    }
 
     public void makeLogOut(){
         labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -74,38 +72,42 @@ public class GuiControllerViewSearchArtWorkGallery {
 
     }
 
+    public void initialize() throws SQLException {
+        makeDraggable();
+        setTooltipMenu();
+        makeLogOut();
+        svgProfileSearchGal.setScaleX(0.07);
+        svgProfileSearchGal.setScaleY(0.07);
+    }
+
+    private void makeDraggable(){
+        anchorParentSearchGal.setOnMousePressed((eventSearchPress -> {
+            x=eventSearchPress.getSceneX();
+            y= eventSearchPress.getSceneY();
+        }));
+
+        anchorParentSearchGal.setOnMouseDragged((eventSearchDrag -> {
+            stageSearchGal = (Stage) ((Node)eventSearchDrag.getSource()).getScene().getWindow();
+            stageSearchGal.setX(eventSearchDrag.getScreenX() - x);
+            stageSearchGal.setY(eventSearchDrag.getScreenY() - y);
+        }));
+    }
+
+    public void exitWindow() {
+        stageSearchGal = (Stage) anchorParentSearchGal.getScene().getWindow();
+        stageSearchGal.close();
+    }
+
     public void getGallery(ArtGalleryBean loggedGallery) {
         gal = loggedGallery;
         labelUsernameDisplay.setText(gal.getNome());
     }
 
-    private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
-
-        anchorParent.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
-    }
-
-    public void exitWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.close();
-    }
-
     public void minimizeWindow() {
-        stage = (Stage) anchorParent.getScene().getWindow();
-        stage.setIconified(true);
+        stageSearchGal = (Stage) anchorParentSearchGal.getScene().getWindow();
+        stageSearchGal.setIconified(true);
     }
-    public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Cerca Opera"));
-        button3.setTooltip(new Tooltip("Preferiti"));
-    }
+
     public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException {
         if(keyEvent.getCode()== KeyCode.ENTER){
             String input= textField.getText();
@@ -113,12 +115,17 @@ public class GuiControllerViewSearchArtWorkGallery {
             populateListView(input);
         }
     }
+    public void setTooltipMenu(){
+        button1.setTooltip(new Tooltip("Home"));
+        button2.setTooltip(new Tooltip("Cerca Opera"));
+        button3.setTooltip(new Tooltip("Preferiti"));
+    }
     public void buttonSearchOnClick() throws SQLException, IOException{
         String input= textField.getText();
         anchorPane.setVisible(true);
-        paneFound.setVisible(false);
         populateListView(input);
     }
+
     public void buttonCancOnClick(){
         textField.setText("");
     }
@@ -131,97 +138,22 @@ public class GuiControllerViewSearchArtWorkGallery {
         SceneController sc = new SceneController();
         sc.switchToSceneGallerySummary(actionEvent,gal);
     }
-    public class HBoxCell extends HBox {
-        Label labelArtWorkName = new Label();
-        Label labelArtistName = new Label();
-        public Button buttonOfferta = new Button();
-        Label labelArtistNameDefault = new Label();
-        Label labelArtWorkDefault = new Label();
-
-        public HBoxCell(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input) throws SQLException, IOException {
-            ImageView imageView = new ImageView();
-            imageView.setImage(img);
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            labelArtWorkName.setText(labelTitolo);
-            labelArtWorkName.setAlignment(Pos.CENTER);
-            labelArtWorkName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistName.setText(labelArtista);
-            labelArtistName.setAlignment(Pos.CENTER);
-            labelArtistName.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkName.setPrefSize(100, 50);
-            labelArtistName.setPrefSize(100, 50);
-            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
-            vBox1.setAlignment(Pos.CENTER);
-            vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
-            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
-            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setText("Titolo Opera: ");
-            labelArtWorkDefault.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setPrefSize(100, 50);
-            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
-            labelArtWorkDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            labelArtistNameDefault.setText("Nome Autore: ");
-            labelArtistNameDefault.setAlignment(Pos.CENTER);
-            labelArtistNameDefault.setPrefSize(100, 50);
-            labelArtistNameDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            buttonOfferta.setText(labelButton);
-            buttonOfferta.setPrefSize(150, 100);
-            buttonOfferta.setStyle("-fx-font-size: 16px;");
-            ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
-
-            if (arrayListProposte.contains(idArtista)) {
-                System.out.println(arrayListProposte);
-                buttonOfferta.setText("Ritira Proposta");
-            }
-            buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    String answer = null;
-                    try {
-                        answer = sa.manageButtonClick(buttonOfferta, idGallery, idArtista);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    buttonOfferta.setText(answer);
-                    try {
-                        populateListView(input);
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-            this.getChildren().addAll(imageView, vBox2, vBox1, buttonOfferta);
-        }
-
-    }
     public void populateListView(String input) throws SQLException, IOException {
         if (listView.getItems().size()!=0){
             listView.getItems().clear();
         }
-        ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
-        ArtistBean artist=null;
-        Blob artWorkBlob =null;
+        ViewSearchArtWorkGallery vsawg = new ViewSearchArtWorkGallery();
+        ArtistBean artistSearch=null;
+        Blob artWorkBlobSearchGal =null;
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input);
-            List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
-            for (ArtWorkBean artWork: arrayOfArtWork) {
-                artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
-                artist = vsg.retrieveGallerySearchArtistName(artWork);
-                InputStream inputStream = null;
-                try {
-                    inputStream = artWorkBlob.getBinaryStream();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                Image image1 = new Image(inputStream, 100, 100, true, false);
-                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
+            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(input);
+            List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal);
+            for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
+                artWorkBlobSearchGal = vsawg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
+                artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
+                Image image1 = extractImage(artWorkBlobSearchGal);
+                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input));
 
             }
         } catch ( ArtWorkNotFoundException throwables) {
@@ -231,6 +163,86 @@ public class GuiControllerViewSearchArtWorkGallery {
             ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
+    }
+    public class HBoxCell extends HBox {
+        Label labelArtWorkNameSearchGal = new Label();
+        Label labelArtistNameSearchGal = new Label();
+        Button buttonOffertaSearchGal = new Button();
+        Label labelArtistNameDefaultGal = new Label();
+        Label labelArtWorkDefaultGal = new Label();
+
+        public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal) throws SQLException, IOException {
+            ImageView imageViewSearchGal = new ImageView();
+            imageViewSearchGal.setImage(imgShowGal);
+            imageViewSearchGal.setFitHeight(100);
+            imageViewSearchGal.setFitWidth(100);
+            labelArtWorkNameSearchGal.setText(labelArtTitoloGal);
+            labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
+            labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtistNameSearchGal.setText(labelArtistNameGal);
+            labelArtistNameSearchGal.setAlignment(Pos.CENTER);
+            labelArtistNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
+            labelArtWorkNameSearchGal.setPrefSize(100, 50);
+            labelArtistNameSearchGal.setPrefSize(100, 50);
+            VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal);
+            vBox1.setAlignment(Pos.CENTER);
+            vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
+            HBox.setHgrow(labelArtWorkNameSearchGal, Priority.ALWAYS);
+            HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
+            VBox vBox2 = new VBox(labelArtWorkDefaultGal, labelArtistNameDefaultGal);
+            vBox2.setAlignment(Pos.CENTER);
+            labelArtWorkDefaultGal.setText("Titolo Opera: ");
+            labelArtWorkDefaultGal.setAlignment(Pos.CENTER);
+            labelArtWorkDefaultGal.setPrefSize(100, 50);
+            HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
+            String fontDef = "-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
+            labelArtWorkDefaultGal.setStyle(fontDef);
+            labelArtistNameDefaultGal.setText("Nome Autore: ");
+            labelArtistNameDefaultGal.setAlignment(Pos.CENTER);
+            labelArtistNameDefaultGal.setPrefSize(100, 50);
+            labelArtistNameDefaultGal.setStyle(fontDef);
+            buttonOffertaSearchGal.setText(labelButtonShow);
+            buttonOffertaSearchGal.setPrefSize(150, 100);
+            buttonOffertaSearchGal.setStyle("-fx-font-size: 16px;");
+            ViewSearchArtWorkGallery sawg = new ViewSearchArtWorkGallery();
+
+            if (arrayListProposteGal.contains(idArtistSearchGal)) {
+                buttonOffertaSearchGal.setText("Ritira Proposta");
+            }
+            buttonOffertaSearchGal.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    String answer = null;
+                    try {
+                        answer = sawg.manageButtonClick(buttonOffertaSearchGal, idGallerySearch, idArtistSearchGal);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    buttonOffertaSearchGal.setText(answer);
+                    try {
+                        populateListView(inputSearchGal);
+                    } catch (SQLException | IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+            this.getChildren().addAll(imageViewSearchGal, vBox2, vBox1, buttonOffertaSearchGal);
+        }
+
+    }
+
+    private Image extractImage(Blob blob5){
+        InputStream inputStream5 = null;
+        try {
+            inputStream5 = blob5.getBinaryStream();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assert inputStream5 != null;
+        return new Image(inputStream5, 100, 100, true, false);
+
     }
 
 }

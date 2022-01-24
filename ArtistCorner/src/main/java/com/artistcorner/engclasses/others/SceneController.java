@@ -195,7 +195,7 @@ public class SceneController {
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -207,7 +207,7 @@ public class SceneController {
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -220,7 +220,7 @@ public class SceneController {
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
