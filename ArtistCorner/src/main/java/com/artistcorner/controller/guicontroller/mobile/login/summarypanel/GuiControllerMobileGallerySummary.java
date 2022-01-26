@@ -1,25 +1,16 @@
 package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
 import com.artistcorner.controller.applicationcontroller.ViewGallerySummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,19 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerMobileGallerySummary {
-    @FXML
-    public AnchorPane anchorMain;
-    public Label labelUsernameDisplay;
-    public ListView<String> listViewOfferte;
-    public Button button1;
-    public Button button2;
-    public Label labelComprate;
-    private double x=0, y=0;
-    @FXML
-    private Pane paneExceptionLoad;
-    private Stage stage;
 
-   ArtGalleryBean gal;
+    @FXML
+    private AnchorPane anchorMainGallery;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private ListView<String> listViewOfferte;
+    private double x=0;
+    private double y=0;
+    @FXML
+    private Stage stageMobileGal;
+
+    ArtGalleryBean gal;
 
 
     public void initialize(){
@@ -55,32 +46,33 @@ public class GuiControllerMobileGallerySummary {
     public void getGallery(ArtGalleryBean loggedGallery){
         gal = loggedGallery;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
         labelUsernameDisplay.setText(gal.getNome());
-        ViewGallerySummary bs = new ViewGallerySummary();
         listViewOfferte.setStyle("-fx-font-size: 10px");
         inizializeOfferteInviate(listViewOfferte,gal);
     }
 
-    public void exitWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.close();
+    public void minimizeWindow() {
+        stageMobileGal = (Stage) anchorMainGallery.getScene().getWindow();
+        stageMobileGal.setIconified(true);
     }
 
-    public void minimizeWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.setIconified(true);
+    public void exitWindow() {
+        stageMobileGal = (Stage) anchorMainGallery.getScene().getWindow();
+        stageMobileGal.close();
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+
+        anchorMainGallery.setOnMouseDragged((eventD -> {
+            stageMobileGal = (Stage) ((Node)eventD.getSource()).getScene().getWindow();
+            stageMobileGal.setX(eventD.getScreenX() - x);
+            stageMobileGal.setY(eventD.getScreenY() - y);
         }));
 
-        anchorMain.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorMainGallery.setOnMousePressed((eventP -> {
+            x=eventP.getSceneX();
+            y= eventP.getSceneY();
         }));
+
     }
     public void switchToSearchArtWorkGallery(ActionEvent actionEvent) throws IOException, SQLException {
         SceneControllerMobile sc = new SceneControllerMobile();

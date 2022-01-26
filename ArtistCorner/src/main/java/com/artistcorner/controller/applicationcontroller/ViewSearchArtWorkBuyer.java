@@ -17,13 +17,14 @@ import java.util.List;
 
 public class ViewSearchArtWorkBuyer {
 
-    public String manageButtonClick(Button buttonPreferiti, int idOpera, int idBuyer ){
-
-        switch (buttonPreferiti.getText()){
+    public String manageButtonClickFavourites(Button buttonFavourites, int idArtWork, int idBuyer ){
+        String addFavourites = "Aggiungi ai Preferiti";
+        String remFavourites = "Rimuovi dai Preferiti";
+        switch (buttonFavourites.getText()){
             case "Rimuovi dai Preferiti":{
                 try {
-                    BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                    return "Aggiungi ai Preferiti";
+                    BuyerDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
+                    return addFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -32,8 +33,8 @@ public class ViewSearchArtWorkBuyer {
             }
             case "Aggiungi ai Preferiti":{
                 try {
-                    BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                    return "Rimuovi dai Preferiti";
+                    BuyerDAO.addArtWorkToFavourites(idArtWork,idBuyer);
+                    return remFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -42,32 +43,17 @@ public class ViewSearchArtWorkBuyer {
             }
             default:
         }
-        return "Rimuovi dai Preferiti";
+        return remFavourites;
     }
 
-
-    public void finishPayment(int idOpera, int idBuyer){
-
-        try {
-            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-            BuyerDAO.switchFlagVendibile(idOpera);
-            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
     public List<Integer> retrieveSearchArtWorkId(BuyerBean buyer){
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        List<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
-        return artWorkId;
+        return BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
     }
 
 
     public Blob retrieveSearchArtWorkBlob(int n) {
-        Blob immagine = BuyerDAO.retrieveImage(n);
-        return immagine;
+       return BuyerDAO.retrieveImage(n);
     }
 
     public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
@@ -85,5 +71,17 @@ public class ViewSearchArtWorkBuyer {
             arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId()));
         }
         return arrayArtWorkBean;
+    }
+    public void finishPayment(int idOpera, int idBuyer){
+
+        try {
+            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
+            BuyerDAO.switchFlagVendibile(idOpera);
+            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
 }

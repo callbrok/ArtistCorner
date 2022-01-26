@@ -22,6 +22,7 @@ public class ViewSearchArtWorkGallery {
 
     public String manageButtonClick(Button buttonPreferiti, int idGallery, int idArtista) throws SQLException {
         int flag =0;
+        String  remProposta = "Ritira Proposta";
         switch (buttonPreferiti.getText()){
             case "Ritira Proposta":{
                 GalleryDAO.removeProposta(idGallery,idArtista);
@@ -31,18 +32,17 @@ public class ViewSearchArtWorkGallery {
             }
             case "Invia Proposta":{
                 GalleryDAO.addProposta(idGallery,idArtista,flag);
-                return "Ritira Proposta";
+                return remProposta;
 
 
             }
             default:
         }
-        return "Ritira Proposta";
+        return remProposta;
     }
 
     public Blob retrieveGallerySearchArtWorkBlob(int n) {
-        Blob immagine = BuyerDAO.retrieveImage(n);
-        return immagine;
+       return BuyerDAO.retrieveImage(n);
     }
 
     public ArtistBean retrieveGallerySearchArtistName(ArtWorkBean a) {
@@ -62,9 +62,8 @@ public class ViewSearchArtWorkGallery {
     }
 
     public List<Integer> retrieveGallerySearchArtistId(ArtGalleryBean gallery)  {
-            ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo(),gallery.getUsername());
-            List<Integer> artistId = GalleryDAO.retrieveArtistId(gal.getGalleria());
-        return artistId;
+        ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo(),gallery.getUsername());
+        return  GalleryDAO.retrieveArtistId(gal.getGalleria());
     }
 
 }

@@ -16,8 +16,8 @@ public class ViewProfileGallery {
 
     public String retrieveArtistName(int idArtista) {
         Artist name =BuyerDAO.retrieveArtist(idArtista);
-        String artistname = name.getNome()+" "+name.getCognome();
-        return artistname;
+        return name.getNome()+" "+name.getCognome();
+
     }
 
     public List<ProposalBean> retrieveProposal(ArtGalleryBean gallery, int flag) throws SentProposalNotFoundException {

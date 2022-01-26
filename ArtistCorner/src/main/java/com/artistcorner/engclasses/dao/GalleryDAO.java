@@ -7,7 +7,6 @@ import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemExceptio
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryGallery;
 import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
 import java.sql.Connection;
@@ -19,6 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class GalleryDAO {
+    private GalleryDAO(){
+
+        throw new IllegalStateException("Utility class");
+    }
     public static ArtGallery retrieveGallery(UserBean loggedUserBean) {
         ArtGallery gal = null;
         Statement stmt = null;
@@ -54,29 +57,30 @@ public class GalleryDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException sqle2) {
+                sqle2.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
             }
         }
 
         return gal;
     }
 
-    public static int removeProposta(int idGallery,int idArtista) throws SQLException {
+    public static void removeProposta(int idGallery, int idArtista) throws SQLException {
         Statement stmt = null;
-        int result=0;
+        int result;
         Connection conn = null;
 
         try {
@@ -100,7 +104,6 @@ public class GalleryDAO {
             if (conn != null)
                 conn.close();
         }
-        return result;
     }
 
     public static void addProposta(int idGallery, int idArtista, int flag) throws SQLException {
@@ -132,7 +135,7 @@ public class GalleryDAO {
     }
 
     public static List<Integer> retrieveArtistId(int galleria) {
-        List<Integer> listOfArtistId = new ArrayList<Integer>();
+        List<Integer> listOfArtistId = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -169,13 +172,14 @@ public class GalleryDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException sqle3) {
+                sqle3.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException sqle4) {
+                sqle4.printStackTrace();
             }
         }
 
@@ -222,13 +226,14 @@ public class GalleryDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException sqle5) {
+                sqle5.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException sqle6) {
+                sqle6.printStackTrace();
             }
         }
 

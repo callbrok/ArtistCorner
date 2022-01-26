@@ -10,7 +10,6 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,30 +27,44 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerMobileViewFavouritesBuyer {
     @FXML
-    public AnchorPane anchorMain;
-    public Label labelUsernameDisplay;
+    private Label labelUsernameDisplay;
     @FXML
-    public ListView<HBoxCellMobile> listView;
-    public Button button1;
-    public Button button2;
-    private double x=0, y=0;
-    private Stage stage;
+    private AnchorPane anchorMainFavMob;
+    private double x=0;
+    private  double y=0;
+    @FXML
+    private ListView<HBoxCellMobile> listView;
+    private Stage stageFavMob;
     @FXML
     private Pane paneExceptionLoad;
     BuyerBean buy;
 
-    public void initialize(){
-        makeDraggable();
-    }
-
     public void makeLogOut(ActionEvent event) throws IOException {
         SceneControllerMobile sm = new SceneControllerMobile();
         sm.switchToLogin(event);
+    }
+
+    private void makeDraggable(){
+
+        anchorMainFavMob.setOnMouseDragged((eventDragFav -> {
+            stageFavMob = (Stage) ((Node)eventDragFav.getSource()).getScene().getWindow();
+            stageFavMob.setX(eventDragFav.getScreenX() - x);
+            stageFavMob.setY(eventDragFav.getScreenY() - y);
+        }));
+
+        anchorMainFavMob.setOnMousePressed((eventPressFav -> {
+            x=eventPressFav.getSceneX();
+            y= eventPressFav.getSceneY();
+        }));
+
+    }
+
+    public void initialize(){
+        makeDraggable();
     }
 
     public void getBuyer(BuyerBean loggedBuyer) throws SQLException, IOException{
@@ -60,27 +73,14 @@ public class GuiControllerMobileViewFavouritesBuyer {
         populateListView();
     }
 
-    public void exitWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.close();
+    public void exitWindow() {
+        stageFavMob = (Stage) anchorMainFavMob.getScene().getWindow();
+        stageFavMob.close();
     }
 
-    public void minimizeWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    private void makeDraggable(){
-        anchorMain.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
-
-        anchorMain.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
+    public void minimizeWindow() {
+        stageFavMob = (Stage) anchorMainFavMob.getScene().getWindow();
+        stageFavMob.setIconified(true);
     }
 
     public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
@@ -96,14 +96,13 @@ public class GuiControllerMobileViewFavouritesBuyer {
         Label labelArtWorkName = new Label();
         Label labelArtistName = new Label();
         Button buttonAcquista = new Button();
-        public Button buttonPreferiti = new Button();
+        Button buttonPreferiti = new Button();
         Label prezzo = new Label();
         Label prezzo1 = new Label();
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
         public HBoxCellMobile(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input){
-            System.out.println(arrayListArtWorkId);
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(50);
@@ -134,12 +133,12 @@ public class GuiControllerMobileViewFavouritesBuyer {
             labelArtWorkDefault.setText("Titolo Opera: ");
             labelArtWorkDefault.setAlignment(Pos.CENTER);
             labelArtWorkDefault.setPrefSize(75, 25);
-            labelArtWorkDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
-            labelArtWorkDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            String font = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
+            labelArtWorkDefault.setStyle(font);
             labelArtistNameDefault.setText("Nome Autore: ");
             labelArtistNameDefault.setAlignment(Pos.CENTER);
             labelArtistNameDefault.setPrefSize(75, 25);
-            labelArtistNameDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            labelArtistNameDefault.setStyle(font);
             buttonAcquista.setText("Acquista");
             buttonAcquista.setPrefSize(90, 25);
             buttonAcquista.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
@@ -162,13 +161,13 @@ public class GuiControllerMobileViewFavouritesBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             sa.finishPayment(idOpera, idBuyer);
-                            buttonAcquista.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
                             buttonAcquista.setDisable(true);
                             buttonPreferiti.setVisible(false);
                             buttonAcquista.setText("Opera Acquistata!");
-                            buttonAcquista.setAlignment(Pos.BOTTOM_CENTER);
                             buttonAcquista.setPrefSize(90, 35);
+                            buttonAcquista.setAlignment(Pos.BOTTOM_CENTER);
                             buttonPreferiti.setPrefSize(90, 10);
+                            buttonAcquista.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
 
                         }
                     });
@@ -192,13 +191,12 @@ public class GuiControllerMobileViewFavouritesBuyer {
 
             if (arrayListArtWorkId.contains(idOpera)) {
                 buttonPreferiti.setText("Rimuovi dai Preferiti");
-                System.out.println(arrayListArtWorkId);
             }
             buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                    String answer = sa.manageButtonClick(buttonPreferiti, idOpera, idBuyer);
+                    String answer = sa.manageButtonClickFavourites(buttonPreferiti, idOpera, idBuyer);
                     buttonPreferiti.setText(answer);
                 }
             });
@@ -216,28 +214,30 @@ public class GuiControllerMobileViewFavouritesBuyer {
         try{
             arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
             for (Integer i: arrayOfArtWorkId) {
-                ArtWorkBean artWork = vfb.retrieveArtWork(buy, i);
+                ArtWorkBean artWork = vfb.retrieveArtWork(i);
                 artWorkBlob = vfb.retrieveArtWorkBlob(i);
                 artist = vfb.retrieveArtistName(artWork);
-                System.out.println(artWorkBlob);
-                InputStream inputStream = null;
-                try {
-                    inputStream = artWorkBlob.getBinaryStream();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                Image image1 = new Image(inputStream, 100, 100, true, false);
+                Image image1 = extractImage(artWorkBlob);
                 listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,""));
-
             }
-
-
         }catch (ArtWorkNotFoundException e) {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
             ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
+    }
+
+    private Image extractImage(Blob blob){
+        InputStream inputStream = null;
+        try {
+            inputStream = blob.getBinaryStream();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assert inputStream != null;
+        return new Image(inputStream, 100, 100, true, false);
+
     }
 }
 

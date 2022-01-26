@@ -6,7 +6,6 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
@@ -35,25 +34,26 @@ import java.util.List;
 
 public class GuiControllerMobileViewSearchArtWorkGallery {
     @FXML
-    public AnchorPane anchorMain;
-    public Label labelUsernameDisplay;
-    public Button button1;
-    public Button button2;
-    public ListView<HBoxCellMobile> listView;
-    public Button buttonSearch;
-    public Button buttonCanc;
-    private double x = 0, y = 0;
-    private Stage stage;
+    private AnchorPane anchorMainSearchGalMob;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private ListView<HBoxCellMobile> listView;
+    private double x = 0;
+    private  double y = 0;
+    @FXML
+    private Stage stageGalMob;
     @FXML
     private Pane paneExceptionLoad;
-    public TextField textField;
+    @FXML
+    private TextField textField;
     ArtGalleryBean gal;
 
     public void initialize() {
         makeDraggable();
     }
 
-    public void makeLogOut(ActionEvent event) throws IOException {
+    public void makeLogOutGalMob(ActionEvent event) throws IOException {
         SceneControllerMobile sm = new SceneControllerMobile();
         sm.switchToLogin(event);
     }
@@ -63,27 +63,31 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         labelUsernameDisplay.setText(gal.getNome());
     }
 
-    public void exitWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.close();
+    public void exitWindow() {
+        stageGalMob = (Stage) anchorMainSearchGalMob.getScene().getWindow();
+        stageGalMob.close();
     }
 
-    public void minimizeWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorMain.getScene().getWindow();
-        stage.setIconified(true);
+    public void minimizeWindow() {
+        stageGalMob = (Stage) anchorMainSearchGalMob.getScene().getWindow();
+        stageGalMob.setIconified(true);
     }
 
     private void makeDraggable() {
-        anchorMain.setOnMousePressed(((event) -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
+        anchorMainSearchGalMob.setOnMousePressed((eventGalPress -> {
+            x = eventGalPress.getSceneX();
+            y = eventGalPress.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorMainSearchGalMob.setOnMouseDragged((eventGalDrag -> {
+            stageGalMob = (Stage) ((Node) eventGalDrag.getSource()).getScene().getWindow();
+            stageGalMob.setX(eventGalDrag.getScreenX() - x);
+            stageGalMob.setY(eventGalDrag.getScreenY() - y);
         }));
+    }
+    public void buttonSearchOnClick() throws SQLException, IOException {
+        String input = textField.getText();
+        populateListView(input);
     }
 
     public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException{
@@ -91,11 +95,6 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             String input = textField.getText();
             populateListView(input);
         }
-    }
-
-    public void buttonSearchOnClick() throws SQLException, IOException {
-        String input = textField.getText();
-        populateListView(input);
     }
 
     public void buttonCancOnClick() {
@@ -115,7 +114,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
     public class HBoxCellMobile extends HBox {
         Label labelArtWorkName = new Label();
         Label labelArtistName = new Label();
-        public Button buttonOfferta = new Button();
+        Button buttonOfferta = new Button();
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
@@ -142,13 +141,13 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             labelArtWorkDefault.setText("Titolo Opera: ");
             labelArtWorkDefault.setAlignment(Pos.CENTER);
             labelArtWorkDefault.setPrefSize(75, 25);
-            labelArtWorkDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            String font1 = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
+            labelArtWorkDefault.setStyle(font1);
             HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-            labelArtWorkDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
             labelArtistNameDefault.setText("Nome Autore: ");
             labelArtistNameDefault.setAlignment(Pos.CENTER);
             labelArtistNameDefault.setPrefSize(75, 25);
-            labelArtistNameDefault.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;");
+            labelArtistNameDefault.setStyle(font1);
             buttonOfferta.setText(labelButton);
             buttonOfferta.setScaleX(0.7);
             buttonOfferta.setScaleY(0.7);
@@ -172,9 +171,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
                     buttonOfferta.setText(answer);
                     try {
                         populateListView(input);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (SQLException | IOException e) {
                         e.printStackTrace();
                     }
                 }
@@ -199,13 +196,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
                 artist = vsg.retrieveGallerySearchArtistName(artWork);
-                InputStream inputStream = null;
-                try {
-                    inputStream = artWorkBlob.getBinaryStream();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                Image image1 = new Image(inputStream, 100, 100, true, false);
+                Image image1 = extractImage(artWorkBlob);
                 listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
 
             }
@@ -216,6 +207,17 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
+    }
+    private Image extractImage(Blob blob2){
+        InputStream inputStream2 = null;
+        try {
+            inputStream2 = blob2.getBinaryStream();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assert inputStream2 != null;
+        return new Image(inputStream2, 100, 100, true, false);
+
     }
 }
 

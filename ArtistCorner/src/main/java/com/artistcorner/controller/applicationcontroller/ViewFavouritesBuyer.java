@@ -18,13 +18,14 @@ import java.util.List;
 public class ViewFavouritesBuyer {
 
 
-    public String manageButtonClick(ActionEvent arg0, Button buttonAcquista, Button buttonPreferiti, int idOpera, int idBuyer ){
-
+    public String manageButtonClick(Button buttonPreferiti, int idOpera, int idBuyer ){
+        String addPreferiti = "Aggiungi ai Preferiti";
+        String remPreferiti = "Rimuovi dai Preferiti";
         switch (buttonPreferiti.getText()){
             case "Rimuovi dai Preferiti":{
                 try {
                     BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                    return "Aggiungi ai Preferiti";
+                    return addPreferiti;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -34,7 +35,7 @@ public class ViewFavouritesBuyer {
             case "Aggiungi ai Preferiti":{
                 try {
                     BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                    return "Rimuovi dai Preferiti";
+                    return remPreferiti;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -43,7 +44,7 @@ public class ViewFavouritesBuyer {
             }
             default:
         }
-        return "Rimuovi dai Preferiti";
+        return remPreferiti;
     }
 
     public void finishPayment(int idOpera, int idBuyer){
@@ -64,19 +65,17 @@ public class ViewFavouritesBuyer {
         if (artWorkId.isEmpty()){
             throw new ArtWorkNotFoundException("Nessuna Preferito disponibile.");
         }
-        System.out.println(artWorkId);
         return artWorkId;
     }
 
-    public ArtWorkBean retrieveArtWork(BuyerBean buyer,int integer){
+    public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, 1);
-        ArtWorkBean artWorkBean = new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
-        return artWorkBean;
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
+
     }
 
     public Blob retrieveArtWorkBlob(int n) {
-        Blob immagine = BuyerDAO.retrieveImage(n);
-        return immagine;
+        return BuyerDAO.retrieveImage(n);
     }
 
     public ArtistBean retrieveArtistName(ArtWorkBean a) {

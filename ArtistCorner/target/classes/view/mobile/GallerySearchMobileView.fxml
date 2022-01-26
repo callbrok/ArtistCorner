@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor" fx:id="anchorMain" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery">
+<AnchorPane id="anchor" fx:id="anchorMainSearchGalMob" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery">
     <children>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
@@ -29,7 +29,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="23.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="23.0" prefWidth="80.0" styleClass="buttonTopBar" text="Logout" textFill="#922b07">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="23.0" mnemonicParsing="false" onAction="#makeLogOutGalMob" prefHeight="23.0" prefWidth="80.0" styleClass="buttonTopBar" text="Logout" textFill="#922b07">
                      <font>
                         <Font size="10.0" />
                      </font>
