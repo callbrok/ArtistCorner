@@ -184,7 +184,7 @@ public class ArtistDAO {
     }
 
 
-    public static void saveArtWork(ArtWorkBean upArt, int idArtist, String filePath) throws DuplicateArtWorkException{
+    public static void saveArtWork(ArtWorkBean upArt, String filePath) throws DuplicateArtWorkException{
         Statement stmt = null;
         PreparedStatement prStmt = null;
         Connection conn = null;
@@ -219,7 +219,7 @@ public class ArtistDAO {
             prStmt.setDouble(2, upArt.getPrezzo());
             prStmt.setInt(3, upArt.getFlagVendibile());
             prStmt.setBinaryStream(4, fis, (int) file.length());
-            prStmt.setInt(5, idArtist);
+            prStmt.setInt(5, upArt.getArtistId());
 
             prStmt.executeUpdate();
             prStmt.close();

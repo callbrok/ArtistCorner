@@ -11,7 +11,9 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-
+/**
+ * @author  Marco Purificato
+ */
 public class TestLogin {
 
     @Test

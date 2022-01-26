@@ -79,7 +79,9 @@ public class GuiControllerViewSalesHistory {
             stage.setY(event.getScreenY() - y);
         }));
     }
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorParentSHD.getScene().getWindow();
         stage.close();
     }

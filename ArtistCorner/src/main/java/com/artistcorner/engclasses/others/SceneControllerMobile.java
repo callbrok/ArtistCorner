@@ -25,6 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class SceneControllerMobile {
@@ -126,6 +128,8 @@ public class SceneControllerMobile {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException{
+        SceneController.deleteSerialNodo();
+
         root = FXMLLoader.load(getClass().getResource("/view/mobile/login/LoginMobileView.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

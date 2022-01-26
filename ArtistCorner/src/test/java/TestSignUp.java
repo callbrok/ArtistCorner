@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author  Marco Purificato
+ */
 public class TestSignUp {
 
     @Test

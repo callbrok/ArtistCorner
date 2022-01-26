@@ -87,7 +87,9 @@ public class GuiControllerViewProfile {
             stage.setY(event.getScreenY() - y);
         }));
     }
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorParentViewDes.getScene().getWindow();
         stage.close();
     }

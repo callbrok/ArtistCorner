@@ -8,6 +8,7 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -45,6 +46,7 @@ public class GuiControllerMobileViewSalesHistory {
     private ArtistBean art;
 
     public void initialize(){
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
         makeDraggable();
     }
 
@@ -112,7 +114,9 @@ public class GuiControllerMobileViewSalesHistory {
     }
 
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMain.getScene().getWindow();
         stage.close();
     }

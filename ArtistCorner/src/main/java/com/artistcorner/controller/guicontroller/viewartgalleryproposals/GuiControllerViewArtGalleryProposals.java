@@ -93,7 +93,9 @@ public class GuiControllerViewArtGalleryProposals {
             stage.setY(event.getScreenY() - y);
         }));
     }
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorParentPrpDesk.getScene().getWindow();
         stage.close();
     }

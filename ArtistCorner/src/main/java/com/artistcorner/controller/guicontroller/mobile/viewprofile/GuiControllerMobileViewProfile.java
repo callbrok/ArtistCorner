@@ -11,6 +11,7 @@ import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -63,6 +64,8 @@ public class GuiControllerMobileViewProfile {
         anchorPaneFocusM.setVisible(false);
         scrollTileBlob.setFitToWidth(true);
         scrollTileBlob.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+
         makeDraggable();
     }
 
@@ -145,7 +148,9 @@ public class GuiControllerMobileViewProfile {
 
 
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMainViewM.getScene().getWindow();
         stage.close();
     }

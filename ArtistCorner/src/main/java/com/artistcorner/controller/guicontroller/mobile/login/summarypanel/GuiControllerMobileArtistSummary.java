@@ -42,6 +42,8 @@ public class GuiControllerMobileArtistSummary {
         makeDraggable();
         makeGifPaneClickable();
 
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+
     }
 
     public void getArtist(ArtistBean loggedArtist){
@@ -66,7 +68,9 @@ public class GuiControllerMobileArtistSummary {
 
     }
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.close();
     }

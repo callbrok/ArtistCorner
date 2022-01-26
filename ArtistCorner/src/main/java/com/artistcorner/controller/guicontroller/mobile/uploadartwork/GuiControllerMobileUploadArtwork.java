@@ -9,9 +9,11 @@ import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -52,6 +54,10 @@ public class GuiControllerMobileUploadArtwork {
 
     public void initialize(){
         makeDraggable();
+        initEventHandlerRadio();
+
+        textFieldPrice.setVisible(false);
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
 
     }
 
@@ -86,7 +92,7 @@ public class GuiControllerMobileUploadArtwork {
 
         try {
             ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile, art.getIdArtista());
-            upaw.uploadImage(upArtWork, art.getIdArtista(), filePath);
+            upaw.uploadImage(upArtWork, filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
@@ -125,7 +131,9 @@ public class GuiControllerMobileUploadArtwork {
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMainUpM.getScene().getWindow();
         stage.close();
     }
@@ -146,6 +154,13 @@ public class GuiControllerMobileUploadArtwork {
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
+    }
+
+    public void initEventHandlerRadio(){
+        radioBtmSell.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
+            if (isNowSelected) {textFieldPrice.setVisible(true);}
+            else{textFieldPrice.setVisible(false);}
+        });
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException {

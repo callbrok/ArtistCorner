@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class UploadArtWork {
 
-    public void uploadImage(ArtWorkBean upArt, int idArtista, String filePath) throws DuplicateArtWorkException, EmptyPathException, EmptyFieldException {
+    public void uploadImage(ArtWorkBean upArt, String filePath) throws DuplicateArtWorkException, EmptyPathException, EmptyFieldException {
         // Dato che uploadImage non cattura l'eccezzione EmptyFieldExceptio
         // lo metto in throws.
 
@@ -26,7 +26,7 @@ public class UploadArtWork {
         }
 
 
-        ArtistDAO.saveArtWork(upArt, idArtista, filePath);
+        ArtistDAO.saveArtWork(upArt, filePath);
 
 
     }

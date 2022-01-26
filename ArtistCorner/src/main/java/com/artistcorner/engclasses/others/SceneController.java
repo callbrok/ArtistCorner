@@ -25,6 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class SceneController {
@@ -33,7 +35,6 @@ public class SceneController {
     private Parent root;
 
     public static  final String CSS_PATH = "/css/artist/main.css";
-
 
     public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
@@ -120,6 +121,8 @@ public class SceneController {
     }
 
     public void switchToLogin(MouseEvent event) throws IOException{
+        deleteSerialNodo();
+
         root = FXMLLoader.load(getClass().getResource("/view/login/LoginView.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -127,6 +130,12 @@ public class SceneController {
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void deleteSerialNodo() throws IOException {
+        String objetNodoPath = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+
+        if(Files.exists(Path.of(objetNodoPath)) && !Files.isDirectory(Path.of(objetNodoPath))) {Files.delete(Path.of(objetNodoPath));}
     }
 
     public void switchToAnalytics(ActionEvent event) throws IOException{

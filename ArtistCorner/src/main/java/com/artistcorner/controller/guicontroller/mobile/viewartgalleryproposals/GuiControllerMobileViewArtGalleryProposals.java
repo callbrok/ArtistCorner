@@ -9,6 +9,7 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -55,7 +56,8 @@ public class GuiControllerMobileViewArtGalleryProposals {
 
     public void initialize(){
         paneInfoLoading.setVisible(false);
-        
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+
         makeDraggable();
 
     }
@@ -222,7 +224,9 @@ public class GuiControllerMobileViewArtGalleryProposals {
         populateListView(loggedArtist);
     }
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMainPropM.getScene().getWindow();
         stage.close();
     }

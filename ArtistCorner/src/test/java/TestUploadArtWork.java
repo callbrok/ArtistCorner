@@ -11,18 +11,20 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author  Marco Purificato
+ */
 public class TestUploadArtWork {
-
 
     @Test
     public void testUploadArtWorkImageNotSelected(){
         UploadArtWork upju = new UploadArtWork();
         int code = -1;
 
-        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1);
+        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1,1);
 
         try {
-            upju.uploadImage(artWorkToCheck, 5,"");
+            upju.uploadImage(artWorkToCheck,"");
         } catch (DuplicateArtWorkException | EmptyFieldException e) {
             code = 0;
         } catch (EmptyPathException e1){

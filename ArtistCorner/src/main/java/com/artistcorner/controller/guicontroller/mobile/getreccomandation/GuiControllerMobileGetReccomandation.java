@@ -87,6 +87,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
         labelQuestion.setMaxWidth(362);
         labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
 
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
         anchorResult.setVisible(false);
         inizializeIdLivello();
 
@@ -233,7 +234,9 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     }
 
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorMainMobile.getScene().getWindow();
         stage.close();
     }

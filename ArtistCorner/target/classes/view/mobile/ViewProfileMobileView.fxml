@@ -8,6 +8,11 @@
 
 <AnchorPane id="anchor" fx:id="anchorMainViewM" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile">
     <children>
+      <AnchorPane fx:id="anchorPaneFocusM" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
+          <children>
+              <ImageView fx:id="imageFocusedM" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+          </children>
+      </AnchorPane>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
             <Button layoutX="218.0" layoutY="85.0" mnemonicParsing="false" onAction="#switchToProfiloVenduto" prefHeight="40.0" prefWidth="46.0" styleClass="buttonInterface">
@@ -29,7 +34,7 @@
             </Label>
             <Pane id="footerProfile" layoutY="585.0" prefHeight="48.0" prefWidth="438.0" styleClass="footerUserPane">
                <children>
-                  <Label fx:id="labelUsernameDisplay" layoutX="177.0" layoutY="16.0" text="Profilo Guest" textFill="#922b07">
+                   <Label fx:id="labelUsernameDisplay" layoutY="16.0" prefHeight="16.0" prefWidth="438.0" text="Profilo Guest" textFill="#922b07">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Label>
@@ -46,12 +51,8 @@
             </Button>
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="129.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="310.0" layoutY="85.0" prefHeight="40.0" prefWidth="128.0" style="-fx-background-color: #60b798;" />
-            <Pane fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="436.0" prefWidth="438.0">
+            <Pane fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="349.0" prefWidth="438.0">
                <children>
-                  <Button layoutX="109.0" layoutY="365.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Log Out" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font></Button>
                   <ScrollPane fx:id="scrollTileBlob" prefHeight="345.0" prefWidth="437.0" style="-fx-background-color: #ffffff;">
                      <content>
                         <TilePane fx:id="tilePaneBlobM" alignment="CENTER" prefHeight="344.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" />
@@ -59,6 +60,11 @@
                   </ScrollPane>
                </children>
             </Pane>
+            <Button layoutX="107.0" layoutY="495.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
          </children></Pane>
         <Button layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="16.0" prefWidth="0.0" styleClass="buttonTopBar" text="X">
             <font>
@@ -70,11 +76,6 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Button>
-      <AnchorPane fx:id="anchorPaneFocusM" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
-          <children>
-              <ImageView fx:id="imageFocusedM" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-          </children>
-      </AnchorPane>
 
     </children>
 </AnchorPane>

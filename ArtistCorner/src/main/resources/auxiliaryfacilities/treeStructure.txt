@@ -40,7 +40,7 @@
 13,27,N,Vuoi disegnare un animale raffigurato in movimento ?,dinamico,[S]
 14,28,Y,preferisci l'estate all'inverno ?,caldi,[D]
 14,29,N,preferisci la città alla natura ?,artificiale,[W]
-15,30,Y,Vuoi disegnare una natura morta ?,come una natura morta,[A]
+15,30,Y,Vuoi disegnare una natura morta ?,una natura morta,[A]
 15,31,N,Vuoi disegnare qualcosa di astratto ?,astratto,[A]
 16,33,N,Vuoi disegnare qualcosa di semplice e veloce ?,stilizzato,[R]
 17,34,Y,ti piace lo stile di Monet ?,impressionista,[R]

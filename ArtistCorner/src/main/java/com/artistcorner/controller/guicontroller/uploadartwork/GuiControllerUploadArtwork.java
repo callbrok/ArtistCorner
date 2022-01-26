@@ -10,6 +10,8 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -79,7 +81,9 @@ public class GuiControllerUploadArtwork {
         }));
     }
     
-    public void exitWindowUpload() {
+    public void exitWindowUpload() throws IOException {
+        SceneController.deleteSerialNodo();
+
         stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.close();
     }
@@ -107,7 +111,9 @@ public class GuiControllerUploadArtwork {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+        initEventHandlerRadio();
 
+        textFieldPrice.setVisible(false);
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
     }
@@ -163,7 +169,7 @@ public class GuiControllerUploadArtwork {
 
         try {
             ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile,art.getIdArtista());
-            upawDesk.uploadImage(upArtWork, art.getIdArtista(), filePath);
+            upawDesk.uploadImage(upArtWork, filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
@@ -194,6 +200,13 @@ public class GuiControllerUploadArtwork {
         labelFilePath.setText("");
         textFieldPrice.setText("");
         textFieldTitle.setText("");
+    }
+
+    public void initEventHandlerRadio(){
+        radioBtmSellUpload.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
+            if (isNowSelected) {textFieldPrice.setVisible(true);}
+            else{textFieldPrice.setVisible(false);}
+        });
     }
 
 
