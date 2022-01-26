@@ -1,1 +1,1 @@
-® 2javaX¹hrjsrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerArtistSummary.java
+® 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java

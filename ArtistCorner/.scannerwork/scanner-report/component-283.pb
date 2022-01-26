@@ -1,1 +1,1 @@
-› 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java
+› 2javaXhrMsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldException.java

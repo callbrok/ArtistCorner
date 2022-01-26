@@ -1,1 +1,1 @@
-¼ 2javaXRhrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileBuyerSummary.java
+¼ 2javaX´hrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java

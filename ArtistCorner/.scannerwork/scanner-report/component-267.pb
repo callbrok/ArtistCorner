@@ -1,2 +1,1 @@
-‹ 2javaX
-hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java
+‹ 2javaXóhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

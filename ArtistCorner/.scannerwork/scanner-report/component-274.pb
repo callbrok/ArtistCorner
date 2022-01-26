@@ -1,2 +1,2 @@
 ’ 2javaX
-hrPsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateUserException.java
+hr]src/main/java/com/artistcorner/engclasses/exceptions/ProposalsManagementProblemException.java

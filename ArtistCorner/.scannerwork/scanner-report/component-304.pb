@@ -1,1 +1,1 @@
-° 2javaX”hrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java
+° 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java

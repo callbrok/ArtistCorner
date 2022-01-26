@@ -1,1 +1,1 @@
-ù 2javaXhr=src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java
+ù 2javaXhrPsrc/main/java/com/artistcorner/engclasses/exceptions/BuyerNotFoundException.java

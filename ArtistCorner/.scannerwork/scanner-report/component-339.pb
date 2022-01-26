@@ -1,1 +1,1 @@
-Ó 2javaX^hrsrc/main/java/module-info.java
+Ó 2javaXährˆsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkgallery/GuiControllerMobileViewSearchArtWorkGallery.java

@@ -1,1 +1,1 @@
-Ð 2javaXhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewBuyerSummary.java
+Ð 2javaXŸhrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java

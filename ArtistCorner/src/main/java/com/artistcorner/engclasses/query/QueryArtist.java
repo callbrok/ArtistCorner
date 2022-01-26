@@ -14,6 +14,8 @@ public class QueryArtist {
 
     private QueryArtist(){throw new IllegalStateException("Utility Query Artist class");}
 
+    public static final String INSERTARTWORK_QUERY = "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
+
     public static ResultSet selectArtist(Statement stmt, String user) throws SQLException {
         String sql = "SELECT * FROM artista WHERE username ='" + user + "';";
         return stmt.executeQuery(sql);
@@ -61,7 +63,7 @@ public class QueryArtist {
     }
 
     public static String insertArtWork() {
-        return "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
+        return INSERTARTWORK_QUERY;
     }
 
     public static ResultSet selectArtGallery(Statement stmt, int artGallery) throws SQLException {

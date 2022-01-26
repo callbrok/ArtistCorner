@@ -1,9 +1,16 @@
 
-/com.artistcorner.model.Proposal#getIdOfferta()Ii
-_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java ("1*„
-1i
-_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java& (/"s
-i
-_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java (0
-""B#!
-com.artistcorner.model.Proposal
+Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*‡
+1t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((—
+Œ
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((
+%0java.lang.String"__id*8*6,
+*com.artistcorner.engclasses.bean.BuyerBean"
+nome"ê
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ()
+
+%0java.lang.StringB.,
+*com.artistcorner.engclasses.bean.BuyerBean

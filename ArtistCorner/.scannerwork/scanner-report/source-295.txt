@@ -1,220 +1,79 @@
-package com.artistcorner.controller.guicontroller.uploadartwork;
+package com.artistcorner.engclasses.query;
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
-import com.artistcorner.engclasses.exceptions.EmptyFieldException;
-import com.artistcorner.engclasses.exceptions.EmptyPathException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
-import com.artistcorner.engclasses.others.SceneController;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.SVGPath;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Proposal;
+import com.artistcorner.model.User;
+import javafx.scene.shape.ArcTo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public class GuiControllerUploadArtwork {
-    @FXML
-    private Button button1Up;
-    @FXML
-    private Button button2Up;
-    @FXML
-    private Button button3Up;
-    @FXML
-    private Button button4Up;
-    @FXML
-    private Button button5Up;
-    @FXML
-    private AnchorPane anchorParentUpload;
-    @FXML
-    private TextField textFieldTitle;
-    @FXML
-    private TextField textFieldPrice;
-    @FXML
-    private Label labelFilePath;
-    @FXML
-    private AnchorPane anchorPaneDragAndDrop;
-    @FXML
-    private Pane paneExceptionLoad;
-    @FXML
-    private SVGPath svgProfile;
-    @FXML
-    private Label labelUsernameDisplay;
-    @FXML
-    private Label labelLogOutUpload;
-    @FXML
-    private RadioButton radioBtmSellUpload;
+public class QueryArtist {
 
-    private double xUpload=0;
-    private double yUpload=0;
-    private Stage stage;
+    private QueryArtist(){throw new IllegalStateException("Utility Query Artist class");}
 
-    private String filePath="";
-    private ArtistBean art;
+    public static final String INSERTARTWORK_QUERY = "INSERT INTO opera(titolo, prezzo, flagVendibile, immagine, artista) VALUES (?, ?, ?, ?, ?)";
 
-
-    private void makeDraggable(){
-        anchorParentUpload.setOnMousePressed((eventUpload -> {
-            xUpload=eventUpload.getSceneX();
-            yUpload= eventUpload.getSceneY();
-        }));
-
-        anchorParentUpload.setOnMouseDragged((eventUpload -> {
-            stage = (Stage) ((Node)eventUpload.getSource()).getScene().getWindow();
-            stage.setX(eventUpload.getScreenX() - xUpload);
-            stage.setY(eventUpload.getScreenY() - yUpload);
-        }));
-    }
-    
-    public void exitWindowUpload() {
-        stage = (Stage) anchorParentUpload.getScene().getWindow();
-        stage.close();
+    public static ResultSet selectArtist(Statement stmt, String user) throws SQLException {
+        String sql = "SELECT * FROM artista WHERE username ='" + user + "';";
+        return stmt.executeQuery(sql);
     }
 
-    public void minimizeWindow() {
-        stage = (Stage) anchorParentUpload.getScene().getWindow();
-        stage.setIconified(true);
+    public static ResultSet selectUsername(Statement stmt) throws SQLException {
+        String sql = "SELECT username FROM utente ;";
+        return stmt.executeQuery(sql);
     }
 
-    public void makeLogOut(){
-        labelLogOutUpload.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToLogin(event);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
+    public static int insertUser(Statement stmt, User userInsert) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO utente (username, password, ruolo) VALUES ('%s','%s','%s')", userInsert.getUsername(), userInsert.getPassword(), userInsert.getRole());
+        return stmt.executeUpdate(insertStatement);
     }
 
-
-    public void initialize(){
-        initDragAndDrop();
-        makeDraggable();
-        setTooltipMenu();
-        makeLogOut();
-
-        svgProfile.setScaleX(0.07);
-        svgProfile.setScaleY(0.07);
+    public static int insertArtist(Statement stmt, Artist artistInsert, String username) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO artista (nome, cognome, username) VALUES ('%s','%s','%s')", artistInsert.getNome(), artistInsert.getCognome(), username);
+        return stmt.executeUpdate(insertStatement);
     }
 
-    public void setTooltipMenu(){
-        button1Up.setTooltip(new Tooltip("Home"));
-        button2Up.setTooltip(new Tooltip("Profilo"));
-        button3Up.setTooltip(new Tooltip("Carica Opera"));
-        button4Up.setTooltip(new Tooltip("Offerte Mostre"));
-        button5Up.setTooltip(new Tooltip("Opere Vendute"));
+    public static ResultSet selectSellArtWork(Statement stmt, int idArtista) throws SQLException {
+        String sql = "SELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE artista =" + idArtista + ";";
+        return stmt.executeQuery(sql);
     }
 
-    public void getArtist(ArtistBean loggedArtist) {
-        art = loggedArtist;
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    public static ResultSet selectAllArtWorksImage(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "';";
+
+        if(lastAction.equals("LAST")){sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "' ORDER BY idOpera DESC LIMIT 2;";}
+
+        return stmt.executeQuery(sql);
     }
 
-    public void selectFile(ActionEvent event) {
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
+    public static ResultSet selectAllGalleryProposals(Statement stmt, int idArtista, String lastAction) throws SQLException {
+        String sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "';";
 
-        // Impone la selezione di soli file di tipo immagine.
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp");
-        fileChooser.getExtensionFilters().add(extFilter);
+        if(lastAction.equals("LAST")){sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "' ORDER BY idOfferta DESC LIMIT 4;";}
 
-        File selectedFile = fileChooser.showOpenDialog(stage);
-
-        filePath = selectedFile.toString();
-
-        labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
+        return stmt.executeQuery(sql);
     }
 
-    public void initDragAndDrop(){
-        //Implement Drag and Drop Feature.
-
+    public static int updateProposal(Statement stmt, int idOfferta, int newFlag) throws SQLException  {
+        String updateStatement = String.format("UPDATE offerta SET flagAccettazione='%s' WHERE idOfferta = %s", newFlag, idOfferta);
+        return stmt.executeUpdate(updateStatement);
     }
 
-    public void uploadFile(){
-        UploadArtWork upawDesk = new UploadArtWork();
-        int flagVendibile;
-        double prezzo;
-
-        // Stati di flagVendibile
-        //  0 : opera non acquistabile
-        //  1 : opera acquistabile
-        if (radioBtmSellUpload.isSelected()) {
-            flagVendibile=1;
-            prezzo = Double.parseDouble(textFieldPrice.getText());
-        } else {
-            flagVendibile = 0;
-            prezzo = 0;
-        }
-
-        try {
-            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile);
-            upawDesk.uploadImage(upArtWork, art.getIdArtista(), filePath);
-        } catch (EmptyFieldException e){
-            // Eccezione: Campi lasciati vuoti.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }catch (EmptyPathException e) {
-            // Eccezione: File non selezionato.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }catch (DuplicateArtWorkException e){
-            // Eccezione: Opera già caricata.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }
-
-        resetForm();
+    public static String insertArtWork() {
+        return INSERTARTWORK_QUERY;
     }
 
-    public void resetForm(){
-        labelFilePath.setText("");
-        textFieldPrice.setText("");
-        textFieldTitle.setText("");
+    public static ResultSet selectArtGallery(Statement stmt, int artGallery) throws SQLException {
+        String sql = "SELECT * FROM galleria WHERE idGalleria ='" + artGallery + "';";
+        return stmt.executeQuery(sql);
     }
 
-
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(event, art);
-    }
-
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(event, art);
-    }
-
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
-    }
-
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(event, art);
+    public static ResultSet selectArtWorkTitle(Statement stmt) throws SQLException  {
+        String sql = "SELECT DISTINCT titolo FROM opera ;";
+        return stmt.executeQuery(sql);
     }
 
 

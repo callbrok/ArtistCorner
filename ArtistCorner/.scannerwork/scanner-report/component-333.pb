@@ -1,1 +1,1 @@
-Í 2javaXBhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewLogAnalytics.java
+Í 2javaXahrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileBuyerSummary.java

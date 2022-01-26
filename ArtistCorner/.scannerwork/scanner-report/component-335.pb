@@ -1,1 +1,1 @@
-Ï 2javaXChr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java
+Ï 2javaXÎhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java

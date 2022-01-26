@@ -1,1 +1,1 @@
-Ë 2javaX\hr[src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java
+Ë 2javaXyhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java

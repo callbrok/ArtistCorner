@@ -1,1 +1,1 @@
-¹ 2javaX@hrcsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileSignUp.java
+¹ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java

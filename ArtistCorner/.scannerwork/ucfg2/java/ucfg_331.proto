@@ -1,18 +1,16 @@
 
-lcom.artistcorner.controller.applicationcontroller.ViewProfileGallery#retrieveArtistName(I)Ljava/lang/String;è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java ($"1*í
-1è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java (√
-¿
-è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java (A
-
-artistnamejava.lang.String"__id*
-"""¥
-è
-Ñ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java ( 
-
-
-artistnamejava.lang.String:
-""BHF
-Dcom.artistcorner.controller.applicationcontroller.ViewProfileGallery
+Dcom.artistcorner.engclasses.bean.Nodo#getDomanda()Ljava/lang/String;o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java ("1*œ
+1o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java' (. 
+«
+o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java' (.
+%0java.lang.String"__id*6*4'
+%com.artistcorner.engclasses.bean.Nodo"	
+domanda"ã
+o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java  (/
+
+%0java.lang.StringB)'
+%com.artistcorner.engclasses.bean.Nodo

@@ -157,10 +157,7 @@ public class GuiControllerMobileUploadArtwork {
     }
 
     public void initEventHandlerRadio(){
-        radioBtmSell.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
-            if (isNowSelected) {textFieldPrice.setVisible(true);}
-            else{textFieldPrice.setVisible(false);}
-        });
+        radioBtmSell.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> textFieldPrice.setVisible(isNowSelected));
     }
 
     public void switchToSceneMainArtista(ActionEvent event) throws IOException {

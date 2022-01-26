@@ -84,36 +84,36 @@ public class GuiControllerViewSALogAnalytics {
         series3.setName("Upper Control Limit");
         series4.setName("Lower Control Limit");
 
-        int dayCounter = 0;
         double sumNumberCommit = 0;
         double averageCommit = 0;
         double stdv = 0;
-        double stdvSum = 0;
         double upperLimit = 0;
         double lowerLimit = 0;
 
         List<Double> listValue = new ArrayList<>();
-
         List<Commit> listOfCommit = vla.initializeCommitArray();
+
+        int dayCounter = listOfCommit.size();
+
 
         // Scorre la lista dei commit ed inizializza il grafico principale.
         for (int i=0; i < listOfCommit.size(); i++) {
             Commit cmtPrevious = null;
             Commit cmt = listOfCommit.get(i);
 
-            double numberCommit = commitCounter(listOfCommit, cmt.getData());
-            String data = cmt.getData().substring(0,8);
+            double numberCommit = commitCounter(listOfCommit, cmt.getData());  // Prende il numero dei commit fatti in una determinata data.
+            String data = cmt.getData().substring(0,8);   // Prende la data del commit corrente.
 
             if(i>0){   // Salta inserimenti duplicati nel grafico
                 cmtPrevious = listOfCommit.get(i-1);
                 String previousData = cmtPrevious.getData().substring(0,8);
 
                 if(data.equals(previousData)){
+                    dayCounter = dayCounter - 1;   // Conta il numero totale dei giorni in cui sono stati effettuati i commit.
                     continue;
                 }
             }
 
-            dayCounter = dayCounter +1;   // Conta il numero totale dei giorni in cui sono stati effetuati i commit.
             sumNumberCommit = sumNumberCommit + numberCommit;   // Somma il numero di tutti i commit giorno per giorno.
             listValue.add(numberCommit);  // Aggiunge ad un lista il numero dei commit per ogni giorno analizzato.
 
@@ -121,14 +121,8 @@ public class GuiControllerViewSALogAnalytics {
         }
 
         averageCommit = sumNumberCommit / dayCounter;
-        
 
-        //Calcola deviazione standard
-        for (int i=0; i < listValue.size(); i++) {
-            stdvSum += Math.pow((listValue.get(i) - averageCommit),2);
-        }
-
-        stdv = Math.sqrt(stdvSum / (listValue.size() - 1));  // Deviazione Standard.
+        stdv = calculateStdv(listValue, averageCommit);
 
         upperLimit = averageCommit + (3*stdv);  // Limite Superiore
         lowerLimit = averageCommit - (3*stdv);  // Limite Inferiore
@@ -180,6 +174,17 @@ public class GuiControllerViewSALogAnalytics {
             stackPane.setVisible(false);
         }
 
+    }
+
+    public double calculateStdv(List<Double> listValue, double averageCommit){
+        //Calcola deviazione standard
+        double stdvSum = 0;
+
+        for (int i=0; i < listValue.size(); i++) {
+            stdvSum += Math.pow((listValue.get(i) - averageCommit),2);
+        }
+
+        return Math.sqrt(stdvSum / (listValue.size() - 1));  // Deviazione Standard.
     }
 
 

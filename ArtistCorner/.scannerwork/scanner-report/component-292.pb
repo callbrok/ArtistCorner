@@ -1,1 +1,2 @@
-¤ 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+¤ 2javaX
+hrPsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateUserException.java

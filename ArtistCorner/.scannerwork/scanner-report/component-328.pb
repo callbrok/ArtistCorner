@@ -1,1 +1,1 @@
-È 2javaX%hrRsrc/main/java/com/artistcorner/controller/applicationcontroller/UploadArtWork.java
+È 2javaX—hr†src/main/java/com/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals.java

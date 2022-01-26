@@ -1,16 +1,10 @@
 
-<com.artistcorner.model.Artist#getCognome()Ljava/lang/String;g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java ("1*¯
-1g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java' (.º
-·
-g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java' (.
-%0java.lang.String"__id*.*,
-com.artistcorner.model.Artist"	
-cognome"ƒ
-g
-]/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artist.java  (/
-
-%0java.lang.StringB!
-com.artistcorner.model.Artist
+kcom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#retrieveArtWorkBlob(I)Ljava/sql/Blob;
+…/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaM M(#"1*´
+1
+…/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaN N("›
+
+…/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaN N()
+"":
+""BIG
+Ecom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer

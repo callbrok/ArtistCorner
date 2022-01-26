@@ -1,16 +1,17 @@
 
-Ecom.artistcorner.engclasses.others.Commit#getNome()Ljava/lang/String;s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ("1*‹
+Icom.artistcorner.engclasses.bean.UserBean#getPassword()Ljava/lang/String;s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java ("1*‡
 1s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((œ
-Ã
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java' (/”
+–
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((
-%0java.lang.String"__id*7*5+
-)com.artistcorner.engclasses.others.Commit"
-nome"è
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java' (/
+%0java.lang.String"__id*;*9+
+)com.artistcorner.engclasses.bean.UserBean"
+
+password"è
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ()
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java  (0
 
 %0java.lang.StringB-+
-)com.artistcorner.engclasses.others.Commit
+)com.artistcorner.engclasses.bean.UserBean

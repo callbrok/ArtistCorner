@@ -1,1 +1,1 @@
-± 2javaXëhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
+± 2javaX2hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

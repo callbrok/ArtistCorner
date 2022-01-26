@@ -1,1 +1,1 @@
-Æ 2javaX4hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewArtistSummary.java
+Æ 2javaX¨hrxsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsaleshistory/GuiControllerMobileViewSalesHistory.java

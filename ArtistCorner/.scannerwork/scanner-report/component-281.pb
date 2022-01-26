@@ -1,1 +1,2 @@
-™ 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java
+™ 2javaX
+hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java

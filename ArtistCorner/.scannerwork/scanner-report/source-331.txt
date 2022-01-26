@@ -1,91 +1,120 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.others.HBoxInitializer;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Buyer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class ViewSearchArtWorkBuyer {
+public class GuiControllerMobileArtistSummary {
+    @FXML
+    private AnchorPane anchorMainASummaryM;
+    @FXML
+    private Pane paneIdeaButton;
+    @FXML
+    private ImageView imageGifButton;
+    @FXML
+    private Label labelAlgoritmo;
+    @FXML
+    private Label labelUsernameDisplay;
+
+    private double x=0;
+    private double y=0;
+    private Stage stage;
+
+    private ArtistBean art;
 
 
-    public List<HBoxInitializer> initializeListView(String input, BuyerBean buyer) throws SQLException, IOException {
-        Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        ArrayList<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
-        ArrayList<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
-        List<HBoxInitializer> list = new ArrayList<>();
-        for (ArtWork work : artWorkList) {
-            Blob immagine = BuyerDAO.retrieveImage(work.getIdOpera());
-            Artist artist = BuyerDAO.retrieveArtistName(work.getArtistaId());
-            InputStream inputStream = null;
+    public void initialize(){
+        makeDraggable();
+        makeGifPaneClickable();
+
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+
+    }
+
+    public void getArtist(ArtistBean loggedArtist){
+        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    }
+
+    public void makeGifPaneClickable(){
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneControllerMobile sc = new SceneControllerMobile();
             try {
-                inputStream = immagine.getBinaryStream();
-            } catch (SQLException e) {
+                sc.switchToSceneProfiloAlgoritmo(event, art);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            Image image1 = new Image(inputStream, 100, 100, true, false);
-            HBoxInitializer hb = new HBoxInitializer(work.getTitolo(), artist.getNome() + " " + artist.getCognome(),image1, work.getIdOpera(), work.getPrezzo(),"Aggiungi ai Preferiti", buyer.getIdBuyer(), artist.getIdArtista(),artWorkId,input);
-            list.add(hb);
-        }
-        return list;
+        });
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
+
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
+
     }
 
-    public String manageButtonClick(ActionEvent arg0, Button buttonAcquista, Button buttonPreferiti, int idOpera, int idBuyer ){
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
 
-        switch (buttonPreferiti.getText()){
-            case "Rimuovi dai Preferiti":{
-                try {
-                    BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                    return "Aggiungi ai Preferiti";
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.close();
+    }
 
-            }
-            case "Aggiungi ai Preferiti":{
-                try {
-                    BuyerDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                    return "Rimuovi dai Preferiti";
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
+    public void minimizeWindow() {
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
-            }
-            default:
-        }
-        return "Rimuovi dai Preferiti";
+    private void makeDraggable(){
+        anchorMainASummaryM.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainASummaryM.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
     }
 
 
-    public void finishPayment(int idOpera, int idBuyer){
-
-        try {
-            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-            BuyerDAO.switchFlagVendibile(idOpera);
-            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloArtista(actionEvent, art);
     }
+
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloVenduto(actionEvent, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
+    }
+
+    public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneUploadOpera(actionEvent, art);
+    }
+
+
+
 
 }

@@ -1,1 +1,1 @@
-¡ 2javaX'hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+¡ 2javaX	hrVsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundExceptionView.java

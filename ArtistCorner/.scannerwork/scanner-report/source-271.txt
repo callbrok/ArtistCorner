@@ -1,8 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+public class EmptyPathException extends Exception{
+    private static final long serialVersionUID = 1L;
 
-public class ArtWorkNotFoundExceptionView extends ExceptionView{
-
-    public ArtWorkNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public EmptyPathException (String message) {
+        super(message);
+    }
 }

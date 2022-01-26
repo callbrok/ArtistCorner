@@ -34,7 +34,7 @@ public class SceneControllerMobile {
     private Scene scene;
     private Parent root;
 
-    public static  final String CSS_PATH = "/css/mobile/main.css";
+    public static  final String CSS_PATH = "/css/" + "mobile/" + "main.css";
 
 
     public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {

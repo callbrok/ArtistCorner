@@ -1,1 +1,1 @@
-Ÿ 2javaX/hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java
+Ÿ 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java

@@ -203,10 +203,7 @@ public class GuiControllerUploadArtwork {
     }
 
     public void initEventHandlerRadio(){
-        radioBtmSellUpload.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> {
-            if (isNowSelected) {textFieldPrice.setVisible(true);}
-            else{textFieldPrice.setVisible(false);}
-        });
+        radioBtmSellUpload.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> textFieldPrice.setVisible(isNowSelected));
     }
 
 

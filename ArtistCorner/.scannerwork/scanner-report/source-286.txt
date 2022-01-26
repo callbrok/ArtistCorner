@@ -1,23 +1,9 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.exceptions;
 
-public class ArtistBean {
-    private int idArtista;
-    private String nome;
-    private String cognome;
+public class SentProposalNotFoundException extends Exception{
+    private static final long serialVersionUID = 1L;
 
-    public ArtistBean(int newId, String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = newId;
+    public SentProposalNotFoundException (String message) {
+        super(message);
     }
-
-    public ArtistBean(String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = 0;
-    }
-
-    public String getNome() {return nome;}
-    public int getIdArtista() {return idArtista;}
-    public String getCognome() {return cognome;}
 }

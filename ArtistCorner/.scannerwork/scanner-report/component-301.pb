@@ -1,1 +1,1 @@
-­ 2javaXahrksrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java
+­ 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

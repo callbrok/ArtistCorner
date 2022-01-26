@@ -1,16 +1,17 @@
 
-Gcom.artistcorner.engclasses.bean.ArtistBean#getNome()Ljava/lang/String;u
-k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java ("1*ä
-1u
-k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java$ ((Ó
-Ð
-u
-k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java$ ((
-%0java.lang.String"__id*9*7-
-+com.artistcorner.engclasses.bean.ArtistBean"
-nome"‘
-u
-k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java ()
+Ocom.artistcorner.engclasses.bean.ArtGalleryBean#getUsername()Ljava/lang/String;y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java ("1*ø
+1y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java( (0ß
+Ü
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java( (0
+%0java.lang.String"__id*A*?1
+/com.artistcorner.engclasses.bean.ArtGalleryBean"
+
+username"•
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java! (1
 
-%0java.lang.StringB/-
-+com.artistcorner.engclasses.bean.ArtistBean
+%0java.lang.StringB31
+/com.artistcorner.engclasses.bean.ArtGalleryBean

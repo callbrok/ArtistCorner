@@ -1,77 +1,16 @@
 
-icom.artistcorner.controller.applicationcontroller.GetReccomandation#getSerialSolution()Ljava/lang/String;é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java{ {(#"5*ø
-
-3é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java (ã
-à
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java! ()
-%3java.lang.String[]"__id*U*SE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation"
-
-risposta‹
-Ÿ
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java! (,
-%4java.lang.String"
-__arrayGet*
-
-%3java.lang.String[]*
-""‚ﬂ
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java (-
-%5java.lang.StringBuilder"Kjava.lang.StringBuilder#append(Ljava/lang/String;)Ljava/lang/StringBuilder;**
-(
-stringBuilderjava.lang.StringBuilder*
+Ecom.artistcorner.engclasses.others.Commit#getData()Ljava/lang/String;s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ("1*‹
+1s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((œ
+Ã
+s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java$ ((
+%0java.lang.String"__id*7*5+
+)com.artistcorner.engclasses.others.Commit"
+data"è
+s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/Commit.java ()
 
-%4java.lang.String2append(Ljava/lang/String;)—Œ
-ê
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaÄ Ä(%
-%6java.lang.StringBuilder"Kjava.lang.StringBuilder#append(Ljava/lang/String;)Ljava/lang/StringBuilder;**
-(
-stringBuilderjava.lang.StringBuilder*
--2append(Ljava/lang/String;)*
-4*™
-4é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java~ ~(ã
-à
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java~ ~(
-%2java.lang.String[]"__id*U*SE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation"
-
-risposta*
-3
-1*±
-5é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java|& |(9Ã…
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java|* |(7
-%0java.lang.StringBuilder"java.lang.StringBuilderﬁ
-€
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java|& |(9
-%1"!java.lang.StringBuilder#<init>()V*
-
-%0java.lang.StringBuilderÂ
-‚
-é
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java| |(:(
-stringBuilderjava.lang.StringBuilder"__id*
-
-%0java.lang.StringBuilder*
-4*Â
-1ê
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaÉ É(úô
-ê
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaÉ É('
-%7java.lang.String"4java.lang.StringBuilder#toString()Ljava/lang/String;**
-(
-stringBuilderjava.lang.StringBuilder2
-toString()"≠
-ê
-É/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaÉ É((
-
-%7java.lang.StringBGE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation
+%0java.lang.StringB-+
+)com.artistcorner.engclasses.others.Commit

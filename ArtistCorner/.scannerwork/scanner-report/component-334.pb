@@ -1,1 +1,1 @@
-Î 2javaXhrKsrc/main/java/com/artistcorner/controller/applicationcontroller/SignUp.java
+Î 2javaX‡hrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java

@@ -1,1 +1,1 @@
-² 2javaXÇhrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java
+² 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

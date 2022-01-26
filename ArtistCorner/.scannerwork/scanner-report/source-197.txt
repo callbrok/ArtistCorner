@@ -1,95 +1,30 @@
-.anchor {
- -fx-background-image:url("../../img/MobileTemplate.png");
- -fx-background-color:transparent;
- -fx-background-repeat: no-repeat;
- -fx-background-size: 475 691;
-}
+import com.artistcorner.controller.applicationcontroller.SignUp;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.DuplicateUserException;
+import org.junit.Test;
 
-.mainPane{
- -fx-border-radius: 0 0 12 12;
- -fx-background-radius: 0 0 12 12;
- /* -fx-background-color: blue; */
-}
+import static org.junit.Assert.assertEquals;
 
-.footerUserPane{
-    -fx-border-radius: 0 0 12 12;
-    -fx-background-radius: 0 0 12 12;
-    -fx-background-color: #e38b6c;
-}
+/**
+ * @author  Marco Purificato
+ */
+public class TestSignUp {
 
-.currentSceneButton{
-    -fx-border-radius: 0 12 12 0;
-    -fx-background-radius: 0 12 12 0;
-    -fx-background-color: #e38b6c;
-}
+    @Test
+    public void testRegistrationDuplicateArtistUsername(){
+        SignUp sgup = new SignUp();
+        boolean duplicateUsername = false;
 
-.currentSceneButton SVGPath{
-    -fx-fill:  #d13e0a;
-}
+        ArtistBean artistToCheck = new ArtistBean("Alba","DeRose");
+        UserBean userToCheck = new UserBean("artista1", "ispw21", "artista");
 
-.miniSceneButton{
-    -fx-border-radius: 0 12 12 0;
-    -fx-background-radius: 0 12 12 0;
-    -fx-background-color: #60b798;
-}
-
-.miniSceneButton SVGPath{
-    -fx-fill:  #277458;
-}
-
-
-.buttonTopBar {
- -fx-background-color: transparent;
- -fx-background-radius: 0;
-}
-
-.buttonPane{
- -fx-background-color: #39A67F;
- -fx-background-radius: 0;
-}
-
-.buttonPane SVGPath{
-    -fx-fill:  #277458;
-}
-
-.buttonPane:hover{
- -fx-background-color: #88c9b2;
-}
-
-.buttonInterface{
-    -fx-background-color: #60b798;
-    -fx-background-radius: 0;
-}
-
-.buttonInterface:hover{
-    -fx-background-color: #88c9b2;
-}
-
-.buttonInterface SVGPath{
-    -fx-fill:  #277458;
-}
-
-
-
-/* Login */
-
-.text-field {
-    -fx-background-color: -fx-text-box-border, #ffffff;
-    -fx-background-insets: 0, 0 0 1 0 ;
-    -fx-background-radius: 0 ;
-}
-.text-field:focused {
-    -fx-background-color: #88c9b2, #ffffff ;
-}
-
-/* Sales History */
-
-.list-view {
-    -fx-selection-bar: #88c9b2;
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-}
-
-.list-cell:empty {
-    -fx-background-color: white;
+        // Artist with user artista1 already exist.
+        try {
+            sgup.registerArtist(userToCheck, artistToCheck);
+        } catch (DuplicateUserException e) {
+            duplicateUsername=true;
+        }
+        assertEquals(true, duplicateUsername);
+    }
 }

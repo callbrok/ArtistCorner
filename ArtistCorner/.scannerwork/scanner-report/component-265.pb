@@ -1,1 +1,1 @@
-‰ 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java
+‰ 2javaXÇhr<src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

@@ -1,1 +1,1 @@
-ƒ 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundExceptionView.java
+ƒ 2javaXhr/src/main/java/com/artistcorner/model/Buyer.java

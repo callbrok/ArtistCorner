@@ -1,1 +1,1 @@
-• 2javaXOhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java
+• 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundException.java
