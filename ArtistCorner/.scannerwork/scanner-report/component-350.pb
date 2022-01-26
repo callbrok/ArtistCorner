@@ -1,1 +1,1 @@
-Þ 2javaXBhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewLogAnalytics.java
+Þ 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java

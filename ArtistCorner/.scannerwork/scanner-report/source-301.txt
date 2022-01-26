@@ -1,21 +1,17 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.query;
 
-public class ProposalBean {
-    private int idOfferta;
-    private int artista;
-    private  int galleria;
-    private int flagAccettazione;
+import com.artistcorner.engclasses.bean.UserBean;
 
-    public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
-        this.idOfferta = newIdB;
-        this.artista = newArtistaB;
-        this.galleria =  newGalleriaB;
-        this.flagAccettazione = newFlagAccettazioneB;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class QueryLogin {
+
+    private QueryLogin(){throw new IllegalStateException("Utility Query Login class");}
+
+    public static ResultSet selectUser(Statement stmt, UserBean userBean) throws SQLException {
+        String sql = "SELECT * FROM utente WHERE username ='" + userBean.getUsername() + "' AND password='" + userBean.getPassword() + "';";
+        return stmt.executeQuery(sql);
     }
-
-
-    public int getIdOfferta() {return idOfferta;}
-    public int getArtista() {return artista;}
-    public int getFlagAccettazione() {return flagAccettazione;}
-    public int getGalleria() {return galleria;}
 }

@@ -1,33 +1,73 @@
 
-Ucom.artistcorner.engclasses.query.QueryArtist#updateProposal(Ljava/sql/Statement;II)Iw
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java< <($"1*Á
-1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java=! =('Ð
-Í
+„com.artistcorner.engclasses.query.QueryArtist#selectAllGalleryProposals(Ljava/sql/Statement;ILjava/lang/String;)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java4 4(5"3*ó
+2w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7, 7(TÒ
+Ï
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7, 7(`
+%3java.lang.String"__concat**(
+&SELECT * FROM offerta WHERE artista ='*
+""á
+Þ
 x
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java=! =(ƒ
-%0java.lang.String"Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;*"
-java.lang.String*A?
-=UPDATE offerta SET flagAccettazione='%s' WHERE idOfferta = %s*
-""*
-""Â
-¿
-x
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java= =(„#
-updateStatementjava.lang.String"__id*
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7, 7(‡
+%4java.lang.String"__concat*
 
-%0java.lang.String¦£
+%3java.lang.String*&$
+"' ORDER BY idOfferta DESC LIMIT 4;¶
+³
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7& 7(‡
+sqljava.lang.String"__id*
+
+%4java.lang.String*
+1*Ø
+3w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5 5(=Ò
+Ï
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java> >(2	
-%1int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5 5(I
+%0java.lang.String"__concat**(
+&SELECT * FROM offerta WHERE artista ='*
+""À
+½
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5 5(P
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';µ
+²
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java5 5(Q
+sqljava.lang.String"__id*
+
+%1java.lang.Stringþ
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java7 7($
+%2boolean",java.lang.String#equals(Ljava/lang/Object;)Z* 
+
+
+lastActionjava.lang.String*
+LAST2equals(Ljava/lang/Object;)*
+2
+1*Ñ
+1w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java9 9(º·
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java9 9(%
+%5java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
 
-stmtjava.sql.Statement*%
-#
-updateStatementjava.lang.String2!executeUpdate(Ljava/lang/String;)"
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java> >(3
-"":
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java9 9(&
+
+%5java.sql.ResultSet:
 stmtjava.sql.Statement:
-"":
-""B1"/
+"":
+
+lastActionjava.lang.StringB1"/
 -com.artistcorner.engclasses.query.QueryArtist

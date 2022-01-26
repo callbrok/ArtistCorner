@@ -1,1 +1,1 @@
-Õ 2javaX!hrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java
+Õ 2javaXôhr~src/main/java/com/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer.java

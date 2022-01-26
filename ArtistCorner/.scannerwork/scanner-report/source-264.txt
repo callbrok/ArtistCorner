@@ -1,30 +1,23 @@
-package com.artistcorner;
+package com.artistcorner.model;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+public class Artist {
+    private int idArtista;
+    private String nome;
+    private String cognome;
 
-import java.io.IOException;
-
-public class MobileApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MobileApplication.class.getResource("/view/mobile/login/LoginMobileView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-        stage.setTitle("Hello!");
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
+    public Artist(int newId, String newNome, String newCognome){
+        this.nome = newNome;
+        this.cognome = newCognome;
+        this.idArtista = newId;
     }
 
-    public static void main(String[] args) {
-        launch();
+    public Artist(String newNome, String newCognome){
+        this.nome = newNome;
+        this.cognome = newCognome;
+        this.idArtista = 0;
     }
+
+    public String getNome() {return nome;}
+    public int getIdArtista() {return idArtista;}
+    public String getCognome() {return cognome;}
 }
-

@@ -1,1 +1,1 @@
-½ 2javaX:hrVsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerSignUp.java
+½ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java

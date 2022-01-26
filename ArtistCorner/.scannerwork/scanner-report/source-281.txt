@@ -1,9 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+public class ArtWorkNotFoundException extends  Exception{
 
-public class EmptyFieldExceptionView extends ExceptionView {
+    private static final long serialVersionUID = 1L;
 
-    public EmptyFieldExceptionView(ExceptionsTypeMenager etm){super(etm);}
-
+    public ArtWorkNotFoundException (String message) {
+        super(message);
+    }
 }

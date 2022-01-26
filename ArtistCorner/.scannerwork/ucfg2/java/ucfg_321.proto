@@ -1,38 +1,15 @@
 
-icom.artistcorner.engclasses.query.QueryArtist#selectArtGallery(Ljava/sql/Statement;I)Ljava/sql/ResultSet;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaE E(,"1*¥	
+Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaA A(&"1*·
 1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(AÖ
-Ó
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("¢
+Ÿ
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(N
-%0java.lang.String"__concat*.,
-*SELECT * FROM galleria WHERE idGalleria ='*
-""À
-½
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("
+%0java.lang.String"__id*
+"""“
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(U
-%1java.lang.String"__concat*
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B(#
 
-%0java.lang.String*
-';µ
-²
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(V
-sqljava.lang.String"__id*
-
-%1java.lang.Stringº·
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaG G(%
-%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
-
-stmtjava.sql.Statement*
-
-sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaG G(&
-
-%2java.sql.ResultSet:
-stmtjava.sql.Statement:
-""B1"/
+%0java.lang.StringB1"/
 -com.artistcorner.engclasses.query.QueryArtist

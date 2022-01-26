@@ -1,1 +1,1 @@
-„ 2javaXùhrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java
+„ 2javaXhrKsrc/main/java/com/artistcorner/controller/applicationcontroller/SignUp.java

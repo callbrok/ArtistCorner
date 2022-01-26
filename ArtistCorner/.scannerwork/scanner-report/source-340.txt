@@ -1,70 +1,231 @@
-package com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
+package com.artistcorner.controller.guicontroller.mobile.getreccomandation;
 
-import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.GetReccomandation;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.shape.SVGPath;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class GuiControllerViewSearchArtWorkGallery {
+public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
-    private AnchorPane anchorParentSearchGal;
+    private TextFlow textFlowResultMobile;
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane anchorMainMobile;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
-    private Label labelLogOut;
+    private Label labelQuestion;
     @FXML
-    private ListView<HBoxCell> listView;
+    private AnchorPane anchorResult;
     @FXML
-    private TextField textField;
-    @FXML
-    private Button button3;
-    @FXML
-    private SVGPath svgProfileSearchGal;
-    @FXML
-    private Button button1;
-    @FXML
-    private Button button2;
-    @FXML
-    private Pane paneExceptionLoad;
+    private Button buttonReset;
+
+    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+    public static final String FONT_RESULT = "System";
+    public static final String NOTHING_ANSW = "Nessuna Risposta";
+
     private double x=0;
     private double y=0;
-    Stage stageSearchGal;
-    ArtGalleryBean gal;
+    private Stage stage;
+
+    private GetReccomandation lcm = new GetReccomandation();
+    private List<Nodo> arraylistM = lcm.initializeTreeTxt(); // Inizializza albero
+    private int idLivelloMobile; // Variabile che tiene conto del livello corrente dell'albero
+    private ArtistBean art;
+    private Nodo n;
 
 
-    public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
+    /**
+     * Deserializza lo stato dell'algoritmo di decisione, nel caso in cui il file contenente l'ultima istanza
+     * serializzata ("object.txt") non fosse presente, inizializza l'algoritmo da zero.
+     */
+    public void inizializeIdLivello() throws IOException, ClassNotFoundException {
+        // Controlla prima se c'è un file su cui fare al deserializzazione
+        File f = new File(OBJECTNODO_PATH);
+
+        if(f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
+            try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH))) {
+
+                String rispostaSerial = (String) in.readObject();
+                Nodo c2 = (Nodo) in.readObject();
+
+                lcm.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
+                labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
+                idLivelloMobile = c2.getIdProprio(); // Prende l'id del nodo serializzato
+
+                if(idLivelloMobile == 0){showSolution();}
+            }
+        } else {
+            idLivelloMobile = 1; // Inizializzazione dell'algoritmo al primo nodo
+        }
+
+    }
+    
+    public void initialize() throws IOException, ClassNotFoundException {
+        makeDraggable();
+
+        labelQuestion.setAlignment(Pos.CENTER);
+        labelQuestion.setMaxWidth(362);
+        labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
+
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+        anchorResult.setVisible(false);
+        inizializeIdLivello();
+
+    }
+
+    public void getArtist(ArtistBean loggedArtist) {
+        art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    }
+
+    /**
+     * Serializza il nodo passato, come oggetto nel file "object.txt".
+     */
+    public void makeSerializable(Nodo n) throws IOException {
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH))) {
+            out.writeObject(lcm.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
+            out.writeObject(n);  // Serializza l'ultimo nodo
+        }
+    }
+
+    /**
+     * Visualizza il nodo corretto a seconda della risposta negativa e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerNo() throws IOException, GetRaccomandationProblemException {
+        // In caso di risposta negativa
+
+        n = lcm.decisionTree("N", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        makeSerializable(n);                                 // Serializza il nodo corrente
+    }
+
+    /**
+     * Visualizza il nodo corretto a seconda della risposta positiva e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerYes() throws IOException, GetRaccomandationProblemException {
+        n = lcm.decisionTree("Y", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        makeSerializable(n);                                 // Serializza il nodo corrente
+    }
+
+    /**
+     * Visualizza il nodo corretto a seconda della risposta randomica e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerRand() throws IOException, GetRaccomandationProblemException {
+        n = lcm.decisionTree("YN", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}            // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());                // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        makeSerializable(n);                                  // Serializza il nodo corrente
+    }
+
+    public void showSolution(){
+        String[] soluzione = lcm.getSolution();
+
+        Text textPREResult1Mob = new Text("Ti consiglio di disegnare ");
+        Text textResult1Mob = new Text("qualcosa (non hai risposto)");
+
+        textResult1Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult1Mob.setFill(Color.rgb(45, 132, 101));
+        textResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[0].equals(NOTHING_ANSW)){textResult1Mob.setText(soluzione[0]);}
+
+        Text textResult2Mob = new Text("");
+        textResult2Mob.setFill(Color.rgb(209, 62, 10));
+        textResult2Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[1].equals(NOTHING_ANSW)){textResult2Mob.setText(" " + soluzione[1]);}
+
+        Text textPREResult3Mob = new Text("");
+        Text textResult3Mob = new Text("");
+
+        textResult3Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult3Mob.setFill(Color.rgb(45, 132, 101));
+        textResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[2].equals(NOTHING_ANSW)){textResult3Mob.setText(soluzione[2]); textPREResult3Mob.setText(" in moto ");}
+
+        Text textPREResult4Mob = new Text("");
+        Text textResult4Mob = new Text("");
+
+        textResult4Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult4Mob.setFill(Color.rgb(45, 132, 101));
+        textResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[3].equals(NOTHING_ANSW)){textResult4Mob.setText(soluzione[3]); textPREResult4Mob.setText(", dai colori ");}
+
+        Text textPREResult5Mob = new Text("");
+        Text textResult5Mob = new Text("");
+
+        textResult5Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult5Mob.setFill(Color.rgb(45, 132, 101));
+        textResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[4].equals(NOTHING_ANSW)){textResult5Mob.setText(soluzione[4]); textPREResult5Mob.setText(" con uno stile ");}
+
+
+        textFlowResultMobile.getChildren().addAll(textPREResult1Mob, textResult1Mob, textResult2Mob, textPREResult3Mob, textResult3Mob, textPREResult4Mob, textResult4Mob, textPREResult5Mob, textResult5Mob);
+        textFlowResultMobile.setTextAlignment(TextAlignment.CENTER);
+
+
+        anchorResult.setVisible(true);
+    }
+
+
+    /**
+     * Resetta l'algoritmo.
+     */
+    public void resetAlgo() throws IOException {
+        Files.delete(Path.of(OBJECTNODO_PATH));    // Cerca il file contenente l'oggetto serializzato e lo elimina
+
+        buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
+            SceneControllerMobile sc = new SceneControllerMobile();
             try {
-                sc.switchToLogin(event);
+                sc.switchToSceneProfiloAlgoritmo(event, art);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,177 +233,54 @@ public class GuiControllerViewSearchArtWorkGallery {
 
     }
 
-    public void initialize() throws SQLException {
-        makeDraggable();
-        setTooltipMenu();
-        makeLogOut();
-        svgProfileSearchGal.setScaleX(0.07);
-        svgProfileSearchGal.setScaleY(0.07);
-    }
 
-    private void makeDraggable(){
-        anchorParentSearchGal.setOnMousePressed((eventSearchPress -> {
-            x=eventSearchPress.getSceneX();
-            y= eventSearchPress.getSceneY();
-        }));
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo();
 
-        anchorParentSearchGal.setOnMouseDragged((eventSearchDrag -> {
-            stageSearchGal = (Stage) ((Node)eventSearchDrag.getSource()).getScene().getWindow();
-            stageSearchGal.setX(eventSearchDrag.getScreenX() - x);
-            stageSearchGal.setY(eventSearchDrag.getScreenY() - y);
-        }));
-    }
-
-    public void exitWindow() {
-        stageSearchGal = (Stage) anchorParentSearchGal.getScene().getWindow();
-        stageSearchGal.close();
-    }
-
-    public void getGallery(ArtGalleryBean loggedGallery) {
-        gal = loggedGallery;
-        labelUsernameDisplay.setText(gal.getNome());
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
+        stage.close();
     }
 
     public void minimizeWindow() {
-        stageSearchGal = (Stage) anchorParentSearchGal.getScene().getWindow();
-        stageSearchGal.setIconified(true);
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
+        stage.setIconified(true);
     }
 
-    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException {
-        if(keyEvent.getCode()== KeyCode.ENTER){
-            String input= textField.getText();
-            anchorPane.setVisible(true);
-            populateListView(input);
-        }
-    }
-    public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Cerca Opera"));
-        button3.setTooltip(new Tooltip("Preferiti"));
-    }
-    public void buttonSearchOnClick() throws SQLException, IOException{
-        String input= textField.getText();
-        anchorPane.setVisible(true);
-        populateListView(input);
+    private void makeDraggable(){
+        anchorMainMobile.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainMobile.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
     }
 
-    public void buttonCancOnClick(){
-        textField.setText("");
+    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneMainArtista(event, art);
     }
 
-    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloGallery(actionEvent,gal);
-    }
-    public void switchToGallerySummary(ActionEvent actionEvent) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneGallerySummary(actionEvent,gal);
-    }
-    public void populateListView(String input) throws SQLException, IOException {
-        if (listView.getItems().size()!=0){
-            listView.getItems().clear();
-        }
-        ViewSearchArtWorkGallery vsawg = new ViewSearchArtWorkGallery();
-        ArtistBean artistSearch=null;
-        Blob artWorkBlobSearchGal =null;
-
-        try{
-            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(input);
-            List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal);
-            for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
-                artWorkBlobSearchGal = vsawg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
-                artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
-                Image image1 = extractImage(artWorkBlobSearchGal);
-                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input));
-
-            }
-        } catch ( ArtWorkNotFoundException throwables) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }
-    }
-    public class HBoxCell extends HBox {
-        Label labelArtWorkNameSearchGal = new Label();
-        Label labelArtistNameSearchGal = new Label();
-        Button buttonOffertaSearchGal = new Button();
-        Label labelArtistNameDefaultGal = new Label();
-        Label labelArtWorkDefaultGal = new Label();
-
-        public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal) throws SQLException, IOException {
-            ImageView imageViewSearchGal = new ImageView();
-            imageViewSearchGal.setImage(imgShowGal);
-            imageViewSearchGal.setFitHeight(100);
-            imageViewSearchGal.setFitWidth(100);
-            labelArtWorkNameSearchGal.setText(labelArtTitoloGal);
-            labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
-            labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistNameSearchGal.setText(labelArtistNameGal);
-            labelArtistNameSearchGal.setAlignment(Pos.CENTER);
-            labelArtistNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkNameSearchGal.setPrefSize(100, 50);
-            labelArtistNameSearchGal.setPrefSize(100, 50);
-            VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal);
-            vBox1.setAlignment(Pos.CENTER);
-            vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
-            HBox.setHgrow(labelArtWorkNameSearchGal, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
-            VBox vBox2 = new VBox(labelArtWorkDefaultGal, labelArtistNameDefaultGal);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultGal.setText("Titolo Opera: ");
-            labelArtWorkDefaultGal.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultGal.setPrefSize(100, 50);
-            HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
-            String fontDef = "-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefaultGal.setStyle(fontDef);
-            labelArtistNameDefaultGal.setText("Nome Autore: ");
-            labelArtistNameDefaultGal.setAlignment(Pos.CENTER);
-            labelArtistNameDefaultGal.setPrefSize(100, 50);
-            labelArtistNameDefaultGal.setStyle(fontDef);
-            buttonOffertaSearchGal.setText(labelButtonShow);
-            buttonOffertaSearchGal.setPrefSize(150, 100);
-            buttonOffertaSearchGal.setStyle("-fx-font-size: 16px;");
-            ViewSearchArtWorkGallery sawg = new ViewSearchArtWorkGallery();
-
-            if (arrayListProposteGal.contains(idArtistSearchGal)) {
-                buttonOffertaSearchGal.setText("Ritira Proposta");
-            }
-            buttonOffertaSearchGal.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    String answer = null;
-                    try {
-                        answer = sawg.manageButtonClick(buttonOffertaSearchGal, idGallerySearch, idArtistSearchGal);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    buttonOffertaSearchGal.setText(answer);
-                    try {
-                        populateListView(inputSearchGal);
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-            this.getChildren().addAll(imageViewSearchGal, vBox2, vBox1, buttonOffertaSearchGal);
-        }
-
+    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloArtista(event, art);
     }
 
-    private Image extractImage(Blob blob5){
-        InputStream inputStream5 = null;
-        try {
-            inputStream5 = blob5.getBinaryStream();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        assert inputStream5 != null;
-        return new Image(inputStream5, 100, 100, true, false);
-
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneUploadOpera(event, art);
     }
 
+    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloVenduto(event, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
+        SceneControllerMobile scmg = new SceneControllerMobile();
+        scmg.switchToSceneProfiloOfferteMostre(event, art);
+    }
 }

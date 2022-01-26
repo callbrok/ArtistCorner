@@ -1,1 +1,1 @@
-Ø 2javaXIhrJsrc/main/java/com/artistcorner/controller/applicationcontroller/Login.java
+Ø 2javaXùhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java

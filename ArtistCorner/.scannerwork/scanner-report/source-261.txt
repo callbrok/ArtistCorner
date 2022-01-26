@@ -1,22 +1,29 @@
-package com.artistcorner.model;
+package com.artistcorner;
 
-public class Proposal {
-    private int idOfferta;
-    private  int artista;
-    private int galleria;
-    private  int flagAccettazione;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-    public  Proposal(int newId, int newArtista, int newGalleria, int newFlagAccettazione){
-        this.idOfferta = newId;
-        this.artista = newArtista;
-        this.galleria =  newGalleria;
-        this.flagAccettazione = newFlagAccettazione;
+import java.io.IOException;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/login/LoginView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setTitle("Hello!");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
     }
 
-
-    public int getIdOfferta() {return idOfferta;}
-    public int getArtista() {return artista;}
-    public int getFlagAccettazione() {return flagAccettazione;}
-    public int getGalleria() {return galleria;}
-
+    public static void main(String[] args) {
+        launch();
+    }
 }

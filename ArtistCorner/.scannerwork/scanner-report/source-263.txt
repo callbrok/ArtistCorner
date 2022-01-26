@@ -1,24 +1,18 @@
 package com.artistcorner.model;
 
-public class ArtGallery {
-    int galleria;
+public class Buyer {
+    int idBuyer;
     String nome;
-    String descrizione;
-    String indirizzo;
-    String username;
+    String cognome;
 
-    public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
-        this.galleria = newGalleria;
+
+    public Buyer(int newIdBuyer, String newNome, String newCognome) {
+        this.idBuyer = newIdBuyer;
         this.nome = newNome;
-        this.descrizione = newDescrizione;
-        this.indirizzo = newIndirizzo;
-        this.username = newUsername;
+        this.cognome = newCognome;
     }
 
-    public int getGalleria() {return galleria;}
+    public int getIdBuyer() {return idBuyer;}
     public String getNome() {return nome;}
-    public String getDescrizione() {return descrizione;}
-    public String getIndirizzo() {return indirizzo;}
-    public String getUsername() {return username;}
-
+    public String getCognome(){return cognome;}
 }

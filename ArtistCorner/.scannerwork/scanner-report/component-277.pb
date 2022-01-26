@@ -1,1 +1,2 @@
-• 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtWorkNotFoundException.java
+• 2javaX
+hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java

@@ -1,71 +1,87 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
 import javafx.scene.control.Button;
-
 
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewSearchArtWorkGallery {
+public class ViewSearchArtWorkBuyer {
 
-    public String manageButtonClick(Button buttonPreferiti, int idGallery, int idArtista) throws SQLException {
-        int flag =0;
-        String  remProposta = "Ritira Proposta";
-        switch (buttonPreferiti.getText()){
-            case "Ritira Proposta":{
-                GalleryDAO.removeProposta(idGallery,idArtista);
-                return "Invia Proposta";
-
+    public String manageButtonClickFavourites(Button buttonFavourites, int idArtWork, int idBuyer ){
+        String addFavourites = "Aggiungi ai Preferiti";
+        String remFavourites = "Rimuovi dai Preferiti";
+        switch (buttonFavourites.getText()){
+            case "Rimuovi dai Preferiti":{
+                try {
+                    BuyerDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
+                    return addFavourites;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
 
             }
-            case "Invia Proposta":{
-                GalleryDAO.addProposta(idGallery,idArtista,flag);
-                return remProposta;
-
+            case "Aggiungi ai Preferiti":{
+                try {
+                    BuyerDAO.addArtWorkToFavourites(idArtWork,idBuyer);
+                    return remFavourites;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
 
             }
             default:
         }
-        return remProposta;
+        return remFavourites;
     }
 
-    public Blob retrieveGallerySearchArtWorkBlob(int n) {
+    public List<Integer> retrieveSearchArtWorkId(BuyerBean buyer){
+        Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
+        return BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
+    }
+
+
+    public Blob retrieveSearchArtWorkBlob(int n) {
        return BuyerDAO.retrieveImage(n);
     }
 
-    public ArtistBean retrieveGallerySearchArtistName(ArtWorkBean a) {
+    public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());
         return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
     }
 
-    public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(String input) throws ArtWorkNotFoundException {
+    public List<ArtWorkBean> retrieveSearchArtWorkByName(String input) throws ArtWorkNotFoundException {
         List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
-        ArrayList<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
-        if(artWorkList.isEmpty()){throw new ArtWorkNotFoundException("nessuna opera trovata");
+        List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
+        if (artWorkList.isEmpty()){
+            throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
         }
         for (ArtWork a : artWorkList) {
             arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId()));
         }
         return arrayArtWorkBean;
     }
+    public void finishPayment(int idOpera, int idBuyer){
 
-    public List<Integer> retrieveGallerySearchArtistId(ArtGalleryBean gallery)  {
-        ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo(),gallery.getUsername());
-        return  GalleryDAO.retrieveArtistId(gal.getGalleria());
+        try {
+            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
+            BuyerDAO.switchFlagVendibile(idOpera);
+            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
-
 }
-
-

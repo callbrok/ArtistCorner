@@ -1,1 +1,1 @@
-³ 2javaXhr<src/main/java/com/artistcorner/engclasses/others/Commit.java
+³ 2javaXhr=src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java

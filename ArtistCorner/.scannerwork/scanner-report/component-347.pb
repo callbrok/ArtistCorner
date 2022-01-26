@@ -1,1 +1,1 @@
-Û 2javaX#hrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewSalesHistory.java
+Û 2javaX4hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewArtistSummary.java

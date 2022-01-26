@@ -1,1 +1,1 @@
-« 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java
+« 2javaXQhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java

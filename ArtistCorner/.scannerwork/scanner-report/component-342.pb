@@ -1,1 +1,1 @@
-Ö 2javaXVhrXsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java
+Ö 2javaX‰hr„src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer.java

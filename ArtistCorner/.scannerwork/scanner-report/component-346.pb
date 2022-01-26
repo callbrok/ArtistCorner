@@ -1,1 +1,1 @@
-Ú 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java
+Ú 2javaXVhrXsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java

@@ -1,17 +1,10 @@
-package com.artistcorner.engclasses.query;
+package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.bean.UserBean;
+public class DuplicateArtWorkException extends  Exception{
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+    private static final long serialVersionUID = 1L;
 
-public class QueryLogin {
-
-    private QueryLogin(){throw new IllegalStateException("Utility Query Login class");}
-
-    public static ResultSet selectUser(Statement stmt, UserBean userBean) throws SQLException {
-        String sql = "SELECT * FROM utente WHERE username ='" + userBean.getUsername() + "' AND password='" + userBean.getPassword() + "';";
-        return stmt.executeQuery(sql);
+    public DuplicateArtWorkException (String message) {
+        super(message);
     }
 }

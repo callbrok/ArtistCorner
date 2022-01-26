@@ -1,149 +1,57 @@
 package com.artistcorner.controller.guicontroller.login;
 
-import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.controller.applicationcontroller.SignUp;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.UserNotFoundException;
+import com.artistcorner.engclasses.exceptions.DuplicateUserException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.SVGPath;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Objects;
-
-public class GuiControllerLogin {
+public class GuiControllerSignUp {
     @FXML
-    private SVGPath svgGoogle;
+    private AnchorPane anchorDuplicateUser;
     @FXML
-    private PasswordField textFieldPassword;
+    private Label labelExcepDuplicate;
     @FXML
-    private Button buttonMenuLogIn;
+    private TextField textFieldUserArtist;
     @FXML
-    private AnchorPane anchorSignUp;
+    private TextField textFieldPassArtist;
     @FXML
-    private AnchorPane anchorSummarySignUp;
+    private TextField textFieldCognomeArtist;
     @FXML
-    private AnchorPane anchorParentLoginD;
-    @FXML
-    private SVGPath svgLogo;
-    @FXML
-    private TextField textFieldUsername;
-    @FXML
-    private Pane paneExceptionLogin;
-    @FXML
-    private Label labelExceptionLogin;
+    private TextField textFieldNomeArtist;
 
-    private double x=0;
-    private double y=0;
-    private Stage stage;
 
-    private Login lg = new Login();
+    private SignUp signUp = new SignUp();
 
-    public void initialize(){
-        makeDraggable();
-        reloadLogin();
-
-        labelExceptionLogin.setAlignment(Pos.CENTER);
-        labelExceptionLogin.setMaxWidth(259);
-        paneExceptionLogin.setVisible(false);
-        svgLogo.setScaleX(1.1);
-        svgLogo.setScaleY(1.1);
-
-        svgGoogle.setScaleX(1.4);
-        svgGoogle.setScaleY(1.4);
-
-        anchorSummarySignUp.setVisible(false);
-    }
-
-    private void makeDraggable(){
-        anchorParentLoginD.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
-        }));
-
-        anchorParentLoginD.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
-    }
-
-    public void exitWindow() {
-        stage = (Stage) anchorParentLoginD.getScene().getWindow();
-        stage.close();
-    }
-
-    public void minimizeWindow() {
-        stage = (Stage) anchorParentLoginD.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    public void sendData(ActionEvent actionEvent) throws IOException {
-        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
+    public void registerArtist() {
+        UserBean userReg = new UserBean(textFieldUserArtist.getText(), textFieldPassArtist.getText(), "artista");
+        ArtistBean artistReg = new ArtistBean(textFieldNomeArtist.getText(), textFieldCognomeArtist.getText());
 
         try {
-            lg.credentialLogin(us, actionEvent, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
-        }catch (UserNotFoundException e){
-            labelExceptionLogin.setText(e.getMessage());
-            paneExceptionLogin.setVisible(true);
+            signUp.registerArtist(userReg, artistReg);
+        } catch (DuplicateUserException e) {
+            labelExcepDuplicate.setText(e.getMessage());
+            anchorDuplicateUser.setVisible(true);
         }
 
+        textFieldUserArtist.clear();
+        textFieldPassArtist.clear();
+        textFieldNomeArtist.clear();
+        textFieldCognomeArtist.clear();
     }
 
-    public void reloadLogin() {
-        buttonMenuLogIn.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController scld = new SceneController();
-            try {
-                scld.switchToLogin(event);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+
+    public void initialize(){
+       labelExcepDuplicate.setMaxWidth(299);
+       labelExcepDuplicate.setWrapText(true);
+       anchorDuplicateUser.setVisible(false);
     }
 
-    public void changeToRegister(){
-        anchorSummarySignUp.setVisible(true);
-    }
-
-    public void goToArtistSignUp() throws IOException {
-        anchorSummarySignUp.setVisible(false);
-
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpArtistView.fxml")));
-        anchorSignUp.getChildren().add(newLoadedPane);
-    }
-
-    public void openDialogLoginFb() {
-        Dialog<String> dialog = new Dialog<>();
-        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().add(type);
-
-        dialog.setTitle("Login");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Login con Facebook");
-
-        dialog.showAndWait();
-    }
-
-    public void openDialogLoginGoogle() {
-        Dialog<String> dialog = new Dialog<>();
-        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().add(type);
-
-        dialog.setTitle("Login");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Login con Google");
-
-        dialog.showAndWait();
-    }
 }

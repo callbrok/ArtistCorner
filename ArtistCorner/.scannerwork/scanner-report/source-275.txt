@@ -1,11 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ProposalNotFoundException extends  Exception{
-
+public class EmptyPathException extends Exception{
     private static final long serialVersionUID = 1L;
 
-    public ProposalNotFoundException (String message) {
+    public EmptyPathException (String message) {
         super(message);
     }
-
 }

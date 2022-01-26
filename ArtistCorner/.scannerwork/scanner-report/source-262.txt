@@ -1,23 +1,23 @@
 package com.artistcorner.model;
 
-public class ArtWork {
-    private int idOpera;
-    private String titolo;
-    private double prezzo;
-    private int flagVenduto;
-    private  int artistaId;
+public class User {
+    private String username;
+    private String password;
+    private String role;
 
-    public ArtWork(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVenduto,int newArtistaId){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVenduto=newFlagVenduto;
-        this.artistaId = newArtistaId;
+    public User(String newUsername, String newPassword){
+        this.username = newUsername;
+        this.password = newPassword;
+        this.role = "NULL";
     }
 
-    public double getPrezzo() {return prezzo;}
-    public int getFlagVenduto() {return flagVenduto;}
-    public int getIdOpera() {return idOpera;}
-    public String getTitolo() {return titolo;}
-    public int getArtistaId() {return artistaId;}
+    public User(String newUsername, String newPassword, String newRole){
+        this.username = newUsername;
+        this.password = newPassword;
+        this.role = newRole;
+    }
+
+    public String getUsername(){return username;}
+    public String getPassword(){return password;}
+    public String getRole() {return role;}
 }

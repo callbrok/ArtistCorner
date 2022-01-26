@@ -1,2 +1,1 @@
-£ 2javaX
-hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java
+£ 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java

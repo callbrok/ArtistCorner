@@ -1,1 +1,1 @@
-— 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java
+— 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundException.java

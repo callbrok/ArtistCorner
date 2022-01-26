@@ -1,10 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class GetRaccomandationProblemException extends Exception{
-
+public class ProposalsManagementProblemException extends Exception{
     private static final long serialVersionUID = 1L;
 
-    public GetRaccomandationProblemException (String message) {
+    public ProposalsManagementProblemException (String message) {
         super(message);
     }
 }

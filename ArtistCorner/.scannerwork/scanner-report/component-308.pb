@@ -1,1 +1,1 @@
-´ 2javaXîhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+´ 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java

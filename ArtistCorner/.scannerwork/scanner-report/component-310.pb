@@ -1,1 +1,1 @@
-¶ 2javaXçhrKsrc/main/java/com/artistcorner/engclasses/others/SceneControllerMobile.java
+¶ 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

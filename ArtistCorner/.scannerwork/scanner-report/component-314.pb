@@ -1,1 +1,1 @@
-º 2javaXèhrmsrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java
+º 2javaXçhrKsrc/main/java/com/artistcorner/engclasses/others/SceneControllerMobile.java

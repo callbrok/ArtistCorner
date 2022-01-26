@@ -13,7 +13,7 @@ import java.io.IOException;
 public abstract class ExceptionView {
     private Pane exceptionPane;
 
-    public ExceptionView(ExceptionsTypeMenager etm){
+    protected ExceptionView(ExceptionsTypeMenager etm){
         try {
             exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
         } catch (IOException e) {

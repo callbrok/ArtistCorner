@@ -1,1 +1,1 @@
-Ÿ 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java
+Ÿ 2javaXhrMsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldException.java

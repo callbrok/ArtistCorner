@@ -1,1 +1,1 @@
-µ 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+µ 2javaX2hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

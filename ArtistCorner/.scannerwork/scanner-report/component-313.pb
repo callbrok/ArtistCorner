@@ -1,1 +1,1 @@
-¹ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java
+¹ 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

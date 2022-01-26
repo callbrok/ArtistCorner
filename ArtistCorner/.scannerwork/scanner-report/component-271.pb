@@ -1,2 +1,1 @@
-è 2javaX
-hrLsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyPathException.java
+è 2javaXÛhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

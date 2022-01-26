@@ -1,41 +1,36 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.query;
 
-public class ArtWorkBean {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-    private int idOpera;
-    private String titolo;
-    private double prezzo;
-    private int flagVendibile;
-    private int artistId;
+public class QueryGallery {
 
+    private QueryGallery(){throw new IllegalStateException("Utility Query ArtGallery class");}
 
-    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
+    public static ResultSet selectGallery(Statement stmt, String username) throws SQLException {
+        String sql = "SELECT * FROM galleria WHERE username ='" + username + "';";
+        return stmt.executeQuery(sql);
     }
 
-    public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId){
-        this.idOpera=0;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
+    public static int removeProposal(Statement stmt,int idGallery,int idArtista) throws SQLException {
+       String sql= "DELETE FROM offerta WHERE artista = '"+idArtista+"' AND galleria = '"+idGallery+"';";
+       return stmt.executeUpdate(sql);
     }
 
-    public void setIdOpera(int idOpera) {this.idOpera = idOpera;}
-    public void setTitolo(String titolo) {this.titolo = titolo;}
-    public void setPrezzo(double prezzo) {this.prezzo = prezzo;}
-    public void setFlagVendibile(int flagVenduto) {this.flagVendibile = flagVenduto;}
-    public void setArtistId(int artistId) {this.artistId = artistId;}
+    public static ResultSet selectArtistId(Statement stmt, int galleria) throws SQLException {
+        String sql = "SELECT * FROM offerta WHERE galleria ='" + galleria  + "';";
+        return stmt.executeQuery(sql);
 
-    public double getPrezzo() {return prezzo;}
-    public int getFlagVendibile() {return flagVendibile;}
-    public int getIdOpera() {return idOpera;}
-    public String getTitolo() {return titolo;}
-    public int getArtistId() {return artistId;}
+    }
+
+    public static int insertProposal(Statement stmt, int idGallery, int idArtista, int flag) throws SQLException {
+        String updateStatement = "INSERT INTO offerta(artista,galleria,flagAccettazione) VALUES ('"+idArtista+ "','" +idGallery+"','"+flag+"');";
+        return stmt.executeUpdate(updateStatement);
+    }
+
+    public static ResultSet selectProposal(Statement stmt, int galleria,int flag) throws SQLException {
+        String sql = "SELECT * FROM offerta WHERE galleria='"+galleria+"' AND flagAccettazione= '"+flag+"';";
+        return stmt.executeQuery(sql);
+    }
 }
-
-

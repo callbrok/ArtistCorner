@@ -1,1 +1,1 @@
-ª 2javaXhr<src/main/java/com/artistcorner/engclasses/bean/UserBean.java
+ª 2javaX@hr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java

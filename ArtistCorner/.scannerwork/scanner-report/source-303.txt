@@ -1,19 +1,23 @@
 package com.artistcorner.engclasses.bean;
 
-public class BuyerBean {
-    int idBuyer;
+public class ArtGalleryBean {
+    int galleria;
     String nome;
-    String cognome;
+    String descrizione;
+    String indirizzo;
+    String username;
 
-
-    public BuyerBean(int newIdBuyer, String newNome, String newCognome) {
-        this.idBuyer = newIdBuyer;
-        this.nome = newNome;
-        this.cognome = newCognome;
+    public  ArtGalleryBean(int newGalleriaB, String newNomeB, String newDescrizioneB, String newIndirizzoB, String newUsernameB){
+        this.galleria = newGalleriaB;
+        this.nome = newNomeB;
+        this.descrizione = newDescrizioneB;
+        this.indirizzo = newIndirizzoB;
+        this.username = newUsernameB;
     }
 
-    public int getIdBuyer() {return idBuyer;}
+    public int getGalleria() {return galleria;}
     public String getNome() {return nome;}
-    public String getCognome(){return cognome;}
+    public String getDescrizione() {return descrizione;}
+    public String getIndirizzo() {return indirizzo;}
+    public String getUsername() {return username;}
 }
-

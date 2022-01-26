@@ -1,1 +1,1 @@
-² 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+² 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java

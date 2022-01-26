@@ -1,2 +1,1 @@
-‘ 2javaX
-hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java
+‘ 2javaXhrOsrc/main/java/com/artistcorner/engclasses/exceptions/UserNotFoundException.java

@@ -1,70 +1,49 @@
 package com.artistcorner.engclasses.others;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
+import com.artistcorner.engclasses.exceptions.*;
 
-public class ConnectProperties {
+import java.io.IOException;
 
-    private ConnectProperties(){
-        throw new IllegalStateException("Utility Cconnect class");
+public class ExceptionsFactory {
+
+    //***Singleton***/
+    private static ExceptionsFactory instance = null;
+    private ExceptionsFactory() {}
+
+    public static synchronized ExceptionsFactory getInstance() {
+        if(instance == null) {
+            instance = new ExceptionsFactory();
+        }
+        return instance;
     }
 
-    /**
-     * Prende i valori nel file "login.properties" per effettuare la connessione al DBMS.
-     */
-    public static Connection getConnection(){
-        Connection conn = null;
-        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
+    public ExceptionView createView(ExceptionsTypeMenager etm) {
 
-        try{
+        switch(etm.getType()) {
+            case 0: case 7:
+                return new EmptyFieldExceptionView(etm);
 
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(stream);
+            case 1: case 8:
+                return new EmpyPathExceptionView(etm);
 
-            // assign db parameters
-            String dbhostname = prop.getProperty("hostname");
-            String dbname = prop.getProperty("dbname");
-            String dbusername = prop.getProperty("username");
-            String dbpassword = prop.getProperty("password");
-            String dbdriverused = prop.getProperty("driverused");
+            case 2: case 9:
+                return new DuplicateArtWorkExceptionView(etm);
 
-            String dburl = "jdbc:" + dbdriverused + "://" + dbhostname + ":3306/" + dbname;
+            case 3: case 10:
+                return new ProposalNotFoundExceptionView(etm);
 
+            case 4: case 11:
+                return new SellArtWorkNotFoundExceptionView(etm);
 
-            // create a connection to the database
-            conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
+            case 5: case 12:
+                return new ArtWorkNotFoundExceptionView(etm);
 
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            case 6: case 13:
+                return new SentProposalNotFoundExceptionView(etm);
+
+            default:
+                return new EmptyFieldExceptionView(etm);
         }
-        return conn;
-    }
-
-    /**
-     * Ritorna il nome del driver jdbc da utilizzare, leggendo il file "login.properties".
-     */
-    public static String getDriverClassName(){
-        String driverClassName="NO DRIVER SPECIFIED";
-        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
-
-        try{
-
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(stream);
-
-            // assign db parameters
-            driverClassName = prop.getProperty("driver");
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return driverClassName;
     }
 
 }

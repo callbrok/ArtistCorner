@@ -1,10 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class SellArtWorkNotFoundException extends Exception{
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    private static final long serialVersionUID = 1L;
+public class SellArtWorkNotFoundExceptionView extends ExceptionView{
 
-    public SellArtWorkNotFoundException (String message) {
-        super(message);
-    }
+    public SellArtWorkNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

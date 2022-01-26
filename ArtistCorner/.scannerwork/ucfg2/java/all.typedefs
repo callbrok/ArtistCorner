@@ -218,7 +218,10 @@ dcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControll
 exitWindow()rcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary#exitWindow()VÇ
 initialize()rcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary#initialize()Và
 makeDraggable()ucom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary#makeDraggable()Vä
-minimizeWindow()vcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary#minimizeWindow()VÕ
+minimizeWindow()vcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary#minimizeWindow()VŒ
+junittests.TestUploadArtWorkjava.lang.Object2
+<init>()&junittests.TestUploadArtWork#<init>()Vh
+#testUploadArtWorkImageNotSelected()Ajunittests.TestUploadArtWork#testUploadArtWorkImageNotSelected()VÕ
 Xcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistoryjava.lang.Object~
 setTooltipMenu()jcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#setTooltipMenu()Vv
 makeLogOut()fcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#makeLogOut()Vn
@@ -696,7 +699,130 @@ Ccom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionjava.lang.
 getPassword()Icom.artistcorner.engclasses.bean.UserBean#getPassword()Ljava/lang/String;´
 ><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)icom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VZ
 getUsername()Icom.artistcorner.engclasses.bean.UserBean#getUsername()Ljava/lang/String;á
-,<init>(Ljava/lang/String;Ljava/lang/String;)Wcom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;)VÒ
+,<init>(Ljava/lang/String;Ljava/lang/String;)Wcom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;)V®
+selenium.TestSelenium1java.lang.Object,
+<init>() selenium.TestSelenium1#<init>()VN
+main([Ljava/lang/String;)1selenium.TestSelenium1#main([Ljava/lang/String;)Vê
+java.lang.Systemjava.lang.Object^
+$identityHashCode(Ljava/lang/Object;)6java.lang.System#identityHashCode(Ljava/lang/Object;)I*
+
+nanoTime()java.lang.System#nanoTime()Jt
+/setSecurityManager(Ljava/lang/SecurityManager;)Ajava.lang.System#setSecurityManager(Ljava/lang/SecurityManager;)Vk
+"mapLibraryName(Ljava/lang/String;)Ejava.lang.System#mapLibraryName(Ljava/lang/String;)Ljava/lang/String;[
+getenv(Ljava/lang/String;)=java.lang.System#getenv(Ljava/lang/String;)Ljava/lang/String;z
+2arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)Djava.lang.System#arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V8
+	console()+java.lang.System#console()Ljava/io/Console;8
+registerNatives()#java.lang.System#registerNatives()VP
+setOut(Ljava/io/PrintStream;)/java.lang.System#setOut(Ljava/io/PrintStream;)VN
+setIn(Ljava/io/InputStream;).java.lang.System#setIn(Ljava/io/InputStream;)Vå
+;logInitException(ZZLjava/lang/String;Ljava/lang/Throwable;)Mjava.lang.System#logInitException(ZZLjava/lang/String;Ljava/lang/Throwable;)VX
+getSecurityManager()@java.lang.System#getSecurityManager()Ljava/lang/SecurityManager;`
+%setProperties(Ljava/util/Properties;)7java.lang.System#setProperties(Ljava/util/Properties;)V<
+setJavaLangAccess()%java.lang.System#setJavaLangAccess()V(
+	checkIO()java.lang.System#checkIO()V&
+<init>()java.lang.System#<init>()VP
+setErr(Ljava/io/PrintStream;)/java.lang.System#setErr(Ljava/io/PrintStream;)Vâ
+1getProperty(Ljava/lang/String;Ljava/lang/String;)Tjava.lang.System#getProperty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;N
+checkKey(Ljava/lang/String;).java.lang.System#checkKey(Ljava/lang/String;)V<
+currentTimeMillis()%java.lang.System#currentTimeMillis()JP
+setIn0(Ljava/io/InputStream;)/java.lang.System#setIn0(Ljava/io/InputStream;)V$
+exit(I)java.lang.System#exit(I)VE
+lineSeparator()2java.lang.System#lineSeparator()Ljava/lang/String;R
+setErr0(Ljava/io/PrintStream;)0java.lang.System#setErr0(Ljava/io/PrintStream;)Ve
+getProperty(Ljava/lang/String;)Bjava.lang.System#getProperty(Ljava/lang/String;)Ljava/lang/String;â
+1setProperty(Ljava/lang/String;Ljava/lang/String;)Tjava.lang.System#setProperty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;2
+initPhase2(ZZ) java.lang.System#initPhase2(ZZ)I8
+runFinalization()#java.lang.System#runFinalization()Vw
+&initProperties(Ljava/util/Properties;)Mjava.lang.System#initProperties(Ljava/util/Properties;)Ljava/util/Properties;T
+inheritedChannel()>java.lang.System#inheritedChannel()Ljava/nio/channels/Channel;ú
+7getLogger(Ljava/lang/String;Ljava/util/ResourceBundle;)ajava.lang.System#getLogger(Ljava/lang/String;Ljava/util/ResourceBundle;)Ljava/lang/System$Logger;
+gc()java.lang.System#gc()V¢
+<newPrintStream(Ljava/io/FileOutputStream;Ljava/lang/String;)bjava.lang.System#newPrintStream(Ljava/io/FileOutputStream;Ljava/lang/String;)Ljava/io/PrintStream;h
+getLogger(Ljava/lang/String;)Gjava.lang.System#getLogger(Ljava/lang/String;)Ljava/lang/System$Logger;v
+0setSecurityManager0(Ljava/lang/SecurityManager;)Bjava.lang.System#setSecurityManager0(Ljava/lang/SecurityManager;)V.
+initPhase1()java.lang.System#initPhase1()Vi
+!clearProperty(Ljava/lang/String;)Djava.lang.System#clearProperty(Ljava/lang/String;)Ljava/lang/String;R
+setOut0(Ljava/io/PrintStream;)0java.lang.System#setOut0(Ljava/io/PrintStream;)V.
+initPhase3()java.lang.System#initPhase3()V4
+getenv()(java.lang.System#getenv()Ljava/util/Map;I
+getProperties()6java.lang.System#getProperties()Ljava/util/Properties;T
+loadLibrary(Ljava/lang/String;)1java.lang.System#loadLibrary(Ljava/lang/String;)VF
+load(Ljava/lang/String;)*java.lang.System#load(Ljava/lang/String;)V(
+java.lang.Appendablejava.lang.Object%
+java.io.Flushablejava.lang.ObjectÉ
+java.io.OutputStreamjava.io.Closeablejava.lang.Objectjava.io.FlushableS
+nullOutputStream()=java.io.OutputStream#nullOutputStream()Ljava/io/OutputStream;,
+	write([B)java.io.OutputStream#write([B)V*
+<init>()java.io.OutputStream#<init>()V(
+flush()java.io.OutputStream#flush()V0
+write([BII)!java.io.OutputStream#write([BII)V(
+close()java.io.OutputStream#close()Vé
+java.io.FilterOutputStreamjava.io.OutputStream2
+	write([B)%java.io.FilterOutputStream#write([B)V\
+<init>(Ljava/io/OutputStream;):java.io.FilterOutputStream#<init>(Ljava/io/OutputStream;)V.
+flush()#java.io.FilterOutputStream#flush()V0
+write(I)$java.io.FilterOutputStream#write(I)V6
+write([BII)'java.io.FilterOutputStream#write([BII)V.
+close()#java.io.FilterOutputStream#close()VÖ 
+java.io.PrintStreamjava.lang.Appendablejava.io.Closeablejava.io.FilterOutputStream+
+	write([C)java.io.PrintStream#write([C)V)
+print(J)java.io.PrintStream#print(J)V-
+
+println(J)java.io.PrintStream#println(J)V)
+print(F)java.io.PrintStream#print(F)V-
+
+println(F)java.io.PrintStream#println(F)V/
+write([BII) java.io.PrintStream#write([BII)VÅ
+4<init>(Ljava/lang/String;Ljava/nio/charset/Charset;)Ijava.io.PrintStream#<init>(Ljava/lang/String;Ljava/nio/charset/Charset;)V)
+print(Z)java.io.PrintStream#print(Z)V1
+clearError()!java.io.PrintStream#clearError()V-
+
+println(Z)java.io.PrintStream#println(Z)Vi
+(<init>(Ljava/io/File;Ljava/lang/String;)=java.io.PrintStream#<init>(Ljava/io/File;Ljava/lang/String;)V)
+write(I)java.io.PrintStream#write(I)VO
+println(Ljava/lang/Object;)0java.io.PrintStream#println(Ljava/lang/Object;)VK
+print(Ljava/lang/String;).java.io.PrintStream#print(Ljava/lang/String;)Ví
+4requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Zjava.io.PrintStream#requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;)
+print(I)java.io.PrintStream#print(I)V-
+
+println(I)java.io.PrintStream#println(I)V'
+flush()java.io.PrintStream#flush()V´
+?format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)hjava.io.PrintStream#format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;m
+ append(Ljava/lang/CharSequence;)Ijava.io.PrintStream#append(Ljava/lang/CharSequence;)Ljava/io/PrintStream;l
+toCharset(Ljava/lang/String;)Kjava.io.PrintStream#toCharset(Ljava/lang/String;)Ljava/nio/charset/Charset;W
+<init>(ZLjava/io/OutputStream;)4java.io.PrintStream#<init>(ZLjava/io/OutputStream;)V+
+	print([C)java.io.PrintStream#print([C)Vq
+"append(Ljava/lang/CharSequence;II)Kjava.io.PrintStream#append(Ljava/lang/CharSequence;II)Ljava/io/PrintStream;)
+print(D)java.io.PrintStream#print(D)Vq
+,<init>(Ljava/lang/String;Ljava/lang/String;)Ajava.io.PrintStream#<init>(Ljava/lang/String;Ljava/lang/String;)V-
+
+println(D)java.io.PrintStream#println(D)VO
+println(Ljava/lang/String;)0java.io.PrintStream#println(Ljava/lang/String;)VW
+<init>(Ljava/io/OutputStream;Z)4java.io.PrintStream#<init>(Ljava/io/OutputStream;Z)VE
+<init>(Ljava/io/File;)+java.io.PrintStream#<init>(Ljava/io/File;)Vy
+0<init>(Ljava/io/File;Ljava/nio/charset/Charset;)Ejava.io.PrintStream#<init>(Ljava/io/File;Ljava/nio/charset/Charset;)V1
+ensureOpen()!java.io.PrintStream#ensureOpen()Vã
+9<init>(Ljava/io/OutputStream;ZLjava/nio/charset/Charset;)Njava.io.PrintStream#<init>(Ljava/io/OutputStream;ZLjava/nio/charset/Charset;)V´
+?printf(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)hjava.io.PrintStream#printf(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;-
+
+setError()java.io.PrintStream#setError()Vá
+-printf(Ljava/lang/String;[Ljava/lang/Object;)Vjava.io.PrintStream#printf(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;?
+	append(C)2java.io.PrintStream#append(C)Ljava/io/PrintStream;M
+<init>(Ljava/lang/String;)/java.io.PrintStream#<init>(Ljava/lang/String;)Vá
+-format(Ljava/lang/String;[Ljava/lang/Object;)Vjava.io.PrintStream#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;+
+	newLine()java.io.PrintStream#newLine()V)
+print(C)java.io.PrintStream#print(C)V1
+checkError()!java.io.PrintStream#checkError()Z+
+	println()java.io.PrintStream#println()V'
+close()java.io.PrintStream#close()V-
+
+println(C)java.io.PrintStream#println(C)VK
+write(Ljava/lang/String;).java.io.PrintStream#write(Ljava/lang/String;)VK
+print(Ljava/lang/Object;).java.io.PrintStream#print(Ljava/lang/Object;)V{
+1<init>(Ljava/io/OutputStream;ZLjava/lang/String;)Fjava.io.PrintStream#<init>(Ljava/io/OutputStream;ZLjava/lang/String;)VU
+<init>(Ljava/io/OutputStream;)3java.io.PrintStream#<init>(Ljava/io/OutputStream;)V/
+println([C) java.io.PrintStream#println([C)Vã
+9<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)Njava.io.PrintStream#<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)VÒ
 )com.artistcorner.engclasses.others.Commitjava.lang.Object´
 ><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)icom.artistcorner.engclasses.others.Commit#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VR
 	getData()Ecom.artistcorner.engclasses.others.Commit#getData()Ljava/lang/String;R
@@ -708,8 +834,7 @@ Ccom.artistcorner.controller.applicationcontroller.GetReccomandationjava.lang.
 4createSolution(Ljava/lang/String;Ljava/lang/String;)ycom.artistcorner.controller.applicationcontroller.GetReccomandation#createSolution(Ljava/lang/String;Ljava/lang/String;)V~
 initializeTreeTxt()gcom.artistcorner.controller.applicationcontroller.GetReccomandation#initializeTreeTxt()Ljava/util/List;Ä
 getSerialSolution()icom.artistcorner.controller.applicationcontroller.GetReccomandation#getSerialSolution()Ljava/lang/String;ì
-%setSerialSolution(Ljava/lang/String;)jcom.artistcorner.controller.applicationcontroller.GetReccomandation#setSerialSolution(Ljava/lang/String;)V(
-java.lang.Appendablejava.lang.Object¸3
+%setSerialSolution(Ljava/lang/String;)jcom.artistcorner.controller.applicationcontroller.GetReccomandation#setSerialSolution(Ljava/lang/String;)V¸3
 java.lang.AbstractStringBuilderjava.lang.CharSequencejava.lang.Appendablejava.lang.Object?
 setCharAt(IC).java.lang.AbstractStringBuilder#setCharAt(IC)VW
 ensureCapacityInternal(I):java.lang.AbstractStringBuilder#ensureCapacityInternal(I)V7
@@ -868,10 +993,7 @@ Q<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
 getUsername()Ocom.artistcorner.engclasses.bean.ArtGalleryBean#getUsername()Ljava/lang/String;O
 getGalleria()>com.artistcorner.engclasses.bean.ArtGalleryBean#getGalleria()IX
 	getNome()Kcom.artistcorner.engclasses.bean.ArtGalleryBean#getNome()Ljava/lang/String;f
-getDescrizione()Rcom.artistcorner.engclasses.bean.ArtGalleryBean#getDescrizione()Ljava/lang/String;≠
-TestUploadArtWorkjava.lang.Object'
-<init>()TestUploadArtWork#<init>()V]
-#testUploadArtWorkImageNotSelected()6TestUploadArtWork#testUploadArtWorkImageNotSelected()V⁄
+getDescrizione()Rcom.artistcorner.engclasses.bean.ArtGalleryBean#getDescrizione()Ljava/lang/String;⁄
 +com.artistcorner.engclasses.bean.ArtistBeanjava.lang.Objectã
 -<init>(ILjava/lang/String;Ljava/lang/String;)Zcom.artistcorner.engclasses.bean.ArtistBean#<init>(ILjava/lang/String;Ljava/lang/String;)VZ
 getCognome()Jcom.artistcorner.engclasses.bean.ArtistBean#getCognome()Ljava/lang/String;â
@@ -1429,7 +1551,10 @@ Zcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetRec
 initialize()hcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#initialize()V|
 setAnswerYes()jcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#setAnswerYes()V~
 makeDraggable()kcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#makeDraggable()VÄ
-minimizeWindow()lcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#minimizeWindow()Vå
+minimizeWindow()lcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#minimizeWindow()V∂
+junittests.TestLoginjava.lang.Object*
+<init>()junittests.TestLogin#<init>()V`
+#testDesktopLoginInvalidArtistUser()9junittests.TestLogin#testDesktopLoginInvalidArtistUser()Vå
 ,com.artistcorner.engclasses.query.QueryBuyerjava.lang.Objectô
 *selectOpereComprate(Ljava/sql/Statement;I)kcom.artistcorner.engclasses.query.QueryBuyer#selectOpereComprate(Ljava/sql/Statement;I)Ljava/sql/ResultSet;â
 "selectImage(Ljava/sql/Statement;I)ccom.artistcorner.engclasses.query.QueryBuyer#selectImage(Ljava/sql/Statement;I)Ljava/sql/ResultSet;è
@@ -1776,10 +1901,7 @@ Xcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGalle
 -<init>(ILjava/lang/String;Ljava/lang/String;)Ycom.artistcorner.engclasses.bean.BuyerBean#<init>(ILjava/lang/String;Ljava/lang/String;)VY
 getCognome()Icom.artistcorner.engclasses.bean.BuyerBean#getCognome()Ljava/lang/String;S
 	getNome()Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;H
-getIdBuyer()8com.artistcorner.engclasses.bean.BuyerBean#getIdBuyer()Iï
-	TestLoginjava.lang.Object
-<init>()TestLogin#<init>()VU
-#testDesktopLoginInvalidArtistUser().TestLogin#testDesktopLoginInvalidArtistUser()VÓ
+getIdBuyer()8com.artistcorner.engclasses.bean.BuyerBean#getIdBuyer()IÓ
 .com.artistcorner.engclasses.query.QueryGalleryjava.lang.ObjectÇ
 'insertProposal(Ljava/sql/Statement;III)Wcom.artistcorner.engclasses.query.QueryGallery#insertProposal(Ljava/sql/Statement;III)ID
 <init>()8com.artistcorner.engclasses.query.QueryGallery#<init>()Vì
@@ -1878,13 +2000,14 @@ zcom.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControl
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$6764;EventHandlerÇ
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$7053;EventHandlerÇ
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$7855;EventHandlerÇ
-rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$8820;EventHandler§
-
-TestSignUpjava.lang.Object 
-<init>()TestSignUp#<init>()Vb
-)testRegistrationDuplicateArtistUsername()5TestSignUp#testRegistrationDuplicateArtistUsername()VÕ
+rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$8820;EventHandlerÕ
 =com.artistcorner.engclasses.exceptions.BuyerNotFoundExceptionjava.lang.Exceptionw
-<init>(Ljava/lang/String;)Ycom.artistcorner.engclasses.exceptions.BuyerNotFoundException#<init>(Ljava/lang/String;)VÀ
+<init>(Ljava/lang/String;)Ycom.artistcorner.engclasses.exceptions.BuyerNotFoundException#<init>(Ljava/lang/String;)V≈
+junittests.TestSignUpjava.lang.Object+
+<init>()junittests.TestSignUp#<init>()Vm
+)testRegistrationDuplicateArtistUsername()@junittests.TestSignUp#testRegistrationDuplicateArtistUsername()VR
+junittests.AllTestsjava.lang.Object)
+<init>()junittests.AllTests#<init>()VÀ
 <com.artistcorner.engclasses.exceptions.UserNotFoundExceptionjava.lang.Exceptionv
 <init>(Ljava/lang/String;)Xcom.artistcorner.engclasses.exceptions.UserNotFoundException#<init>(Ljava/lang/String;)V¨
 com.artistcorner.model.Userjava.lang.ObjectD
@@ -1969,9 +2092,7 @@ Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyerjava.
 <init>()Rcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#<init>()Vp
 finishPayment(II)[com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#finishPayment(II)Vº
 /retrieveSearchArtWorkByName(Ljava/lang/String;)àcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkByName(Ljava/lang/String;)Ljava/util/List;î
-retrieveSearchArtWorkBlob(I)tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkBlob(I)Ljava/sql/Blob;<
-AllTestsjava.lang.Object
-<init>()AllTests#<init>()V„
+retrieveSearchArtWorkBlob(I)tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkBlob(I)Ljava/sql/Blob;„
 )com.artistcorner.engclasses.dao.ArtistDAOjava.lang.Objectò
 -retrieveAllArtWorksImage(ILjava/lang/String;)gcom.artistcorner.engclasses.dao.ArtistDAO#retrieveAllArtWorksImage(ILjava/lang/String;)Ljava/util/List;?
 <init>()3com.artistcorner.engclasses.dao.ArtistDAO#<init>()VS
@@ -2004,9 +2125,7 @@ Dcom.artistcorner.engclasses.exceptions.ProposalNotFoundExceptionViewException
 Hcom.artistcorner.engclasses.exceptions.GetRaccomandationProblemExceptionjava.lang.ExceptionÇ
 <init>(Ljava/lang/String;)dcom.artistcorner.engclasses.exceptions.GetRaccomandationProblemException#<init>(Ljava/lang/String;)V¶
 =com.artistcorner.controller.applicationcontroller.ViewProfilejava.lang.ObjectS
-<init>()Gcom.artistcorner.controller.applicationcontroller.ViewProfile#<init>()VF
-TestSelenium1java.lang.Object#
-<init>()TestSelenium1#<init>()V≈
+<init>()Gcom.artistcorner.controller.applicationcontroller.ViewProfile#<init>()V≈
 9com.artistcorner.engclasses.exceptions.AddArtistExceptionjava.lang.Exceptions
 <init>(Ljava/lang/String;)Ucom.artistcorner.engclasses.exceptions.AddArtistException#<init>(Ljava/lang/String;)Væ
 Vcom.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummaryjava.lang.Objectl

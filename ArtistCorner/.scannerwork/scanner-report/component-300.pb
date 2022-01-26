@@ -1,1 +1,1 @@
-¬ 2javaX*hr?src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java
+¬ 2javaX%hrAsrc/main/java/com/artistcorner/engclasses/query/QueryGallery.java

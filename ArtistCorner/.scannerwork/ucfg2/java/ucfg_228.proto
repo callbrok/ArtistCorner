@@ -1,50 +1,50 @@
 
-[com.artistcorner.engclasses.query.QueryBuyer#insertOperaFavourites(Ljava/sql/Statement;II)Iv
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java5 5(+"1*ê
+_com.artistcorner.engclasses.query.QueryBuyer#removeOperaFromFavourites(Ljava/sql/Statement;II)Iv
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java* *(/"1*¯
 1v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6! 6(T‹
-Ÿ
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(7œ
+Ã
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6! 6(\
-%0java.lang.String"__concat*53
-1INSERT INTO preferito(opera,acquirente) VALUES ('*
-""¿
-Ω
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(?
+%0java.lang.String"__concat*(&
+$DELETE FROM preferito WHERE opera ='*
+""œ
+Ã
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6! 6(c
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(U
 %1java.lang.String"__concat*
 
-%0java.lang.String*
-','ø
+%0java.lang.String*
+'AND acquirente = ø
 º
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6! 6(l
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(]
 %2java.lang.String"__concat*
 
 %1java.lang.String*
-""¿
-Ω
+""æ
+ª
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6! 6(r
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(a
 %3java.lang.String"__concat*
 
-%2java.lang.String*
-');¿
-Ω
+%2java.lang.String*
+;¥
+±
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java6 6(s#
-updateStatementjava.lang.String"__id*
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java+ +(b
+sqljava.lang.String"__id*
 
-%3java.lang.String•¢
+%3java.lang.Stringôñ
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java7 7(2	
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java, ,(&	
 %4int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
 
-stmtjava.sql.Statement*%
-#
-updateStatementjava.lang.String2!executeUpdate(Ljava/lang/String;)"Ä
+stmtjava.sql.Statement*
+
+sqljava.lang.String2!executeUpdate(Ljava/lang/String;)"Ä
 v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java7 7(3
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java, ,('
 "":
 stmtjava.sql.Statement:
 "":

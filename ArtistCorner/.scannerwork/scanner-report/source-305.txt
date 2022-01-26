@@ -1,49 +1,21 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.exceptions.*;
+public class ProposalBean {
+    private int idOfferta;
+    private int artista;
+    private  int galleria;
+    private int flagAccettazione;
 
-import java.io.IOException;
-
-public class ExceptionsFactory {
-
-    //***Singleton***/
-    private static ExceptionsFactory instance = null;
-    private ExceptionsFactory() {}
-
-    public static synchronized ExceptionsFactory getInstance() {
-        if(instance == null) {
-            instance = new ExceptionsFactory();
-        }
-        return instance;
+    public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
+        this.idOfferta = newIdB;
+        this.artista = newArtistaB;
+        this.galleria =  newGalleriaB;
+        this.flagAccettazione = newFlagAccettazioneB;
     }
 
-    public ExceptionView createView(ExceptionsTypeMenager etm) {
 
-        switch(etm.getType()) {
-            case 0: case 7:
-                return new EmptyFieldExceptionView(etm);
-
-            case 1: case 8:
-                return new EmpyPathExceptionView(etm);
-
-            case 2: case 9:
-                return new DuplicateArtWorkExceptionView(etm);
-
-            case 3: case 10:
-                return new ProposalNotFoundExceptionView(etm);
-
-            case 4: case 11:
-                return new SellArtWorkNotFoundExceptionView(etm);
-
-            case 5: case 12:
-                return new ArtWorkNotFoundExceptionView(etm);
-
-            case 6: case 13:
-                return new SentProposalNotFoundExceptionView(etm);
-
-            default:
-                return new EmptyFieldExceptionView(etm);
-        }
-    }
-
+    public int getIdOfferta() {return idOfferta;}
+    public int getArtista() {return artista;}
+    public int getFlagAccettazione() {return flagAccettazione;}
+    public int getGalleria() {return galleria;}
 }

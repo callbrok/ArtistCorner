@@ -1,1 +1,1 @@
-» 2javaX‰hrysrc/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java
+» 2javaXÀhrksrc/main/java/com/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory.java

@@ -1,2 +1,2 @@
 ž 2javaX
-hrWsrc/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundException.java
+hr^src/main/java/com/artistcorner/engclasses/exceptions/FavouritesManagementProblemException.java
