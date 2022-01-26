@@ -9,11 +9,7 @@ module com.artistcorner {
     requires org.slf4j;
     requires org.junit.platform.commons;
     requires org.junit.platform.engine;
-    requires selenium.ie.driver;
-    requires selenium.chrome.driver;
-    requires selenium.java;
     requires org.seleniumhq.selenium.api;
-    requires selenium.support;
 
 
     opens com.artistcorner to javafx.fxml;

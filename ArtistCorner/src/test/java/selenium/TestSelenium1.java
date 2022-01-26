@@ -7,8 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 
 public class TestSelenium1 {
 
@@ -17,9 +15,7 @@ public class TestSelenium1 {
         File file = new File(classLoader.getResource("chromedriver").getFile());
         String absolutePath = file.getAbsolutePath();
 
-        System.out.println(absolutePath);
-
-        System.setProperty("webdriver.chrome.driver", "/home/marco/GitHub/ArtistCorner/ArtistCorner/src/test/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", absolutePath);
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.rapidtables.com/convert/temperature/celsius-to-fahrenheit.html");
 
