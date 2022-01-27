@@ -1,0 +1,1 @@
+° 2javaXhrKArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java

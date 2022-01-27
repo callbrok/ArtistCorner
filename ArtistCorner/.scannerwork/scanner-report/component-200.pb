@@ -1,1 +1,1 @@
-È 2javaX hr(src/test/java/junittests/TestSignUp.java
+È 2javaX hr(src/test/java/junittests/TestSignUp.java

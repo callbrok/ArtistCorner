@@ -1,0 +1,1 @@
+½ 2javaX:hrcArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerSignUp.java

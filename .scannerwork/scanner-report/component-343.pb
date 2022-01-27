@@ -1,0 +1,1 @@
+× 2javaX4hrcArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtistSummary.java

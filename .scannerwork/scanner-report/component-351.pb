@@ -1,0 +1,1 @@
+ß 2javaXhrXArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/SignUp.java

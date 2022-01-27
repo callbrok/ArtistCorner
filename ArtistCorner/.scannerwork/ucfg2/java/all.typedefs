@@ -702,7 +702,147 @@ Ccom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionjava.lang.
 ,<init>(Ljava/lang/String;Ljava/lang/String;)Wcom.artistcorner.engclasses.bean.UserBean#<init>(Ljava/lang/String;Ljava/lang/String;)V®
 selenium.TestSelenium1java.lang.Object,
 <init>() selenium.TestSelenium1#<init>()VN
-main([Ljava/lang/String;)1selenium.TestSelenium1#main([Ljava/lang/String;)Vê
+main([Ljava/lang/String;)1selenium.TestSelenium1#main([Ljava/lang/String;)VèT
+java.lang.ClassLoaderjava.lang.Object•
+EcheckPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)\java.lang.ClassLoader#checkPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vâ
+7trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)Njava.lang.ClassLoader#trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)ZU
+initializeJavaAssertionMaps()4java.lang.ClassLoader#initializeJavaAssertionMaps()V}
+&getSystemResources(Ljava/lang/String;)Sjava.lang.ClassLoader#getSystemResources(Ljava/lang/String;)Ljava/util/Enumeration;o
+getBuiltinPlatformClassLoader()Ljava.lang.ClassLoader#getBuiltinPlatformClassLoader()Ljava/lang/ClassLoader;Ü
+mdefineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)îjava.lang.ClassLoader#defineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;q
+ getResources(Ljava/lang/String;)Mjava.lang.ClassLoader#getResources(Ljava/lang/String;)Ljava/util/Enumeration;q
+#findLoadedClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findLoadedClass(Ljava/lang/String;)Ljava/lang/Class;G
+
+packages()9java.lang.ClassLoader#packages()Ljava/util/stream/Stream;Â
+õdefinePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)ƒjava.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)Ljava/lang/Package;¢
+;defineClassSourceLocation(Ljava/security/ProtectionDomain;)cjava.lang.ClassLoader#defineClassSourceLocation(Ljava/security/ProtectionDomain;)Ljava/lang/String;>
+	getName()1java.lang.ClassLoader#getName()Ljava/lang/String;~
+*checkCreateClassLoader(Ljava/lang/String;)Pjava.lang.ClassLoader#checkCreateClassLoader(Ljava/lang/String;)Ljava/lang/Void;+
+<init>()java.lang.ClassLoader#<init>()VÇ
+ createOrGetClassLoaderValueMap()^java.lang.ClassLoader#createOrGetClassLoaderValueMap()Ljava/util/concurrent/ConcurrentHashMap;K
+nativeLibraries()6java.lang.ClassLoader#nativeLibraries()Ljava/util/Map;}
+1<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Hjava.lang.ClassLoader#<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Vh
+ findResource(Ljava/lang/String;)Djava.lang.ClassLoader#findResource(Ljava/lang/String;)Ljava/net/URL;ã
+8checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)Ojava.lang.ClassLoader#checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)VM
+defineClass([BII)8java.lang.ClassLoader#defineClass([BII)Ljava/lang/Class;a
+getPlatformClassLoader()Ejava.lang.ClassLoader#getPlatformClassLoader()Ljava/lang/ClassLoader;}
+'getResourceAsStream(Ljava/lang/String;)Rjava.lang.ClassLoader#getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;o
+*desiredAssertionStatus(Ljava/lang/String;)Ajava.lang.ClassLoader#desiredAssertionStatus(Ljava/lang/String;)ZH
+getPackages()7java.lang.ClassLoader#getPackages()[Ljava/lang/Package;É
+,findBootstrapClassOrNull(Ljava/lang/String;)Sjava.lang.ClassLoader#findBootstrapClassOrNull(Ljava/lang/String;)Ljava/lang/Class;{
+0setSigners(Ljava/lang/Class;[Ljava/lang/Object;)Gjava.lang.ClassLoader#setSigners(Ljava/lang/Class;[Ljava/lang/Object;)VW
+systemNativeLibraries()<java.lang.ClassLoader#systemNativeLibraries()Ljava/util/Map;Q
+registerAsParallelCapable()2java.lang.ClassLoader#registerAsParallelCapable()ZV
+getDefinedPackages()>java.lang.ClassLoader#getDefinedPackages()[Ljava/lang/Package;Ö
+5findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Ljava.lang.ClassLoader#findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Jr
+%getSystemResource(Ljava/lang/String;)Ijava.lang.ClassLoader#getSystemResource(Ljava/lang/String;)Ljava/net/URL;s
+,setClassAssertionStatus(Ljava/lang/String;Z)Cjava.lang.ClassLoader#setClassAssertionStatus(Ljava/lang/String;Z)Vg
+loadClass(Ljava/lang/String;Z)Ejava.lang.ClassLoader#loadClass(Ljava/lang/String;Z)Ljava/lang/Class;g
+retrieveDirectives()Ojava.lang.ClassLoader#retrieveDirectives()Ljava/lang/AssertionStatusDirectives;_
+initSystemClassLoader()Djava.lang.ClassLoader#initSystemClassLoader()Ljava/lang/ClassLoader;e
+loadClass(Ljava/lang/String;)Djava.lang.ClassLoader#loadClass(Ljava/lang/String;)Ljava/lang/Class;æ
+BpreDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)xjava.lang.ClassLoader#preDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)Ljava/security/ProtectionDomain;±
+CdefineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class;q
+"initializePath(Ljava/lang/String;)Kjava.lang.ClassLoader#initializePath(Ljava/lang/String;)[Ljava/lang/String;w
+&findBootstrapClass(Ljava/lang/String;)Mjava.lang.ClassLoader#findBootstrapClass(Ljava/lang/String;)Ljava/lang/Class;Q
+addClass(Ljava/lang/Class;)2java.lang.ClassLoader#addClass(Ljava/lang/Class;)VY
+isRegisteredAsParallelCapable()6java.lang.ClassLoader#isRegisteredAsParallelCapable()ZZ
+checkCreateClassLoader()>java.lang.ClassLoader#checkCreateClassLoader()Ljava/lang/Void;s
+!findResources(Ljava/lang/String;)Njava.lang.ClassLoader#findResources(Ljava/lang/String;)Ljava/util/Enumeration;e
+findClass(Ljava/lang/String;)Djava.lang.ClassLoader#findClass(Ljava/lang/String;)Ljava/lang/Class;G
+getParent()8java.lang.ClassLoader#getParent()Ljava/lang/ClassLoader;q
+#defineClass(Ljava/lang/String;[BII)Jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BII)Ljava/lang/Class;ú
+5getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)cjava.lang.ClassLoader#getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/NamedPackage;”
+TdefineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;){java.lang.ClassLoader#defineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;)Ljava/lang/Class;s
+!getClassLoader(Ljava/lang/Class;)Njava.lang.ClassLoader#getClassLoader(Ljava/lang/Class;)Ljava/lang/ClassLoader;U
+checkName(Ljava/lang/String;)4java.lang.ClassLoader#checkName(Ljava/lang/String;)ZY
+resolveClass(Ljava/lang/Class;)6java.lang.ClassLoader#resolveClass(Ljava/lang/Class;)V=
+registerNatives()(java.lang.ClassLoader#registerNatives()Vu
+-loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Djava.lang.ClassLoader#loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Zπ
+OneedsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)fjava.lang.ClassLoader#needsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Zü
+BpostDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Yjava.lang.ClassLoader#postDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vm
+ definePackage(Ljava/lang/Class;)Ijava.lang.ClassLoader#definePackage(Ljava/lang/Class;)Ljava/lang/Package;ª
+PcompareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)gjava.lang.ClassLoader#compareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)ZY
+<init>(Ljava/lang/ClassLoader;)6java.lang.ClassLoader#<init>(Ljava/lang/ClassLoader;)VS
+setDefaultAssertionStatus(Z)3java.lang.ClassLoader#setDefaultAssertionStatus(Z)Vq
+#findSystemClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findSystemClass(Ljava/lang/String;)Ljava/lang/Class;p
+"findBuiltinLib(Ljava/lang/String;)Jjava.lang.ClassLoader#findBuiltinLib(Ljava/lang/String;)Ljava/lang/String;s
+$findLoadedClass0(Ljava/lang/String;)Kjava.lang.ClassLoader#findLoadedClass0(Ljava/lang/String;)Ljava/lang/Class;å
+2findResource(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findResource(Ljava/lang/String;Ljava/lang/String;)Ljava/net/URL;â
+/findClass(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findClass(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;ì
+3definePackage(Ljava/lang/String;Ljava/lang/Module;)\java.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/Package;â
+/loadClass(Ljava/lang/Module;Ljava/lang/String;)Vjava.lang.ClassLoader#loadClass(Ljava/lang/Module;Ljava/lang/String;)Ljava/lang/Class;f
+getResource(Ljava/lang/String;)Cjava.lang.ClassLoader#getResource(Ljava/lang/String;)Ljava/net/URL;z
+'getClassLoadingLock(Ljava/lang/String;)Ojava.lang.ClassLoader#getClassLoadingLock(Ljava/lang/String;)Ljava/lang/Object;]
+getSystemClassLoader()Cjava.lang.ClassLoader#getSystemClassLoader()Ljava/lang/ClassLoader;}
+1loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Hjava.lang.ClassLoader#loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Ve
+getBuiltinAppClassLoader()Gjava.lang.ClassLoader#getBuiltinAppClassLoader()Ljava/lang/ClassLoader;a
+#isAncestor(Ljava/lang/ClassLoader;):java.lang.ClassLoader#isAncestor(Ljava/lang/ClassLoader;)Zw
+.setPackageAssertionStatus(Ljava/lang/String;Z)Ejava.lang.ClassLoader#setPackageAssertionStatus(Ljava/lang/String;Z)Vw
+%getDefinedPackage(Ljava/lang/String;)Njava.lang.ClassLoader#getDefinedPackage(Ljava/lang/String;)Ljava/lang/Package;j
+findLibrary(Ljava/lang/String;)Gjava.lang.ClassLoader#findLibrary(Ljava/lang/String;)Ljava/lang/String;â
+-getSystemResourceAsStream(Ljava/lang/String;)Xjava.lang.ClassLoader#getSystemResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;P
+getUnnamedModule():java.lang.ClassLoader#getUnnamedModule()Ljava/lang/Module;≠
+ÄdefineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)ßjava.lang.ClassLoader#defineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;8
+name().java.lang.ClassLoader#name()Ljava/lang/String;i
+getPackage(Ljava/lang/String;)Gjava.lang.ClassLoader#getPackage(Ljava/lang/String;)Ljava/lang/Package;m
+resources(Ljava/lang/String;)Ljava.lang.ClassLoader#resources(Ljava/lang/String;)Ljava/util/stream/Stream;ª
+GtoPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)pjava.lang.ClassLoader#toPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)Ljava/lang/Package;G
+clearAssertionStatus()-java.lang.ClassLoader#clearAssertionStatus()Vp
+"nameAndId(Ljava/lang/ClassLoader;)Jjava.lang.ClassLoader#nameAndId(Ljava/lang/ClassLoader;)Ljava/lang/String;£
+DcheckClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)[java.lang.ClassLoader#checkClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)Vù
+A<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)Xjava.lang.ClassLoader#<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)Vó"
+java.net.URLjava.lang.Objectjava.io.SerializableF
+equals(Ljava/lang/Object;)(java.net.URL#equals(Ljava/lang/Object;)Za
+toLowerCase(Ljava/lang/String;)>java.net.URL#toLowerCase(Ljava/lang/String;)Ljava/lang/String;*
+resetState()java.net.URL#resetState()Vv
+%lookupViaProperty(Ljava/lang/String;)Mjava.net.URL#lookupViaProperty(Ljava/lang/String;)Ljava/net/URLStreamHandler;7
+
+getQuery())java.net.URL#getQuery()Ljava/lang/String;x
+&lookupViaProviders(Ljava/lang/String;)Njava.net.URL#lookupViaProviders(Ljava/lang/String;)Ljava/net/URLStreamHandler;3
+getRef()'java.net.URL#getRef()Ljava/lang/String;&
+
+hashCode()java.net.URL#hashCode()IM
+fromURI(Ljava/net/URI;)2java.net.URL#fromURI(Ljava/net/URI;)Ljava/net/URL;é
+><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V`
+'readObject(Ljava/io/ObjectInputStream;)5java.net.URL#readObject(Ljava/io/ObjectInputStream;)VF
+<init>(Ljava/lang/String;)(java.net.URL#<init>(Ljava/lang/String;)VV
+"isOverrideable(Ljava/lang/String;)0java.net.URL#isOverrideable(Ljava/lang/String;)ZÆ
+Nset(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)\java.net.URL#set(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V∆
+Z<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/net/URLStreamHandler;)hjava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/net/URLStreamHandler;)Vb
+(<init>(Ljava/net/URL;Ljava/lang/String;)6java.net.URL#<init>(Ljava/net/URL;Ljava/lang/String;)V5
+	getPath()(java.net.URL#getPath()Ljava/lang/String;-
+toURI()"java.net.URL#toURI()Ljava/net/URI;ò
+C<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)Qjava.net.URL#<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)V7
+
+toString())java.net.URL#toString()Ljava/lang/String;ú
+Ñset(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)íjava.net.URL#set(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VB
+sameFile(Ljava/net/URL;)&java.net.URL#sameFile(Ljava/net/URL;)Zr
+0checkSpecifyHandler(Ljava/lang/SecurityManager;)>java.net.URL#checkSpecifyHandler(Ljava/lang/SecurityManager;)V2
+getDefaultPort()java.net.URL#getDefaultPort()I_
+getContent([Ljava/lang/Class;)=java.net.URL#getContent([Ljava/lang/Class;)Ljava/lang/Object;?
+getAuthority()-java.net.URL#getAuthority()Ljava/lang/String;=
+getUserInfo(),java.net.URL#getUserInfo()Ljava/lang/String;5
+	getFile()(java.net.URL#getFile()Ljava/lang/String;B
+setSerializedHashCode(I)&java.net.URL#setSerializedHashCode(I)V=
+getProtocol(),java.net.URL#getProtocol()Ljava/lang/String;;
+getContent()+java.net.URL#getContent()Ljava/lang/Object;é
+>setURLStreamHandlerFactory(Ljava/net/URLStreamHandlerFactory;)Ljava.net.URL#setURLStreamHandlerFactory(Ljava/net/URLStreamHandlerFactory;)VC
+toExternalForm()/java.net.URL#toExternalForm()Ljava/lang/String;f
+*isBuiltinStreamHandler(Ljava/lang/String;)8java.net.URL#isBuiltinStreamHandler(Ljava/lang/String;)Z;
+providers(),java.net.URL#providers()Ljava/util/Iterator;É
+2setDeserializedFields(Ljava/net/URLStreamHandler;)Mjava.net.URL#setDeserializedFields(Ljava/net/URLStreamHandler;)Ljava/net/URL;i
+ openConnection(Ljava/net/Proxy;)Ejava.net.URL#openConnection(Ljava/net/Proxy;)Ljava/net/URLConnection;A
+fabricateNewURL(),java.net.URL#fabricateNewURL()Ljava/net/URL;>
+openStream().java.net.URL#openStream()Ljava/io/InputStream;ê
+?<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Mjava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)VX
+#isValidProtocol(Ljava/lang/String;)1java.net.URL#isValidProtocol(Ljava/lang/String;)Z5
+	getHost()(java.net.URL#getHost()Ljava/lang/String;d
+)writeObject(Ljava/io/ObjectOutputStream;)7java.net.URL#writeObject(Ljava/io/ObjectOutputStream;)V=
+readResolve(),java.net.URL#readResolve()Ljava/lang/Object;I
+openConnection()5java.net.URL#openConnection()Ljava/net/URLConnection;z
+'getURLStreamHandler(Ljava/lang/String;)Ojava.net.URL#getURLStreamHandler(Ljava/lang/String;)Ljava/net/URLStreamHandler;$
+	getPort()java.net.URL#getPort()Iê
 java.lang.Systemjava.lang.Object^
 $identityHashCode(Ljava/lang/Object;)6java.lang.System#identityHashCode(Ljava/lang/Object;)I*
 
@@ -1591,96 +1731,7 @@ ccom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControll
 4com.artistcorner.engclasses.others.ConnectPropertiesjava.lang.Objects
 getDriverClassName()[com.artistcorner.engclasses.others.ConnectProperties#getDriverClassName()Ljava/lang/String;J
 <init>()>com.artistcorner.engclasses.others.ConnectProperties#<init>()Vl
-getConnection()Ycom.artistcorner.engclasses.others.ConnectProperties#getConnection()Ljava/sql/Connection;èT
-java.lang.ClassLoaderjava.lang.Object•
-EcheckPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)\java.lang.ClassLoader#checkPackageAccess(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vâ
-7trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)Njava.lang.ClassLoader#trySetObjectField(Ljava/lang/String;Ljava/lang/Object;)ZU
-initializeJavaAssertionMaps()4java.lang.ClassLoader#initializeJavaAssertionMaps()V}
-&getSystemResources(Ljava/lang/String;)Sjava.lang.ClassLoader#getSystemResources(Ljava/lang/String;)Ljava/util/Enumeration;o
-getBuiltinPlatformClassLoader()Ljava.lang.ClassLoader#getBuiltinPlatformClassLoader()Ljava/lang/ClassLoader;Ü
-mdefineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)îjava.lang.ClassLoader#defineClass1(Ljava/lang/ClassLoader;Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;q
- getResources(Ljava/lang/String;)Mjava.lang.ClassLoader#getResources(Ljava/lang/String;)Ljava/util/Enumeration;q
-#findLoadedClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findLoadedClass(Ljava/lang/String;)Ljava/lang/Class;G
-
-packages()9java.lang.ClassLoader#packages()Ljava/util/stream/Stream;Â
-õdefinePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)ƒjava.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)Ljava/lang/Package;¢
-;defineClassSourceLocation(Ljava/security/ProtectionDomain;)cjava.lang.ClassLoader#defineClassSourceLocation(Ljava/security/ProtectionDomain;)Ljava/lang/String;>
-	getName()1java.lang.ClassLoader#getName()Ljava/lang/String;~
-*checkCreateClassLoader(Ljava/lang/String;)Pjava.lang.ClassLoader#checkCreateClassLoader(Ljava/lang/String;)Ljava/lang/Void;+
-<init>()java.lang.ClassLoader#<init>()VÇ
- createOrGetClassLoaderValueMap()^java.lang.ClassLoader#createOrGetClassLoaderValueMap()Ljava/util/concurrent/ConcurrentHashMap;K
-nativeLibraries()6java.lang.ClassLoader#nativeLibraries()Ljava/util/Map;}
-1<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Hjava.lang.ClassLoader#<init>(Ljava/lang/String;Ljava/lang/ClassLoader;)Vh
- findResource(Ljava/lang/String;)Djava.lang.ClassLoader#findResource(Ljava/lang/String;)Ljava/net/URL;ã
-8checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)Ojava.lang.ClassLoader#checkCerts(Ljava/lang/String;Ljava/security/CodeSource;)VM
-defineClass([BII)8java.lang.ClassLoader#defineClass([BII)Ljava/lang/Class;a
-getPlatformClassLoader()Ejava.lang.ClassLoader#getPlatformClassLoader()Ljava/lang/ClassLoader;}
-'getResourceAsStream(Ljava/lang/String;)Rjava.lang.ClassLoader#getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;o
-*desiredAssertionStatus(Ljava/lang/String;)Ajava.lang.ClassLoader#desiredAssertionStatus(Ljava/lang/String;)ZH
-getPackages()7java.lang.ClassLoader#getPackages()[Ljava/lang/Package;É
-,findBootstrapClassOrNull(Ljava/lang/String;)Sjava.lang.ClassLoader#findBootstrapClassOrNull(Ljava/lang/String;)Ljava/lang/Class;{
-0setSigners(Ljava/lang/Class;[Ljava/lang/Object;)Gjava.lang.ClassLoader#setSigners(Ljava/lang/Class;[Ljava/lang/Object;)VW
-systemNativeLibraries()<java.lang.ClassLoader#systemNativeLibraries()Ljava/util/Map;Q
-registerAsParallelCapable()2java.lang.ClassLoader#registerAsParallelCapable()ZV
-getDefinedPackages()>java.lang.ClassLoader#getDefinedPackages()[Ljava/lang/Package;Ö
-5findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Ljava.lang.ClassLoader#findNative(Ljava/lang/ClassLoader;Ljava/lang/String;)Jr
-%getSystemResource(Ljava/lang/String;)Ijava.lang.ClassLoader#getSystemResource(Ljava/lang/String;)Ljava/net/URL;s
-,setClassAssertionStatus(Ljava/lang/String;Z)Cjava.lang.ClassLoader#setClassAssertionStatus(Ljava/lang/String;Z)Vg
-loadClass(Ljava/lang/String;Z)Ejava.lang.ClassLoader#loadClass(Ljava/lang/String;Z)Ljava/lang/Class;g
-retrieveDirectives()Ojava.lang.ClassLoader#retrieveDirectives()Ljava/lang/AssertionStatusDirectives;_
-initSystemClassLoader()Djava.lang.ClassLoader#initSystemClassLoader()Ljava/lang/ClassLoader;e
-loadClass(Ljava/lang/String;)Djava.lang.ClassLoader#loadClass(Ljava/lang/String;)Ljava/lang/Class;æ
-BpreDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)xjava.lang.ClassLoader#preDefineClass(Ljava/lang/String;Ljava/security/ProtectionDomain;)Ljava/security/ProtectionDomain;±
-CdefineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class;q
-"initializePath(Ljava/lang/String;)Kjava.lang.ClassLoader#initializePath(Ljava/lang/String;)[Ljava/lang/String;w
-&findBootstrapClass(Ljava/lang/String;)Mjava.lang.ClassLoader#findBootstrapClass(Ljava/lang/String;)Ljava/lang/Class;Q
-addClass(Ljava/lang/Class;)2java.lang.ClassLoader#addClass(Ljava/lang/Class;)VY
-isRegisteredAsParallelCapable()6java.lang.ClassLoader#isRegisteredAsParallelCapable()ZZ
-checkCreateClassLoader()>java.lang.ClassLoader#checkCreateClassLoader()Ljava/lang/Void;s
-!findResources(Ljava/lang/String;)Njava.lang.ClassLoader#findResources(Ljava/lang/String;)Ljava/util/Enumeration;e
-findClass(Ljava/lang/String;)Djava.lang.ClassLoader#findClass(Ljava/lang/String;)Ljava/lang/Class;G
-getParent()8java.lang.ClassLoader#getParent()Ljava/lang/ClassLoader;q
-#defineClass(Ljava/lang/String;[BII)Jjava.lang.ClassLoader#defineClass(Ljava/lang/String;[BII)Ljava/lang/Class;ú
-5getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)cjava.lang.ClassLoader#getNamedPackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/NamedPackage;”
-TdefineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;){java.lang.ClassLoader#defineClass(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;)Ljava/lang/Class;s
-!getClassLoader(Ljava/lang/Class;)Njava.lang.ClassLoader#getClassLoader(Ljava/lang/Class;)Ljava/lang/ClassLoader;U
-checkName(Ljava/lang/String;)4java.lang.ClassLoader#checkName(Ljava/lang/String;)ZY
-resolveClass(Ljava/lang/Class;)6java.lang.ClassLoader#resolveClass(Ljava/lang/Class;)V=
-registerNatives()(java.lang.ClassLoader#registerNatives()Vu
--loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Djava.lang.ClassLoader#loadLibrary0(Ljava/lang/Class;Ljava/io/File;)Zπ
-OneedsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)fjava.lang.ClassLoader#needsClassLoaderPermissionCheck(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Zü
-BpostDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Yjava.lang.ClassLoader#postDefineClass(Ljava/lang/Class;Ljava/security/ProtectionDomain;)Vm
- definePackage(Ljava/lang/Class;)Ijava.lang.ClassLoader#definePackage(Ljava/lang/Class;)Ljava/lang/Package;ª
-PcompareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)gjava.lang.ClassLoader#compareCerts([Ljava/security/cert/Certificate;[Ljava/security/cert/Certificate;)ZY
-<init>(Ljava/lang/ClassLoader;)6java.lang.ClassLoader#<init>(Ljava/lang/ClassLoader;)VS
-setDefaultAssertionStatus(Z)3java.lang.ClassLoader#setDefaultAssertionStatus(Z)Vq
-#findSystemClass(Ljava/lang/String;)Jjava.lang.ClassLoader#findSystemClass(Ljava/lang/String;)Ljava/lang/Class;p
-"findBuiltinLib(Ljava/lang/String;)Jjava.lang.ClassLoader#findBuiltinLib(Ljava/lang/String;)Ljava/lang/String;s
-$findLoadedClass0(Ljava/lang/String;)Kjava.lang.ClassLoader#findLoadedClass0(Ljava/lang/String;)Ljava/lang/Class;å
-2findResource(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findResource(Ljava/lang/String;Ljava/lang/String;)Ljava/net/URL;â
-/findClass(Ljava/lang/String;Ljava/lang/String;)Vjava.lang.ClassLoader#findClass(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;ì
-3definePackage(Ljava/lang/String;Ljava/lang/Module;)\java.lang.ClassLoader#definePackage(Ljava/lang/String;Ljava/lang/Module;)Ljava/lang/Package;â
-/loadClass(Ljava/lang/Module;Ljava/lang/String;)Vjava.lang.ClassLoader#loadClass(Ljava/lang/Module;Ljava/lang/String;)Ljava/lang/Class;f
-getResource(Ljava/lang/String;)Cjava.lang.ClassLoader#getResource(Ljava/lang/String;)Ljava/net/URL;z
-'getClassLoadingLock(Ljava/lang/String;)Ojava.lang.ClassLoader#getClassLoadingLock(Ljava/lang/String;)Ljava/lang/Object;]
-getSystemClassLoader()Cjava.lang.ClassLoader#getSystemClassLoader()Ljava/lang/ClassLoader;}
-1loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Hjava.lang.ClassLoader#loadLibrary(Ljava/lang/Class;Ljava/lang/String;Z)Ve
-getBuiltinAppClassLoader()Gjava.lang.ClassLoader#getBuiltinAppClassLoader()Ljava/lang/ClassLoader;a
-#isAncestor(Ljava/lang/ClassLoader;):java.lang.ClassLoader#isAncestor(Ljava/lang/ClassLoader;)Zw
-.setPackageAssertionStatus(Ljava/lang/String;Z)Ejava.lang.ClassLoader#setPackageAssertionStatus(Ljava/lang/String;Z)Vw
-%getDefinedPackage(Ljava/lang/String;)Njava.lang.ClassLoader#getDefinedPackage(Ljava/lang/String;)Ljava/lang/Package;j
-findLibrary(Ljava/lang/String;)Gjava.lang.ClassLoader#findLibrary(Ljava/lang/String;)Ljava/lang/String;â
--getSystemResourceAsStream(Ljava/lang/String;)Xjava.lang.ClassLoader#getSystemResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;P
-getUnnamedModule():java.lang.ClassLoader#getUnnamedModule()Ljava/lang/Module;≠
-ÄdefineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)ßjava.lang.ClassLoader#defineClass2(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/nio/ByteBuffer;IILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;8
-name().java.lang.ClassLoader#name()Ljava/lang/String;i
-getPackage(Ljava/lang/String;)Gjava.lang.ClassLoader#getPackage(Ljava/lang/String;)Ljava/lang/Package;m
-resources(Ljava/lang/String;)Ljava.lang.ClassLoader#resources(Ljava/lang/String;)Ljava/util/stream/Stream;ª
-GtoPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)pjava.lang.ClassLoader#toPackage(Ljava/lang/String;Ljava/lang/NamedPackage;Ljava/lang/Module;)Ljava/lang/Package;G
-clearAssertionStatus()-java.lang.ClassLoader#clearAssertionStatus()Vp
-"nameAndId(Ljava/lang/ClassLoader;)Jjava.lang.ClassLoader#nameAndId(Ljava/lang/ClassLoader;)Ljava/lang/String;£
-DcheckClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)[java.lang.ClassLoader#checkClassLoaderPermission(Ljava/lang/ClassLoader;Ljava/lang/Class;)Vù
-A<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)Xjava.lang.ClassLoader#<init>(Ljava/lang/Void;Ljava/lang/String;Ljava/lang/ClassLoader;)VŒ1
+getConnection()Ycom.artistcorner.engclasses.others.ConnectProperties#getConnection()Ljava/sql/Connection;Œ1
 java.util.Mapjava.lang.ObjectÜ
 1putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Qjava.util.Map#putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;§
 @computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)`java.util.Map#computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;À
@@ -2031,58 +2082,7 @@ scom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiCon
 initialize()Åcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#initialize()V¥
 setWebMap(Ljava/lang/String;)ícom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#setWebMap(Ljava/lang/String;)Vò
 makeDraggable()Ñcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#makeDraggable()Vö
-minimizeWindow()Öcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#minimizeWindow()Vó"
-java.net.URLjava.lang.Objectjava.io.SerializableF
-equals(Ljava/lang/Object;)(java.net.URL#equals(Ljava/lang/Object;)Za
-toLowerCase(Ljava/lang/String;)>java.net.URL#toLowerCase(Ljava/lang/String;)Ljava/lang/String;*
-resetState()java.net.URL#resetState()Vv
-%lookupViaProperty(Ljava/lang/String;)Mjava.net.URL#lookupViaProperty(Ljava/lang/String;)Ljava/net/URLStreamHandler;7
-
-getQuery())java.net.URL#getQuery()Ljava/lang/String;x
-&lookupViaProviders(Ljava/lang/String;)Njava.net.URL#lookupViaProviders(Ljava/lang/String;)Ljava/net/URLStreamHandler;3
-getRef()'java.net.URL#getRef()Ljava/lang/String;&
-
-hashCode()java.net.URL#hashCode()IM
-fromURI(Ljava/net/URI;)2java.net.URL#fromURI(Ljava/net/URI;)Ljava/net/URL;é
-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V`
-'readObject(Ljava/io/ObjectInputStream;)5java.net.URL#readObject(Ljava/io/ObjectInputStream;)VF
-<init>(Ljava/lang/String;)(java.net.URL#<init>(Ljava/lang/String;)VV
-"isOverrideable(Ljava/lang/String;)0java.net.URL#isOverrideable(Ljava/lang/String;)ZÆ
-Nset(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)\java.net.URL#set(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V∆
-Z<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/net/URLStreamHandler;)hjava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/net/URLStreamHandler;)Vb
-(<init>(Ljava/net/URL;Ljava/lang/String;)6java.net.URL#<init>(Ljava/net/URL;Ljava/lang/String;)V5
-	getPath()(java.net.URL#getPath()Ljava/lang/String;-
-toURI()"java.net.URL#toURI()Ljava/net/URI;ò
-C<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)Qjava.net.URL#<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)V7
-
-toString())java.net.URL#toString()Ljava/lang/String;ú
-Ñset(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)íjava.net.URL#set(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)VB
-sameFile(Ljava/net/URL;)&java.net.URL#sameFile(Ljava/net/URL;)Zr
-0checkSpecifyHandler(Ljava/lang/SecurityManager;)>java.net.URL#checkSpecifyHandler(Ljava/lang/SecurityManager;)V2
-getDefaultPort()java.net.URL#getDefaultPort()I_
-getContent([Ljava/lang/Class;)=java.net.URL#getContent([Ljava/lang/Class;)Ljava/lang/Object;?
-getAuthority()-java.net.URL#getAuthority()Ljava/lang/String;=
-getUserInfo(),java.net.URL#getUserInfo()Ljava/lang/String;5
-	getFile()(java.net.URL#getFile()Ljava/lang/String;B
-setSerializedHashCode(I)&java.net.URL#setSerializedHashCode(I)V=
-getProtocol(),java.net.URL#getProtocol()Ljava/lang/String;;
-getContent()+java.net.URL#getContent()Ljava/lang/Object;é
->setURLStreamHandlerFactory(Ljava/net/URLStreamHandlerFactory;)Ljava.net.URL#setURLStreamHandlerFactory(Ljava/net/URLStreamHandlerFactory;)VC
-toExternalForm()/java.net.URL#toExternalForm()Ljava/lang/String;f
-*isBuiltinStreamHandler(Ljava/lang/String;)8java.net.URL#isBuiltinStreamHandler(Ljava/lang/String;)Z;
-providers(),java.net.URL#providers()Ljava/util/Iterator;É
-2setDeserializedFields(Ljava/net/URLStreamHandler;)Mjava.net.URL#setDeserializedFields(Ljava/net/URLStreamHandler;)Ljava/net/URL;i
- openConnection(Ljava/net/Proxy;)Ejava.net.URL#openConnection(Ljava/net/Proxy;)Ljava/net/URLConnection;A
-fabricateNewURL(),java.net.URL#fabricateNewURL()Ljava/net/URL;>
-openStream().java.net.URL#openStream()Ljava/io/InputStream;ê
-?<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Mjava.net.URL#<init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)VX
-#isValidProtocol(Ljava/lang/String;)1java.net.URL#isValidProtocol(Ljava/lang/String;)Z5
-	getHost()(java.net.URL#getHost()Ljava/lang/String;d
-)writeObject(Ljava/io/ObjectOutputStream;)7java.net.URL#writeObject(Ljava/io/ObjectOutputStream;)V=
-readResolve(),java.net.URL#readResolve()Ljava/lang/Object;I
-openConnection()5java.net.URL#openConnection()Ljava/net/URLConnection;z
-'getURLStreamHandler(Ljava/lang/String;)Ojava.net.URL#getURLStreamHandler(Ljava/lang/String;)Ljava/net/URLStreamHandler;$
-	getPort()java.net.URL#getPort()Iä
+minimizeWindow()Öcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals#minimizeWindow()Vä
 |com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals$HBoxCellHBoxÉ
 @<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)æcom.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals$HBoxCell#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)Vä
 zLcom/artistcorner/controller/guicontroller/mobile/viewartgalleryproposals/GuiControllerMobileViewArtGalleryProposals$5257;EventHandlerä

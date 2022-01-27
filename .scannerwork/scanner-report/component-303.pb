@@ -1,0 +1,1 @@
+¯ 2javaXhrJArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java

@@ -1,0 +1,52 @@
+
+Ycom.artistcorner.engclasses.query.QueryBuyer#insertOperaComprata(Ljava/sql/Statement;II)Iv
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java" "()"1*ç
+1v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java#! #(QŸ
+÷
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java#! #(Y
+%0java.lang.String"__concat*20
+.INSERT INTO compra(opera,acquirente) VALUES ('*
+""¿
+Ω
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java#! #(_
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+','ø
+º
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java#! #(g
+%2java.lang.String"__concat*
+
+%1java.lang.String*
+""¿
+Ω
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java#! #(m
+%3java.lang.String"__concat*
+
+%2java.lang.String*
+');¿
+Ω
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java# #(n#
+updateStatementjava.lang.String"__id*
+
+%3java.lang.String•¢
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java$ $(2	
+%4int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*%
+#
+updateStatementjava.lang.String2!executeUpdate(Ljava/lang/String;)"Ä
+v
+l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java$ $(3
+"":
+stmtjava.sql.Statement:
+"":
+""B0".
+,com.artistcorner.engclasses.query.QueryBuyer

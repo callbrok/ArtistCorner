@@ -1,0 +1,1 @@
+¨ 2javaX%hrNArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java

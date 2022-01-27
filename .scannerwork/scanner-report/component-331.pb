@@ -1,0 +1,1 @@
+Ë 2javaXyhr„ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java

@@ -1,0 +1,1 @@
+ 2cssXqhr/ArtistCorner/target/classes/css/artist/main.css

@@ -1,0 +1,1 @@
+¾ 2javaXqhrxArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java

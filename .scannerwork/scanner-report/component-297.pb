@@ -1,0 +1,1 @@
+© 2javaXhrLArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryLogin.java

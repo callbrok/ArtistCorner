@@ -1,0 +1,1 @@
+® 2javaXhrEArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java

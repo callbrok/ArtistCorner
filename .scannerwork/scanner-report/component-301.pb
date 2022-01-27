@@ -1,0 +1,1 @@
+­ 2javaXhrMArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

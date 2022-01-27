@@ -1,0 +1,1 @@
+Ê 2javaX@hrpArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileSignUp.java
