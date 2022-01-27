@@ -120,7 +120,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.artistcorner/com.artistcorner.HelloApplication</mainClass>
+                            <mainClass>com.artistcorner/com.artistcorner.DesktopApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

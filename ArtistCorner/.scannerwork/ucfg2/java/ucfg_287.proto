@@ -1,16 +1,16 @@
 
-Icom.artistcorner.engclasses.bean.BuyerBean#getCognome()Ljava/lang/String;t
-j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*„
+Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*‡
 1t
-j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-‘
-—
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((—
+Œ
 t
-j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java& (-
-%0java.lang.String"__id*;*9,
-*com.artistcorner.engclasses.bean.BuyerBean"	
-cognome"ê
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((
+%0java.lang.String"__id*8*6,
+*com.artistcorner.engclasses.bean.BuyerBean"
+nome"ê
 t
-j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java (.
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ()
 
 %0java.lang.StringB.,
 *com.artistcorner.engclasses.bean.BuyerBean

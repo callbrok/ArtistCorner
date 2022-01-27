@@ -1,1 +1,1 @@
-Í 2javaX–hr|src/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofilogallery/GuiControllerMobileViewProfiloGallery.java
+Í 2javaX‡hrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java

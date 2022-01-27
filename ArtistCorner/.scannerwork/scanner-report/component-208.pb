@@ -1,1 +1,1 @@
-Ð 2cssXhr,src/main/resources/css/artist/webViewMap.css
+Ð 2cssX_hr&src/main/resources/css/mobile/main.css

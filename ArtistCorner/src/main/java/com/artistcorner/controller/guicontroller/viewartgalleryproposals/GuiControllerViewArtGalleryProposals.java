@@ -94,7 +94,7 @@ public class GuiControllerViewArtGalleryProposals {
         }));
     }
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorParentPrpDesk.getScene().getWindow();
         stage.close();
@@ -107,9 +107,10 @@ public class GuiControllerViewArtGalleryProposals {
 
     public void makeLogOut(){
         labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
+            SceneController scvp = new SceneController();
             try {
-                sc.switchToLogin(event);
+                SceneController.deleteSerialNodo(art.getIdArtista());
+                scvp.switchToLogin(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -260,5 +261,10 @@ public class GuiControllerViewArtGalleryProposals {
     public void switchToProfiloVenduto(ActionEvent event) throws IOException {
         SceneController sc = new SceneController();
         sc.switchToSceneProfiloVenduto(event, art);
+    }
+
+    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneProfiloOfferteMostre(event, art);
     }
 }

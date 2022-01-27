@@ -1,9 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ProposalsManagementProblemException extends Exception{
-    private static final long serialVersionUID = 1L;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    public ProposalsManagementProblemException (String message) {
-        super(message);
-    }
+public class EmpyPathExceptionView extends ExceptionView{
+
+    public EmpyPathExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

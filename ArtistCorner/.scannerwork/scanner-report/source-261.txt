@@ -1,29 +1,23 @@
-package com.artistcorner;
+package com.artistcorner.model;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+public class ArtWork {
+    private int idOpera;
+    private String titolo;
+    private double prezzo;
+    private int flagVenduto;
+    private  int artistaId;
 
-import java.io.IOException;
-
-public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/login/LoginView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-
-        stage.setTitle("Hello!");
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
+    public ArtWork(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVenduto,int newArtistaId){
+        this.idOpera=newIdOpera;
+        this.titolo=newTitolo;
+        this.prezzo=newPrezzo;
+        this.flagVenduto=newFlagVenduto;
+        this.artistaId = newArtistaId;
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+    public double getPrezzo() {return prezzo;}
+    public int getFlagVenduto() {return flagVenduto;}
+    public int getIdOpera() {return idOpera;}
+    public String getTitolo() {return titolo;}
+    public int getArtistaId() {return artistaId;}
 }

@@ -1,1 +1,1 @@
-Ô 2javaXŸhrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java
+Ô 2javaX!hrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java

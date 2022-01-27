@@ -82,7 +82,7 @@ public class GuiControllerUploadArtwork {
     }
     
     public void exitWindowUpload() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.close();
@@ -97,6 +97,7 @@ public class GuiControllerUploadArtwork {
         labelLogOutUpload.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
+                SceneController.deleteSerialNodo(art.getIdArtista());
                 sc.switchToLogin(event);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -227,5 +228,8 @@ public class GuiControllerUploadArtwork {
         sc.switchToSceneProfiloVenduto(event, art);
     }
 
-
+    public void switchToUploadOpera(ActionEvent event) throws IOException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneUploadOpera(event, art);
+    }
 }

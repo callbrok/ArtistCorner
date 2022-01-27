@@ -1,1 +1,1 @@
-É 2javaX£hrwsrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java
+É 2javaX@hrcsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileSignUp.java

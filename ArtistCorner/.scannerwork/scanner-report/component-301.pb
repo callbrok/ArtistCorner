@@ -1,1 +1,1 @@
-­ 2javaXhr?src/main/java/com/artistcorner/engclasses/query/QueryLogin.java
+­ 2javaXhr8src/main/java/com/artistcorner/engclasses/bean/Nodo.java

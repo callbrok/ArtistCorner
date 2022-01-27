@@ -132,7 +132,7 @@ public class GuiControllerMobileUploadArtwork {
     }
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMainUpM.getScene().getWindow();
         stage.close();

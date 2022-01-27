@@ -1,1 +1,1 @@
-¶ 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+¶ 2javaXÆhrksrc/main/java/com/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory.java

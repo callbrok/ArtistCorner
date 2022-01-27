@@ -1,9 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class EmptyPathException extends Exception{
-    private static final long serialVersionUID = 1L;
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    public EmptyPathException (String message) {
-        super(message);
-    }
+public class SentProposalNotFoundExceptionView extends ExceptionView{
+
+    public SentProposalNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

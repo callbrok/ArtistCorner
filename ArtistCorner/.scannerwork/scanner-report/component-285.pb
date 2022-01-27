@@ -1,2 +1,2 @@
 ù 2javaX
-hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java
+hrWsrc/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundException.java

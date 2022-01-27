@@ -1,23 +1,38 @@
 
-jcom.artistcorner.engclasses.query.QueryArtist#selectArtWorkTitle(Ljava/sql/Statement;)Ljava/sql/ResultSet;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaJ J(."1*˜
+icom.artistcorner.engclasses.query.QueryArtist#selectArtGallery(Ljava/sql/Statement;I)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaE E(,"1*¥	
 1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaK K(:Ä
-Á
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(AÖ
+Ó
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaK K(;
-sqljava.lang.String"__id*'%
-#SELECT DISTINCT titolo FROM opera ;º·
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(N
+%0java.lang.String"__concat*.,
+*SELECT * FROM galleria WHERE idGalleria ='*
+""À
+½
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaL L(%
-%0java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(U
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';µ
+²
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(V
+sqljava.lang.String"__id*
+
+%1java.lang.Stringº·
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaG G(%
+%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
 
 stmtjava.sql.Statement*
 
 sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaL L(&
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaG G(&
 
-%0java.sql.ResultSet:
-stmtjava.sql.StatementB1"/
+%2java.sql.ResultSet:
+stmtjava.sql.Statement:
+""B1"/
 -com.artistcorner.engclasses.query.QueryArtist

@@ -1,23 +1,24 @@
 package com.artistcorner.model;
 
-public class User {
-    private String username;
-    private String password;
-    private String role;
+public class ArtGallery {
+    int galleria;
+    String nome;
+    String descrizione;
+    String indirizzo;
+    String username;
 
-    public User(String newUsername, String newPassword){
+    public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
+        this.galleria = newGalleria;
+        this.nome = newNome;
+        this.descrizione = newDescrizione;
+        this.indirizzo = newIndirizzo;
         this.username = newUsername;
-        this.password = newPassword;
-        this.role = "NULL";
     }
 
-    public User(String newUsername, String newPassword, String newRole){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = newRole;
-    }
+    public int getGalleria() {return galleria;}
+    public String getNome() {return nome;}
+    public String getDescrizione() {return descrizione;}
+    public String getIndirizzo() {return indirizzo;}
+    public String getUsername() {return username;}
 
-    public String getUsername(){return username;}
-    public String getPassword(){return password;}
-    public String getRole() {return role;}
 }

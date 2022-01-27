@@ -1,1 +1,1 @@
-¡ 2javaXhrPsrc/main/java/com/artistcorner/engclasses/exceptions/BuyerNotFoundException.java
+¡ 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

@@ -122,7 +122,8 @@ public class GuiControllerArtistSummary {
         }));
     }
 
-    public void exitWindow() {
+    public void exitWindow() throws IOException {
+        SceneController.deleteSerialNodo(art.getIdArtista());
         stage = (Stage) anchorParentArtSumD.getScene().getWindow();
         stage.close();
     }
@@ -138,7 +139,7 @@ public class GuiControllerArtistSummary {
             SceneController sc = new SceneController();
             try {
                 sc.switchToSceneProfiloAlgoritmo(event, art);
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         });
@@ -153,6 +154,7 @@ public class GuiControllerArtistSummary {
         labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             SceneController sc = new SceneController();
             try {
+                SceneController.deleteSerialNodo(art.getIdArtista());
                 sc.switchToLogin(event);
             } catch (IOException e) {
                 e.printStackTrace();

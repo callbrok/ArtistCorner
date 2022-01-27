@@ -225,7 +225,7 @@ public class GuiControllerMobileViewArtGalleryProposals {
     }
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMainPropM.getScene().getWindow();
         stage.close();

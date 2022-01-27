@@ -1,1 +1,1 @@
-è 2javaXÛhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java
+è 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundExceptionView.java

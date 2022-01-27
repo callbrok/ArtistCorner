@@ -1,9 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class SentProposalNotFoundException extends Exception{
+public class AddArtistException extends Exception{
     private static final long serialVersionUID = 1L;
 
-    public SentProposalNotFoundException (String message) {
+    public AddArtistException (String message) {
         super(message);
     }
 }

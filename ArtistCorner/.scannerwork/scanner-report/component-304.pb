@@ -1,1 +1,1 @@
-° 2javaX*hr?src/main/java/com/artistcorner/engclasses/bean/ArtWorkBean.java
+° 2javaX2hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

@@ -8,11 +8,6 @@
 
 <AnchorPane id="anchor" fx:id="anchorMainViewM" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile">
     <children>
-      <AnchorPane fx:id="anchorPaneFocusM" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
-          <children>
-              <ImageView fx:id="imageFocusedM" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-          </children>
-      </AnchorPane>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
             <Button layoutX="218.0" layoutY="85.0" mnemonicParsing="false" onAction="#switchToProfiloVenduto" prefHeight="40.0" prefWidth="46.0" styleClass="buttonInterface">
@@ -76,6 +71,11 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Button>
+      <AnchorPane fx:id="anchorPaneFocusM" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);">
+          <children>
+              <ImageView fx:id="imageFocusedM" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+          </children>
+      </AnchorPane>
 
     </children>
 </AnchorPane>

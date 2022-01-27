@@ -1,1 +1,1 @@
-± 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java
+± 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java

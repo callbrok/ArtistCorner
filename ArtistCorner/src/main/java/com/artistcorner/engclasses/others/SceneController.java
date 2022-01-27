@@ -65,7 +65,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException{
+    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GetReccomandationView.fxml"));
         root = loader.load();
 
@@ -122,8 +122,6 @@ public class SceneController {
     }
 
     public void switchToLogin(MouseEvent event) throws IOException{
-        deleteSerialNodo();
-
         root = FXMLLoader.load(getClass().getResource("/view/login/LoginView.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -133,8 +131,8 @@ public class SceneController {
         stage.show();
     }
 
-    public static void deleteSerialNodo() throws IOException {
-        String objetNodoPath = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+    public static void deleteSerialNodo(int idArtista) throws IOException {
+        String objetNodoPath = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_" + idArtista + ".txt";
 
         if(Files.exists(Path.of(objetNodoPath)) && !Files.isDirectory(Path.of(objetNodoPath))) {Files.delete(Path.of(objetNodoPath));}
     }

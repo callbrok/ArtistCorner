@@ -1,1 +1,2 @@
-ê 2javaXéhr;src/main/java/com/artistcorner/engclasses/dao/BuyerDAO.java
+ê 2javaX
+hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java

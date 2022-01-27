@@ -1,1 +1,1 @@
-» 2javaXèhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+» 2javaXñhr|src/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofilogallery/GuiControllerMobileViewProfiloGallery.java

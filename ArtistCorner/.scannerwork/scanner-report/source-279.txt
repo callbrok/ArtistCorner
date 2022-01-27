@@ -1,11 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ProposalNotFoundException extends  Exception{
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 
-    private static final long serialVersionUID = 1L;
+public class SellArtWorkNotFoundExceptionView extends ExceptionView{
 
-    public ProposalNotFoundException (String message) {
-        super(message);
-    }
-
+    public SellArtWorkNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
 }

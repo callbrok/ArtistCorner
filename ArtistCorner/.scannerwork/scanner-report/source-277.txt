@@ -1,9 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ArtGalleryNotFoundException extends Exception{
+public class GetRaccomandationProblemException extends Exception{
+
     private static final long serialVersionUID = 1L;
 
-    public ArtGalleryNotFoundException (String message) {
+    public GetRaccomandationProblemException (String message) {
         super(message);
     }
 }

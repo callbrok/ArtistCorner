@@ -1,1 +1,1 @@
-â 2javaXBhrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewLogAnalytics.java
+â 2javaX›hrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java

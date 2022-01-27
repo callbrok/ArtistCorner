@@ -1,1 +1,1 @@
-¸ 2javaXîhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+¸ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java

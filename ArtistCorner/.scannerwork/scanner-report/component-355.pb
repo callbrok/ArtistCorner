@@ -1,1 +1,1 @@
-ã 2javaXhrKsrc/main/java/com/artistcorner/controller/applicationcontroller/SignUp.java
+ã 2javaX`hrsrc/main/java/module-info.java

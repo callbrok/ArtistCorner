@@ -1,2 +1,2 @@
 ¢ 2javaX
-hrWsrc/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundException.java
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java

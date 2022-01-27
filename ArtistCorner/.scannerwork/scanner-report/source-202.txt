@@ -1,35 +1,45 @@
-package junittests;
+package selenium;
 
-
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
-import com.artistcorner.engclasses.exceptions.EmptyFieldException;
-import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * @author  Marco Purificato
  */
-public class TestUploadArtWork {
+public class TestSelenium1 {
 
     @Test
-    public void testUploadArtWorkImageNotSelected(){
-        UploadArtWork upju = new UploadArtWork();
-        int code = -1;
+    public void testSeleniumArtworkPricingFormula1(){
+        ClassLoader classLoader = TestSelenium1.class.getClassLoader();
+        File file = new File(classLoader.getResource("geckodriver_linux64").getFile());
+        String driverPath = file.getAbsolutePath();
 
-        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1,1);
+        System.setProperty("webdriver.gecko.driver", driverPath);
+        WebDriver driver = new FirefoxDriver();
+        driver.get("https://www.artismycareer.com/pricing-calculator/");
 
-        try {
-            upju.uploadImage(artWorkToCheck,"");
-        } catch (DuplicateArtWorkException | EmptyFieldException e) {
-            code = 0;
-        } catch (EmptyPathException e1){
-            code = 1;
-        }
+        driver.findElement(By.xpath("//*[@id=\"height\"]")).sendKeys("20");
+        driver.findElement(By.xpath("//*[@id=\"width\"]")).sendKeys("40");
+        driver.findElement(By.xpath("//*[@id=\"cpsi\"]")).sendKeys("1");
+        driver.findElement(By.xpath("//*[@id=\"cost\"]")).sendKeys("30");
 
-        assertEquals(1, code);
+        driver.findElement(By.xpath("//*[@id=\"PopupSignupForm_0\"]/div[2]/div[1]")).click();
+
+        driver.findElement(By.xpath("//*[@id=\"camper1CalculateButton\"]")).click();
+
+        String price = driver.findElement(By.xpath("//*[@id=\"c1\"]")).getText();
+
+
+        assertEquals("£1660", price);
+
+
+        driver.close();
     }
+
 }

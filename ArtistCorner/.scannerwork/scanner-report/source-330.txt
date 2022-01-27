@@ -1,43 +1,35 @@
-package com.artistcorner.controller.guicontroller.mobile.viewsaleshistory;
+package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.ViewSalesHistory;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.Login;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class GuiControllerMobileViewSalesHistory {
+public class GuiControllerMobileArtistSummary {
     @FXML
-    private AnchorPane anchorMain;
+    private AnchorPane anchorMainASummaryM;
+    @FXML
+    private Pane paneIdeaButton;
+    @FXML
+    private ImageView imageGifButton;
+    @FXML
+    private Label labelAlgoritmo;
     @FXML
     private Label labelUsernameDisplay;
-    @FXML
-    private ListView listViewSale;
-    @FXML
-    private Pane paneExceptionLoad;
 
     private double x=0;
     private double y=0;
@@ -45,94 +37,56 @@ public class GuiControllerMobileViewSalesHistory {
 
     private ArtistBean art;
 
+
     public void initialize(){
-        labelUsernameDisplay.setAlignment(Pos.CENTER);
         makeDraggable();
+        makeGifPaneClickable();
+
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+
     }
 
-    public void getArtist(ArtistBean loggedArtist) throws IOException {
-        art = loggedArtist;
+    public void getArtist(ArtistBean loggedArtist){
+        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
-        populateListView(loggedArtist);
     }
 
+    public void makeGifPaneClickable(){
 
-
-    // Riprogetta la riga della ListView.
-    public static class HBoxCell extends HBox {
-        Label labelTitolo = new Label();
-        Label labelPrezzo = new Label();
-        Label labelAcquirente = new Label();
-
-        HBoxCell(String labelNewTitolo, String labelNewPrezzo, String labelNewAcquirente) {
-            super();
-
-            labelTitolo.setText(labelNewTitolo);
-            labelTitolo.setStyle("-fx-font-weight: bold");
-            labelTitolo.setTextFill(Color.rgb(39, 116, 88));
-            labelTitolo.setMaxWidth(Double.MAX_VALUE);
-
-            labelPrezzo.setText(labelNewPrezzo + " \u20ac");
-            labelPrezzo.setMaxWidth(Double.MAX_VALUE);
-
-            labelAcquirente.setText(labelNewAcquirente);
-            labelAcquirente.setMaxWidth(Double.MAX_VALUE);
-
-            VBox vBoxInfo1 = new VBox(labelTitolo, labelAcquirente);
-            vBoxInfo1.setSpacing(10);
-            vBoxInfo1.setAlignment(Pos.TOP_LEFT);
-
-
-            HBox.setHgrow(vBoxInfo1, Priority.ALWAYS);
-
-            this.getChildren().addAll(vBoxInfo1, labelPrezzo);
-        }
-    }
-
-
-
-    public void populateListView(ArtistBean art) throws IOException {
-        ViewSalesHistory vsh = new ViewSalesHistory();
-        List<ArtWorkBean> arrayOfArtwork = null;
-
-        try {
-            arrayOfArtwork = vsh.retrieveSellArtWorks(art);
-
-            for (ArtWorkBean n : arrayOfArtwork) {
-                listViewSale.getItems().add(new HBoxCell(n.getTitolo(), String.valueOf(n.getPrezzo()), "acquirente"));  // Popola la listView.
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneControllerMobile sc = new SceneControllerMobile();
+            try {
+                sc.switchToSceneProfiloAlgoritmo(event, art);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
+        });
 
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
 
-        } catch (SellArtWorkNotFoundException e) {
-            // Eccezione: Nessun opera venduta.
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
+        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
 
-            ev = ef.createView(ExceptionsTypeMenager.SELLARTNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }
     }
-
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.close();
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMain.getScene().getWindow();
+        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.setIconified(true);
     }
 
     private void makeDraggable(){
-        anchorMain.setOnMousePressed((event -> {
+        anchorMainASummaryM.setOnMousePressed((event -> {
             x=event.getSceneX();
             y= event.getSceneY();
         }));
 
-        anchorMain.setOnMouseDragged((event -> {
+        anchorMainASummaryM.setOnMouseDragged((event -> {
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
@@ -140,28 +94,27 @@ public class GuiControllerMobileViewSalesHistory {
     }
 
 
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
+    public void switchToProfiloArtista(ActionEvent actionEvent) throws IOException, SQLException {
         SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneMainArtista(event, art);
+        sc.switchToSceneProfiloArtista(actionEvent, art);
     }
 
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
+    public void switchToProfiloVenduto(ActionEvent actionEvent) throws IOException {
         SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloArtista(event, art);
+        sc.switchToSceneProfiloVenduto(actionEvent, art);
     }
 
-    public void switchToUploadOpera(ActionEvent event) throws IOException {
+    public void switchToProfiloOfferteMostre(ActionEvent actionEvent) throws IOException {
         SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneUploadOpera(event, art);
+        sc.switchToSceneProfiloOfferteMostre(actionEvent, art);
     }
 
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
+    public void switchToUploadOpera(ActionEvent actionEvent) throws IOException {
         SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloVenduto(event, art);
+        sc.switchToSceneUploadOpera(actionEvent, art);
     }
 
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
-    }
+
+
+
 }

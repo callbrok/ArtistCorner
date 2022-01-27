@@ -39,7 +39,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
     private Button buttonReset;
 
-    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo.txt";
+    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_";
     public static final String FONT_RESULT = "System";
     public static final String NOTHING_ANSW = "Nessuna Risposta";
 
@@ -60,10 +60,10 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      */
     public void inizializeIdLivello() throws IOException, ClassNotFoundException {
         // Controlla prima se c'è un file su cui fare al deserializzazione
-        File f = new File(OBJECTNODO_PATH);
+        File f = new File(OBJECTNODO_PATH + art.getIdArtista() + ".txt");
 
         if(f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
-            try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH))) {
+            try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH + art.getIdArtista() + ".txt"))) {
 
                 String rispostaSerial = (String) in.readObject();
                 Nodo c2 = (Nodo) in.readObject();
@@ -89,20 +89,20 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
 
         labelUsernameDisplay.setAlignment(Pos.CENTER);
         anchorResult.setVisible(false);
-        inizializeIdLivello();
-
     }
 
-    public void getArtist(ArtistBean loggedArtist) {
+    public void getArtist(ArtistBean loggedArtist) throws IOException, ClassNotFoundException {
         art = loggedArtist;
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+
+        inizializeIdLivello();
     }
 
     /**
      * Serializza il nodo passato, come oggetto nel file "object.txt".
      */
     public void makeSerializable(Nodo n) throws IOException {
-        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH))) {
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH + art.getIdArtista() + ".txt"))) {
             out.writeObject(lcm.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
             out.writeObject(n);  // Serializza l'ultimo nodo
         }
@@ -220,13 +220,13 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      * Resetta l'algoritmo.
      */
     public void resetAlgo() throws IOException {
-        Files.delete(Path.of(OBJECTNODO_PATH));    // Cerca il file contenente l'oggetto serializzato e lo elimina
+        Files.delete(Path.of(OBJECTNODO_PATH + art.getIdArtista() + ".txt"));    // Cerca il file contenente l'oggetto serializzato e lo elimina
 
         buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
             SceneControllerMobile sc = new SceneControllerMobile();
             try {
                 sc.switchToSceneProfiloAlgoritmo(event, art);
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         });
@@ -235,7 +235,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
 
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMainMobile.getScene().getWindow();
         stage.close();

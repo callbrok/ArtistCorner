@@ -1,8 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+public class SellArtWorkNotFoundException extends Exception{
 
-public class EmpyPathExceptionView extends ExceptionView{
+    private static final long serialVersionUID = 1L;
 
-    public EmpyPathExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public SellArtWorkNotFoundException (String message) {
+        super(message);
+    }
 }

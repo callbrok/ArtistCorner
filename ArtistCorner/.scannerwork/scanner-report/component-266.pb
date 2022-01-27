@@ -1,1 +1,1 @@
-Š 2javaXhr1src/main/java/com/artistcorner/model/ArtWork.java
+Š 2javaXóhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

@@ -1,227 +1,72 @@
-package com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery;
+package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.LoginDAO;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
+import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.model.ArtGallery;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.List;
 
-public class GuiControllerMobileViewSearchArtWorkGallery {
-    @FXML
-    private AnchorPane anchorMainSearchGalMob;
-    @FXML
-    private Label labelUsernameDisplay;
-    @FXML
-    private ListView<HBoxCellMobile> listView;
-    private double x = 0;
-    private  double y = 0;
-    @FXML
-    private Stage stageGalMob;
-    @FXML
-    private Pane paneExceptionLoad;
-    @FXML
-    private TextField textField;
-    ArtGalleryBean gal;
+public class Login {
 
-    public void initialize() {
-        makeDraggable();
-    }
 
-    public void makeLogOutGalMob(ActionEvent event) throws IOException {
-        SceneControllerMobile sm = new SceneControllerMobile();
-        sm.switchToLogin(event);
-    }
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
+        SceneController sc = new SceneController();
+        SceneControllerMobile scm = new SceneControllerMobile();
 
-    public void getGallery(ArtGalleryBean loggedGallery) {
-        gal = loggedGallery;      // Prendo le informazioni riguardanti la galleria che ha effettuato il login.
-        labelUsernameDisplay.setText(gal.getNome());
-    }
+        UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
 
-    public void exitWindow() {
-        stageGalMob = (Stage) anchorMainSearchGalMob.getScene().getWindow();
-        stageGalMob.close();
-    }
-
-    public void minimizeWindow() {
-        stageGalMob = (Stage) anchorMainSearchGalMob.getScene().getWindow();
-        stageGalMob.setIconified(true);
-    }
-
-    private void makeDraggable() {
-        anchorMainSearchGalMob.setOnMousePressed((eventGalPress -> {
-            x = eventGalPress.getSceneX();
-            y = eventGalPress.getSceneY();
-        }));
-
-        anchorMainSearchGalMob.setOnMouseDragged((eventGalDrag -> {
-            stageGalMob = (Stage) ((Node) eventGalDrag.getSource()).getScene().getWindow();
-            stageGalMob.setX(eventGalDrag.getScreenX() - x);
-            stageGalMob.setY(eventGalDrag.getScreenY() - y);
-        }));
-    }
-    public void buttonSearchOnClick() throws SQLException, IOException {
-        String input = textField.getText();
-        populateListView(input);
-    }
-
-    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException{
-        if (keyEvent.getCode() == KeyCode.ENTER) {
-            String input = textField.getText();
-            populateListView(input);
+        // Eccezione: Inserito utente non valido.
+        if(loggedUserBean == null){
+            throw new UserNotFoundException("Inserito utente non valido");
         }
-    }
 
-    public void buttonCancOnClick() {
-        textField.setText("");
-    }
+        switch (loggedUserBean.getRole()){
+            // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
+            case "artista":
+                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
+                ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
 
-    public void switchToSummaryGallery(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneGallerySummary(actionEvent, gal);
-    }
+                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
 
-    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException{
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloGallery(actionEvent, gal);
-    }
+                break;
 
-    public class HBoxCellMobile extends HBox {
-        Label labelArtWorkName = new Label();
-        Label labelArtistName = new Label();
-        Button buttonOfferta = new Button();
-        Label labelArtistNameDefault = new Label();
-        Label labelArtWorkDefault = new Label();
+            case "galleria":
+                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
+                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
+                if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
+                break;
 
-        public HBoxCellMobile(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input) throws SQLException, IOException {
-            ImageView imageView = new ImageView();
-            imageView.setImage(img);
-            imageView.setFitHeight(75);
-            imageView.setFitWidth(75);
-            labelArtWorkName.setText(labelTitolo);
-            labelArtWorkName.setAlignment(Pos.CENTER);
-            labelArtWorkName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistName.setText(labelArtista);
-            labelArtistName.setAlignment(Pos.CENTER);
-            labelArtistName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkName.setPrefSize(75, 25);
-            labelArtistName.setPrefSize(75, 25);
-            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
-            vBox1.setAlignment(Pos.CENTER);
-            vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
-            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
-            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setText("Titolo Opera: ");
-            labelArtWorkDefault.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setPrefSize(75, 25);
-            String font1 = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefault.setStyle(font1);
-            HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-            labelArtistNameDefault.setText("Nome Autore: ");
-            labelArtistNameDefault.setAlignment(Pos.CENTER);
-            labelArtistNameDefault.setPrefSize(75, 25);
-            labelArtistNameDefault.setStyle(font1);
-            buttonOfferta.setText(labelButton);
-            buttonOfferta.setScaleX(0.7);
-            buttonOfferta.setScaleY(0.7);
-            buttonOfferta.setPrefSize(125, 75);
-            buttonOfferta.setStyle("-fx-font-size: 14px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
-            ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
+            case "acquirente":
+                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
+                BuyerBean loggedBuyerBean = new BuyerBean(loggedBuyer.getIdBuyer(),loggedBuyer.getNome(),loggedBuyer.getCognome());
 
-            if (arrayListProposte.contains(idArtista)) {
-                buttonOfferta.setText("Ritira Proposta");
-            }
-            buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
+                if(flagInterface.equals("D")){sc.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){scm.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.
 
-                @Override
-                public void handle(ActionEvent arg0) {
-                    String answer = null;
-                    try {
-                        answer = sa.manageButtonClick(buttonOfferta, idGallery, idArtista);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    buttonOfferta.setText(answer);
-                    try {
-                        populateListView(input);
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+                break;
 
-
-            this.getChildren().addAll(imageView, vBox2, vBox1, buttonOfferta);
+            case "analytics":
+                sc.switchToAnalytics(event);
+                break;
         }
 
     }
-    public void populateListView(String input) throws SQLException, IOException {
-        if (listView.getItems().size()!=0){
-            listView.getItems().clear();
-        }
-        ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
-        ArtistBean artist=null;
-        Blob artWorkBlob =null;
 
-        try{
-            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input);
-            List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
-            for (ArtWorkBean artWork: arrayOfArtWork) {
-                artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
-                artist = vsg.retrieveGallerySearchArtistName(artWork);
-                Image image1 = extractImage(artWorkBlob);
-                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
 
-            }
-        } catch (ArtWorkNotFoundException throwables) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }
-    }
-    private Image extractImage(Blob blob2){
-        InputStream inputStream2 = null;
-        try {
-            inputStream2 = blob2.getBinaryStream();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        assert inputStream2 != null;
-        return new Image(inputStream2, 100, 100, true, false);
-
-    }
 }
-
-
-
-
-

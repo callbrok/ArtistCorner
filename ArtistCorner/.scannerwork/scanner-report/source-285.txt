@@ -1,9 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+public class SentProposalNotFoundException extends Exception{
+    private static final long serialVersionUID = 1L;
 
-public class EmptyFieldExceptionView extends ExceptionView {
-
-    public EmptyFieldExceptionView(ExceptionsTypeMenager etm){super(etm);}
-
+    public SentProposalNotFoundException (String message) {
+        super(message);
+    }
 }

@@ -149,7 +149,7 @@ public class GuiControllerMobileViewProfile {
 
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMainViewM.getScene().getWindow();
         stage.close();
@@ -174,6 +174,7 @@ public class GuiControllerMobileViewProfile {
     }
 
     public void makeLogOut(ActionEvent event) throws IOException {
+        SceneController.deleteSerialNodo(art.getIdArtista());
         SceneControllerMobile smvm = new SceneControllerMobile();
         smvm.switchToLogin(event);
     }

@@ -1,1 +1,1 @@
-∫ 2javaXÁhrKsrc/main/java/com/artistcorner/engclasses/others/SceneControllerMobile.java
+∫ 2javaXèhrysrc/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java

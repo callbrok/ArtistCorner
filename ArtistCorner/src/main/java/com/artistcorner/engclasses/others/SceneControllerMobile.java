@@ -67,7 +67,7 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException{
+    public void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/GetReccomandationMobileView.fxml"));
         root = loader.load();
 
@@ -128,8 +128,6 @@ public class SceneControllerMobile {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException{
-        SceneController.deleteSerialNodo();
-
         root = FXMLLoader.load(getClass().getResource("/view/mobile/login/LoginMobileView.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

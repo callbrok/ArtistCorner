@@ -1,15 +1,33 @@
 
-Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaA A(&"1*·
+Ucom.artistcorner.engclasses.query.QueryArtist#updateProposal(Ljava/sql/Statement;II)Iw
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java< <($"1*Á
 1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("¢
-Ÿ
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("
-%0java.lang.String"__id*
-"""“
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B(#
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java=! =('Ð
+Í
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java=! =(ƒ
+%0java.lang.String"Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;*"
+java.lang.String*A?
+=UPDATE offerta SET flagAccettazione='%s' WHERE idOfferta = %s*
+""*
+""Â
+¿
+x
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java= =(„#
+updateStatementjava.lang.String"__id*
 
-%0java.lang.StringB1"/
+%0java.lang.String¦£
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java> >(2	
+%1int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*%
+#
+updateStatementjava.lang.String2!executeUpdate(Ljava/lang/String;)"
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java> >(3
+"":
+stmtjava.sql.Statement:
+"":
+""B1"/
 -com.artistcorner.engclasses.query.QueryArtist

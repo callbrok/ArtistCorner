@@ -1,10 +1,27 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class BuyerNotFoundException extends Exception {
+import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-    private static final long serialVersionUID = 1L;
+import java.io.IOException;
 
-    public BuyerNotFoundException (String message) {
-        super(message);
+public abstract class ExceptionView {
+    private Pane exceptionPane;
+
+    protected ExceptionView(ExceptionsTypeMenager etm){
+        try {
+            exceptionPane =  FXMLLoader.load(ExceptionsTypeMenager.getUrl(etm));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public Pane getExceptionPane(){ return exceptionPane;}
+
+
 }

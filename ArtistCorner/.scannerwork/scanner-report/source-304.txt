@@ -1,41 +1,49 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.engclasses.others;
 
-public class ArtWorkBean {
+import com.artistcorner.engclasses.exceptions.*;
 
-    private int idOpera;
-    private String titolo;
-    private double prezzo;
-    private int flagVendibile;
-    private int artistId;
+import java.io.IOException;
 
+public class ExceptionsFactory {
 
-    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
+    //***Singleton***/
+    private static ExceptionsFactory instance = null;
+    private ExceptionsFactory() {}
+
+    public static synchronized ExceptionsFactory getInstance() {
+        if(instance == null) {
+            instance = new ExceptionsFactory();
+        }
+        return instance;
     }
 
-    public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId){
-        this.idOpera=0;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
+    public ExceptionView createView(ExceptionsTypeMenager etm) {
+
+        switch(etm.getType()) {
+            case 0: case 7:
+                return new EmptyFieldExceptionView(etm);
+
+            case 1: case 8:
+                return new EmpyPathExceptionView(etm);
+
+            case 2: case 9:
+                return new DuplicateArtWorkExceptionView(etm);
+
+            case 3: case 10:
+                return new ProposalNotFoundExceptionView(etm);
+
+            case 4: case 11:
+                return new SellArtWorkNotFoundExceptionView(etm);
+
+            case 5: case 12:
+                return new ArtWorkNotFoundExceptionView(etm);
+
+            case 6: case 13:
+                return new SentProposalNotFoundExceptionView(etm);
+
+            default:
+                return new EmptyFieldExceptionView(etm);
+        }
     }
 
-    public void setIdOpera(int idOpera) {this.idOpera = idOpera;}
-    public void setTitolo(String titolo) {this.titolo = titolo;}
-    public void setPrezzo(double prezzo) {this.prezzo = prezzo;}
-    public void setFlagVendibile(int flagVenduto) {this.flagVendibile = flagVenduto;}
-    public void setArtistId(int artistId) {this.artistId = artistId;}
-
-    public double getPrezzo() {return prezzo;}
-    public int getFlagVendibile() {return flagVendibile;}
-    public int getIdOpera() {return idOpera;}
-    public String getTitolo() {return titolo;}
-    public int getArtistId() {return artistId;}
 }
-
-
