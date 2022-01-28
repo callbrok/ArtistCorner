@@ -7,11 +7,13 @@ import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
@@ -20,6 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerBuyerSummary {
+    public Pane paneGetArtWork;
     @FXML
     private AnchorPane anchorParentBuyer;
     @FXML
@@ -28,18 +31,21 @@ public class GuiControllerBuyerSummary {
     private Label labelUsernameDisplay;
     @FXML
     private Label labelLogOutBuyerSum;
-    private double x=0;
-    private double y=0;
     @FXML
     private Stage stageBuyer;
     @FXML
     private SVGPath svgProfileBuyerSum;
+
+    private double x=0;
+    private double y=0;
     private BuyerBean buy;
 
 
     public void initialize(){
         makeDraggable();
         makeLogOutBuyer();
+        initPaneCLickGetArt();
+
         svgProfileBuyerSum.setScaleX(0.07);
         svgProfileBuyerSum.setScaleY(0.07);
     }
@@ -60,6 +66,18 @@ public class GuiControllerBuyerSummary {
         buy = loggedBuyer;
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
         initializeOpereComprate(listViewCompra,buy);
+    }
+
+
+    public void initPaneCLickGetArt(){
+        paneGetArtWork.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            SceneController sc = new SceneController();
+            try {
+                sc.switchToSceneGetRandArtBuyer(event, buy);
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 

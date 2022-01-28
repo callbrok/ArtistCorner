@@ -61,17 +61,18 @@ public class ViewSearchArtWorkBuyer {
         return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
     }
 
-    public List<ArtWorkBean> retrieveSearchArtWorkByName(String input) throws ArtWorkNotFoundException {
-        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
+    public List<ArtWorkBean> retrieveSearchArtWorkByName(String input, String category) throws ArtWorkNotFoundException {
+        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
         if (artWorkList.isEmpty()){
             throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
         }
         for (ArtWork a : artWorkList) {
-            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId()));
+            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria()));
         }
         return arrayArtWorkBean;
     }
+
     public void finishPayment(int idOpera, int idBuyer){
 
         try {

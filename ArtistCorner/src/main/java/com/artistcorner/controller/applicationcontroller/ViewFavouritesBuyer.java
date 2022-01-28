@@ -70,7 +70,7 @@ public class ViewFavouritesBuyer {
 
     public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, 1);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria());
 
     }
 

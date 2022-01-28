@@ -20,7 +20,7 @@ public class TestUploadArtWork {
         UploadArtWork upju = new UploadArtWork();
         int code = -1;
 
-        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1,1);
+        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1,1,"");
 
         try {
             upju.uploadImage(artWorkToCheck,"");

@@ -33,7 +33,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerViewFavouritesBuyer {
-
         @FXML
         private AnchorPane anchorParentFavDesk;
         @FXML
@@ -50,13 +49,13 @@ public class GuiControllerViewFavouritesBuyer {
         private Button button2;
         @FXML
         private Button button3;
-        private double x=0;
-        private double y=0;
         @FXML
         private Pane paneExceptionLoad;
         @FXML
         private Stage stageFavDesk;
 
+        private double x=0;
+        private double y=0;
         BuyerBean buy;
 
 
@@ -139,48 +138,36 @@ public class GuiControllerViewFavouritesBuyer {
                         imageView.setImage(imageFav);
                         imageView.setFitHeight(100);
                         imageView.setFitWidth(100);
+
                         labelArtWorkNameFavDesk.setText(artWorkFavText);
                         labelArtWorkNameFavDesk.setAlignment(Pos.CENTER);
                         labelArtWorkNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+
                         labelArtistNameFavDesk.setText(artistFavText);
                         labelArtistNameFavDesk.setAlignment(Pos.CENTER);
                         labelArtistNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-                        labelArtWorkNameFavDesk.setPrefSize(100, 50);
-                        labelArtistNameFavDesk.setPrefSize(100, 50);
+
                         prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
                         prezzoFavDesk.setMaxWidth(Double.MAX_VALUE);
                         prezzoFavDesk.setText("€ " + priceFav);
-                        prezzoFavDesk.setPrefSize(100, 100);
                         prezzoFavDesk.setAlignment(Pos.CENTER);
-                        priceDefault.setText("Prezzo Opera: ");
-                        priceDefault.setPrefSize(100, 100);
-                        priceDefault.setAlignment(Pos.CENTER);
-                        priceDefault.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
-                        VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk);
+
+                        VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk, prezzoFavDesk);
                         vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
-                        HBox.setHgrow(labelArtWorkNameFavDesk, Priority.ALWAYS);
-                        HBox.setMargin(vBox1, new Insets(10, 25, 10, 25));
-                        VBox vBox2 = new VBox(labelArtWorkDefaultFav, labelArtistNameDefaultFav);
-                        vBox2.setAlignment(Pos.CENTER);
-                        labelArtWorkDefaultFav.setText("Titolo Opera: ");
-                        labelArtWorkDefaultFav.setAlignment(Pos.CENTER);
-                        labelArtWorkDefaultFav.setPrefSize(100, 50);
-                        String fontdef = "-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-                        labelArtWorkDefaultFav.setStyle(fontdef);
-                        HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-                        labelArtistNameDefaultFav.setText("Nome Autore: ");
-                        labelArtistNameDefaultFav.setAlignment(Pos.CENTER);
-                        labelArtistNameDefaultFav.setPrefSize(100, 50);
-                        labelArtistNameDefaultFav.setStyle(fontdef);
+
+                        HBox.setHgrow(vBox1, Priority.ALWAYS);
+
                         buttonAcquistaFavDesk.setText("Acquista");
-                        buttonAcquistaFavDesk.setPrefSize(150, 50);
+                        buttonAcquistaFavDesk.setPrefSize(170, 50);
                         buttonAcquistaFavDesk.setStyle(" -fx-font-size: 14px;");
                         buttonPreferitiFavDesk.setText(preferitiText);
-                        buttonPreferitiFavDesk.setPrefSize(150, 50);
+                        buttonPreferitiFavDesk.setPrefSize(170, 50);
                         buttonPreferitiFavDesk.setStyle("-fx-font-size: 14px;");
+
                         VBox vBox = new VBox(buttonAcquistaFavDesk, buttonPreferitiFavDesk);
                         vBox.setAlignment(Pos.CENTER);
                         ViewFavouritesBuyer lv = new ViewFavouritesBuyer();
+
                         buttonAcquistaFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
                                 @Override
@@ -225,7 +212,7 @@ public class GuiControllerViewFavouritesBuyer {
                 });
 
 
-                this.getChildren().addAll(imageView, vBox2, vBox1, priceDefault, prezzoFavDesk, vBox);
+                this.getChildren().addAll(imageView, vBox1, vBox);
         }
 
 

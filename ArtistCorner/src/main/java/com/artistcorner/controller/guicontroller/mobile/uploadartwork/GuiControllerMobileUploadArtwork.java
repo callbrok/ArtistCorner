@@ -91,7 +91,7 @@ public class GuiControllerMobileUploadArtwork {
         }
 
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile, art.getIdArtista());
+            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile, art.getIdArtista(),"");
             upaw.uploadImage(upArtWork, filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.

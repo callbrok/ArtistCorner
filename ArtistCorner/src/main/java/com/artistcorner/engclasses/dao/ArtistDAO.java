@@ -152,8 +152,9 @@ public class ArtistDAO {
                 double prezzo = rs.getDouble("prezzo");
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
+                String categoria = rs.getString("categoria");
 
-                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
+                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
                 listOfArtWork.add(at);
 
             }while(rs.next());
@@ -220,6 +221,7 @@ public class ArtistDAO {
             prStmt.setInt(3, upArt.getFlagVendibile());
             prStmt.setBinaryStream(4, fis, (int) file.length());
             prStmt.setInt(5, upArt.getArtistId());
+            prStmt.setString(6, upArt.getCategoria());
 
             prStmt.executeUpdate();
             prStmt.close();

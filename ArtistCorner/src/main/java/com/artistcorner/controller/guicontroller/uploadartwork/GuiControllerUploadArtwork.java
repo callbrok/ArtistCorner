@@ -30,6 +30,14 @@ import java.sql.SQLException;
 
 public class GuiControllerUploadArtwork {
     @FXML
+    private ToggleButton toggleCat1;
+    @FXML
+    private ToggleButton toggleCat2;
+    @FXML
+    private ToggleButton toggleCat3;
+    @FXML
+    private ToggleButton toggleCat4;
+    @FXML
     private Button button1Up;
     @FXML
     private Button button2Up;
@@ -62,6 +70,7 @@ public class GuiControllerUploadArtwork {
 
     private double xUpload=0;
     private double yUpload=0;
+    private ToggleGroup toggleGroup = new ToggleGroup();
     private Stage stage;
 
     private String filePath="";
@@ -114,6 +123,11 @@ public class GuiControllerUploadArtwork {
         makeLogOut();
         initEventHandlerRadio();
 
+        toggleCat1.setToggleGroup(toggleGroup);
+        toggleCat2.setToggleGroup(toggleGroup);
+        toggleCat3.setToggleGroup(toggleGroup);
+        toggleCat4.setToggleGroup(toggleGroup);
+
         textFieldPrice.setVisible(false);
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
@@ -156,6 +170,13 @@ public class GuiControllerUploadArtwork {
         UploadArtWork upawDesk = new UploadArtWork();
         int flagVendibile;
         double prezzo;
+        String categoria = "";
+
+        ToggleButton selectedToggleButton = (ToggleButton) toggleGroup.getSelectedToggle();  // Ritorna il toggle selezionato.
+        categoria = selectedToggleButton.getText();
+
+        if(categoria.equals("altro")){categoria="";}
+
 
         // Stati di flagVendibile
         //  0 : opera non acquistabile
@@ -169,7 +190,7 @@ public class GuiControllerUploadArtwork {
         }
 
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile,art.getIdArtista());
+            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile,art.getIdArtista(),categoria);
             upawDesk.uploadImage(upArtWork, filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
