@@ -1,6 +1,6 @@
 package com.artistcorner.engclasses.others;
 
-import com.artistcorner.controller.guicontroller.getartwork.GuiControllerGetArtWork;
+
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
 import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
 import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
@@ -197,18 +197,6 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneGetRandArtBuyer(MouseEvent event, BuyerBean buy) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerGetRandArtWork.fxml"));
-        root = loader.load();
-
-        GuiControllerGetArtWork gcas = loader.getController();
-        gcas.getBuyer(buy);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySearchView.fxml"));

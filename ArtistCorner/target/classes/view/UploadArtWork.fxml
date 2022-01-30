@@ -53,11 +53,11 @@
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="329.0" layoutY="62.0" prefHeight="46.0" prefWidth="121.0" text="Drag and Drop" />
                </children></AnchorPane>
             <Label fx:id="labelFilePath" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="434.0" prefHeight="46.0" prefWidth="455.0" text="Nessun File Selezionato" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="165.0" prefHeight="46.0" prefWidth="81.0" text="Categoria" />
-            <ToggleButton fx:id="toggleCat1" layoutX="146.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" text="impressionista" styleClass="toggleButton"/>
-            <ToggleButton fx:id="toggleCat2" layoutX="277.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" text="espressionista" styleClass="toggleButton"/>
-            <ToggleButton fx:id="toggleCat3" layoutX="408.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" text="stilizzato" styleClass="toggleButton"/>
-            <ToggleButton fx:id="toggleCat4" layoutX="539.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" text="altro" styleClass="toggleButton"/>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="165.0" prefHeight="46.0" prefWidth="81.0" text="Categoria:" />
+            <ToggleButton fx:id="toggleCat1" layoutX="146.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" styleClass="toggleButton" text="impressionista" />
+            <ToggleButton fx:id="toggleCat2" layoutX="277.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" styleClass="toggleButton" text="espressionista" />
+            <ToggleButton fx:id="toggleCat3" layoutX="408.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" styleClass="toggleButton" text="stilizzato" />
+            <ToggleButton fx:id="toggleCat4" layoutX="539.0" layoutY="171.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" styleClass="toggleButton" text="altro" />
          </children>
         </Pane>
         <Button fx:id="button1Up" layoutY="170.0" mnemonicParsing="false" onAction="#switchToSceneMainArtista" prefHeight="46.0" prefWidth="56.0" styleClass="button1">

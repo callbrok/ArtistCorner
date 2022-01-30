@@ -22,7 +22,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerBuyerSummary {
-    public Pane paneGetArtWork;
     @FXML
     private AnchorPane anchorParentBuyer;
     @FXML
@@ -44,7 +43,6 @@ public class GuiControllerBuyerSummary {
     public void initialize(){
         makeDraggable();
         makeLogOutBuyer();
-        initPaneCLickGetArt();
 
         svgProfileBuyerSum.setScaleX(0.07);
         svgProfileBuyerSum.setScaleY(0.07);
@@ -68,17 +66,6 @@ public class GuiControllerBuyerSummary {
         initializeOpereComprate(listViewCompra,buy);
     }
 
-
-    public void initPaneCLickGetArt(){
-        paneGetArtWork.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
-            try {
-                sc.switchToSceneGetRandArtBuyer(event, buy);
-            } catch (IOException | SQLException e) {
-                e.printStackTrace();
-            }
-        });
-    }
 
 
     private void makeDraggable(){

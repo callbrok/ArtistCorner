@@ -50,6 +50,20 @@
                 <AnchorPane fx:id="anchorPane1" layoutX="32.0" layoutY="68.0" minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="680.0">
                     <children>
                         <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" prefHeight="452.0" prefWidth="680.0" />
+                  <AnchorPane fx:id="paneException" layoutX="47.0" layoutY="88.0" prefHeight="251.0" prefWidth="586.0" style="-fx-background-color: #d13e0a;">
+                     <children>
+                        <Label layoutX="96.0" layoutY="90.0" text="Nessun opera aggiunta" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="185.0" layoutY="126.0" text="tra i preferiti" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                     </children>
                 </AnchorPane>
             </children>
@@ -62,7 +76,7 @@
             <graphic>
                 <SVGPath content="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7zm-3-8c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm3 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm3 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" />
             </graphic></Button>
-        <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0">
+        <Button fx:id="button3" layoutY="262.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0" styleClass="onbutton">
             <graphic>
                 <SVGPath content="M23,27l-8-7l-8,7V5c0-1.105,0.895-2,2-2h12c1.105,0,2,0.895,2,2V27z" />
             </graphic></Button>

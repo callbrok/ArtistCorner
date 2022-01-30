@@ -18,10 +18,10 @@ import java.util.List;
 public class ViewFavouritesBuyer {
 
 
-    public String manageButtonClick(Button buttonPreferiti, int idOpera, int idBuyer ){
+    public String manageButtonClick(String buttonPreferiti, int idOpera, int idBuyer ){
         String addPreferiti = "Aggiungi ai Preferiti";
         String remPreferiti = "Rimuovi dai Preferiti";
-        switch (buttonPreferiti.getText()){
+        switch (buttonPreferiti){
             case "Rimuovi dai Preferiti":{
                 try {
                     BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);

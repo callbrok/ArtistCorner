@@ -61,22 +61,5 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <Pane fx:id="paneGetArtWork" layoutX="181.0" layoutY="390.0" prefHeight="113.0" prefWidth="307.0" style="-fx-background-color: #fff;">
-         <children>
-            <Label layoutX="54.0" layoutY="23.0" prefHeight="39.0" prefWidth="200.0" text="Scopri una opera" textFill="#2d8465">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="111.0" layoutY="52.0" prefHeight="26.0" prefWidth="106.0" text="casuale" textFill="#2d8465">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-         <effect>
-            <DropShadow height="10.0" radius="4.5" width="10.0" />
-         </effect>
-      </Pane>
    </children>
 </AnchorPane>

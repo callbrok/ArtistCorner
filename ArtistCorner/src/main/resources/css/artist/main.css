@@ -129,7 +129,7 @@
 
 /* Buyer */
 
-.listBuyer list-view {
+.list-view {
     -fx-selection-bar: #88c9b2;
     -fx-background-insets: 0;
     -fx-padding: 0;
