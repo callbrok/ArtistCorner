@@ -104,8 +104,9 @@ public class BuyerDAO {
                 double prezzo = rs.getDouble("prezzo");
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
+                String categoria = rs.getString("categoria");
 
-                artWork = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
+                artWork = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
 
 
             }while(rs.next());
@@ -266,7 +267,7 @@ public class BuyerDAO {
             do{
                 // lettura delle colonne "by name"
                 int name = rs.getInt("opera");
-                ArtWork artWork = new ArtWork(name,null,0,0,0);
+                ArtWork artWork = new ArtWork(name,null,0,0,0, "");
                 listOfArtWorkId.add(artWork.getIdOpera());
 
             }while(rs.next());
@@ -381,7 +382,7 @@ public class BuyerDAO {
         }
     }
 
-    public static List<ArtWork> retrieveArtWorkByName(String input) {
+    public static List<ArtWork> retrieveArtWorkByName(String input, String category) {
         input= input.replace("","%");
         List<ArtWork> artWork = new ArrayList<>();
         Statement stmt = null;
@@ -395,7 +396,7 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryBuyer.selectArtWorkByName(stmt, input);
+            ResultSet rs = QueryBuyer.selectArtWorkByName(stmt, input, category);
 
             if (!rs.first()){ // rs empty
                return Collections.emptyList();
@@ -410,8 +411,9 @@ public class BuyerDAO {
                 double prezzo = rs.getDouble("prezzo");
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
+                String categoria = rs.getString("categoria");
 
-                ArtWork art = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId);
+                ArtWork art = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
                 artWork.add(art);
 
 

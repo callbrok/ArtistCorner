@@ -57,7 +57,7 @@ public class GuiControllerMobileArtistSummary {
             SceneControllerMobile sc = new SceneControllerMobile();
             try {
                 sc.switchToSceneProfiloAlgoritmo(event, art);
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         });
@@ -69,7 +69,7 @@ public class GuiControllerMobileArtistSummary {
     }
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMainASummaryM.getScene().getWindow();
         stage.close();

@@ -51,15 +51,20 @@
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <TextField fx:id="textFieldTitle" layoutX="40.0" layoutY="47.0" prefHeight="39.0" prefWidth="347.0" promptText="Titolo" />
-                  <TextField fx:id="textFieldPrice" layoutX="40.0" layoutY="163.0" prefHeight="39.0" prefWidth="347.0" promptText="Prezzo" />
-                  <RadioButton fx:id="radioBtmSell" layoutX="41.0" layoutY="121.0" mnemonicParsing="false" text="In Vendita?" />
-                  <Button layoutX="40.0" layoutY="243.0" mnemonicParsing="false" onAction="#selectFile" prefHeight="48.0" prefWidth="136.0" styleClass="buttonInterface" text="Choose File" textFill="WHITE">
+                  <TextField fx:id="textFieldTitle" layoutX="40.0" layoutY="25.0" prefHeight="39.0" prefWidth="347.0" promptText="Titolo" />
+                  <TextField fx:id="textFieldPrice" layoutX="158.0" layoutY="85.0" prefHeight="39.0" prefWidth="229.0" promptText="Prezzo" />
+                  <RadioButton fx:id="radioBtmSell" layoutX="41.0" layoutY="99.0" mnemonicParsing="false" text="In Vendita?" />
+                  <Button layoutX="40.0" layoutY="245.0" mnemonicParsing="false" onAction="#selectFile" prefHeight="48.0" prefWidth="136.0" styleClass="buttonInterface" text="Choose File" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Label fx:id="labelFilePath" layoutX="201.0" layoutY="259.0" prefHeight="16.0" prefWidth="195.0" text="Percorso file selezionato" />
+                  <Label fx:id="labelFilePath" layoutX="201.0" layoutY="261.0" prefHeight="16.0" prefWidth="195.0" text="Percorso file selezionato" />
+                  <Label layoutX="50.0" layoutY="167.0" text="Categoria:" />
+                  <ToggleButton fx:id="toggleCatMob1" layoutX="154.0" layoutY="148.0" mnemonicParsing="false" styleClass="toggleButton" text="impressionista" />
+                  <ToggleButton fx:id="toggleCatMob2" layoutX="274.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" styleClass="toggleButton" text="espressionista" />
+                  <ToggleButton fx:id="toggleCatMob3" layoutX="154.0" layoutY="180.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" styleClass="toggleButton" text="stilizzato" />
+                  <ToggleButton fx:id="toggleCatMob4" layoutX="274.0" layoutY="180.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" styleClass="toggleButton" text="altro" />
                </children>
             </Pane>
          </children></Pane>

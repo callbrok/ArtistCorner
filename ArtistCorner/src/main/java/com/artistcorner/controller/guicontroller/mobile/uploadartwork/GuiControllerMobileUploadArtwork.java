@@ -15,9 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -29,6 +27,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class GuiControllerMobileUploadArtwork {
+    @FXML
+    private ToggleButton toggleCatMob1;
+    @FXML
+    private ToggleButton toggleCatMob2;
+    @FXML
+    private ToggleButton toggleCatMob3;
+    @FXML
+    private ToggleButton toggleCatMob4;
     @FXML
     private AnchorPane anchorMainUpM;
     @FXML
@@ -49,6 +55,7 @@ public class GuiControllerMobileUploadArtwork {
     private Stage stage;
 
     private String filePath="";
+    private ToggleGroup toggleGroup = new ToggleGroup();
     private ArtistBean art;
 
 
@@ -58,6 +65,11 @@ public class GuiControllerMobileUploadArtwork {
 
         textFieldPrice.setVisible(false);
         labelUsernameDisplay.setAlignment(Pos.CENTER);
+
+        toggleCatMob1.setToggleGroup(toggleGroup);
+        toggleCatMob2.setToggleGroup(toggleGroup);
+        toggleCatMob3.setToggleGroup(toggleGroup);
+        toggleCatMob4.setToggleGroup(toggleGroup);
 
     }
 
@@ -78,6 +90,12 @@ public class GuiControllerMobileUploadArtwork {
         UploadArtWork upaw = new UploadArtWork();
         int flagVendibile;
         double prezzo;
+        String categoria = "";
+
+        ToggleButton selectedToggleButton = (ToggleButton) toggleGroup.getSelectedToggle();  // Ritorna il toggle selezionato.
+        categoria = selectedToggleButton.getText();
+
+        if(categoria.equals("altro")){categoria="";}
 
         // Stati di flagVendibile
         //  0 : opera non acquistabile
@@ -91,7 +109,7 @@ public class GuiControllerMobileUploadArtwork {
         }
 
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile, art.getIdArtista(),"");
+            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile, art.getIdArtista(),categoria);
             upaw.uploadImage(upArtWork, filePath);
         } catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.

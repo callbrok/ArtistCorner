@@ -44,8 +44,11 @@ public class QueryBuyer {
         return stmt.executeUpdate(sql);
     }
 
-    public static ResultSet selectArtWorkByName(Statement stmt, String input) throws SQLException {
+    public static ResultSet selectArtWorkByName(Statement stmt, String input, String category) throws SQLException {
         String sql = "SELECT * FROM opera WHERE titolo LIKE'" +input+ "' AND flagVendibile =1;";
+
+        if(!category.equals("")){sql = sql.substring(0, sql.length() - 1) + " AND categoria ='" + category + "';";}
+
         return stmt.executeQuery(sql);
 
     }

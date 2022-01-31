@@ -1,10 +1,41 @@
 
-kcom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#retrieveArtWorkBlob(I)Ljava/sql/Blob;ê
-Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaM M(#"1*¥
-1ê
-Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaN N("õ
+com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#manageButtonClick(Ljava/lang/String;II)Ljava/lang/String;ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java (#"2*⁄
+2ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java (5Ÿ
+÷
 ê
-Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.javaN N()
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java (6 
+addPreferitijava.lang.String"__id*
+Aggiungi ai PreferitiŸ
+÷
+ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java (6 
+remPreferitijava.lang.String"__id*
+Rimuovi dai Preferiti*
+
+6
+11
+1*–
+6ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java& &('"∑
+ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java& &(("
+ 
+remPreferitijava.lang.String*—
+11ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java ('"∑
+ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java (("
+ 
+addPreferitijava.lang.String*–
+1ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java/ /("∑
+ê
+Ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewFavouritesBuyer.java/ /("
+ 
+remPreferitijava.lang.String:#
+buttonPreferitijava.lang.String:
 "":
 ""BIG
 Ecom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer

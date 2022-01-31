@@ -69,6 +69,21 @@
     -fx-fill:  #277458;
 }
 
+/* Upload ArtWork */
+
+.toggleButton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggleButton:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.toggleButton:selected{
+    -fx-background-color: #88c9b2;
+}
+
 
 
 /* Login */

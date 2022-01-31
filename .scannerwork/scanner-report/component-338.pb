@@ -1,1 +1,1 @@
-Ò 2javaX‰hr‘ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer.java
+Ò 2javaXŠhr‘ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer.java

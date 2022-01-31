@@ -1,1 +1,1 @@
- 2cssXqhr/ArtistCorner/target/classes/css/artist/main.css
+ 2cssXŒhr/ArtistCorner/target/classes/css/artist/main.css

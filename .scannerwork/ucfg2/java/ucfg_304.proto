@@ -1,16 +1,16 @@
 
-Dcom.artistcorner.engclasses.bean.Nodo#getDomanda()Ljava/lang/String;o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java ("1*Ï
+Fcom.artistcorner.engclasses.bean.Nodo#getDecisione()Ljava/lang/String;o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java ("1*Ñ
 1o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java' (.Ê
-Ç
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java) (2Ì
+É
 o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java' (.
-%0java.lang.String"__id*6*4'
-%com.artistcorner.engclasses.bean.Nodo"	
-domanda"‹
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java) (2
+%0java.lang.String"__id*8*6'
+%com.artistcorner.engclasses.bean.Nodo"
+	decisione"‹
 o
-e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java  (/
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java" (3
 
 %0java.lang.StringB)'
 %com.artistcorner.engclasses.bean.Nodo

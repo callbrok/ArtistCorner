@@ -1,1 +1,1 @@
-¦ 2javaX@hrLArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java
+¦ 2javaXChrLArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java

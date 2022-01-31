@@ -1,1 +1,1 @@
-À 2javaXmhrvArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java
+À 2javaXrhrvArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java

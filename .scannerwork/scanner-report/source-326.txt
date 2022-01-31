@@ -115,7 +115,7 @@ public class GuiControllerMobileViewSalesHistory {
 
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo();
+        SceneController.deleteSerialNodo(art.getIdArtista());
 
         stage = (Stage) anchorMain.getScene().getWindow();
         stage.close();

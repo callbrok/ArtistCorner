@@ -18,10 +18,10 @@ import java.util.List;
 public class ViewFavouritesBuyer {
 
 
-    public String manageButtonClick(Button buttonPreferiti, int idOpera, int idBuyer ){
+    public String manageButtonClick(String buttonPreferiti, int idOpera, int idBuyer ){
         String addPreferiti = "Aggiungi ai Preferiti";
         String remPreferiti = "Rimuovi dai Preferiti";
-        switch (buttonPreferiti.getText()){
+        switch (buttonPreferiti){
             case "Rimuovi dai Preferiti":{
                 try {
                     BuyerDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
@@ -70,7 +70,7 @@ public class ViewFavouritesBuyer {
 
     public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, 1);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria());
 
     }
 

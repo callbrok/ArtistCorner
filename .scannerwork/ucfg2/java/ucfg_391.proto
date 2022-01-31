@@ -1,9 +1,16 @@
 
-0com.artistcorner.model.ArtGallery#getGalleria()Ik
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java ("1*Á
-1k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java% (-"u
-k
-a/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/ArtGallery.java (.
-""B%#
-!com.artistcorner.model.ArtGallery
+7com.artistcorner.model.User#getRole()Ljava/lang/String;e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ("1*§
+1e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java$ ((≥
+∞
+e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java$ ((
+%0java.lang.String"__id*)*'
+com.artistcorner.model.User"
+role"Å
+e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ()
+
+%0java.lang.StringB
+com.artistcorner.model.User

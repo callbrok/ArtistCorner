@@ -1,1 +1,1 @@
-Ü 2javaXXhrhArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java
+Ü 2javaXYhrhArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java

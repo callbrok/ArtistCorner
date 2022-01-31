@@ -40,6 +40,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
     private ListView<HBoxCellMobile> listView;
     private double x=0;
     private double y=0;
+    private String category = "";
     @FXML
     private Pane paneExceptionLoad;
     private Stage stageMobBuySearch;
@@ -228,7 +229,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         Blob artWorkBlob =null;
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsb.retrieveSearchArtWorkByName(input);
+            List<ArtWorkBean> arrayOfArtWork = vsb.retrieveSearchArtWorkByName(input, category);
             arrayOfArtWorkId = vsb.retrieveSearchArtWorkId(buy);
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artWorkBlob = vsb.retrieveSearchArtWorkBlob(artWork.getIdOpera());

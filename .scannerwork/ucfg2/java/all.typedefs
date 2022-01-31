@@ -84,7 +84,132 @@ _com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMob
 uploadFile()mcom.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork#uploadFile()VÖ
 minimizeWindow()qcom.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork#minimizeWindow()Vì
 initEventHandlerRadio()xcom.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork#initEventHandlerRadio()V(
-java.lang.Comparablejava.lang.Object¿
+java.lang.Comparablejava.lang.Object”
+java.lang.CharSequencejava.lang.ObjectE
+chars():java.lang.CharSequence#chars()Ljava/util/stream/IntStream;é
+9compare(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Qjava.lang.CharSequence#compare(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)IO
+codePoints()?java.lang.CharSequence#codePoints()Ljava/util/stream/IntStream;¬?
+java.lang.Stringjava.lang.CharSequencejava.lang.Comparablejava.lang.Objectjava.io.Serializableã
+2join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ujava.lang.String#join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;R
+startsWith(Ljava/lang/String;)0java.lang.String#startsWith(Ljava/lang/String;)Z&
+length()java.lang.String#length()I?
+substring(I)/java.lang.String#substring(I)Ljava/lang/String;V
+ indexOf([BBILjava/lang/String;I)2java.lang.String#indexOf([BBILjava/lang/String;I)I.
+<init>([BII)java.lang.String#<init>([BII)V&
+<init>()java.lang.String#<init>()V[
+concat(Ljava/lang/String;)=java.lang.String#concat(Ljava/lang/String;)Ljava/lang/String;P
+compareTo(Ljava/lang/String;)/java.lang.String#compareTo(Ljava/lang/String;)I:
+codePointCount(II)$java.lang.String#codePointCount(II)IF
+checkBoundsBeginEnd(III)*java.lang.String#checkBoundsBeginEnd(III)VL
+indexOf(Ljava/lang/String;)-java.lang.String#indexOf(Ljava/lang/String;)II
+codePoints()9java.lang.String#codePoints()Ljava/util/stream/IntStream;^
+$lastIndexOf([BBILjava/lang/String;I)6java.lang.String#lastIndexOf([BBILjava/lang/String;I)IN
+endsWith(Ljava/lang/String;).java.lang.String#endsWith(Ljava/lang/String;)Z(
+	charAt(I)java.lang.String#charAt(I)C(
+	isEmpty()java.lang.String#isEmpty()ZA
+toLowerCase()0java.lang.String#toLowerCase()Ljava/lang/String;Z
+"contains(Ljava/lang/CharSequence;)4java.lang.String#contains(Ljava/lang/CharSequence;)Z•
+?format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)bjava.lang.String#format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;4
+getChars(II[CI)!java.lang.String#getChars(II[CI)VE
+copyValueOf([C)2java.lang.String#copyValueOf([C)Ljava/lang/String;C
+stripLeading()1java.lang.String#stripLeading()Ljava/lang/String;;
+
+valueOf(F)-java.lang.String#valueOf(F)Ljava/lang/String;9
+	repeat(I),java.lang.String#repeat(I)Ljava/lang/String;b
+&<init>([BIILjava/nio/charset/Charset;)8java.lang.String#<init>([BIILjava/nio/charset/Charset;)Vá
+0replaceAll(Ljava/lang/String;Ljava/lang/String;)Sjava.lang.String#replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;4
+getBytes(II[BI)!java.lang.String#getBytes(II[BI)V*
+
+hashCode()java.lang.String#hashCode()IZ
+split(Ljava/lang/String;)=java.lang.String#split(Ljava/lang/String;)[Ljava/lang/String;O
+getBytes(Ljava/lang/String;)/java.lang.String#getBytes(Ljava/lang/String;)[BJ
+<init>(Ljava/lang/String;),java.lang.String#<init>(Ljava/lang/String;)VÅ
+-format(Ljava/lang/String;[Ljava/lang/Object;)Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;A
+toUpperCase()0java.lang.String#toUpperCase()Ljava/lang/String;,
+<init>([BB)java.lang.String#<init>([BB)V^
+$<init>([BLjava/nio/charset/Charset;)6java.lang.String#<init>([BLjava/nio/charset/Charset;)V2
+lastIndexOf(I) java.lang.String#lastIndexOf(I)IV
+ lastIndexOf(Ljava/lang/String;I)2java.lang.String#lastIndexOf(Ljava/lang/String;I)IV
+ <init>(Ljava/lang/StringBuffer;)2java.lang.String#<init>(Ljava/lang/StringBuffer;)Và
+9<init>(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)Kjava.lang.String#<init>(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V*
+
+isLatin1()java.lang.String#isLatin1()ZL
+matches(Ljava/lang/String;)-java.lang.String#matches(Ljava/lang/String;)Z7
+intern()+java.lang.String#intern()Ljava/lang/String;T
+startsWith(Ljava/lang/String;I)1java.lang.String#startsWith(Ljava/lang/String;I)Z^
+$regionMatches(ILjava/lang/String;II)6java.lang.String#regionMatches(ILjava/lang/String;II)Zd
+'contentEquals(Ljava/lang/CharSequence;)9java.lang.String#contentEquals(Ljava/lang/CharSequence;)ZA
+substring(II)0java.lang.String#substring(II)Ljava/lang/String;K
+subSequence(II)8java.lang.String#subSequence(II)Ljava/lang/CharSequence;d
+'compareToIgnoreCase(Ljava/lang/String;)9java.lang.String#compareToIgnoreCase(Ljava/lang/String;)Iô
+9replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)\java.lang.String#replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;R
+<init>([BIILjava/lang/String;)0java.lang.String#<init>([BIILjava/lang/String;)VB
+offsetByCodePoints(II)(java.lang.String#offsetByCodePoints(II)IJ
+equals(Ljava/lang/Object;),java.lang.String#equals(Ljava/lang/Object;)Z4
+lastIndexOf(II)!java.lang.String#lastIndexOf(II)I;
+
+valueOf(D)-java.lang.String#valueOf(D)Ljava/lang/String;.
+<init>([III)java.lang.String#<init>([III)V,
+<init>([BI)java.lang.String#<init>([BI)VN
+<init>([CIILjava/lang/Void;).java.lang.String#<init>([CIILjava/lang/Void;)V]
+valueOf(Ljava/lang/Object;)>java.lang.String#valueOf(Ljava/lang/Object;)Ljava/lang/String;+
+
+getBytes()java.lang.String#getBytes()[Bd
+'contentEquals(Ljava/lang/StringBuffer;)9java.lang.String#contentEquals(Ljava/lang/StringBuffer;)Z?
+chars()4java.lang.String#chars()Ljava/util/stream/IntStream;2
+getBytes([BIB) java.lang.String#getBytes([BIB)VA
+valueOf([CII)0java.lang.String#valueOf([CII)Ljava/lang/String;e
+toLowerCase(Ljava/util/Locale;)Bjava.lang.String#toLowerCase(Ljava/util/Locale;)Ljava/lang/String;N
+indexOf(Ljava/lang/String;I).java.lang.String#indexOf(Ljava/lang/String;I)I*
+
+indexOf(I)java.lang.String#indexOf(I)I(
+	isBlank()java.lang.String#isBlank()Ze
+toUpperCase(Ljava/util/Locale;)Bjava.lang.String#toUpperCase(Ljava/util/Locale;)Ljava/lang/String;;
+
+toString()-java.lang.String#toString()Ljava/lang/String;;
+
+valueOf(C)-java.lang.String#valueOf(C)Ljava/lang/String;E
+rangeCheck([CII)1java.lang.String#rangeCheck([CII)Ljava/lang/Void;T
+lastIndexOf(Ljava/lang/String;)1java.lang.String#lastIndexOf(Ljava/lang/String;)IB
+indexOfNonWhitespace()(java.lang.String#indexOfNonWhitespace()I.
+<init>([CII)java.lang.String#<init>([CII)VE
+stripTrailing()2java.lang.String#stripTrailing()Ljava/lang/String;M
+valueOfCodePoint(I)6java.lang.String#valueOfCodePoint(I)Ljava/lang/String;=
+valueOf([C).java.lang.String#valueOf([C)Ljava/lang/String;ã
+2replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ujava.lang.String#replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;$
+coder()java.lang.String#coder()B_
+$getBytes(Ljava/nio/charset/Charset;)7java.lang.String#getBytes(Ljava/nio/charset/Charset;)[B3
+trim())java.lang.String#trim()Ljava/lang/String;<
+lines()1java.lang.String#lines()Ljava/util/stream/Stream;*
+
+<init>([C)java.lang.String#<init>([C)V4
+checkOffset(II)!java.lang.String#checkOffset(II)V5
+strip()*java.lang.String#strip()Ljava/lang/String;1
+toCharArray() java.lang.String#toCharArray()[C0
+<init>([BIII)java.lang.String#<init>([BIII)V=
+replace(CC).java.lang.String#replace(CC)Ljava/lang/String;:
+codePointBefore(I)$java.lang.String#codePointBefore(I)I^
+$equalsIgnoreCase(Ljava/lang/String;)6java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z;
+
+valueOf(I)-java.lang.String#valueOf(I)Ljava/lang/String;ï
+7join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Zjava.lang.String#join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;2
+codePointAt(I) java.lang.String#codePointAt(I)IN
+<init>([BLjava/lang/String;).java.lang.String#<init>([BLjava/lang/String;)V*
+
+<init>([B)java.lang.String#<init>([B)V;
+
+valueOf(Z)-java.lang.String#valueOf(Z)Ljava/lang/String;I
+copyValueOf([CII)4java.lang.String#copyValueOf([CII)Ljava/lang/String;,
+indexOf(II)java.lang.String#indexOf(II)I\
+split(Ljava/lang/String;I)>java.lang.String#split(Ljava/lang/String;I)[Ljava/lang/String;F
+checkBoundsOffCount(III)*java.lang.String#checkBoundsOffCount(III)VÑ
+7nonSyncContentEquals(Ljava/lang/AbstractStringBuilder;)Ijava.lang.String#nonSyncContentEquals(Ljava/lang/AbstractStringBuilder;)Z;
+
+valueOf(J)-java.lang.String#valueOf(J)Ljava/lang/String;2
+checkIndex(II) java.lang.String#checkIndex(II)VX
+!<init>(Ljava/lang/StringBuilder;)3java.lang.String#<init>(Ljava/lang/StringBuilder;)V%
+value()java.lang.String#value()[B`
+%regionMatches(ZILjava/lang/String;II)7java.lang.String#regionMatches(ZILjava/lang/String;II)Z¿
 java.lang.Numberjava.lang.Objectjava.io.Serializable.
 shortValue()java.lang.Number#shortValue()S&
 <init>()java.lang.Number#<init>()V,
@@ -138,14 +263,15 @@ toString()-java.lang.Double#toString()Ljava/lang/String;,
 HBoxjava.lang.Objecto
 gcom.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer$HBoxCellHBox 
 EventHandlerjava.lang.Objectu
-eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$8866;EventHandleru
-eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$9268;EventHandlerv
-fLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$10016;EventHandlerv
-fLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$10971;EventHandler„
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$7346;EventHandleru
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$7748;EventHandleru
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$8496;EventHandleru
+eLcom/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer$9451;EventHandler€
 com.artistcorner.model.ArtWorkjava.lang.Object<
 getIdOpera(),com.artistcorner.model.ArtWork#getIdOpera()I@
-getArtistaId().com.artistcorner.model.ArtWork#getArtistaId()I`
-<init>(ILjava/lang/String;DII)>com.artistcorner.model.ArtWork#<init>(ILjava/lang/String;DII)VK
+getArtistaId().com.artistcorner.model.ArtWork#getArtistaId()IÑ
+0<init>(ILjava/lang/String;DIILjava/lang/String;)Pcom.artistcorner.model.ArtWork#<init>(ILjava/lang/String;DIILjava/lang/String;)VQ
+getCategoria()?com.artistcorner.model.ArtWork#getCategoria()Ljava/lang/String;K
 getTitolo()<com.artistcorner.model.ArtWork#getTitolo()Ljava/lang/String;:
 getPrezzo()+com.artistcorner.model.ArtWork#getPrezzo()DD
 getFlagVenduto()0com.artistcorner.model.ArtWork#getFlagVenduto()Iú
@@ -184,10 +310,87 @@ dcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerV
 $populateListView(Ljava/lang/String;)äcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#populateListView(Ljava/lang/String;)Vå
 makeLogOutBuyer()wcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer#makeLogOutBuyer()Vu
 mcom.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer$HBoxCellHBox{
-kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$8394;EventHandler{
-kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$8710;EventHandler{
-kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$9245;EventHandler{
-kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$9962;EventHandler˜
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$7292;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$7609;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$8634;EventHandler{
+kLcom/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer$9843;EventHandler(
+java.lang.Appendablejava.lang.Object+
+java.lang.AutoCloseablejava.lang.Object>
+java.io.Closeablejava.lang.Objectjava.lang.AutoCloseable%
+java.io.Flushablejava.lang.ObjectÉ
+java.io.OutputStreamjava.io.Closeablejava.lang.Objectjava.io.FlushableS
+nullOutputStream()=java.io.OutputStream#nullOutputStream()Ljava/io/OutputStream;,
+	write([B)java.io.OutputStream#write([B)V*
+<init>()java.io.OutputStream#<init>()V(
+flush()java.io.OutputStream#flush()V0
+write([BII)!java.io.OutputStream#write([BII)V(
+close()java.io.OutputStream#close()Vé
+java.io.FilterOutputStreamjava.io.OutputStream2
+	write([B)%java.io.FilterOutputStream#write([B)V\
+<init>(Ljava/io/OutputStream;):java.io.FilterOutputStream#<init>(Ljava/io/OutputStream;)V.
+flush()#java.io.FilterOutputStream#flush()V0
+write(I)$java.io.FilterOutputStream#write(I)V6
+write([BII)'java.io.FilterOutputStream#write([BII)V.
+close()#java.io.FilterOutputStream#close()VÖ 
+java.io.PrintStreamjava.lang.Appendablejava.io.Closeablejava.io.FilterOutputStream+
+	write([C)java.io.PrintStream#write([C)V)
+print(J)java.io.PrintStream#print(J)V-
+
+println(J)java.io.PrintStream#println(J)V)
+print(F)java.io.PrintStream#print(F)V-
+
+println(F)java.io.PrintStream#println(F)V/
+write([BII) java.io.PrintStream#write([BII)VÅ
+4<init>(Ljava/lang/String;Ljava/nio/charset/Charset;)Ijava.io.PrintStream#<init>(Ljava/lang/String;Ljava/nio/charset/Charset;)V)
+print(Z)java.io.PrintStream#print(Z)V1
+clearError()!java.io.PrintStream#clearError()V-
+
+println(Z)java.io.PrintStream#println(Z)Vi
+(<init>(Ljava/io/File;Ljava/lang/String;)=java.io.PrintStream#<init>(Ljava/io/File;Ljava/lang/String;)V)
+write(I)java.io.PrintStream#write(I)VO
+println(Ljava/lang/Object;)0java.io.PrintStream#println(Ljava/lang/Object;)VK
+print(Ljava/lang/String;).java.io.PrintStream#print(Ljava/lang/String;)Ví
+4requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Zjava.io.PrintStream#requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;)
+print(I)java.io.PrintStream#print(I)V-
+
+println(I)java.io.PrintStream#println(I)V'
+flush()java.io.PrintStream#flush()V´
+?format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)hjava.io.PrintStream#format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;m
+ append(Ljava/lang/CharSequence;)Ijava.io.PrintStream#append(Ljava/lang/CharSequence;)Ljava/io/PrintStream;l
+toCharset(Ljava/lang/String;)Kjava.io.PrintStream#toCharset(Ljava/lang/String;)Ljava/nio/charset/Charset;W
+<init>(ZLjava/io/OutputStream;)4java.io.PrintStream#<init>(ZLjava/io/OutputStream;)V+
+	print([C)java.io.PrintStream#print([C)Vq
+"append(Ljava/lang/CharSequence;II)Kjava.io.PrintStream#append(Ljava/lang/CharSequence;II)Ljava/io/PrintStream;)
+print(D)java.io.PrintStream#print(D)Vq
+,<init>(Ljava/lang/String;Ljava/lang/String;)Ajava.io.PrintStream#<init>(Ljava/lang/String;Ljava/lang/String;)V-
+
+println(D)java.io.PrintStream#println(D)VO
+println(Ljava/lang/String;)0java.io.PrintStream#println(Ljava/lang/String;)VW
+<init>(Ljava/io/OutputStream;Z)4java.io.PrintStream#<init>(Ljava/io/OutputStream;Z)VE
+<init>(Ljava/io/File;)+java.io.PrintStream#<init>(Ljava/io/File;)Vy
+0<init>(Ljava/io/File;Ljava/nio/charset/Charset;)Ejava.io.PrintStream#<init>(Ljava/io/File;Ljava/nio/charset/Charset;)V1
+ensureOpen()!java.io.PrintStream#ensureOpen()Vã
+9<init>(Ljava/io/OutputStream;ZLjava/nio/charset/Charset;)Njava.io.PrintStream#<init>(Ljava/io/OutputStream;ZLjava/nio/charset/Charset;)V´
+?printf(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)hjava.io.PrintStream#printf(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;-
+
+setError()java.io.PrintStream#setError()Vá
+-printf(Ljava/lang/String;[Ljava/lang/Object;)Vjava.io.PrintStream#printf(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;?
+	append(C)2java.io.PrintStream#append(C)Ljava/io/PrintStream;M
+<init>(Ljava/lang/String;)/java.io.PrintStream#<init>(Ljava/lang/String;)Vá
+-format(Ljava/lang/String;[Ljava/lang/Object;)Vjava.io.PrintStream#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;+
+	newLine()java.io.PrintStream#newLine()V)
+print(C)java.io.PrintStream#print(C)V1
+checkError()!java.io.PrintStream#checkError()Z+
+	println()java.io.PrintStream#println()V'
+close()java.io.PrintStream#close()V-
+
+println(C)java.io.PrintStream#println(C)VK
+write(Ljava/lang/String;).java.io.PrintStream#write(Ljava/lang/String;)VK
+print(Ljava/lang/Object;).java.io.PrintStream#print(Ljava/lang/Object;)V{
+1<init>(Ljava/io/OutputStream;ZLjava/lang/String;)Fjava.io.PrintStream#<init>(Ljava/io/OutputStream;ZLjava/lang/String;)VU
+<init>(Ljava/io/OutputStream;)3java.io.PrintStream#<init>(Ljava/io/OutputStream;)V/
+println([C) java.io.PrintStream#println([C)Vã
+9<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)Njava.io.PrintStream#<init>(ZLjava/nio/charset/Charset;Ljava/io/OutputStream;)V˜
 4com.artistcorner.engclasses.others.ConnectPropertiesjava.lang.Objects
 getDriverClassName()[com.artistcorner.engclasses.others.ConnectProperties#getDriverClassName()Ljava/lang/String;J
 <init>()>com.artistcorner.engclasses.others.ConnectProperties#<init>()Vl
@@ -773,8 +976,7 @@ iterator()2java.util.ArrayList#iterator()Ljava/util/Iterator;I
 isClear([JI)!java.util.ArrayList#isClear([JI)Zk
 )writeObject(Ljava/io/ObjectOutputStream;)>java.util.ArrayList#writeObject(Ljava/io/ObjectOutputStream;)V%
 size()java.util.ArrayList#size()I$
-java.sql.Wrapperjava.lang.Object+
-java.lang.AutoCloseablejava.lang.Object“
+java.sql.Wrapperjava.lang.Object“
 java.sql.Connectionjava.sql.Wrapperjava.lang.Objectjava.lang.AutoCloseableu
 .setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Cjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;I)Z°
 DsetShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Yjava.sql.Connection#setShardingKeyIfValid(Ljava/sql/ShardingKey;Ljava/sql/ShardingKey;I)Zë
@@ -1027,8 +1229,7 @@ canWrite()java.io.File#canWrite()Z2
 isInvalid()java.io.File#isInvalid()Z4
 setExecutable(ZZ)java.io.File#setExecutable(ZZ)Z0
 createNewFile()java.io.File#createNewFile()Zd
-)writeObject(Ljava/io/ObjectOutputStream;)7java.io.File#writeObject(Ljava/io/ObjectOutputStream;)V>
-java.io.Closeablejava.lang.Objectjava.lang.AutoCloseable¶
+)writeObject(Ljava/io/ObjectOutputStream;)7java.io.File#writeObject(Ljava/io/ObjectOutputStream;)V¶
 java.io.InputStreamjava.io.Closeablejava.lang.Object/
 available() java.io.InputStream#available()I4
 readNBytes(I)#java.io.InputStream#readNBytes(I)[B7
@@ -1145,132 +1346,7 @@ readNull()6java.io.ObjectInputStream#readNull()Ljava/lang/Object;M
 checkArray(Ljava/lang/Class;I)9java.io.ObjectInputStream#checkArray(Ljava/lang/Class;I)V_
 readNonProxyDesc(Z)Hjava.io.ObjectInputStream#readNonProxyDesc(Z)Ljava/io/ObjectStreamClass;C
 isCustomSubclass()-java.io.ObjectInputStream#isCustomSubclass()ZK
-enableResolveObject(Z)1java.io.ObjectInputStream#enableResolveObject(Z)Z”
-java.lang.CharSequencejava.lang.ObjectE
-chars():java.lang.CharSequence#chars()Ljava/util/stream/IntStream;é
-9compare(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Qjava.lang.CharSequence#compare(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)IO
-codePoints()?java.lang.CharSequence#codePoints()Ljava/util/stream/IntStream;¬?
-java.lang.Stringjava.lang.CharSequencejava.lang.Comparablejava.lang.Objectjava.io.Serializableã
-2join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ujava.lang.String#join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;R
-startsWith(Ljava/lang/String;)0java.lang.String#startsWith(Ljava/lang/String;)Z&
-length()java.lang.String#length()I?
-substring(I)/java.lang.String#substring(I)Ljava/lang/String;V
- indexOf([BBILjava/lang/String;I)2java.lang.String#indexOf([BBILjava/lang/String;I)I.
-<init>([BII)java.lang.String#<init>([BII)V&
-<init>()java.lang.String#<init>()V[
-concat(Ljava/lang/String;)=java.lang.String#concat(Ljava/lang/String;)Ljava/lang/String;P
-compareTo(Ljava/lang/String;)/java.lang.String#compareTo(Ljava/lang/String;)I:
-codePointCount(II)$java.lang.String#codePointCount(II)IF
-checkBoundsBeginEnd(III)*java.lang.String#checkBoundsBeginEnd(III)VL
-indexOf(Ljava/lang/String;)-java.lang.String#indexOf(Ljava/lang/String;)II
-codePoints()9java.lang.String#codePoints()Ljava/util/stream/IntStream;^
-$lastIndexOf([BBILjava/lang/String;I)6java.lang.String#lastIndexOf([BBILjava/lang/String;I)IN
-endsWith(Ljava/lang/String;).java.lang.String#endsWith(Ljava/lang/String;)Z(
-	charAt(I)java.lang.String#charAt(I)C(
-	isEmpty()java.lang.String#isEmpty()ZA
-toLowerCase()0java.lang.String#toLowerCase()Ljava/lang/String;Z
-"contains(Ljava/lang/CharSequence;)4java.lang.String#contains(Ljava/lang/CharSequence;)Z•
-?format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)bjava.lang.String#format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;4
-getChars(II[CI)!java.lang.String#getChars(II[CI)VE
-copyValueOf([C)2java.lang.String#copyValueOf([C)Ljava/lang/String;C
-stripLeading()1java.lang.String#stripLeading()Ljava/lang/String;;
-
-valueOf(F)-java.lang.String#valueOf(F)Ljava/lang/String;9
-	repeat(I),java.lang.String#repeat(I)Ljava/lang/String;b
-&<init>([BIILjava/nio/charset/Charset;)8java.lang.String#<init>([BIILjava/nio/charset/Charset;)Vá
-0replaceAll(Ljava/lang/String;Ljava/lang/String;)Sjava.lang.String#replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;4
-getBytes(II[BI)!java.lang.String#getBytes(II[BI)V*
-
-hashCode()java.lang.String#hashCode()IZ
-split(Ljava/lang/String;)=java.lang.String#split(Ljava/lang/String;)[Ljava/lang/String;O
-getBytes(Ljava/lang/String;)/java.lang.String#getBytes(Ljava/lang/String;)[BJ
-<init>(Ljava/lang/String;),java.lang.String#<init>(Ljava/lang/String;)VÅ
--format(Ljava/lang/String;[Ljava/lang/Object;)Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;A
-toUpperCase()0java.lang.String#toUpperCase()Ljava/lang/String;,
-<init>([BB)java.lang.String#<init>([BB)V^
-$<init>([BLjava/nio/charset/Charset;)6java.lang.String#<init>([BLjava/nio/charset/Charset;)V2
-lastIndexOf(I) java.lang.String#lastIndexOf(I)IV
- lastIndexOf(Ljava/lang/String;I)2java.lang.String#lastIndexOf(Ljava/lang/String;I)IV
- <init>(Ljava/lang/StringBuffer;)2java.lang.String#<init>(Ljava/lang/StringBuffer;)Và
-9<init>(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)Kjava.lang.String#<init>(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V*
-
-isLatin1()java.lang.String#isLatin1()ZL
-matches(Ljava/lang/String;)-java.lang.String#matches(Ljava/lang/String;)Z7
-intern()+java.lang.String#intern()Ljava/lang/String;T
-startsWith(Ljava/lang/String;I)1java.lang.String#startsWith(Ljava/lang/String;I)Z^
-$regionMatches(ILjava/lang/String;II)6java.lang.String#regionMatches(ILjava/lang/String;II)Zd
-'contentEquals(Ljava/lang/CharSequence;)9java.lang.String#contentEquals(Ljava/lang/CharSequence;)ZA
-substring(II)0java.lang.String#substring(II)Ljava/lang/String;K
-subSequence(II)8java.lang.String#subSequence(II)Ljava/lang/CharSequence;d
-'compareToIgnoreCase(Ljava/lang/String;)9java.lang.String#compareToIgnoreCase(Ljava/lang/String;)Iô
-9replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)\java.lang.String#replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;R
-<init>([BIILjava/lang/String;)0java.lang.String#<init>([BIILjava/lang/String;)VB
-offsetByCodePoints(II)(java.lang.String#offsetByCodePoints(II)IJ
-equals(Ljava/lang/Object;),java.lang.String#equals(Ljava/lang/Object;)Z4
-lastIndexOf(II)!java.lang.String#lastIndexOf(II)I;
-
-valueOf(D)-java.lang.String#valueOf(D)Ljava/lang/String;.
-<init>([III)java.lang.String#<init>([III)V,
-<init>([BI)java.lang.String#<init>([BI)VN
-<init>([CIILjava/lang/Void;).java.lang.String#<init>([CIILjava/lang/Void;)V]
-valueOf(Ljava/lang/Object;)>java.lang.String#valueOf(Ljava/lang/Object;)Ljava/lang/String;+
-
-getBytes()java.lang.String#getBytes()[Bd
-'contentEquals(Ljava/lang/StringBuffer;)9java.lang.String#contentEquals(Ljava/lang/StringBuffer;)Z?
-chars()4java.lang.String#chars()Ljava/util/stream/IntStream;2
-getBytes([BIB) java.lang.String#getBytes([BIB)VA
-valueOf([CII)0java.lang.String#valueOf([CII)Ljava/lang/String;e
-toLowerCase(Ljava/util/Locale;)Bjava.lang.String#toLowerCase(Ljava/util/Locale;)Ljava/lang/String;N
-indexOf(Ljava/lang/String;I).java.lang.String#indexOf(Ljava/lang/String;I)I*
-
-indexOf(I)java.lang.String#indexOf(I)I(
-	isBlank()java.lang.String#isBlank()Ze
-toUpperCase(Ljava/util/Locale;)Bjava.lang.String#toUpperCase(Ljava/util/Locale;)Ljava/lang/String;;
-
-toString()-java.lang.String#toString()Ljava/lang/String;;
-
-valueOf(C)-java.lang.String#valueOf(C)Ljava/lang/String;E
-rangeCheck([CII)1java.lang.String#rangeCheck([CII)Ljava/lang/Void;T
-lastIndexOf(Ljava/lang/String;)1java.lang.String#lastIndexOf(Ljava/lang/String;)IB
-indexOfNonWhitespace()(java.lang.String#indexOfNonWhitespace()I.
-<init>([CII)java.lang.String#<init>([CII)VE
-stripTrailing()2java.lang.String#stripTrailing()Ljava/lang/String;M
-valueOfCodePoint(I)6java.lang.String#valueOfCodePoint(I)Ljava/lang/String;=
-valueOf([C).java.lang.String#valueOf([C)Ljava/lang/String;ã
-2replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ujava.lang.String#replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;$
-coder()java.lang.String#coder()B_
-$getBytes(Ljava/nio/charset/Charset;)7java.lang.String#getBytes(Ljava/nio/charset/Charset;)[B3
-trim())java.lang.String#trim()Ljava/lang/String;<
-lines()1java.lang.String#lines()Ljava/util/stream/Stream;*
-
-<init>([C)java.lang.String#<init>([C)V4
-checkOffset(II)!java.lang.String#checkOffset(II)V5
-strip()*java.lang.String#strip()Ljava/lang/String;1
-toCharArray() java.lang.String#toCharArray()[C0
-<init>([BIII)java.lang.String#<init>([BIII)V=
-replace(CC).java.lang.String#replace(CC)Ljava/lang/String;:
-codePointBefore(I)$java.lang.String#codePointBefore(I)I^
-$equalsIgnoreCase(Ljava/lang/String;)6java.lang.String#equalsIgnoreCase(Ljava/lang/String;)Z;
-
-valueOf(I)-java.lang.String#valueOf(I)Ljava/lang/String;ï
-7join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Zjava.lang.String#join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;2
-codePointAt(I) java.lang.String#codePointAt(I)IN
-<init>([BLjava/lang/String;).java.lang.String#<init>([BLjava/lang/String;)V*
-
-<init>([B)java.lang.String#<init>([B)V;
-
-valueOf(Z)-java.lang.String#valueOf(Z)Ljava/lang/String;I
-copyValueOf([CII)4java.lang.String#copyValueOf([CII)Ljava/lang/String;,
-indexOf(II)java.lang.String#indexOf(II)I\
-split(Ljava/lang/String;I)>java.lang.String#split(Ljava/lang/String;I)[Ljava/lang/String;F
-checkBoundsOffCount(III)*java.lang.String#checkBoundsOffCount(III)VÑ
-7nonSyncContentEquals(Ljava/lang/AbstractStringBuilder;)Ijava.lang.String#nonSyncContentEquals(Ljava/lang/AbstractStringBuilder;)Z;
-
-valueOf(J)-java.lang.String#valueOf(J)Ljava/lang/String;2
-checkIndex(II) java.lang.String#checkIndex(II)VX
-!<init>(Ljava/lang/StringBuilder;)3java.lang.String#<init>(Ljava/lang/StringBuilder;)V%
-value()java.lang.String#value()[B`
-%regionMatches(ZILjava/lang/String;II)7java.lang.String#regionMatches(ZILjava/lang/String;II)Z+
+enableResolveObject(Z)1java.io.ObjectInputStream#enableResolveObject(Z)Z+
 java.nio.file.Watchablejava.lang.Object‡
 java.nio.file.Pathjava.nio.file.Watchablejava.lang.Comparablejava.lang.Objectjava.lang.Iterable5
 toFile())java.nio.file.Path#toFile()Ljava/io/File;O
@@ -1468,7 +1544,7 @@ Xcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSal
 initialize()fcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#initialize()V|
 makeDraggable()icom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#makeDraggable()V~
 minimizeWindow()jcom.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory#minimizeWindow()Vq
-_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4146;ChangeListenerŒ
+_Lcom/artistcorner/controller/guicontroller/viewsaleshistory/GuiControllerViewSalesHistory$4238;ChangeListenerŒ
 junittests.TestUploadArtWorkjava.lang.Object2
 <init>()&junittests.TestUploadArtWork#<init>()Vh
 #testUploadArtWorkImageNotSelected()Ajunittests.TestUploadArtWork#testUploadArtWorkImageNotSelected()VR
@@ -1521,12 +1597,12 @@ nanoTime()java.lang.System#nanoTime()Jt
 getenv()(java.lang.System#getenv()Ljava/util/Map;I
 getProperties()6java.lang.System#getProperties()Ljava/util/Properties;T
 loadLibrary(Ljava/lang/String;)1java.lang.System#loadLibrary(Ljava/lang/String;)VF
-load(Ljava/lang/String;)*java.lang.System#load(Ljava/lang/String;)VÅ	
-(com.artistcorner.engclasses.dao.BuyerDAOjava.lang.Objectè
-)retrieveArtWorkByName(Ljava/lang/String;)bcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorkByName(Ljava/lang/String;)Ljava/util/List;^
+load(Ljava/lang/String;)*java.lang.System#load(Ljava/lang/String;)V•	
+(com.artistcorner.engclasses.dao.BuyerDAOjava.lang.Object^
 retrieveArtWorks(II)Fcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorks(II)LArtWork;Z
 addArtWorkComprata(II)@com.artistcorner.engclasses.dao.BuyerDAO#addArtWorkComprata(II)VZ
-switchFlagVendibile(I)@com.artistcorner.engclasses.dao.BuyerDAO#switchFlagVendibile(I)Vb
+switchFlagVendibile(I)@com.artistcorner.engclasses.dao.BuyerDAO#switchFlagVendibile(I)V≥
+;retrieveArtWorkByName(Ljava/lang/String;Ljava/lang/String;)tcom.artistcorner.engclasses.dao.BuyerDAO#retrieveArtWorkByName(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;b
 addArtWorkToFavourites(II)Dcom.artistcorner.engclasses.dao.BuyerDAO#addArtWorkToFavourites(II)V>
 <init>()2com.artistcorner.engclasses.dao.BuyerDAO#<init>()V\
 retrieveImage(I)Hcom.artistcorner.engclasses.dao.BuyerDAO#retrieveImage(I)Ljava/sql/Blob;i
@@ -1537,7 +1613,11 @@ nanoTime()java.lang.System#nanoTime()Jt
 Bcom.artistcorner.controller.applicationcontroller.ViewBuyerSummaryjava.lang.Object|
 retrieveArtWorks(II)dcom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#retrieveArtWorks(II)LArtWorkBean;X
 <init>()Lcom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#<init>()VÉ
-retrieveAllComprate(I)icom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#retrieveAllComprate(I)Ljava/util/List;⁄
+retrieveAllComprate(I)icom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#retrieveAllComprate(I)Ljava/util/List;
+Applicationjava.lang.Object 
+#com.artistcorner.DesktopApplicationApplication9
+<init>()-com.artistcorner.DesktopApplication#<init>()V[
+main([Ljava/lang/String;)>com.artistcorner.DesktopApplication#main([Ljava/lang/String;)V⁄
 -com.artistcorner.engclasses.bean.ProposalBeanjava.lang.ObjectK
 <init>(IIII);com.artistcorner.engclasses.bean.ProposalBean#<init>(IIII)V]
 getFlagAccettazione()Dcom.artistcorner.engclasses.bean.ProposalBean#getFlagAccettazione()IO
@@ -1621,7 +1701,7 @@ fcom.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiController
 makeDraggable()wcom.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals#makeDraggable()Vå
 minimizeWindow()xcom.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals#minimizeWindow()Vå
 acceptProposal()xcom.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals#acceptProposal()V
-mLcom/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals$6816;ChangeListenerÂ
+mLcom/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals$6908;ChangeListenerÂ
 \com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGalleryjava.lang.ObjectÇ
 setTooltipMenu()ncom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#setTooltipMenu()Vz
 makeLogOut()jcom.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery#makeLogOut()Vr
@@ -1636,8 +1716,7 @@ Ccom.artistcorner.controller.applicationcontroller.GetReccomandationjava.lang.
 4createSolution(Ljava/lang/String;Ljava/lang/String;)ycom.artistcorner.controller.applicationcontroller.GetReccomandation#createSolution(Ljava/lang/String;Ljava/lang/String;)V~
 initializeTreeTxt()gcom.artistcorner.controller.applicationcontroller.GetReccomandation#initializeTreeTxt()Ljava/util/List;Ä
 getSerialSolution()icom.artistcorner.controller.applicationcontroller.GetReccomandation#getSerialSolution()Ljava/lang/String;ì
-%setSerialSolution(Ljava/lang/String;)jcom.artistcorner.controller.applicationcontroller.GetReccomandation#setSerialSolution(Ljava/lang/String;)V(
-java.lang.Appendablejava.lang.Object¸3
+%setSerialSolution(Ljava/lang/String;)jcom.artistcorner.controller.applicationcontroller.GetReccomandation#setSerialSolution(Ljava/lang/String;)V¸3
 java.lang.AbstractStringBuilderjava.lang.CharSequencejava.lang.Appendablejava.lang.Object?
 setCharAt(IC).java.lang.AbstractStringBuilder#setCharAt(IC)VW
 ensureCapacityInternal(I):java.lang.AbstractStringBuilder#ensureCapacityInternal(I)V7
@@ -1787,10 +1866,10 @@ qcom.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiCont
 minimizeWindow()Écom.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer#minimizeWindow()V¿
 $populateListView(Ljava/lang/String;)ócom.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer#populateListView(Ljava/lang/String;)Vâ
 Äcom.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer$HBoxCellMobileHBoxà
-xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$7691;EventHandlerà
-xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$7998;EventHandlerà
-xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$8847;EventHandlerà
-xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$9871;EventHandlerœ
+xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$7725;EventHandlerà
+xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$8032;EventHandlerà
+xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$8881;EventHandlerà
+xLcom/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer$9905;EventHandlerœ
 >com.artistcorner.engclasses.exceptions.ArtistNotFoundExceptionjava.lang.Exceptionx
 <init>(Ljava/lang/String;)Zcom.artistcorner.engclasses.exceptions.ArtistNotFoundException#<init>(Ljava/lang/String;)V†
 4com.artistcorner.engclasses.others.ExceptionsFactoryjava.lang.ObjectJ
@@ -1817,11 +1896,7 @@ Ocom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin
 openDialogLoginGoogleMobile()ncom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#openDialogLoginGoogleMobile()Vá
 openDialogLoginFbMobile()jcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#openDialogLoginFbMobile()Vu
 minimizeWindow()acom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#minimizeWindow()V
-openRegisterSummary()fcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#openRegisterSummary()V
-Applicationjava.lang.Objectƒ
-!com.artistcorner.HelloApplicationApplication7
-<init>()+com.artistcorner.HelloApplication#<init>()VY
-main([Ljava/lang/String;)<com.artistcorner.HelloApplication#main([Ljava/lang/String;)VÕ
+openRegisterSummary()fcom.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileLogin#openRegisterSummary()VÕ
 =com.artistcorner.engclasses.exceptions.BuyerNotFoundExceptionjava.lang.Exceptionw
 <init>(Ljava/lang/String;)Ycom.artistcorner.engclasses.exceptions.BuyerNotFoundException#<init>(Ljava/lang/String;)VÀ
 <com.artistcorner.engclasses.exceptions.UserNotFoundExceptionjava.lang.Exceptionv
@@ -1844,12 +1919,12 @@ dcom.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControll
 getDecisione()Fcom.artistcorner.engclasses.bean.Nodo#getDecisione()Ljava/lang/String;œ
 R<init>(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)ycom.artistcorner.engclasses.bean.Nodo#<init>(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V^
 getSolutionPart()Icom.artistcorner.engclasses.bean.Nodo#getSolutionPart()Ljava/lang/String;Q
-getIdAppartenenza():com.artistcorner.engclasses.bean.Nodo#getIdAppartenenza()IÑ
+getIdAppartenenza():com.artistcorner.engclasses.bean.Nodo#getIdAppartenenza()I®
 Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyerjava.lang.Object^
 <init>()Rcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#<init>()Vp
-finishPayment(II)[com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#finishPayment(II)Vº
-/retrieveSearchArtWorkByName(Ljava/lang/String;)àcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkByName(Ljava/lang/String;)Ljava/util/List;î
-retrieveSearchArtWorkBlob(I)tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkBlob(I)Ljava/sql/Blob;Ö
+finishPayment(II)[com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#finishPayment(II)Vî
+retrieveSearchArtWorkBlob(I)tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkBlob(I)Ljava/sql/Blob;‡
+AretrieveSearchArtWorkByName(Ljava/lang/String;Ljava/lang/String;)öcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkByName(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;Ö
 Rcom.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtworkjava.lang.Objectx
 setTooltipMenu()dcom.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork#setTooltipMenu()V|
 exitWindowUpload()fcom.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork#exitWindowUpload()Vp
@@ -1889,10 +1964,10 @@ Icom.artistcorner.controller.applicationcontroller.ViewArtGalleryProposalsjava
 ?com.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionjava.lang.Exceptiony
 <init>(Ljava/lang/String;)[com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException#<init>(Ljava/lang/String;)V|
 (com.artistcorner.engclasses.dao.LoginDAOjava.lang.Object>
-<init>()2com.artistcorner.engclasses.dao.LoginDAO#<init>()VÓ
-2com.artistcorner.engclasses.others.SceneControllerjava.lang.Object\
-deleteSerialNodo()Fcom.artistcorner.engclasses.others.SceneController#deleteSerialNodo()VH
-<init>()<com.artistcorner.engclasses.others.SceneController#<init>()V«
+<init>()2com.artistcorner.engclasses.dao.LoginDAO#<init>()V
+2com.artistcorner.engclasses.others.SceneControllerjava.lang.ObjectH
+<init>()<com.artistcorner.engclasses.others.SceneController#<init>()V^
+deleteSerialNodo(I)Gcom.artistcorner.engclasses.others.SceneController#deleteSerialNodo(I)V«
 "com.artistcorner.MobileApplicationApplication8
 <init>(),com.artistcorner.MobileApplication#<init>()VZ
 main([Ljava/lang/String;)=com.artistcorner.MobileApplication#main([Ljava/lang/String;)VU
@@ -2005,7 +2080,7 @@ Zcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewSAL
 getFlagAccettazione()6com.artistcorner.model.Proposal#getFlagAccettazione()IA
 getIdOfferta()/com.artistcorner.model.Proposal#getIdOfferta()I?
 getGalleria().com.artistcorner.model.Proposal#getGalleria()I=
-getArtista()-com.artistcorner.model.Proposal#getArtista()Iå
+getArtista()-com.artistcorner.model.Proposal#getArtista()I±
 ,com.artistcorner.engclasses.query.QueryBuyerjava.lang.Objectô
 *selectOpereComprate(Ljava/sql/Statement;I)kcom.artistcorner.engclasses.query.QueryBuyer#selectOpereComprate(Ljava/sql/Statement;I)Ljava/sql/ResultSet;â
 "selectImage(Ljava/sql/Statement;I)ccom.artistcorner.engclasses.query.QueryBuyer#selectImage(Ljava/sql/Statement;I)Ljava/sql/ResultSet;è
@@ -2014,9 +2089,9 @@ Zcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewSAL
 *switchFlagVendibile(Ljava/sql/Statement;I)Xcom.artistcorner.engclasses.query.QueryBuyer#switchFlagVendibile(Ljava/sql/Statement;I)Iå
 -insertOperaFavourites(Ljava/sql/Statement;II)[com.artistcorner.engclasses.query.QueryBuyer#insertOperaFavourites(Ljava/sql/Statement;II)IB
 <init>()6com.artistcorner.engclasses.query.QueryBuyer#<init>()V´
-3selectBuyer(Ljava/sql/Statement;Ljava/lang/String;)tcom.artistcorner.engclasses.query.QueryBuyer#selectBuyer(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;ª
-;selectArtWorkByName(Ljava/sql/Statement;Ljava/lang/String;)|com.artistcorner.engclasses.query.QueryBuyer#selectArtWorkByName(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;ë
-&selectAllArtist(Ljava/sql/Statement;I)gcom.artistcorner.engclasses.query.QueryBuyer#selectAllArtist(Ljava/sql/Statement;I)Ljava/sql/ResultSet;î
+3selectBuyer(Ljava/sql/Statement;Ljava/lang/String;)tcom.artistcorner.engclasses.query.QueryBuyer#selectBuyer(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;ë
+&selectAllArtist(Ljava/sql/Statement;I)gcom.artistcorner.engclasses.query.QueryBuyer#selectAllArtist(Ljava/sql/Statement;I)Ljava/sql/ResultSet;‡
+MselectArtWorkByName(Ljava/sql/Statement;Ljava/lang/String;Ljava/lang/String;)écom.artistcorner.engclasses.query.QueryBuyer#selectArtWorkByName(Ljava/sql/Statement;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/ResultSet;î
 1removeOperaFromFavourites(Ljava/sql/Statement;II)_com.artistcorner.engclasses.query.QueryBuyer#removeOperaFromFavourites(Ljava/sql/Statement;II)Ià
 +insertOperaComprata(Ljava/sql/Statement;II)Ycom.artistcorner.engclasses.query.QueryBuyer#insertOperaComprata(Ljava/sql/Statement;II)Ié	
 kcom.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyerjava.lang.ObjectÅ
@@ -2033,10 +2108,11 @@ rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiContro
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$7855;EventHandlerÇ
 rLcom/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer$8820;EventHandlerX
 Gcom.artistcorner.engclasses.exceptions.SellArtWorkNotFoundExceptionViewExceptionViewT
-Ccom.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionViewExceptionView™
+Ccom.artistcorner.engclasses.exceptions.ArtWorkNotFoundExceptionViewExceptionView◊
 Ecom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyerjava.lang.ObjectÖ
 retrieveArtWorkBlob(I)kcom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#retrieveArtWorkBlob(I)Ljava/sql/Blob;[
-<init>()Ocom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#<init>()V{
+<init>()Ocom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#<init>()V™
+'manageButtonClick(Ljava/lang/String;II)com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#manageButtonClick(Ljava/lang/String;II)Ljava/lang/String;{
 retrieveArtWork(I)ecom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#retrieveArtWork(I)LArtWorkBean;m
 finishPayment(II)Xcom.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer#finishPayment(II)V¨
 com.artistcorner.model.Userjava.lang.ObjectD
@@ -2064,20 +2140,22 @@ Q<init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
 	getNome()Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;H
 getIdBuyer()8com.artistcorner.engclasses.bean.BuyerBean#getIdBuyer()I¶
 =com.artistcorner.controller.applicationcontroller.ViewProfilejava.lang.ObjectS
-<init>()Gcom.artistcorner.controller.applicationcontroller.ViewProfile#<init>()VÁ
-,com.artistcorner.engclasses.bean.ArtWorkBeanjava.lang.ObjectX
-setFlagVendibile(I)Acom.artistcorner.engclasses.bean.ArtWorkBean#setFlagVendibile(I)VL
-setIdOpera(I);com.artistcorner.engclasses.bean.ArtWorkBean#setIdOpera(I)VN
+<init>()Gcom.artistcorner.controller.applicationcontroller.ViewProfile#<init>()VÜ
+,com.artistcorner.engclasses.bean.ArtWorkBeanjava.lang.ObjectN
 setArtistId(I)<com.artistcorner.engclasses.bean.ArtWorkBean#setArtistId(I)VJ
-getIdOpera():com.artistcorner.engclasses.bean.ArtWorkBean#getIdOpera()Il
-setTitolo(Ljava/lang/String;)Kcom.artistcorner.engclasses.bean.ArtWorkBean#setTitolo(Ljava/lang/String;)VJ
-setPrezzo(D):com.artistcorner.engclasses.bean.ArtWorkBean#setPrezzo(D)Vl
-<init>(Ljava/lang/String;DII)Kcom.artistcorner.engclasses.bean.ArtWorkBean#<init>(Ljava/lang/String;DII)Vn
-<init>(ILjava/lang/String;DII)Lcom.artistcorner.engclasses.bean.ArtWorkBean#<init>(ILjava/lang/String;DII)VY
-getTitolo()Jcom.artistcorner.engclasses.bean.ArtWorkBean#getTitolo()Ljava/lang/String;H
-getPrezzo()9com.artistcorner.engclasses.bean.ArtWorkBean#getPrezzo()DL
-getArtistId();com.artistcorner.engclasses.bean.ArtWorkBean#getArtistId()IV
-getFlagVendibile()@com.artistcorner.engclasses.bean.ArtWorkBean#getFlagVendibile()Iº
+getIdOpera():com.artistcorner.engclasses.bean.ArtWorkBean#getIdOpera()I_
+getCategoria()Mcom.artistcorner.engclasses.bean.ArtWorkBean#getCategoria()Ljava/lang/String;r
+ setCategoria(Ljava/lang/String;)Ncom.artistcorner.engclasses.bean.ArtWorkBean#setCategoria(Ljava/lang/String;)VH
+getPrezzo()9com.artistcorner.engclasses.bean.ArtWorkBean#getPrezzo()DV
+getFlagVendibile()@com.artistcorner.engclasses.bean.ArtWorkBean#getFlagVendibile()IX
+setFlagVendibile(I)Acom.artistcorner.engclasses.bean.ArtWorkBean#setFlagVendibile(I)VL
+setIdOpera(I);com.artistcorner.engclasses.bean.ArtWorkBean#setIdOpera(I)Vê
+/<init>(Ljava/lang/String;DIILjava/lang/String;)]com.artistcorner.engclasses.bean.ArtWorkBean#<init>(Ljava/lang/String;DIILjava/lang/String;)Vl
+setTitolo(Ljava/lang/String;)Kcom.artistcorner.engclasses.bean.ArtWorkBean#setTitolo(Ljava/lang/String;)Ví
+0<init>(ILjava/lang/String;DIILjava/lang/String;)^com.artistcorner.engclasses.bean.ArtWorkBean#<init>(ILjava/lang/String;DIILjava/lang/String;)VJ
+setPrezzo(D):com.artistcorner.engclasses.bean.ArtWorkBean#setPrezzo(D)VY
+getTitolo()Jcom.artistcorner.engclasses.bean.ArtWorkBean#getTitolo()Ljava/lang/String;L
+getArtistId();com.artistcorner.engclasses.bean.ArtWorkBean#getArtistId()Iº
 Dcom.artistcorner.controller.applicationcontroller.ViewProfileGalleryjava.lang.ObjectZ
 <init>()Ncom.artistcorner.controller.applicationcontroller.ViewProfileGallery#<init>()VÖ
 retrieveArtistName(I)lcom.artistcorner.controller.applicationcontroller.ViewProfileGallery#retrieveArtistName(I)Ljava/lang/String;◊

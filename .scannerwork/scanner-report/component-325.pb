@@ -1,1 +1,1 @@
-Å 2javaX£hr„ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java
+Å 2javaXÂhr„ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java

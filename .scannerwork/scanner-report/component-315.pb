@@ -1,1 +1,1 @@
-ª 2javaXâhrÜArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java
+ª 2javaXèhrÜArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java

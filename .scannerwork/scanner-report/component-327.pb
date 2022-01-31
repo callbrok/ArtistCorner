@@ -1,1 +1,1 @@
-Ç 2javaX¼hrArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java
+Ç 2javaXÎhrArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java

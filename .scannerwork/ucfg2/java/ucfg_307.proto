@@ -1,10 +1,16 @@
 
-tcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer#retrieveSearchArtWorkBlob(I)Ljava/sql/Blob;“
-ˆ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java7 7()"1*º
-1“
-ˆ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java8 8("ž
-“
-ˆ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java8 8((
-"":
-""BLJ
-Hcom.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer
+Icom.artistcorner.engclasses.bean.Nodo#getSolutionPart()Ljava/lang/String;o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java (!"1*Ô
+1o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java, (8Ï
+Ì
+o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java, (8
+%0java.lang.String"__id*;*9'
+%com.artistcorner.engclasses.bean.Nodo"
+solutionPart"‹
+o
+e/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/Nodo.java% (9
+
+%0java.lang.StringB)'
+%com.artistcorner.engclasses.bean.Nodo

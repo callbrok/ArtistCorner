@@ -1,1 +1,1 @@
-‰ 2javaXÇhrIArtistCorner/src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java
+‰ 2javaXÉhrIArtistCorner/src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

@@ -51,12 +51,13 @@ public class ViewSearchArtWorkGallery {
     }
 
     public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(String input) throws ArtWorkNotFoundException {
-        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input);
+        String category = "";
+        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
         ArrayList<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
         if(artWorkList.isEmpty()){throw new ArtWorkNotFoundException("nessuna opera trovata");
         }
         for (ArtWork a : artWorkList) {
-            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId()));
+            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria()));
         }
         return arrayArtWorkBean;
     }

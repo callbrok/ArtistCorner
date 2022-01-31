@@ -1,1 +1,1 @@
-† 2javaXhr>ArtistCorner/src/main/java/com/artistcorner/model/ArtWork.java
+† 2javaXhr>ArtistCorner/src/main/java/com/artistcorner/model/ArtWork.java

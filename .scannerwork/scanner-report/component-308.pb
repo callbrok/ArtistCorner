@@ -1,1 +1,1 @@
-´ 2javaXîhrRArtistCorner/src/main/java/com/artistcorner/engclasses/others/SceneController.java
+´ 2javaXïhrRArtistCorner/src/main/java/com/artistcorner/engclasses/others/SceneController.java

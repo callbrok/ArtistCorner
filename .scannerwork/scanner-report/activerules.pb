@@ -275,7 +275,12 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 apexS101"
 format^[A-Z][a-zA-Z0-9_]*$(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
 apexS2757(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
-apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6vH
+apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
+javaS2755(è‡ïŸ‰-0è‡ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
+javaS6377(ˆÝŒüê/0ˆÝŒüê/:AX5nzHve-NH3hzEYSh7K3
+javaS6374(Ð°“üê/0Ð°“üê/:AX5nzHve-NH3hzEYSh7K3
+javaS6373(ðÒ’üê/0ðÒ’üê/:AX5nzHve-NH3hzEYSh7K3
+javaS6376(øü‘üê/0øü‘üê/:AX5nzHve-NH3hzEYSh7KH
 javaS5843"
 maxComplexity20(øœ÷ã¶.0øœ÷ã¶.:AX5nzHve-NH3hzEYSh7K3
 javaS4544(À‚ñÙÎ,0À‚ñÙÎ,:AX5nzHve-NH3hzEYSh7K3
@@ -292,7 +297,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 format^[a-z][a-zA-Z0-9]*$(¸˜Ù±ñ(0¨Ôû Ì*:AX5nzHve-NH3hzEYSh7K3
 javaS6002(°·å¬æ.0°·å¬æ.:AX5nzHve-NH3hzEYSh7K3
 javaS4502(€™ú³Ä,0€™ú³Ä,:AX5nzHve-NH3hzEYSh7K3
-javaS2755(è‡ïŸ‰-0è‡ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
 javaS2204(ˆ¯ãå­)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2225(ˆ¯ãå­)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2589(øè¯Á½+0øè¯Á½+:AX5nzHve-NH3hzEYSh7K3

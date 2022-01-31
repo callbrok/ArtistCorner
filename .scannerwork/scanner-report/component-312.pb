@@ -1,1 +1,1 @@
-∏ 2javaXËhrrArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/uploadartwork/GuiControllerUploadArtwork.java
+∏ 2javaXÅhrrArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/uploadartwork/GuiControllerUploadArtwork.java

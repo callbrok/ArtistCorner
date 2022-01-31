@@ -1,1 +1,1 @@
-Ï 2javaXÎhr{ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java
+Ï 2javaXÏhr{ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java

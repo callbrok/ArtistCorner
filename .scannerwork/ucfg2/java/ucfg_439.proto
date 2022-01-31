@@ -1,15 +1,38 @@
 
-Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaA A(&"1*·
+jcom.artistcorner.engclasses.query.QueryArtist#selectSellArtWork(Ljava/sql/Statement;I)Ljava/sql/ResultSet;w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java' '(-"1*É	
 1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("¢
-Ÿ
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java( ((fû
+ø
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B("
-%0java.lang.String"__id*
-"""“
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java( ((r
+%0java.lang.String"__concat*SQ
+OSELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE artista =*
+""¿
+¼
 w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaB B(#
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java( ((x
+%1java.lang.String"__concat*
 
-%0java.lang.StringB1"/
+%0java.lang.String*
+;µ
+²
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java( ((y
+sqljava.lang.String"__id*
+
+%1java.lang.Stringº·
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java) )(%
+%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
+w
+m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java) )(&
+
+%2java.sql.ResultSet:
+stmtjava.sql.Statement:
+""B1"/
 -com.artistcorner.engclasses.query.QueryArtist

@@ -1,1 +1,1 @@
-Â 2javaXíhrnArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
+Â 2javaXîhrnArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
