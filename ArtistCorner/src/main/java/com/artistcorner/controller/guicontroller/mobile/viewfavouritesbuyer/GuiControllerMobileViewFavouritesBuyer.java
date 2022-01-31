@@ -6,13 +6,16 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -98,9 +101,6 @@ public class GuiControllerMobileViewFavouritesBuyer {
         Button buttonAcquista = new Button();
         Button buttonPreferiti = new Button();
         Label prezzo = new Label();
-        Label prezzo1 = new Label();
-        Label labelArtistNameDefault = new Label();
-        Label labelArtWorkDefault = new Label();
 
         public HBoxCellMobile(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input){
             ImageView imageView = new ImageView();
@@ -113,32 +113,15 @@ public class GuiControllerMobileViewFavouritesBuyer {
             labelArtistName.setText(labelText1);
             labelArtistName.setAlignment(Pos.CENTER);
             labelArtistName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkName.setPrefSize(75, 25);
-            labelArtistName.setPrefSize(75, 25);
             prezzo.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
             prezzo.setMaxWidth(Double.MAX_VALUE);
             prezzo.setText("€ " + Double.toString(price));
-            prezzo.setPrefSize(50, 50);
             prezzo.setAlignment(Pos.CENTER);
-            prezzo1.setText("Prezzo Opera: ");
-            prezzo1.setPrefSize(75, 50);
-            prezzo1.setAlignment(Pos.CENTER);
-            prezzo1.setStyle("-fx-font-size: 10px; -fx-font-weight: bold;");
+            prezzo.setPrefSize(125,50);
             VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
-            vBox1.setAlignment(Pos.CENTER);
-            vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
+            vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
             HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setText("Titolo Opera: ");
-            labelArtWorkDefault.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setPrefSize(75, 25);
-            String font = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefault.setStyle(font);
-            labelArtistNameDefault.setText("Nome Autore: ");
-            labelArtistNameDefault.setAlignment(Pos.CENTER);
-            labelArtistNameDefault.setPrefSize(75, 25);
-            labelArtistNameDefault.setStyle(font);
+            HBox.setMargin(vBox1, new Insets(10, 10, 10, 40));
             buttonAcquista.setText("Acquista");
             buttonAcquista.setPrefSize(90, 25);
             buttonAcquista.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
@@ -148,7 +131,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
             VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
             vBox.setSpacing(2.5);
             vBox.setAlignment(Pos.CENTER);
-            ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
+            ViewFavouritesBuyer sa = new ViewFavouritesBuyer();
 
             buttonAcquista.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -160,7 +143,13 @@ public class GuiControllerMobileViewFavouritesBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment(idOpera, idBuyer);
+                            try {
+                                sa.finishPayment(idOpera, idBuyer);
+                            } catch (BuyArtWorkManagementProblemException e) {
+                                e.printStackTrace();
+                            } catch (FavouritesManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquista.setDisable(true);
                             buttonPreferiti.setVisible(false);
                             buttonAcquista.setText("Opera Acquistata!");
@@ -175,7 +164,11 @@ public class GuiControllerMobileViewFavouritesBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment(idOpera, idBuyer);
+                            try {
+                                sa.finishPayment(idOpera, idBuyer);
+                            } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquista.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
                             buttonAcquista.setDisable(true);
                             buttonPreferiti.setVisible(false);
@@ -196,13 +189,20 @@ public class GuiControllerMobileViewFavouritesBuyer {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                    String answer = sa.manageButtonClickFavourites(buttonPreferiti, idOpera, idBuyer);
+                    String answer = null;
+
+                    try {
+                        answer = sa.manageButtonClick(buttonPreferiti.getText(), idOpera, idBuyer);
+                    } catch (FavouritesManagementProblemException e) {
+                        e.printStackTrace();
+                    }
+
                     buttonPreferiti.setText(answer);
                 }
             });
 
 
-            this.getChildren().addAll(imageView, vBox2, vBox1, prezzo1, prezzo, vBox);
+            this.getChildren().addAll(imageView, vBox1, prezzo, vBox);
         }
 
     }

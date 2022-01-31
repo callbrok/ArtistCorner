@@ -5,6 +5,8 @@ import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
+import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
@@ -17,10 +19,10 @@ import java.util.List;
 
 public class ViewSearchArtWorkBuyer {
 
-    public String manageButtonClickFavourites(Button buttonFavourites, int idArtWork, int idBuyer ){
+    public String manageButtonClickFavourites(String buttonFavourites, int idArtWork, int idBuyer ) throws FavouritesManagementProblemException {
         String addFavourites = "Aggiungi ai Preferiti";
         String remFavourites = "Rimuovi dai Preferiti";
-        switch (buttonFavourites.getText()){
+        switch (buttonFavourites){
             case "Rimuovi dai Preferiti":{
                 try {
                     BuyerDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
@@ -73,16 +75,16 @@ public class ViewSearchArtWorkBuyer {
         return arrayArtWorkBean;
     }
 
-    public void finishPayment(int idOpera, int idBuyer){
+    public void finishPayment(int idOpera, int idBuyer) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
 
         try {
+
             BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
             BuyerDAO.switchFlagVendibile(idOpera);
             BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
 
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 }

@@ -40,8 +40,8 @@
             <AnchorPane fx:id="paneRegister" layoutX="93.0" layoutY="221.0" prefHeight="282.0" prefWidth="293.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Button layoutX="25.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchToArtistSignUp" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Come Artista" />
-                  <Button layoutX="26.0" layoutY="100.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Come Galleria" />
-                  <Button layoutX="27.0" layoutY="161.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Coma Acquirente" />
+                  <Button layoutX="26.0" layoutY="100.0" mnemonicParsing="false" onAction="#switchToGallerySignUp" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Come Galleria" />
+                  <Button layoutX="27.0" layoutY="161.0" mnemonicParsing="false" onAction="#switchToBuyerSignUp" prefHeight="47.0" prefWidth="244.0" styleClass="buttonPane" text="Coma Acquirente" />
                </children>
             </AnchorPane>
          </children>

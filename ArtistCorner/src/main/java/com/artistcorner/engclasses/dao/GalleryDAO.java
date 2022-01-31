@@ -2,12 +2,14 @@ package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
+import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
+import com.artistcorner.engclasses.query.QueryArtist;
+import com.artistcorner.engclasses.query.QueryBuyer;
 import com.artistcorner.engclasses.query.QueryGallery;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Proposal;
+import com.artistcorner.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -78,6 +80,47 @@ public class GalleryDAO {
         return gal;
     }
 
+    public static void insertGallery(User user, ArtGallery artGallery) throws DuplicateUserException,SQLException {
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+
+            // Check Duplicate User
+            ResultSet rs = QueryArtist.selectUsername(stmt);
+            while (rs.next()) {
+                // lettura delle colonne "by name"
+                String usernameRetrived = rs.getString("username");
+
+                if (usernameRetrived.equals(user.getUsername())){
+                    throw new DuplicateUserException("Username attualmente già in uso.");
+                }
+            }
+
+            int result = QueryArtist.insertUser(stmt, user);
+            result = QueryGallery.insertGallery(stmt,artGallery, user.getUsername());
+
+            if(result == -1){throw new AddGalleryException("Impossibile aggiungere galleria ");}
+
+        } catch (SQLException | AddGalleryException | ClassNotFoundException e4){
+            e4.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+
+
+    }
     public static void removeProposta(int idGallery, int idArtista) throws SQLException {
         Statement stmt = null;
         int result;
@@ -185,7 +228,7 @@ public class GalleryDAO {
 
         return listOfArtistId;
     }
-    public static List<Proposal> retrieveProposal(ArtGalleryBean galleria,int flag){
+    public static List<Proposal> retrieveProposal(ArtGalleryBean galleria,int flag,String lastAction){
         List<Proposal> listOfProposal = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
@@ -198,7 +241,7 @@ public class GalleryDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryGallery.selectProposal(stmt, galleria.getGalleria(),flag);
+            ResultSet rs = QueryGallery.selectProposal(stmt, galleria.getGalleria(),flag,"");
 
 
             if (!rs.first()){ // rs empty
@@ -239,4 +282,5 @@ public class GalleryDAO {
 
         return listOfProposal;
     }
+
 }

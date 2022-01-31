@@ -5,7 +5,9 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
@@ -61,13 +63,12 @@ public class GuiControllerViewSearchArtWorkBuyer {
     private SVGPath svgProfileBuyerSearch;
     @FXML
     private Pane paneExceptionLoad;
-    @FXML
     private Stage stageSearchBuy;
-
     private double x=0;
     private double y=0;
     private String category = "";
     BuyerBean buy;
+
 
 
     public void makeLogOutBuyer(){
@@ -210,7 +211,11 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment( idOperaSearch, idBuyer);
+                            try {
+                                sa.finishPayment( idOperaSearch, idBuyer);
+                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquistaSearchBuy.setDisable(true);
                             buttonPreferitiSearchBuy.setVisible(false);
 
@@ -220,7 +225,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                             dialog.setTitle("Pagamento");
                             dialog.setHeaderText(null);
-                            dialog.setContentText("Pagamento con carta");
+                            dialog.setContentText("Pagamento con Paypal");
 
                             dialog.showAndWait();
                             buttonAcquistaSearchBuy.setText("Opera Acquistata!");
@@ -231,7 +236,11 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment( idOperaSearch, idBuyer);
+                            try {
+                                sa.finishPayment( idOperaSearch, idBuyer);
+                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquistaSearchBuy.setDisable(true);
                             buttonPreferitiSearchBuy.setVisible(false);
 
@@ -241,7 +250,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                             dialog.setTitle("Pagamento");
                             dialog.setHeaderText(null);
-                            dialog.setContentText("Pagamento con PayPal");
+                            dialog.setContentText("Pagamento con Carta");
 
                             dialog.showAndWait();
                             buttonAcquistaSearchBuy.setText("Opera Acquistata!");
@@ -261,7 +270,12 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                    String answer = sa.manageButtonClickFavourites(buttonPreferitiSearchBuy,idOperaSearch,idBuyer);
+                    String answer = null;
+                    try {
+                        answer = sa.manageButtonClickFavourites(buttonPreferitiSearchBuy.getText(),idOperaSearch,idBuyer);
+                    } catch (FavouritesManagementProblemException e) {
+                        e.printStackTrace();
+                    }
                     buttonPreferitiSearchBuy.setText(answer);
                 }
             });

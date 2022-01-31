@@ -53,11 +53,17 @@ public class GuiControllerViewSearchArtWorkGallery {
     @FXML
     private Button button2;
     @FXML
+    private Button button4;
+    @FXML
     private Pane paneExceptionLoad;
+    @FXML
+    private ToggleButton toglleCat1,toglleCat2,toglleCat3;
+
+    public String category = "";
     private double x=0;
     private double y=0;
-    Stage stageSearchGal;
-    ArtGalleryBean gal;
+    private Stage stageSearchGal;
+    private ArtGalleryBean gal;
 
 
     public void makeLogOut(){
@@ -76,6 +82,12 @@ public class GuiControllerViewSearchArtWorkGallery {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toglleCat1.setToggleGroup(toggleGroup);
+        toglleCat2.setToggleGroup(toggleGroup);
+        toglleCat3.setToggleGroup(toggleGroup);
+
         svgProfileSearchGal.setScaleX(0.07);
         svgProfileSearchGal.setScaleY(0.07);
     }
@@ -108,21 +120,21 @@ public class GuiControllerViewSearchArtWorkGallery {
         stageSearchGal.setIconified(true);
     }
 
-    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException {
-        if(keyEvent.getCode()== KeyCode.ENTER){
+    public void enterSearch(KeyEvent keyEvent) throws SQLException, IOException { // avvia la ricerca quando si preme enter 
+        if(keyEvent.getCode()== KeyCode.ENTER){ 
             String input= textField.getText();
-            anchorPane.setVisible(true);
             populateListView(input);
         }
     }
     public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Cerca Opera"));
-        button3.setTooltip(new Tooltip("Preferiti"));
+        button2.setTooltip(new Tooltip("Profilo"));
+        button3.setTooltip(new Tooltip("Offerte inviate"));
+        button4.setTooltip(new Tooltip("Cerca Opere"));
     }
-    public void buttonSearchOnClick() throws SQLException, IOException{
+
+    public void buttonSearchOnClick() throws SQLException, IOException{ // avvia la ricerca quando si preme sul bottone della ricerca
         String input= textField.getText();
-        anchorPane.setVisible(true);
         populateListView(input);
     }
 
@@ -138,17 +150,26 @@ public class GuiControllerViewSearchArtWorkGallery {
         SceneController sc = new SceneController();
         sc.switchToSceneGallerySummary(actionEvent,gal);
     }
-    public void populateListView(String input) throws SQLException, IOException {
-        if (listView.getItems().size()!=0){
-            listView.getItems().clear();
+    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
+    }
+    public void populateListView(String input) throws SQLException, IOException { //popola la listview con le opere disponibili
+       paneExceptionLoad.setVisible(false);
+        if(toglleCat1.isSelected()){category = "impressionista";}
+        if(toglleCat2.isSelected()){category = "espressionista";}
+        if(toglleCat3.isSelected()){category = "stilizzato";}
+
+        if (listView.getItems().size()!=0){ //le la listview non è vuota al momento della chiamata
+            listView.getItems().clear();  //viene svuotata
         }
         ViewSearchArtWorkGallery vsawg = new ViewSearchArtWorkGallery();
-        ArtistBean artistSearch=null;
-        Blob artWorkBlobSearchGal =null;
+        ArtistBean artistSearch;
+        Blob artWorkBlobSearchGal;
 
         try{
-            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(input);
-            List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal);
+            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(input,category);    // lista opere disponibili in base all'input inserito nella textfield
+            List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
             for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
                 artWorkBlobSearchGal = vsawg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
                 artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
@@ -157,57 +178,46 @@ public class GuiControllerViewSearchArtWorkGallery {
 
             }
         } catch ( ArtWorkNotFoundException throwables) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+            paneExceptionLoad.setVisible(true);
         }
     }
     public class HBoxCell extends HBox {
         Label labelArtWorkNameSearchGal = new Label();
         Label labelArtistNameSearchGal = new Label();
         Button buttonOffertaSearchGal = new Button();
-        Label labelArtistNameDefaultGal = new Label();
-        Label labelArtWorkDefaultGal = new Label();
 
         public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal) throws SQLException, IOException {
-            ImageView imageViewSearchGal = new ImageView();
+            ImageView imageViewSearchGal = new ImageView(); // immagine dell'opera
             imageViewSearchGal.setImage(imgShowGal);
             imageViewSearchGal.setFitHeight(100);
             imageViewSearchGal.setFitWidth(100);
+
             labelArtWorkNameSearchGal.setText(labelArtTitoloGal);
+            labelArtWorkNameSearchGal.isWrapText();
             labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
             labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtWorkNameSearchGal.isWrapText();
+
             labelArtistNameSearchGal.setText(labelArtistNameGal);
             labelArtistNameSearchGal.setAlignment(Pos.CENTER);
             labelArtistNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkNameSearchGal.setPrefSize(100, 50);
-            labelArtistNameSearchGal.setPrefSize(100, 50);
-            VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal);
+            labelArtistNameSearchGal.isWrapText();
+
+            VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal); // vbox contenente titolo dell'opera e nome dell'artista
             vBox1.setAlignment(Pos.CENTER);
             vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
+
             HBox.setHgrow(labelArtWorkNameSearchGal, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 100, 10, 25));
-            VBox vBox2 = new VBox(labelArtWorkDefaultGal, labelArtistNameDefaultGal);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultGal.setText("Titolo Opera: ");
-            labelArtWorkDefaultGal.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultGal.setPrefSize(100, 50);
-            HBox.setMargin(vBox2, new Insets(10, 75, 10, 75));
-            String fontDef = "-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefaultGal.setStyle(fontDef);
-            labelArtistNameDefaultGal.setText("Nome Autore: ");
-            labelArtistNameDefaultGal.setAlignment(Pos.CENTER);
-            labelArtistNameDefaultGal.setPrefSize(100, 50);
-            labelArtistNameDefaultGal.setStyle(fontDef);
+            HBox.setMargin(vBox1, new Insets(10, 120, 10, 100));
+
+
             buttonOffertaSearchGal.setText(labelButtonShow);
             buttonOffertaSearchGal.setPrefSize(150, 100);
             buttonOffertaSearchGal.setStyle("-fx-font-size: 16px;");
             ViewSearchArtWorkGallery sawg = new ViewSearchArtWorkGallery();
 
-            if (arrayListProposteGal.contains(idArtistSearchGal)) {
-                buttonOffertaSearchGal.setText("Ritira Proposta");
+            if (arrayListProposteGal.contains(idArtistSearchGal)) {     // se l'array contenente tutti gli id artista contiene l'id dell'artista in questione
+                buttonOffertaSearchGal.setText("Ritira Proposta");      // imposto il testo del button su 'ritira proposta'
             }
             buttonOffertaSearchGal.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -221,14 +231,14 @@ public class GuiControllerViewSearchArtWorkGallery {
                     }
                     buttonOffertaSearchGal.setText(answer);
                     try {
-                        populateListView(inputSearchGal);
+                        populateListView(inputSearchGal); //ricarica la listview per aggiornare le ricorrenze di opere dello stesso artista
                     } catch (SQLException | IOException e) {
                         e.printStackTrace();
                     }
 
                 }
             });
-            this.getChildren().addAll(imageViewSearchGal, vBox2, vBox1, buttonOffertaSearchGal);
+            this.getChildren().addAll(imageViewSearchGal,vBox1, buttonOffertaSearchGal);
         }
 
     }

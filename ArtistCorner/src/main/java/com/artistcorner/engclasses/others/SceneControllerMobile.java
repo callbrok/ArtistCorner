@@ -8,7 +8,8 @@ import com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControl
 import com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals;
 import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile;
-import com.artistcorner.controller.guicontroller.mobile.viewprofilogallery.GuiControllerMobileViewProfiloGallery;
+import com.artistcorner.controller.guicontroller.mobile.viewprofilegallery.GuiControllerMobileViewProfileGallery;
+import com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal.GuiControllerMobileViewSentArtGalleryProposal;
 import com.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory;
 import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
@@ -25,8 +26,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class SceneControllerMobile {
@@ -183,11 +182,11 @@ public class SceneControllerMobile {
         stage.show();
     }
 
-    public void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/GalleryProfileMobileView.fxml"));
+    public void switchToSceneSentArtGalleryProposal(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/SentArtGalleryProposalMobileView.fxml"));
         root = loader.load();
 
-        GuiControllerMobileViewProfiloGallery gcas = loader.getController();
+        GuiControllerMobileViewSentArtGalleryProposal gcas = loader.getController();
         gcas.getGallery(gal);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -217,6 +216,19 @@ public class SceneControllerMobile {
         root = loader.load();
 
         GuiControllerMobileViewSearchArtWorkGallery gcas = loader.getController();
+        gcas.getGallery(gal);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneProfiloGallery(ActionEvent event,ArtGalleryBean gal) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mobile/ProfileGalleryMobileView.fxml"));
+        root = loader.load();
+
+        GuiControllerMobileViewProfileGallery gcas = loader.getController();
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

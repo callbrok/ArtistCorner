@@ -31,7 +31,7 @@ public class GuiControllerMobileGallerySummary {
     @FXML
     private Stage stageMobileGal;
 
-    ArtGalleryBean gal;
+    private ArtGalleryBean gal;
 
 
     public void initialize(){
@@ -78,21 +78,22 @@ public class GuiControllerMobileGallerySummary {
         SceneControllerMobile sc = new SceneControllerMobile();
         sc.switchToSceneSearchArtWorkGallery(actionEvent,gal);
     }
-    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException{
+    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException{
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
+    }
+    public void switchToProfiloGallery(ActionEvent actionEvent) throws SQLException, IOException {
         SceneControllerMobile sc = new SceneControllerMobile();
         sc.switchToSceneProfiloGallery(actionEvent,gal);
     }
     private void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal){
         ViewGallerySummary vgs = new ViewGallerySummary();
-
-
         List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
         ArrayList<String> arrayFinal = new ArrayList<>();
         for (ProposalBean n : arrayOfProposal) {
             ArtistBean artist = vgs.retrieveArtistNameGallerySum(n.getArtista());
             String artistName = artist.getNome() + " " + artist.getCognome();
             listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistName);  // Popola la listView.
-
             arrayFinal.add(artistName);
         }
     }

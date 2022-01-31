@@ -122,6 +122,18 @@ public class GuiControllerLogin {
         AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpArtistView.fxml")));
         anchorSignUp.getChildren().add(newLoadedPane);
     }
+    public void goToBuyerSignUp() throws IOException {
+        anchorSummarySignUp.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpBuyerView.fxml")));
+        anchorSignUp.getChildren().add(newLoadedPane);
+    }
+    public void goToGallerySignUp() throws IOException {
+        anchorSummarySignUp.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpGalleryView.fxml")));
+        anchorSignUp.getChildren().add(newLoadedPane);
+    }
 
     public void openDialogLoginFb() {
         Dialog<String> dialog = new Dialog<>();

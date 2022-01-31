@@ -15,10 +15,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -44,19 +41,22 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
     @FXML
     private Stage stageGalMob;
     @FXML
-    private Pane paneExceptionLoad;
+    private Pane paneExLoad;
+    @FXML
+    private ToggleButton toglleCat1,toglleCat2,toglleCat3;
     @FXML
     private TextField textField;
-    ArtGalleryBean gal;
+    private ArtGalleryBean gal;
+    private String category="";
 
     public void initialize() {
         makeDraggable();
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toglleCat1.setToggleGroup(toggleGroup);
+        toglleCat2.setToggleGroup(toggleGroup);
+        toglleCat3.setToggleGroup(toggleGroup);
     }
 
-    public void makeLogOutGalMob(ActionEvent event) throws IOException {
-        SceneControllerMobile sm = new SceneControllerMobile();
-        sm.switchToLogin(event);
-    }
 
     public void getGallery(ArtGalleryBean loggedGallery) {
         gal = loggedGallery;      // Prendo le informazioni riguardanti la galleria che ha effettuato il login.
@@ -106,9 +106,13 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         sc.switchToSceneGallerySummary(actionEvent, gal);
     }
 
-    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException{
+    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException{
         SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneProfiloGallery(actionEvent, gal);
+        sc.switchToSceneSentArtGalleryProposal(actionEvent, gal);
+    }
+    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneControllerMobile sc = new SceneControllerMobile();
+        sc.switchToSceneProfiloGallery(actionEvent,gal);
     }
 
     public class HBoxCellMobile extends HBox {
@@ -124,30 +128,19 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
             labelArtWorkName.setText(labelTitolo);
+            labelArtWorkName.isWrapText();
             labelArtWorkName.setAlignment(Pos.CENTER);
             labelArtWorkName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight: bold ");
             labelArtistName.setText(labelArtista);
+            labelArtistName.isWrapText();
             labelArtistName.setAlignment(Pos.CENTER);
             labelArtistName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkName.setPrefSize(75, 25);
-            labelArtistName.setPrefSize(75, 25);
             VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
+            vBox1.setSpacing(5);
             vBox1.setAlignment(Pos.CENTER);
             vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
             HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
-            VBox vBox2 = new VBox(labelArtWorkDefault, labelArtistNameDefault);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setText("Titolo Opera: ");
-            labelArtWorkDefault.setAlignment(Pos.CENTER);
-            labelArtWorkDefault.setPrefSize(75, 25);
-            String font1 = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefault.setStyle(font1);
-            HBox.setMargin(vBox2, new Insets(10, 25, 10, 25));
-            labelArtistNameDefault.setText("Nome Autore: ");
-            labelArtistNameDefault.setAlignment(Pos.CENTER);
-            labelArtistNameDefault.setPrefSize(75, 25);
-            labelArtistNameDefault.setStyle(font1);
+            HBox.setMargin(vBox1, new Insets(10, 65, 10, 65));
             buttonOfferta.setText(labelButton);
             buttonOfferta.setScaleX(0.7);
             buttonOfferta.setScaleY(0.7);
@@ -178,11 +171,16 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
             });
 
 
-            this.getChildren().addAll(imageView, vBox2, vBox1, buttonOfferta);
+            this.getChildren().addAll(imageView,vBox1, buttonOfferta);
         }
 
     }
     public void populateListView(String input) throws SQLException, IOException {
+        paneExLoad.setVisible(false);
+        if(toglleCat1.isSelected()){category = "impressionista";}
+        if(toglleCat2.isSelected()){category = "espressionista";}
+        if(toglleCat3.isSelected()){category = "stilizzato";}
+
         if (listView.getItems().size()!=0){
             listView.getItems().clear();
         }
@@ -191,7 +189,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         Blob artWorkBlob =null;
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input);
+            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input,category);
             List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
@@ -201,11 +199,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
 
             }
         } catch (ArtWorkNotFoundException throwables) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+            paneExLoad.setVisible(true);
         }
     }
     private Image extractImage(Blob blob2){

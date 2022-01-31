@@ -1,5 +1,8 @@
 package com.artistcorner.engclasses.query;
 
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +15,11 @@ public class QueryBuyer {
         String sql = "SELECT * FROM acquirente WHERE username ='" + user + "';";
         return stmt.executeQuery(sql);
     }
+    public static int insertBuyer(Statement stmt, Buyer buyerInsert, String username) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO acquirente (nome, cognome, username) VALUES ('%s','%s','%s')", buyerInsert.getNome(), buyerInsert.getCognome(), username);
+        return stmt.executeUpdate(insertStatement);
+    }
+
     public static ResultSet selectArtWorkId(Statement stmt, int idBuyer) throws SQLException {
         String sql = "SELECT * FROM preferito WHERE acquirente ='" + idBuyer  + "';";
         return stmt.executeQuery(sql);

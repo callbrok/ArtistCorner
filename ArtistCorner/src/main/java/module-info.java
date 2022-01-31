@@ -51,6 +51,9 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.viewsearchartworkgallery to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
 
+    opens com.artistcorner.controller.guicontroller.viewsentartgalleryproposal to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewsentartgalleryproposal;
+
     opens com.artistcorner.controller.guicontroller.viewprofilogallery to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.viewprofilogallery;
 
@@ -90,7 +93,10 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewprofilogallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewprofilogallery;
+    opens com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal;
+
+    opens com.artistcorner.controller.guicontroller.mobile.viewprofilegallery to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.viewprofilegallery;
 
 }

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.SVGPath?>
@@ -24,16 +25,11 @@
             </Label>
             <Pane id="footerProfile" layoutY="585.0" prefHeight="48.0" prefWidth="438.0" styleClass="footerUserPane">
                <children>
-                  <Label fx:id="labelUsernameDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="8.0" prefHeight="19.0" prefWidth="161.0" text="Profilo Guest" textFill="#922b07">
+                  <Label fx:id="labelUsernameDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="15.0" prefHeight="19.0" prefWidth="161.0" text="Profilo Guest" textFill="#922b07">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="23.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="23.0" prefWidth="80.0" styleClass="buttonTopBar" text="Logout" textFill="#922b07">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Button>
                </children>
             </Pane>
             <Button layoutY="21.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="44.0" styleClass="currentSceneButton">
@@ -48,14 +44,23 @@
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="264.0" layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane id="error" fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="446.0" prefWidth="438.0">
-               <ListView fx:id="listView" layoutX="4.0" layoutY="73.0" prefHeight="373.0" prefWidth="431.0" />
+               <ListView fx:id="listView" layoutX="4.0" layoutY="113.0" prefHeight="333.0" prefWidth="431.0" />
+               <Pane fx:id="paneExLoad" layoutY="113.0" prefHeight="333.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" visible="false">
+                  <children>
+                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="33.0" prefHeight="264.0" prefWidth="369.0" style="-fx-background-color: #FF0000;" text="Nessuna Opera Trovata" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="24.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
                <TextField fx:id="textField" layoutX="48.0" layoutY="28.0" onKeyPressed="#enterSearch" prefHeight="32.0" prefWidth="384.0" promptText="Cerca Opera per nome" />
-               <Button fx:id="buttonCanc" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="403.0" layoutY="29.0" mnemonicParsing="false" onAction="#buttonCancOnClick" opacity="0.5" prefHeight="19.0" prefWidth="17.0" styleClass=".button" text="X">
+               <Button fx:id="buttonCanc" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="403.0" layoutY="29.0" mnemonicParsing="false" onAction="#buttonCancOnClick" opacity="0.5" prefHeight="19.0" prefWidth="17.0" styleClass="buttonSearch" text="X">
                   <font>
                      <Font size="14.0" />
                   </font>
                </Button>
-               <Button fx:id="buttonSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="28.0" mnemonicParsing="false" onAction="#buttonSearchOnClick" opacity="0.25" prefHeight="19.0" prefWidth="21.0" styleClass=".button">
+               <Button fx:id="buttonSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="28.0" mnemonicParsing="false" onAction="#buttonSearchOnClick" opacity="0.25" prefHeight="19.0" prefWidth="21.0" styleClass="buttonSearch">
                   <graphic>
                      <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
                   </graphic>
@@ -65,6 +70,9 @@
                      <Font name="System Bold" size="14.0" />
                   </font>
                </Label>
+               <ToggleButton fx:id="toglleCat1" layoutX="31.0" layoutY="72.0" mnemonicParsing="false" styleClass="toggleButton" text="Impressionista" />
+               <ToggleButton fx:id="toglleCat2" layoutX="178.0" layoutY="72.0" mnemonicParsing="false" styleClass="toggleButton" text="Espressionista" />
+               <ToggleButton fx:id="toglleCat3" layoutX="315.0" layoutY="72.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" styleClass="toggleButton" text="Stilizzato" />
             </Pane>
          </children></Pane>
         <Button layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="16.0" prefWidth="0.0" styleClass="buttonTopBar" text="X">

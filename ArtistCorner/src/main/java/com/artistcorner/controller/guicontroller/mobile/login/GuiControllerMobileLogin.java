@@ -107,6 +107,18 @@ public class GuiControllerMobileLogin {
         AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpArtistMobileView.fxml")));
         anchorSwitchSignUp.getChildren().add(newLoadedPane);
     }
+    public void switchToGallerySignUp() throws IOException {
+        paneRegister.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpGalleryMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
+    public void switchToBuyerSignUp() throws IOException {
+        paneRegister.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpBuyerMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
 
     public void openDialogLoginFbMobile() {
         Dialog<String> dialog = new Dialog<>();
