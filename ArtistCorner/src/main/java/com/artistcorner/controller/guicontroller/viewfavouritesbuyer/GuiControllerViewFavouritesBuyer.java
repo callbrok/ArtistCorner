@@ -5,7 +5,9 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
@@ -179,7 +181,11 @@ public class GuiControllerViewFavouritesBuyer {
 
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOperaFav, idBuyer);
+                                                        try {
+                                                                lv.finishPayment( idOperaFav, idBuyer);
+                                                        } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
+                                                                e.printStackTrace();
+                                                        }
                                                         buttonAcquistaFavDesk.setDisable(true);
                                                         buttonPreferitiFavDesk.setVisible(false);
                                                         buttonAcquistaFavDesk.setText("Opera Acquistata!");
@@ -190,7 +196,11 @@ public class GuiControllerViewFavouritesBuyer {
 
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
-                                                        lv.finishPayment( idOperaFav, idBuyer);
+                                                        try {
+                                                                lv.finishPayment( idOperaFav, idBuyer);
+                                                        } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
+                                                                e.printStackTrace();
+                                                        }
                                                         buttonAcquistaFavDesk.setDisable(true);
                                                         buttonPreferitiFavDesk.setVisible(false);
                                                         buttonAcquistaFavDesk.setText("Opera Acquistata!");
@@ -208,7 +218,12 @@ public class GuiControllerViewFavouritesBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                                 String prefString = buttonPreferitiFavDesk.getText();
-                                String answer = lv.manageButtonClick(prefString,idOperaFav,idBuyer);
+                                String answer = null;
+                                try {
+                                        answer = lv.manageButtonClick(prefString,idOperaFav,idBuyer);
+                                } catch (FavouritesManagementProblemException e) {
+                                        e.printStackTrace();
+                                }
                                 buttonPreferitiFavDesk.setText(answer);
 
                                 if(answer.equals("Aggiungi ai Preferiti")){

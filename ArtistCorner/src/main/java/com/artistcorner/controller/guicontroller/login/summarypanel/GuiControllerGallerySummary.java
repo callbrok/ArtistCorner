@@ -8,6 +8,7 @@ import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +22,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerGallerySummary {
-
+    @FXML
+    private Button button3;
     @FXML
     private AnchorPane anchorParentGallery;
     @FXML
@@ -37,7 +39,7 @@ public class GuiControllerGallerySummary {
     private SVGPath svgProfileGallery;
     @FXML
     private Pane paneExceptionLoad;
-    ArtGalleryBean gal;
+    private ArtGalleryBean gal;
 
 
     public void initialize(){
@@ -106,7 +108,11 @@ public class GuiControllerGallerySummary {
     }
     public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
-        sc.switchToSceneProfiloGallery(actionEvent,gal);
+         sc.switchToSceneProfiloGallery(actionEvent,gal);
+    }
+    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController sc = new SceneController();
+        sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
     }
 
 }

@@ -3,10 +3,12 @@ package com.artistcorner.engclasses.dao;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
+import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.engclasses.query.QueryBuyer;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
+import com.artistcorner.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -75,6 +77,47 @@ public class BuyerDAO {
         }
 
         return bu;
+    }
+
+    public static void insertBuyer(User user, Buyer buyer) throws DuplicateUserException, SQLException {
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+
+            // Check Duplicate User
+            ResultSet rs = QueryArtist.selectUsername(stmt);
+            while (rs.next()) {
+                // lettura delle colonne "by name"
+                String usernameRetrived = rs.getString("username");
+
+                if (usernameRetrived.equals(user.getUsername())){
+                    throw new DuplicateUserException("Username attualmente già in uso.");
+                }
+            }
+
+            int result = QueryArtist.insertUser(stmt, user);
+            result = QueryBuyer.insertBuyer(stmt,buyer, user.getUsername());
+
+            if(result == -1){throw new AddBuyerException("Impossibile aggiungere acquirente");}
+
+        } catch (SQLException | AddBuyerException | ClassNotFoundException e2){
+            e2.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+
     }
     public static ArtWork retrieveArtWorks(int idUsr,int flag){
         ArtWork artWork=null;
@@ -296,7 +339,7 @@ public class BuyerDAO {
     }
 
 
-    public static void addArtWorkComprata(int artWorkId, int idBuyer) throws SQLException {
+    public static void addArtWorkComprata(int artWorkId, int idBuyer) throws SQLException, BuyArtWorkManagementProblemException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -309,10 +352,10 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             int result = QueryBuyer.insertOperaComprata(stmt,artWorkId, idBuyer);
-            if (result==-1){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
+            if (result==0){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
             }
 
-        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException ex5) {
+        } catch (ClassNotFoundException ex5) {
             ex5.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
@@ -355,7 +398,7 @@ public class BuyerDAO {
 
     }
 
-    public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException {
+    public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException, FavouritesManagementProblemException {
         Statement stmt = null;
         int result;
         Connection conn = null;
@@ -369,9 +412,9 @@ public class BuyerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
-            if (result==-1){throw new BuyArtWorkManagementProblemException(BUY_PROBLEM);
+            if (result==0){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
             }
-        } catch (ClassNotFoundException | BuyArtWorkManagementProblemException ex7) {
+        } catch (ClassNotFoundException ex7) {
             ex7.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
@@ -442,7 +485,7 @@ public class BuyerDAO {
         return artWork;
     }
 
-    public static void addArtWorkToFavourites(int artWorkId, int idBuyer) throws SQLException {
+    public static void addArtWorkToFavourites(int artWorkId, int idBuyer) throws SQLException, FavouritesManagementProblemException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -458,7 +501,7 @@ public class BuyerDAO {
             if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
             }
 
-        } catch (ClassNotFoundException | FavouritesManagementProblemException ex10) {
+        } catch (ClassNotFoundException  ex10) {
             ex10.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente

@@ -10,6 +10,7 @@ import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiCont
 import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
 import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
+import com.artistcorner.controller.guicontroller.viewsentartgalleryproposal.GuiControllerViewSentArtGalleryProposal;
 import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
 import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
@@ -228,6 +229,18 @@ public class SceneController {
         root = loader.load();
 
         GuiControllerViewProfiloGallery gcas = loader.getController();
+        gcas.getGallery(gal);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSceneSentArtGalleryProposal(ActionEvent event,ArtGalleryBean gal) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SentArtGalleryProposalView.fxml"));
+        root = loader.load();
+        GuiControllerViewSentArtGalleryProposal gcas = loader.getController();
         gcas.getGallery(gal);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -7,7 +7,10 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         TestLogin.class,
         TestSignUp.class,
-        TestUploadArtWork.class
+        TestUploadArtWork.class,
+       // TestSearchArtWorkBuyer.class,
+        TestViewFavouritesBuyer.class,
+        TestViewProfileGallery.class
 })
 
 public class AllTests {

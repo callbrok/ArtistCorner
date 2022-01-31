@@ -23,6 +23,18 @@
     -fx-background-color: #e38b6c;
 }
 
+.logoutButton{
+    -fx-border-radius: 0;
+    -fx-background-radius: 0 ;
+    -fx-background-color: #e38b6c;
+}
+.logoutButton:hover{
+
+}
+.logoutButton SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
 .currentSceneButton SVGPath{
     -fx-fill:  #d13e0a;
 }
@@ -107,4 +119,22 @@
 
 .list-cell:empty {
     -fx-background-color: white;
+}
+
+.toggleButton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggleButton:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.toggleButton:selected{
+    -fx-background-color: #88c9b2;
+}
+
+.buttonSearch{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
 }

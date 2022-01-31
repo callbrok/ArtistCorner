@@ -1,5 +1,8 @@
 package com.artistcorner.engclasses.query;
 
+import com.artistcorner.model.ArtGallery;
+import com.artistcorner.model.Buyer;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,6 +14,10 @@ public class QueryGallery {
     public static ResultSet selectGallery(Statement stmt, String username) throws SQLException {
         String sql = "SELECT * FROM galleria WHERE username ='" + username + "';";
         return stmt.executeQuery(sql);
+    }
+    public static int insertGallery(Statement stmt, ArtGallery artGalleryInsert, String username) throws SQLException  {
+        String insertStatement = String.format("INSERT INTO galleria (nome,descrizione,indirizzo,username) VALUES ('%s','%s','%s','%s')", artGalleryInsert.getNome(), artGalleryInsert.getDescrizione(),artGalleryInsert.getIndirizzo(), username);
+        return stmt.executeUpdate(insertStatement);
     }
 
     public static int removeProposal(Statement stmt,int idGallery,int idArtista) throws SQLException {
@@ -29,8 +36,11 @@ public class QueryGallery {
         return stmt.executeUpdate(updateStatement);
     }
 
-    public static ResultSet selectProposal(Statement stmt, int galleria,int flag) throws SQLException {
+    public static ResultSet selectProposal(Statement stmt, int galleria,int flag,String lastAction) throws SQLException {
         String sql = "SELECT * FROM offerta WHERE galleria='"+galleria+"' AND flagAccettazione= '"+flag+"';";
+        if(lastAction.equals("LAST")){sql = "SELECT * FROM offerta WHERE galleria ='" + galleria + "' ORDER BY idOfferta DESC LIMIT 2;";}
         return stmt.executeQuery(sql);
     }
+
+
 }

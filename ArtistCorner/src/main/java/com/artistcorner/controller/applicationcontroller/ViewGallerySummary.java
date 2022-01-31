@@ -17,7 +17,7 @@ import java.util.List;
 public class ViewGallerySummary {
 
     public List<ProposalBean> retrieveGalleryProposal(ArtGalleryBean gallery, int flag)  {
-        List<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag);
+        List<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag,"LAST"); //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
         for (Proposal p: proposal) {
             proposalBean.add(new ProposalBean(p.getIdOfferta(),p.getArtista(),p.getGalleria(),p.getFlagAccettazione()));
@@ -25,7 +25,7 @@ public class ViewGallerySummary {
         return proposalBean;
     }
     public ArtistBean retrieveArtistNameGallerySum(int a) {
-        Artist artist = BuyerDAO.retrieveArtist(a);
+        Artist artist = BuyerDAO.retrieveArtist(a); //artista associato alla proposta
         return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
     }
 

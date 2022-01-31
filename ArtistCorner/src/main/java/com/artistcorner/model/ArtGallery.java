@@ -1,11 +1,11 @@
 package com.artistcorner.model;
 
 public class ArtGallery {
-    int galleria;
-    String nome;
-    String descrizione;
-    String indirizzo;
-    String username;
+    private int galleria;
+    private String nome;
+    private String descrizione;
+    private String indirizzo;
+    private String username;
 
     public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
         this.galleria = newGalleria;

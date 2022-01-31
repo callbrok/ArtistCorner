@@ -5,19 +5,19 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -42,7 +42,9 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
     private double y=0;
     private String category = "";
     @FXML
-    private Pane paneExceptionLoad;
+    private ToggleButton toglleCat1,toglleCat2,toglleCat3;
+    @FXML
+    private Pane paneExLoad;
     private Stage stageMobBuySearch;
     @FXML
     private TextField textField;
@@ -50,12 +52,13 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
     public void initialize(){
         makeDraggable();
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toglleCat1.setToggleGroup(toggleGroup);
+        toglleCat2.setToggleGroup(toggleGroup);
+        toglleCat3.setToggleGroup(toggleGroup);
+
     }
 
-    public void makeLogOut(ActionEvent event) throws IOException {
-        SceneControllerMobile sm = new SceneControllerMobile();
-        sm.switchToLogin(event);
-    }
 
     public void getBuyer(BuyerBean loggedBuyer){
         buy = loggedBuyer;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
@@ -114,9 +117,6 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         Button buttonAcquistaMobBuy = new Button();
         Button buttonPreferitiMobBuy = new Button();
         Label prezzoMobBuy = new Label();
-        Label prezzoDefaultMobBuy = new Label();
-        Label labelArtistNameDefaultMob = new Label();
-        Label labelArtWorkDefaultMob = new Label();
 
         public HBoxCellMobile (String labelArtWorkMobBuy, String labelArtistMobBuy, Image imgMobBuy, int idOpera, double priceShowMob, String labelPreferitiMobBuy, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdPrefMob, String input)throws SQLException, IOException {
             ImageView imageView = new ImageView();
@@ -129,31 +129,15 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
             labelArtistNameMobBuy.setText(labelArtistMobBuy);
             labelArtistNameMobBuy.setAlignment(Pos.CENTER);
             labelArtistNameMobBuy.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            labelArtWorkNameMobBuy.setPrefSize(75, 25);
-            labelArtistNameMobBuy.setPrefSize(75, 25);
             prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
             prezzoMobBuy.setMaxWidth(Double.MAX_VALUE);
             prezzoMobBuy.setText("€ " + Double.toString(priceShowMob));
-            prezzoMobBuy.setPrefSize(50, 50);
             prezzoMobBuy.setAlignment(Pos.CENTER);
-            prezzoDefaultMobBuy.setText("Prezzo Opera: ");
-            prezzoDefaultMobBuy.setPrefSize(75, 50);
-            prezzoDefaultMobBuy.setAlignment(Pos.CENTER);
-            prezzoDefaultMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold;");
+            prezzoMobBuy.setPrefSize(125,50);
             VBox vBox1 = new VBox(labelArtWorkNameMobBuy, labelArtistNameMobBuy);
             vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
             HBox.setHgrow(labelArtWorkNameMobBuy, Priority.ALWAYS);
-            VBox vBox2 = new VBox(labelArtWorkDefaultMob, labelArtistNameDefaultMob);
-            vBox2.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultMob.setText("Titolo Opera: ");
-            labelArtWorkDefaultMob.setAlignment(Pos.CENTER);
-            labelArtWorkDefaultMob.setPrefSize(75, 25);
-            String font = "-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #000000;";
-            labelArtWorkDefaultMob.setStyle(font);
-            labelArtistNameDefaultMob.setText("Nome Autore: ");
-            labelArtistNameDefaultMob.setAlignment(Pos.CENTER);
-            labelArtistNameDefaultMob.setPrefSize(75, 25);
-            labelArtistNameDefaultMob.setStyle(font);
+            HBox.setMargin(vBox1, new Insets(10, 10, 10, 45));
             buttonAcquistaMobBuy.setText("Acquista");
             buttonAcquistaMobBuy.setPrefSize(90, 25);
             buttonAcquistaMobBuy.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
@@ -174,11 +158,25 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment( idOpera, idBuyer);
+                            try {
+                                sa.finishPayment( idOpera, idBuyer);
+                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquistaMobBuy.setPrefSize(90,35);
                             buttonPreferitiMobBuy.setPrefSize(90,10);
                             buttonAcquistaMobBuy.setDisable(true);
                             buttonPreferitiMobBuy.setVisible(false);
+
+                            Dialog<String> dialog = new Dialog<>();
+                            ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+                            dialog.getDialogPane().getButtonTypes().add(type);
+
+                            dialog.setTitle("Pagamento");
+                            dialog.setHeaderText(null);
+                            dialog.setContentText("Pagamento con Paypal");
+
+                            dialog.showAndWait();
                             buttonAcquistaMobBuy.setAlignment(Pos.BOTTOM_CENTER);
                             buttonAcquistaMobBuy.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
                             buttonAcquistaMobBuy.setText("Opera Acquistata!");
@@ -189,10 +187,24 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            sa.finishPayment( idOpera, idBuyer);
+                            try {
+                                sa.finishPayment( idOpera, idBuyer);
+                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                                e.printStackTrace();
+                            }
                             buttonAcquistaMobBuy.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
                             buttonAcquistaMobBuy.setDisable(true);
                             buttonPreferitiMobBuy.setVisible(false);
+
+                            Dialog<String> dialog = new Dialog<>();
+                            ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+                            dialog.getDialogPane().getButtonTypes().add(type);
+
+                            dialog.setTitle("Pagamento");
+                            dialog.setHeaderText(null);
+                            dialog.setContentText("Pagamento con Carte");
+
+                            dialog.showAndWait();
                             buttonAcquistaMobBuy.setText("Opera Acquistata!");
                             buttonAcquistaMobBuy.setAlignment(Pos.BOTTOM_CENTER);
                             buttonAcquistaMobBuy.setPrefSize(90,35);
@@ -210,16 +222,26 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                    String answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy,idOpera,idBuyer);
+                    String answer = null;
+                    try {
+                        answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy.getText(),idOpera,idBuyer);
+                    } catch (FavouritesManagementProblemException e) {
+                        e.printStackTrace();
+                    }
                     buttonPreferitiMobBuy.setText(answer);
                 }
             });
 
 
-            this.getChildren().addAll(imageView, vBox2, vBox1, prezzoDefaultMobBuy, prezzoMobBuy, vBox);
+            this.getChildren().addAll(imageView, vBox1,prezzoMobBuy, vBox);
         }
 
     } public void populateListView(String input) throws SQLException, IOException {
+        paneExLoad.setVisible(false);
+        if(toglleCat1.isSelected()){category = "impressionista";}
+        if(toglleCat2.isSelected()){category = "espressionista";}
+        if(toglleCat3.isSelected()){category = "stilizzato";}
+
         if (listView.getItems().size()!=0){
             listView =new ListView<>();
         }
@@ -241,11 +263,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
 
         } catch ( ArtWorkNotFoundException throwables) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-
-            ev = ef.createView(ExceptionsTypeMenager.ARTWORKNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+            paneExLoad.setVisible(true);
         }
     }
     private Image extractImage(Blob blob1){

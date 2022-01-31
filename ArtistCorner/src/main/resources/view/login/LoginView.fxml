@@ -33,8 +33,8 @@
             <AnchorPane fx:id="anchorSummarySignUp" layoutX="453.0" prefHeight="340.0" prefWidth="376.0" style="-fx-background-color: #ffffff;">
                 <children>
                     <Button layoutX="67.0" layoutY="80.0" mnemonicParsing="false" onAction="#goToArtistSignUp" prefHeight="48.0" prefWidth="243.0" text="Come Artista" />
-                    <Button layoutX="67.0" layoutY="142.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0" text="Come Galleria" />
-                    <Button layoutX="67.0" layoutY="206.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0" text="Come Acquirente" />
+                    <Button layoutX="67.0" layoutY="142.0" mnemonicParsing="false" onAction="#goToGallerySignUp" prefHeight="48.0" prefWidth="243.0" text="Come Galleria" />
+                    <Button layoutX="67.0" layoutY="206.0" mnemonicParsing="false" onAction="#goToBuyerSignUp" prefHeight="48.0" prefWidth="243.0" text="Come Acquirente" />
                 </children>
             </AnchorPane>
                 <Button fx:id="buttonMenuLogIn" layoutY="90.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" text="Log In" />
