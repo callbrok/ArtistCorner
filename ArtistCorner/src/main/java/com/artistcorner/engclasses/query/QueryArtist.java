@@ -1,5 +1,6 @@
 package com.artistcorner.engclasses.query;
 
+import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 import com.artistcorner.model.User;
@@ -39,6 +40,17 @@ public class QueryArtist {
     public static ResultSet selectSellArtWork(Statement stmt, int idArtista) throws SQLException {
         String sql = "SELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE artista =" + idArtista + ";";
         return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet selectAllArtWork(Statement stmt, int idArtista) throws SQLException {
+        String sql = "SELECT * FROM opera WHERE artista =" + idArtista + ";";
+        return stmt.executeQuery(sql);
+    }
+
+    public static int deleteArtWork(Statement stmt, ArtWork art) throws SQLException  {
+        String deleteStatement = String.format("DELETE FROM  opera  WHERE idOpera = %s", art.getIdOpera());
+        System.out.println(deleteStatement);
+        return stmt.executeUpdate(deleteStatement);
     }
 
     public static ResultSet selectAllArtWorksImage(Statement stmt, int idArtista, String lastAction) throws SQLException {

@@ -1,6 +1,7 @@
 package com.artistcorner.controller.guicontroller.viewprofile;
 
 import com.artistcorner.controller.applicationcontroller.ViewProfile;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
@@ -23,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
@@ -152,10 +154,11 @@ public class GuiControllerViewProfile {
 
     private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
         ViewProfile vp = new ViewProfile();
-        List<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWorkBean> listOfArtWorks = null;  // Prendi tutte le opere caricate dall'artista.
+
 
         try {
-            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
+            listOfArtWorks = vp.retrieveAllArtWorksImage(art);
 
             tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
             tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
@@ -170,9 +173,9 @@ public class GuiControllerViewProfile {
 
             anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
 
-            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
+            for (ArtWorkBean b : listOfArtWorks){    // Scorre tutti i blob relativi all'artista.
 
-                InputStream inputStream = b.getBinaryStream();
+                InputStream inputStream = b.getImmagine().getBinaryStream();
 
                 /*1)preserveRatio:
                 Indicates whether to preserve the aspect ratio of the source image when scaling to
@@ -187,7 +190,25 @@ public class GuiControllerViewProfile {
                 imageThumb.setImage(image);
 
                 imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlob.getChildren().add(imageThumb);   // Popola la tilePane.
+
+                // Implementa eliminazione opera.
+                Button buttonRemove = new Button();
+                buttonRemove.setText("Rimuovi");
+                VBox vBoxInfo = new VBox(imageThumb, buttonRemove);
+                vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
+
+                buttonRemove.setOnAction(event2 -> {
+                    SceneController scvpd = new SceneController();
+                    vp.removeArtWork(b);
+
+                    try {
+                        scvpd.switchToSceneProfiloArtista(event2, art);
+                    } catch (IOException | SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                tilePaneBlob.getChildren().add(vBoxInfo);   // Popola la tilePane.
             }
 
         } catch (ArtWorkNotFoundException e) {

@@ -1,8 +1,10 @@
 package com.artistcorner.controller.applicationcontroller;
 
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 
 import java.sql.Blob;
@@ -11,18 +13,29 @@ import java.util.List;
 
 public class ViewProfile {
 
-    public List<Blob> retrieveAllArtWorksImage(ArtistBean artBean) throws ArtWorkNotFoundException {
+    public List<ArtWorkBean> retrieveAllArtWorksImage(ArtistBean artBean) throws ArtWorkNotFoundException {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        List<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWork> listOfAllArtWorks = ArtistDAO.retrieveAllArtWorks(art.getIdArtista());  // Prendi tutte le opere caricate dall'artista.
+        ArrayList<ArtWorkBean> listOfAllArtWorksBean = new ArrayList<>();
 
-        if(listOfArtWorksImage.isEmpty()){
+        if(listOfAllArtWorks.isEmpty()){
             throw new ArtWorkNotFoundException("Nessun opera caricata");
         }
 
-        return listOfArtWorksImage;
+        for(ArtWork n: listOfAllArtWorks){
+            listOfAllArtWorksBean.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto(), n.getArtistaId(), n.getCategoria(), n.getImmagine()));
+        }
 
+        return listOfAllArtWorksBean;
+    }
+
+
+    public void removeArtWork(ArtWorkBean artWork){
+        ArtWork artToRemove = new ArtWork(artWork.getIdOpera(), artWork.getTitolo(), artWork.getPrezzo(), artWork.getFlagVendibile(), artWork.getArtistId(), artWork.getCategoria(), artWork.getImmagine());
+
+        ArtistDAO.removeArtWork(artToRemove);
     }
 
 }

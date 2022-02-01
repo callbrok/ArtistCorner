@@ -153,8 +153,71 @@ public class ArtistDAO {
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
                 String categoria = rs.getString("categoria");
+                Blob immagine = rs.getBlob("immagine");
 
-                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
+                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria, immagine);
+                listOfArtWork.add(at);
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se3) {
+                se3.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se4) {
+                se4.printStackTrace();
+            }
+        }
+
+        return listOfArtWork;
+    }
+
+
+    public static List<ArtWork> retrieveAllArtWorks(int idUsr){
+        ArrayList<ArtWork> listOfArtWork = new ArrayList<>();
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryArtist.selectAllArtWork(stmt, idUsr);
+
+            if (!rs.first()){ // rs empty
+                return Collections.emptyList();
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String titolo = rs.getString("titolo");
+                int venduto = rs.getInt("flagVendibile");
+                double prezzo = rs.getDouble("prezzo");
+                int idOpera = rs.getInt("idOpera");
+                int artistaId = rs.getInt("artista");
+                String categoria = rs.getString("categoria");
+                Blob immagine = rs.getBlob("immagine");
+
+                ArtWork at = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria, immagine);
                 listOfArtWork.add(at);
 
             }while(rs.next());
@@ -253,7 +316,40 @@ public class ArtistDAO {
         }
     }
 
+    public static void removeArtWork(ArtWork instance) {
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
 
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryArtist.deleteArtWork(stmt, instance);
+
+        }catch (Exception e6){
+            e6.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
 
     public static List<Blob> retrieveAllArtWorksImage(int idUsr, String lastAction){
         ArrayList<Blob> listOfArtWorksImage = new ArrayList<>();

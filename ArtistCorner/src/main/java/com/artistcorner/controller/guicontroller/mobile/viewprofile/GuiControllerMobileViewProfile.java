@@ -1,6 +1,7 @@
 package com.artistcorner.controller.guicontroller.mobile.viewprofile;
 
 import com.artistcorner.controller.applicationcontroller.ViewProfile;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
@@ -13,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -21,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -97,10 +100,10 @@ public class GuiControllerMobileViewProfile {
 
     private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
         ViewProfile vp = new ViewProfile();
-        List<Blob> listOfArtWorksImage = null;  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWorkBean> listOfArtWorks = null;  // Prendi tutte le opere caricate dall'artista.
 
         try {
-            listOfArtWorksImage = vp.retrieveAllArtWorksImage(art);
+            listOfArtWorks = vp.retrieveAllArtWorksImage(art);
 
             tilePaneBlobM.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
             tilePaneBlobM.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
@@ -116,9 +119,9 @@ public class GuiControllerMobileViewProfile {
 
             anchorPaneFocusM.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocusM.setVisible(false));
 
-            for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
+            for (ArtWorkBean b : listOfArtWorks){    // Scorre tutti i blob relativi all'artista.
 
-                InputStream inputStream = b.getBinaryStream();
+                InputStream inputStream = b.getImmagine().getBinaryStream();
 
                 /*1)preserveRatio:
                 Indicates whether to preserve the aspect ratio of the source image when scaling to
@@ -133,7 +136,25 @@ public class GuiControllerMobileViewProfile {
                 imageThumb.setImage(image);
 
                 imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
-                tilePaneBlobM.getChildren().add(imageThumb);   // Popola la tilePane.
+
+                // Implementa eliminazione opera.
+                Button buttonRemove = new Button();
+                buttonRemove.setText("Rimuovi");
+                VBox vBoxInfo = new VBox(imageThumb, buttonRemove);
+                vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
+
+                buttonRemove.setOnAction(event2 -> {
+                    SceneControllerMobile scvpd = new SceneControllerMobile();
+                    vp.removeArtWork(b);
+
+                    try {
+                        scvpd.switchToSceneProfiloArtista(event2, art);
+                    } catch (IOException | SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                tilePaneBlobM.getChildren().add(vBoxInfo);   // Popola la tilePane.
             }
 
         } catch (ArtWorkNotFoundException e) {
