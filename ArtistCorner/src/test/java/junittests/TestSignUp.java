@@ -15,18 +15,26 @@ public class TestSignUp {
 
     @Test
     public void testRegistrationDuplicateArtistUsername(){
-//        SignUp sgup = new SignUp();
-//        boolean duplicateUsername = false;
-//
-//        ArtistBean artistToCheck = new ArtistBean("Alba","DeRose");
-//        UserBean userToCheck = new UserBean("artista1", "ispw21", "artista");
-//
-//        // Artist with user artista1 already exist.
-//        try {
-//            sgup.registerArtist(userToCheck, artistToCheck);
-//        } catch (DuplicateUserException e) {
-//            duplicateUsername=true;
-//        }
-//        assertEquals(true, duplicateUsername);
+        SignUp sgup = new SignUp();
+        boolean duplicateUsername = false;
+
+        ArtistBean artistToCheck = new ArtistBean();
+
+        artistToCheck.setNome("Alba");
+        artistToCheck.setCognome("DeRose");
+
+        UserBean userToCheck = new UserBean();
+
+        userToCheck.setUsername("artista1");
+        userToCheck.setPassword("ispw21");
+        userToCheck.setRole("artista");
+
+        // Artist with user artista1 already exist.
+        try {
+            sgup.registerArtist(userToCheck, artistToCheck);
+        } catch (DuplicateUserException e) {
+            duplicateUsername=true;
+        }
+        assertEquals(true, duplicateUsername);
     }
 }

@@ -33,6 +33,8 @@ import java.util.List;
 
 public class GuiControllerMobileViewSearchArtWorkBuyer {
     @FXML
+    private Button buttonFavourite;
+    @FXML
     private AnchorPane anchorMainMobBuySearch;
     @FXML
     private Label labelUsernameDisplay;
@@ -65,6 +67,8 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
     public void getBuyer(BuyerBean loggedBuyer){
         buy = loggedBuyer;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
         labelUsernameDisplay.setText(buy.getNome() + " " + buy.getCognome());
+
+        if(buy.getIdBuyer() == 13){buttonFavourite.setDisable(true);}
     }
 
     public void exitWindow() {
@@ -146,6 +150,10 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
             buttonPreferitiMobBuy.setText(labelPreferitiMobBuy);
             buttonPreferitiMobBuy.setPrefSize(90, 25);
             buttonPreferitiMobBuy.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
+
+            if(buy.getIdBuyer() == 13){buttonAcquistaMobBuy.setDisable(true);}
+            if(buy.getIdBuyer() == 13){buttonPreferitiMobBuy.setDisable(true);}
+
             VBox vBox = new VBox(buttonAcquistaMobBuy, buttonPreferitiMobBuy);
             vBox.setSpacing(2.5);
             vBox.setAlignment(Pos.CENTER);

@@ -44,7 +44,7 @@
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
          <children>
-            <ScatterChart fx:id="scatterChartCommit" layoutX="2.0" layoutY="7.0" prefHeight="512.0" prefWidth="875.0">
+            <ScatterChart fx:id="scatterChartCommit" layoutX="2.0" layoutY="3.0" prefHeight="529.0" prefWidth="875.0">
               <xAxis>
                 <CategoryAxis endMargin="0.0" side="BOTTOM" startMargin="0.0" fx:id="xAxisChart" />
               </xAxis>

@@ -63,6 +63,7 @@ public class GuiControllerViewLogAnalytics {
         yAxisChart.setUpperBound(24);
         yAxisChart.setTickUnit(2);
         yAxisChart.setLabel("Fascia Oraria");
+        xAxisChart.setLabel("\nClicca su qualsiasi nodo (cerchio o quadrato)");
 
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
@@ -123,6 +124,8 @@ public class GuiControllerViewLogAnalytics {
             double orarioDouble = Double.parseDouble(orario);
 
             String data = cmt.getData().substring(0,8);
+
+            if(data.equals("12/11/21") || data.equals("24/01/22") ){continue;}
 
             // A seconda del proprietario del commit inserisce in una serie di numeri diversa.
             if(cmt.getNome().equals("Marco Purificato")){

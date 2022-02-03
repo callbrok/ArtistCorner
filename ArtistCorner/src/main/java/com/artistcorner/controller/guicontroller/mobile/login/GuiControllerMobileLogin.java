@@ -146,4 +146,18 @@ public class GuiControllerMobileLogin {
 
         dialog.showAndWait();
     }
+
+    public void goToGuest(ActionEvent event) {
+        UserBean us = new UserBean();
+
+        us.setUsername("acquirenteGUEST");
+        us.setPassword("ispw21");
+
+        try {
+            lg.credentialLogin(us, event, "M");
+        }catch (UserNotFoundException | IOException e){
+            labelExceptionLoginM.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+    }
 }

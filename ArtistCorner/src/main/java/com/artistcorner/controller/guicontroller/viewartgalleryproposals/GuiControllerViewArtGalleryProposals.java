@@ -10,9 +10,6 @@ import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -145,7 +142,7 @@ public class GuiControllerViewArtGalleryProposals {
      * A seconda dell'indirizzo mostra a video una mappa Google Maps interattiva.
      */
     private void setWebMap(String luogo) {
-        webMap.getEngine().setUserStyleSheetLocation(getClass().getResource("/css/artist/webViewMap.css").toExternalForm());  // Elimina la scrollbar nella webView
+        webMap.getEngine().setUserStyleSheetLocation(getClass().getResource("/css/webViewMap.css").toExternalForm());  // Elimina la scrollbar nella webView
 
         /**
          * L'html nella WebView viene caricato ed interpretato da un thread in background il cui progresso

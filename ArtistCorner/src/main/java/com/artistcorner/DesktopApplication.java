@@ -14,7 +14,7 @@ public class DesktopApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(DesktopApplication.class.getResource("/view/login/LoginView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(getClass().getResource("/css/artist/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/desktop/main.css").toExternalForm());
         scene.setFill(Color.TRANSPARENT);
 
         stage.setTitle("Hello!");
