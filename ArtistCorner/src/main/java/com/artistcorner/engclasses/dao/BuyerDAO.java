@@ -24,7 +24,7 @@ public class BuyerDAO {
         throw new IllegalStateException("Utility class");
     }
 
-    public static Buyer retrieveBuyer(UserBean usr){
+    public static Buyer retrieveBuyer(User usr){
         Buyer bu = null;
         Statement stmt = null;
         Connection conn = null;

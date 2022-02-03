@@ -42,8 +42,11 @@ public class QueryArtist {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet selectAllArtWork(Statement stmt, int idArtista) throws SQLException {
+    public static ResultSet selectAllArtWork(Statement stmt, int idArtista, String lastAction) throws SQLException {
         String sql = "SELECT * FROM opera WHERE artista =" + idArtista + ";";
+
+        if(lastAction.equals("LAST")){sql = "SELECT * FROM opera WHERE artista =" + idArtista + " ORDER BY idOpera DESC LIMIT 2;";}
+
         return stmt.executeQuery(sql);
     }
 

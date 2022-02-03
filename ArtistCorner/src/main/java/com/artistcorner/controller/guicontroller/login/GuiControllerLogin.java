@@ -90,7 +90,10 @@ public class GuiControllerLogin {
     }
 
     public void sendData(ActionEvent actionEvent) throws IOException {
-        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
+        UserBean us = new UserBean();
+
+        us.setUsername(textFieldUsername.getText());
+        us.setPassword(textFieldPassword.getText());
 
         try {
             lg.credentialLogin(us, actionEvent, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
@@ -160,7 +163,10 @@ public class GuiControllerLogin {
     }
 
     public void loginGuestBuyer(ActionEvent event) throws IOException {
-        UserBean us = new UserBean("acquirenteGUEST", "ispw21");
+        UserBean us = new UserBean();
+
+        us.setUsername("acquirenteGUEST");
+        us.setPassword("ispw21");
 
         try {
             lg.credentialLogin(us, event, "D");   // Passa le credenziali al controller applicativo per effettuare il login.

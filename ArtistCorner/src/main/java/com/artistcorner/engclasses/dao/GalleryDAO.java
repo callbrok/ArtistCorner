@@ -24,7 +24,7 @@ public class GalleryDAO {
 
         throw new IllegalStateException("Utility class");
     }
-    public static ArtGallery retrieveGallery(UserBean loggedUserBean) {
+    public static ArtGallery retrieveGallery(User loggedUser) {
         ArtGallery gal = null;
         Statement stmt = null;
         Connection conn = null;
@@ -37,7 +37,7 @@ public class GalleryDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryGallery.selectGallery(stmt, loggedUserBean.getUsername());
+            ResultSet rs = QueryGallery.selectGallery(stmt, loggedUser.getUsername());
 
             if (!rs.first()){ // rs empty
                 throw new ArtGalleryNotFoundException("ArtGallery non trovata");

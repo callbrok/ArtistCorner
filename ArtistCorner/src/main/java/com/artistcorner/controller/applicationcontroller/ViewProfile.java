@@ -17,15 +17,20 @@ public class ViewProfile {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        List<ArtWork> listOfAllArtWorks = ArtistDAO.retrieveAllArtWorks(art.getIdArtista());  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWork> listOfAllArtWorks = ArtistDAO.retrieveAllArtWorks(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
         ArrayList<ArtWorkBean> listOfAllArtWorksBean = new ArrayList<>();
+        ArtWorkBean artWBean = new ArtWorkBean();
 
         if(listOfAllArtWorks.isEmpty()){
             throw new ArtWorkNotFoundException("Nessun opera caricata");
         }
 
         for(ArtWork n: listOfAllArtWorks){
-            listOfAllArtWorksBean.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto(), n.getArtistaId(), n.getCategoria(), n.getImmagine()));
+            artWBean.setIdOpera(n.getIdOpera());
+            artWBean.setTitolo(n.getTitolo());
+            artWBean.setImmagine(n.getImmagine());
+
+            listOfAllArtWorksBean.add(artWBean);
         }
 
         return listOfAllArtWorksBean;

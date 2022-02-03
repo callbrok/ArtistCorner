@@ -20,7 +20,10 @@ import java.util.List;
 public class ViewFavouritesBuyer {
 
 
-    public String manageButtonClick(String buttonPreferiti, int idOpera, int idBuyer ) throws FavouritesManagementProblemException {
+    public String manageButtonClick(String buttonPreferiti, ArtWorkBean art, BuyerBean buy ) throws FavouritesManagementProblemException {
+        int idOpera= art.getIdOpera();
+        int idBuyer= buy.getIdBuyer();
+
         String addPreferiti = "Aggiungi ai Preferiti";
         String remPreferiti = "Rimuovi dai Preferiti";
         switch (buttonPreferiti){
@@ -49,7 +52,9 @@ public class ViewFavouritesBuyer {
         return remPreferiti;
     }
 
-    public void finishPayment(int idOpera, int idBuyer) throws BuyArtWorkManagementProblemException, FavouritesManagementProblemException {
+    public void finishPayment(ArtWorkBean art, BuyerBean buy) throws BuyArtWorkManagementProblemException, FavouritesManagementProblemException {
+                int idOpera = art.getIdOpera();
+                int idBuyer = buy.getIdBuyer();
 
                 try {
                     BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
@@ -61,6 +66,7 @@ public class ViewFavouritesBuyer {
 
                 }
     }
+
     public List<Integer> retrieveArtWorkId(BuyerBean buyer) throws ArtWorkNotFoundException {
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
         List<Integer> artWorkId = BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
@@ -72,13 +78,29 @@ public class ViewFavouritesBuyer {
 
     public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, 1);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria(), a.getImmagine());
 
+        ArtWorkBean artWB = new ArtWorkBean();
+
+        artWB.setIdOpera(a.getIdOpera());
+        artWB.setTitolo(a.getTitolo());
+        artWB.setPrezzo(a.getPrezzo());
+        artWB.setFlagVendibile(a.getFlagVenduto());
+        artWB.setArtistId(a.getArtistaId());
+        artWB.setCategoria(a.getCategoria());
+        artWB.setImmagine(a.getImmagine());
+
+        return artWB;
     }
 
 
     public ArtistBean retrieveArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());
-        return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
+        ArtistBean artB = new ArtistBean();
+
+        artB.setIdArtista(artist.getIdArtista());
+        artB.setNome(artist.getNome());
+        artB.setCognome(artist.getCognome());
+
+        return artB;
     }
 }

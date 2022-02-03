@@ -56,8 +56,16 @@ public class GuiControllerSignUp {
     private SignUp signUp = new SignUp();
 
     public void registerArtist() {
-        UserBean userReg = new UserBean(textFieldUserArtist.getText(), textFieldPassArtist.getText(), "artista");
-        ArtistBean artistReg = new ArtistBean(textFieldNomeArtist.getText(), textFieldCognomeArtist.getText());
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserArtist.getText());
+        userReg.setPassword(textFieldPassArtist.getText());
+        userReg.setRole("artista");
+
+        ArtistBean artistReg = new ArtistBean();
+
+        artistReg.setNome(textFieldNomeArtist.getText());
+        artistReg.setCognome(textFieldCognomeArtist.getText());
 
         try {
             signUp.registerArtist(userReg, artistReg);
@@ -72,8 +80,16 @@ public class GuiControllerSignUp {
         textFieldCognomeArtist.clear();
     }
     public void registerBuyer(){
-        UserBean userReg = new UserBean(textFieldUserBuyer.getText(), textFieldPassBuyer.getText(), "acquirente");
-        BuyerBean buyerReg = new BuyerBean(textFieldNomeBuyer.getText(),textFieldCognomeBuyer.getText());
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserBuyer.getText());
+        userReg.setPassword(textFieldUserBuyer.getText());
+        userReg.setRole("acquirente");
+
+        BuyerBean buyerReg = new BuyerBean();
+
+        buyerReg.setNome(textFieldNomeBuyer.getText());
+        buyerReg.setCognome(textFieldCognomeBuyer.getText());
 
         try {
             signUp.registerBuyer(userReg, buyerReg);
@@ -88,9 +104,21 @@ public class GuiControllerSignUp {
 
     }
     public void registerGallery(){
-        UserBean userReg = new UserBean(textFieldUserGallery.getText(), textFieldPassGallery.getText(), "galleria");
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserGallery.getText());
+        userReg.setPassword(textFieldPassGallery.getText());
+        userReg.setRole("galleria");
+
         String address = textFieldAddressGallery.getText()+", "+textFieldNumber.getText()+", "+textFieldCap.getText()+" "+textFieldCity.getText();
-        ArtGalleryBean artGalleryReg = new ArtGalleryBean(textFieldNomeGallery.getText(),textFieldDescriptionGallery.getText(),address,textFieldUserGallery.getText());
+
+        ArtGalleryBean artGalleryReg = new ArtGalleryBean();
+
+        artGalleryReg.setNome(textFieldNomeGallery.getText());
+        artGalleryReg.setDescrizione(textFieldDescriptionGallery.getText());
+        artGalleryReg.setIndirizzo(address);
+        artGalleryReg.setUsername(textFieldUserGallery.getText());
+
         try {
             signUp.registerGallery(userReg, artGalleryReg);
         } catch (DuplicateUserException e) {

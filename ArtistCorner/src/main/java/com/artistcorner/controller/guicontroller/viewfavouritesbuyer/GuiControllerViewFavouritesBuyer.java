@@ -135,7 +135,7 @@ public class GuiControllerViewFavouritesBuyer {
                 Button buttonPreferitiFavDesk = new Button();
                 Label prezzoFavDesk = new Label();
 
-                public HBoxCell(String artWorkFavText, String artistFavText, Image imageFav, int idOperaFav, double priceFav, String preferitiText, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdFavDesk, String input, BuyerBean buy) throws SQLException, IOException {
+                public HBoxCell(String artWorkFavText, String artistFavText, Image imageFav, int idOperaFav, double priceFav, String preferitiText, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdFavDesk, String input, BuyerBean buy, ArtWorkBean artWorkBean) throws SQLException, IOException {
                         super();
                         ImageView imageView = new ImageView();
                         imageView.setImage(imageFav);
@@ -182,7 +182,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
                                                         try {
-                                                                lv.finishPayment( idOperaFav, idBuyer);
+                                                                lv.finishPayment( artWorkBean, buy);
                                                         } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
@@ -197,7 +197,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
                                                         try {
-                                                                lv.finishPayment( idOperaFav, idBuyer);
+                                                                lv.finishPayment( artWorkBean, buy);
                                                         } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
@@ -220,7 +220,7 @@ public class GuiControllerViewFavouritesBuyer {
                                 String prefString = buttonPreferitiFavDesk.getText();
                                 String answer = null;
                                 try {
-                                        answer = lv.manageButtonClick(prefString,idOperaFav,idBuyer);
+                                        answer = lv.manageButtonClick(prefString,artWorkBean,buy);
                                 } catch (FavouritesManagementProblemException e) {
                                         e.printStackTrace();
                                 }
@@ -255,7 +255,7 @@ public class GuiControllerViewFavouritesBuyer {
                                 artWorkFav = vfb.retrieveArtWork(i);
                                 artistFav = vfb.retrieveArtistName(artWorkFav);
                                 Image image1 = extractImage(artWorkFav.getImmagine());
-                                listView.getItems().add(new HBoxCell(artWorkFav.getTitolo(), artistFav.getNome()+" "+artistFav.getCognome(),image1, artWorkFav.getIdOpera(), artWorkFav.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistFav.getIdArtista(),arrayOfArtWorkIdFav,"", buy));
+                                listView.getItems().add(new HBoxCell(artWorkFav.getTitolo(), artistFav.getNome()+" "+artistFav.getCognome(),image1, artWorkFav.getIdOpera(), artWorkFav.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistFav.getIdArtista(),arrayOfArtWorkIdFav,"", buy, artWorkFav));
 
                         }
 

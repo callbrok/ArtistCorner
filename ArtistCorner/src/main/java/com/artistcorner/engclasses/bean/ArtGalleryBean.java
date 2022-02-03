@@ -7,19 +7,12 @@ public class ArtGalleryBean {
     private String indirizzo;
     private String username;
 
-    public  ArtGalleryBean(int newGalleriaB, String newNomeB, String newDescrizioneB, String newIndirizzoB, String newUsernameB){
-        this.galleria = newGalleriaB;
-        this.nome = newNomeB;
-        this.descrizione = newDescrizioneB;
-        this.indirizzo = newIndirizzoB;
-        this.username = newUsernameB;
-    }
-    public ArtGalleryBean(String newNome, String newDescrizione, String newIndirizzo, String newUsername){
-        this.nome=newNome;
-        this.descrizione = newDescrizione;
-        this.indirizzo = newIndirizzo;
-        this.username = newUsername;
-    }
+
+    public void setNome(String nome) {this.nome = nome;}
+    public void setGalleria(int galleria) {this.galleria = galleria;}
+    public void setUsername(String username) {this.username = username;}
+    public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
+    public void setIndirizzo(String indirizzo) {this.indirizzo = indirizzo;}
 
     public String getNome() {return nome;}
     public int getGalleria() {return galleria;}

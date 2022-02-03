@@ -18,7 +18,9 @@ import java.util.List;
 
 public class ViewSearchArtWorkGallery {
 
-    public String manageButtonClick(Button buttonProposta, int idGallery, int idArtista) throws SQLException {
+    public String manageButtonClick(Button buttonProposta, ArtGalleryBean artGalBean, ArtistBean artistBean) throws SQLException {
+        int idGallery=artGalBean.getGalleria();
+        int idArtista=artistBean.getIdArtista();
         int flag =0;
         String  remProposta = "Ritira Proposta";
         switch (buttonProposta.getText()){
@@ -42,17 +44,35 @@ public class ViewSearchArtWorkGallery {
 
     public ArtistBean retrieveGallerySearchArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());   // faccio il retrieve dell'artista associato all'opera selezionata
-        return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
+        ArtistBean artBean = new ArtistBean();
+
+        artBean.setIdArtista(artist.getIdArtista());
+        artBean.setNome(artist.getNome());
+        artBean.setCognome(artist.getCognome());
+
+        return artBean;
     }
 
-    public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(String input,String category) throws ArtWorkNotFoundException {
+    public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(ArtWorkBean artToSearch) throws ArtWorkNotFoundException {
+        String category=artToSearch.getCategoria();
+        String input=artToSearch.getTitolo();
 
         List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
+        ArtWorkBean artWorkBean = new ArtWorkBean();
+
         if(artWorkList.isEmpty()){throw new ArtWorkNotFoundException("nessuna opera trovata");
         }
         for (ArtWork a : artWorkList) {
-            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria(), a.getImmagine()));
+            artWorkBean.setIdOpera(a.getIdOpera());
+            artWorkBean.setTitolo(a.getTitolo());
+            artWorkBean.setPrezzo(a.getPrezzo());
+            artWorkBean.setFlagVendibile(a.getFlagVenduto());
+            artWorkBean.setArtistId(a.getArtistaId());
+            artWorkBean.setCategoria(a.getCategoria());
+            artWorkBean.setImmagine(a.getImmagine());
+
+            arrayArtWorkBean.add(artWorkBean);
         }
         return arrayArtWorkBean;
     }

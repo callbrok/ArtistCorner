@@ -1,6 +1,7 @@
 package com.artistcorner.engclasses.query;
 
 import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +11,8 @@ public class QueryLogin {
 
     private QueryLogin(){throw new IllegalStateException("Utility Query Login class");}
 
-    public static ResultSet selectUser(Statement stmt, UserBean userBean) throws SQLException {
-        String sql = "SELECT * FROM utente WHERE username ='" + userBean.getUsername() + "' AND password='" + userBean.getPassword() + "';";
+    public static ResultSet selectUser(Statement stmt, User user) throws SQLException {
+        String sql = "SELECT * FROM utente WHERE username ='" + user.getUsername() + "' AND password='" + user.getPassword() + "';";
         return stmt.executeQuery(sql);
     }
 }

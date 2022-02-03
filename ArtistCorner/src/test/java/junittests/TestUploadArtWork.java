@@ -20,7 +20,13 @@ public class TestUploadArtWork {
         UploadArtWork upju = new UploadArtWork();
         int code = -1;
 
-        ArtWorkBean artWorkToCheck = new ArtWorkBean("Titolo Opera",999,1,1,"impressionista");
+        ArtWorkBean artWorkToCheck = new ArtWorkBean();
+
+        artWorkToCheck.setTitolo("Titolo Opera");
+        artWorkToCheck.setCategoria("impressionista");
+        artWorkToCheck.setArtistId(1);
+        artWorkToCheck.setPrezzo(999);
+        artWorkToCheck.setFlagVendibile(1);
 
         try {
             upju.uploadImage(artWorkToCheck,"");

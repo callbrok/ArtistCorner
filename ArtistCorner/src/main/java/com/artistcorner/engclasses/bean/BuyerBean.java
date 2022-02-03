@@ -6,15 +6,10 @@ public class BuyerBean {
     private String cognome;
 
 
-    public BuyerBean(int newIdBuyer, String newNome, String newCognome) {
-        this.idBuyer = newIdBuyer;
-        this.nome = newNome;
-        this.cognome = newCognome;
-    }
-    public BuyerBean(String newNome,String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-    }
+
+    public void setCognome(String cognome) {this.cognome = cognome;}
+    public void setIdBuyer(int idBuyer) {this.idBuyer = idBuyer;}
+    public void setNome(String nome) {this.nome = nome;}
 
     public int getIdBuyer() {return idBuyer;}
     public String getNome() {return nome;}

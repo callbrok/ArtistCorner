@@ -100,7 +100,7 @@ public class GuiControllerGallerySummary {
         ViewGallerySummary vgs = new ViewGallerySummary();
         List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
         for (ProposalBean n : arrayOfProposal) {
-            ArtistBean artistProposal = vgs.retrieveArtistNameGallerySum(n.getArtista());
+            ArtistBean artistProposal = vgs.retrieveArtistNameGallerySum(n);
             String artistNameProposal = artistProposal.getNome() + " " + artistProposal.getCognome();
             listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistNameProposal);  // Popola la listView.
         }

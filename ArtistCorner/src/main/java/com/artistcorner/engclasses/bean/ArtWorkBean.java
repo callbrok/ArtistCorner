@@ -13,27 +13,6 @@ public class ArtWorkBean {
     private Blob immagine;
 
 
-    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId, String newCategoria, Blob newImmagine){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
-        this.categoria = newCategoria;
-        this.immagine = newImmagine;
-    }
-
-
-    public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId,String newCategoria){
-        this.idOpera=0;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
-        this.categoria = newCategoria;
-        this.immagine=null;
-    }
-
     public void setIdOpera(int idOpera) {this.idOpera = idOpera;}
     public void setTitolo(String titolo) {this.titolo = titolo;}
     public void setPrezzo(double prezzo) {this.prezzo = prezzo;}

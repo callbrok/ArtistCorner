@@ -60,8 +60,18 @@ public class GuiControllerMobileSignUp {
     private SignUp signUpM = new SignUp();
 
     public void registerArtistMob() {
-        UserBean userReg = new UserBean(textFieldUserArtistMob.getText(), textFieldPassArtistMob.getText(), "artista");
-        ArtistBean artistReg = new ArtistBean(textFieldNomeArtistMob.getText(), textFieldCognomeArtistMob.getText());
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserArtistMob.getText());
+        userReg.setPassword(textFieldPassArtistMob.getText());
+        userReg.setRole("artista");
+
+
+        ArtistBean artistReg = new ArtistBean();
+
+        artistReg.setNome(textFieldNomeArtistMob.getText());
+        artistReg.setCognome(textFieldCognomeArtistMob.getText());
+
 
         try {
             signUpM.registerArtist(userReg, artistReg);
@@ -76,8 +86,16 @@ public class GuiControllerMobileSignUp {
         textFieldCognomeArtistMob.clear();
     }
     public void registerBuyerMob(){
-        UserBean userReg = new UserBean(textFieldUserBuyerMob.getText(), textFieldPassBuyerMob.getText(), "acquirente");
-        BuyerBean buyerReg = new BuyerBean(textFieldNomeBuyerMob.getText(),textFieldCognomeBuyerMob.getText());
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserBuyerMob.getText());
+        userReg.setPassword(textFieldPassBuyerMob.getText());
+        userReg.setRole("acquirente");
+
+        BuyerBean buyerReg = new BuyerBean();
+
+        buyerReg.setNome(textFieldNomeBuyerMob.getText());
+        buyerReg.setCognome(textFieldCognomeBuyerMob.getText());
 
         try {
             signUpM.registerBuyer(userReg, buyerReg);
@@ -92,9 +110,22 @@ public class GuiControllerMobileSignUp {
 
     }
     public void registerGalleryMob(){
-        UserBean userReg = new UserBean(textFieldUserGalleryMob.getText(), textFieldPassGalleryMob.getText(), "galleria");
+        UserBean userReg = new UserBean();
+
+        userReg.setUsername(textFieldUserGalleryMob.getText());
+        userReg.setPassword(textFieldPassGalleryMob.getText());
+        userReg.setRole("galleria");
+
         String address = textFieldAddressGalleryMob.getText()+", "+textFieldNumberMob.getText()+", "+textFieldCapMob.getText()+" "+textFieldCityMob.getText();
-        ArtGalleryBean artGalleryReg = new ArtGalleryBean(textFieldNomeGalleryMob.getText(),textFieldDescriptionGalleryMob.getText(),address,textFieldUserGalleryMob.getText());
+
+        ArtGalleryBean artGalleryReg = new ArtGalleryBean();
+
+        artGalleryReg.setNome(textFieldNomeGalleryMob.getText());
+        artGalleryReg.setDescrizione(textFieldDescriptionGalleryMob.getText());
+        artGalleryReg.setIndirizzo(address);
+        artGalleryReg.setUsername(textFieldUserGalleryMob.getText());
+
+
         try {
             signUpM.registerGallery(userReg, artGalleryReg);
         } catch (DuplicateUserException e) {

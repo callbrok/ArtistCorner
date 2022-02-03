@@ -5,17 +5,10 @@ public class ArtistBean {
     private String nome;
     private String cognome;
 
-    public ArtistBean(int newId, String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = newId;
-    }
 
-    public ArtistBean(String newNome, String newCognome){
-        this.nome = newNome;
-        this.cognome = newCognome;
-        this.idArtista = 0;
-    }
+    public void setIdArtista(int idArtista) {this.idArtista = idArtista;}
+    public void setCognome(String cognome) {this.cognome = cognome;}
+    public void setNome(String nome) {this.nome = nome;}
 
     public String getNome() {return nome;}
     public int getIdArtista() {return idArtista;}

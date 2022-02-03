@@ -2,6 +2,7 @@ package com.artistcorner.controller.guicontroller.login.summarypanel;
 
 import com.artistcorner.controller.applicationcontroller.ViewArtistSummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.others.SceneController;
@@ -76,7 +77,7 @@ public class GuiControllerArtistSummary {
         List<ProposalBean> arrayOfProposalsBean = vps.retrieveArtGalleryProposals(art);
 
         for (ProposalBean n : arrayOfProposalsBean) {
-            ArtGalleryBean artG = vps.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+            ArtGalleryBean artG = vps.retrieveArtGallery(n);   // Fai un retrieve della galleria associata alla proposta.
             listLastProp.getItems().add(artG.getNome());  // Popola la listView.
         }
 
@@ -84,16 +85,16 @@ public class GuiControllerArtistSummary {
 
 
     public void initTileLastArt(ArtistBean art) {
-        List<Blob> listOfArtWorksImage = vps.retrieveAllArtWorksImage(art);  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWorkBean> listOfArtWorksImage = vps.retrieveAllArtWorksImage(art);  // Prendi tutte le opere caricate dall'artista.
 
         tilePaneLastArt.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
         tilePaneLastArt.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
 
-        for (Blob b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
+        for (ArtWorkBean b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
 
             InputStream inputStream = null;
             try {
-                inputStream = b.getBinaryStream();
+                inputStream = b.getImmagine().getBinaryStream();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

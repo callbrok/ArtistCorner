@@ -19,7 +19,10 @@ import java.util.List;
 
 public class ViewSearchArtWorkBuyer {
 
-    public String manageButtonClickFavourites(String buttonFavourites, int idArtWork, int idBuyer ) throws FavouritesManagementProblemException {
+    public String manageButtonClickFavourites(String buttonFavourites, ArtWorkBean artBean, BuyerBean buy ) throws FavouritesManagementProblemException {
+        int idArtWork= artBean.getIdOpera();
+        int idBuyer= buy.getIdBuyer();
+
         String addFavourites = "Aggiungi ai Preferiti";
         String remFavourites = "Rimuovi dai Preferiti";
         switch (buttonFavourites){
@@ -57,22 +60,41 @@ public class ViewSearchArtWorkBuyer {
 
     public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());
-        return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
+
+        ArtistBean artBean = new ArtistBean();
+        artBean.setNome(artist.getNome());
+
+        return artBean;
     }
 
-    public List<ArtWorkBean> retrieveSearchArtWorkByName(String input, String category) throws ArtWorkNotFoundException {
+    public List<ArtWorkBean> retrieveSearchArtWorkByName(ArtWorkBean artSearch) throws ArtWorkNotFoundException {
+        String input=artSearch.getTitolo();
+        String category=artSearch.getCategoria();
+
         List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
+        ArtWorkBean artWB = new ArtWorkBean();
+
         if (artWorkList.isEmpty()){
             throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
         }
         for (ArtWork a : artWorkList) {
-            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria(), a.getImmagine()));
+            artWB.setIdOpera(a.getIdOpera());
+            artWB.setTitolo(a.getTitolo());
+            artWB.setPrezzo(a.getPrezzo());
+            artWB.setFlagVendibile(a.getFlagVenduto());
+            artWB.setArtistId(a.getArtistaId());
+            artWB.setCategoria(a.getCategoria());
+            artWB.setImmagine(a.getImmagine());
+
+            arrayArtWorkBean.add(artWB);
         }
         return arrayArtWorkBean;
     }
 
-    public void finishPayment(int idOpera, int idBuyer) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
+    public void finishPayment(ArtWorkBean artBean, BuyerBean buy) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
+        int idOpera= artBean.getIdOpera();
+        int idBuyer= buy.getIdBuyer();
 
         try {
 

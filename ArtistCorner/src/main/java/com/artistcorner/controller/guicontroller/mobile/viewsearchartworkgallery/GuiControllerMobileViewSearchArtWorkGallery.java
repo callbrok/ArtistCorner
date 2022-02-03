@@ -123,7 +123,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         Label labelArtistNameDefault = new Label();
         Label labelArtWorkDefault = new Label();
 
-        public HBoxCellMobile(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input) throws SQLException, IOException {
+        public HBoxCellMobile(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input, ArtistBean artBean, ArtGalleryBean artGalBean) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(75);
@@ -158,7 +158,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sa.manageButtonClick(buttonOfferta, idGallery, idArtista);
+                        answer = sa.manageButtonClick(buttonOfferta, artGalBean, artBean);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -177,6 +177,8 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
 
     }
     public void populateListView(String input) throws SQLException, IOException {
+        ArtWorkBean artToSearch = new ArtWorkBean();
+
         paneExLoad.setVisible(false);
         if(toglleCat1.isSelected()){category = "impressionista";}
         if(toglleCat2.isSelected()){category = "espressionista";}
@@ -187,14 +189,17 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         }
         ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
         ArtistBean artist=null;
+        artToSearch.setCategoria(category);
+        artToSearch.setTitolo(input);
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input,category);
+            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(artToSearch);
             List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
+
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artist = vsg.retrieveGallerySearchArtistName(artWork);
                 Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
+                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input, artist, gal));
 
             }
         } catch (ArtWorkNotFoundException throwables) {

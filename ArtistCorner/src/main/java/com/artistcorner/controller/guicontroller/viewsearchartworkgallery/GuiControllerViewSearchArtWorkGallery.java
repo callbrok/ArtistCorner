@@ -155,7 +155,10 @@ public class GuiControllerViewSearchArtWorkGallery {
         sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
     }
     public void populateListView(String input) throws SQLException, IOException { //popola la listview con le opere disponibili
-       paneExceptionLoad.setVisible(false);
+        ArtWorkBean artToSearch = new ArtWorkBean();
+
+        paneExceptionLoad.setVisible(false);
+
         if(toglleCat1.isSelected()){category = "impressionista";}
         if(toglleCat2.isSelected()){category = "espressionista";}
         if(toglleCat3.isSelected()){category = "stilizzato";}
@@ -163,16 +166,20 @@ public class GuiControllerViewSearchArtWorkGallery {
         if (listView.getItems().size()!=0){ //le la listview non è vuota al momento della chiamata
             listView.getItems().clear();  //viene svuotata
         }
+
         ViewSearchArtWorkGallery vsawg = new ViewSearchArtWorkGallery();
         ArtistBean artistSearch;
 
+        artToSearch.setTitolo(input);
+        artToSearch.setCategoria(category);
+
         try{
-            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(input,category);    // lista opere disponibili in base all'input inserito nella textfield
+            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(artToSearch);    // lista opere disponibili in base all'input inserito nella textfield
             List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
             for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
                 artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
                 Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input));
+                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input,gal,artistSearch));
 
             }
         } catch ( ArtWorkNotFoundException throwables) {
@@ -184,7 +191,7 @@ public class GuiControllerViewSearchArtWorkGallery {
         Label labelArtistNameSearchGal = new Label();
         Button buttonOffertaSearchGal = new Button();
 
-        public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal) throws SQLException, IOException {
+        public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal, ArtGalleryBean artGalleryBean, ArtistBean artBean) throws SQLException, IOException {
             ImageView imageViewSearchGal = new ImageView(); // immagine dell'opera
             imageViewSearchGal.setImage(imgShowGal);
             imageViewSearchGal.setFitHeight(100);
@@ -223,7 +230,7 @@ public class GuiControllerViewSearchArtWorkGallery {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sawg.manageButtonClick(buttonOffertaSearchGal, idGallerySearch, idArtistSearchGal);
+                        answer = sawg.manageButtonClick(buttonOffertaSearchGal, artGalleryBean, artBean);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

@@ -185,7 +185,7 @@ public class GuiControllerMobileViewArtGalleryProposals {
             ArrayList<ArtGalleryBean> arrayOfArtGalleryOfProposal = new ArrayList<>();
 
             for (ProposalBean n : arrayOfProposalsBean) {
-                ArtGalleryBean artG = wap.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+                ArtGalleryBean artG = wap.retrieveArtGallery(n);   // Fai un retrieve della galleria associata alla proposta.
 
                 listViewProposal.getItems().add(new HBoxCell(artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), n.getFlagAccettazione(), n.getIdOfferta()));  // Popola la listView.
 
@@ -193,17 +193,14 @@ public class GuiControllerMobileViewArtGalleryProposals {
             }
 
 
-            listViewProposal.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observableValue, Object o, Object t1) {
+            listViewProposal.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
 
-                    int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
+                int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
 
-                    ArtGalleryBean currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
-                    // inizializzato precedentemente.
-                    setWebMap(currentArtGallery.getIndirizzo());
+                ArtGalleryBean currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
+                // inizializzato precedentemente.
+                setWebMap(currentArtGallery.getIndirizzo());
 
-                }
             });
 
         } catch (ProposalNotFoundException e) {

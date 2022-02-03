@@ -86,7 +86,10 @@ public class GuiControllerMobileLogin {
     }
 
     public void sendData(ActionEvent actionEvent) throws IOException {
-        UserBean us = new UserBean(textFieldUsername.getText(), textFieldPassword.getText());
+        UserBean us = new UserBean();
+
+        us.setUsername(textFieldUsername.getText());
+        us.setPassword(textFieldPassword.getText());
 
         try {
             lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.

@@ -173,7 +173,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
         Button buttonPreferitiSearchBuy = new Button();
         Label prezzoSearch = new Label();
 
-        public HBoxCell(String artWorkNameText, String artistNameText, Image imageArt, int idOperaSearch, double priceDisplay, String preferitiBuyerText, int idBuyer,int idArtista, List<Integer> arrayListArtWorkIdFav,String inputSearchBuy, BuyerBean buy) throws SQLException, IOException {
+        public HBoxCell(String artWorkNameText, String artistNameText, Image imageArt, int idOperaSearch, double priceDisplay, String preferitiBuyerText, int idBuyer,int idArtista, List<Integer> arrayListArtWorkIdFav,String inputSearchBuy, BuyerBean buy, ArtWorkBean artWorkBean) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(imageArt);
             imageView.setFitHeight(100);
@@ -223,7 +223,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment( idOperaSearch, idBuyer);
+                                sa.finishPayment( artWorkBean, buy);
                             } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -249,7 +249,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
                         public void handle(ActionEvent arg0) {
 
                             try {
-                                sa.finishPayment( idOperaSearch, idBuyer);
+                                sa.finishPayment( artWorkBean, buy);
                             } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -284,7 +284,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sa.manageButtonClickFavourites(buttonPreferitiSearchBuy.getText(),idOperaSearch,idBuyer);
+                        answer = sa.manageButtonClickFavourites(buttonPreferitiSearchBuy.getText(),artWorkBean,buy);
                     } catch (FavouritesManagementProblemException e) {
                         e.printStackTrace();
                     }
@@ -298,6 +298,8 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
     }
     public void populateListView(String input) throws SQLException, IOException {
+        ArtWorkBean artToSearch = new ArtWorkBean();
+
         paneExceptionLoad.setVisible(false);
 
         if(toglleCat1.isSelected()){category = "impressionista";}
@@ -311,15 +313,19 @@ public class GuiControllerViewSearchArtWorkBuyer {
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
         List<Integer> arrayOfArtWorkIdSearchBuy;
         ArtistBean artistSearchBuy=null;
+
+        artToSearch.setCategoria(category);
+        artToSearch.setTitolo(input);
+
         try{
             //System.out.println(input + " --- " + category);
-            List<ArtWorkBean> arrayOfArtWorkFound = vsb.retrieveSearchArtWorkByName(input, category);
+            List<ArtWorkBean> arrayOfArtWorkFound = vsb.retrieveSearchArtWorkByName(artToSearch);
             arrayOfArtWorkIdSearchBuy = vsb.retrieveSearchArtWorkId(buy);
 
             for (ArtWorkBean artWorkFound: arrayOfArtWorkFound) {
                 artistSearchBuy = vsb.retrieveSearchArtistName(artWorkFound);
                 Image image1 = extractImage(artWorkFound.getImmagine());
-                listView.getItems().add(new HBoxCell(artWorkFound.getTitolo(), artistSearchBuy.getNome()+" "+artistSearchBuy.getCognome(),image1, artWorkFound.getIdOpera(), artWorkFound.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistSearchBuy.getIdArtista(),arrayOfArtWorkIdSearchBuy,input,buy));
+                listView.getItems().add(new HBoxCell(artWorkFound.getTitolo(), artistSearchBuy.getNome()+" "+artistSearchBuy.getCognome(),image1, artWorkFound.getIdOpera(), artWorkFound.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistSearchBuy.getIdArtista(),arrayOfArtWorkIdSearchBuy,input,buy,artWorkFound));
 
             }
 

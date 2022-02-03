@@ -34,6 +34,7 @@ public class ViewArtGalleryProposals {
     public List<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) throws ProposalNotFoundException {
         Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
+        ProposalBean propBean = new ProposalBean();
 
         List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
 
@@ -42,17 +43,29 @@ public class ViewArtGalleryProposals {
         }
 
         for (Proposal n : arrayOfProposals) {
-            arrayOfProposalBeans.add(new ProposalBean(n.getIdOfferta(), n.getArtista(), n.getGalleria(), n.getFlagAccettazione()));
+            propBean.setIdOfferta(n.getIdOfferta());
+            propBean.setArtista(n.getArtista());
+            propBean.setGalleria(n.getGalleria());
+            propBean.setFlagAccettazione(n.getFlagAccettazione());
+
+            arrayOfProposalBeans.add(propBean);
         }
 
 
         return arrayOfProposalBeans;
     }
 
-    public ArtGalleryBean retrieveArtGallery(int galleria){
-        ArtGallery artG = ArtistDAO.retrieveArtGallery(galleria);   // Fai un retrieve della galleria associata alla proposta.
+    public ArtGalleryBean retrieveArtGallery(ProposalBean prop){
+        ArtGallery artG = ArtistDAO.retrieveArtGallery(prop.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+        ArtGalleryBean artGallBean = new ArtGalleryBean();
 
-        return new ArtGalleryBean(artG.getGalleria(), artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), artG.getUsername());
+        artGallBean.setGalleria(artG.getGalleria());
+        artGallBean.setNome(artG.getNome());
+        artGallBean.setDescrizione(artG.getDescrizione());
+        artGallBean.setIndirizzo(artG.getIndirizzo());
+        artGallBean.setUsername( artG.getUsername());
+
+        return artGallBean;
 
     }
 

@@ -13,8 +13,8 @@ import java.util.List;
 
 public class ViewProfiloGallery {
 
-    public String retrieveArtistName(int idArtista) {
-        Artist name = BuyerDAO.retrieveArtist(idArtista);
+    public String retrieveArtistName(ProposalBean prop) {
+        Artist name = BuyerDAO.retrieveArtist(prop.getArtista());
         return name.getNome()+" "+name.getCognome(); // ritorno nome e cognome dell'artista associato all'opera
 
     }
@@ -22,12 +22,19 @@ public class ViewProfiloGallery {
     public List<ProposalBean> retrieveProposal(ArtGalleryBean gallery, int flag) throws SentProposalNotFoundException {
         List<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag,"");    //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
+        ProposalBean propBean = new ProposalBean();
+
         if (proposal.isEmpty()){
             if(flag==1) {throw new SentProposalNotFoundException("nessuna proposta accettata trovata");}
             else {throw new SentProposalNotFoundException("nessuna proposta in attesa trovata");}
         }
         for (Proposal p: proposal) {
-            proposalBean.add(new ProposalBean(p.getIdOfferta(),p.getArtista(),p.getGalleria(),p.getFlagAccettazione()));
+            propBean.setIdOfferta(p.getIdOfferta());
+            propBean.setArtista(p.getArtista());
+            propBean.setGalleria(p.getGalleria());
+            propBean.setFlagAccettazione(p.getFlagAccettazione());
+
+            proposalBean.add(propBean);
         }
         return proposalBean;
     }

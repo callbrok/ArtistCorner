@@ -80,9 +80,8 @@ public class GuiControllerMobileBuyerSummary {
         sc.switchToSceneFavouritesBuyer(actionEvent,buy);
     }
     public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy){
-        Buyer buyer = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
         ViewBuyerSummary vbs = new ViewBuyerSummary();
-        List<Integer> arrayOfComprate = vbs.retrieveAllComprate(buyer.getIdBuyer());
+        List<Integer> arrayOfComprate = vbs.retrieveAllComprate(buy);
         List<ArtWorkBean> arrayFinal = new ArrayList<>();
         for (int n : arrayOfComprate) {
             ArtWorkBean artwork = vbs.retrieveArtWorks(n, 0);

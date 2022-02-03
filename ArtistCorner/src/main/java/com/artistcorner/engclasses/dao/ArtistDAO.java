@@ -28,7 +28,7 @@ public class ArtistDAO {
         throw new IllegalStateException("Utility class");
     }
 
-    public static Artist retrieveArtist(UserBean usr){
+    public static Artist retrieveArtist(User usr){
         Artist ar = null;
         Statement stmt = null;
         Connection conn = null;
@@ -186,7 +186,7 @@ public class ArtistDAO {
     }
 
 
-    public static List<ArtWork> retrieveAllArtWorks(int idUsr){
+    public static List<ArtWork> retrieveAllArtWorks(int idUsr, String lastAction){
         ArrayList<ArtWork> listOfArtWork = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
@@ -199,7 +199,7 @@ public class ArtistDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryArtist.selectAllArtWork(stmt, idUsr);
+            ResultSet rs = QueryArtist.selectAllArtWork(stmt, idUsr, lastAction);
 
             if (!rs.first()){ // rs empty
                 return Collections.emptyList();

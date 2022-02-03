@@ -6,13 +6,10 @@ public class ProposalBean {
     private  int galleria;
     private int flagAccettazione;
 
-    public  ProposalBean(int newIdB, int newArtistaB, int newGalleriaB, int newFlagAccettazioneB){
-        this.idOfferta = newIdB;
-        this.artista = newArtistaB;
-        this.galleria =  newGalleriaB;
-        this.flagAccettazione = newFlagAccettazioneB;
-    }
-
+    public void setArtista(int artista) {this.artista = artista;}
+    public void setFlagAccettazione(int flagAccettazione) {this.flagAccettazione = flagAccettazione;}
+    public void setGalleria(int galleria) {this.galleria = galleria;}
+    public void setIdOfferta(int idOfferta) {this.idOfferta = idOfferta;}
 
     public int getIdOfferta() {return idOfferta;}
     public int getArtista() {return artista;}

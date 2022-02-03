@@ -14,6 +14,7 @@ import com.artistcorner.engclasses.others.SceneControllerMobile;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
+import com.artistcorner.model.User;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -26,18 +27,24 @@ public class Login {
         SceneController sc = new SceneController();
         SceneControllerMobile scm = new SceneControllerMobile();
 
-        UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
+        User noLoggedUser = new User(noLoggedUserBean.getUsername(), noLoggedUserBean.getPassword(), noLoggedUserBean.getRole());
+
+        User loggedUser = LoginDAO.retrieveUser(noLoggedUser);
 
         // Eccezione: Inserito utente non valido.
-        if(loggedUserBean == null){
+        if(loggedUser == null){
             throw new UserNotFoundException("Inserito utente non valido");
         }
 
-        switch (loggedUserBean.getRole()){
+        switch (loggedUser.getRole()){
             // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
             case "artista":
-                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
-                ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
+                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUser);
+                ArtistBean loggedArtistBean = new ArtistBean();
+
+                loggedArtistBean.setIdArtista(loggedArtist.getIdArtista());
+                loggedArtistBean.setNome(loggedArtist.getNome());
+                loggedArtistBean.setCognome(loggedArtist.getCognome());
 
                 if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
                 if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
@@ -45,8 +52,14 @@ public class Login {
                 break;
 
             case "galleria":
-                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
-                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
+                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUser);
+                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean();
+
+                loggedGalleryBean.setGalleria(loggedArtGallery.getGalleria());
+                loggedGalleryBean.setNome(loggedArtGallery.getNome());
+                loggedGalleryBean.setDescrizione(loggedArtGallery.getDescrizione());
+                loggedGalleryBean.setIndirizzo(loggedArtGallery.getIndirizzo());
+                loggedGalleryBean.setUsername(loggedArtGallery.getUsername());
 
                 if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
                 if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
@@ -54,8 +67,12 @@ public class Login {
                 break;
 
             case "acquirente":
-                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
-                BuyerBean loggedBuyerBean = new BuyerBean(loggedBuyer.getIdBuyer(),loggedBuyer.getNome(),loggedBuyer.getCognome());
+                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUser);
+                BuyerBean loggedBuyerBean = new BuyerBean();
+
+                loggedBuyerBean.setIdBuyer(loggedBuyer.getIdBuyer());
+                loggedBuyerBean.setNome(loggedBuyer.getNome());
+                loggedBuyerBean.setCognome(loggedBuyer.getCognome());
 
                 if(flagInterface.equals("D")){sc.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
                 if(flagInterface.equals("M")){scm.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.

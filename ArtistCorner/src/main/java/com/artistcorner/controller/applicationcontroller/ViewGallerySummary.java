@@ -19,14 +19,27 @@ public class ViewGallerySummary {
     public List<ProposalBean> retrieveGalleryProposal(ArtGalleryBean gallery, int flag)  {
         List<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag,"LAST"); //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
+        ProposalBean currentProp = new ProposalBean();
+
         for (Proposal p: proposal) {
-            proposalBean.add(new ProposalBean(p.getIdOfferta(),p.getArtista(),p.getGalleria(),p.getFlagAccettazione()));
+            currentProp.setIdOfferta(p.getIdOfferta());
+            currentProp.setArtista(p.getArtista());
+            currentProp.setGalleria(p.getGalleria());
+            currentProp.setFlagAccettazione(p.getFlagAccettazione());
+
+            proposalBean.add(currentProp);
         }
         return proposalBean;
     }
-    public ArtistBean retrieveArtistNameGallerySum(int a) {
-        Artist artist = BuyerDAO.retrieveArtist(a); //artista associato alla proposta
-        return new ArtistBean(artist.getIdArtista(),artist.getNome(),artist.getCognome());
+    public ArtistBean retrieveArtistNameGallerySum(ProposalBean a) {
+        Artist artist = BuyerDAO.retrieveArtist(a.getArtista()); //artista associato alla proposta
+        ArtistBean artistBean = new ArtistBean();
+
+        artistBean.setIdArtista(artist.getIdArtista());
+        artistBean.setNome(artist.getNome());
+        artistBean.setCognome(artist.getCognome());
+
+        return artistBean;
     }
 
 }

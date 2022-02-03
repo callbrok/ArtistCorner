@@ -104,7 +104,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
         Button buttonPreferiti = new Button();
         Label prezzo = new Label();
 
-        public HBoxCellMobile(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input){
+        public HBoxCellMobile(String labelText, String labelText1, Image img, int idOpera, double price, String labelPreferiti, int idBuyer, int idArtista, List<Integer> arrayListArtWorkId, String input, ArtWorkBean artwBean, ArtistBean artBean, BuyerBean buy){
             ImageView imageView = new ImageView();
             imageView.setImage(img);
             imageView.setFitHeight(50);
@@ -146,7 +146,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(idOpera, idBuyer);
+                                sa.finishPayment(artwBean, buy);
                             } catch (BuyArtWorkManagementProblemException e) {
                                 e.printStackTrace();
                             } catch (FavouritesManagementProblemException e) {
@@ -167,7 +167,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(idOpera, idBuyer);
+                                sa.finishPayment(artwBean, buy);
                             } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -194,7 +194,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
                     String answer = null;
 
                     try {
-                        answer = sa.manageButtonClick(buttonPreferiti.getText(), idOpera, idBuyer);
+                        answer = sa.manageButtonClick(buttonPreferiti.getText(), artwBean, buy);
                     } catch (FavouritesManagementProblemException e) {
                         e.printStackTrace();
                     }
@@ -218,7 +218,7 @@ public class GuiControllerMobileViewFavouritesBuyer {
                 ArtWorkBean artWork = vfb.retrieveArtWork(i);
                 artist = vfb.retrieveArtistName(artWork);
                 Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,""));
+                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,"", artWork, artist, buy));
             }
         }catch (ArtWorkNotFoundException e) {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();

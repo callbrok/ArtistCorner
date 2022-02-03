@@ -184,7 +184,7 @@ public class GuiControllerViewArtGalleryProposals {
             ArrayList<ArtGalleryBean> arrayOfArtGalleryOfProposal = new ArrayList<>();
 
             for (ProposalBean n : arrayOfProposalsBean) {
-                ArtGalleryBean artG = wap.retrieveArtGallery(n.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+                ArtGalleryBean artG = wap.retrieveArtGallery(n);   // Fai un retrieve della galleria associata alla proposta.
                 listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
 
                 arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
