@@ -311,16 +311,14 @@ public class GuiControllerViewSearchArtWorkBuyer {
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
         List<Integer> arrayOfArtWorkIdSearchBuy;
         ArtistBean artistSearchBuy=null;
-        Blob artWorkBlobSearchBuy =null;
         try{
-            System.out.println(input + " --- " + category);
+            //System.out.println(input + " --- " + category);
             List<ArtWorkBean> arrayOfArtWorkFound = vsb.retrieveSearchArtWorkByName(input, category);
             arrayOfArtWorkIdSearchBuy = vsb.retrieveSearchArtWorkId(buy);
 
             for (ArtWorkBean artWorkFound: arrayOfArtWorkFound) {
-                artWorkBlobSearchBuy = vsb.retrieveSearchArtWorkBlob(artWorkFound.getIdOpera());
                 artistSearchBuy = vsb.retrieveSearchArtistName(artWorkFound);
-                Image image1 = extractImage(artWorkBlobSearchBuy);
+                Image image1 = extractImage(artWorkFound.getImmagine());
                 listView.getItems().add(new HBoxCell(artWorkFound.getTitolo(), artistSearchBuy.getNome()+" "+artistSearchBuy.getCognome(),image1, artWorkFound.getIdOpera(), artWorkFound.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistSearchBuy.getIdArtista(),arrayOfArtWorkIdSearchBuy,input,buy));
 
             }

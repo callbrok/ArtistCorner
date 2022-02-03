@@ -36,8 +36,6 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
     private Label labelUsernameDisplay;
     @FXML
     private ListView<HBoxCellMobile> listView;
-    private double x = 0;
-    private  double y = 0;
     @FXML
     private Stage stageGalMob;
     @FXML
@@ -46,6 +44,9 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
     private ToggleButton toglleCat1,toglleCat2,toglleCat3;
     @FXML
     private TextField textField;
+
+    private double x = 0;
+    private  double y = 0;
     private ArtGalleryBean gal;
     private String category="";
 
@@ -186,15 +187,13 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         }
         ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
         ArtistBean artist=null;
-        Blob artWorkBlob =null;
 
         try{
             List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(input,category);
             List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
             for (ArtWorkBean artWork: arrayOfArtWork) {
-                artWorkBlob = vsg.retrieveGallerySearchArtWorkBlob(artWork.getIdOpera());
                 artist = vsg.retrieveGallerySearchArtistName(artWork);
-                Image image1 = extractImage(artWorkBlob);
+                Image image1 = extractImage(artWork.getImmagine());
                 listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input));
 
             }

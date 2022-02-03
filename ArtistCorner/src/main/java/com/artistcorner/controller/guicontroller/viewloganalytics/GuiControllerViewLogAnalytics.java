@@ -128,6 +128,7 @@ public class GuiControllerViewLogAnalytics {
             if(cmt.getNome().equals("Marco Purificato")){
                 series.getData().add(new XYChart.Data<String, Double>(data, orarioDouble));
             }
+
             if(cmt.getNome().equals("Alessio1100")){
                 series1.getData().add(new XYChart.Data<String, Double>(data, orarioDouble));
             }

@@ -38,16 +38,18 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
     private Label labelUsernameDisplay;
     @FXML
     private ListView<HBoxCellMobile> listView;
-    private double x=0;
-    private double y=0;
-    private String category = "";
     @FXML
     private ToggleButton toglleCat1,toglleCat2,toglleCat3;
     @FXML
     private Pane paneExLoad;
+    @FXML
     private Stage stageMobBuySearch;
     @FXML
     private TextField textField;
+
+    private double x=0;
+    private double y=0;
+    private String category = "";
     BuyerBean buy;
 
     public void initialize(){
@@ -248,15 +250,13 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
         List<Integer> arrayOfArtWorkId=null;
         ArtistBean artist=null;
-        Blob artWorkBlob =null;
 
         try{
             List<ArtWorkBean> arrayOfArtWork = vsb.retrieveSearchArtWorkByName(input, category);
             arrayOfArtWorkId = vsb.retrieveSearchArtWorkId(buy);
             for (ArtWorkBean artWork: arrayOfArtWork) {
-                artWorkBlob = vsb.retrieveSearchArtWorkBlob(artWork.getIdOpera());
                 artist = vsb.retrieveSearchArtistName(artWork);
-                Image image1 = extractImage(artWorkBlob);
+                Image image1 = extractImage(artWork.getImmagine());
                 listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,input));
 
             }

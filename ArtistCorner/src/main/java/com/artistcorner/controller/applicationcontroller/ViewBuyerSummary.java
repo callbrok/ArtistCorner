@@ -19,6 +19,6 @@ public class ViewBuyerSummary {
 
     public ArtWorkBean retrieveArtWorks(int integer,int flag) {
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, flag);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria());
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria(), a.getImmagine());
     }
 }

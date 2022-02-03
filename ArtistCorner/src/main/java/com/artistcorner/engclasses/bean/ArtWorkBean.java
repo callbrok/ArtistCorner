@@ -23,16 +23,6 @@ public class ArtWorkBean {
         this.immagine = newImmagine;
     }
 
-    // DA RIMUOVERE
-    public ArtWorkBean(int newIdOpera, String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId, String newCategoria){
-        this.idOpera=newIdOpera;
-        this.titolo=newTitolo;
-        this.prezzo=newPrezzo;
-        this.flagVendibile=newFlagVendibile;
-        this.artistId = newArtistId;
-        this.categoria = newCategoria;
-        this.immagine = null;
-    }
 
     public ArtWorkBean(String newTitolo, double newPrezzo, int newFlagVendibile,int newArtistId,String newCategoria){
         this.idOpera=0;

@@ -148,8 +148,9 @@ public class BuyerDAO {
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
                 String categoria = rs.getString("categoria");
+                Blob immagine = rs.getBlob("immagine");
 
-                artWork = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
+                artWork = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria,immagine);
 
 
             }while(rs.next());
@@ -176,59 +177,6 @@ public class BuyerDAO {
 
         return artWork;
     }
-
-    public static Blob retrieveImage(int idArtWork){
-        Blob immagine =null;
-        Statement stmt = null;
-        Connection conn = null;
-
-        try {
-
-            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
-            conn = ConnectProperties.getConnection();    // Apertura connessione
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
-                    ResultSet.CONCUR_READ_ONLY);
-
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryBuyer.selectImage(stmt, idArtWork);
-
-            if (!rs.first()){ // rs empty
-                throw new ArtWorkNotFoundException("nessuna Opera caricata");
-            }
-
-            // riposizionamento del cursore
-            rs.first();
-            do{
-                // lettura delle colonne "by name"
-                immagine = rs.getBlob("immagine");
-
-
-            }while(rs.next());
-
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
-        } catch (Exception ex2) {
-            ex2.printStackTrace();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se23) {
-                se23.printStackTrace();
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se3) {
-                se3.printStackTrace();
-            }
-        }
-
-        return immagine;
-    }
-
-
 
 
     public static Artist retrieveArtist(int idUsr) {
@@ -310,7 +258,7 @@ public class BuyerDAO {
             do{
                 // lettura delle colonne "by name"
                 int name = rs.getInt("opera");
-                ArtWork artWork = new ArtWork(name,null,0,0,0, "");
+                ArtWork artWork = new ArtWork(name,null,0,0,0, "",null);
                 listOfArtWorkId.add(artWork.getIdOpera());
 
             }while(rs.next());
@@ -455,8 +403,9 @@ public class BuyerDAO {
                 int idOpera = rs.getInt("idOpera");
                 int artistaId = rs.getInt("artista");
                 String categoria = rs.getString("categoria");
+                Blob immagine = rs.getBlob("immagine");
 
-                ArtWork art = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria);
+                ArtWork art = new ArtWork(idOpera, titolo, prezzo, venduto,artistaId,categoria,immagine);
                 artWork.add(art);
 
 

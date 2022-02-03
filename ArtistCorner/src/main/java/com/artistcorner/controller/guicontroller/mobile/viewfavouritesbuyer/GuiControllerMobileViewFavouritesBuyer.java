@@ -37,13 +37,15 @@ public class GuiControllerMobileViewFavouritesBuyer {
     private Label labelUsernameDisplay;
     @FXML
     private AnchorPane anchorMainFavMob;
-    private double x=0;
-    private  double y=0;
     @FXML
     private ListView<HBoxCellMobile> listView;
+    @FXML
     private Stage stageFavMob;
     @FXML
     private Pane paneExceptionLoad;
+
+    private double x=0;
+    private  double y=0;
     BuyerBean buy;
 
     public void makeLogOut(ActionEvent event) throws IOException {
@@ -210,14 +212,12 @@ public class GuiControllerMobileViewFavouritesBuyer {
         ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
         List<Integer> arrayOfArtWorkId;
         ArtistBean artist;
-        Blob artWorkBlob;
         try{
             arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
             for (Integer i: arrayOfArtWorkId) {
                 ArtWorkBean artWork = vfb.retrieveArtWork(i);
-                artWorkBlob = vfb.retrieveArtWorkBlob(i);
                 artist = vfb.retrieveArtistName(artWork);
-                Image image1 = extractImage(artWorkBlob);
+                Image image1 = extractImage(artWork.getImmagine());
                 listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,""));
             }
         }catch (ArtWorkNotFoundException e) {

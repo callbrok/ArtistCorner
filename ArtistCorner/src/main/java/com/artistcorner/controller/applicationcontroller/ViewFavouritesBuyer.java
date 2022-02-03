@@ -72,13 +72,10 @@ public class ViewFavouritesBuyer {
 
     public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = BuyerDAO.retrieveArtWorks(integer, 1);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria());
+        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(),a.getCategoria(), a.getImmagine());
 
     }
 
-    public Blob retrieveArtWorkBlob(int n) {
-        return BuyerDAO.retrieveImage(n);
-    }
 
     public ArtistBean retrieveArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());

@@ -247,15 +247,14 @@ public class GuiControllerViewFavouritesBuyer {
                 ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
                 List<Integer> arrayOfArtWorkIdFav;
                 ArtistBean artistFav=null;
-                Blob artWorkBlobFav =null;
+                ArtWorkBean artWorkFav = null;
 
                 try{
                         arrayOfArtWorkIdFav = vfb.retrieveArtWorkId(buy);
                         for (Integer i: arrayOfArtWorkIdFav) {
-                                ArtWorkBean artWorkFav = vfb.retrieveArtWork(i);
-                                artWorkBlobFav = vfb.retrieveArtWorkBlob(i);
+                                artWorkFav = vfb.retrieveArtWork(i);
                                 artistFav = vfb.retrieveArtistName(artWorkFav);
-                                Image image1 = extractImage(artWorkBlobFav);
+                                Image image1 = extractImage(artWorkFav.getImmagine());
                                 listView.getItems().add(new HBoxCell(artWorkFav.getTitolo(), artistFav.getNome()+" "+artistFav.getCognome(),image1, artWorkFav.getIdOpera(), artWorkFav.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistFav.getIdArtista(),arrayOfArtWorkIdFav,"", buy));
 
                         }

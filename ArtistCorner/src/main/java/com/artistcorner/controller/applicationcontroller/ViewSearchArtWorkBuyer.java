@@ -54,9 +54,6 @@ public class ViewSearchArtWorkBuyer {
     }
 
 
-    public Blob retrieveSearchArtWorkBlob(int n) {
-       return BuyerDAO.retrieveImage(n);
-    }
 
     public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
         Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());
@@ -70,7 +67,7 @@ public class ViewSearchArtWorkBuyer {
             throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
         }
         for (ArtWork a : artWorkList) {
-            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria()));
+            arrayArtWorkBean.add(new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId(), a.getCategoria(), a.getImmagine()));
         }
         return arrayArtWorkBean;
     }
