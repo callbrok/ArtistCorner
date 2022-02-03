@@ -100,6 +100,9 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
     public void getBuyer(BuyerBean loggedBuyer) {
         buy = loggedBuyer;
+
+        if(buy.getIdBuyer() == 13){initGuest();}
+
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
     }
 
@@ -114,6 +117,11 @@ public class GuiControllerViewSearchArtWorkBuyer {
             stageSearchBuy.setX(eventSearchBuy.getScreenX() - x);
             stageSearchBuy.setY(eventSearchBuy.getScreenY() - y);
         }));
+    }
+
+    public void initGuest(){
+        button3.setDisable(true);
+        labelLogOutBuyerSearch.setText("ACCEDI");
     }
 
     public void minimizeWindow() {
@@ -165,7 +173,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
         Button buttonPreferitiSearchBuy = new Button();
         Label prezzoSearch = new Label();
 
-        public HBoxCell(String artWorkNameText, String artistNameText, Image imageArt, int idOperaSearch, double priceDisplay, String preferitiBuyerText, int idBuyer,int idArtista, List<Integer> arrayListArtWorkIdFav,String inputSearchBuy) throws SQLException, IOException {
+        public HBoxCell(String artWorkNameText, String artistNameText, Image imageArt, int idOperaSearch, double priceDisplay, String preferitiBuyerText, int idBuyer,int idArtista, List<Integer> arrayListArtWorkIdFav,String inputSearchBuy, BuyerBean buy) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(imageArt);
             imageView.setFitHeight(100);
@@ -195,6 +203,9 @@ public class GuiControllerViewSearchArtWorkBuyer {
             buttonPreferitiSearchBuy.setText(preferitiBuyerText);
             buttonPreferitiSearchBuy.setPrefSize(170, 50);
             buttonPreferitiSearchBuy.setStyle("-fx-font-size: 14px;");
+
+            if(buy.getIdBuyer() == 13){buttonAcquistaSearchBuy.setDisable(true);}
+            if(buy.getIdBuyer() == 13){buttonPreferitiSearchBuy.setDisable(true);}
 
             VBox vBox = new VBox(buttonAcquistaSearchBuy, buttonPreferitiSearchBuy);
             vBox.setAlignment(Pos.CENTER);
@@ -236,6 +247,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                         @Override
                         public void handle(ActionEvent arg0) {
+
                             try {
                                 sa.finishPayment( idOperaSearch, idBuyer);
                             } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
@@ -309,7 +321,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
                 artWorkBlobSearchBuy = vsb.retrieveSearchArtWorkBlob(artWorkFound.getIdOpera());
                 artistSearchBuy = vsb.retrieveSearchArtistName(artWorkFound);
                 Image image1 = extractImage(artWorkBlobSearchBuy);
-                listView.getItems().add(new HBoxCell(artWorkFound.getTitolo(), artistSearchBuy.getNome()+" "+artistSearchBuy.getCognome(),image1, artWorkFound.getIdOpera(), artWorkFound.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistSearchBuy.getIdArtista(),arrayOfArtWorkIdSearchBuy,input));
+                listView.getItems().add(new HBoxCell(artWorkFound.getTitolo(), artistSearchBuy.getNome()+" "+artistSearchBuy.getCognome(),image1, artWorkFound.getIdOpera(), artWorkFound.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistSearchBuy.getIdArtista(),arrayOfArtWorkIdSearchBuy,input,buy));
 
             }
 

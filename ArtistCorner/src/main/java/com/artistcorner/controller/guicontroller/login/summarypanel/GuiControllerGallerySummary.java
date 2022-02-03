@@ -32,13 +32,15 @@ public class GuiControllerGallerySummary {
     private Label labelUsernameDisplay;
     @FXML
     private Label labelLogOutGallery;
-    private double x=0;
-    private double y=0;
+    @FXML
     private Stage stageGallery;
     @FXML
     private SVGPath svgProfileGallery;
     @FXML
     private Pane paneExceptionLoad;
+
+    private double x=0;
+    private double y=0;
     private ArtGalleryBean gal;
 
 
@@ -64,6 +66,7 @@ public class GuiControllerGallerySummary {
     public void getGallery(ArtGalleryBean loggedGallery){
         gal = loggedGallery;
         labelUsernameDisplay.setText(gal.getNome());
+
         initializeOfferteInviate(listViewOfferte,gal);
         paneExceptionLoad.setPrefSize(708,250);
     }

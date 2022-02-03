@@ -194,6 +194,7 @@ public class GuiControllerViewProfile {
                 // Implementa eliminazione opera.
                 Button buttonRemove = new Button();
                 buttonRemove.setText("Rimuovi");
+                buttonRemove.getStyleClass().add("loggerButton");
                 VBox vBoxInfo = new VBox(imageThumb, buttonRemove);
                 vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
 

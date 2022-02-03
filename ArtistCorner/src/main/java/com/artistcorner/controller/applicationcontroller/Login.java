@@ -47,8 +47,10 @@ public class Login {
             case "galleria":
                 ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
                 ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
+
                 if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
                 if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
+
                 break;
 
             case "acquirente":

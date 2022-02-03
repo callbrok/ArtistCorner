@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerBuyerSummary {
+    @FXML
+    private AnchorPane anchorGuest;
+    @FXML
+    private Button button3;
     @FXML
     private AnchorPane anchorParentBuyer;
     @FXML
@@ -44,6 +49,7 @@ public class GuiControllerBuyerSummary {
         makeDraggable();
         makeLogOutBuyer();
 
+        anchorGuest.setVisible(false);
         svgProfileBuyerSum.setScaleX(0.07);
         svgProfileBuyerSum.setScaleY(0.07);
     }
@@ -62,11 +68,19 @@ public class GuiControllerBuyerSummary {
 
     public void getBuyer(BuyerBean loggedBuyer) {
         buy = loggedBuyer;
+
+        if(buy.getIdBuyer() == 13){initGuest();}
+
         labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
         initializeOpereComprate(listViewCompra,buy);
     }
 
 
+    public void initGuest(){
+        labelLogOutBuyerSum.setText("ACCEDI");
+        button3.setDisable(true);
+        anchorGuest.setVisible(true);
+    }
 
     private void makeDraggable(){
         anchorParentBuyer.setOnMousePressed((eventPressBuy -> {

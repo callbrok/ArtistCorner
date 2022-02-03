@@ -5,6 +5,7 @@ import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
+import com.artistcorner.model.ArtWork;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -25,10 +26,9 @@ public class UploadArtWork {
             throw new EmptyPathException("Nessun file selezionato.");
         }
 
+        ArtWork artToUpload = new ArtWork(upArt.getTitolo(), upArt.getPrezzo(), upArt.getFlagVendibile(), upArt.getArtistId(), upArt.getCategoria());
 
-        ArtistDAO.saveArtWork(upArt, filePath);
-
-
+        ArtistDAO.saveArtWork(artToUpload, filePath);
     }
 
 

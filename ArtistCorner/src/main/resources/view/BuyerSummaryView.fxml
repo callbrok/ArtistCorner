@@ -56,6 +56,20 @@
                </font>
             </Label>
             <ListView fx:id="listViewCompra" layoutX="13.0" layoutY="51.0" prefHeight="170.0" prefWidth="588.0" />
+            <AnchorPane fx:id="anchorGuest" layoutX="13.0" layoutY="51.0" prefHeight="179.0" prefWidth="588.0" style="-fx-background-color: #d13e0a;">
+               <children>
+                  <Label layoutX="66.0" layoutY="60.0" text="Devi accedere per poter effettuare" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="77.0" layoutY="90.0" text="acquisti ed usufruire dei preferiti" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />

@@ -3,6 +3,7 @@ package selenium;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
@@ -17,11 +18,11 @@ public class TestSelenium1 {
     @Test
     public void testSeleniumArtworkPricingFormula1(){
         ClassLoader classLoader = TestSelenium1.class.getClassLoader();
-        File file = new File(classLoader.getResource("geckodriver_linux64").getFile());
+        File file = new File(classLoader.getResource("chromedriver_linux64").getFile());
         String driverPath = file.getAbsolutePath();
 
-        System.setProperty("webdriver.gecko.driver", driverPath);
-        WebDriver driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        WebDriver driver = new ChromeDriver();
         driver.get("https://www.artismycareer.com/pricing-calculator/");
 
         driver.findElement(By.xpath("//*[@id=\"height\"]")).sendKeys("20");

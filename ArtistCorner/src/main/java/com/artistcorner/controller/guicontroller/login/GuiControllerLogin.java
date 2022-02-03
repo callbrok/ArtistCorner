@@ -158,4 +158,15 @@ public class GuiControllerLogin {
 
         dialog.showAndWait();
     }
+
+    public void loginGuestBuyer(ActionEvent event) throws IOException {
+        UserBean us = new UserBean("acquirenteGUEST", "ispw21");
+
+        try {
+            lg.credentialLogin(us, event, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException e){
+            labelExceptionLogin.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+    }
 }
