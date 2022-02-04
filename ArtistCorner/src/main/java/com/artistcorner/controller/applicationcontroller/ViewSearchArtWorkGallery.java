@@ -3,8 +3,7 @@ package com.artistcorner.controller.applicationcontroller;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.*;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.ArtWork;
@@ -25,13 +24,13 @@ public class ViewSearchArtWorkGallery {
         String  remProposta = "Ritira Proposta";
         switch (buttonProposta.getText()){
             case "Ritira Proposta":{    // se il bottone ha come label 'ritira proposta'
-                GalleryDAO.removeProposta(idGallery,idArtista); // rimuovo la proposta
+                ProposalDAO.removeProposta(idGallery,idArtista); // rimuovo la proposta
                 return "Invia Proposta";    // imposto la label del bottone su 'invia proposta'
 
 
             }
             case "Invia Proposta":{   // se il bottone ha come label 'invia proposta'
-                GalleryDAO.addProposta(idGallery,idArtista,flag);   // invio la proposta con flag accettazione impostato a 0
+                ProposalDAO.addProposta(idGallery,idArtista,flag);   // invio la proposta con flag accettazione impostato a 0
                 return remProposta; // imposto la label del bottone su 'rimuovi proposta'
 
 
@@ -43,7 +42,7 @@ public class ViewSearchArtWorkGallery {
 
 
     public ArtistBean retrieveGallerySearchArtistName(ArtWorkBean a) {
-        Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());   // faccio il retrieve dell'artista associato all'opera selezionata
+        Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtistId());   // faccio il retrieve dell'artista associato all'opera selezionata
         ArtistBean artBean = new ArtistBean();
 
         artBean.setIdArtista(artist.getIdArtista());
@@ -57,7 +56,7 @@ public class ViewSearchArtWorkGallery {
         String category=artToSearch.getCategoria();
         String input=artToSearch.getTitolo();
 
-        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
+        List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
         ArtWorkBean artWorkBean = new ArtWorkBean();
 
@@ -79,7 +78,7 @@ public class ViewSearchArtWorkGallery {
 
     public List<Integer> retrieveGallerySearchArtistId(ArtGalleryBean gallery)  {
         ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo(),gallery.getUsername());
-        return  GalleryDAO.retrieveArtistId(gal.getGalleria()); // prendo gli'id degli artisti ai quali è stata inviata una proposta
+        return  ArtistDAO.retrieveArtistId(gal.getGalleria()); // prendo gli'id degli artisti ai quali è stata inviata una proposta
     }
 
 }

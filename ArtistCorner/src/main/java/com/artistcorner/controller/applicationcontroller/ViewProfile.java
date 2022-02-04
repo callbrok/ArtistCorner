@@ -2,6 +2,7 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.model.ArtWork;
@@ -17,7 +18,7 @@ public class ViewProfile {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        List<ArtWork> listOfAllArtWorks = ArtistDAO.retrieveAllArtWorks(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWork> listOfAllArtWorks = ArtWorkDAO.retrieveAllArtWorks(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
         ArrayList<ArtWorkBean> listOfAllArtWorksBean = new ArrayList<>();
         ArtWorkBean artWBean = new ArtWorkBean();
 
@@ -40,7 +41,7 @@ public class ViewProfile {
     public void removeArtWork(ArtWorkBean artWork){
         ArtWork artToRemove = new ArtWork(artWork.getIdOpera(), artWork.getTitolo(), artWork.getPrezzo(), artWork.getFlagVendibile(), artWork.getArtistId(), artWork.getCategoria(), artWork.getImmagine());
 
-        ArtistDAO.removeArtWork(artToRemove);
+        ArtWorkDAO.removeArtWork(artToRemove);
     }
 
 }

@@ -1,8 +1,7 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.others.ConnectProperties;
-import com.artistcorner.engclasses.query.QueryLogin;
+import com.artistcorner.engclasses.query.QueryUser;
 import com.artistcorner.model.User;
 
 import java.sql.Connection;
@@ -10,9 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LoginDAO {
+public class UserDAO {
 
-    private LoginDAO(){
+    private UserDAO(){
         throw new IllegalStateException("Utility class");
     }
 
@@ -29,7 +28,7 @@ public class LoginDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryLogin.selectUser(stmt, user);
+            ResultSet rs = QueryUser.selectUser(stmt, user);
 
             if (!rs.first()){ // rs empty
                 return null;

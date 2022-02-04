@@ -5,6 +5,7 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.ProposalDAO;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -232,11 +233,21 @@ public class GuiControllerViewArtGalleryProposals {
 
 
     public void acceptProposal() throws SQLException {
-        ArtistDAO.updateProposal(currentProposalId, 1);
+        ProposalBean propToAccept = new ProposalBean();
+
+        propToAccept.setFlagAccettazione(1);
+        propToAccept.setIdOfferta(currentProposalId);
+
+        omlc.acceptProposal(propToAccept);
     }
 
     public void rejectProposal() throws SQLException {
-        ArtistDAO.updateProposal(currentProposalId, 2);
+        ProposalBean propToReject = new ProposalBean();
+
+        propToReject.setFlagAccettazione(2);
+        propToReject.setIdOfferta(currentProposalId);
+
+        omlc.rejectProposal(propToReject);
     }
 
 

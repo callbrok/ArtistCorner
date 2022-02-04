@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class QueryLogin {
+public class QueryUser {
 
-    private QueryLogin(){throw new IllegalStateException("Utility Query Login class");}
+    private QueryUser(){throw new IllegalStateException("Utility Query Login class");}
 
     public static ResultSet selectUser(Statement stmt, User user) throws SQLException {
         String sql = "SELECT * FROM utente WHERE username ='" + user.getUsername() + "' AND password='" + user.getPassword() + "';";

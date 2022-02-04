@@ -1,6 +1,7 @@
 package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
@@ -28,7 +29,7 @@ public class UploadArtWork {
 
         ArtWork artToUpload = new ArtWork(upArt.getTitolo(), upArt.getPrezzo(), upArt.getFlagVendibile(), upArt.getArtistId(), upArt.getCategoria());
 
-        ArtistDAO.saveArtWork(artToUpload, filePath);
+        ArtWorkDAO.saveArtWork(artToUpload, filePath);
     }
 
 

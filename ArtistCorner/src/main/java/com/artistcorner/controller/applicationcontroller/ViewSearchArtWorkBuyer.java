@@ -3,6 +3,8 @@ package com.artistcorner.controller.applicationcontroller;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
+import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
@@ -28,7 +30,7 @@ public class ViewSearchArtWorkBuyer {
         switch (buttonFavourites){
             case "Rimuovi dai Preferiti":{
                 try {
-                    BuyerDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
+                    ArtWorkDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
                     return addFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -38,7 +40,7 @@ public class ViewSearchArtWorkBuyer {
             }
             case "Aggiungi ai Preferiti":{
                 try {
-                    BuyerDAO.addArtWorkToFavourites(idArtWork,idBuyer);
+                    ArtWorkDAO.addArtWorkToFavourites(idArtWork,idBuyer);
                     return remFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -53,13 +55,13 @@ public class ViewSearchArtWorkBuyer {
 
     public List<Integer> retrieveSearchArtWorkId(BuyerBean buyer){
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        return BuyerDAO.retrieveArtWorkId(buy.getIdBuyer());
+        return ArtWorkDAO.retrieveArtWorkId(buy.getIdBuyer());
     }
 
 
 
     public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
-        Artist artist = BuyerDAO.retrieveArtist(a.getArtistId());
+        Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtistId());
 
         ArtistBean artBean = new ArtistBean();
         artBean.setNome(artist.getNome());
@@ -71,7 +73,7 @@ public class ViewSearchArtWorkBuyer {
         String input=artSearch.getTitolo();
         String category=artSearch.getCategoria();
 
-        List<ArtWork> artWorkList = BuyerDAO.retrieveArtWorkByName(input, category);
+        List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
         ArtWorkBean artWB = new ArtWorkBean();
 
@@ -98,9 +100,9 @@ public class ViewSearchArtWorkBuyer {
 
         try {
 
-            BuyerDAO.addArtWorkComprata(idOpera,idBuyer);
-            BuyerDAO.switchFlagVendibile(idOpera);
-            BuyerDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+            ArtWorkDAO.addArtWorkComprata(idOpera,idBuyer);
+            ArtWorkDAO.switchFlagVendibile(idOpera);
+            ArtWorkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -176,12 +176,13 @@ public class GuiControllerViewSearchArtWorkGallery {
         try{
             List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(artToSearch);    // lista opere disponibili in base all'input inserito nella textfield
             List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
+
             for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
                 artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
                 Image image1 = extractImage(artWork.getImmagine());
                 listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input,gal,artistSearch));
-
             }
+
         } catch ( ArtWorkNotFoundException throwables) {
             paneExceptionLoad.setVisible(true);
         }

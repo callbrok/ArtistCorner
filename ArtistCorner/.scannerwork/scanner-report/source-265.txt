@@ -2,7 +2,7 @@ package com.artistcorner.engclasses.dao;
 
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.others.ConnectProperties;
-import com.artistcorner.engclasses.query.QueryLogin;
+import com.artistcorner.engclasses.query.QueryUser;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

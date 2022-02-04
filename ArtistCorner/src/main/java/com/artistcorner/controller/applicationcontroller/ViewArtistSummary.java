@@ -4,7 +4,10 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.ProposalDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
@@ -22,7 +25,7 @@ public class ViewArtistSummary {
     public List<ArtWorkBean> retrieveAllArtWorksImage(ArtistBean artBean){
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
-        List<ArtWork> listOfArtWorks = ArtistDAO.retrieveAllArtWorks(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
+        List<ArtWork> listOfArtWorks = ArtWorkDAO.retrieveAllArtWorks(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
         ArtWorkBean artWB = new ArtWorkBean();
 
         ArrayList<ArtWorkBean>  arrayOfArtWorkBeans = new ArrayList<>();
@@ -42,7 +45,7 @@ public class ViewArtistSummary {
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
         ProposalBean currentPropBean = new ProposalBean();
 
-        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
+        List<Proposal> arrayOfProposals = ProposalDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
 
         for (Proposal n : arrayOfProposals) {
             currentPropBean.setGalleria(n.getGalleria());
@@ -53,7 +56,7 @@ public class ViewArtistSummary {
     }
 
     public ArtGalleryBean retrieveArtGallery(ProposalBean prop){
-        ArtGallery artG = ArtistDAO.retrieveArtGallery(prop.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+        ArtGallery artG = GalleryDAO.retrieveArtGallery(prop.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
         ArtGalleryBean artGBean = new ArtGalleryBean();
 
         artGBean.setNome(artG.getNome());

@@ -2,8 +2,10 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
+import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.ProposalDAO;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.model.Artist;
@@ -17,13 +19,13 @@ public class ViewSentArtGalleryProposal {
     public String retrieveArtistName(ProposalBean prop) {
         int idArtista= prop.getArtista();
 
-        Artist name =BuyerDAO.retrieveArtist(idArtista);
+        Artist name = ArtistDAO.retrieveArtistFromId(idArtista);
         return name.getNome()+" "+name.getCognome(); // ritorno nome e cognome dell'artista associato all'opera
 
     }
 
     public List<ProposalBean> retrieveProposal(ArtGalleryBean gallery, int flag) throws SentProposalNotFoundException {
-        List<Proposal> proposal = GalleryDAO.retrieveProposal(gallery,flag,"");    //lista delle proposte inviate
+        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(gallery,flag,"");    //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
         ProposalBean propBean = new ProposalBean();
 

@@ -3,6 +3,7 @@ package com.artistcorner.controller.applicationcontroller;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.model.ArtWork;
@@ -15,11 +16,11 @@ import java.util.List;
 public class ViewBuyerSummary {
 
     public List<Integer> retrieveAllComprate(BuyerBean buyB)  {
-        return BuyerDAO.retrieveAllComprate(buyB.getIdBuyer());
+        return ArtWorkDAO.retrieveAllComprate(buyB.getIdBuyer());
     }
 
     public ArtWorkBean retrieveArtWorks(int integer,int flag) {
-        ArtWork a = BuyerDAO.retrieveArtWorks(integer, flag);
+        ArtWork a = ArtWorkDAO.retrieveArtWorks(integer, flag);
         ArtWorkBean artWorkB = new ArtWorkBean();
 
         artWorkB.setIdOpera(a.getIdOpera());

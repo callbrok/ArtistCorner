@@ -5,6 +5,7 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.ProposalDAO;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -141,9 +142,15 @@ public class GuiControllerMobileViewArtGalleryProposals {
             EventHandler<ActionEvent> eventAccept = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {
+                    ProposalBean propToAccept = new ProposalBean();
+                    ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
+
+                    propToAccept.setFlagAccettazione(1);
+                    propToAccept.setIdOfferta(proposalId);
+
                     try {
-                        ArtistDAO.updateProposal(proposalId, 1);
-                    } catch (Exception ex) {
+                        omlc.acceptProposal(propToAccept);
+                    } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 }
@@ -152,10 +159,15 @@ public class GuiControllerMobileViewArtGalleryProposals {
             EventHandler<ActionEvent> eventDecline= new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {
-                    try {
-                        ArtistDAO.updateProposal(proposalId, 2);
+                    ProposalBean propToReject = new ProposalBean();
+                    ViewArtGalleryProposals omlc = new ViewArtGalleryProposals();
 
-                    } catch (Exception ex) {
+                    propToReject.setFlagAccettazione(2);
+                    propToReject.setIdOfferta(proposalId);
+
+                    try {
+                        omlc.rejectProposal(propToReject);
+                    } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 }

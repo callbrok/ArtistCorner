@@ -2,6 +2,7 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.dao.ArtWorkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
 import com.artistcorner.model.ArtWork;
@@ -16,7 +17,7 @@ public class ViewSalesHistory {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
 
-        List<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
+        List<ArtWork> arrayOfArtwork = ArtWorkDAO.retrieveSellArtWorks(art.getIdArtista());
         ArrayList<ArtWorkBean> arrayOfArtworkBeans = new ArrayList<>();
 
         ArtWorkBean artwBean = new ArtWorkBean();

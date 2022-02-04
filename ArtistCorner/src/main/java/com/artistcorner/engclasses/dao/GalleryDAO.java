@@ -20,10 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class GalleryDAO {
-    private GalleryDAO(){
 
+    private GalleryDAO(){
         throw new IllegalStateException("Utility class");
     }
+
     public static ArtGallery retrieveGallery(User loggedUser) {
         ArtGallery gal = null;
         Statement stmt = null;
@@ -80,6 +81,66 @@ public class GalleryDAO {
         return gal;
     }
 
+
+    public static ArtGallery retrieveArtGallery(int idGallery){
+        ArtGallery artG = null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryArtist.selectArtGallery(stmt, idGallery);
+
+            if (!rs.first()){ // rs empty
+                throw new ArtGalleryNotFoundException("Nessuna galleria trovata");
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                int idGalleria = rs.getInt("idGalleria");
+                String nome = rs.getString("nome");
+                String descrizione = rs.getString("descrizione");
+                String indirizzo = rs.getString("indirizzo");
+                String username = rs.getString("username");
+
+                artG = new ArtGallery(idGalleria, nome, descrizione, indirizzo, username);
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (Exception e6) {
+            e6.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se9) {
+                se9.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se10) {
+                se10.printStackTrace();
+            }
+        }
+
+        return artG;
+    }
+
+
+
+
     public static void insertGallery(User user, ArtGallery artGallery) throws DuplicateUserException,SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
@@ -120,167 +181,6 @@ public class GalleryDAO {
 
 
 
-    }
-    public static void removeProposta(int idGallery, int idArtista) throws SQLException {
-        Statement stmt = null;
-        int result;
-        Connection conn = null;
-
-        try {
-            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
-            conn = ConnectProperties.getConnection();    // Apertura connessione
-
-            // STEP 4.1: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-
-            result = QueryGallery.removeProposal(stmt,idGallery,idArtista);
-
-            if(result == -1){throw new ProposalsManagementProblemException("Problema nella gestione della proposta della galleria");}
-
-        } catch (ClassNotFoundException | SQLException | ProposalsManagementProblemException e1) {
-            e1.printStackTrace();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            if (stmt != null)
-                stmt.close();
-            if (conn != null)
-                conn.close();
-        }
-    }
-
-    public static void addProposta(int idGallery, int idArtista, int flag) throws SQLException {
-        Statement stmt = null;
-        Connection conn = null;
-
-        try {
-            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
-            conn = ConnectProperties.getConnection();    // Apertura connessione
-
-            // STEP 4.1: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-
-            int result = QueryGallery.insertProposal(stmt,idGallery,idArtista,flag);
-            if(result==-1){throw new ProposalsManagementProblemException("Problema nella gestione della proposta della galleria");}
-
-        } catch (ClassNotFoundException | SQLException | ProposalsManagementProblemException e2) {
-            e2.printStackTrace();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            if (stmt != null)
-                stmt.close();
-            if (conn != null)
-                conn.close();
-        }
-
-
-    }
-
-    public static List<Integer> retrieveArtistId(int galleria) {
-        List<Integer> listOfArtistId = new ArrayList<>();
-        Statement stmt = null;
-        Connection conn = null;
-
-        try {
-
-            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
-            conn = ConnectProperties.getConnection();    // Apertura connessione
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
-                    ResultSet.CONCUR_READ_ONLY);
-
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryGallery.selectArtistId(stmt, galleria);
-
-
-            if (!rs.first()){ // rs empty
-                return Collections.emptyList();
-            }
-
-            // riposizionamento del cursore
-            rs.first();
-            do{
-                // lettura delle colonne "by name"
-                int art = rs.getInt("artista");
-                listOfArtistId.add(art);
-
-            }while(rs.next());
-
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
-        } catch (Exception e3) {
-            e3.printStackTrace();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException sqle3) {
-                sqle3.printStackTrace();
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException sqle4) {
-                sqle4.printStackTrace();
-            }
-        }
-
-        return listOfArtistId;
-    }
-    public static List<Proposal> retrieveProposal(ArtGalleryBean galleria,int flag,String lastAction){
-        List<Proposal> listOfProposal = new ArrayList<>();
-        Statement stmt = null;
-        Connection conn = null;
-
-        try {
-
-            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
-            conn = ConnectProperties.getConnection();    // Apertura connessione
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
-                    ResultSet.CONCUR_READ_ONLY);
-
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryGallery.selectProposal(stmt, galleria.getGalleria(),flag,"");
-
-
-            if (!rs.first()){ // rs empty
-                return Collections.emptyList();
-            }
-
-            // riposizionamento del cursore
-            rs.first();
-            do{
-                // lettura delle colonne "by name"
-                int art = rs.getInt("artista");
-                int idOff = rs.getInt("idOfferta");
-                int galle = rs.getInt("galleria");
-                Proposal prop = new Proposal(idOff,art,galle,0);
-                listOfProposal.add(prop);
-
-            }while(rs.next());
-
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
-        } catch (Exception e4) {
-            e4.printStackTrace();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException sqle5) {
-                sqle5.printStackTrace();
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException sqle6) {
-                sqle6.printStackTrace();
-            }
-        }
-
-        return listOfProposal;
     }
 
 }

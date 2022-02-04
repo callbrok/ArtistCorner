@@ -4,11 +4,14 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.ProposalDAO;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class ViewArtGalleryProposals {
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
         ProposalBean propBean = new ProposalBean();
 
-        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
+        List<Proposal> arrayOfProposals = ProposalDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
 
         if(arrayOfProposals.isEmpty()){
             throw new ProposalNotFoundException("Nessuna proposta disponibile.");
@@ -56,7 +59,7 @@ public class ViewArtGalleryProposals {
     }
 
     public ArtGalleryBean retrieveArtGallery(ProposalBean prop){
-        ArtGallery artG = ArtistDAO.retrieveArtGallery(prop.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
+        ArtGallery artG = GalleryDAO.retrieveArtGallery(prop.getGalleria());   // Fai un retrieve della galleria associata alla proposta.
         ArtGalleryBean artGallBean = new ArtGalleryBean();
 
         artGallBean.setGalleria(artG.getGalleria());
@@ -66,6 +69,16 @@ public class ViewArtGalleryProposals {
         artGallBean.setUsername( artG.getUsername());
 
         return artGallBean;
+
+    }
+
+    public void acceptProposal(ProposalBean proToAccept) throws SQLException {
+        ProposalDAO.updateProposal(proToAccept.getIdOfferta(), proToAccept.getFlagAccettazione());
+    }
+
+
+    public void rejectProposal(ProposalBean proToReject) throws SQLException {
+        ProposalDAO.updateProposal(proToReject.getIdOfferta(), proToReject.getFlagAccettazione());
 
     }
 

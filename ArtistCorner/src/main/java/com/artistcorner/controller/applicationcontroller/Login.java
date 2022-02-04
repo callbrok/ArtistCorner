@@ -7,7 +7,7 @@ import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.engclasses.dao.LoginDAO;
+import com.artistcorner.engclasses.dao.UserDAO;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
@@ -18,7 +18,6 @@ import com.artistcorner.model.User;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class Login {
 
@@ -29,7 +28,7 @@ public class Login {
 
         User noLoggedUser = new User(noLoggedUserBean.getUsername(), noLoggedUserBean.getPassword(), noLoggedUserBean.getRole());
 
-        User loggedUser = LoginDAO.retrieveUser(noLoggedUser);
+        User loggedUser = UserDAO.retrieveUser(noLoggedUser);
 
         // Eccezione: Inserito utente non valido.
         if(loggedUser == null){
