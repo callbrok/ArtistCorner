@@ -123,7 +123,6 @@ public class GuiControllerMobileSignUp {
         artGalleryReg.setNome(textFieldNomeGalleryMob.getText());
         artGalleryReg.setDescrizione(textFieldDescriptionGalleryMob.getText());
         artGalleryReg.setIndirizzo(address);
-        artGalleryReg.setUsername(textFieldUserGalleryMob.getText());
 
 
         try {

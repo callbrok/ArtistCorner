@@ -8,7 +8,7 @@
    <children>
       <Label layoutX="51.0" layoutY="23.0" prefHeight="45.0" prefWidth="274.0" text="Registrati come Artista" textFill="#39A67F">
          <font>
-            <Font size="23.0" />
+            <Font size="20.0" />
          </font></Label>
       <TextField fx:id="textFieldUserArtist" layoutX="46.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Username" />
       <TextField fx:id="textFieldPassArtist" layoutX="190.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Password" />

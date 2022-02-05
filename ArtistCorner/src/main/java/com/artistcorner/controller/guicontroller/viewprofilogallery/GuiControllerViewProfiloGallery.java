@@ -3,12 +3,12 @@ package com.artistcorner.controller.guicontroller.viewprofilogallery;
 import com.artistcorner.controller.applicationcontroller.ViewProfiloGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -31,10 +31,6 @@ public class GuiControllerViewProfiloGallery {
     @FXML
     private AnchorPane anchorParentProfGal;
     @FXML
-    private Label labelLogOut;
-    @FXML
-    private Label labelUsernameDisplay;
-    @FXML
     private Button button1;
     @FXML
     private Button button2;
@@ -47,7 +43,15 @@ public class GuiControllerViewProfiloGallery {
     @FXML
     private SVGPath svgProfileGallery;
     @FXML
+    private Label labelLogOutProf;
+    @FXML
+    private Label labelUsernameDisplayProf;
+    @FXML
     private Pane paneException;
+
+    private double x=0;
+    private double y=0;
+
     @FXML
     private Label labelNameGallery;
     @FXML
@@ -55,10 +59,7 @@ public class GuiControllerViewProfiloGallery {
     @FXML
     private Label labelAddressGallery;
 
-
-    private double x=0;
-    private double y=0;
-    private Stage stage;
+    private Stage stageProfGal;
     private ArtGalleryBean gal;
 
     public void initialize() throws SQLException, IOException {
@@ -73,27 +74,28 @@ public class GuiControllerViewProfiloGallery {
         gal = loggedGallery;
         initializeTilePaneArtist(gal);
         initializeDataGallery();
-        labelUsernameDisplay.setText(gal.getNome());
+        labelUsernameDisplayProf.setText(gal.getNome());
+
     }
 
     private void makeDraggable(){
-        anchorParentProfGal.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+        anchorParentProfGal.setOnMousePressed((eventPressProf -> {
+            x=eventPressProf.getSceneX();
+            y= eventPressProf.getSceneY();
         }));
 
-        anchorParentProfGal.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorParentProfGal.setOnMouseDragged((eventDragProf -> {
+            stageProfGal = (Stage) ((Node)eventDragProf.getSource()).getScene().getWindow();
+            stageProfGal.setX(eventDragProf.getScreenX() - x);
+            stageProfGal.setY(eventDragProf.getScreenY() - y);
         }));
     }
 
     public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        labelLogOutProf.addEventHandler(MouseEvent.MOUSE_CLICKED, eventProf -> {
             SceneController sc = new SceneController();
             try {
-                sc.switchToLogin(event);
+                sc.switchToLogin(eventProf);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -102,22 +104,22 @@ public class GuiControllerViewProfiloGallery {
     }
 
     public void exitWindow() {
-        stage = (Stage) anchorParentProfGal.getScene().getWindow();
-        stage.close();
+        stageProfGal = (Stage) anchorParentProfGal.getScene().getWindow();
+        stageProfGal.close();
     }
 
     public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
         button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Offerte inviate"));
         button4.setTooltip(new Tooltip("Cerca Opera"));
     }
     public void minimizeWindow() {
-        stage = (Stage) anchorParentProfGal.getScene().getWindow();
-        stage.setIconified(true);
+        stageProfGal = (Stage) anchorParentProfGal.getScene().getWindow();
+        stageProfGal.setIconified(true);
     }
 
     private void initializeTilePaneArtist(ArtGalleryBean gallery) {
+        SceneController sc = new SceneController();
         ViewProfiloGallery vp = new ViewProfiloGallery();
         try {
             tilePaneAccepted.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
@@ -131,11 +133,29 @@ public class GuiControllerViewProfiloGallery {
                 Label nameA = new Label();
                 nameA.setText(artName);
                 nameA.setAlignment(Pos.CENTER);
-                nameA.setPrefSize(100, 20);
-                VBox vBoxProf = new VBox(imageThumb, nameA);
+                nameA.setMinWidth(100);
+                SVGPath newSvgPath = new SVGPath();
+                newSvgPath.setStyle("-fx-fill: #FF0000");
+                newSvgPath.setContent("M7 5h17v16h-17l-7-7.972 7-8.028zm7 6.586l-2.586-2.586-1.414 1.414 2.586 2.586-2.586 2.586 1.414 1.414 2.586-2.586 2.586 2.586 1.414-1.414-2.586-2.586 2.586-2.586-1.414-1.414-2.586 2.586z");
+                newSvgPath.setScaleX(0.7);
+                newSvgPath.setScaleY(0.7);
+                Button button = new Button("Rimuovi dai Seguiti",newSvgPath);
+                button.setAlignment(Pos.CENTER);
+                button.isWrapText();
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent arg0) {
+                        try {
+                            vp.removeProposta(gallery,proposB.getArtista());
+                            sc.switchToSceneSentArtGalleryProposal(arg0,gal);
+                        } catch (SQLException | IOException | ProposalNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                VBox vBoxProf = new VBox(imageThumb, nameA,button);
                 vBoxProf.setSpacing(5);
                 vBoxProf.setAlignment(Pos.CENTER);
-                vBoxProf.setPrefSize(100, 100);
 
                 tilePaneAccepted.getChildren().add(vBoxProf);   // Popola la tilePane.
             }

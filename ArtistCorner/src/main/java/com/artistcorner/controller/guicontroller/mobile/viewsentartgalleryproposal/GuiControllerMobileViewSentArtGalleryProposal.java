@@ -4,14 +4,18 @@ import com.artistcorner.controller.applicationcontroller.ViewSentArtGalleryPropo
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
@@ -25,19 +29,19 @@ import java.util.List;
 
 public class GuiControllerMobileViewSentArtGalleryProposal {
     @FXML
-    private AnchorPane anchorMainProfGal;
+    private AnchorPane anchorMainProfGalMob;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
     private TilePane tilePanePendingMobile;
     @FXML
     private TilePane tilePaneAcceptedMobile;
-    @FXML
-    private Stage stageProfGal;
-
     private double x=0;
     private double y=0;
+    @FXML
+    private Stage stageProfGal;
     private ArtGalleryBean gal;
+
 
 
     public void makeLogOut(ActionEvent event) throws IOException {
@@ -45,7 +49,7 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
         sm.switchToLogin(event);
     }
     public void minimizeWindow() {
-        stageProfGal = (Stage) anchorMainProfGal.getScene().getWindow();
+        stageProfGal = (Stage) anchorMainProfGalMob.getScene().getWindow();
         stageProfGal.setIconified(true);
     }
     public void initialize(){
@@ -53,20 +57,20 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
     }
 
     public void exitWindow() {
-        stageProfGal = (Stage) anchorMainProfGal.getScene().getWindow();
+        stageProfGal = (Stage) anchorMainProfGalMob.getScene().getWindow();
         stageProfGal.close();
     }
 
     private void makeDraggable(){
-        anchorMainProfGal.setOnMousePressed((eventProfGal -> {
-            x=eventProfGal.getSceneX();
-            y= eventProfGal.getSceneY();
+        anchorMainProfGalMob.setOnMousePressed((eventProfGalMob -> {
+            x=eventProfGalMob.getSceneX();
+            y= eventProfGalMob.getSceneY();
         }));
 
-        anchorMainProfGal.setOnMouseDragged((eventProfGal2 -> {
-            stageProfGal = (Stage) ((Node)eventProfGal2.getSource()).getScene().getWindow();
-            stageProfGal.setX(eventProfGal2.getScreenX() - x);
-            stageProfGal.setY(eventProfGal2.getScreenY() - y);
+        anchorMainProfGalMob.setOnMouseDragged((eventProfGal2Mob -> {
+            stageProfGal = (Stage) ((Node)eventProfGal2Mob.getSource()).getScene().getWindow();
+            stageProfGal.setX(eventProfGal2Mob.getScreenX() - x);
+            stageProfGal.setY(eventProfGal2Mob.getScreenY() - y);
         }));
     }
     public void getGallery(ArtGalleryBean loggedGallery) throws SQLException, IOException{
@@ -90,6 +94,7 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
 
     private void initializeTilePanePending(ArtGalleryBean galleryP) {
         ViewSentArtGalleryProposal vp = new ViewSentArtGalleryProposal();
+        SceneControllerMobile sc = new SceneControllerMobile();
         try {
             tilePanePendingMobile.setHgap(20);
             tilePanePendingMobile.setVgap(10);
@@ -101,10 +106,30 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
                 Label nome = new Label();
                 nome.setText(stringName);
                 nome.setAlignment(Pos.CENTER);
-
                 nome.isWrapText();
-                VBox vBox = new VBox(imageThumb, nome);
-                vBox.setSpacing(5);
+                SVGPath newSvgPath = new SVGPath();
+                newSvgPath.setContent("M7 5h17v16h-17l-7-7.972 7-8.028zm7 6.586l-2.586-2.586-1.414 1.414 2.586 2.586-2.586 2.586 1.414 1.414 2.586-2.586 2.586 2.586 1.414-1.414-2.586-2.586 2.586-2.586-1.414-1.414-2.586 2.586z");
+                newSvgPath.setStyle("-fx-fill: #FF0000");
+                newSvgPath.setScaleX(0.6);
+                newSvgPath.setScaleY(0.6);
+                Button button = new Button("Rimuovi dai Seguiti",newSvgPath);
+                button.setAlignment(Pos.CENTER);
+                button.isWrapText();
+                button.getStyleClass().add("buttonRemove");
+                double legnth = nome.getMaxWidth();
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent arg0) {
+                        try {
+                            vp.removeProposta(galleryP,proposal.getArtista());
+                            sc.switchToSceneSentArtGalleryProposal(arg0,gal);
+                        } catch (SQLException | IOException | ProposalNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                VBox vBox = new VBox(imageThumb, nome,button);
+                vBox.setSpacing(2.5);
                 vBox.setAlignment(Pos.CENTER);
 
                 tilePanePendingMobile.getChildren().add(vBox);   // Popola la tilePane.
@@ -131,10 +156,11 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
                 nomeArtista.setText(artistName);
                 nomeArtista.setAlignment(Pos.CENTER);
                 nomeArtista.isWrapText();
+                nomeArtista.setMinWidth(140);
                 VBox vBox = new VBox(imageThumb, nomeArtista);
                 vBox.setSpacing(5);
                 vBox.setAlignment(Pos.CENTER);
-
+                vBox.setMinWidth(100);
 
                 tilePaneAcceptedMobile.getChildren().add(vBox);   // Popola la tilePane.
             }

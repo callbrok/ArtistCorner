@@ -6,6 +6,8 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
@@ -21,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,17 +39,20 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
     private Label labelUsernameDisplay;
     @FXML
     private ListView<HBoxCellMobile> listView;
+    private double x = 0;
+    private  double y = 0;
     @FXML
     private Stage stageGalMob;
     @FXML
     private Pane paneExLoad;
     @FXML
-    private ToggleButton toglleCat1,toglleCat2,toglleCat3;
+    private ToggleButton toglleCat1;
+    @FXML
+    private ToggleButton toglleCat2;
+    @FXML
+    private ToggleButton toglleCat3;
     @FXML
     private TextField textField;
-
-    private double x = 0;
-    private  double y = 0;
     private ArtGalleryBean gal;
     private String category="";
 
@@ -106,11 +112,6 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         SceneControllerMobile sc = new SceneControllerMobile();
         sc.switchToSceneGallerySummary(actionEvent, gal);
     }
-
-    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException{
-        SceneControllerMobile sc = new SceneControllerMobile();
-        sc.switchToSceneSentArtGalleryProposal(actionEvent, gal);
-    }
     public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
         SceneControllerMobile sc = new SceneControllerMobile();
         sc.switchToSceneProfiloGallery(actionEvent,gal);
@@ -120,37 +121,42 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         Label labelArtWorkName = new Label();
         Label labelArtistName = new Label();
         Button buttonOfferta = new Button();
-        Label labelArtistNameDefault = new Label();
-        Label labelArtWorkDefault = new Label();
-
-        public HBoxCellMobile(String labelTitolo, String labelArtista, Image img, int idOpera, double price, String labelButton, int idGallery, int idArtista, List<Integer> arrayListProposte,String input, ArtistBean artBean, ArtGalleryBean artGalBean) throws SQLException, IOException {
-            ImageView imageView = new ImageView();
-            imageView.setImage(img);
+        ImageView imageView = new ImageView();
+        public HBoxCellMobile( List<ArtistBean> arrayListProposte,String input,ArtistBean artistBean,ArtWorkBean artWorkBean) throws SQLException, IOException {
+            imageView.setImage(extractImage(artWorkBean.getImmagine()));
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
-            labelArtWorkName.setText(labelTitolo);
+
+            labelArtWorkName.setText(artWorkBean.getTitolo());
             labelArtWorkName.isWrapText();
             labelArtWorkName.setAlignment(Pos.CENTER);
-            labelArtWorkName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistName.setText(labelArtista);
+            labelArtWorkName.setTextFill(Paint.valueOf("39A67F"));
+
+            labelArtistName.setText(artistBean.getNome()+" "+artistBean.getCognome());
             labelArtistName.isWrapText();
             labelArtistName.setAlignment(Pos.CENTER);
-            labelArtistName.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
+            labelArtistName.setTextFill(Paint.valueOf("39A67F"));
+
             VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
             vBox1.setSpacing(5);
             vBox1.setAlignment(Pos.CENTER);
             vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
-            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 65, 10, 65));
-            buttonOfferta.setText(labelButton);
-            buttonOfferta.setScaleX(0.7);
-            buttonOfferta.setScaleY(0.7);
-            buttonOfferta.setPrefSize(125, 75);
-            buttonOfferta.setStyle("-fx-font-size: 14px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
-            ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
+            vBox1.setMinWidth(120);
 
-            if (arrayListProposte.contains(idArtista)) {
-                buttonOfferta.setText("Ritira Proposta");
+            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
+            HBox.setMargin(vBox1, new Insets(10, 65, 10, 60));
+            HBox.setMargin(buttonOfferta,new Insets(15,0,10,0));
+
+            buttonOfferta.setText("Invia Proposta");
+            buttonOfferta.setPrefSize(100, 50);
+            buttonOfferta.setAlignment(Pos.CENTER);
+            buttonOfferta.getStyleClass().add("buttonProp");
+
+            ViewSearchArtWorkGallery sa = new ViewSearchArtWorkGallery();
+            for(ArtistBean art : arrayListProposte) {
+                if (art.getIdArtista()==artistBean.getIdArtista()) {
+                    buttonOfferta.setText("Ritira Proposta");
+                }
             }
             buttonOfferta.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -158,7 +164,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sa.manageButtonClick(buttonOfferta, artGalBean, artBean);
+                        answer = sa.manageButtonClick(buttonOfferta.getText(), gal,artistBean);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -177,8 +183,6 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
 
     }
     public void populateListView(String input) throws SQLException, IOException {
-        ArtWorkBean artToSearch = new ArtWorkBean();
-
         paneExLoad.setVisible(false);
         if(toglleCat1.isSelected()){category = "impressionista";}
         if(toglleCat2.isSelected()){category = "espressionista";}
@@ -189,17 +193,16 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         }
         ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
         ArtistBean artist=null;
-        artToSearch.setCategoria(category);
+        ArtWorkBean artToSearch = new ArtWorkBean();
         artToSearch.setTitolo(input);
+        artToSearch.setCategoria(category);
 
         try{
             List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(artToSearch);
-            List<Integer> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
-
+            List<ArtistBean> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artist = vsg.retrieveGallerySearchArtistName(artWork);
-                Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artist.getIdArtista(),artistIdList,input, artist, gal));
+                listView.getItems().add(new HBoxCellMobile(artistIdList,input,artist,artWork));
 
             }
         } catch (ArtWorkNotFoundException throwables) {

@@ -45,8 +45,6 @@ public class GuiControllerViewSearchArtWorkGallery {
     @FXML
     private TextField textField;
     @FXML
-    private Button button3;
-    @FXML
     private SVGPath svgProfileSearchGal;
     @FXML
     private Button button1;
@@ -57,7 +55,11 @@ public class GuiControllerViewSearchArtWorkGallery {
     @FXML
     private Pane paneExceptionLoad;
     @FXML
-    private ToggleButton toglleCat1,toglleCat2,toglleCat3;
+    private ToggleButton toglleCat1;
+    @FXML
+    private ToggleButton toglleCat2;
+    @FXML
+    private ToggleButton toglleCat3;
 
     public String category = "";
     private double x=0;
@@ -129,7 +131,6 @@ public class GuiControllerViewSearchArtWorkGallery {
     public void setTooltipMenu(){
         button1.setTooltip(new Tooltip("Home"));
         button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Offerte inviate"));
         button4.setTooltip(new Tooltip("Cerca Opere"));
     }
 
@@ -149,10 +150,6 @@ public class GuiControllerViewSearchArtWorkGallery {
     public void switchToGallerySummary(ActionEvent actionEvent) throws IOException {
         SceneController sc = new SceneController();
         sc.switchToSceneGallerySummary(actionEvent,gal);
-    }
-    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
     }
     public void populateListView(String input) throws SQLException, IOException { //popola la listview con le opere disponibili
         ArtWorkBean artToSearch = new ArtWorkBean();
@@ -175,12 +172,11 @@ public class GuiControllerViewSearchArtWorkGallery {
 
         try{
             List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(artToSearch);    // lista opere disponibili in base all'input inserito nella textfield
-            List<Integer> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
+            List<ArtistBean> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
 
             for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
                 artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
-                Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCell(artWork.getTitolo(), artistSearch.getNome()+" "+artistSearch.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Invia Proposta", gal.getGalleria(), artistSearch.getIdArtista(),artistIdListSearchGal,input,gal,artistSearch));
+                listView.getItems().add(new HBoxCell(artistIdListSearchGal,input,gal,artistSearch,artWork));
             }
 
         } catch ( ArtWorkNotFoundException throwables) {
@@ -191,39 +187,41 @@ public class GuiControllerViewSearchArtWorkGallery {
         Label labelArtWorkNameSearchGal = new Label();
         Label labelArtistNameSearchGal = new Label();
         Button buttonOffertaSearchGal = new Button();
+        ImageView imageViewSearchGal = new ImageView(); // immagine dell'opera
 
-        public HBoxCell(String labelArtTitoloGal, String labelArtistNameGal, Image imgShowGal, int idArtWork, double priceGal, String labelButtonShow, int idGallerySearch, int idArtistSearchGal, List<Integer> arrayListProposteGal,String inputSearchGal, ArtGalleryBean artGalleryBean, ArtistBean artBean) throws SQLException, IOException {
-            ImageView imageViewSearchGal = new ImageView(); // immagine dell'opera
-            imageViewSearchGal.setImage(imgShowGal);
+        public HBoxCell(List<ArtistBean> arrayListProposteGal,String inputSearchGal, ArtGalleryBean artGalleryBean, ArtistBean artBean,ArtWorkBean artWork) throws SQLException, IOException {
+            imageViewSearchGal.setImage(extractImage(artWork.getImmagine()));
             imageViewSearchGal.setFitHeight(100);
             imageViewSearchGal.setFitWidth(100);
 
-            labelArtWorkNameSearchGal.setText(labelArtTitoloGal);
+            labelArtWorkNameSearchGal.setText(artWork.getTitolo());
             labelArtWorkNameSearchGal.isWrapText();
             labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
             labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
             labelArtWorkNameSearchGal.isWrapText();
 
-            labelArtistNameSearchGal.setText(labelArtistNameGal);
+            labelArtistNameSearchGal.setText(artBean.getNome()+" "+artBean.getCognome());
             labelArtistNameSearchGal.setAlignment(Pos.CENTER);
             labelArtistNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
             labelArtistNameSearchGal.isWrapText();
 
             VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal); // vbox contenente titolo dell'opera e nome dell'artista
             vBox1.setAlignment(Pos.CENTER);
+            vBox1.setMinWidth(150);
             vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
 
             HBox.setHgrow(labelArtWorkNameSearchGal, Priority.ALWAYS);
             HBox.setMargin(vBox1, new Insets(10, 120, 10, 100));
 
 
-            buttonOffertaSearchGal.setText(labelButtonShow);
+            buttonOffertaSearchGal.setText("Invia Proposta");
             buttonOffertaSearchGal.setPrefSize(150, 100);
             buttonOffertaSearchGal.setStyle("-fx-font-size: 16px;");
             ViewSearchArtWorkGallery sawg = new ViewSearchArtWorkGallery();
-
-            if (arrayListProposteGal.contains(idArtistSearchGal)) {     // se l'array contenente tutti gli id artista contiene l'id dell'artista in questione
-                buttonOffertaSearchGal.setText("Ritira Proposta");      // imposto il testo del button su 'ritira proposta'
+            for (ArtistBean a :arrayListProposteGal) {
+                if (a.getIdArtista()==artBean.getIdArtista()) {     // se l'array contenente tutti gli id artista contiene l'id dell'artista in questione
+                    buttonOffertaSearchGal.setText("Ritira Proposta");      // imposto il testo del button su 'ritira proposta'
+                }
             }
             buttonOffertaSearchGal.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -231,7 +229,7 @@ public class GuiControllerViewSearchArtWorkGallery {
                 public void handle(ActionEvent arg0) {
                     String answer = null;
                     try {
-                        answer = sawg.manageButtonClick(buttonOffertaSearchGal, artGalleryBean, artBean);
+                        answer = sawg.manageButtonClick(buttonOffertaSearchGal.getText(), artGalleryBean, artBean);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

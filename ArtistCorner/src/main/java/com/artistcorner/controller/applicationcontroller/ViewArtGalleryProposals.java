@@ -37,20 +37,19 @@ public class ViewArtGalleryProposals {
     public List<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) throws ProposalNotFoundException {
         Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
-        ProposalBean propBean = new ProposalBean();
 
-        List<Proposal> arrayOfProposals = ProposalDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
+        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "");
 
         if(arrayOfProposals.isEmpty()){
             throw new ProposalNotFoundException("Nessuna proposta disponibile.");
         }
 
         for (Proposal n : arrayOfProposals) {
+            ProposalBean propBean = new ProposalBean();
             propBean.setIdOfferta(n.getIdOfferta());
             propBean.setArtista(n.getArtista());
             propBean.setGalleria(n.getGalleria());
             propBean.setFlagAccettazione(n.getFlagAccettazione());
-
             arrayOfProposalBeans.add(propBean);
         }
 
@@ -66,19 +65,17 @@ public class ViewArtGalleryProposals {
         artGallBean.setNome(artG.getNome());
         artGallBean.setDescrizione(artG.getDescrizione());
         artGallBean.setIndirizzo(artG.getIndirizzo());
-        artGallBean.setUsername( artG.getUsername());
-
         return artGallBean;
 
     }
 
     public void acceptProposal(ProposalBean proToAccept) throws SQLException {
-        ProposalDAO.updateProposal(proToAccept.getIdOfferta(), proToAccept.getFlagAccettazione());
+        ArtistDAO.updateProposal(proToAccept.getIdOfferta(), proToAccept.getFlagAccettazione());
     }
 
 
     public void rejectProposal(ProposalBean proToReject) throws SQLException {
-        ProposalDAO.updateProposal(proToReject.getIdOfferta(), proToReject.getFlagAccettazione());
+        ArtistDAO.updateProposal(proToReject.getIdOfferta(), proToReject.getFlagAccettazione());
 
     }
 

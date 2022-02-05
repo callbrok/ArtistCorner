@@ -33,7 +33,7 @@ public class SignUp {
     }
     public void registerGallery(UserBean user, ArtGalleryBean gal) throws DuplicateUserException {
         User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole());
-        ArtGallery artGalleryToAdd = new ArtGallery(gal.getGalleria(),gal.getNome(),gal.getDescrizione(),gal.getIndirizzo(),gal.getUsername());
+        ArtGallery artGalleryToAdd = new ArtGallery(gal.getGalleria(),gal.getNome(),gal.getDescrizione(),gal.getIndirizzo());
         try{
             GalleryDAO.insertGallery(userToAdd,artGalleryToAdd);
         }catch (SQLException e1){

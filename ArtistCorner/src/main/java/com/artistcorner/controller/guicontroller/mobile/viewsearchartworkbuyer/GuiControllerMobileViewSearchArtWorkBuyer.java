@@ -6,10 +6,7 @@ import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -117,46 +115,56 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         sc.switchToSceneFavouritesBuyer(actionEvent,buy);
     }
 
-    public static class HBoxCellMobile extends HBox {
+    public class HBoxCellMobile extends HBox {
         Label labelArtWorkNameMobBuy = new Label();
         Label labelArtistNameMobBuy = new Label();
         Button buttonAcquistaMobBuy = new Button();
         Button buttonPreferitiMobBuy = new Button();
         Label prezzoMobBuy = new Label();
+        ImageView imageView = new ImageView();
 
-        public HBoxCellMobile (String labelArtWorkMobBuy, String labelArtistMobBuy, Image imgMobBuy, int idOpera, double priceShowMob, String labelPreferitiMobBuy, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdPrefMob, String input, ArtWorkBean artWoBea, ArtistBean artB, BuyerBean buy)throws SQLException, IOException {
-            ImageView imageView = new ImageView();
-            imageView.setImage(imgMobBuy);
-            imageView.setFitHeight(50);
-            imageView.setFitWidth(50);
-            labelArtWorkNameMobBuy.setText(labelArtWorkMobBuy);
-            labelArtWorkNameMobBuy.setAlignment(Pos.CENTER);
-            labelArtWorkNameMobBuy.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight: bold ");
-            labelArtistNameMobBuy.setText(labelArtistMobBuy);
-            labelArtistNameMobBuy.setAlignment(Pos.CENTER);
-            labelArtistNameMobBuy.setStyle("-fx-font-size: 10px;-fx-text-fill: #39A67F; -fx-font-weight:bold ");
-            prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
-            prezzoMobBuy.setMaxWidth(Double.MAX_VALUE);
-            prezzoMobBuy.setText("€ " + Double.toString(priceShowMob));
+        public HBoxCellMobile (List<ArtWorkBean> arrayListArtWorkIdPrefMob,ArtWorkBean artWoBea, ArtistBean artB, BuyerBean buy) {
+            imageView.setImage(extractImage(artWoBea.getImmagine()));
+            imageView.setFitHeight(75);
+            imageView.setFitWidth(75);
+
+            labelArtWorkNameMobBuy.setText(artWoBea.getTitolo());
+            labelArtWorkNameMobBuy.setTextFill(Paint.valueOf("39A67F"));
+
+            labelArtistNameMobBuy.setText(artB.getNome()+" "+artB.getCognome());
+            labelArtistNameMobBuy.setTextFill(Paint.valueOf("39A67F"));
+
+            prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F ");
+            prezzoMobBuy.setText("€ " + artWoBea.getPrezzo());
             prezzoMobBuy.setAlignment(Pos.CENTER);
-            prezzoMobBuy.setPrefSize(125,50);
+            prezzoMobBuy.setMinWidth(100);
+            prezzoMobBuy.setPrefHeight(75);
+
             VBox vBox1 = new VBox(labelArtWorkNameMobBuy, labelArtistNameMobBuy);
-            vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
+            vBox1.setAlignment(Pos.CENTER);
+            vBox1.setMinWidth(120);
+            vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
+
             HBox.setHgrow(labelArtWorkNameMobBuy, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 10, 10, 45));
+            HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
             buttonAcquistaMobBuy.setText("Acquista");
-            buttonAcquistaMobBuy.setPrefSize(90, 25);
-            buttonAcquistaMobBuy.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
-            buttonPreferitiMobBuy.setText(labelPreferitiMobBuy);
-            buttonPreferitiMobBuy.setPrefSize(90, 25);
-            buttonPreferitiMobBuy.setStyle(" -fx-font-size: 8px; -fx-background-color: #39A67F; -fx-background-radius: 0;");
+            buttonAcquistaMobBuy.setPrefSize(100, 35);
+            buttonAcquistaMobBuy.getStyleClass().add("buttonBuy");
+
+
+            buttonPreferitiMobBuy.setText("Aggiungi ai Preferiti");
+            buttonPreferitiMobBuy.setPrefSize(100, 35);
+            buttonPreferitiMobBuy.getStyleClass().add("buttonBuy");
+
+            VBox vBox = new VBox(buttonAcquistaMobBuy, buttonPreferitiMobBuy);
+            vBox.setStyle(" -fx-font-size: 8px;-fx-background-radius: 0;");
+            vBox.setSpacing(2.5);
+            vBox.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ");
+            vBox.setAlignment(Pos.CENTER);
 
             if(buy.getIdBuyer() == 13){buttonAcquistaMobBuy.setDisable(true);}
             if(buy.getIdBuyer() == 13){buttonPreferitiMobBuy.setDisable(true);}
 
-            VBox vBox = new VBox(buttonAcquistaMobBuy, buttonPreferitiMobBuy);
-            vBox.setSpacing(2.5);
-            vBox.setAlignment(Pos.CENTER);
             ViewSearchArtWorkBuyer sa = new ViewSearchArtWorkBuyer();
             buttonAcquistaMobBuy.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -169,7 +177,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(artWoBea, buy);
+                                sa.finishPayment(artWoBea, buy,artB);
                             } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -198,7 +206,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(artWoBea, buy);
+                                sa.finishPayment(artWoBea, buy,artB);
                             } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -224,9 +232,10 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                 }
 
             });
-
-            if (arrayListArtWorkIdPrefMob.contains(idOpera)){
+            for(ArtWorkBean art : arrayListArtWorkIdPrefMob){
+            if (art.getIdOpera()==artWoBea.getIdOpera()){
                 buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
+            }
             }
             buttonPreferitiMobBuy.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -262,7 +271,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         }
 
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
-        List<Integer> arrayOfArtWorkId=null;
+        List<ArtWorkBean> arrayOfArtWorkId=null;
         ArtistBean artist=null;
 
         artToSearch.setTitolo(input);
@@ -274,8 +283,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
 
             for (ArtWorkBean artWork: arrayOfArtWork) {
                 artist = vsb.retrieveSearchArtistName(artWork);
-                Image image1 = extractImage(artWork.getImmagine());
-                listView.getItems().add(new HBoxCellMobile(artWork.getTitolo(), artist.getNome()+" "+artist.getCognome(),image1, artWork.getIdOpera(), artWork.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artist.getIdArtista(),arrayOfArtWorkId,input,artWork,artist,buy));
+                listView.getItems().add(new HBoxCellMobile(arrayOfArtWorkId,artWork,artist,buy));
             }
 
 

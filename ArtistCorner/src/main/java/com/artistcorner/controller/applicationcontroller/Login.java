@@ -58,7 +58,6 @@ public class Login {
                 loggedGalleryBean.setNome(loggedArtGallery.getNome());
                 loggedGalleryBean.setDescrizione(loggedArtGallery.getDescrizione());
                 loggedGalleryBean.setIndirizzo(loggedArtGallery.getIndirizzo());
-                loggedGalleryBean.setUsername(loggedArtGallery.getUsername());
 
                 if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
                 if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.

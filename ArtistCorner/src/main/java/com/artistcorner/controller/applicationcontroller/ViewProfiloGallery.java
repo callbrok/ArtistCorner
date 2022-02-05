@@ -6,10 +6,12 @@ import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.dao.ProposalDAO;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +41,8 @@ public class ViewProfiloGallery {
             proposalBean.add(propBean);
         }
         return proposalBean;
+    }
+    public void removeProposta(ArtGalleryBean gallery, int idArtista) throws SQLException, ProposalNotFoundException {
+        ProposalDAO.removeProposta(gallery.getGalleria(), idArtista); // rimuovo la proposta
     }
 }

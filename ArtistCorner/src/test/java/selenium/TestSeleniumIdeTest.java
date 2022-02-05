@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -31,28 +29,25 @@ public class TestSeleniumIdeTest {
     driver.quit();
   }
   @Test
-  public void testSeleniumIde2() {
+  public void testSeleniumIde() {
     driver.get("https://www.google.it/");
-    driver.manage().window().setSize(new Dimension(654, 752));
-    driver.findElement(By.name("q")).sendKeys("Selenium ide");
-    driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+    driver.manage().window().setSize(new Dimension(652, 752));
+    driver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div")).click();
+    driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")).sendKeys("francesco totti");
+    driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]")).click();
     {
-      WebElement element = driver.findElement(By.cssSelector(".tF2Cxc > .yuRUbf .eFM0qc > .fl > span"));
+      WebElement element = driver.findElement(By.cssSelector("div:nth-child(2) > .tF2Cxc > .yuRUbf .LC20lb"));
       Actions builder = new Actions(driver);
       builder.moveToElement(element).perform();
     }
+    driver.findElement(By.cssSelector("div:nth-child(2) > .tF2Cxc > .yuRUbf .LC20lb")).click();
     {
-      WebElement element = driver.findElement(By.linkText("Commands"));
+      WebElement element = driver.findElement(By.tagName("body"));
       Actions builder = new Actions(driver);
-      builder.moveToElement(element).perform();
+      builder.moveToElement(element, 0, 0).perform();
     }
-    js.executeScript("window.scrollTo(0,900)");
-    driver.findElement(By.cssSelector(".tF2Cxc > .yuRUbf .LC20lb")).click();
-    driver.findElement(By.linkText("Docs")).click();
-    driver.findElement(By.linkText("Commands")).click();
-    driver.findElement(By.linkText("Getting Started")).click();
-    driver.findElement(By.linkText("Plugins")).click();
-    driver.findElement(By.linkText("Help")).click();
-    driver.findElement(By.linkText("Blog")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(15) > td:nth-child(2) > a:nth-child(2)")).click();
+    driver.findElement(By.cssSelector(".tocsection-6 .toctext")).click();
+    driver.findElement(By.cssSelector("p:nth-child(45) > i > a")).click();
   }
 }

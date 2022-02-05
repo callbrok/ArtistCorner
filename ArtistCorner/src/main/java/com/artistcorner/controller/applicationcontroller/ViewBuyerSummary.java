@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ViewBuyerSummary {
 
-    public List<Integer> retrieveAllComprate(BuyerBean buyB)  {
+    public List<ArtWorkBean> retrieveAllComprate(BuyerBean buyB)  {
         return ArtWorkDAO.retrieveAllComprate(buyB.getIdBuyer());
     }
 

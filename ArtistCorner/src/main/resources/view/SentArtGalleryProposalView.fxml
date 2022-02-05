@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="anchorParentProfGal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="846.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewsentartgalleryproposal.GuiControllerViewSentArtGalleryProposal">
    <children>
-      <Pane layoutX="-1.0" prefHeight="170.0" prefWidth="846.0" style="-fx-background-color: #39A67F;">
+      <Pane prefHeight="170.0" prefWidth="846.0" style="-fx-background-color: #39A67F;">
          <children>
             <Label layoutX="34.0" layoutY="36.0" prefHeight="53.0" prefWidth="233.0" text="Artist Corner" textFill="WHITE">
                <font>
@@ -45,18 +45,26 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
-            <Label fx:id="labelInviate" layoutX="15.0" layoutY="13.0" prefHeight="35.0" prefWidth="873.0" text="Richieste in attesa di risposta" textFill="#39a67f">
+            <Label fx:id="labelInviate" layoutX="15.0" layoutY="13.0" prefHeight="35.0" prefWidth="429.0" text="Proposte in attesa di risposta" textFill="#39a67f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TilePane fx:id="tilePaneAccepted" layoutX="15.0" layoutY="317.0" prefHeight="209.0" prefWidth="710.0" />
-            <Label fx:id="labelAttesa" layoutX="16.0" layoutY="271.0" prefHeight="35.0" prefWidth="873.0" text="Richieste accettate" textFill="#39a67f">
+            <TilePane fx:id="tilePaneAcceptedSent" layoutX="15.0" layoutY="317.0" prefHeight="209.0" prefWidth="710.0" />
+            <Label fx:id="labelAttesa" layoutX="16.0" layoutY="271.0" prefHeight="35.0" prefWidth="414.0" text="Proposte accettate" textFill="#39a67f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <TilePane fx:id="tilePanePending" layoutX="15.0" layoutY="58.0" prefHeight="210.0" prefWidth="709.0" />
+            <Button layoutX="574.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToProfiloGallery" prefHeight="35.0" prefWidth="153.0" text="  Ritorna al Profilo" textFill="#39a67f">
+               <graphic>
+                  <SVGPath content="M17.026 22.957c10.957-11.421-2.326-20.865-10.384-13.309l2.464 2.352h-9.106v-8.947l2.232 2.229c14.794-13.203 31.51 7.051 14.794 17.675z" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Button fx:id="button1" layoutX="-1.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchToGallerySummary" prefHeight="46.0" prefWidth="56.0" styleClass="button1">
@@ -67,11 +75,7 @@
          <graphic>
             <SVGPath content="M 10 4 C 6.803 4 4.9570312 6.494 4.9570312 9.5 C 4.9570312 10.512 5.4414062 11.529297 5.4414062 11.529297 C 5.2474063 11.641297 4.9278125 11.998906 5.0078125 12.628906 C 5.1578125 13.804906 5.6671875 14.101953 5.9921875 14.126953 C 6.1161875 15.224953 7.587 16.796 8 17 L 8 18.667969 C 7.083 21.417969 1 20 1 26 L 19 26 C 19 20 12.917 21.417969 12 18.667969 L 12 17 C 12.413 16.796 13.883813 15.224953 14.007812 14.126953 C 14.332812 14.101953 14.841188 13.804906 14.992188 12.628906 C 15.073187 11.996906 14.753594 11.641297 14.558594 11.529297 C 14.558594 11.529297 15.042969 10.611 15.042969 9.5 C 15.042969 7.274 14.168969 5.375 12.292969 5.375 C 12.292969 5.375 11.949 4 10 4 z M 16.847656 11 C 16.826656 11.085 16.813016 11.183719 16.791016 11.261719 C 16.971016 11.719719 17.055563 12.263812 16.976562 12.882812 C 16.971563 12.925812 16.958172 12.958 16.951172 13 L 28 13 C 28.553 13 29 12.553 29 12 C 29 11.447 28.553 11 28 11 L 16.847656 11 z M 15.427734 16 C 15.038734 16.725 14.513 17.402969 14 17.917969 L 14 18 L 28 18 C 28.553 18 29 17.553 29 17 C 29 16.447 28.553 16 28 16 L 15.427734 16 z M 19.189453 21 C 19.704453 21.531 20.154562 22.184 20.476562 23 L 28 23 C 28.553 23 29 22.553 29 22 C 29 21.447 28.553 21 28 21 L 19.189453 21 z" styleClass="onSVGPath" />
          </graphic></Button>
-      <Button fx:id="button3" layoutX="-1.0" layoutY="262.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" styleClass="onbutton">
-         <graphic>
-            <SVGPath content="M24 1l-4.5 16.5-6.097-5.43 5.852-6.175-7.844 5.421-5.411-1.316 18-9zm-11 12.501v5.499l2.193-3.323-2.193-2.176zm-4.638 6.251c.99-.576 1.864-1.296 2.638-2.17v2.053c-.667.588-1.391 1.096-2.175 1.527l-.463-1.41zm-4.883 3.06c-.978.125-2.355.188-3.479.188v-1.455c1.032 0 2.327-.056 3.229-.169l.25 1.436zm4.184-1.086l-.055.023c-.879.369-1.831.655-2.865.859l-.25-1.438c.982-.197 1.885-.473 2.714-.833l.456 1.389z" />
-         </graphic></Button>
-      <Button fx:id="button31" layoutX="-1.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToSearchArtWorkGallery" prefHeight="46.0" prefWidth="56.0">
+      <Button fx:id="button3" layoutX="-1.0" layoutY="262.0" mnemonicParsing="false" onAction="#switchToSearchArtWorkGallery" prefHeight="46.0" prefWidth="56.0">
          <graphic>
             <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
          </graphic>

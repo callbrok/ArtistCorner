@@ -103,10 +103,10 @@ public class GuiControllerMobileBuyerSummary {
     }
     public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy){
         ViewBuyerSummary vbs = new ViewBuyerSummary();
-        List<Integer> arrayOfComprate = vbs.retrieveAllComprate(buy);
+        List<ArtWorkBean> arrayOfComprate = vbs.retrieveAllComprate(buy);
         List<ArtWorkBean> arrayFinal = new ArrayList<>();
-        for (int n : arrayOfComprate) {
-            ArtWorkBean artwork = vbs.retrieveArtWorks(n, 0);
+        for (ArtWorkBean n : arrayOfComprate) {
+            ArtWorkBean artwork = vbs.retrieveArtWorks(n.getIdOpera(), 0);
             listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
 
             arrayFinal.add(artwork);

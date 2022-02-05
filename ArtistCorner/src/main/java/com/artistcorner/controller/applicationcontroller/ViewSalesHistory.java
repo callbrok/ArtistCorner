@@ -20,13 +20,14 @@ public class ViewSalesHistory {
         List<ArtWork> arrayOfArtwork = ArtWorkDAO.retrieveSellArtWorks(art.getIdArtista());
         ArrayList<ArtWorkBean> arrayOfArtworkBeans = new ArrayList<>();
 
-        ArtWorkBean artwBean = new ArtWorkBean();
+
 
         if(arrayOfArtwork.isEmpty()){
             throw new SellArtWorkNotFoundException("Nessuna opera venduta.");
         }
 
         for (ArtWork n : arrayOfArtwork) {
+            ArtWorkBean artwBean = new ArtWorkBean();
             artwBean.setIdOpera(n.getIdOpera());
             artwBean.setTitolo(n.getTitolo());
             artwBean.setPrezzo(n.getPrezzo());

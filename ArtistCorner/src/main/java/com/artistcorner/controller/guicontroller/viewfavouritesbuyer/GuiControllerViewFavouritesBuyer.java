@@ -128,31 +128,32 @@ public class GuiControllerViewFavouritesBuyer {
                 sc.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
         }
 
-        public static class HBoxCell extends HBox {
+        public class HBoxCell extends HBox {
+
                 Label labelArtWorkNameFavDesk = new Label();
                 Label labelArtistNameFavDesk = new Label();
                 Button buttonAcquistaFavDesk = new Button();
                 Button buttonPreferitiFavDesk = new Button();
                 Label prezzoFavDesk = new Label();
+                ImageView imageView = new ImageView();
 
-                public HBoxCell(String artWorkFavText, String artistFavText, Image imageFav, int idOperaFav, double priceFav, String preferitiText, int idBuyer, int idArtista, List<Integer> arrayListArtWorkIdFavDesk, String input, BuyerBean buy, ArtWorkBean artWorkBean) throws SQLException, IOException {
-                        super();
-                        ImageView imageView = new ImageView();
-                        imageView.setImage(imageFav);
+                public HBoxCell(List<ArtWorkBean> arrayListArtWorkIdFavDesk, BuyerBean buy, ArtWorkBean artWorkBean, ArtistBean artistBean) throws SQLException, IOException {
+
+                        imageView.setImage(extractImage(artWorkBean.getImmagine()));
                         imageView.setFitHeight(100);
                         imageView.setFitWidth(100);
 
-                        labelArtWorkNameFavDesk.setText(artWorkFavText);
+                        labelArtWorkNameFavDesk.setText(artWorkBean.getTitolo());
                         labelArtWorkNameFavDesk.setAlignment(Pos.CENTER);
                         labelArtWorkNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
 
-                        labelArtistNameFavDesk.setText(artistFavText);
+                        labelArtistNameFavDesk.setText(artistBean.getNome()+" "+artistBean.getCognome());
                         labelArtistNameFavDesk.setAlignment(Pos.CENTER);
                         labelArtistNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
 
                         prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
                         prezzoFavDesk.setMaxWidth(Double.MAX_VALUE);
-                        prezzoFavDesk.setText("€ " + priceFav);
+                        prezzoFavDesk.setText("€ " + artWorkBean.getPrezzo());
                         prezzoFavDesk.setAlignment(Pos.CENTER);
 
                         VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk, prezzoFavDesk);
@@ -163,7 +164,7 @@ public class GuiControllerViewFavouritesBuyer {
                         buttonAcquistaFavDesk.setText("Acquista");
                         buttonAcquistaFavDesk.setPrefSize(170, 50);
                         buttonAcquistaFavDesk.setStyle(" -fx-font-size: 14px;");
-                        buttonPreferitiFavDesk.setText(preferitiText);
+                        buttonPreferitiFavDesk.setText("Aggiungi ai Preferiti");
                         buttonPreferitiFavDesk.setPrefSize(170, 50);
                         buttonPreferitiFavDesk.setStyle("-fx-font-size: 14px;");
 
@@ -182,7 +183,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
                                                         try {
-                                                                lv.finishPayment( artWorkBean, buy);
+                                                                lv.finishPayment( artWorkBean, buy,artistBean);
                                                         } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
@@ -197,7 +198,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 @Override
                                                 public void handle(ActionEvent arg0) {
                                                         try {
-                                                                lv.finishPayment( artWorkBean, buy);
+                                                                lv.finishPayment( artWorkBean, buy,artistBean);
                                                         } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
@@ -209,9 +210,10 @@ public class GuiControllerViewFavouritesBuyer {
                                 }
 
                         });
-
-                if (arrayListArtWorkIdFavDesk.contains(idOperaFav)){
-                        buttonPreferitiFavDesk.setText("Rimuovi dai Preferiti");
+                for(ArtWorkBean aw : arrayListArtWorkIdFavDesk) {
+                        if (aw.getIdOpera()==artWorkBean.getIdOpera()) {
+                                buttonPreferitiFavDesk.setText("Rimuovi dai Preferiti");
+                        }
                 }
                 buttonPreferitiFavDesk.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -245,17 +247,17 @@ public class GuiControllerViewFavouritesBuyer {
 
         public void populateListView() throws SQLException, IOException {
                 ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
-                List<Integer> arrayOfArtWorkIdFav;
+                List<ArtWorkBean> arrayOfArtWorkIdFav;
                 ArtistBean artistFav=null;
                 ArtWorkBean artWorkFav = null;
 
                 try{
                         arrayOfArtWorkIdFav = vfb.retrieveArtWorkId(buy);
-                        for (Integer i: arrayOfArtWorkIdFav) {
-                                artWorkFav = vfb.retrieveArtWork(i);
+                        for (ArtWorkBean i: arrayOfArtWorkIdFav) {
+                                artWorkFav = vfb.retrieveArtWork(i.getIdOpera());
                                 artistFav = vfb.retrieveArtistName(artWorkFav);
-                                Image image1 = extractImage(artWorkFav.getImmagine());
-                                listView.getItems().add(new HBoxCell(artWorkFav.getTitolo(), artistFav.getNome()+" "+artistFav.getCognome(),image1, artWorkFav.getIdOpera(), artWorkFav.getPrezzo(),"Aggiungi ai Preferiti", buy.getIdBuyer(), artistFav.getIdArtista(),arrayOfArtWorkIdFav,"", buy, artWorkFav));
+
+                                listView.getItems().add(new HBoxCell(arrayOfArtWorkIdFav, buy, artWorkFav,artistFav));
 
                         }
 

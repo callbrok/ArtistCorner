@@ -23,7 +23,15 @@ import java.util.List;
 
 public class GuiControllerGallerySummary {
     @FXML
-    private Button button3;
+    private Button button1;
+    @FXML
+    private Button button4;
+    @FXML
+    private Button button2;
+    @FXML
+    private Label labelComprate;
+    @FXML
+    private Pane paneComprate;
     @FXML
     private AnchorPane anchorParentGallery;
     @FXML
@@ -32,15 +40,14 @@ public class GuiControllerGallerySummary {
     private Label labelUsernameDisplay;
     @FXML
     private Label labelLogOutGallery;
-    @FXML
+    private double x=0;
+    private double y=0;
     private Stage stageGallery;
     @FXML
     private SVGPath svgProfileGallery;
     @FXML
     private Pane paneExceptionLoad;
 
-    private double x=0;
-    private double y=0;
     private ArtGalleryBean gal;
 
 
@@ -66,7 +73,6 @@ public class GuiControllerGallerySummary {
     public void getGallery(ArtGalleryBean loggedGallery){
         gal = loggedGallery;
         labelUsernameDisplay.setText(gal.getNome());
-
         initializeOfferteInviate(listViewOfferte,gal);
         paneExceptionLoad.setPrefSize(708,250);
     }
@@ -111,11 +117,8 @@ public class GuiControllerGallerySummary {
     }
     public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
         SceneController sc = new SceneController();
-         sc.switchToSceneProfiloGallery(actionEvent,gal);
+        sc.switchToSceneProfiloGallery(actionEvent,gal);
     }
-    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneSentArtGalleryProposal(actionEvent,gal);
-    }
+
 
 }

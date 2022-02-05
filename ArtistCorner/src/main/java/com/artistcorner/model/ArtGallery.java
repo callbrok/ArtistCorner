@@ -5,20 +5,17 @@ public class ArtGallery {
     private String nome;
     private String descrizione;
     private String indirizzo;
-    private String username;
 
-    public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo, String newUsername){
+    public  ArtGallery(int newGalleria, String newNome, String newDescrizione, String newIndirizzo){
         this.galleria = newGalleria;
         this.nome = newNome;
         this.descrizione = newDescrizione;
         this.indirizzo = newIndirizzo;
-        this.username = newUsername;
     }
 
     public int getGalleria() {return galleria;}
     public String getNome() {return nome;}
     public String getDescrizione() {return descrizione;}
     public String getIndirizzo() {return indirizzo;}
-    public String getUsername() {return username;}
 
 }

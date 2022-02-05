@@ -11,6 +11,7 @@ import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +44,8 @@ public class ViewSentArtGalleryProposal {
             proposalBean.add(propBean);
         }
         return proposalBean;
+    }
+    public void  removeProposta(ArtGalleryBean gallery, int idArtista) throws SQLException, ProposalNotFoundException {
+        ProposalDAO.removeProposta(gallery.getGalleria(),idArtista); // rimuovo la proposta
     }
 }

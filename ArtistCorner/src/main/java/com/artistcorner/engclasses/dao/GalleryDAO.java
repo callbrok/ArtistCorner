@@ -52,8 +52,7 @@ public class GalleryDAO {
                 String nome = rs.getString("nome");
                 String descrizione = rs.getString("descrizione");
                 String indirizzo = rs.getString("indirizzo");
-                String username = rs.getString("username");
-                gal = new ArtGallery(galleria,nome,descrizione,indirizzo,username);
+                gal = new ArtGallery(galleria,nome,descrizione,indirizzo);
 
 
             }while(rs.next());
@@ -80,7 +79,6 @@ public class GalleryDAO {
 
         return gal;
     }
-
 
     public static ArtGallery retrieveArtGallery(int idGallery){
         ArtGallery artG = null;
@@ -109,9 +107,8 @@ public class GalleryDAO {
                 String nome = rs.getString("nome");
                 String descrizione = rs.getString("descrizione");
                 String indirizzo = rs.getString("indirizzo");
-                String username = rs.getString("username");
 
-                artG = new ArtGallery(idGalleria, nome, descrizione, indirizzo, username);
+                artG = new ArtGallery(idGalleria, nome, descrizione, indirizzo);
 
             }while(rs.next());
 

@@ -20,13 +20,14 @@ public class ViewProfile {
 
         List<ArtWork> listOfAllArtWorks = ArtWorkDAO.retrieveAllArtWorks(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
         ArrayList<ArtWorkBean> listOfAllArtWorksBean = new ArrayList<>();
-        ArtWorkBean artWBean = new ArtWorkBean();
+
 
         if(listOfAllArtWorks.isEmpty()){
             throw new ArtWorkNotFoundException("Nessun opera caricata");
         }
 
         for(ArtWork n: listOfAllArtWorks){
+            ArtWorkBean artWBean = new ArtWorkBean();
             artWBean.setIdOpera(n.getIdOpera());
             artWBean.setTitolo(n.getTitolo());
             artWBean.setImmagine(n.getImmagine());

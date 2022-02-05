@@ -56,14 +56,6 @@ public class QueryArtist {
         return stmt.executeUpdate(deleteStatement);
     }
 
-    public static ResultSet selectAllArtWorksImage(Statement stmt, int idArtista, String lastAction) throws SQLException {
-        String sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "';";
-
-        if(lastAction.equals("LAST")){sql = "SELECT immagine FROM opera WHERE artista ='" + idArtista + "' ORDER BY idOpera DESC LIMIT 2;";}
-
-        return stmt.executeQuery(sql);
-    }
-
     public static ResultSet selectAllGalleryProposals(Statement stmt, int idArtista, String lastAction) throws SQLException {
         String sql = "SELECT * FROM offerta WHERE artista ='" + idArtista + "';";
 

@@ -117,7 +117,7 @@ public class GuiControllerSignUp {
         artGalleryReg.setNome(textFieldNomeGallery.getText());
         artGalleryReg.setDescrizione(textFieldDescriptionGallery.getText());
         artGalleryReg.setIndirizzo(address);
-        artGalleryReg.setUsername(textFieldUserGallery.getText());
+
 
         try {
             signUp.registerGallery(userReg, artGalleryReg);

@@ -9,6 +9,8 @@ import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
+import com.artistcorner.engclasses.observer.ArtistConcreteObserver;
+import com.artistcorner.engclasses.observer.BuyerConcreteSubject;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
@@ -54,7 +56,7 @@ public class ViewFavouritesBuyer {
         return remPreferiti;
     }
 
-    public void finishPayment(ArtWorkBean art, BuyerBean buy) throws BuyArtWorkManagementProblemException, FavouritesManagementProblemException {
+    public void finishPayment(ArtWorkBean art, BuyerBean buy,ArtistBean artistBean) throws BuyArtWorkManagementProblemException, FavouritesManagementProblemException {
                 int idOpera = art.getIdOpera();
                 int idBuyer = buy.getIdBuyer();
 
@@ -62,16 +64,18 @@ public class ViewFavouritesBuyer {
                     ArtWorkDAO.addArtWorkComprata(idOpera,idBuyer);
                     ArtWorkDAO.switchFlagVendibile(idOpera);
                     ArtWorkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-
+                    ArtistConcreteObserver concreteObs= new ArtistConcreteObserver("alessio.torroni00@gmail.com", buy.getNome()+" "+buy.getCognome(),art.getTitolo());
+                    BuyerConcreteSubject concreteSub = new BuyerConcreteSubject();
+                    concreteSub.add(concreteObs);
+                    concreteSub.checkOut();
                 } catch (SQLException  e) {
                     e.printStackTrace();
-
                 }
     }
 
-    public List<Integer> retrieveArtWorkId(BuyerBean buyer) throws ArtWorkNotFoundException {
+    public List<ArtWorkBean> retrieveArtWorkId(BuyerBean buyer) throws ArtWorkNotFoundException {
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        List<Integer> artWorkId = ArtWorkDAO.retrieveArtWorkId(buy.getIdBuyer());
+        List<ArtWorkBean> artWorkId = ArtWorkDAO.retrieveArtWorkId(buy.getIdBuyer());
         if (artWorkId.isEmpty()){
             throw new ArtWorkNotFoundException("Nessuna Preferito disponibile.");
         }
@@ -80,7 +84,6 @@ public class ViewFavouritesBuyer {
 
     public ArtWorkBean retrieveArtWork(int integer){
         ArtWork a = ArtWorkDAO.retrieveArtWorks(integer, 1);
-
         ArtWorkBean artWB = new ArtWorkBean();
 
         artWB.setIdOpera(a.getIdOpera());

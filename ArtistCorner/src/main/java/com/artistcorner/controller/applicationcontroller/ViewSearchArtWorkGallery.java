@@ -5,26 +5,29 @@ import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.*;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
-import javafx.scene.control.Button;
 
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewSearchArtWorkGallery {
 
-    public String manageButtonClick(Button buttonProposta, ArtGalleryBean artGalBean, ArtistBean artistBean) throws SQLException {
+    public String manageButtonClick(String buttonProposta, ArtGalleryBean artGalBean, ArtistBean artistBean) throws SQLException {
         int idGallery=artGalBean.getGalleria();
         int idArtista=artistBean.getIdArtista();
         int flag =0;
         String  remProposta = "Ritira Proposta";
-        switch (buttonProposta.getText()){
+        switch (buttonProposta){
             case "Ritira Proposta":{    // se il bottone ha come label 'ritira proposta'
-                ProposalDAO.removeProposta(idGallery,idArtista); // rimuovo la proposta
+                try {
+                    ProposalDAO.removeProposta(idGallery,idArtista); // rimuovo la proposta
+                } catch (ProposalNotFoundException e) {
+                    e.printStackTrace();
+                }
                 return "Invia Proposta";    // imposto la label del bottone su 'invia proposta'
 
 
@@ -55,14 +58,14 @@ public class ViewSearchArtWorkGallery {
     public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(ArtWorkBean artToSearch) throws ArtWorkNotFoundException {
         String category=artToSearch.getCategoria();
         String input=artToSearch.getTitolo();
-
         List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
-        ArtWorkBean artWorkBean = new ArtWorkBean();
 
         if(artWorkList.isEmpty()){throw new ArtWorkNotFoundException("nessuna opera trovata");
         }
+
         for (ArtWork a : artWorkList) {
+            ArtWorkBean artWorkBean = new ArtWorkBean();
             artWorkBean.setIdOpera(a.getIdOpera());
             artWorkBean.setTitolo(a.getTitolo());
             artWorkBean.setPrezzo(a.getPrezzo());
@@ -70,15 +73,13 @@ public class ViewSearchArtWorkGallery {
             artWorkBean.setArtistId(a.getArtistaId());
             artWorkBean.setCategoria(a.getCategoria());
             artWorkBean.setImmagine(a.getImmagine());
-
             arrayArtWorkBean.add(artWorkBean);
         }
         return arrayArtWorkBean;
     }
-
-    public List<Integer> retrieveGallerySearchArtistId(ArtGalleryBean gallery)  {
-        ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo(),gallery.getUsername());
-        return  ArtistDAO.retrieveArtistId(gal.getGalleria()); // prendo gli'id degli artisti ai quali è stata inviata una proposta
+    public List<ArtistBean> retrieveGallerySearchArtistId(ArtGalleryBean gallery)  {
+        ArtGallery gal = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo());
+        return  ProposalDAO.retrieveArtistIdOfferta(gal.getGalleria()); // prendo gli'id degli artisti ai quali è stata inviata una proposta
     }
 
 }

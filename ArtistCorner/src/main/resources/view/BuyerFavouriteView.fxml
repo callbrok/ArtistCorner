@@ -49,7 +49,7 @@
                 </Label>
                 <AnchorPane fx:id="anchorPane1" layoutX="32.0" layoutY="68.0" minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="680.0">
                     <children>
-                        <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" prefHeight="452.0" prefWidth="680.0" />
+                        <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" prefHeight="452.0" prefWidth="680.0" style="-fx-selection-bar: transparent;" />
                   <AnchorPane fx:id="paneException" layoutX="47.0" layoutY="88.0" prefHeight="251.0" prefWidth="586.0" style="-fx-background-color: #d13e0a;">
                      <children>
                         <Label layoutX="96.0" layoutY="90.0" text="Nessun opera aggiunta" textFill="WHITE">

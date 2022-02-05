@@ -138,3 +138,13 @@
 .listBuyer list-cell:empty {
     -fx-background-color: white;
 }
+
+.buttonSearch{
+    -fx-background-color: transparent;
+}
+.buttonSearch:hover{
+    -fx-background-color: transparent;
+}
+.buttonSearch:hover  SVGPath {
+    -fx-opacity: 1;
+}

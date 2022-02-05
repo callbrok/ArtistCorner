@@ -9,6 +9,8 @@ import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
+import com.artistcorner.engclasses.observer.ArtistConcreteObserver;
+import com.artistcorner.engclasses.observer.BuyerConcreteSubject;
 import com.artistcorner.model.ArtWork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
@@ -53,7 +55,7 @@ public class ViewSearchArtWorkBuyer {
         return remFavourites;
     }
 
-    public List<Integer> retrieveSearchArtWorkId(BuyerBean buyer){
+    public List<ArtWorkBean> retrieveSearchArtWorkId(BuyerBean buyer){
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
         return ArtWorkDAO.retrieveArtWorkId(buy.getIdBuyer());
     }
@@ -65,7 +67,7 @@ public class ViewSearchArtWorkBuyer {
 
         ArtistBean artBean = new ArtistBean();
         artBean.setNome(artist.getNome());
-
+        artBean.setCognome(artist.getCognome());
         return artBean;
     }
 
@@ -75,12 +77,12 @@ public class ViewSearchArtWorkBuyer {
 
         List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
         List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
-        ArtWorkBean artWB = new ArtWorkBean();
 
         if (artWorkList.isEmpty()){
             throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
         }
         for (ArtWork a : artWorkList) {
+            ArtWorkBean artWB = new ArtWorkBean();
             artWB.setIdOpera(a.getIdOpera());
             artWB.setTitolo(a.getTitolo());
             artWB.setPrezzo(a.getPrezzo());
@@ -88,22 +90,23 @@ public class ViewSearchArtWorkBuyer {
             artWB.setArtistId(a.getArtistaId());
             artWB.setCategoria(a.getCategoria());
             artWB.setImmagine(a.getImmagine());
-
             arrayArtWorkBean.add(artWB);
         }
         return arrayArtWorkBean;
     }
 
-    public void finishPayment(ArtWorkBean artBean, BuyerBean buy) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
+    public void finishPayment(ArtWorkBean artBean, BuyerBean buy,ArtistBean artistBean) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
         int idOpera= artBean.getIdOpera();
         int idBuyer= buy.getIdBuyer();
 
         try {
-
             ArtWorkDAO.addArtWorkComprata(idOpera,idBuyer);
             ArtWorkDAO.switchFlagVendibile(idOpera);
             ArtWorkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-
+            ArtistConcreteObserver concreteObserver= new ArtistConcreteObserver("alessio.torroni00@gmail.com", buy.getNome()+" "+buy.getCognome(),artBean.getTitolo());
+            BuyerConcreteSubject concreteSubject = new BuyerConcreteSubject();
+            concreteSubject.add(concreteObserver);
+            concreteSubject.checkOut();
         } catch (SQLException e) {
             e.printStackTrace();
         }

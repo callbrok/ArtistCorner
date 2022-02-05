@@ -1,5 +1,6 @@
 package com.artistcorner.engclasses.dao;
 
+import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
 import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
@@ -307,8 +308,8 @@ public class ArtWorkDAO {
         return artWork;
     }
 
-    public static List<Integer> retrieveArtWorkId(int idUsr) {
-        List<Integer> listOfArtWorkId = new ArrayList<>();
+    public static List<ArtWorkBean> retrieveArtWorkId(int idUsr) {
+        List<ArtWorkBean> listOfArtWorkId = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -332,8 +333,9 @@ public class ArtWorkDAO {
             do{
                 // lettura delle colonne "by name"
                 int name = rs.getInt("opera");
-                ArtWork artWork = new ArtWork(name,null,0,0,0, "",null);
-                listOfArtWorkId.add(artWork.getIdOpera());
+                ArtWorkBean artWork = new ArtWorkBean();
+                artWork.setIdOpera(name);
+                listOfArtWorkId.add(artWork);
 
             }while(rs.next());
 
@@ -434,7 +436,7 @@ public class ArtWorkDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
-            if (result==0){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
+            if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
             }
         } catch (ClassNotFoundException ex7) {
             ex7.printStackTrace();
@@ -540,8 +542,8 @@ public class ArtWorkDAO {
     }
 
 
-    public static List<Integer> retrieveAllComprate(int idBuyer) {
-        List<Integer> comprate = new ArrayList<>();
+    public static List<ArtWorkBean> retrieveAllComprate(int idBuyer) {
+        List<ArtWorkBean> comprate = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -564,8 +566,9 @@ public class ArtWorkDAO {
             do{
                 // lettura delle colonne "by name"
                 int operaId = rs.getInt("opera");
-
-                comprate.add(operaId);
+                ArtWorkBean aw = new ArtWorkBean();
+                aw.setIdOpera(operaId);
+                comprate.add(aw);
 
 
             }while(rs.next());

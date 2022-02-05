@@ -26,11 +26,12 @@ public class ViewArtistSummary {
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
         List<ArtWork> listOfArtWorks = ArtWorkDAO.retrieveAllArtWorks(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
-        ArtWorkBean artWB = new ArtWorkBean();
+
 
         ArrayList<ArtWorkBean>  arrayOfArtWorkBeans = new ArrayList<>();
 
         for(ArtWork artW : listOfArtWorks){
+            ArtWorkBean artWB = new ArtWorkBean();
             artWB.setImmagine(artW.getImmagine());
             arrayOfArtWorkBeans.add(artWB);
         }
@@ -43,11 +44,11 @@ public class ViewArtistSummary {
     public List<ProposalBean> retrieveArtGalleryProposals(ArtistBean artistBean) {
         Artist art = new Artist(artistBean.getIdArtista(), artistBean.getNome(), artistBean.getCognome());
         ArrayList<ProposalBean>  arrayOfProposalBeans = new ArrayList<>();
-        ProposalBean currentPropBean = new ProposalBean();
 
-        List<Proposal> arrayOfProposals = ProposalDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
+        List<Proposal> arrayOfProposals = ArtistDAO.retrieveArtGalleryProposals(art.getIdArtista(), "LAST");
 
         for (Proposal n : arrayOfProposals) {
+            ProposalBean currentPropBean = new ProposalBean();
             currentPropBean.setGalleria(n.getGalleria());
             arrayOfProposalBeans.add(currentPropBean);
         }
