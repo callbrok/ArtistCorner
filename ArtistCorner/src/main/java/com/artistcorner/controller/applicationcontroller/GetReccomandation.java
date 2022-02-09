@@ -1,12 +1,10 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.others.Nodo;
 import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.security.SecureRandom;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,6 +12,7 @@ import java.util.Random;
 public class GetReccomandation {
     // Inizializza la risposta dell'algoritmo.
     public static final String NO_ANSWER = "Nessuna Risposta";
+    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_";
     private Random random = new Random();
 
     private String[] risposta = {NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER};
@@ -36,14 +35,16 @@ public class GetReccomandation {
 
                 String[] nodo = line.split(splitBy);   // tokenizza la linea tramite il delimitatore ','
 
-                int idAppartenenza = Integer.parseInt(nodo[0]);
-                int idProprio = Integer.parseInt(nodo[1]);
-                String decisione = nodo[2];
-                String domanda = nodo[3];
-                String parteSoluzione = nodo[4];
-                String key = nodo[5];
+                Nodo node = new Nodo();
+                
+                node.setIdAppartenenza(Integer.parseInt(nodo[0]));
+                node.setIdProprio(Integer.parseInt(nodo[1]));
+                node.setDecisione(nodo[2]);
+                node.setDomanda(nodo[3]);
+                node.setSolutionPart(nodo[4]);
+                node.setKeyObj(nodo[5]);
 
-                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda, parteSoluzione, key));   // inizializza un singolo nodo dell'albero
+                arraylist.add(node);   // inizializza un singolo nodo dell'albero
 
             }
         }
@@ -58,7 +59,10 @@ public class GetReccomandation {
      * Ritorna il nodo da visualizzare a video.
      */
     public Nodo decisionTree(String str, List<Nodo> arraylist, int idLivello) throws GetRaccomandationProblemException {
-        Nodo errorNode = new Nodo(0, 0, "Fine", "Fine dell'algoritmo","ULTIMO NODO", "");
+        Nodo endNode = new Nodo();
+
+        endNode.setIdProprio(0);
+
         Nodo currentNode = getCurrentNode(idLivello, arraylist); // Prende il nodo corrente.
 
         String [] arrRandAns = {"Y", "N"};
@@ -79,7 +83,7 @@ public class GetReccomandation {
             }
         }
 
-        return errorNode; // Mostra nodo di fine albero.
+        return endNode; // Mostra nodo di fine albero.
     }
 
     /**
@@ -147,6 +151,38 @@ public class GetReccomandation {
                 throw new GetRaccomandationProblemException("Problema nella compilazione della risposta");
         }
 
+    }
+
+
+    public Nodo deserializaStartNode(ArtistBean art) throws FileNotFoundException {
+        // Controlla prima se c'è un file su cui fare al deserializzazione
+        File f = new File(OBJECTNODO_PATH + art.getIdArtista() + ".txt");
+        Nodo nodeToReturn = new Nodo();
+
+        if (f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
+            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(f))) {
+                nodeToReturn = (Nodo) in.readObject();
+                setSerialSolution(nodeToReturn.getSolutionS()); // Prende l'ultima istanza della soluzione e la reimposta
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return nodeToReturn;
+    }
+
+
+    /**
+     * Serializza il nodo passato, come oggetto nel file "object.txt".
+     */
+    public void makeSerializable(ArtistBean art, Nodo n) throws FileNotFoundException {
+        n.setSolutionS(getSerialSolution());
+
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH + art.getIdArtista() + ".txt"))) {
+            out.writeObject(n);  // Serializza l'ultimo nodo con la relativa ultima istanza di soluzione creata
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

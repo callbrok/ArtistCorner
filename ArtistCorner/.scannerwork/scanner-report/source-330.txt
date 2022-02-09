@@ -1,6 +1,6 @@
 package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.controller.applicationcontroller.login.Login;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;

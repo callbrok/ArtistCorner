@@ -1,10 +1,9 @@
 package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
+import com.artistcorner.controller.applicationcontroller.login.summaries.ViewBuyerSummary;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
-import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

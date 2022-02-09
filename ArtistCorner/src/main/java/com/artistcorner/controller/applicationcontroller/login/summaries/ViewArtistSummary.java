@@ -1,4 +1,4 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.applicationcontroller.login.summaries;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtWorkBean;

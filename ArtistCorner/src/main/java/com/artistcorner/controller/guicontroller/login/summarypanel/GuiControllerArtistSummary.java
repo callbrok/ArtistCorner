@@ -1,6 +1,6 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.ViewArtistSummary;
+import com.artistcorner.controller.applicationcontroller.login.summaries.ViewArtistSummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
@@ -23,9 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerArtistSummary {

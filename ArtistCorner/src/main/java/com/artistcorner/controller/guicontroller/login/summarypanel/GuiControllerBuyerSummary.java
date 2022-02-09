@@ -1,20 +1,17 @@
 package com.artistcorner.controller.guicontroller.login.summarypanel;
 
-import com.artistcorner.controller.applicationcontroller.ViewBuyerSummary;
+import com.artistcorner.controller.applicationcontroller.login.summaries.ViewBuyerSummary;
 import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.Buyer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 

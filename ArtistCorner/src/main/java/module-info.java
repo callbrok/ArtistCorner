@@ -10,7 +10,7 @@ module com.artistcorner {
     requires org.junit.platform.commons;
     requires org.junit.platform.engine;
     requires org.seleniumhq.selenium.api;
-    requires java.mail;
+    requires javax.mail.api;
 
 
     opens com.artistcorner to javafx.fxml;
@@ -24,6 +24,13 @@ module com.artistcorner {
 
     opens com.artistcorner.controller.applicationcontroller to javafx.fxml;
     exports com.artistcorner.controller.applicationcontroller;
+
+    opens com.artistcorner.controller.applicationcontroller.login to javafx.fxml;
+    exports com.artistcorner.controller.applicationcontroller.login;
+
+
+    opens com.artistcorner.controller.applicationcontroller.login.summaries to javafx.fxml;
+    exports com.artistcorner.controller.applicationcontroller.login.summaries;
 
     opens com.artistcorner.controller.guicontroller.getreccomandation to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.getreccomandation;
@@ -40,8 +47,8 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.uploadartwork;
 
-    opens com.artistcorner.controller.guicontroller.viewloganalytics to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewloganalytics;
+    opens com.artistcorner.engclasses.others.analytics to javafx.fxml;
+    exports com.artistcorner.engclasses.others.analytics;
 
     opens com.artistcorner.controller.guicontroller.viewsearchartworkbuyer to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
@@ -57,6 +64,9 @@ module com.artistcorner {
 
     opens com.artistcorner.controller.guicontroller.viewprofilogallery to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.viewprofilogallery;
+
+    opens com.artistcorner.engclasses.others to javafx.fxml;
+    exports com.artistcorner.engclasses.others;
 
     opens com.artistcorner.engclasses.exceptions to javafx.fxml;
     exports com.artistcorner.engclasses.exceptions;
@@ -99,5 +109,6 @@ module com.artistcorner {
 
     opens com.artistcorner.controller.guicontroller.mobile.viewprofilegallery to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.viewprofilegallery;
+
 
 }

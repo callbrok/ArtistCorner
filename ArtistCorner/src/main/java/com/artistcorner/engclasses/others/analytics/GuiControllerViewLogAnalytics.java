@@ -1,6 +1,5 @@
-package com.artistcorner.controller.guicontroller.viewloganalytics;
+package com.artistcorner.engclasses.others.analytics;
 
-import com.artistcorner.controller.applicationcontroller.ViewLogAnalytics;
 import com.artistcorner.engclasses.others.Commit;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
@@ -20,18 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
-import org.apache.commons.lang3.SystemUtils;
-import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.PersonIdent;
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.revwalk.RevCommit;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GuiControllerViewLogAnalytics {

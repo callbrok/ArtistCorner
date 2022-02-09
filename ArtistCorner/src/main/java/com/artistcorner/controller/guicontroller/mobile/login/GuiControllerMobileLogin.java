@@ -1,9 +1,7 @@
 package com.artistcorner.controller.guicontroller.mobile.login;
 
-import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.controller.applicationcontroller.login.Login;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +15,6 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class GuiControllerMobileLogin {
@@ -58,8 +55,6 @@ public class GuiControllerMobileLogin {
         svgLogo.setScaleX(1.2);
         svgLogo.setScaleY(1.2);
 
-        svgGoogle.setScaleX(1.3);
-        svgGoogle.setScaleY(1.3);
     }
 
     public void exitWindow() {
@@ -131,18 +126,6 @@ public class GuiControllerMobileLogin {
         dialog.setTitle("Login");
         dialog.setHeaderText(null);
         dialog.setContentText("Login con Facebook");
-
-        dialog.showAndWait();
-    }
-
-    public void openDialogLoginGoogleMobile() {
-        Dialog<String> dialog = new Dialog<>();
-        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().add(type);
-
-        dialog.setTitle("Login");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Login con Google");
 
         dialog.showAndWait();
     }

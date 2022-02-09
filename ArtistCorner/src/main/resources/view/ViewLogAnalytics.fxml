@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorParentLog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewLogAnalytics">
+<AnchorPane fx:id="anchorParentLog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.engclasses.others.analytics.GuiControllerViewLogAnalytics">
     <children>
         <Pane prefHeight="170.0" prefWidth="998.0" style="-fx-background-color: #e38b6c;">
             <children>

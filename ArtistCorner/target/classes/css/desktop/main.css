@@ -148,3 +148,19 @@
 .buttonSearch:hover  SVGPath {
     -fx-opacity: 1;
 }
+
+
+/* Start */
+
+.buttonStart{
+    -fx-background-color: #39A67F;
+}
+
+.buttonStart:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.menuButton{
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+}

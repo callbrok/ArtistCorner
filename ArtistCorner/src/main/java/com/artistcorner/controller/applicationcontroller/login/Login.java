@@ -1,4 +1,4 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.applicationcontroller.login;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
@@ -20,7 +20,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class Login {
-
+    private int nAttempts = 0;
 
     public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
         SceneController sc = new SceneController();
@@ -81,9 +81,7 @@ public class Login {
                 sc.switchToAnalytics(event);
                 break;
         }
-
     }
-
 
 
 }

@@ -9,15 +9,15 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class MobileApplication extends Application {
+public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MobileApplication.class.getResource("/view/mobile/login/LoginMobileView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/view/StartView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(getClass().getResource("/css/mobile/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/desktop/main.css").toExternalForm());
         scene.setFill(Color.TRANSPARENT);
 
-        stage.setTitle("Hello!");
+        stage.setTitle("ArtistCorner");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
@@ -27,4 +27,3 @@ public class MobileApplication extends Application {
         launch();
     }
 }
-

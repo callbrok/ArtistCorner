@@ -1,6 +1,6 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.others.Nodo;
 import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 
 import java.io.BufferedReader;

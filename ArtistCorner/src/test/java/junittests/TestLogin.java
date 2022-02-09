@@ -1,6 +1,6 @@
 package junittests;
 
-import com.artistcorner.controller.applicationcontroller.Login;
+import com.artistcorner.controller.applicationcontroller.login.Login;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import org.junit.Test;

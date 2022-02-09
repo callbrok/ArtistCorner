@@ -2,7 +2,7 @@ package com.artistcorner.controller.guicontroller.mobile.getreccomandation;
 
 import com.artistcorner.controller.applicationcontroller.GetReccomandation;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.others.Nodo;
 import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
@@ -19,10 +19,7 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiControllerMobileGetReccomandation implements Serializable {
@@ -59,21 +56,15 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      * serializzata ("object.txt") non fosse presente, inizializza l'algoritmo da zero.
      */
     public void inizializeIdLivello() throws IOException, ClassNotFoundException {
-        // Controlla prima se c'è un file su cui fare al deserializzazione
-        File f = new File(OBJECTNODO_PATH + art.getIdArtista() + ".txt");
+        Nodo deserialNode = lcm.deserializaStartNode(art);
 
-        if(f.exists() && !f.isDirectory()) { // Controlla l'esistenza del file object.txt
-            try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(OBJECTNODO_PATH + art.getIdArtista() + ".txt"))) {
+        if(deserialNode.getSolutionPart() != null) {
 
-                String rispostaSerial = (String) in.readObject();
-                Nodo c2 = (Nodo) in.readObject();
+            labelQuestion.setText(deserialNode.getDomanda()); // Prende la domanda dal nodo serializzato
+            idLivelloMobile = deserialNode.getIdProprio(); // Prende l'id del nodo serializzato
 
-                lcm.setSerialSolution(rispostaSerial); // Prende l'ultima istanza della soluzione
-                labelQuestion.setText(c2.getDomanda()); // Prende la domanda dal nodo serializzato
-                idLivelloMobile = c2.getIdProprio(); // Prende l'id del nodo serializzato
+            if(idLivelloMobile == 0){showSolution();}
 
-                if(idLivelloMobile == 0){showSolution();}
-            }
         } else {
             idLivelloMobile = 1; // Inizializzazione dell'algoritmo al primo nodo
         }
@@ -98,15 +89,6 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
         inizializeIdLivello();
     }
 
-    /**
-     * Serializza il nodo passato, come oggetto nel file "object.txt".
-     */
-    public void makeSerializable(Nodo n) throws IOException {
-        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OBJECTNODO_PATH + art.getIdArtista() + ".txt"))) {
-            out.writeObject(lcm.getSerialSolution()); // Serializza l'ultima istanza di soluzione creata
-            out.writeObject(n);  // Serializza l'ultimo nodo
-        }
-    }
 
     /**
      * Visualizza il nodo corretto a seconda della risposta negativa e serializza il nodo corrente
@@ -123,7 +105,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
-        makeSerializable(n);                                 // Serializza il nodo corrente
+        lcm.makeSerializable(art, n);                                 // Serializza il nodo corrente
     }
 
     /**
@@ -139,7 +121,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
         labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
-        makeSerializable(n);                                 // Serializza il nodo corrente
+        lcm.makeSerializable(art, n);                                  // Serializza il nodo corrente
     }
 
     /**
@@ -155,7 +137,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
         labelQuestion.setText(n.getDomanda());                // Setta la label con la domanda ricavata dal nodo figlio ritornato
         idLivelloMobile = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
 
-        makeSerializable(n);                                  // Serializza il nodo corrente
+        lcm.makeSerializable(art, n);                                    // Serializza il nodo corrente
     }
 
     public void showSolution(){
@@ -220,7 +202,7 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
      * Resetta l'algoritmo.
      */
     public void resetAlgo() throws IOException {
-        Files.delete(Path.of(OBJECTNODO_PATH + art.getIdArtista() + ".txt"));    // Cerca il file contenente l'oggetto serializzato e lo elimina
+        SceneController.deleteSerialNodo(art.getIdArtista());   // Cerca il file contenente l'oggetto serializzato e lo elimina
 
         buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
             SceneControllerMobile sc = new SceneControllerMobile();

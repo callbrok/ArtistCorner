@@ -119,6 +119,11 @@
             <version>4.1.2</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -141,7 +146,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.artistcorner/com.artistcorner.DesktopApplication</mainClass>
+                            <mainClass>com.artistcorner/com.artistcorner.MainApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

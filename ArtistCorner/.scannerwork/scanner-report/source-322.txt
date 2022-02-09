@@ -2,7 +2,7 @@ package com.artistcorner.controller.guicontroller.getreccomandation;
 
 import com.artistcorner.controller.applicationcontroller.GetReccomandation;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.Nodo;
+import com.artistcorner.engclasses.others.Nodo;
 import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;

@@ -1,22 +1,15 @@
-package com.artistcorner.controller.guicontroller.viewloganalytics;
+package com.artistcorner.engclasses.others.analytics;
 
-import com.artistcorner.controller.applicationcontroller.ViewLogAnalytics;
 import com.artistcorner.engclasses.others.Commit;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -156,8 +149,8 @@ public class GuiControllerViewSALogAnalytics {
 
         //Personalizza Grafico
         yAxisChart.setAutoRanging(false);
-        yAxisChart.setLowerBound(lowerLimit - 2);
-        yAxisChart.setUpperBound(upperLimit + 2);
+        yAxisChart.setLowerBound((int)lowerLimit - 2);
+        yAxisChart.setUpperBound((int)upperLimit + 2);
 
 
         // Rimuove nodi grafici dalle serie del lineChart.

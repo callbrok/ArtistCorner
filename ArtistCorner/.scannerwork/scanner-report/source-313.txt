@@ -1,6 +1,6 @@
 package com.artistcorner.controller.guicontroller.viewloganalytics;
 
-import com.artistcorner.controller.applicationcontroller.ViewLogAnalytics;
+import com.artistcorner.engclasses.others.analytics.ViewLogAnalytics;
 import com.artistcorner.engclasses.others.Commit;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
