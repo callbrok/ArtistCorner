@@ -1,14 +1,14 @@
 package com.artistcorner.controller.guicontroller.mobile.uploadartwork;
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
@@ -22,7 +22,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -71,6 +70,8 @@ public class GuiControllerMobileUploadArtwork {
         toggleCatMob3.setToggleGroup(toggleGroup);
         toggleCatMob4.setToggleGroup(toggleGroup);
 
+        toggleCatMob4.setSelected(true);
+
     }
 
     public void selectFile(ActionEvent event) {
@@ -87,7 +88,7 @@ public class GuiControllerMobileUploadArtwork {
     }
 
     public void uploadFile(){
-        UploadArtWork upaw = new UploadArtWork();
+        UploadArtwork upaw = new UploadArtwork();
         int flagVendibile;
         double prezzo;
         String categoria = "";
@@ -109,7 +110,7 @@ public class GuiControllerMobileUploadArtwork {
         }
 
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean();
+            ArtworkBean upArtWork = new ArtworkBean();
 
             upArtWork.setTitolo(textFieldTitle.getText());
             upArtWork.setPrezzo(prezzo);
@@ -123,21 +124,21 @@ public class GuiControllerMobileUploadArtwork {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYFIELD_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         } catch (EmptyPathException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYPATH_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (DuplicateArtWorkException e){
+        } catch (DuplicateArtworkException e){
             // Eccezione: Opera già caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.DUPLICATEARTWORK_MOBILE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 

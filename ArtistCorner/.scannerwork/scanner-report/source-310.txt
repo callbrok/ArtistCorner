@@ -1,14 +1,14 @@
-package com.artistcorner.controller.guicontroller.viewsaleshistory;
+package com.artistcorner.controller.guicontroller.viewsoldartworks;
 
-import com.artistcorner.controller.applicationcontroller.ViewSalesHistory;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.ViewSoldArtworks;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

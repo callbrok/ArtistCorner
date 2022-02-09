@@ -1,6 +1,5 @@
 package com.artistcorner.engclasses.others.analytics;
 
-import com.artistcorner.engclasses.others.Commit;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

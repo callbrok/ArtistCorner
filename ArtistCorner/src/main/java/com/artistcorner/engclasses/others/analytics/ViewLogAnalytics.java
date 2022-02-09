@@ -1,6 +1,5 @@
 package com.artistcorner.engclasses.others.analytics;
 
-import com.artistcorner.engclasses.others.Commit;
 import org.apache.commons.lang3.SystemUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;

@@ -7,7 +7,7 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -168,7 +168,7 @@ public class GuiControllerViewSentArtGalleryProposal {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.SENTPROPOSALNOTFOUND);
+            ev = ef.createView(ExceptionsTypeManager.SENTPROPOSALNOTFOUND);
             tilePanePending.getChildren().add(ev.getExceptionPane());
         }
 
@@ -200,7 +200,7 @@ public class GuiControllerViewSentArtGalleryProposal {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.SENTPROPOSALNOTFOUND);
+            ev = ef.createView(ExceptionsTypeManager.SENTPROPOSALNOTFOUND);
             tilePaneAcceptedSent.getChildren().add(ev.getExceptionPane());
         }
 

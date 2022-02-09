@@ -1,10 +1,10 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.SellArtWorkNotFoundException;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 
 import java.util.ArrayList;

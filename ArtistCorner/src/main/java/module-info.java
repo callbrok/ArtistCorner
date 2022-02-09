@@ -16,8 +16,8 @@ module com.artistcorner {
     opens com.artistcorner to javafx.fxml;
     exports com.artistcorner;
 
-    opens com.artistcorner.controller.guicontroller.login.summarypanel to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.login.summarypanel;
+    opens com.artistcorner.controller.guicontroller.login.summaries to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.login.summaries;
 
     opens com.artistcorner.controller.guicontroller.login to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.login;
@@ -35,14 +35,14 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.getreccomandation to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.getreccomandation;
 
-    opens com.artistcorner.controller.guicontroller.viewartgalleryproposals to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewartgalleryproposals;
+    opens com.artistcorner.controller.guicontroller.manageproposals to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.manageproposals;
 
-    opens com.artistcorner.controller.guicontroller.viewprofile to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewprofile;
+    opens com.artistcorner.controller.guicontroller.manageartworks to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.manageartworks;
 
-    opens com.artistcorner.controller.guicontroller.viewsaleshistory to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsaleshistory;
+    opens com.artistcorner.controller.guicontroller.viewsoldartworks to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewsoldartworks;
 
     opens com.artistcorner.controller.guicontroller.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.uploadartwork;
@@ -77,8 +77,8 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.mobile.login to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.login;
 
-    opens com.artistcorner.controller.guicontroller.mobile.login.summarypanel to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
+    opens com.artistcorner.controller.guicontroller.mobile.login.summaries to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.login.summaries;
 
     opens com.artistcorner.controller.guicontroller.mobile.getreccomandation to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.getreccomandation;
@@ -86,14 +86,14 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.mobile.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.uploadartwork;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewprofile to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewprofile;
+    opens com.artistcorner.controller.guicontroller.mobile.manageartworks to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.manageartworks;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals;
+    opens com.artistcorner.controller.guicontroller.mobile.manageproposals to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.manageproposals;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewsaleshistory to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsaleshistory;
+    opens com.artistcorner.controller.guicontroller.mobile.viewsoldartworks to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.viewsoldartworks;
 
     opens com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer;

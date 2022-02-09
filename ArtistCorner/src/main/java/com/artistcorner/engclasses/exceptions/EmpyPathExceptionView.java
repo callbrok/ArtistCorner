@@ -1,8 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 
 public class EmpyPathExceptionView extends ExceptionView{
 
-    public EmpyPathExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public EmpyPathExceptionView(ExceptionsTypeManager etm){super(etm);}
 }

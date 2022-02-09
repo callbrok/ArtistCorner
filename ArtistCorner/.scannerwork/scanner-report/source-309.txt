@@ -1,15 +1,15 @@
 package com.artistcorner.engclasses.others;
 
 import com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation;
-import com.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileArtistSummary;
-import com.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileBuyerSummary;
-import com.artistcorner.controller.guicontroller.mobile.login.summarypanel.GuiControllerMobileGallerySummary;
+import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileArtistSummary;
+import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileBuyerSummary;
+import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileGallerySummary;
 import com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork;
-import com.artistcorner.controller.guicontroller.mobile.viewartgalleryproposals.GuiControllerMobileViewArtGalleryProposals;
+import com.artistcorner.controller.guicontroller.mobile.manageproposals.GuiControllerMobileManageProposals;
 import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.mobile.viewprofile.GuiControllerMobileViewProfile;
+import com.artistcorner.controller.guicontroller.mobile.manageartworks.GuiControllerMobileManageArtworks;
 import com.artistcorner.controller.guicontroller.mobile.viewprofilogallery.GuiControllerMobileViewProfiloGallery;
-import com.artistcorner.controller.guicontroller.mobile.viewsaleshistory.GuiControllerMobileViewSalesHistory;
+import com.artistcorner.controller.guicontroller.mobile.viewsoldartworks.GuiControllerMobileViewSoldArtworks;
 import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;

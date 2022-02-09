@@ -1,29 +1,26 @@
 package com.artistcorner.controller.applicationcontroller;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.ArtWorkDAO;
+import com.artistcorner.engclasses.dao.ArtworkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtworkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.observer.ArtistConcreteObserver;
 import com.artistcorner.engclasses.observer.BuyerConcreteSubject;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
-import javafx.scene.control.Button;
 
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewSearchArtWorkBuyer {
 
-    public String manageButtonClickFavourites(String buttonFavourites, ArtWorkBean artBean, BuyerBean buy ) throws FavouritesManagementProblemException {
+    public String manageButtonClickFavourites(String buttonFavourites, ArtworkBean artBean, BuyerBean buy ) throws FavouritesManagementProblemException {
         int idArtWork= artBean.getIdOpera();
         int idBuyer= buy.getIdBuyer();
 
@@ -32,7 +29,7 @@ public class ViewSearchArtWorkBuyer {
         switch (buttonFavourites){
             case "Rimuovi dai Preferiti":{
                 try {
-                    ArtWorkDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
+                    ArtworkDAO.removeArtWorkFromFavourites(idArtWork, idBuyer);
                     return addFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -42,7 +39,7 @@ public class ViewSearchArtWorkBuyer {
             }
             case "Aggiungi ai Preferiti":{
                 try {
-                    ArtWorkDAO.addArtWorkToFavourites(idArtWork,idBuyer);
+                    ArtworkDAO.addArtWorkToFavourites(idArtWork,idBuyer);
                     return remFavourites;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -55,14 +52,14 @@ public class ViewSearchArtWorkBuyer {
         return remFavourites;
     }
 
-    public List<ArtWorkBean> retrieveSearchArtWorkId(BuyerBean buyer){
+    public List<ArtworkBean> retrieveSearchArtWorkId(BuyerBean buyer){
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        return ArtWorkDAO.retrieveArtWorkId(buy.getIdBuyer());
+        return ArtworkDAO.retrieveArtWorkId(buy.getIdBuyer());
     }
 
 
 
-    public ArtistBean retrieveSearchArtistName(ArtWorkBean a) {
+    public ArtistBean retrieveSearchArtistName(ArtworkBean a) {
         Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtistId());
 
         ArtistBean artBean = new ArtistBean();
@@ -71,18 +68,18 @@ public class ViewSearchArtWorkBuyer {
         return artBean;
     }
 
-    public List<ArtWorkBean> retrieveSearchArtWorkByName(ArtWorkBean artSearch) throws ArtWorkNotFoundException {
+    public List<ArtworkBean> retrieveSearchArtWorkByName(ArtworkBean artSearch) throws ArtworkNotFoundException {
         String input=artSearch.getTitolo();
         String category=artSearch.getCategoria();
 
-        List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
-        List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
+        List<Artwork> artWorkList = ArtworkDAO.retrieveArtWorkByName(input, category);
+        List<ArtworkBean> arrayArtWorkBean = new ArrayList<>();
 
         if (artWorkList.isEmpty()){
-            throw new ArtWorkNotFoundException("Nessuna ArtWork trovata");
+            throw new ArtworkNotFoundException("Nessuna ArtWork trovata");
         }
-        for (ArtWork a : artWorkList) {
-            ArtWorkBean artWB = new ArtWorkBean();
+        for (Artwork a : artWorkList) {
+            ArtworkBean artWB = new ArtworkBean();
             artWB.setIdOpera(a.getIdOpera());
             artWB.setTitolo(a.getTitolo());
             artWB.setPrezzo(a.getPrezzo());
@@ -95,14 +92,14 @@ public class ViewSearchArtWorkBuyer {
         return arrayArtWorkBean;
     }
 
-    public void finishPayment(ArtWorkBean artBean, BuyerBean buy,ArtistBean artistBean) throws FavouritesManagementProblemException, BuyArtWorkManagementProblemException {
+    public void finishPayment(ArtworkBean artBean, BuyerBean buy, ArtistBean artistBean) throws FavouritesManagementProblemException, BuyArtworkManagementProblemException {
         int idOpera= artBean.getIdOpera();
         int idBuyer= buy.getIdBuyer();
 
         try {
-            ArtWorkDAO.addArtWorkComprata(idOpera,idBuyer);
-            ArtWorkDAO.switchFlagVendibile(idOpera);
-            ArtWorkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
+            ArtworkDAO.addArtWorkComprata(idOpera,idBuyer);
+            ArtworkDAO.switchFlagVendibile(idOpera);
+            ArtworkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
             ArtistConcreteObserver concreteObserver= new ArtistConcreteObserver("alessio.torroni00@gmail.com", buy.getNome()+" "+buy.getCognome(),artBean.getTitolo());
             BuyerConcreteSubject concreteSubject = new BuyerConcreteSubject();
             concreteSubject.add(concreteObserver);

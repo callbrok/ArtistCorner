@@ -102,19 +102,19 @@ public class GuiControllerMobileLogin {
     public void switchToArtistSignUp() throws IOException {
         paneRegister.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpArtistMobileView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterArtistMobileView.fxml")));
         anchorSwitchSignUp.getChildren().add(newLoadedPane);
     }
     public void switchToGallerySignUp() throws IOException {
         paneRegister.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpGalleryMobileView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterGalleryMobileView.fxml")));
         anchorSwitchSignUp.getChildren().add(newLoadedPane);
     }
     public void switchToBuyerSignUp() throws IOException {
         paneRegister.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/SignUpBuyerMobileView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterBuyerMobileView.fxml")));
         anchorSwitchSignUp.getChildren().add(newLoadedPane);
     }
 

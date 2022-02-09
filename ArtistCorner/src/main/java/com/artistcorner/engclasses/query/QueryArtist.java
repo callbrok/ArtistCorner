@@ -1,12 +1,9 @@
 package com.artistcorner.engclasses.query;
 
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
 import com.artistcorner.model.User;
-import javafx.scene.shape.ArcTo;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,7 +47,7 @@ public class QueryArtist {
         return stmt.executeQuery(sql);
     }
 
-    public static int deleteArtWork(Statement stmt, ArtWork art) throws SQLException  {
+    public static int deleteArtWork(Statement stmt, Artwork art) throws SQLException  {
         String deleteStatement = String.format("DELETE FROM  opera  WHERE idOpera = %s", art.getIdOpera());
         System.out.println(deleteStatement);
         return stmt.executeUpdate(deleteStatement);

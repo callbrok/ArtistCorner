@@ -1,17 +1,11 @@
 package com.artistcorner.controller.applicationcontroller.login.summaries;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.dao.ProposalDAO;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.model.*;
-import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 import java.util.List;

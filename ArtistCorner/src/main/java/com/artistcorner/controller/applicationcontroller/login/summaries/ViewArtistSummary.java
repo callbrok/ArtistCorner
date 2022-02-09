@@ -1,37 +1,33 @@
 package com.artistcorner.controller.applicationcontroller.login.summaries;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
-import com.artistcorner.engclasses.dao.ArtWorkDAO;
+import com.artistcorner.engclasses.dao.ArtworkDAO;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.engclasses.dao.ProposalDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewArtistSummary {
 
 
-    public List<ArtWorkBean> retrieveAllArtWorksImage(ArtistBean artBean){
+    public List<ArtworkBean> retrieveAllArtWorksImage(ArtistBean artBean){
 
         Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
-        List<ArtWork> listOfArtWorks = ArtWorkDAO.retrieveAllArtWorks(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
+        List<Artwork> listOfArtWorks = ArtworkDAO.retrieveAllArtWorks(art.getIdArtista(), "LAST");  // Prendi tutte le opere caricate dall'artista.
 
 
-        ArrayList<ArtWorkBean>  arrayOfArtWorkBeans = new ArrayList<>();
+        ArrayList<ArtworkBean>  arrayOfArtWorkBeans = new ArrayList<>();
 
-        for(ArtWork artW : listOfArtWorks){
-            ArtWorkBean artWB = new ArtWorkBean();
+        for(Artwork artW : listOfArtWorks){
+            ArtworkBean artWB = new ArtworkBean();
             artWB.setImmagine(artW.getImmagine());
             arrayOfArtWorkBeans.add(artWB);
         }

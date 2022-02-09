@@ -1,9 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 
 public class EmptyFieldExceptionView extends ExceptionView {
 
-    public EmptyFieldExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public EmptyFieldExceptionView(ExceptionsTypeManager etm){super(etm);}
 
 }

@@ -5,10 +5,9 @@ import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -138,7 +137,7 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.SENTPROPOSALNOTFOUND_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.SENTPROPOSALNOTFOUND_MOBILE);
             tilePanePendingMobile.getChildren().add(ev.getExceptionPane());
         }
     }
@@ -167,7 +166,7 @@ public class GuiControllerMobileViewSentArtGalleryProposal {
         }catch (SentProposalNotFoundException e) {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
-            ev = ef.createView(ExceptionsTypeMenager.SENTPROPOSALNOTFOUND_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.SENTPROPOSALNOTFOUND_MOBILE);
             tilePaneAcceptedMobile.getChildren().add(ev.getExceptionPane());
 
         }

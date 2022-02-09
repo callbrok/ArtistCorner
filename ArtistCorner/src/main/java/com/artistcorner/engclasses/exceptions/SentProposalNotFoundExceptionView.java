@@ -1,8 +1,8 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 
 public class SentProposalNotFoundExceptionView extends ExceptionView{
 
-    public SentProposalNotFoundExceptionView(ExceptionsTypeMenager etm){super(etm);}
+    public SentProposalNotFoundExceptionView(ExceptionsTypeManager etm){super(etm);}
 }

@@ -1,13 +1,13 @@
 package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.*;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 
 import java.sql.SQLException;
@@ -44,7 +44,7 @@ public class ViewSearchArtWorkGallery {
     }
 
 
-    public ArtistBean retrieveGallerySearchArtistName(ArtWorkBean a) {
+    public ArtistBean retrieveGallerySearchArtistName(ArtworkBean a) {
         Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtistId());   // faccio il retrieve dell'artista associato all'opera selezionata
         ArtistBean artBean = new ArtistBean();
 
@@ -55,17 +55,17 @@ public class ViewSearchArtWorkGallery {
         return artBean;
     }
 
-    public List<ArtWorkBean> retrieveGallerySearchArtWorkByName(ArtWorkBean artToSearch) throws ArtWorkNotFoundException {
+    public List<ArtworkBean> retrieveGallerySearchArtWorkByName(ArtworkBean artToSearch) throws ArtworkNotFoundException {
         String category=artToSearch.getCategoria();
         String input=artToSearch.getTitolo();
-        List<ArtWork> artWorkList = ArtWorkDAO.retrieveArtWorkByName(input, category);
-        List<ArtWorkBean> arrayArtWorkBean = new ArrayList<>();
+        List<Artwork> artWorkList = ArtworkDAO.retrieveArtWorkByName(input, category);
+        List<ArtworkBean> arrayArtWorkBean = new ArrayList<>();
 
-        if(artWorkList.isEmpty()){throw new ArtWorkNotFoundException("nessuna opera trovata");
+        if(artWorkList.isEmpty()){throw new ArtworkNotFoundException("nessuna opera trovata");
         }
 
-        for (ArtWork a : artWorkList) {
-            ArtWorkBean artWorkBean = new ArtWorkBean();
+        for (Artwork a : artWorkList) {
+            ArtworkBean artWorkBean = new ArtworkBean();
             artWorkBean.setIdOpera(a.getIdOpera());
             artWorkBean.setTitolo(a.getTitolo());
             artWorkBean.setPrezzo(a.getPrezzo());

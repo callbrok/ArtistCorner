@@ -2,12 +2,9 @@ package com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -152,7 +149,7 @@ public class GuiControllerViewSearchArtWorkGallery {
         sc.switchToSceneGallerySummary(actionEvent,gal);
     }
     public void populateListView(String input) throws SQLException, IOException { //popola la listview con le opere disponibili
-        ArtWorkBean artToSearch = new ArtWorkBean();
+        ArtworkBean artToSearch = new ArtworkBean();
 
         paneExceptionLoad.setVisible(false);
 
@@ -171,15 +168,15 @@ public class GuiControllerViewSearchArtWorkGallery {
         artToSearch.setCategoria(category);
 
         try{
-            List<ArtWorkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(artToSearch);    // lista opere disponibili in base all'input inserito nella textfield
+            List<ArtworkBean> arrayOfArtWorkSearchGal = vsawg.retrieveGallerySearchArtWorkByName(artToSearch);    // lista opere disponibili in base all'input inserito nella textfield
             List<ArtistBean> artistIdListSearchGal = vsawg.retrieveGallerySearchArtistId(gal); //lista id artisti a cui è  stata inviata una proposta
 
-            for (ArtWorkBean artWork: arrayOfArtWorkSearchGal) {
+            for (ArtworkBean artWork: arrayOfArtWorkSearchGal) {
                 artistSearch = vsawg.retrieveGallerySearchArtistName(artWork);
                 listView.getItems().add(new HBoxCell(artistIdListSearchGal,input,gal,artistSearch,artWork));
             }
 
-        } catch ( ArtWorkNotFoundException throwables) {
+        } catch ( ArtworkNotFoundException throwables) {
             paneExceptionLoad.setVisible(true);
         }
     }
@@ -189,7 +186,7 @@ public class GuiControllerViewSearchArtWorkGallery {
         Button buttonOffertaSearchGal = new Button();
         ImageView imageViewSearchGal = new ImageView(); // immagine dell'opera
 
-        public HBoxCell(List<ArtistBean> arrayListProposteGal,String inputSearchGal, ArtGalleryBean artGalleryBean, ArtistBean artBean,ArtWorkBean artWork) throws SQLException, IOException {
+        public HBoxCell(List<ArtistBean> arrayListProposteGal, String inputSearchGal, ArtGalleryBean artGalleryBean, ArtistBean artBean, ArtworkBean artWork) throws SQLException, IOException {
             imageViewSearchGal.setImage(extractImage(artWork.getImmagine()));
             imageViewSearchGal.setFitHeight(100);
             imageViewSearchGal.setFitWidth(100);

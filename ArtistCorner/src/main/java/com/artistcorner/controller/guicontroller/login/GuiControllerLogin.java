@@ -115,19 +115,19 @@ public class GuiControllerLogin {
     public void goToArtistSignUp() throws IOException {
         anchorSummarySignUp.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpArtistView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterArtistView.fxml")));
         anchorSignUp.getChildren().add(newLoadedPane);
     }
     public void goToBuyerSignUp() throws IOException {
         anchorSummarySignUp.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpBuyerView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterBuyerView.fxml")));
         anchorSignUp.getChildren().add(newLoadedPane);
     }
     public void goToGallerySignUp() throws IOException {
         anchorSummarySignUp.setVisible(false);
 
-        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/SignUpGalleryView.fxml")));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterGalleryView.fxml")));
         anchorSignUp.getChildren().add(newLoadedPane);
     }
 

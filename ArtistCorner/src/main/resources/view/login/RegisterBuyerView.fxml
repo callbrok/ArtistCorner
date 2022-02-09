@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="340.0" prefWidth="376.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.login.GuiControllerRegister">
+   <children>
+      <Label layoutX="48.0" layoutY="23.0" prefHeight="45.0" prefWidth="288.0" text="Registrati come Acquirente" textFill="#39A67F">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="textFieldUserBuyer" layoutX="46.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Username" />
+      <TextField fx:id="textFieldPassBuyer" layoutX="190.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Password" />
+      <TextField fx:id="textFieldNomeBuyer" layoutX="45.0" layoutY="152.0" prefHeight="26.0" prefWidth="274.0" promptText="Nome" />
+      <TextField fx:id="textFieldCognomeBuyer" layoutX="45.0" layoutY="208.0" prefHeight="26.0" prefWidth="274.0" promptText="Cognome" />
+      <Button layoutX="45.0" layoutY="256.0" mnemonicParsing="false" onAction="#registerBuyer" prefHeight="53.0" prefWidth="274.0" text="Registrati" />
+      <AnchorPane fx:id="anchorDuplicateUser" layoutX="21.0" layoutY="77.0" prefHeight="237.0" prefWidth="333.0" style="-fx-background-color: #d13e0a;">
+         <children>
+            <Label fx:id="labelExcepDuplicate" layoutX="17.0" layoutY="56.0" prefHeight="102.0" prefWidth="299.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

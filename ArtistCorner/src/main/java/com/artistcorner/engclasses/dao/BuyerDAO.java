@@ -1,19 +1,13 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.engclasses.query.QueryBuyer;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 import com.artistcorner.model.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BuyerDAO {
 

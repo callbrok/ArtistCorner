@@ -1,4 +1,4 @@
-package com.artistcorner.controller.guicontroller.mobile.login.summarypanel;
+package com.artistcorner.controller.guicontroller.mobile.login.summaries;
 
 import com.artistcorner.controller.applicationcontroller.login.Login;
 import com.artistcorner.engclasses.bean.ArtistBean;

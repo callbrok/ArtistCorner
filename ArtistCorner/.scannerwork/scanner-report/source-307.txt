@@ -1,15 +1,15 @@
 package com.artistcorner.engclasses.others;
 
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerArtistSummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerBuyerSummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerGallerySummary;
 import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
-import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
+import com.artistcorner.controller.guicontroller.manageproposals.GuiControllerManageProposals;
 import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
+import com.artistcorner.controller.guicontroller.manageartworks.GuiControllerManageArtworks;
 import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
-import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
+import com.artistcorner.controller.guicontroller.viewsoldartworks.GuiControllerViewSoldArtworks;
 import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;

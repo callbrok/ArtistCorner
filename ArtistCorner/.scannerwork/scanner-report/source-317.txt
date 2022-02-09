@@ -1,4 +1,4 @@
-package com.artistcorner.controller.guicontroller.login.summarypanel;
+package com.artistcorner.controller.guicontroller.login.summaries;
 
 import com.artistcorner.controller.applicationcontroller.login.summaries.ViewGallerySummary;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;

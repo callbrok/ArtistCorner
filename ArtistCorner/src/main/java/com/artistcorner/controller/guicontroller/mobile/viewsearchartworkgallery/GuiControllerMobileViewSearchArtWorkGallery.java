@@ -2,14 +2,9 @@ package com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgaller
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -122,7 +117,7 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         Label labelArtistName = new Label();
         Button buttonOfferta = new Button();
         ImageView imageView = new ImageView();
-        public HBoxCellMobile( List<ArtistBean> arrayListProposte,String input,ArtistBean artistBean,ArtWorkBean artWorkBean) throws SQLException, IOException {
+        public HBoxCellMobile(List<ArtistBean> arrayListProposte, String input, ArtistBean artistBean, ArtworkBean artWorkBean) throws SQLException, IOException {
             imageView.setImage(extractImage(artWorkBean.getImmagine()));
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
@@ -193,19 +188,19 @@ public class GuiControllerMobileViewSearchArtWorkGallery {
         }
         ViewSearchArtWorkGallery vsg = new ViewSearchArtWorkGallery();
         ArtistBean artist=null;
-        ArtWorkBean artToSearch = new ArtWorkBean();
+        ArtworkBean artToSearch = new ArtworkBean();
         artToSearch.setTitolo(input);
         artToSearch.setCategoria(category);
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(artToSearch);
+            List<ArtworkBean> arrayOfArtWork = vsg.retrieveGallerySearchArtWorkByName(artToSearch);
             List<ArtistBean> artistIdList = vsg.retrieveGallerySearchArtistId(gal);
-            for (ArtWorkBean artWork: arrayOfArtWork) {
+            for (ArtworkBean artWork: arrayOfArtWork) {
                 artist = vsg.retrieveGallerySearchArtistName(artWork);
                 listView.getItems().add(new HBoxCellMobile(artistIdList,input,artist,artWork));
 
             }
-        } catch (ArtWorkNotFoundException throwables) {
+        } catch (ArtworkNotFoundException throwables) {
             paneExLoad.setVisible(true);
         }
     }

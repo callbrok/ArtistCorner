@@ -1,27 +1,21 @@
 package com.artistcorner.controller.applicationcontroller.login.summaries;
 
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.ArtWorkDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.model.ArtWork;
-import com.artistcorner.model.Buyer;
-import javafx.scene.control.ListView;
+import com.artistcorner.engclasses.dao.ArtworkDAO;
+import com.artistcorner.model.Artwork;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewBuyerSummary {
 
-    public List<ArtWorkBean> retrieveAllComprate(BuyerBean buyB)  {
-        return ArtWorkDAO.retrieveAllComprate(buyB.getIdBuyer());
+    public List<ArtworkBean> retrieveAllComprate(BuyerBean buyB)  {
+        return ArtworkDAO.retrieveAllComprate(buyB.getIdBuyer());
     }
 
-    public ArtWorkBean retrieveArtWorks(int integer,int flag) {
-        ArtWork a = ArtWorkDAO.retrieveArtWorks(integer, flag);
-        ArtWorkBean artWorkB = new ArtWorkBean();
+    public ArtworkBean retrieveArtWorks(int integer, int flag) {
+        Artwork a = ArtworkDAO.retrieveArtWorks(integer, flag);
+        ArtworkBean artWorkB = new ArtworkBean();
 
         artWorkB.setIdOpera(a.getIdOpera());
         artWorkB.setTitolo(a.getTitolo());

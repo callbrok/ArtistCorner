@@ -1,17 +1,15 @@
 package com.artistcorner.controller.guicontroller.uploadartwork;
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -24,7 +22,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -128,6 +125,8 @@ public class GuiControllerUploadArtwork {
         toggleCat3.setToggleGroup(toggleGroup);
         toggleCat4.setToggleGroup(toggleGroup);
 
+        toggleCat4.setSelected(true);
+
         textFieldPrice.setVisible(false);
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
@@ -167,15 +166,17 @@ public class GuiControllerUploadArtwork {
     }
 
     public void uploadFile(){
-        UploadArtWork upawDesk = new UploadArtWork();
+        UploadArtwork upawDesk = new UploadArtwork();
         int flagVendibile;
         double prezzo;
         String categoria = "";
 
         ToggleButton selectedToggleButton = (ToggleButton) toggleGroup.getSelectedToggle();  // Ritorna il toggle selezionato.
+
+
         categoria = selectedToggleButton.getText();
 
-        if(categoria.equals("altro")){categoria="";}
+        if(selectedToggleButton.getText().equals("altro")){categoria="";}
 
 
         // Stati di flagVendibile
@@ -190,7 +191,7 @@ public class GuiControllerUploadArtwork {
         }
 
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean();
+            ArtworkBean upArtWork = new ArtworkBean();
 
             upArtWork.setTitolo(textFieldTitle.getText());
             upArtWork.setPrezzo(prezzo);
@@ -205,21 +206,21 @@ public class GuiControllerUploadArtwork {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYFIELD);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }catch (EmptyPathException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYPATH);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        }catch (DuplicateArtWorkException e){
+        }catch (DuplicateArtworkException e){
             // Eccezione: Opera già caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
+            ev = ef.createView(ExceptionsTypeManager.DUPLICATEARTWORK);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 

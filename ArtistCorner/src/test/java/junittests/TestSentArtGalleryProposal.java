@@ -1,11 +1,7 @@
 package junittests;
-import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer;
 import com.artistcorner.controller.applicationcontroller.ViewSentArtGalleryProposal;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
-import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import org.junit.Test;
 import java.sql.SQLException;
 import static org.junit.Assert.assertEquals;

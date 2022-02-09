@@ -1,6 +1,6 @@
 package com.artistcorner.controller.guicontroller.login;
 
-import com.artistcorner.controller.applicationcontroller.SignUp;
+import com.artistcorner.controller.applicationcontroller.login.Register;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.DuplicateUserException;

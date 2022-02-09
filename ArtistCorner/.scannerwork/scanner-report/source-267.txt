@@ -4,7 +4,7 @@ import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryBuyer;
-import com.artistcorner.model.ArtWork;
+import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 

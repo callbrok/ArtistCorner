@@ -1,12 +1,12 @@
-package com.artistcorner.controller.guicontroller.viewprofile;
+package com.artistcorner.controller.guicontroller.manageartworks;
 
-import com.artistcorner.controller.applicationcontroller.ViewProfile;
+import com.artistcorner.controller.applicationcontroller.ManageArtworks;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.Artist;
 import javafx.event.ActionEvent;

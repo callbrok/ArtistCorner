@@ -1,6 +1,6 @@
-package com.artistcorner.controller.guicontroller.viewartgalleryproposals;
+package com.artistcorner.controller.guicontroller.manageproposals;
 
-import com.artistcorner.controller.applicationcontroller.ViewArtGalleryProposals;
+import com.artistcorner.controller.applicationcontroller.ManageProposals;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
@@ -8,7 +8,7 @@ import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;

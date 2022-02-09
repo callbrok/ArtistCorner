@@ -7,7 +7,7 @@ import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
@@ -139,7 +139,7 @@ public class GuiControllerMobileViewProfileGallery {
         }catch (SentProposalNotFoundException e) {
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
-            ev = ef.createView(ExceptionsTypeMenager.SENTPROPOSALNOTFOUND_MOBILE);
+            ev = ef.createView(ExceptionsTypeManager.SENTPROPOSALNOTFOUND_MOBILE);
             tilePaneAcceptedMob.getChildren().add(ev.getExceptionPane());
 
         }

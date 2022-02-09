@@ -1,6 +1,6 @@
 package junittests;
 
-import com.artistcorner.controller.applicationcontroller.SignUp;
+import com.artistcorner.controller.applicationcontroller.login.Register;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.DuplicateUserException;
@@ -15,7 +15,7 @@ public class TestSignUp {
 
     @Test
     public void testRegistrationDuplicateArtistUsername(){
-        SignUp sgup = new SignUp();
+        Register sgup = new Register();
         boolean duplicateUsername = false;
 
         ArtistBean artistToCheck = new ArtistBean();

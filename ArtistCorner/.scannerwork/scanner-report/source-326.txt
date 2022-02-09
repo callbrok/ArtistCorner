@@ -1,14 +1,14 @@
 package com.artistcorner.controller.guicontroller.mobile.uploadartwork;
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;

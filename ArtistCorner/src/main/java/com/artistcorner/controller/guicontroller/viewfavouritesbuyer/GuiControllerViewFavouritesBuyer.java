@@ -1,20 +1,16 @@
 package com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewFavouritesBuyer;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtworkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
-import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -137,7 +133,7 @@ public class GuiControllerViewFavouritesBuyer {
                 Label prezzoFavDesk = new Label();
                 ImageView imageView = new ImageView();
 
-                public HBoxCell(List<ArtWorkBean> arrayListArtWorkIdFavDesk, BuyerBean buy, ArtWorkBean artWorkBean, ArtistBean artistBean) throws SQLException, IOException {
+                public HBoxCell(List<ArtworkBean> arrayListArtWorkIdFavDesk, BuyerBean buy, ArtworkBean artWorkBean, ArtistBean artistBean) throws SQLException, IOException {
 
                         imageView.setImage(extractImage(artWorkBean.getImmagine()));
                         imageView.setFitHeight(100);
@@ -184,7 +180,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 public void handle(ActionEvent arg0) {
                                                         try {
                                                                 lv.finishPayment( artWorkBean, buy,artistBean);
-                                                        } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
+                                                        } catch (BuyArtworkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
                                                         buttonAcquistaFavDesk.setDisable(true);
@@ -199,7 +195,7 @@ public class GuiControllerViewFavouritesBuyer {
                                                 public void handle(ActionEvent arg0) {
                                                         try {
                                                                 lv.finishPayment( artWorkBean, buy,artistBean);
-                                                        } catch (BuyArtWorkManagementProblemException | FavouritesManagementProblemException e) {
+                                                        } catch (BuyArtworkManagementProblemException | FavouritesManagementProblemException e) {
                                                                 e.printStackTrace();
                                                         }
                                                         buttonAcquistaFavDesk.setDisable(true);
@@ -210,7 +206,7 @@ public class GuiControllerViewFavouritesBuyer {
                                 }
 
                         });
-                for(ArtWorkBean aw : arrayListArtWorkIdFavDesk) {
+                for(ArtworkBean aw : arrayListArtWorkIdFavDesk) {
                         if (aw.getIdOpera()==artWorkBean.getIdOpera()) {
                                 buttonPreferitiFavDesk.setText("Rimuovi dai Preferiti");
                         }
@@ -247,13 +243,13 @@ public class GuiControllerViewFavouritesBuyer {
 
         public void populateListView() throws SQLException, IOException {
                 ViewFavouritesBuyer vfb = new ViewFavouritesBuyer();
-                List<ArtWorkBean> arrayOfArtWorkIdFav;
+                List<ArtworkBean> arrayOfArtWorkIdFav;
                 ArtistBean artistFav=null;
-                ArtWorkBean artWorkFav = null;
+                ArtworkBean artWorkFav = null;
 
                 try{
                         arrayOfArtWorkIdFav = vfb.retrieveArtWorkId(buy);
-                        for (ArtWorkBean i: arrayOfArtWorkIdFav) {
+                        for (ArtworkBean i: arrayOfArtWorkIdFav) {
                                 artWorkFav = vfb.retrieveArtWork(i.getIdOpera());
                                 artistFav = vfb.retrieveArtistName(artWorkFav);
 
@@ -262,7 +258,7 @@ public class GuiControllerViewFavouritesBuyer {
                         }
 
 
-                }catch (ArtWorkNotFoundException e) {
+                }catch (ArtworkNotFoundException e) {
                 paneException.setVisible(true);
                 }
         }

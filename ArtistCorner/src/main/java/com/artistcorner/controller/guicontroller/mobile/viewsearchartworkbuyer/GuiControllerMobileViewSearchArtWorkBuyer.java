@@ -1,11 +1,11 @@
 package com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtworkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
@@ -123,7 +123,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         Label prezzoMobBuy = new Label();
         ImageView imageView = new ImageView();
 
-        public HBoxCellMobile (List<ArtWorkBean> arrayListArtWorkIdPrefMob,ArtWorkBean artWoBea, ArtistBean artB, BuyerBean buy) {
+        public HBoxCellMobile (List<ArtworkBean> arrayListArtWorkIdPrefMob, ArtworkBean artWoBea, ArtistBean artB, BuyerBean buy) {
             imageView.setImage(extractImage(artWoBea.getImmagine()));
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
@@ -178,7 +178,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                         public void handle(ActionEvent arg0) {
                             try {
                                 sa.finishPayment(artWoBea, buy,artB);
-                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                            } catch (FavouritesManagementProblemException | BuyArtworkManagementProblemException e) {
                                 e.printStackTrace();
                             }
                             buttonAcquistaMobBuy.setPrefSize(90,35);
@@ -207,7 +207,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                         public void handle(ActionEvent arg0) {
                             try {
                                 sa.finishPayment(artWoBea, buy,artB);
-                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                            } catch (FavouritesManagementProblemException | BuyArtworkManagementProblemException e) {
                                 e.printStackTrace();
                             }
                             buttonAcquistaMobBuy.setStyle("-fx-font-size: 8px;-fx-background-color: #ffffff");
@@ -232,7 +232,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
                 }
 
             });
-            for(ArtWorkBean art : arrayListArtWorkIdPrefMob){
+            for(ArtworkBean art : arrayListArtWorkIdPrefMob){
             if (art.getIdOpera()==artWoBea.getIdOpera()){
                 buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
             }
@@ -258,7 +258,7 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
     }
 
     public void populateListView(String input) throws SQLException, IOException {
-        ArtWorkBean artToSearch = new ArtWorkBean();
+        ArtworkBean artToSearch = new ArtworkBean();
 
         paneExLoad.setVisible(false);
 
@@ -271,23 +271,23 @@ public class GuiControllerMobileViewSearchArtWorkBuyer {
         }
 
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
-        List<ArtWorkBean> arrayOfArtWorkId=null;
+        List<ArtworkBean> arrayOfArtWorkId=null;
         ArtistBean artist=null;
 
         artToSearch.setTitolo(input);
         artToSearch.setCategoria(category);
 
         try{
-            List<ArtWorkBean> arrayOfArtWork = vsb.retrieveSearchArtWorkByName(artToSearch);
+            List<ArtworkBean> arrayOfArtWork = vsb.retrieveSearchArtWorkByName(artToSearch);
             arrayOfArtWorkId = vsb.retrieveSearchArtWorkId(buy);
 
-            for (ArtWorkBean artWork: arrayOfArtWork) {
+            for (ArtworkBean artWork: arrayOfArtWork) {
                 artist = vsb.retrieveSearchArtistName(artWork);
                 listView.getItems().add(new HBoxCellMobile(arrayOfArtWorkId,artWork,artist,buy));
             }
 
 
-        } catch ( ArtWorkNotFoundException throwables) {
+        } catch ( ArtworkNotFoundException throwables) {
             paneExLoad.setVisible(true);
         }
     }

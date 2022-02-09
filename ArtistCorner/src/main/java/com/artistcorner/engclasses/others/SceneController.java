@@ -2,16 +2,16 @@ package com.artistcorner.engclasses.others;
 
 
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerArtistSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerBuyerSummary;
-import com.artistcorner.controller.guicontroller.login.summarypanel.GuiControllerGallerySummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerArtistSummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerBuyerSummary;
+import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerGallerySummary;
+import com.artistcorner.controller.guicontroller.manageproposals.GuiControllerManageProposals;
 import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
-import com.artistcorner.controller.guicontroller.viewartgalleryproposals.GuiControllerViewArtGalleryProposals;
 import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.viewprofile.GuiControllerViewProfile;
+import com.artistcorner.controller.guicontroller.manageartworks.GuiControllerManageArtworks;
 import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
 import com.artistcorner.controller.guicontroller.viewsentartgalleryproposal.GuiControllerViewSentArtGalleryProposal;
-import com.artistcorner.controller.guicontroller.viewsaleshistory.GuiControllerViewSalesHistory;
+import com.artistcorner.controller.guicontroller.viewsoldartworks.GuiControllerViewSoldArtworks;
 import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
 import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
@@ -40,7 +40,7 @@ public class SceneController {
     public static final String CSS_PATH = "/css/" + "desktop/" + "main.css";
 
     public void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtistSummaryView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login/ArtistSummaryView.fxml"));
         root = loader.load();
 
         GuiControllerArtistSummary gcas = loader.getController();
@@ -54,10 +54,10 @@ public class SceneController {
     }
 
     public void switchToSceneProfiloArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewProfileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ManageArtworksView.fxml"));
         root = loader.load();
 
-        GuiControllerViewProfile gcas = loader.getController();
+        GuiControllerManageArtworks gcas = loader.getController();
         gcas.getArtist(art);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -82,10 +82,10 @@ public class SceneController {
     }
 
     public void switchToSceneProfiloVenduto(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewSalesHistoryView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewSoldArtworksView.fxml"));
         root = loader.load();
 
-        GuiControllerViewSalesHistory gcas = loader.getController();
+        GuiControllerViewSoldArtworks gcas = loader.getController();
         gcas.getArtist(art);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -96,10 +96,10 @@ public class SceneController {
     }
 
     public void switchToSceneProfiloOfferteMostre(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewArtGalleryProposalsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ManageProposalsView.fxml"));
         root = loader.load();
 
-        GuiControllerViewArtGalleryProposals gcas = loader.getController();
+        GuiControllerManageProposals gcas = loader.getController();
         gcas.getArtist(art);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -160,7 +160,7 @@ public class SceneController {
     }
 
     public void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuyerSummaryView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login/BuyerSummaryView.fxml"));
         root = loader.load();
 
         GuiControllerBuyerSummary gcas = loader.getController();
@@ -212,7 +212,7 @@ public class SceneController {
         stage.show();
     }
     public void switchToSceneGallerySummary(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArtGallerySummaryView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login/ArtGallerySummaryView.fxml"));
         root = loader.load();
 
         GuiControllerGallerySummary gcas = loader.getController();

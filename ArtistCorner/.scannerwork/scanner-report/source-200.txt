@@ -1,9 +1,9 @@
 package junittests;
 
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import org.junit.Test;

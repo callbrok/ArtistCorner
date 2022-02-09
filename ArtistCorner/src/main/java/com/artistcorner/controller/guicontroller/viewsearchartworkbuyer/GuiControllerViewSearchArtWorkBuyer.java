@@ -1,11 +1,11 @@
 package com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
 
 import com.artistcorner.controller.applicationcontroller.ViewSearchArtWorkBuyer;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.exceptions.ArtWorkNotFoundException;
-import com.artistcorner.engclasses.exceptions.BuyArtWorkManagementProblemException;
+import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
+import com.artistcorner.engclasses.exceptions.BuyArtworkManagementProblemException;
 import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
@@ -169,7 +169,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
         Button buttonPreferitiSearchBuy = new Button();
         Label prezzoSearch = new Label();
 
-        public HBoxCell( List<ArtWorkBean> arrayListArtWorkIdFav,BuyerBean buy, ArtWorkBean artWorkBean,ArtistBean artistBean) throws SQLException, IOException {
+        public HBoxCell(List<ArtworkBean> arrayListArtWorkIdFav, BuyerBean buy, ArtworkBean artWorkBean, ArtistBean artistBean) throws SQLException, IOException {
             ImageView imageView = new ImageView();
             imageView.setImage(extractImage(artWorkBean.getImmagine()));
             imageView.setFitHeight(100);
@@ -220,7 +220,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
                         public void handle(ActionEvent arg0) {
                             try {
                                 sa.finishPayment( artWorkBean, buy,artistBean);
-                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                            } catch (FavouritesManagementProblemException | BuyArtworkManagementProblemException e) {
                                 e.printStackTrace();
                             }
                             buttonAcquistaSearchBuy.setDisable(true);
@@ -246,7 +246,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
                             try {
                                 sa.finishPayment( artWorkBean, buy,artistBean);
-                            } catch (FavouritesManagementProblemException | BuyArtWorkManagementProblemException e) {
+                            } catch (FavouritesManagementProblemException | BuyArtworkManagementProblemException e) {
                                 e.printStackTrace();
                             }
                             buttonAcquistaSearchBuy.setDisable(true);
@@ -269,7 +269,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
             });
 
 
-            for(ArtWorkBean artW : arrayListArtWorkIdFav) {
+            for(ArtworkBean artW : arrayListArtWorkIdFav) {
                 if (artW.getIdOpera()==artWorkBean.getIdOpera()){
                     buttonPreferitiSearchBuy.setText("Rimuovi dai Preferiti");
                 }
@@ -294,7 +294,7 @@ public class GuiControllerViewSearchArtWorkBuyer {
 
     }
     public void populateListView(String input) throws SQLException, IOException {
-        ArtWorkBean artToSearch = new ArtWorkBean();
+        ArtworkBean artToSearch = new ArtworkBean();
 
         paneExceptionLoad.setVisible(false);
 
@@ -307,23 +307,23 @@ public class GuiControllerViewSearchArtWorkBuyer {
         }
 
         ViewSearchArtWorkBuyer vsb = new ViewSearchArtWorkBuyer();
-        List<ArtWorkBean> arrayOfArtWorkIdSearchBuy;
+        List<ArtworkBean> arrayOfArtWorkIdSearchBuy;
         ArtistBean artistSearchBuy=null;
 
         artToSearch.setCategoria(category);
         artToSearch.setTitolo(input);
 
         try{
-            List<ArtWorkBean> arrayOfArtWorkFound = vsb.retrieveSearchArtWorkByName(artToSearch);
+            List<ArtworkBean> arrayOfArtWorkFound = vsb.retrieveSearchArtWorkByName(artToSearch);
             arrayOfArtWorkIdSearchBuy = vsb.retrieveSearchArtWorkId(buy);
 
-            for (ArtWorkBean artWorkFound: arrayOfArtWorkFound) {
+            for (ArtworkBean artWorkFound: arrayOfArtWorkFound) {
                 artistSearchBuy = vsb.retrieveSearchArtistName(artWorkFound);
                 listView.getItems().add(new HBoxCell(arrayOfArtWorkIdSearchBuy,buy,artWorkFound,artistSearchBuy));
 
             }
 
-        } catch ( ArtWorkNotFoundException throwables) {
+        } catch ( ArtworkNotFoundException throwables) {
             paneExceptionLoad.setVisible(true);
         }finally {
             category="";
