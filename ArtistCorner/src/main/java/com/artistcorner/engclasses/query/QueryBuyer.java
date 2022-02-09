@@ -71,4 +71,9 @@ public class QueryBuyer {
         return stmt.executeQuery(sql);
     }
 
+    public static  ResultSet selectBuyerFromArtworkId(Statement stmt ,int idArtwork) throws SQLException {
+        String sql = "SELECT * FROM acquirente JOIN compra ON acquirente.idCompratore = compra.acquirente WHERE opera =" + idArtwork + ";";
+        return stmt.executeQuery(sql);
+    }
+
 }

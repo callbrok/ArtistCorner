@@ -3,6 +3,7 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -72,28 +73,19 @@
                 <DropShadow height="10.0" radius="4.5" width="10.0" />
             </effect>
             <children>
-            <Label fx:id="labelArtWorkTitle" layoutX="18.0" layoutY="43.0" />
-            <Label fx:id="labelArtWorkPrice" layoutX="19.0" layoutY="98.0" />
-            <Label layoutX="15.0" layoutY="17.0" text="Titolo" textFill="#2d8465">
+            <Label layoutX="18.0" layoutY="199.0" text="Prezzo:" textFill="#2d8465">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="18.0" layoutY="70.0" text="Prezzo" textFill="#2d8465">
+            <Label layoutX="19.0" layoutY="238.0" text="Acquirente:" textFill="#2d8465">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="19.0" layoutY="129.0" text="Acquirente" textFill="#2d8465">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="20.0" layoutY="186.0" text="Data" textFill="#2d8465">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
+            <ImageView fx:id="imageOfArtworkSold" fitHeight="158.0" fitWidth="210.0" layoutX="99.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="labelArtWorkPrice" layoutX="138.0" layoutY="201.0" text="Nessun Opera Selezionata" />
+            <Label fx:id="labelArtBuyer" layoutX="139.0" layoutY="240.0" text="Nessun Opera Selezionata" />
             </children>
         </Pane>
         <Pane id="mainPane" layoutX="56.0" layoutY="438.0" prefHeight="229.0" prefWidth="884.0" style="-fx-background-color: #fff;">

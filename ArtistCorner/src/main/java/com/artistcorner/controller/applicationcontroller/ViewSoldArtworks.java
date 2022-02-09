@@ -2,10 +2,13 @@ package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.ArtworkDAO;
+import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
 import com.artistcorner.model.Artwork;
 import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,17 @@ public class ViewSoldArtworks {
         }
 
         return arrayOfArtworkBeans;
+    }
+
+    public BuyerBean retrieveBuyerName(ArtworkBean artwork){
+        BuyerBean buyerOfArtwork = new BuyerBean();
+
+        Buyer retrievedBuyer = BuyerDAO.retrieveBuyerByArtworkId(artwork.getIdOpera());
+
+        buyerOfArtwork.setNome(retrievedBuyer.getNome());
+        buyerOfArtwork.setCognome(retrievedBuyer.getCognome());
+
+        return buyerOfArtwork;
     }
 
 

@@ -3,6 +3,7 @@ package com.artistcorner.controller.guicontroller.viewsoldartworks;
 import com.artistcorner.controller.applicationcontroller.ViewSoldArtworks;
 import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -18,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -25,10 +28,15 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerViewSoldArtworks {
+    @FXML
+    private ImageView imageOfArtworkSold;
+    @FXML
+    private Label labelArtBuyer;
     @FXML
     private AnchorPane anchorParentSHD;
     @FXML
@@ -135,12 +143,23 @@ public class GuiControllerViewSoldArtworks {
             listViewSale.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    InputStream inputStream = null;
                     int index = listViewSale.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
 
                     ArtworkBean currentArt = finalArrayOfArtwork.get(index);   // Prende l'i-esima (index) opera d'arte dal result set.
+                    BuyerBean currentBuyer = vsh.retrieveBuyerName(currentArt);
 
-                    labelArtWorkTitle.setText(currentArt.getTitolo());
-                    labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()));
+                    try {
+                        inputStream = currentArt.getImmagine().getBinaryStream();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    Image image = new Image(inputStream, 210, 158, true, false);
+                    imageOfArtworkSold.setImage(image);
+
+                    labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()) + "\u20ac");
+                    labelArtBuyer.setText(currentBuyer.getNome() + " " + currentBuyer.getCognome());
                 }
             });
 

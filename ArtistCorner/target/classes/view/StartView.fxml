@@ -8,15 +8,15 @@
 <AnchorPane fx:id="anchorParentStart" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.engclasses.others.StartApplication">
    <children>
       <Circle fx:id="circleMain" fill="DODGERBLUE" layoutX="200.0" layoutY="200.0" radius="200.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="buttonDesktop" layoutX="91.0" layoutY="224.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="226.0" styleClass="buttonStart" text="Modalita' Desktop" textFill="WHITE">
+      <Button fx:id="buttonDesktop" layoutX="91.0" layoutY="224.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="226.0" styleClass="buttonStart" text="Modalità Desktop" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="91.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchToMobile" prefHeight="48.0" prefWidth="226.0" styleClass="buttonStart" text="Modalita' Mobile" textFill="WHITE">
+      <Button layoutX="91.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchToMobile" prefHeight="48.0" prefWidth="226.0" styleClass="buttonStart" text="Modalità Mobile" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Label layoutX="111.0" layoutY="186.0" prefHeight="34.0" prefWidth="185.0" text="Scegli una modalita'" textFill="#277458">
+      <Label layoutX="111.0" layoutY="186.0" prefHeight="34.0" prefWidth="185.0" text="Scegli una modalità" textFill="#277458">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Label>
@@ -31,7 +31,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="145.0" layoutY="128.0" prefHeight="34.0" prefWidth="118.0" text="ArtistCorner" textFill="#39a67f">
+      <Label layoutX="145.0" layoutY="128.0" prefHeight="34.0" prefWidth="118.0" text="Artist Corner" textFill="#39a67f">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

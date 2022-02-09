@@ -3,6 +3,7 @@ package com.artistcorner.controller.guicontroller.mobile.viewsoldartworks;
 import com.artistcorner.controller.applicationcontroller.ViewSoldArtworks;
 import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.exceptions.ExceptionView;
 import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
@@ -93,7 +94,10 @@ public class GuiControllerMobileViewSoldArtworks {
             arrayOfArtwork = vsh.retrieveSellArtWorks(art);
 
             for (ArtworkBean n : arrayOfArtwork) {
-                listViewSale.getItems().add(new HBoxCell(n.getTitolo(), String.valueOf(n.getPrezzo()), "acquirente"));  // Popola la listView.
+                BuyerBean currentBuyer = vsh.retrieveBuyerName(n);
+                String buyerName = "Acquistata da: " + currentBuyer.getNome() + " " + currentBuyer.getCognome();
+
+                listViewSale.getItems().add(new HBoxCell(n.getTitolo(), String.valueOf(n.getPrezzo()), buyerName));  // Popola la listView.
             }
 
 

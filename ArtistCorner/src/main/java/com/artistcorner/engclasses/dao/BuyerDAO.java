@@ -4,6 +4,7 @@ import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.engclasses.query.QueryBuyer;
+import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
 import com.artistcorner.model.User;
 
@@ -109,6 +110,59 @@ public class BuyerDAO {
                 conn.close();
         }
 
+
+    }
+
+
+    public static Buyer retrieveBuyerByArtworkId(int artworkId){
+        Buyer buyer = null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectBuyerFromArtworkId(stmt, artworkId);
+
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                int idBuyer = rs.getInt("idCompratore");
+                String cognome = rs.getString("cognome");
+                String nome = rs.getString("nome");
+
+                buyer = new Buyer(idBuyer,nome,cognome);
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (Exception ex3) {
+            ex3.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se24) {
+                se24.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se4) {
+                se4.printStackTrace();
+            }
+        }
+
+        return buyer;
 
     }
 
