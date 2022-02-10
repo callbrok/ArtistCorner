@@ -1,1 +1,1 @@
-½ 2javaXqhrksrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerGallerySummary.java
+½ 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundException.java

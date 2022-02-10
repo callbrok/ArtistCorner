@@ -1,1 +1,2 @@
-Ë 2javaXehrxsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileGallerySummary.java
+Ë 2javaX
+hrMsrc/main/java/com/artistcorner/engclasses/exceptions/AddGalleryException.java

@@ -1,1 +1,2 @@
-Ì 2javaXahrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileBuyerSummary.java
+Ì 2javaX
+hrWsrc/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundException.java

@@ -1,28 +1,23 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.model;
 
-import java.io.Serializable;
+public class Artist {
+    private int idArtista;
+    private String nome;
+    private String cognome;
 
-public class Nodo implements Serializable {
-    String domanda;
-    int idAppartenenza;
-    int idProprio;
-    String decisione;
-    String solutionPart;
-    String keyObj;
-
-    public Nodo(int newIdAppartenenza, int newIdProprio, String newDecisione, String newDomanda, String newSolutionPart, String newKeyObj){
-        this.domanda = newDomanda;
-        this.idAppartenenza = newIdAppartenenza;
-        this.idProprio = newIdProprio;
-        this.decisione = newDecisione;
-        this.keyObj = newKeyObj;
-        this.solutionPart = newSolutionPart;
+    public Artist(int newId, String newNome, String newCognome){
+        this.nome = newNome;
+        this.cognome = newCognome;
+        this.idArtista = newId;
     }
 
-    public int getIdAppartenenza(){ return idAppartenenza; }
-    public int getIdProprio(){ return idProprio; }
-    public String getDecisione(){ return decisione; }
-    public String getDomanda(){ return domanda; }
-    public String getKeyObj() {return keyObj;}
-    public String getSolutionPart() {return solutionPart;}
+    public Artist(String newNome, String newCognome){
+        this.nome = newNome;
+        this.cognome = newCognome;
+        this.idArtista = 0;
+    }
+
+    public String getNome() {return nome;}
+    public int getIdArtista() {return idArtista;}
+    public String getCognome() {return cognome;}
 }

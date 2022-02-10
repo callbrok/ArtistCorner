@@ -1,1 +1,2 @@
-» 2javaX´hrosrc/main/java/com/artistcorner/controller/guicontroller/viewprofilogallery/GuiControllerViewProfiloGallery.java
+» 2javaX
+hrUsrc/main/java/com/artistcorner/engclasses/exceptions/ArtGalleryNotFoundException.java

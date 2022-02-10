@@ -1,1 +1,1 @@
-Î 2javaXÏhrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofile/GuiControllerMobileViewProfile.java
+Î 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

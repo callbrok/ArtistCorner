@@ -1,1 +1,1 @@
-á 2javaX$hrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfileGallery.java
+á 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java

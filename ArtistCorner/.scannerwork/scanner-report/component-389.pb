@@ -1,0 +1,1 @@
+… 2javaXýhr~src/main/java/com/artistcorner/controller/guicontroller/mobile/viewfavouritesbuyer/GuiControllerMobileViewFavouritesBuyer.java

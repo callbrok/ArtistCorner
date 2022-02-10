@@ -1,1 +1,1 @@
-² 2javaXhr<src/main/java/com/artistcorner/engclasses/others/Commit.java
+² 2javaXÁhr>src/main/java/com/artistcorner/engclasses/dao/ProposalDAO.java

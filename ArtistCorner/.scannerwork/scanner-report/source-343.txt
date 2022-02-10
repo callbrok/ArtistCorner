@@ -1,72 +1,47 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.observer;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.engclasses.dao.UserDAO;
-import com.artistcorner.engclasses.exceptions.UserNotFoundException;
-import com.artistcorner.engclasses.others.SceneController;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Buyer;
-import javafx.event.ActionEvent;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
-public class Login {
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 
-    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
-        SceneController sc = new SceneController();
-        SceneControllerMobile scm = new SceneControllerMobile();
+public class SendMail {
 
-        UserBean loggedUserBean = LoginDAO.retrieveUser(noLoggedUserBean);
+    public static void send(String mail,String nameBuy,String title) {
 
-        // Eccezione: Inserito utente non valido.
-        if(loggedUserBean == null){
-            throw new UserNotFoundException("Inserito utente non valido");
+        final String username = "artist.corner.company@gmail.com";
+        final String password = "ispw2021";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("artist.corner.company@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mail));
+            message.setSubject("ArtistCorner, Art Work Sold");
+            message.setText("Dear Artist, "
+                    + "\n\nWe inform You that your Art Work: "+ title +" has been purchased from "+nameBuy);
+
+            Transport.send(message);
+
+            System.out.println("Email sent to: "+mail);
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
-
-        switch (loggedUserBean.getRole()){
-            // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
-            case "artista":
-                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUserBean);
-                ArtistBean loggedArtistBean = new ArtistBean(loggedArtist.getIdArtista(), loggedArtist.getNome(), loggedArtist.getCognome());
-
-                if(flagInterface.equals("D")){sc.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
-
-                break;
-
-            case "galleria":
-                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUserBean);
-                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean(loggedArtGallery.getGalleria(), loggedArtGallery.getNome(), loggedArtGallery.getDescrizione(), loggedArtGallery.getIndirizzo(),loggedArtGallery.getUsername());
-                if(flagInterface.equals("D")){sc.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
-                break;
-
-            case "acquirente":
-                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUserBean);
-                BuyerBean loggedBuyerBean = new BuyerBean(loggedBuyer.getIdBuyer(),loggedBuyer.getNome(),loggedBuyer.getCognome());
-
-                if(flagInterface.equals("D")){sc.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
-                if(flagInterface.equals("M")){scm.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.
-
-                break;
-
-            case "analytics":
-                sc.switchToAnalytics(event);
-                break;
-        }
-
     }
-
-
-
 }

@@ -1,1 +1,2 @@
-¸ 2javaXÎhrksrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewLogAnalytics.java
+¸ 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyPathException.java

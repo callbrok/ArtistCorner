@@ -1,1 +1,1 @@
-Í 2javaX‡hrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java
+Í 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java

@@ -12,6 +12,7 @@ import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -149,11 +150,10 @@ public class GuiControllerMobileManageArtworks {
                 vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
 
                 buttonRemove.setOnAction(event2 -> {
-                    SceneControllerMobile scvpd = new SceneControllerMobile();
                     vp.removeArtWork(b);
 
                     try {
-                        scvpd.switchToSceneProfiloArtista(event2, art);
+                        SceneControllerMobile.switchToSceneProfiloArtista(event2, art);
                     } catch (IOException | SQLException e) {
                         e.printStackTrace();
                     }
@@ -175,8 +175,6 @@ public class GuiControllerMobileManageArtworks {
 
 
     public void exitWindow() throws IOException {
-        SceneController.deleteSerialNodo(art.getIdArtista());
-
         stage = (Stage) anchorMainViewM.getScene().getWindow();
         stage.close();
     }
@@ -200,33 +198,26 @@ public class GuiControllerMobileManageArtworks {
     }
 
     public void makeLogOut(ActionEvent event) throws IOException {
-        SceneController.deleteSerialNodo(art.getIdArtista());
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToLogin(event);
+        SceneControllerMobile.switchToLogin(event);
     }
 
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneMainArtista(event, art);
+    public void switchToSceneMainArtistaFromManageArtM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneMainArtista(event, art);
     }
 
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloArtista(event, art);
+    public void switchToProfiloArtistaFromManageArtM(ActionEvent event) throws SQLException, IOException {
+        SceneControllerMobile.switchToSceneProfiloArtista(event, art);
     }
 
-    public void switchToUploadOpera(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneUploadOpera(event, art);
+    public void switchToUploadOperaFromManageArtM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneUploadOpera(event, art);
     }
 
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloVenduto(event, art);
+    public void switchToProfiloVendutoFromManageArtM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneProfiloVenduto(event, art);
     }
 
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneControllerMobile smvm = new SceneControllerMobile();
-        smvm.switchToSceneProfiloOfferteMostre(event, art);
+    public void switchToProfiloOfferteMostreFromManageArtM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneProfiloOfferteMostre(event, art);
     }
 }

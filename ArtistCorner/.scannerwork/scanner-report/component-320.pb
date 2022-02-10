@@ -1,1 +1,1 @@
-À 2javaX–hrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java
+À 2javaX	hrOsrc/main/java/com/artistcorner/engclasses/exceptions/EmpyPathExceptionView.java

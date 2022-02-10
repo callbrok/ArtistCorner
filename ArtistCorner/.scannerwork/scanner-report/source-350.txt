@@ -1,27 +1,20 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.AddArtistException;
-import com.artistcorner.engclasses.exceptions.DuplicateUserException;
-import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.User;
+public class ArtGalleryBean {
+    private int galleria;
+    private String nome;
+    private String descrizione;
+    private String indirizzo;
 
-import java.sql.SQLException;
 
-public class SignUp {
 
-    public void registerArtist(UserBean user, ArtistBean art) throws DuplicateUserException{
-        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole());
-        Artist artistToAdd = new Artist(art.getNome(), art.getCognome());
+    public void setNome(String nome) {this.nome = nome;}
+    public void setGalleria(int galleria) {this.galleria = galleria;}
+    public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
+    public void setIndirizzo(String indirizzo) {this.indirizzo = indirizzo;}
 
-        try {
-            ArtistDAO.insertArtist(userToAdd, artistToAdd);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    public String getNome() {return nome;}
+    public int getGalleria() {return galleria;}
+    public String getIndirizzo() {return indirizzo;}
+    public String getDescrizione() {return descrizione;}
 }

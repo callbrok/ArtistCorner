@@ -1,1 +1,1 @@
-Ô 2javaX!hrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewGallerySummary.java
+Ô 2javaXUhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java

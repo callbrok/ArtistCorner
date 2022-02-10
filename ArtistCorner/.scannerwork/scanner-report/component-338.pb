@@ -1,1 +1,1 @@
-Ò 2javaXährˆsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkgallery/GuiControllerMobileViewSearchArtWorkGallery.java
+Ò 2javaXhrBsrc/main/java/com/artistcorner/engclasses/query/QueryProposal.java

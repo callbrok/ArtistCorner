@@ -1,1 +1,1 @@
-Þ 2javaXhrKsrc/main/java/com/artistcorner/controller/applicationcontroller/SignUp.java
+Þ 2javaXhrBsrc/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

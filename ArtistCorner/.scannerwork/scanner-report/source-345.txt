@@ -1,28 +1,22 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.observer;
 
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
-import com.artistcorner.model.Artist;
+public class ArtistConcreteObserver implements Observer {
 
-import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.List;
+    String email;
+    String nameBuy;
+    String title;
 
-public class ViewProfile {
+    public ArtistConcreteObserver(String email,String nameBuy,String title){
+    super();
+    this.email = email;
+    this.nameBuy = nameBuy;
+    this.title = title;
 
-    public List<Blob> retrieveAllArtWorksImage(ArtistBean artBean) throws ArtWorkNotFoundException {
-
-        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
-
-        List<Blob> listOfArtWorksImage = ArtistDAO.retrieveAllArtWorksImage(art.getIdArtista(), "");  // Prendi tutte le opere caricate dall'artista.
-
-        if(listOfArtWorksImage.isEmpty()){
-            throw new ArtWorkNotFoundException("Nessun opera caricata");
-        }
-
-        return listOfArtWorksImage;
-
+    }
+    @Override
+    public void update() {
+        SendMail sd = new SendMail();
+        sd.send(email,nameBuy,title);
     }
 
 }

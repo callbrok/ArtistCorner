@@ -275,7 +275,16 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 apexS101"
 format^[A-Z][a-zA-Z0-9_]*$(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
 apexS2757(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
-apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6vH
+apexS1481(Ð¸¾Âø,0Ð¸¾Âø,:AX5nzHve-NH3hzEYSh6v3
+javaS5808(¨î¡™Ð.0¨î¡™Ð.:AX5nzHve-NH3hzEYSh7K2
+javaS128(¸˜Ù±ñ(0á¯Á½+:AX5nzHve-NH3hzEYSh7K3
+javaS3751(è‡ïŸ‰-0ðõå¬æ.:AX5nzHve-NH3hzEYSh7K3
+javaS1149(¸˜Ù±ñ(0ÑóÅæ*:AX5nzHve-NH3hzEYSh7K3
+javaS2755(è‡ïŸ‰-0è‡ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
+javaS6377(ˆÝŒüê/0ˆÝŒüê/:AX5nzHve-NH3hzEYSh7K3
+javaS6374(Ð°“üê/0Ð°“üê/:AX5nzHve-NH3hzEYSh7K3
+javaS6373(ðÒ’üê/0ðÒ’üê/:AX5nzHve-NH3hzEYSh7K3
+javaS6376(øü‘üê/0øü‘üê/:AX5nzHve-NH3hzEYSh7KH
 javaS5843"
 maxComplexity20(øœ÷ã¶.0øœ÷ã¶.:AX5nzHve-NH3hzEYSh7K3
 javaS4544(À‚ñÙÎ,0À‚ñÙÎ,:AX5nzHve-NH3hzEYSh7K3
@@ -292,7 +301,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 format^[a-z][a-zA-Z0-9]*$(¸˜Ù±ñ(0¨Ôû Ì*:AX5nzHve-NH3hzEYSh7K3
 javaS6002(°·å¬æ.0°·å¬æ.:AX5nzHve-NH3hzEYSh7K3
 javaS4502(€™ú³Ä,0€™ú³Ä,:AX5nzHve-NH3hzEYSh7K3
-javaS2755(è‡ïŸ‰-0è‡ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
 javaS2204(ˆ¯ãå­)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2225(ˆ¯ãå­)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2589(øè¯Á½+0øè¯Á½+:AX5nzHve-NH3hzEYSh7K3
@@ -345,7 +353,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS2612( ÂèÃŒ.0 ÂèÃŒ.:AX5nzHve-NH3hzEYSh7K3
 javaS3752(è‡ïŸ‰-0°»Å€®.:AX5nzHve-NH3hzEYSh7K3
 javaS4601(è‡ïŸ‰-0è‡ïŸ‰-:AX5nzHve-NH3hzEYSh7K3
-javaS3751(è‡ïŸ‰-0ðõå¬æ.:AX5nzHve-NH3hzEYSh7K3
 javaS3518(ààóÅæ*0ààóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS1217(¸˜Ù±ñ(0ÑóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS1104(¸˜Ù±ñ(0Èí‰ºì*:AX5nzHve-NH3hzEYSh7K3
@@ -354,7 +361,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS2647(¡¬Ï-0¡¬Ï-:AX5nzHve-NH3hzEYSh7K3
 javaS1444(¸˜Ù±ñ(0˜ý‰ºì*:AX5nzHve-NH3hzEYSh7K3
 javaS4830( ‹ó•….0 ‹ó•….:AX5nzHve-NH3hzEYSh7K3
-javaS5808(¨î¡™Ð.0¨î¡™Ð.:AX5nzHve-NH3hzEYSh7K3
 javaS1206(¸˜Ù±ñ(0ÑóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS5804(ˆÆ¤™Ð.0ˆÆ¤™Ð.:AX5nzHve-NH3hzEYSh7K3
 javaS1948(ÈÓÏ)0¸¢ü Ì*:AX5nzHve-NH3hzEYSh7K3
@@ -363,8 +369,7 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS1854(€×¥Õ…*0€×¥Õ…*:AX5nzHve-NH3hzEYSh7K3
 javaS1989(èÙò´ƒ*0ÑóÅæ*:AX5nzHve-NH3hzEYSh7K2
 javaS131(¸˜Ù±ñ(0Èí‰ºì*:AX5nzHve-NH3hzEYSh7K3
-javaS6288(€Ëò‘Ê/0€Ëò‘Ê/:AX5nzHve-NH3hzEYSh7K2
-javaS128(¸˜Ù±ñ(0á¯Á½+:AX5nzHve-NH3hzEYSh7K3
+javaS6288(€Ëò‘Ê/0€Ëò‘Ê/:AX5nzHve-NH3hzEYSh7K3
 javaS6291(Ð×ó‘Ê/0Ð×ó‘Ê/:AX5nzHve-NH3hzEYSh7K3
 javaS6293(¨‘ó‘Ê/0¨‘ó‘Ê/:AX5nzHve-NH3hzEYSh7K3
 javaS6301(ðüñ‘Ê/0ðüñ‘Ê/:AX5nzHve-NH3hzEYSh7K‡
@@ -457,7 +462,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 javaS2230(ˆ¯ãå­)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2110(àà©Ä)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS5868(€Êõã¶.0€Êõã¶.:AX5nzHve-NH3hzEYSh7K3
-javaS1149(¸˜Ù±ñ(0ÑóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS2118(ÐÓ‹¨»)0øØóÅæ*:AX5nzHve-NH3hzEYSh7K3
 javaS5831(ØûÇ€®.0ØûÇ€®.:AX5nzHve-NH3hzEYSh7K3
 javaS1598( ¬¡³„)0˜ý‰ºì*:AX5nzHve-NH3hzEYSh7K3
@@ -837,6 +841,8 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 flexS1481(¸˜Ù±ñ(0À»Ê¢«,:AX5nzHve-NH3hzEYSh6u3
 flexS1952(è™¡®˜)0è™¡®˜):AX5nzHve-NH3hzEYSh6u;
 flexWithStatement(èšáÜï(0¨ÙáÜï(:AX5nzHve-NH3hzEYSh6u:
+csharpsquidS1155(ð–ñï)0 Þ»  +:AX5nzHve-NH3hzEYSh7L:
+csharpsquidS2755(ÐÑ“Ý‡.0ÐÑ“Ý‡.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3925(˜‹¯Á½+0ø±òÌ+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3442(€³í©+0€³í©+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS5753(Ðó¢©ò.0Ðó¢©ò.:AX5nzHve-NH3hzEYSh7L:
@@ -871,7 +877,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 csharpsquidS4433(€¿åÄ¶,0€¿åÄ¶,:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4790(àÚ÷õ,0àÚ÷õ,:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4792(àÚ÷õ,0àÚ÷õ,:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS2755(ÐÑ“Ý‡.0ÐÑ“Ý‡.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS2612(¸‰ ¹ÿ.0¸‰ ¹ÿ.:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1104(À³›à¶+0À³›à¶+:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS3884(À³›à¶+0À³›à¶+:AX5nzHve-NH3hzEYSh7L:
@@ -1019,7 +1024,6 @@ PlSql.Goto(èšáÜï(0ðÁáÜï(:AX5nzHve-NH3hzEYSh6x<
 csharpsquidS3444(ðì­Ä¹*0 Þ»  +:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4635(Èëµá-0Èëµá-:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4210(àšÒ—™,0àšÒ—™,:AX5nzHve-NH3hzEYSh7L:
-csharpsquidS1155(ð–ñï)0 Þ»  +:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1905( ‡ñï)0 ‡ñï):AX5nzHve-NH3hzEYSh7L:
 csharpsquidS1199(Ð… ùÚ-0Ð… ùÚ-:AX5nzHve-NH3hzEYSh7L:
 csharpsquidS4220(ðÜÎÊû+0ðÜÎÊû+:AX5nzHve-NH3hzEYSh7L:
@@ -1476,6 +1480,7 @@ typescriptS3863(ÈÊ±¨ú.0ÈÊ±¨ú.:AX5nzHve-NH3hzEYSh7H9
 
 typescriptS4156(°Ò±¨ú.0°Ò±¨ú.:AX5nzHve-NH3hzEYSh7H3
 textS6389( ùõÛè/0 ùõÛè/:AX6LfYgwEtnFPnYRccCR4
+vbnetS1155( ¡ÈÏë/0 ¡ÈÏë/:AX5nzHve-NH3hzEYSh7J4
 vbnetS5753(¨¹ž©ò.0¨¹ž©ò.:AX5nzHve-NH3hzEYSh7J4
 vbnetS4275(È£‰Æî,0È£‰Æî,:AX5nzHve-NH3hzEYSh7J4
 vbnetS1135(˜÷–åŽ-0˜÷–åŽ-:AX5nzHve-NH3hzEYSh7J4
@@ -2152,7 +2157,8 @@ common-phpDuplicatedBlocks(˜¦°Â„+0˜¦°Â„+:AX5nzHve-NH3hzEYSh7F=
 cppS897(˜ßù¼à*0˜ßù¼à*:AX5nzHve-NH3hzEYSh6z2
 cppS5485(ˆ‘üêñ-0ˆ‘üêñ-:AX5nzHve-NH3hzEYSh6z2
 cppS5000(àœÇ’-0àœÇ’-:AX5nzHve-NH3hzEYSh6z2
-cppS2095(¨øî–‡+0¨øî–‡+:AX5nzHve-NH3hzEYSh6zJ
+cppS2095(¨øî–‡+0¨øî–‡+:AX5nzHve-NH3hzEYSh6z5
+pythonS2755(È¾á§°.0È¾á§°.:AX5nzHve-NH3hzEYSh67J
 pythonS5843"
 maxComplexity20(ð¯ŸÐ/0ð¯ŸÐ/:AX5nzHve-NH3hzEYSh675
 pythonS2737(Ð¼“ìç-0Ð¼“ìç-:AX5nzHve-NH3hzEYSh675
@@ -2173,7 +2179,6 @@ common-phpDuplicatedBlocks(˜¦°Â„+0˜¦°Â„+:AX5nzHve-NH3hzEYSh7F=
 pythonS3329(ÀÅ™¹ÿ.0ÀÅ™¹ÿ.:AX5nzHve-NH3hzEYSh675
 pythonS5869(Ò€ŸÐ/0Ò€ŸÐ/:AX5nzHve-NH3hzEYSh675
 pythonS5868(Øº€ŸÐ/0Øº€ŸÐ/:AX5nzHve-NH3hzEYSh675
-pythonS2755(È¾á§°.0È¾á§°.:AX5nzHve-NH3hzEYSh675
 pythonS6035(ˆ«€ŸÐ/0ˆ«€ŸÐ/:AX5nzHve-NH3hzEYSh675
 pythonS2201(ø¼Ô¯¥.0ø¼Ô¯¥.:AX5nzHve-NH3hzEYSh675
 pythonS4502(À¢˜ .0À¢˜ .:AX5nzHve-NH3hzEYSh675

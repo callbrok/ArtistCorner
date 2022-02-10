@@ -1,0 +1,1 @@
+ù 2javaXËhrsrc/main/java/com/artistcorner/controller/guicontroller/viewsentartgalleryproposal/GuiControllerViewSentArtGalleryProposal.java

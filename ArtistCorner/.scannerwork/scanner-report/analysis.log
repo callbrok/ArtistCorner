@@ -2,17 +2,17 @@ SonarCloud plugins:
   - IaC Code Quality and Security 1.5.0.1600 (iac)
   - PL/SQL Code Quality and Security 3.7.0.4372 (plsql)
   - Scala Code Quality and Security 1.9.0.3429 (sonarscala)
-  - C# Code Quality and Security 8.34.0.42011 (csharp)
+  - C# Code Quality and Security 8.35.0.42613 (csharp)
   - Vulnerability Analysis 9.3.0.14923 (security)
-  - Java Code Quality and Security 7.7.0.28547 (java)
+  - Java Code Quality and Security 7.8.1.28740 (java)
   - HTML Code Quality and Security 3.6.0.3106 (web)
   - Flex Code Quality and Security 2.7.0.2865 (flex)
   - XML Code Quality and Security 2.5.0.3376 (xml)
   - Text file Code Quality and Security 1.0.0.120 (text)
-  - VB.NET Code Quality and Security 8.34.0.42011 (vbnet)
+  - VB.NET Code Quality and Security 8.35.0.42613 (vbnet)
   - Swift Code Quality and Security 4.5.0.5305 (swift)
   - CFamily Code Quality and Security 6.30.0.42324 (cpp)
-  - Python Code Quality and Security 3.9.0.9230 (python)
+  - Python Code Quality and Security 3.10.0.9380 (python)
   - Go Code Quality and Security 1.9.0.3429 (go)
   - JaCoCo 1.1.1.1157 (jacoco)
   - Kotlin Code Quality and Security 2.9.0.1147 (kotlin)
@@ -23,13 +23,13 @@ SonarCloud plugins:
   - Ruby Code Quality and Security 1.9.0.3429 (ruby)
   - Vulnerability Rules for C# 9.3.0.14923 (securitycsharpfrontend)
   - Vulnerability Rules for Java 9.3.0.14923 (securityjavafrontend)
-  - License for SonarLint 8.0.0.26379 (license)
+  - License for SonarLint 8.0.0.26660 (license)
   - Vulnerability Rules for JS 9.3.0.14923 (securityjsfrontend)
   - COBOL Code Quality 4.6.2.4876 (cobol)
   - Vulnerability Rules for Python 9.3.0.14923 (securitypythonfrontend)
   - PHP Code Quality and Security 3.22.1.8626 (php)
   - ABAP Code Quality and Security 3.10.0.3628 (abap)
-  - Configuration detection fot Code Quality and Security 1.1.0.185 (config)
+  - Configuration detection fot Code Quality and Security 1.2.0.267 (config)
   - Vulnerability Rules for PHP 9.3.0.14923 (securityphpfrontend)
 Global server settings:
   - email.from=noreply@sonarcloud.io
@@ -41,14 +41,16 @@ Global server settings:
   - sonar.auth.microsoft.enabled=true
   - sonar.core.id=1BD809FA-AWHW8ct9-T_TB3XqouNu
   - sonar.core.serverBaseURL=https://sonarcloud.io
-  - sonar.core.startTime=2022-01-27T10:24:21+0100
+  - sonar.core.startTime=2022-02-09T10:09:03+0100
   - sonar.dbcleaner.weeksBeforeDeletingAllSnapshots=260
   - sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByMonth=4
   - sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByWeek=1
   - sonar.global.exclusions=**/build-wrapper-dump.json
   - sonar.lf.enableGravatar=true
   - sonar.lf.logoWidthPx=105
-  - sonar.maintenance_mode.link=https://sonarcloud.statuspage.io/incidents/4y1k6q1wsy4v
+  - sonar.maintenance_mode.link=https://sonarcloud.statuspage.io/incidents/6qy1js6rqm5n
+  - sonar.maintenance_mode.message=SonarCloud will undergo maintenance for 30 minutes on Tuesday, February 15th. The service will not be available between 07:00 CET and 07:30 CET. Additionally, we will execute two maintenance tasks on February 8th and February 22nd at 08:00 CET, during which, it is possible that you will receive errors over a short period of time (1-2 minutes).
+  - sonar.maintenance_mode.start_date=2022-02-15T07:00:00.000+01:00
   - sonar.organizations.anyoneCanCreate=true
   - sonar.organizations.createPersonalOrg=true
   - sonar.plsql.file.suffixes=sql,tab,pkb

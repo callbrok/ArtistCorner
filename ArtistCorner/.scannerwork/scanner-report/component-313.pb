@@ -1,1 +1,1 @@
-¹ 2javaXèhrmsrc/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java
+¹ 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateArtworkExceptionView.java

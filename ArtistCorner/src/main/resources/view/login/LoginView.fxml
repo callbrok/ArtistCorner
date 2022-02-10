@@ -54,12 +54,12 @@
                </children>
             </Pane>
             </children></AnchorPane>
-        <Button layoutX="796.0" layoutY="4.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="26.0" prefWidth="30.0" styleClass="buttonChange" text="x" textFill="WHITE">
+        <Button layoutX="796.0" layoutY="28.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="26.0" prefWidth="30.0" styleClass="buttonChange" text="x" textFill="#39a67f">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="768.0" layoutY="4.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="29.0" prefWidth="21.0" styleClass="buttonChange" text="-" textFill="WHITE">
+        <Button layoutX="770.0" layoutY="28.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="29.0" prefWidth="21.0" styleClass="buttonChange" text="-" textFill="#39a67f">
             <font>
                 <Font size="15.0" />
             </font>

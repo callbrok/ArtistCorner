@@ -1,1 +1,2 @@
-Á 2javaXîhrasrc/main/java/com/artistcorner/controller/guicontroller/viewprofile/GuiControllerViewProfile.java
+Á 2javaX
+hrQsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyFieldExceptionView.java

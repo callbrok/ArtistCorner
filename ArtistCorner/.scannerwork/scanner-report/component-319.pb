@@ -1,1 +1,1 @@
-¿ 2javaXmhrisrc/main/java/com/artistcorner/controller/guicontroller/login/summarypanel/GuiControllerBuyerSummary.java
+¿ 2javaXhr[src/main/java/com/artistcorner/engclasses/exceptions/GetRaccomandationProblemException.java

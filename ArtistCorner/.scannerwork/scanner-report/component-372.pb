@@ -1,0 +1,1 @@
+ô 2javaX²hrgsrc/main/java/com/artistcorner/controller/guicontroller/login/summaries/GuiControllerArtistSummary.java

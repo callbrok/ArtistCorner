@@ -1,1 +1,1 @@
-Ê 2javaXyhrwsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileArtistSummary.java
+Ê 2javaX	hrZsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtworkNotFoundExceptionView.java

@@ -1,1 +1,1 @@
-Ñ 2javaX‰hr„src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkbuyer/GuiControllerMobileViewSearchArtWorkBuyer.java
+Ñ 2javaXhrAsrc/main/java/com/artistcorner/engclasses/query/QueryArtwork.java

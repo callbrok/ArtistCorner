@@ -1,1 +1,1 @@
-È 2javaX–hr|src/main/java/com/artistcorner/controller/guicontroller/mobile/viewprofilogallery/GuiControllerMobileViewProfiloGallery.java
+È 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtworkNotFoundException.java

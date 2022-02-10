@@ -1,154 +1,47 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.others;
 
-import com.artistcorner.engclasses.others.Nodo;
-import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
+import com.artistcorner.engclasses.exceptions.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+public class ExceptionsFactory {
 
-public class GetReccomandation {
-    // Inizializza la risposta dell'algoritmo.
-    public static final String NO_ANSWER = "Nessuna Risposta";
-    private Random random = new Random();
+    //***Singleton***/
+    private static ExceptionsFactory instance = null;
+    private ExceptionsFactory() {}
 
-    private String[] risposta = {NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER,NO_ANSWER};
-
-    /**
-     * Inizializza l'albero con i nodi, presi dal file "treeStructure.txt".
-     */
-    public List<Nodo> initializeTreeTxt() {
-        ArrayList<Nodo> arraylist = new ArrayList<>();
-
-        String line = "";
-        String splitBy = ",";
-
-        try(BufferedReader br = new BufferedReader(new FileReader("ArtistCorner/src/main/resources/auxiliaryfacilities/treeStructure.txt"))) {
-
-            while ((line = br.readLine()) != null)
-            //returns a Boolean value
-            {
-                if (line.charAt(0) == '/'){continue;}  // salta le righe di commento nel file di testo
-
-                String[] nodo = line.split(splitBy);   // tokenizza la linea tramite il delimitatore ','
-
-                int idAppartenenza = Integer.parseInt(nodo[0]);
-                int idProprio = Integer.parseInt(nodo[1]);
-                String decisione = nodo[2];
-                String domanda = nodo[3];
-                String parteSoluzione = nodo[4];
-                String key = nodo[5];
-
-                arraylist.add(new Nodo(idAppartenenza,idProprio,decisione,domanda, parteSoluzione, key));   // inizializza un singolo nodo dell'albero
-
-            }
+    public static synchronized ExceptionsFactory getInstance() {
+        if(instance == null) {
+            instance = new ExceptionsFactory();
         }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        return arraylist;
+        return instance;
     }
 
-    /**
-     * Ritorna il nodo da visualizzare a video.
-     */
-    public Nodo decisionTree(String str, List<Nodo> arraylist, int idLivello) throws GetRaccomandationProblemException {
-        Nodo errorNode = new Nodo(0, 0, "Fine", "Fine dell'algoritmo","ULTIMO NODO", "");
-        Nodo currentNode = getCurrentNode(idLivello, arraylist); // Prende il nodo corrente.
+    public ExceptionView createView(ExceptionsTypeManager etm) {
 
-        String [] arrRandAns = {"Y", "N"};
-        int select = random.nextInt(arrRandAns.length);
-        String randomChoice = arrRandAns[select];  // Inizializza la scelta randomica.
+        switch(etm.getType()) {
+            case 0: case 7:
+                return new EmptyFieldExceptionView(etm);
 
-        if (str.equals("YN")){str=randomChoice;}
+            case 1: case 8:
+                return new EmpyPathExceptionView(etm);
 
-        // Passa l'identificativo della soluzione e la parte della soluzione del nodo corrente.
-        if (str.equals("Y")) {
-            createSolution(currentNode.getSolutionPart(), currentNode.getKeyObj());
-        }
+            case 2: case 9:
+                return new DuplicateArtworkExceptionView(etm);
 
-        for (Nodo n : arraylist) {
-            // Se il nodo di risposta affermativa/negativa ha come padre il nodo corrente identificato dall'idLivello.
-            if (n.getDecisione().contains(str) && n.getIdAppartenenza() == idLivello) {
-                return n;
-            }
-        }
+            case 3: case 10:
+                return new ProposalNotFoundExceptionView(etm);
 
-        return errorNode; // Mostra nodo di fine albero.
-    }
+            case 4: case 11:
+                return new SellArtworkNotFoundExceptionView(etm);
 
-    /**
-     * Ritorna il nodo corrente.
-     */
-    public Nodo getCurrentNode(int idLivello, List<Nodo> arraylist){
-        // Scorre tutti i nodi e ne ritorna quello con idProprio + idLivello, ergo il
-        // nodo corrente.
-        for (Nodo n : arraylist) {
-            if (n.getIdProprio() == idLivello) {
-                return n;
-            }
-        }
-        return null;
-    }
+            case 5: case 12:
+                return new ArtworkNotFoundExceptionView(etm);
 
-    /**
-     * Ritorna la soluzione.
-     */
-    public String[] getSolution(){ return risposta;}
+            case 6: case 13:
+                return new SentProposalNotFoundExceptionView(etm);
 
-    // Ritorna la soluzione per la serializzazione.
-    public String getSerialSolution(){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for(int i=0;i<risposta.length;i++){
-            stringBuilder.append(risposta[i]);
-            stringBuilder.append("-");
-        }
-
-        return stringBuilder.toString();
-    }
-
-    /**
-     * Imposta la risposta.
-     */
-    public void setSerialSolution( String serialRisposta){
-        risposta = serialRisposta.split("-", risposta.length);
-        risposta[4] = risposta[4].substring(0, risposta[4].length()-1);
-    }
-
-    /**
-     * Crea la soluzione.
-     */
-    public void createSolution(String sol, String key) throws GetRaccomandationProblemException {
-        // A seconda della key associata alla domanda inserisco una parte della
-        // soluzione nella stringa apposita.
-        switch (key){
-            case "[A]":
-                risposta[0] = sol;
-                break;
-            case "[W]":
-                risposta[1] = sol;
-                break;
-            case "[S]":
-                risposta[2] = sol;
-                break;
-            case "[D]":
-                risposta[3] = sol;
-                break;
-            case "[R]":
-                risposta[4] = sol;
-                break;
             default:
-                throw new GetRaccomandationProblemException("Problema nella compilazione della risposta");
+                return new EmptyFieldExceptionView(etm);
         }
-
     }
-
-
 
 }

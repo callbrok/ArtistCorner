@@ -1,34 +1,18 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.observer;
 
-import com.artistcorner.engclasses.bean.ArtworkBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.SellArtworkNotFoundException;
-import com.artistcorner.model.Artwork;
-import com.artistcorner.model.Artist;
+public class BuyerConcreteSubject implements Subject {
 
-import java.util.ArrayList;
-import java.util.List;
+    ArtistConcreteObserver art;
 
-public class ViewSalesHistory {
-
-    public List<ArtWorkBean> retrieveSellArtWorks(ArtistBean artBean) throws SellArtWorkNotFoundException {
-
-        Artist art = new Artist(artBean.getIdArtista(), artBean.getNome(), artBean.getCognome());
-
-        List<ArtWork> arrayOfArtwork = ArtistDAO.retrieveSellArtWorks(art.getIdArtista());
-        ArrayList<ArtWorkBean> arrayOfArtworkBeans = new ArrayList<>();
-
-        if(arrayOfArtwork.isEmpty()){
-            throw new SellArtWorkNotFoundException("Nessuna opera venduta.");
-        }
-
-        for (ArtWork n : arrayOfArtwork) {
-            arrayOfArtworkBeans.add(new ArtWorkBean(n.getIdOpera(), n.getTitolo(), n.getPrezzo(), n.getFlagVenduto(),n.getArtistaId()));
-        }
-
-        return arrayOfArtworkBeans;
+    @Override
+    public void add(ArtistConcreteObserver art) {
+        this.art = art;
     }
 
-
+    public void notifyArtist(){
+        art.update();
+    }
+    public void checkOut(){
+        notifyArtist();
+    }
 }

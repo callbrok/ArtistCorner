@@ -1,1 +1,1 @@
-± 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeMenager.java
+± 2javaXÀhr<src/main/java/com/artistcorner/engclasses/dao/ArtistDAO.java

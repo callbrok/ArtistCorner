@@ -1,23 +1,23 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner.model;
 
-public class ArtGalleryBean {
-    int galleria;
-    String nome;
-    String descrizione;
-    String indirizzo;
-    String username;
+public class User {
+    private String username;
+    private String password;
+    private String role;
 
-    public  ArtGalleryBean(int newGalleriaB, String newNomeB, String newDescrizioneB, String newIndirizzoB, String newUsernameB){
-        this.galleria = newGalleriaB;
-        this.nome = newNomeB;
-        this.descrizione = newDescrizioneB;
-        this.indirizzo = newIndirizzoB;
-        this.username = newUsernameB;
+    public User(String newUsername, String newPassword){
+        this.username = newUsername;
+        this.password = newPassword;
+        this.role = "NULL";
     }
 
-    public int getGalleria() {return galleria;}
-    public String getNome() {return nome;}
-    public String getDescrizione() {return descrizione;}
-    public String getIndirizzo() {return indirizzo;}
-    public String getUsername() {return username;}
+    public User(String newUsername, String newPassword, String newRole){
+        this.username = newUsername;
+        this.password = newPassword;
+        this.role = newRole;
+    }
+
+    public String getUsername(){return username;}
+    public String getPassword(){return password;}
+    public String getRole() {return role;}
 }

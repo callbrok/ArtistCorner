@@ -1,1 +1,1 @@
-√ 2javaXèhrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+√ 2javaX	hrVsrc/main/java/com/artistcorner/engclasses/exceptions/ArtworkNotFoundExceptionView.java

@@ -1,1 +1,1 @@
-É 2javaX@hrcsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileSignUp.java
+É 2javaXhrPsrc/main/java/com/artistcorner/engclasses/exceptions/BuyerNotFoundException.java

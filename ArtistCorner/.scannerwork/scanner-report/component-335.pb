@@ -1,1 +1,2 @@
-Ï 2javaXŸhrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java
+Ï 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java

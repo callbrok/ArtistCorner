@@ -1,1 +1,1 @@
-³ 2javaXìhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+³ 2javaX¸hr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

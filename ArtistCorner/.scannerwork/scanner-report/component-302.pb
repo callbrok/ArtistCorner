@@ -1,1 +1,1 @@
-® 2javaXhr=src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java
+® 2javaXhr2src/main/java/com/artistcorner/model/Proposal.java

@@ -1,1 +1,1 @@
-¯ 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java
+¯ 2javaXhr4src/main/java/com/artistcorner/model/ArtGallery.java

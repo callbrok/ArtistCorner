@@ -13,7 +13,7 @@
       <TextField fx:id="textFieldNomeBuyerMob" layoutX="37.0" layoutY="85.0" prefHeight="37.0" prefWidth="274.0" promptText="Nome" />
       <TextField fx:id="textFieldCognomeBuyerMob" layoutX="37.0" layoutY="141.0" prefHeight="37.0" prefWidth="274.0" promptText="Cognome" />
       <Button layoutX="37.0" layoutY="204.0" mnemonicParsing="false" onAction="#registerBuyerMob" prefHeight="53.0" prefWidth="274.0" styleClass="buttonPane" text="Registrati" />
-      <Button layoutX="37.0" layoutY="264.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="53.0" prefWidth="274.0" styleClass="buttonPane" text="Return to Login" />
+      <Button layoutX="37.0" layoutY="264.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="53.0" prefWidth="274.0" styleClass="buttonPane" text="Torna al Login" />
       <AnchorPane fx:id="anchorErroSignMobile" layoutX="14.0" layoutY="14.0" prefHeight="244.0" prefWidth="318.0" style="-fx-background-color: #d13e0a;" visible="false">
          <children>
             <Label fx:id="labelErroSignMobile" layoutX="22.0" layoutY="58.0" prefHeight="115.0" prefWidth="274.0" text="Label" textFill="WHITE">

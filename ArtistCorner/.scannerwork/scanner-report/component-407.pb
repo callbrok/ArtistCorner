@@ -1,0 +1,1 @@
+— 2javaXXhr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java

@@ -1,1 +1,1 @@
-Ù 2javaXhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfile.java
+Ù 2javaXhrNsrc/main/java/com/artistcorner/engclasses/observer/ArtistConcreteObserver.java

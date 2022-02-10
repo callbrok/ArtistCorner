@@ -1,17 +1,16 @@
 
-dcom.artistcorner.controller.applicationcontroller.GetReccomandation#getSolution()[Ljava/lang/String;Ž
-ƒ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaf f("1*Ò
-1Ž
-ƒ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaf* f(2‹
-ˆ
-Ž
-ƒ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaf* f(2
-%0java.lang.String[]"__id*U*SE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation"
-
-risposta"­
-Ž
-ƒ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.javaf# f(3
-
-%0java.lang.String[]BGE
-Ccom.artistcorner.controller.applicationcontroller.GetReccomandation
+Jcom.artistcorner.engclasses.bean.ArtistBean#getCognome()Ljava/lang/String;u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java ("1*ç
+1u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java' (.Ö
+Ó
+u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java' (.
+%0java.lang.String"__id*<*:-
++com.artistcorner.engclasses.bean.ArtistBean"	
+cognome"‘
+u
+k/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java  (/
+
+%0java.lang.StringB/-
++com.artistcorner.engclasses.bean.ArtistBean

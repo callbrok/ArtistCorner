@@ -1,1 +1,1 @@
-Ü 2javaX<hr\src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtGalleryProposals.java
+Ü 2javaXhr<src/main/java/com/artistcorner/engclasses/bean/UserBean.java

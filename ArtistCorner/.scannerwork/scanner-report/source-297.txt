@@ -1,23 +1,29 @@
-package com.artistcorner.engclasses.bean;
+package com.artistcorner;
 
-public class UserBean {
-    private String username;
-    private String password;
-    private String role;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-    public UserBean(String newUsernameB, String newPasswordB){
-        this.username = newUsernameB;
-        this.password = newPasswordB;
-        this.role = "NULL";
+import java.io.IOException;
+
+public class MainApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/view/StartView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/css/desktop/main.css").toExternalForm());
+        scene.setFill(Color.TRANSPARENT);
+
+        stage.setTitle("ArtistCorner");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public UserBean(String newUsernameB, String newPasswordB, String newRoleB){
-        this.username = newUsernameB;
-        this.password = newPasswordB;
-        this.role = newRoleB;
+    public static void main(String[] args) {
+        launch();
     }
-
-    public String getUsername(){return username;}
-    public String getPassword(){return password;}
-    public String getRole() {return role;}
 }

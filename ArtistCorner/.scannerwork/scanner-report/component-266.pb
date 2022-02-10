@@ -1,1 +1,0 @@
-Š 2javaXóhr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

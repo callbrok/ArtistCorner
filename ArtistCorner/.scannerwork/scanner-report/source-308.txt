@@ -1,70 +1,170 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.dao;
 
-import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
+import com.artistcorner.engclasses.exceptions.*;
+import com.artistcorner.engclasses.others.ConnectProperties;
+import com.artistcorner.engclasses.query.QueryArtist;
+import com.artistcorner.engclasses.query.QueryBuyer;
+import com.artistcorner.model.Artist;
+import com.artistcorner.model.Buyer;
+import com.artistcorner.model.User;
 
-public class ConnectProperties {
+import java.sql.*;
 
-    private ConnectProperties(){
-        throw new IllegalStateException("Utility Cconnect class");
+public class BuyerDAO {
+
+    private BuyerDAO(){
+
+        throw new IllegalStateException("Utility class");
     }
 
-    /**
-     * Prende i valori nel file "login.properties" per effettuare la connessione al DBMS.
-     */
-    public static Connection getConnection(){
+    public static Buyer retrieveBuyer(User usr){
+        Buyer bu = null;
+        Statement stmt = null;
         Connection conn = null;
-        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
 
-        try{
+        try {
 
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(stream);
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
 
-            // assign db parameters
-            String dbhostname = prop.getProperty("hostname");
-            String dbname = prop.getProperty("dbname");
-            String dbusername = prop.getProperty("username");
-            String dbpassword = prop.getProperty("password");
-            String dbdriverused = prop.getProperty("driverused");
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectBuyer(stmt, usr.getUsername());
 
-            String dburl = "jdbc:" + dbdriverused + "://" + dbhostname + ":3306/" + dbname;
+            if (!rs.first()){ // rs empty
+                throw new BuyerNotFoundException("Acquirente non trovato");
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String cognomeBuyer = rs.getString("cognome");
+                String nomeBuyer = rs.getString("nome");
+                int idBuyer = rs.getInt("idCompratore");
+
+                bu = new Buyer(idBuyer,nomeBuyer, cognomeBuyer);
 
 
-            // create a connection to the database
-            conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
+            }while(rs.next());
 
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se21) {
+                se21.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se1) {
+                se1.printStackTrace();
+            }
         }
-        return conn;
+
+        return bu;
     }
 
-    /**
-     * Ritorna il nome del driver jdbc da utilizzare, leggendo il file "login.properties".
-     */
-    public static String getDriverClassName(){
-        String driverClassName="NO DRIVER SPECIFIED";
-        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
+    public static void insertBuyer(User user, Buyer buyer) throws DuplicateUserException, SQLException {
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
 
-        try{
-
-            // load the properties file
-            Properties prop = new Properties();
-            prop.load(stream);
-
-            // assign db parameters
-            driverClassName = prop.getProperty("driver");
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Check Duplicate User
+            ResultSet rs = QueryArtist.selectUsername(stmt);
+            while (rs.next()) {
+                // lettura delle colonne "by name"
+                String usernameRetrived = rs.getString("username");
+
+                if (usernameRetrived.equals(user.getUsername())){
+                    throw new DuplicateUserException("Username attualmente già in uso.");
+                }
+            }
+
+            int result = QueryArtist.insertUser(stmt, user);
+            result = QueryBuyer.insertBuyer(stmt,buyer, user.getUsername());
+
+            if(result == -1){throw new AddBuyerException("Impossibile aggiungere acquirente");}
+
+        } catch (SQLException | AddBuyerException | ClassNotFoundException e2){
+            e2.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
         }
-        return driverClassName;
+
+
+    }
+
+
+    public static Buyer retrieveBuyerByArtworkId(int artworkId){
+        Buyer buyer = null;
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryBuyer.selectBuyerFromArtworkId(stmt, artworkId);
+
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                int idBuyer = rs.getInt("idCompratore");
+                String cognome = rs.getString("cognome");
+                String nome = rs.getString("nome");
+
+                buyer = new Buyer(idBuyer,nome,cognome);
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (Exception ex3) {
+            ex3.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se24) {
+                se24.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se4) {
+                se4.printStackTrace();
+            }
+        }
+
+        return buyer;
+
     }
 
 }
+

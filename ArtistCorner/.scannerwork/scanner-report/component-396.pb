@@ -1,0 +1,1 @@
+Œ 2javaX4hr_src/main/java/com/artistcorner/controller/applicationcontroller/ViewSentArtGalleryProposal.java

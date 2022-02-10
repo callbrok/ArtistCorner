@@ -1,1 +1,1 @@
-´ 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java
+´ 2javaX«hr;src/main/java/com/artistcorner/engclasses/dao/BuyerDAO.java

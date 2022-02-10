@@ -1,1 +1,1 @@
-ß 2javaXHhr]src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkGallery.java
+ß 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

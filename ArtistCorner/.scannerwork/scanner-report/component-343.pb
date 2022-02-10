@@ -1,1 +1,1 @@
-× 2javaXIhrJsrc/main/java/com/artistcorner/controller/applicationcontroller/Login.java
+× 2javaX/hr@src/main/java/com/artistcorner/engclasses/observer/SendMail.java

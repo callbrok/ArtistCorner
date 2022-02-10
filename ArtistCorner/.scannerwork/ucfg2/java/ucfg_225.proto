@@ -1,38 +1,24 @@
 
-gcom.artistcorner.engclasses.query.QueryBuyer#selectAllArtist(Ljava/sql/Statement;I)Ljava/sql/ResultSet;v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (+"1*ù	
-1v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (?”
-–
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (K
-%0java.lang.String"__concat*,*
-(SELECT * FROM artista WHERE idArtista ='*
-""ø
-º
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (R
-%1java.lang.String"__concat*
+âcom.artistcorner.engclasses.others.ExceptionsTypeManager#getUrl(Lcom/artistcorner/engclasses/others/ExceptionsTypeManager;)Ljava/net/URL;Ç
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java$ $("1*¡
+1Ç
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java% %(*˜
+Ù
+Ç
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java%7 %(C
+%0java.lang.String"__id*O*M
+C
+subview8com.artistcorner.engclasses.others.ExceptionsTypeManager"
+pathûõ
+Ç
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java% %(D
+%1java.net.URL"=java.lang.Class#getResource(Ljava/lang/String;)Ljava/net/URL;*
+""*
 
-%0java.lang.String*
-';¥
-±
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java (S
-sqljava.lang.String"__id*
-
-%1java.lang.Stringπ∂
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java   (%
-%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
-
-stmtjava.sql.Statement*
-
-sqljava.lang.String2 executeQuery(Ljava/lang/String;)"î
-v
-l/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java   (&
-
-%2java.sql.ResultSet:
-stmtjava.sql.Statement:
-""B0".
-,com.artistcorner.engclasses.query.QueryBuyer
+%0java.lang.String2getResource(Ljava/lang/String;)"õ
+Ç
+x/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java% %(E
+
+%1java.net.URL:C
+subview8com.artistcorner.engclasses.others.ExceptionsTypeManagerB<":
+8com.artistcorner.engclasses.others.ExceptionsTypeManager

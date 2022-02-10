@@ -28,6 +28,7 @@ public class ArtworkBean {
     public int getArtistId() {return artistId;}
     public String getCategoria() {return categoria;}
     public Blob getImmagine() {return immagine;}
+
 }
 
 

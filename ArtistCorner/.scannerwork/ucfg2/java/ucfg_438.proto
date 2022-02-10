@@ -1,10 +1,48 @@
 
-icom.artistcorner.controller.applicationcontroller.ViewBuyerSummary#retrieveAllComprate(I)Ljava/util/List;ç
-Ç/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewBuyerSummary.java (,"1*Æ
-1ç
-Ç/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewBuyerSummary.java ("ò
-ç
-Ç/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewBuyerSummary.java (5
-"":
-""BFD
-Bcom.artistcorner.controller.applicationcontroller.ViewBuyerSummary
+xcom.artistcorner.engclasses.others.ExceptionsFactory#getInstance()Lcom/artistcorner/engclasses/others/ExceptionsFactory;~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java1 (<"3*ö
+2~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.ıÚ
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (,:
+%14com.artistcorner.engclasses.others.ExceptionsFactory"4com.artistcorner.engclasses.others.ExceptionsFactoryá
+Ñ
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.
+%2">com.artistcorner.engclasses.others.ExceptionsFactory#<init>()V*<
+:
+%14com.artistcorner.engclasses.others.ExceptionsFactoryç
+ä
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (.D6
+4com.artistcorner.engclasses.others.ExceptionsFactory"
+
+instance"__id*<
+:
+%14com.artistcorner.engclasses.others.ExceptionsFactory*
+1*õ
+3~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (ç
+ä
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (:
+%04com.artistcorner.engclasses.others.ExceptionsFactory"__id*F*D6
+4com.artistcorner.engclasses.others.ExceptionsFactory"
+
+instance*
+2
+1*‘
+1~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (ç
+ä
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (:
+%34com.artistcorner.engclasses.others.ExceptionsFactory"__id*F*D6
+4com.artistcorner.engclasses.others.ExceptionsFactory"
+
+instance"æ
+~
+t/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java (<
+:
+%34com.artistcorner.engclasses.others.ExceptionsFactoryB8"6
+4com.artistcorner.engclasses.others.ExceptionsFactory

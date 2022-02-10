@@ -1,1 +1,2 @@
-Å 2javaX¨hrxsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsaleshistory/GuiControllerMobileViewSalesHistory.java
+Å 2javaX
+hrKsrc/main/java/com/artistcorner/engclasses/exceptions/AddBuyerException.java

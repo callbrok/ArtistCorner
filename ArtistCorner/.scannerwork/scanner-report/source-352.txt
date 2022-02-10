@@ -1,24 +1,18 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.bean.ArtworkBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
-import com.artistcorner.model.Artwork;
-import com.artistcorner.model.Buyer;
-import javafx.scene.control.ListView;
+public class BuyerBean {
+    private int idBuyer;
+    private String nome;
+    private String cognome;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class ViewBuyerSummary {
 
-    public List<Integer> retrieveAllComprate(int idBuyer)  {
-        return BuyerDAO.retrieveAllComprate(idBuyer);
-    }
+    public void setCognome(String cognome) {this.cognome = cognome;}
+    public void setIdBuyer(int idBuyer) {this.idBuyer = idBuyer;}
+    public void setNome(String nome) {this.nome = nome;}
 
-    public ArtWorkBean retrieveArtWorks(int integer,int flag) {
-        ArtWork a = BuyerDAO.retrieveArtWorks(integer, flag);
-        return new ArtWorkBean(a.getIdOpera(),a.getTitolo(),a.getPrezzo(),a.getFlagVenduto(),a.getArtistaId());
-    }
+    public int getIdBuyer() {return idBuyer;}
+    public String getNome() {return nome;}
+    public String getCognome(){return cognome;}
 }
+

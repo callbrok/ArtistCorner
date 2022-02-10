@@ -1,0 +1,1 @@
+† 2javaXªhrŒsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsentartgalleryproposal/GuiControllerMobileViewSentArtGalleryProposal.java

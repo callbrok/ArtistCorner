@@ -1,1 +1,1 @@
-∫ 2javaXèhrysrc/main/java/com/artistcorner/controller/guicontroller/viewartgalleryproposals/GuiControllerViewArtGalleryProposals.java
+∫ 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundExceptionView.java

@@ -1,1 +1,2 @@
-Â 2javaXÊhrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java
+Â 2javaX
+hr^src/main/java/com/artistcorner/engclasses/exceptions/FavouritesManagementProblemException.java
