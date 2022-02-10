@@ -13,7 +13,7 @@
     <children>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
-            <Label layoutX="142.0" layoutY="33.0" text="Artist Corner" textFill="#2d8465">
+            <Label layoutX="142.0" layoutY="33.0" text="ArtistCorner" textFill="#2d8465">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

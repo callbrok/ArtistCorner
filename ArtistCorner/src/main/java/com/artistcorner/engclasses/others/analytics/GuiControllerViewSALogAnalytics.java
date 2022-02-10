@@ -69,7 +69,7 @@ public class GuiControllerViewSALogAnalytics {
         XYChart.Series<String, Double> series3 = new XYChart.Series();   // Upper Limit.
         XYChart.Series<String, Double> series4 = new XYChart.Series();   // Lower Limit.
 
-        yAxisChart.setLabel("Numero Commit");
+        yAxisChart.setLabel("Number of Commit");
         yAxisChart.setTickUnit(1);
         series1.setName("Number of Commit");
         series2.setName("Center Line");
