@@ -82,7 +82,9 @@ public class GuiControllerMobileManageProposals {
     }
 
 
-    // Riprogetta la riga della ListView.
+    /**
+     * Ridefinisce il template delle righe/celle della listView.
+     */
     public static class HBoxCell extends HBox {
         Label labelNome = new Label();
         Label labelDescrizione = new Label();
@@ -135,8 +137,7 @@ public class GuiControllerMobileManageProposals {
             }
 
 
-
-            // action event
+            // Inizializza evento sul click del bottone "Accetta" proposta.
             EventHandler<ActionEvent> eventAccept = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {
@@ -154,6 +155,7 @@ public class GuiControllerMobileManageProposals {
                 }
             };
 
+            // Inizializza evento sul click del bottone "Rifiuta" proposta.
             EventHandler<ActionEvent> eventDecline= new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {
@@ -171,7 +173,7 @@ public class GuiControllerMobileManageProposals {
                 }
             };
 
-            // when button is pressed
+            // Assegna l'evento.
             buttonAccept.setOnAction(eventAccept);
             buttonRecline.setOnAction(eventDecline);
 
@@ -182,7 +184,9 @@ public class GuiControllerMobileManageProposals {
         }
     }
 
-
+    /**
+     * Inizializza la listView contenente tutte le proposte arrivate all'artista loggato.
+     */
     public void populateListView(ArtistBean art) throws IOException {
         ManageProposals wap = new ManageProposals();
         List<ProposalBean> arrayOfProposalsBean = null;

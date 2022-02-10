@@ -57,7 +57,6 @@ public class GuiControllerGetReccomandation implements Serializable{
     private double y=0;
     private Stage stage;
 
-    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_";
     public static final String FONT_RESULT = "System";
     public static final String NOTHING_ANSW = "Nessuna Risposta";
 

@@ -70,14 +70,17 @@ public class GuiControllerMobileManageArtworks {
         makeDraggable();
     }
 
+    /**
+     * Centra dinamicamente l'immagine visualizzata in overlay.
+     */
     public void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
         if (img != null) {
             double wM = 0;
             double hM = 0;
 
-            double ratioXM = imageView.getFitWidth() / img.getWidth();
-            double ratioYM = imageView.getFitHeight() / img.getHeight();
+            double ratioXM = imageView.getFitWidth() / img.getWidth();      // Larghezza dell'imageview / larghezza dell'immagine.
+            double ratioYM = imageView.getFitHeight() / img.getHeight();    // Altezza dell'imageView / altezza dell'immagine.
 
             double reducCoeff = 0;
             if(ratioXM >= ratioYM) {
@@ -95,7 +98,9 @@ public class GuiControllerMobileManageArtworks {
         }
     }
 
-
+    /**
+     * Inizializza la tilePane contenente tutte le opere caricate dall'artista.
+     */
     private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
         ManageArtworks vp = new ManageArtworks();
         List<ArtworkBean> listOfArtWorks = null;  // Prendi tutte le opere caricate dall'artista.
@@ -158,7 +163,7 @@ public class GuiControllerMobileManageArtworks {
             }
 
         } catch (ArtworkNotFoundException e) {
-            // Eccezione: Campi lasciati vuoti.
+            // Eccezione: Nessun opera caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 

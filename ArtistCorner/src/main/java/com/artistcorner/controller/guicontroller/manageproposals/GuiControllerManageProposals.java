@@ -170,6 +170,9 @@ public class GuiControllerManageProposals {
     }
 
 
+    /**
+     * Inizializza la listView con tutte le offerte ricevute all'artista loggato.
+     */
     public void populateListView(ArtistBean art) throws IOException {
         ManageProposals wap = new ManageProposals();
         List<ProposalBean> arrayOfProposalsBean = null;
@@ -181,7 +184,7 @@ public class GuiControllerManageProposals {
 
             for (ProposalBean n : arrayOfProposalsBean) {
                 ArtGalleryBean artG = wap.retrieveArtGallery(n);   // Fai un retrieve della galleria associata alla proposta.
-                listViewProposal.getItems().add(artG.getNome());  // Popola la listView.
+                listViewProposal.getItems().add(artG.getNome());   // Popola la listView.
 
                 arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
             }
@@ -197,7 +200,7 @@ public class GuiControllerManageProposals {
                     int index = listViewProposal.getSelectionModel().getSelectedIndex();  // Prende l'indice della riga cliccata.
 
                     ArtGalleryBean currentArtGallery = arrayOfArtGalleryOfProposal.get(index);   // Prende l'i-esima (index) galleria dall'array
-                                                                                             // inizializzato precedentemente.
+                                                                                                 // inizializzato precedentemente.
                     setWebMap(currentArtGallery.getIndirizzo());
 
                     ProposalBean currentProposal = finalArrayOfProposals.get(index);     // Salva l'id dell'offerta correntemente visualizzata.

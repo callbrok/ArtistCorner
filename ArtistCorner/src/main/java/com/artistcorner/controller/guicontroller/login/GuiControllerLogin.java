@@ -131,6 +131,9 @@ public class GuiControllerLogin {
         anchorSignUp.getChildren().add(newLoadedPane);
     }
 
+    /**
+     * Inizializza uno stub per il login tramite Facebook.
+     */
     public void openDialogLoginFb() {
         Dialog<String> dialog = new Dialog<>();
         ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
@@ -143,6 +146,9 @@ public class GuiControllerLogin {
         dialog.showAndWait();
     }
 
+    /**
+     * Effettua il login statico per un acquirente ospite.
+     */
     public void loginGuestBuyer(ActionEvent event) throws IOException {
         UserBean us = new UserBean();
 

@@ -122,14 +122,17 @@ public class GuiControllerManageArtworks {
         makeLogOut();
     }
 
+    /**
+     * Centra dinamicamente l'immagine visualizzata in overlay.
+     */
     public void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
         if (img != null) {
             double w = 0;
             double h = 0;
 
-            double ratioX = imageView.getFitWidth() / img.getWidth();
-            double ratioY = imageView.getFitHeight() / img.getHeight();
+            double ratioX = imageView.getFitWidth() / img.getWidth();     // Larghezza dell'imageview / larghezza dell'immagine.
+            double ratioY = imageView.getFitHeight() / img.getHeight();   // Altezza dell'imageView / altezza dell'immagine.
 
             double reducCoeff = 0;
             if(ratioX >= ratioY) {
@@ -147,7 +150,9 @@ public class GuiControllerManageArtworks {
         }
     }
 
-
+    /**
+     * Inizializza la tilePane contenente tutte le opere caricate dall'artista.
+     */
     private void initializeTilePane(ArtistBean art) throws SQLException, IOException {
         ManageArtworks vp = new ManageArtworks();
         List<ArtworkBean> listOfArtWorks = null;  // Prendi tutte le opere caricate dall'artista.
@@ -218,7 +223,9 @@ public class GuiControllerManageArtworks {
         }
     }
 
-
+    /**
+     * Setta i tooltip su i bottoni del menu.
+     */
     public void setTooltipMenu(){
         button1VP.setTooltip(new Tooltip("Home"));
         button2VP.setTooltip(new Tooltip("Profilo"));

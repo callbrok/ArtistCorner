@@ -132,6 +132,9 @@ public class GuiControllerUploadArtwork {
         svgProfile.setScaleY(0.07);
     }
 
+    /**
+     * Setta i tooltip su i bottoni del menu.
+     */
     public void setTooltipMenu(){
         button1Up.setTooltip(new Tooltip("Home"));
         button2Up.setTooltip(new Tooltip("Profilo"));
@@ -145,6 +148,9 @@ public class GuiControllerUploadArtwork {
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
+    /**
+     * Seleziona l'immagine da caricare.
+     */
     public void selectFile(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -165,6 +171,9 @@ public class GuiControllerUploadArtwork {
 
     }
 
+    /**
+     * Effettua l'upload dell'opera.
+     */
     public void uploadFile(){
         UploadArtwork upawDesk = new UploadArtwork();
         int flagVendibile;

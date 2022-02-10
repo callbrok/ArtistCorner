@@ -127,6 +127,9 @@ public class GuiControllerViewSoldArtworks {
         populateListView(loggedArtist);
     }
 
+    /**
+     * Inizializza la listView contenente le opere vendute dall'artista loggato.
+     */
     public void populateListView(ArtistBean art) throws IOException {
         ViewSoldArtworks vsh = new ViewSoldArtworks();
         List<ArtworkBean> arrayOfArtwork = null;

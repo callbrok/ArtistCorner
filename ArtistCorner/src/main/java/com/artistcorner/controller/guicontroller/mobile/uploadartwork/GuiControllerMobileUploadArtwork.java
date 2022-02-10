@@ -74,6 +74,9 @@ public class GuiControllerMobileUploadArtwork {
 
     }
 
+    /**
+     * Seleziona l'immagine dell'opera da caricare.
+     */
     public void selectFile(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -87,6 +90,9 @@ public class GuiControllerMobileUploadArtwork {
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
     }
 
+    /**
+     * Effettua l'upload dell'opera.
+     */
     public void uploadFile(){
         UploadArtwork upaw = new UploadArtwork();
         int flagVendibile;

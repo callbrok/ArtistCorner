@@ -36,7 +36,6 @@ public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
     private Button buttonReset;
 
-    public static final String OBJECTNODO_PATH = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_";
     public static final String FONT_RESULT = "System";
     public static final String NOTHING_ANSW = "Nessuna Risposta";
 

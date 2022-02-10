@@ -153,7 +153,9 @@ public class GetReccomandation {
 
     }
 
-
+    /**
+     * Deserializza il nodo.
+     */
     public Nodo deserializaStartNode(ArtistBean art) throws FileNotFoundException {
         // Controlla prima se c'è un file su cui fare al deserializzazione
         File f = new File(OBJECTNODO_PATH + art.getIdArtista() + ".txt");
@@ -173,7 +175,7 @@ public class GetReccomandation {
 
 
     /**
-     * Serializza il nodo passato, come oggetto nel file "object.txt".
+     * Serializza il nodo passato, come oggetto nel file "object_*id.txt".
      */
     public void makeSerializable(ArtistBean art, Nodo n) throws FileNotFoundException {
         n.setSolutionS(getSerialSolution());

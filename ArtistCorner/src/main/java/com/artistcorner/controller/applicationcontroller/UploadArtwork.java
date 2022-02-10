@@ -11,9 +11,6 @@ import com.artistcorner.model.Artwork;
 public class UploadArtwork {
 
     public void uploadImage(ArtworkBean upArt, String filePath) throws DuplicateArtworkException, EmptyPathException, EmptyFieldException {
-        // Dato che uploadImage non cattura l'eccezzione EmptyFieldExceptio
-        // lo metto in throws.
-
 
         if(upArt.getTitolo().equals("")) {
             throw new EmptyFieldException("Lasciati campi per l'upload vuoti.");

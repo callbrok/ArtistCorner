@@ -22,6 +22,9 @@ import java.io.IOException;
 public class Login {
     private int nAttempts = 0;
 
+    /**
+     * Controlla le credenziali ed effettua il login.
+     */
     public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
         SceneController sc = new SceneController();
         SceneControllerMobile scm = new SceneControllerMobile();

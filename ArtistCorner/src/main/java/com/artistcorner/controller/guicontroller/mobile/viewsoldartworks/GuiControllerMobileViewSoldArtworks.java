@@ -52,8 +52,9 @@ public class GuiControllerMobileViewSoldArtworks {
     }
 
 
-
-    // Riprogetta la riga della ListView.
+    /**
+     * Ridefinisce il template delle righe/celle della listView.
+     */
     public static class HBoxCell extends HBox {
         Label labelTitolo = new Label();
         Label labelPrezzo = new Label();
@@ -85,7 +86,9 @@ public class GuiControllerMobileViewSoldArtworks {
     }
 
 
-
+    /**
+     * Inizializza la listView contenente tutte le opere vendute dall'artista loggato.
+     */
     public void populateListView(ArtistBean art) throws IOException {
         ViewSoldArtworks vsh = new ViewSoldArtworks();
         List<ArtworkBean> arrayOfArtwork = null;
