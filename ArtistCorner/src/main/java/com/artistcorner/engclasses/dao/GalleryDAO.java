@@ -1,23 +1,18 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.*;
+import com.artistcorner.engclasses.exceptions.AddGalleryException;
+import com.artistcorner.engclasses.exceptions.ArtGalleryNotFoundException;
+import com.artistcorner.engclasses.exceptions.DuplicateUserException;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.engclasses.query.QueryBuyer;
 import com.artistcorner.engclasses.query.QueryGallery;
 import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Proposal;
 import com.artistcorner.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class GalleryDAO {
 
@@ -121,14 +116,14 @@ public class GalleryDAO {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se9) {
-                se9.printStackTrace();
+            } catch (SQLException se91) {
+                se91.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se10) {
-                se10.printStackTrace();
+            } catch (SQLException se101) {
+                se101.printStackTrace();
             }
         }
 
@@ -154,10 +149,10 @@ public class GalleryDAO {
             ResultSet rs = QueryArtist.selectUsername(stmt);
             while (rs.next()) {
                 // lettura delle colonne "by name"
-                String usernameRetrived = rs.getString("username");
+                String usernameRetrivedG = rs.getString("username");
 
-                if (usernameRetrived.equals(user.getUsername())){
-                    throw new DuplicateUserException("Username attualmente già in uso.");
+                if (usernameRetrivedG.equals(user.getUsername())){
+                    throw new DuplicateUserException("Username attualmente gia' in uso.");
                 }
             }
 

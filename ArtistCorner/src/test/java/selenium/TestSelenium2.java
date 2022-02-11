@@ -8,7 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 
 import static org.junit.Assert.assertEquals;
-
+/**
+ * @author  Alessio Torroni
+ */
 public class TestSelenium2 {
     @Test
     public void testSelenium2(){

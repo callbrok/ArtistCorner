@@ -13,11 +13,13 @@ import java.util.List;
 public class ViewGallerySummary {
 
     public List<ProposalBean> retrieveGalleryProposal(ArtGalleryBean gallery, int flag)  {
-        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(gallery,flag,"LAST"); //lista delle proposte inviate
+        ArtGallery gall = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo());
+        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(gall,flag,"LAST"); //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
-        ProposalBean currentProp = new ProposalBean();
+
 
         for (Proposal p: proposal) {
+            ProposalBean currentProp = new ProposalBean();
             currentProp.setIdOfferta(p.getIdOfferta());
             currentProp.setArtista(p.getArtista());
             currentProp.setGalleria(p.getGalleria());

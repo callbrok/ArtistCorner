@@ -49,7 +49,6 @@ public class QueryArtist {
 
     public static int deleteArtWork(Statement stmt, Artwork art) throws SQLException  {
         String deleteStatement = String.format("DELETE FROM  opera  WHERE idOpera = %s", art.getIdOpera());
-        System.out.println(deleteStatement);
         return stmt.executeUpdate(deleteStatement);
     }
 
@@ -74,11 +73,5 @@ public class QueryArtist {
         String sql = "SELECT * FROM galleria WHERE idGalleria ='" + artGallery + "';";
         return stmt.executeQuery(sql);
     }
-
-    public static ResultSet selectArtWorkTitle(Statement stmt) throws SQLException  {
-        String sql = "SELECT DISTINCT titolo FROM opera ;";
-        return stmt.executeQuery(sql);
-    }
-
 
 }

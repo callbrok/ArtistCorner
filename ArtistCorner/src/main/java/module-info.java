@@ -10,7 +10,8 @@ module com.artistcorner {
     requires org.junit.platform.commons;
     requires org.junit.platform.engine;
     requires org.seleniumhq.selenium.api;
-    requires javax.mail.api;
+   // requires javax.mail.api;
+    requires java.mail;
 
 
     opens com.artistcorner to javafx.fxml;
@@ -50,20 +51,20 @@ module com.artistcorner {
     opens com.artistcorner.engclasses.others.analytics to javafx.fxml;
     exports com.artistcorner.engclasses.others.analytics;
 
-    opens com.artistcorner.controller.guicontroller.viewsearchartworkbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsearchartworkbuyer;
+    opens com.artistcorner.controller.guicontroller.findartwork to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.findartwork;
 
-    opens com.artistcorner.controller.guicontroller.viewfavouritesbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewfavouritesbuyer;
+    opens com.artistcorner.controller.guicontroller.viewfavourites to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewfavourites;
 
-    opens com.artistcorner.controller.guicontroller.viewsearchartworkgallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsearchartworkgallery;
+    opens com.artistcorner.controller.guicontroller.forwardproposal to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.forwardproposal;
 
-    opens com.artistcorner.controller.guicontroller.viewsentartgalleryproposal to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewsentartgalleryproposal;
+    opens com.artistcorner.controller.guicontroller.viewpendingproposals to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.viewpendingproposals;
 
-    opens com.artistcorner.controller.guicontroller.viewprofilogallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.viewprofilogallery;
+    opens com.artistcorner.controller.guicontroller.managefollowedartist to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.managefollowedartist;
 
     opens com.artistcorner.engclasses.others to javafx.fxml;
     exports com.artistcorner.engclasses.others;
@@ -95,20 +96,20 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.mobile.viewsoldartworks to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.viewsoldartworks;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer;
+    opens com.artistcorner.controller.guicontroller.mobile.viewfavourites to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.viewfavourites;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer;
+    opens com.artistcorner.controller.guicontroller.mobile.findartwork to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.findartwork;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery;
+    opens com.artistcorner.controller.guicontroller.mobile.forwardproposal to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.forwardproposal;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal;
+    opens com.artistcorner.controller.guicontroller.mobile.viewpendingproposals to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.viewpendingproposals;
 
-    opens com.artistcorner.controller.guicontroller.mobile.viewprofilegallery to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.viewprofilegallery;
+    opens com.artistcorner.controller.guicontroller.mobile.managefollowedartist to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.managefollowedartist;
 
 
 }

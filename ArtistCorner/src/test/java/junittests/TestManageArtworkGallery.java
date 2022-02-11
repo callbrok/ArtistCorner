@@ -1,5 +1,5 @@
 package junittests;
-import com.artistcorner.controller.applicationcontroller.ViewSentArtGalleryProposal;
+import com.artistcorner.controller.applicationcontroller.ViewPendingProposals;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import org.junit.Test;
@@ -11,14 +11,18 @@ import static org.junit.Assert.assertEquals;
 public class TestManageArtworkGallery {
     @Test
     public void testSentProposalFailed(){
-//        ViewSentArtGalleryProposal vpg = new ViewSentArtGalleryProposal();
-//        boolean success = true ;
-//        ArtGalleryBean galleryToCheck = new ArtGalleryBean(5,"Il Mondo dell''Arte","descrizione galleria 1","Via dei Castani, 193, 00172 Roma RM","galleria1");
-//        try {
-//            vpg.retrieveProposal(galleryToCheck,1);
-//        } catch (SentProposalNotFoundException e) {
-//            success = false ;
-//        }
-//        assertEquals(false,success);
+        ViewPendingProposals vpg = new ViewPendingProposals();
+        boolean success = true ;
+        ArtGalleryBean galleryToCheck = new ArtGalleryBean();
+        galleryToCheck.setNome("Il Mondo dell''Arte");
+        galleryToCheck.setGalleria(5);
+        galleryToCheck.setDescrizione("descrizione galleria 1");
+        galleryToCheck.setIndirizzo("Via dei Castani, 193, 00172 Roma RM");
+        try {
+            vpg.retrieveProposal(galleryToCheck,1);
+        } catch (SentProposalNotFoundException e) {
+            success = false ;
+        }
+        assertEquals(false,success);
     }
 }

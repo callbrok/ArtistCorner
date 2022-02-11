@@ -1,19 +1,19 @@
 package com.artistcorner.engclasses.others;
 
 
+import com.artistcorner.controller.guicontroller.findartwork.GuiControllerFindArtwork;
+import com.artistcorner.controller.guicontroller.forwardproposal.GuiControllerForwardProposal;
 import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerArtistSummary;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerBuyerSummary;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerGallerySummary;
+import com.artistcorner.controller.guicontroller.managefollowedartist.GuiControllerManageFollowedArtist;
 import com.artistcorner.controller.guicontroller.manageproposals.GuiControllerManageProposals;
 import com.artistcorner.controller.guicontroller.uploadartwork.GuiControllerUploadArtwork;
-import com.artistcorner.controller.guicontroller.viewfavouritesbuyer.GuiControllerViewFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.manageartworks.GuiControllerManageArtworks;
-import com.artistcorner.controller.guicontroller.viewprofilogallery.GuiControllerViewProfiloGallery;
-import com.artistcorner.controller.guicontroller.viewsentartgalleryproposal.GuiControllerViewSentArtGalleryProposal;
+import com.artistcorner.controller.guicontroller.viewfavourites.GuiControllerViewFavourites;
+import com.artistcorner.controller.guicontroller.viewpendingproposals.GuiControllerViewPendingProposals;
 import com.artistcorner.controller.guicontroller.viewsoldartworks.GuiControllerViewSoldArtworks;
-import com.artistcorner.controller.guicontroller.viewsearchartworkbuyer.GuiControllerViewSearchArtWorkBuyer;
-import com.artistcorner.controller.guicontroller.viewsearchartworkgallery.GuiControllerViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
@@ -27,13 +27,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class SceneController {
 
     public static final String CSS_PATH = "/css/" + "desktop/" + "main.css";
+    private SceneController(){ throw new IllegalStateException("Utility class");}
 
     public static void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/login/ArtistSummaryView.fxml"));
@@ -163,10 +162,10 @@ public class SceneController {
     }
 
     public static void switchToSceneSearchArtWorkBuyer(ActionEvent event, BuyerBean buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/BuyerSearchView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/FindArtworkView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerViewSearchArtWorkBuyer gcas = loader.getController();
+        GuiControllerFindArtwork gcas = loader.getController();
         gcas.getBuyer(buy);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -176,10 +175,10 @@ public class SceneController {
     }
 
     public static void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/BuyerFavouriteView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ViewFavouritesView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerViewFavouritesBuyer gcas = loader.getController();
+        GuiControllerViewFavourites gcas = loader.getController();
         gcas.getBuyer(buy);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -190,10 +189,10 @@ public class SceneController {
 
 
     public static void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ArtGallerySearchView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ForwardProposalView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerViewSearchArtWorkGallery gcas = loader.getController();
+        GuiControllerForwardProposal gcas = loader.getController();
         gcas.getGallery(gal);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -215,10 +214,10 @@ public class SceneController {
     }
 
     public static void switchToSceneProfiloGallery(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ArtGalleryProfiloView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ManageFollowedArtistView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerViewProfiloGallery gcas = loader.getController();
+        GuiControllerManageFollowedArtist gcas = loader.getController();
         gcas.getGallery(gal);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -228,9 +227,9 @@ public class SceneController {
     }
 
     public static void switchToSceneSentArtGalleryProposal(ActionEvent event,ArtGalleryBean gal) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/SentArtGalleryProposalView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/ViewPendingProposalsView.fxml"));
         Parent root = loader.load();
-        GuiControllerViewSentArtGalleryProposal gcas = loader.getController();
+        GuiControllerViewPendingProposals gcas = loader.getController();
         gcas.getGallery(gal);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
