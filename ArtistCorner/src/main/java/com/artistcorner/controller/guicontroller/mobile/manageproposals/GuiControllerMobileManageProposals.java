@@ -93,7 +93,7 @@ public class GuiControllerMobileManageProposals {
         Button buttonAccept = new Button();
         Button buttonRecline = new Button();
 
-        HBoxCell(String labelNewNome, String labelNewDescrizione, String labelNewIndirizzo, int flagAccettazione, int proposalId) {
+        HBoxCell(String labelNewNome, String labelNewDescrizione, String labelNewIndirizzo, int flagAccettazione, int proposalId, ArtistBean art) {
             super();
 
             labelNome.setText(labelNewNome);
@@ -138,38 +138,34 @@ public class GuiControllerMobileManageProposals {
 
 
             // Inizializza evento sul click del bottone "Accetta" proposta.
-            EventHandler<ActionEvent> eventAccept = new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e)
-                {
-                    ProposalBean propToAccept = new ProposalBean();
-                    ManageProposals omlc = new ManageProposals();
+            EventHandler<ActionEvent> eventAccept = e -> {
+                ProposalBean propToAccept = new ProposalBean();
+                ManageProposals omlc = new ManageProposals();
 
-                    propToAccept.setFlagAccettazione(1);
-                    propToAccept.setIdOfferta(proposalId);
+                propToAccept.setFlagAccettazione(1);
+                propToAccept.setIdOfferta(proposalId);
 
-                    try {
-                        omlc.acceptProposal(propToAccept);
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
+                try {
+                    omlc.acceptProposal(propToAccept);
+                    SceneControllerMobile.switchToSceneProfiloOfferteMostre(e, art);
+                } catch (SQLException | IOException ex) {
+                    ex.printStackTrace();
                 }
             };
 
             // Inizializza evento sul click del bottone "Rifiuta" proposta.
-            EventHandler<ActionEvent> eventDecline= new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e)
-                {
-                    ProposalBean propToReject = new ProposalBean();
-                    ManageProposals omlc = new ManageProposals();
+            EventHandler<ActionEvent> eventDecline= e -> {
+                ProposalBean propToReject = new ProposalBean();
+                ManageProposals omlc = new ManageProposals();
 
-                    propToReject.setFlagAccettazione(2);
-                    propToReject.setIdOfferta(proposalId);
+                propToReject.setFlagAccettazione(2);
+                propToReject.setIdOfferta(proposalId);
 
-                    try {
-                        omlc.rejectProposal(propToReject);
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
+                try {
+                    omlc.rejectProposal(propToReject);
+                    SceneControllerMobile.switchToSceneProfiloOfferteMostre(e, art);
+                } catch (SQLException | IOException ex) {
+                    ex.printStackTrace();
                 }
             };
 
@@ -199,7 +195,7 @@ public class GuiControllerMobileManageProposals {
             for (ProposalBean n : arrayOfProposalsBean) {
                 ArtGalleryBean artG = wap.retrieveArtGallery(n);   // Fai un retrieve della galleria associata alla proposta.
 
-                listViewProposal.getItems().add(new HBoxCell(artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), n.getFlagAccettazione(), n.getIdOfferta()));  // Popola la listView.
+                listViewProposal.getItems().add(new HBoxCell(artG.getNome(), artG.getDescrizione(), artG.getIndirizzo(), n.getFlagAccettazione(), n.getIdOfferta(), art));  // Popola la listView.
 
                 arrayOfArtGalleryOfProposal.add(artG); // Popola l'array con tutte le gallerie relative alle proposte dell'utente.
             }

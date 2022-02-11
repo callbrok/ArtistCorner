@@ -25,6 +25,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.openqa.selenium.interactions.Action;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -229,22 +230,24 @@ public class GuiControllerManageProposals {
     }
 
 
-    public void acceptProposal() throws SQLException {
+    public void acceptProposal(ActionEvent event) throws SQLException, IOException {
         ProposalBean propToAccept = new ProposalBean();
 
         propToAccept.setFlagAccettazione(1);
         propToAccept.setIdOfferta(currentProposalId);
 
         omlc.acceptProposal(propToAccept);
+        SceneController.switchToSceneProfiloOfferteMostre(event, art);
     }
 
-    public void rejectProposal() throws SQLException {
+    public void rejectProposal(ActionEvent event) throws SQLException, IOException {
         ProposalBean propToReject = new ProposalBean();
 
         propToReject.setFlagAccettazione(2);
         propToReject.setIdOfferta(currentProposalId);
 
         omlc.rejectProposal(propToReject);
+        SceneController.switchToSceneProfiloOfferteMostre(event, art);
     }
 
 
