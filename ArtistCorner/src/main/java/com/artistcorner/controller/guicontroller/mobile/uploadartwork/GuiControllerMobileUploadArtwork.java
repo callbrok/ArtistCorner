@@ -85,7 +85,7 @@ public class GuiControllerMobileUploadArtwork {
         FileChooser fileChooser = new FileChooser();
 
         // Impone la selezione di soli file di tipo immagine.
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp", "*.jpeg");
         fileChooser.getExtensionFilters().add(extFilter);
 
         File selectedFile = fileChooser.showOpenDialog(stage);
@@ -116,7 +116,7 @@ public class GuiControllerMobileUploadArtwork {
 
             if (radioBtmSell.isSelected()) {
                 flagVendibile=1;
-                prezzo = Double.parseDouble(textFieldPrice.getText());
+                prezzo = Double.parseDouble(textFieldPrice.getText().replace(',','.'));
             }
 
             upArtWork.setTitolo(textFieldTitle.getText());

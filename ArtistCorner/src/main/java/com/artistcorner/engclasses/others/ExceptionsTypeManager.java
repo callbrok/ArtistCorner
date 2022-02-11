@@ -19,7 +19,7 @@ public enum ExceptionsTypeManager {
     SELLARTNOTFOUND_MOBILE(11, "/view/mobile/exceptions/SellNotFoundMobileException.fxml"), // Nessun opera venduta
     ARTWORKNOTFOUND_MOBILE(12, "/view/mobile/exceptions/ArtworkNotFoundMobileException.fxml"), // Nessun opera caricata
     SENTPROPOSALNOTFOUND_MOBILE(13,"/view/mobile/exceptions/SentProposalNotFoundMobileException.fxml");//Nessuna proposta inviata
-    // Aggiungere errore per il recupero della serializzazione?
+
 
     private final int type;
     private final String path;

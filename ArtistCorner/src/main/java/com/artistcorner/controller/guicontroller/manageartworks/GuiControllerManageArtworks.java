@@ -161,13 +161,6 @@ public class GuiControllerManageArtworks {
             tilePaneBlob.setHgap(20);    // Setta i bordi orizzontali tra un tile e l'altro.
             tilePaneBlob.setVgap(10);    // Setta i bordi verticali tra un tile e l'altro.
 
-            EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                    ImageView imageView = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
-
-                    imageFocused.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                    centerImage(imageFocused);                     // Centra l'immagine.
-                    anchorPaneFocus.setVisible(true);
-            };
 
             anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
 
@@ -187,7 +180,6 @@ public class GuiControllerManageArtworks {
                 ImageView imageThumb = new ImageView();
                 imageThumb.setImage(image);
 
-                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
 
                 // Implementa eliminazione opera.
                 Button buttonRemove = new Button();
@@ -206,11 +198,31 @@ public class GuiControllerManageArtworks {
                     }
                 });
 
+
+                imageThumb.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> { // Crea un EventHandler per ogni imageView all'interno del tilePane.
+                    InputStream inputStreamFocus = null;
+
+                    try {
+                        inputStreamFocus = b.getImmagine().getBinaryStream();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    Image imageFocus = new Image(inputStreamFocus);
+
+                    imageFocused.setImage(imageFocus);   // Setta l'immagine e la rende focused.
+                    centerImage(imageFocused);                     // Centra l'immagine.
+                    anchorPaneFocus.setVisible(true);
+
+                    event.consume();
+                });
+
+
                 tilePaneBlob.getChildren().add(vBoxInfo);   // Popola la tilePane.
             }
 
         } catch (ArtworkNotFoundException e) {
-            // Eccezione: Campi lasciati vuoti.
+            // Eccezione: Nessun opera trovata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 

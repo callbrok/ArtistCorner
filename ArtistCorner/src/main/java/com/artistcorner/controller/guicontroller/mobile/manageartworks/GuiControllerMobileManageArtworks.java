@@ -112,14 +112,6 @@ public class GuiControllerMobileManageArtworks {
             tilePaneBlobM.setHgap(10);    // Setta i bordi orizzontali tra un tile e l'altro.
             tilePaneBlobM.setVgap(5);    // Setta i bordi verticali tra un tile e l'altro.
 
-            // Crea un EventHandler sull'imageView all'interno del tilePane.
-            EventHandler<MouseEvent> mouseHandler = t -> {
-                ImageView imageView = (ImageView)t.getSource();  // Prende l'imageView collegata all'evento.
-
-                imageFocusedM.setImage(imageView.getImage());   // Setta l'immagine e la rende focused.
-                centerImage(imageFocusedM);                     // Centra l'immagine.
-                anchorPaneFocusM.setVisible(true);
-            };
 
             anchorPaneFocusM.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocusM.setVisible(false));
 
@@ -139,7 +131,6 @@ public class GuiControllerMobileManageArtworks {
                 ImageView imageThumb = new ImageView();
                 imageThumb.setImage(imageM);
 
-                imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
 
                 // Implementa eliminazione opera.
                 Button buttonRemove = new Button();
@@ -157,6 +148,24 @@ public class GuiControllerMobileManageArtworks {
                     } catch (IOException | SQLException e) {
                         e.printStackTrace();
                     }
+                });
+
+                imageThumb.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> { // Crea un EventHandler per ogni imageView all'interno del tilePane.
+                    InputStream inputStreamFocus = null;
+
+                    try {
+                        inputStreamFocus = bm.getImmagine().getBinaryStream();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    Image imageFocus = new Image(inputStreamFocus);
+
+                    imageFocusedM.setImage(imageFocus);   // Setta l'immagine e la rende focused.
+                    centerImage(imageFocusedM);                     // Centra l'immagine.
+                    anchorPaneFocusM.setVisible(true);
+
+                    event.consume();
                 });
 
                 tilePaneBlobM.getChildren().add(vBoxInfo);   // Popola la tilePane.
