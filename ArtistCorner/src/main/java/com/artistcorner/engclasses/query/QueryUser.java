@@ -1,6 +1,4 @@
 package com.artistcorner.engclasses.query;
-
-import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.model.User;
 
 import java.sql.ResultSet;

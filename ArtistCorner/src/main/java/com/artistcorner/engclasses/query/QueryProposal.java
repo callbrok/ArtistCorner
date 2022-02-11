@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class QueryProposal {
+    private QueryProposal(){throw new IllegalStateException("Utility Query Artist class");}
 
     public static int removeProposal(Statement stmt,int idGallery,int idArtista) throws SQLException {
         String sql= "DELETE FROM offerta WHERE artista = '"+idArtista+"' AND galleria = '"+idGallery+"';";

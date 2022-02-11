@@ -16,6 +16,7 @@ public class BuyerDAO {
 
         throw new IllegalStateException("Utility class");
     }
+    public static final String BUY_PROBLEM = "Problema nella gestione dell'acquisto";
 
     public static Buyer retrieveBuyer(User usr){
         Buyer bu = null;
@@ -71,7 +72,6 @@ public class BuyerDAO {
 
         return bu;
     }
-
     public static void insertBuyer(User user, Buyer buyer) throws DuplicateUserException, SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
@@ -88,9 +88,9 @@ public class BuyerDAO {
             ResultSet rs = QueryArtist.selectUsername(stmt);
             while (rs.next()) {
                 // lettura delle colonne "by name"
-                String usernameRetrived = rs.getString("username");
+                String usernameRetrivedB = rs.getString("username");
 
-                if (usernameRetrived.equals(user.getUsername())){
+                if (usernameRetrivedB.equals(user.getUsername())){
                     throw new DuplicateUserException("Username attualmente già in uso.");
                 }
             }
@@ -112,6 +112,88 @@ public class BuyerDAO {
 
 
     }
+    public static void addArtWorkToFavourites(int artWorkId, int idBuyer) throws SQLException, FavouritesManagementProblemException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryBuyer.insertOperaFavourites(stmt,artWorkId, idBuyer);
+            if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
+            }
+
+        } catch (ClassNotFoundException  ex10) {
+            ex10.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+    }
+    public static void removeArtWorkFromFavourites(int idOpera, int idBuyer) throws SQLException, FavouritesManagementProblemException {
+        Statement stmt = null;
+        int result;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            result = QueryBuyer.removeOperaFromFavourites(stmt,idOpera, idBuyer);
+            if (result==-1){throw new FavouritesManagementProblemException("Problema nella gestione dei preferiti");
+            }
+        } catch (ClassNotFoundException ex7) {
+            ex7.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+    }
+    public static void addArtWorkComprata(int artWorkId, int idBuyer) throws SQLException, BuyArtworkManagementProblemException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+
+            // STEP 4.1: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            int result = QueryBuyer.insertOperaComprata(stmt,artWorkId, idBuyer);
+            if (result==-1){throw new BuyArtworkManagementProblemException(BUY_PROBLEM);
+            }
+
+        } catch (ClassNotFoundException ex5) {
+            ex5.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+
+    }
+
+
 
 
     public static Buyer retrieveBuyerByArtworkId(int artworkId){
@@ -144,15 +226,15 @@ public class BuyerDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception ex3) {
-            ex3.printStackTrace();
+        } catch (Exception ex2) {
+            ex2.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se24) {
-                se24.printStackTrace();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
             }
             try {
                 if (conn != null)

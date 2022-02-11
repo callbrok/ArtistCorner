@@ -1,13 +1,12 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
+
 import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import com.artistcorner.engclasses.exceptions.ProposalsManagementProblemException;
 import com.artistcorner.engclasses.others.ConnectProperties;
-import com.artistcorner.engclasses.query.QueryArtist;
-import com.artistcorner.engclasses.query.QueryGallery;
 import com.artistcorner.engclasses.query.QueryProposal;
+import com.artistcorner.model.ArtGallery;
+import com.artistcorner.model.Artist;
 import com.artistcorner.model.Proposal;
 
 import java.sql.Connection;
@@ -20,6 +19,11 @@ import java.util.List;
 
 public class ProposalDAO {
 
+    private ProposalDAO(){
+
+        throw new IllegalStateException("Utility class");
+
+    }
 
 
     public static void removeProposta(int idGallery, int idArtista) throws SQLException, ProposalNotFoundException {
@@ -79,7 +83,7 @@ public class ProposalDAO {
     }
 
 
-    public static List<Proposal> retrieveProposalFromGallery(ArtGalleryBean galleria, int flag, String lastAction){
+    public static List<Proposal> retrieveProposalFromGallery(ArtGallery galleria, int flag, String lastAction){
         List<Proposal> listOfProposal = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
@@ -92,7 +96,7 @@ public class ProposalDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryProposal.selectProposal(stmt, galleria.getGalleria(),flag,"");
+            ResultSet rs = QueryProposal.selectProposal(stmt, galleria.getGalleria(),flag,lastAction);
 
 
             if (!rs.first()){ // rs empty
@@ -134,8 +138,8 @@ public class ProposalDAO {
         return listOfProposal;
     }
 
-    public static List<ArtistBean> retrieveArtistIdOfferta(int galleria) {
-        List<ArtistBean> listOfArtistId = new ArrayList<>();
+    public static List<Proposal> retrieveArtistIdOfferta(int galleria) {
+        List<Proposal> listOfPropId = new ArrayList<>();
         Statement stmt = null;
         Connection conn = null;
 
@@ -158,10 +162,12 @@ public class ProposalDAO {
             rs.first();
             do{
                 // lettura delle colonne "by name"
-                int art = rs.getInt("artista");
-                ArtistBean artistBean = new ArtistBean();
-                artistBean.setIdArtista(art);
-                listOfArtistId.add(artistBean);
+                int idOfferta = rs.getInt("idOfferta");
+                int idArtista = rs.getInt("artista");
+                int galId = rs.getInt("galleria");
+                int flag = rs.getInt("flagAccettazione");
+                Proposal prop = new Proposal(idOfferta,idArtista,galId,flag);
+                listOfPropId.add(prop);
 
             }while(rs.next());
 
@@ -185,7 +191,7 @@ public class ProposalDAO {
             }
         }
 
-        return listOfArtistId;
+        return listOfPropId;
     }
 
 

@@ -20,8 +20,6 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class Login {
-    private int nAttempts = 0;
-
     /**
      * Controlla le credenziali ed effettua il login.
      */

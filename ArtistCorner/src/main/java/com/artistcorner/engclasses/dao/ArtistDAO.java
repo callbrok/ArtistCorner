@@ -1,6 +1,6 @@
 package com.artistcorner.engclasses.dao;
 
-import com.artistcorner.engclasses.bean.ArtistBean;
+
 import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ConnectProperties;
 import com.artistcorner.engclasses.query.QueryArtist;
@@ -96,9 +96,9 @@ public class ArtistDAO {
             ResultSet rs = QueryArtist.selectUsername(stmt);
             while (rs.next()) {
                 // lettura delle colonne "by name"
-                String usernameRetrived = rs.getString("username");
+                String usernameRetrivedA = rs.getString("username");
 
-                if (usernameRetrived.equals(user.getUsername())){
+                if (usernameRetrivedA.equals(user.getUsername())){
                     throw new DuplicateUserException("Username attualmente già in uso.");
                 }
             }
@@ -260,8 +260,8 @@ public class ArtistDAO {
     }
 
 
-    public static ArtGallery retrieveArtGallery(int idGallery){
-        ArtGallery artG = null;
+    public static ArtGallery retrieveArtGallery(int idGalleria){
+        ArtGallery artGal = null;
         Statement stmt = null;
         Connection conn = null;
 
@@ -273,30 +273,29 @@ public class ArtistDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = QueryArtist.selectArtGallery(stmt, idGallery);
+            ResultSet rs = QueryArtist.selectArtGallery(stmt, idGalleria);
 
             if (!rs.first()){ // rs empty
-                throw new ArtGalleryNotFoundException("Nessuna galleria trovata");
+                throw new ArtGalleryNotFoundException("Nessuna galleria trovata.");
             }
 
             // riposizionamento del cursore
             rs.first();
             do{
                 // lettura delle colonne "by name"
-                int idGalleria = rs.getInt("idGalleria");
-                String nome = rs.getString("nome");
-                String descrizione = rs.getString("descrizione");
-                String indirizzo = rs.getString("indirizzo");
-                String username = rs.getString("username");
+                int idGalleria1 = rs.getInt("idGalleria");
+                String nome1 = rs.getString("nome");
+                String descrizione1 = rs.getString("descrizione");
+                String indirizzo1 = rs.getString("indirizzo");
 
-                artG = new ArtGallery(idGalleria, nome, descrizione, indirizzo);
+                artGal = new ArtGallery(idGalleria1, nome1, descrizione1, indirizzo1);
 
             }while(rs.next());
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e6) {
-            e6.printStackTrace();
+        } catch (Exception e61) {
+            e61.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
@@ -313,7 +312,7 @@ public class ArtistDAO {
             }
         }
 
-        return artG;
+        return artGal;
     }
 
 }

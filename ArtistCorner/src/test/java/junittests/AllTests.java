@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
         TestLogin.class,
         TestSignUp.class,
         TestUploadArtwork.class,
-        TestSentArtGalleryProposal.class,
-        TestViewFavouritesBuyer.class,
+        TestViewPendingProposal.class,
+        TestFindArtwork.class,
         TestManageArtworkGallery.class
 })
 

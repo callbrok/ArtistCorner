@@ -1,18 +1,18 @@
 package com.artistcorner.engclasses.others;
 
+import com.artistcorner.controller.guicontroller.mobile.findartwork.GuiControllerMobileFindArtwork;
+import com.artistcorner.controller.guicontroller.mobile.forwardproposal.GuiControllerMobileForwardProposal;
 import com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileArtistSummary;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileBuyerSummary;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileGallerySummary;
+import com.artistcorner.controller.guicontroller.mobile.managefollowedartist.GuiControllerMobileManageFollowedArtist;
 import com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork;
 import com.artistcorner.controller.guicontroller.mobile.manageproposals.GuiControllerMobileManageProposals;
-import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
 import com.artistcorner.controller.guicontroller.mobile.manageartworks.GuiControllerMobileManageArtworks;
-import com.artistcorner.controller.guicontroller.mobile.viewprofilegallery.GuiControllerMobileViewProfileGallery;
-import com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal.GuiControllerMobileViewSentArtGalleryProposal;
+import com.artistcorner.controller.guicontroller.mobile.viewfavourites.GuiControllerMobileViewFavourites;
+import com.artistcorner.controller.guicontroller.mobile.viewpendingproposals.GuiControllerMobileViewPendingProposals;
 import com.artistcorner.controller.guicontroller.mobile.viewsoldartworks.GuiControllerMobileViewSoldArtworks;
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
@@ -31,6 +31,8 @@ import java.sql.SQLException;
 public class SceneControllerMobile {
 
     public static  final String CSS_PATH = "/css/" + "mobile/" + "main.css";
+
+    private SceneControllerMobile() { throw new IllegalStateException("Utility class");}
 
     public static void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/login/ArtistSummaryMobileView.fxml"));
@@ -133,10 +135,10 @@ public class SceneControllerMobile {
     }
 
     public static void switchToSceneSearchArtWorkBuyer(ActionEvent event, BuyerBean buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/BuyerSearchMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/FindArtworkMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileViewSearchArtWorkBuyer gcas = loader.getController();
+        GuiControllerMobileFindArtwork gcas = loader.getController();
         gcas.getBuyer(buy);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -164,10 +166,10 @@ public class SceneControllerMobile {
     }
 
     public static void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/BuyerFavouritesMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ViewFavouritesMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileViewFavouritesBuyer gcas = loader.getController();
+        GuiControllerMobileViewFavourites gcas = loader.getController();
         gcas.getBuyer(buy);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -179,10 +181,10 @@ public class SceneControllerMobile {
     }
 
     public static void switchToSceneSentArtGalleryProposal(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/SentArtGalleryProposalMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ViewPendingProposalsMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileViewSentArtGalleryProposal gcas = loader.getController();
+        GuiControllerMobileViewPendingProposals gcas = loader.getController();
         gcas.getGallery(gal);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -208,10 +210,10 @@ public class SceneControllerMobile {
         stage.show();
     }
     public static void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/GallerySearchMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ForwardProposalMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileViewSearchArtWorkGallery gcas = loader.getController();
+        GuiControllerMobileForwardProposal gcas = loader.getController();
         gcas.getGallery(gal);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -222,10 +224,10 @@ public class SceneControllerMobile {
         stage.show();
     }
     public static void switchToSceneProfiloGallery(ActionEvent event,ArtGalleryBean gal) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ProfileGalleryMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ManageFollowedArtistMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileViewProfileGallery gcas = loader.getController();
+        GuiControllerMobileManageFollowedArtist gcas = loader.getController();
         gcas.getGallery(gal);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

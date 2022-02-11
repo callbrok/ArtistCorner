@@ -169,3 +169,10 @@
 .buttonProp:hover{
     -fx-background-color: #88c9b2;
 }
+.buttonPropSent{
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #277458;
+    -fx-background-radius: 3px;
+}
