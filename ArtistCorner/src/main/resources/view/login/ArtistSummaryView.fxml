@@ -41,7 +41,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-            <TilePane fx:id="tilePaneLastArt" layoutX="10.0" layoutY="66.0" prefHeight="217.0" prefWidth="687.0" />
+            <TilePane fx:id="tilePaneLastArt" layoutX="31.0" layoutY="66.0" prefHeight="217.0" prefWidth="663.0" />
             </children>
             <effect>
                 <DropShadow height="10.0" radius="4.5" width="10.0" />

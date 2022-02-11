@@ -21,10 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -131,14 +128,22 @@ public class GuiControllerMobileManageArtworks {
                 ImageView imageThumb = new ImageView();
                 imageThumb.setImage(imageM);
 
+                // Imposta bordo all'immagine tramite un HBox
+                HBox hBox_border = new HBox();
+                hBox_border.setMinWidth(150);
+                hBox_border.setMinHeight(150);
+                hBox_border.getStyleClass().add("hBoxBorderMA");
+                hBox_border.setAlignment(Pos.CENTER);
+                hBox_border.getChildren().add(imageThumb);
 
                 // Implementa eliminazione opera.
                 Button buttonRemove = new Button();
                 buttonRemove.setText("Rimuovi");
                 buttonRemove.getStyleClass().add("buttonInterface");
 
-                VBox vBoxInfo = new VBox(imageThumb, buttonRemove);
-                vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
+                VBox vBoxInfo = new VBox(hBox_border, buttonRemove);
+                vBoxInfo.setAlignment(Pos.CENTER);
+                vBoxInfo.setSpacing(10);
 
                 buttonRemove.setOnAction(event2 -> {
                     vp.removeArtWork(bm);
@@ -150,7 +155,8 @@ public class GuiControllerMobileManageArtworks {
                     }
                 });
 
-                imageThumb.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> { // Crea un EventHandler per ogni imageView all'interno del tilePane.
+                // Crea un EventHandler per ogni imageView all'interno del tilePane.
+                imageThumb.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                     InputStream inputStreamFocus = null;
 
                     try {
@@ -168,6 +174,7 @@ public class GuiControllerMobileManageArtworks {
                     event.consume();
                 });
 
+                tilePaneBlobM.setVgap(17);
                 tilePaneBlobM.getChildren().add(vBoxInfo);   // Popola la tilePane.
             }
 

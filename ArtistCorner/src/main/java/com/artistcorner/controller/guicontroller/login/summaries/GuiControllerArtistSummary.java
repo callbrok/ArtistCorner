@@ -8,15 +8,14 @@ import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
@@ -91,6 +90,12 @@ public class GuiControllerArtistSummary {
         for (ArtworkBean b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
 
             InputStream inputStream = null;
+            HBox hBox_border = new HBox();  // Imposta bordo all'immagine tramite un HBox
+            hBox_border.setMinWidth(200);
+            hBox_border.setMinHeight(200);
+            hBox_border.getStyleClass().add("hBoxBorder");
+            hBox_border.setAlignment(Pos.CENTER);
+
             try {
                 inputStream = b.getImmagine().getBinaryStream();
             } catch (SQLException e) {
@@ -102,7 +107,9 @@ public class GuiControllerArtistSummary {
             ImageView imageThumb = new ImageView();
             imageThumb.setImage(image);
 
-            tilePaneLastArt.getChildren().add(imageThumb);   // Popola la tilePane.
+            hBox_border.getChildren().add(imageThumb);
+
+            tilePaneLastArt.getChildren().add(hBox_border);   // Popola la tilePane.
         }
 
     }

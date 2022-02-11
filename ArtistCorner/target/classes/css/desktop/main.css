@@ -164,3 +164,22 @@
     -fx-background-radius: 30;
     -fx-border-radius: 30;
 }
+
+
+/* SummaryArtist */
+
+.hBoxBorder{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 5;
+    -fx-background-color: #4c4c4c;
+}
+
+/* Manage Artworks */
+
+.hBoxBorderMA{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 2.5;
+    -fx-background-color: #4c4c4c;
+}
+
+
