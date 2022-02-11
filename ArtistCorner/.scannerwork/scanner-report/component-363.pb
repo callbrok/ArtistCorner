@@ -1,1 +1,1 @@
-ë 2javaXhr:src/main/java/com/artistcorner/engclasses/others/Nodo.java
+ë 2javaXþhrgsrc/main/java/com/artistcorner/controller/guicontroller/manageartworks/GuiControllerManageArtworks.java

@@ -1,1 +1,1 @@
-‘ 2javaX*hrgsrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewGallerySummary.java
+‘ 2javaX4hrYsrc/main/java/com/artistcorner/controller/applicationcontroller/ManageFollowedArtist.java

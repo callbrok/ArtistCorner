@@ -1,16 +1,51 @@
-package com.artistcorner.engclasses.bean;
-
-public class ArtistBean {
-    private int idArtista;
-    private String nome;
-    private String cognome;
+package com.artistcorner.engclasses.others.observer;
 
 
-    public void setIdArtista(int idArtista) {this.idArtista = idArtista;}
-    public void setCognome(String cognome) {this.cognome = cognome;}
-    public void setNome(String nome) {this.nome = nome;}
+public class GalleryConcreteSubject extends Subject {
 
-    public String getNome() {return nome;}
-    public int getIdArtista() {return idArtista;}
-    public String getCognome() {return cognome;}
+    String nameBuy;
+    String indirizzo;
+    String nomegal;
+
+    public GalleryConcreteSubject(){
+    }
+
+    public GalleryConcreteSubject (String nameBuy, String indirizzo, String nomeGal, boolean state) {
+
+        super();
+        this.setNameBuy(nameBuy);
+        this.setIndirizzoGal(indirizzo);
+        this.setNomeGal(nomeGal);
+
+    }
+
+    public void setNameBuy(String nameBuy) {
+        this.nameBuy = nameBuy;
+    }
+
+    public String getNameBuy() {
+        return nameBuy;
+    }
+
+    public void setIndirizzoGal(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+
+    public String getIndirizzoGal() {
+        return indirizzo;
+    }
+
+    public void setNomeGal(String nomegal) {
+        this.nomegal = nomegal;
+    }
+
+    public String getNomeGal() {
+        return nomegal;
+    }
+
+    public void notifyChanges(){
+
+        super.notifyObservers();
+
+    }
 }

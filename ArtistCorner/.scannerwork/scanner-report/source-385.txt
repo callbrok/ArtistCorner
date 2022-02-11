@@ -1,112 +1,96 @@
 package com.artistcorner.controller.guicontroller.mobile.login.summaries;
 
+import com.artistcorner.controller.applicationcontroller.login.summaries.ViewGallerySummary;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class GuiControllerMobileArtistSummary {
+public class GuiControllerMobileGallerySummary {
     @FXML
-    private AnchorPane anchorMainASummaryM;
-    @FXML
-    private Pane paneIdeaButton;
-    @FXML
-    private ImageView imageGifButton;
-    @FXML
-    private Label labelAlgoritmo;
+    private AnchorPane anchorMainGallery;
     @FXML
     private Label labelUsernameDisplay;
+    @FXML
+    private ListView<String> listViewOfferte;
+    @FXML
+    private Stage stageMobileGal;
 
     private double x=0;
     private double y=0;
-    private Stage stage;
-
-    private ArtistBean art;
+    private ArtGalleryBean gal;
 
 
     public void initialize(){
         makeDraggable();
-        makeGifPaneClickable();
-
-        labelUsernameDisplay.setAlignment(Pos.CENTER);
-
     }
 
-    public void getArtist(ArtistBean loggedArtist){
-        art = loggedArtist;      // Prendo le informazioni riguardanti l'artista che ha effettuato il login.
-        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+    public void makeLogOut(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToLogin(event);
     }
 
-    public void makeGifPaneClickable(){
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            try {
-                SceneControllerMobile.switchToSceneProfiloAlgoritmo(event, art);
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> labelAlgoritmo.setTextFill(Color.rgb(209, 62, 10)));
-
-        paneIdeaButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> labelAlgoritmo.setTextFill(Color.rgb(45, 132, 101)));
-
-    }
-
-    public void exitWindow() throws IOException {
-        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
-        stage.close();
+    public void getGallery(ArtGalleryBean loggedGallery){
+        gal = loggedGallery;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
+        labelUsernameDisplay.setText(gal.getNome());
+        listViewOfferte.setStyle("-fx-font-size: 10px");
+        inizializeOfferteInviate(listViewOfferte,gal);
     }
 
     public void minimizeWindow() {
-        stage = (Stage) anchorMainASummaryM.getScene().getWindow();
-        stage.setIconified(true);
+        stageMobileGal = (Stage) anchorMainGallery.getScene().getWindow();
+        stageMobileGal.setIconified(true);
+    }
+
+    public void exitWindow() {
+        stageMobileGal = (Stage) anchorMainGallery.getScene().getWindow();
+        stageMobileGal.close();
     }
 
     private void makeDraggable(){
-        anchorMainASummaryM.setOnMousePressed((event -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+
+        anchorMainGallery.setOnMouseDragged((eventD -> {
+            stageMobileGal = (Stage) ((Node)eventD.getSource()).getScene().getWindow();
+            stageMobileGal.setX(eventD.getScreenX() - x);
+            stageMobileGal.setY(eventD.getScreenY() - y);
         }));
 
-        anchorMainASummaryM.setOnMouseDragged((event -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorMainGallery.setOnMousePressed((eventP -> {
+            x=eventP.getSceneX();
+            y= eventP.getSceneY();
         }));
+
     }
-
-
-    public void switchToProfiloArtistaFromArtistSumM(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneControllerMobile.switchToSceneProfiloArtista(actionEvent, art);
+    public void switchToSearchArtWorkGallery(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneControllerMobile.switchToSceneSearchArtWorkGallery(actionEvent,gal);
     }
-
-    public void switchToProfiloVendutoFromArtistSumM(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile.switchToSceneProfiloVenduto(actionEvent, art);
+    public void switchToSentArtGalleryProposal(ActionEvent actionEvent) throws IOException, SQLException{
+        SceneControllerMobile.switchToSceneSentArtGalleryProposal(actionEvent,gal);
     }
-
-    public void switchToProfiloOfferteMostreFromArtistSumM(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile.switchToSceneProfiloOfferteMostre(actionEvent, art);
+    public void switchToProfiloGallery(ActionEvent actionEvent) throws SQLException, IOException {
+        SceneControllerMobile.switchToSceneProfiloGallery(actionEvent,gal);
     }
-
-    public void switchToUploadOperaFromArtistSumM(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile.switchToSceneUploadOpera(actionEvent, art);
+    private void inizializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal){
+        ViewGallerySummary vgs = new ViewGallerySummary();
+        List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
+        ArrayList<String> arrayFinal = new ArrayList<>();
+        for (ProposalBean n : arrayOfProposal) {
+            ArtistBean artist = vgs.retrieveArtistNameGallerySum(n);
+            String artistName = artist.getNome() + " " + artist.getCognome();
+            listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistName);  // Popola la listView.
+            arrayFinal.add(artistName);
+        }
     }
-
-
-
 
 }

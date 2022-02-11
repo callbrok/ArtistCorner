@@ -1,1 +1,1 @@
-× 2javaX/hr@src/main/java/com/artistcorner/engclasses/observer/SendMail.java
+× 2javaX0hrGsrc/main/java/com/artistcorner/engclasses/others/ExceptionsFactory.java

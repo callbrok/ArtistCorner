@@ -1,1 +1,1 @@
-÷ 2javaX³hrmsrc/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java
+÷ 2javaX•hrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/manageproposals/GuiControllerMobileManageProposals.java

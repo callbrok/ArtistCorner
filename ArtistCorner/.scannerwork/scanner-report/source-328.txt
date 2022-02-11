@@ -1,10 +1,23 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ArtworkNotFoundException extends  Exception{
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
-    private static final long serialVersionUID = 1L;
+import java.io.IOException;
 
-    public ArtworkNotFoundException(String message) {
-        super(message);
+public abstract class ExceptionView {
+    private Pane exceptionPane;
+
+    protected ExceptionView(ExceptionsTypeManager etm){
+        try {
+            exceptionPane =  FXMLLoader.load(ExceptionsTypeManager.getUrl(etm));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public Pane getExceptionPane(){ return exceptionPane;}
+
+
 }

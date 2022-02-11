@@ -1,24 +1,33 @@
-package junittests;
-import com.artistcorner.controller.applicationcontroller.ViewSentArtGalleryProposal;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+package selenium;
 
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 /**
  * @author  Alessio Torroni
  */
-public class TestManageArtworkGallery {
+public class TestSelenium2 {
     @Test
-    public void testSentProposalFailed(){
-//        ViewSentArtGalleryProposal vpg = new ViewSentArtGalleryProposal();
-//        boolean success = true ;
-//        ArtGalleryBean galleryToCheck = new ArtGalleryBean(5,"Il Mondo dell''Arte","descrizione galleria 1","Via dei Castani, 193, 00172 Roma RM","galleria1");
-//        try {
-//            vpg.retrieveProposal(galleryToCheck,1);
-//        } catch (SentProposalNotFoundException e) {
-//            success = false ;
-//        }
-//        assertEquals(false,success);
+    public void testSelenium2(){
+        ClassLoader classLoader = TestSelenium2.class.getClassLoader();
+        File file = new File(classLoader.getResource("chromedriver_win32.exe").getFile());
+        String absolutePath = file.getAbsolutePath();
+        System.setProperty("webdriver.chrome.driver",absolutePath);
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.convertire-unita.info/calcolatore-di-unita.php");
+        driver.findElement(By.xpath("/html/body/div/main/div/div[2]/article/div[2]/form[1]/p/select/option[36]")).click();
+        driver.findElement(By.xpath("//*[@id=\"valore\"]")).sendKeys("30000");
+        driver.findElement(By.xpath("/html/body/div/main/div/div[2]/article/div[2]/form[2]/p[3]/select/option[18]")).click();
+        driver.findElement(By.xpath("/html/body/div/main/div/div[2]/article/div[2]/form[2]/p[3]/select/option[22]")).click();
+        driver.findElement(By.xpath("/html/body/div/main/div/div[2]/article/div[2]/form[2]/p[5]/input")).click();
+        String result = driver.findElement(By.xpath("/html/body/div/main/div/div[2]/article/div[3]/strong")).getText();
+        assertEquals("3,0×10-6 Metro [m]",result);
+        driver.close();
     }
+
 }

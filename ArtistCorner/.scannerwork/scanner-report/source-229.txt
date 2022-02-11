@@ -1,25 +1,41 @@
 package junittests;
-import com.artistcorner.controller.applicationcontroller.ViewSentArtGalleryProposal;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+
+
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
+import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import org.junit.Test;
-import java.sql.SQLException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author  Alessio Torroni
+ * @author  Marco Purificato
  */
-public class TestSentArtGalleryProposal {
+public class TestUploadArtwork {
+
     @Test
-    public void testRemoveProposalFailed(){
-        ViewSentArtGalleryProposal vsawb = new ViewSentArtGalleryProposal();
-        boolean code = true;
-        ArtGalleryBean galleryToCheck = new ArtGalleryBean();
+    public void testUploadArtWorkImageNotSelected(){
+        UploadArtwork upju = new UploadArtwork();
+        int code = -1;
+
+        ArtworkBean artWorkToCheck = new ArtworkBean();
+
+        artWorkToCheck.setTitolo("Titolo Opera");
+        artWorkToCheck.setCategoria("impressionista");
+        artWorkToCheck.setArtistId(1);
+        artWorkToCheck.setPrezzo(999);
+        artWorkToCheck.setFlagVendibile(1);
+
         try {
-            vsawb.removeProposta(galleryToCheck,17);
-        } catch (SQLException | ProposalNotFoundException e) {
-            code = false;
+            upju.uploadImage(artWorkToCheck,"");
+        } catch (DuplicateArtworkException | EmptyFieldException e) {
+            code = 0;
+        } catch (EmptyPathException e1){
+            code = 1;
         }
-        assertEquals(false,code);
+
+        assertEquals(1, code);
     }
 }

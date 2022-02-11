@@ -1,1 +1,1 @@
-ä 2javaXÅhr{src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java
+ä 2javaX7hrSsrc/main/java/com/artistcorner/controller/applicationcontroller/login/Register.java

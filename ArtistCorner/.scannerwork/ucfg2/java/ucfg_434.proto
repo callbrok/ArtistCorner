@@ -1,15 +1,16 @@
 
-Ocom.artistcorner.engclasses.query.QueryArtist#insertArtWork()Ljava/lang/String;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaE E(&"1*∑
-1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F("¢
-ü
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F("
-%0java.lang.String"__id*
-"""ì
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.javaF F(#
+Fcom.artistcorner.engclasses.bean.BuyerBean#getNome()Ljava/lang/String;t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ("1*‡
+1t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((—
+Œ
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java$ ((
+%0java.lang.String"__id*8*6,
+*com.artistcorner.engclasses.bean.BuyerBean"
+nome"ê
+t
+j/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java ()
 
-%0java.lang.StringB1"/
--com.artistcorner.engclasses.query.QueryArtist
+%0java.lang.StringB.,
+*com.artistcorner.engclasses.bean.BuyerBean

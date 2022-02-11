@@ -1,1 +1,1 @@
-ý 2javaXßhrtsrc/main/java/com/artistcorner/controller/guicontroller/mobile/manageartworks/GuiControllerMobileManageArtworks.java
+ý 2javaXåhrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/forwardproposal/GuiControllerMobileForwardProposal.java

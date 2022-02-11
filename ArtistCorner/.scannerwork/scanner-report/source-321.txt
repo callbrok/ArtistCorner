@@ -1,9 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeManager;
+public class DuplicateArtworkException extends  Exception{
 
-public class EmptyFieldExceptionView extends ExceptionView {
+    private static final long serialVersionUID = 1L;
 
-    public EmptyFieldExceptionView(ExceptionsTypeManager etm){super(etm);}
-
+    public DuplicateArtworkException(String message) {
+        super(message);
+    }
 }

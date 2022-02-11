@@ -1,1 +1,1 @@
-è 2javaXhr5src/test/java/junittests/TestViewFavouritesBuyer.java
+è 2javaX/hr)src/test/java/selenium/TestSelenium1.java

@@ -1,1 +1,0 @@
-– 2javaX1hrWsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewProfiloGallery.java

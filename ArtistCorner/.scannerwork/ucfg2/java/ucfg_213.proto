@@ -1,17 +1,16 @@
 
-;com.artistcorner.model.User#getPassword()Ljava/lang/String;e
-[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ("1*®
+7com.artistcorner.model.User#getRole()Ljava/lang/String;e
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ("1*§
 1e
-[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java' (/∑
-¥
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java$ ((≥
+∞
 e
-[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java' (/
-%0java.lang.String"__id*-*+
-com.artistcorner.model.User"
-
-password"Å
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java$ ((
+%0java.lang.String"__id*)*'
+com.artistcorner.model.User"
+role"Å
 e
-[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java  (0
+[/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/User.java ()
 
 %0java.lang.StringB
 com.artistcorner.model.User

@@ -1,1 +1,1 @@
-ï 2javaXþhrgsrc/main/java/com/artistcorner/controller/guicontroller/manageartworks/GuiControllerManageArtworks.java
+ï 2javaXŽhrXsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerRegister.java

@@ -1,1 +1,1 @@
-ã 2javaXòhrEsrc/main/java/com/artistcorner/engclasses/others/SceneController.java
+ã 2javaXhrUsrc/main/java/com/artistcorner/engclasses/others/observer/ArtistConcreteObserver.java

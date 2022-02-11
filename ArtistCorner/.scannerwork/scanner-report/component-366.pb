@@ -1,1 +1,1 @@
-î 2javaXœhresrc/main/java/com/artistcorner/controller/guicontroller/uploadartwork/GuiControllerUploadArtwork.java
+î 2javaX©hrisrc/main/java/com/artistcorner/controller/guicontroller/forwardproposal/GuiControllerForwardProposal.java

@@ -1,1 +1,1 @@
-´ 2javaX«hr;src/main/java/com/artistcorner/engclasses/dao/BuyerDAO.java
+´ 2javaX	hrWsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundExceptionView.java

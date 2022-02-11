@@ -1,1 +1,1 @@
-È 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtworkNotFoundException.java
+È 2javaXhrGsrc/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

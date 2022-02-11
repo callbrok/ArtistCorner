@@ -1,1 +1,1 @@
-ç 2javaXhr6src/test/java/junittests/TestManageArtworkGallery.java
+ç 2javaX"hr)src/test/java/selenium/TestSelenium2.java

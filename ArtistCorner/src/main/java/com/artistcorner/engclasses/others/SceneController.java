@@ -3,7 +3,7 @@ package com.artistcorner.engclasses.others;
 
 import com.artistcorner.controller.guicontroller.findartwork.GuiControllerFindArtwork;
 import com.artistcorner.controller.guicontroller.forwardproposal.GuiControllerForwardProposal;
-import com.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation;
+import com.artistcorner.controller.guicontroller.getrecommendation.GuiControllerGetRecommendation;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerArtistSummary;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerBuyerSummary;
 import com.artistcorner.controller.guicontroller.login.summaries.GuiControllerGallerySummary;
@@ -32,6 +32,7 @@ import java.sql.SQLException;
 public class SceneController {
 
     public static final String CSS_PATH = "/css/" + "desktop/" + "main.css";
+
     private SceneController(){ throw new IllegalStateException("Utility class");}
 
     public static void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
@@ -63,10 +64,10 @@ public class SceneController {
     }
 
     public static void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/GetReccomandationView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/view/GetRecommendationView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerGetReccomandation gcas = loader.getController();
+        GuiControllerGetRecommendation gcas = loader.getController();
         gcas.getArtist(art);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

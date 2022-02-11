@@ -1,1 +1,1 @@
-ê 2javaXYhrPsrc/main/java/com/artistcorner/controller/applicationcontroller/login/Login.java
+ê 2javaXShrTsrc/main/java/com/artistcorner/controller/applicationcontroller/ManageProposals.java

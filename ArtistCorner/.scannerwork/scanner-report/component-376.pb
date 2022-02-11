@@ -1,1 +1,1 @@
-ø 2javaX“hrqsrc/main/java/com/artistcorner/controller/guicontroller/viewfavouritesbuyer/GuiControllerViewFavouritesBuyer.java
+ø 2javaX¶hrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/findartwork/GuiControllerMobileFindArtwork.java

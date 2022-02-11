@@ -1,1 +1,1 @@
-æ 2javaX)hr'src/test/java/junittests/TestLogin.java
+æ 2javaXhr&src/test/java/junittests/AllTests.java

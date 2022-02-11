@@ -1,1 +1,1 @@
-Ý 2javaX#hr?src/main/java/com/artistcorner/engclasses/bean/ArtworkBean.java
+Ý 2javaXÅhr]src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewLogAnalytics.java

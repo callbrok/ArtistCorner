@@ -1,1 +1,1 @@
-€ 2javaX™hrbsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/GuiControllerMobileLogin.java
+€ 2javaXqhrtsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summaries/GuiControllerMobileArtistSummary.java

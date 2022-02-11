@@ -1,1 +1,1 @@
-Ç 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateArtworkException.java
+Ç 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java

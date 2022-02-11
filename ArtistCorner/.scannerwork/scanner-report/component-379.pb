@@ -1,1 +1,1 @@
-û 2javaX™hrvsrc/main/java/com/artistcorner/controller/guicontroller/mobile/manageproposals/GuiControllerMobileManageProposals.java
+û 2javaXþhrtsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewfavourites/GuiControllerMobileViewFavourites.java

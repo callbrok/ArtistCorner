@@ -1,9 +1,48 @@
 
-Dcom.artistcorner.engclasses.bean.ProposalBean#getFlagAccettazione()Iw
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java (""1*€
-1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java- (="
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java& (>
-""B1/
--com.artistcorner.engclasses.bean.ProposalBean
+ncom.artistcorner.engclasses.others.analytics.GuiControllerViewSALogAnalytics#calculateStdv(Ljava/util/List;D)D™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java« «("4*ü
+3™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java° °(ê
+ç
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java°! °(1
+%1java.lang.Double"
+__arrayGet*
+
+	listValuejava.util.List*
+""è
+å
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java° °(E
+%2double"java.lang.Math#pow(DD)D*"
+java.lang.Math*
+""*2*
+4*“
+4™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java¯ ¯(éæ
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java¯ ¯(*	
+%0int"java.util.List#size()I*
+
+	listValuejava.util.List2size()*
+3
+1*—
+1™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java³ ³(éæ
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java³$ ³(4	
+%3int"java.util.List#size()I*
+
+	listValuejava.util.List2size()â
+ß
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java³ ³(:
+%4double"java.lang.Math#sqrt(D)D*"
+java.lang.Math*
+"""¤
+™
+Œ/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java³ ³(;
+"":
+	listValuejava.util.List:
+""BPN
+Lcom.artistcorner.engclasses.others.analytics.GuiControllerViewSALogAnalytics

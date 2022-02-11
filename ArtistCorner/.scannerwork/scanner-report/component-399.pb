@@ -1,1 +1,1 @@
-è 2javaX7hrSsrc/main/java/com/artistcorner/controller/applicationcontroller/login/Register.java
+è 2javaX7hrYsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewPendingProposals.java

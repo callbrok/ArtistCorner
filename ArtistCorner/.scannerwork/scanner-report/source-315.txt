@@ -1,9 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class ArtGalleryNotFoundException extends Exception{
-    private static final long serialVersionUID = 1L;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 
-    public ArtGalleryNotFoundException (String message) {
-        super(message);
-    }
+public class EmptyFieldExceptionView extends ExceptionView {
+
+    public EmptyFieldExceptionView(ExceptionsTypeManager etm){super(etm);}
+
 }

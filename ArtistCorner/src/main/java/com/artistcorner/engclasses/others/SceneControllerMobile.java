@@ -2,7 +2,7 @@ package com.artistcorner.engclasses.others;
 
 import com.artistcorner.controller.guicontroller.mobile.findartwork.GuiControllerMobileFindArtwork;
 import com.artistcorner.controller.guicontroller.mobile.forwardproposal.GuiControllerMobileForwardProposal;
-import com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation;
+import com.artistcorner.controller.guicontroller.mobile.getrecommendation.GuiControllerMobileGetRecommendation;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileArtistSummary;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileBuyerSummary;
 import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileGallerySummary;
@@ -65,10 +65,10 @@ public class SceneControllerMobile {
     }
 
     public static void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/GetReccomandationMobileView.fxml"));
+        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/GetRecommendationMobileView.fxml"));
         Parent root = loader.load();
 
-        GuiControllerMobileGetReccomandation gcas = loader.getController();
+        GuiControllerMobileGetRecommendation gcas = loader.getController();
         gcas.getArtist(art);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -1,1 +1,1 @@
-õ 2javaX{hrfsrc/main/java/com/artistcorner/controller/guicontroller/login/summaries/GuiControllerBuyerSummary.java
+õ 2javaX³hrssrc/main/java/com/artistcorner/controller/guicontroller/managefollowedartist/GuiControllerManageFollowedArtist.java

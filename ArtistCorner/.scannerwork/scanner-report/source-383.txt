@@ -1,148 +1,152 @@
 package com.artistcorner.controller.guicontroller.mobile.login;
 
-import com.artistcorner.controller.applicationcontroller.login.Register;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.controller.applicationcontroller.login.Login;
 import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.DuplicateUserException;
-import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
-public class GuiControllerMobileRegister {
+public class GuiControllerMobileLogin {
     @FXML
-    private AnchorPane anchorErroSignMobile;
+    private SVGPath svgGoogle;
     @FXML
-    private Label labelErroSignMobile;
+    private PasswordField textFieldPassword;
     @FXML
-    private TextField textFieldUserArtistMob;
+    private AnchorPane anchorSwitchSignUp;
     @FXML
-    private TextField textFieldPassArtistMob;
+    private AnchorPane paneRegister;
     @FXML
-    private TextField textFieldNomeArtistMob;
+    private AnchorPane anchorMainLoginMobile;
     @FXML
-    private TextField textFieldCognomeArtistMob;
+    private SVGPath svgLogo;
     @FXML
-    private TextField textFieldUserGalleryMob;
+    private TextField textFieldUsername;
     @FXML
-    private TextField textFieldPassGalleryMob;
+    private Label labelExceptionLoginM;
     @FXML
-    private TextField textFieldAddressGalleryMob;
-    @FXML
-    private TextField textFieldNomeGalleryMob;
-    @FXML
-    private TextField textFieldDescriptionGalleryMob;
-    @FXML
-    private TextField textFieldNumberMob;
-    @FXML
-    private TextField textFieldCapMob;
-    @FXML
-    private TextField textFieldCityMob;
-    @FXML
-    private TextField textFieldUserBuyerMob;
-    @FXML
-    private TextField textFieldPassBuyerMob;
-    @FXML
-    private TextField textFieldCognomeBuyerMob;
-    @FXML
-    private TextField textFieldNomeBuyerMob;
+    private Pane paneExceptionLogin;
 
-    private Register signUpM = new Register();
+    private double x=0;
+    private double y=0;
+    private Stage stage;
 
-    public void registerArtistMob() {
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserArtistMob.getText());
-        userReg.setPassword(textFieldPassArtistMob.getText());
-        userReg.setRole("artista");
+    private Login lg = new Login();
 
 
-        ArtistBean artistReg = new ArtistBean();
-
-        artistReg.setNome(textFieldNomeArtistMob.getText());
-        artistReg.setCognome(textFieldCognomeArtistMob.getText());
-
-
-        try {
-            signUpM.registerArtist(userReg, artistReg);
-        } catch (DuplicateUserException e) {
-            labelErroSignMobile.setText(e.getMessage());
-            anchorErroSignMobile.setVisible(true);
-        }
-
-        textFieldUserArtistMob.clear();
-        textFieldPassArtistMob.clear();
-        textFieldNomeArtistMob.clear();
-        textFieldCognomeArtistMob.clear();
-    }
-    public void registerBuyerMob(){
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserBuyerMob.getText());
-        userReg.setPassword(textFieldPassBuyerMob.getText());
-        userReg.setRole("acquirente");
-
-        BuyerBean buyerReg = new BuyerBean();
-
-        buyerReg.setNome(textFieldNomeBuyerMob.getText());
-        buyerReg.setCognome(textFieldCognomeBuyerMob.getText());
-
-        try {
-            signUpM.registerBuyer(userReg, buyerReg);
-        } catch (DuplicateUserException e) {
-            labelErroSignMobile.setText(e.getMessage());
-            anchorErroSignMobile.setVisible(true);
-        }
-        textFieldUserBuyerMob.clear();
-        textFieldPassBuyerMob.clear();
-        textFieldNomeBuyerMob.clear();
-        textFieldCognomeBuyerMob.clear();
-
-    }
-    public void registerGalleryMob(){
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserGalleryMob.getText());
-        userReg.setPassword(textFieldPassGalleryMob.getText());
-        userReg.setRole("galleria");
-
-        String address = textFieldAddressGalleryMob.getText()+", "+textFieldNumberMob.getText()+", "+textFieldCapMob.getText()+" "+textFieldCityMob.getText();
-
-        ArtGalleryBean artGalleryReg = new ArtGalleryBean();
-
-        artGalleryReg.setNome(textFieldNomeGalleryMob.getText());
-        artGalleryReg.setDescrizione(textFieldDescriptionGalleryMob.getText());
-        artGalleryReg.setIndirizzo(address);
-
-
-        try {
-            signUpM.registerGallery(userReg, artGalleryReg);
-        } catch (DuplicateUserException e) {
-            labelErroSignMobile.setText(e.getMessage());
-            anchorErroSignMobile.setVisible(true);
-        }
-        textFieldUserGalleryMob.clear();
-        textFieldPassGalleryMob.clear();
-        textFieldNomeGalleryMob.clear();
-        textFieldAddressGalleryMob.clear();
-        textFieldDescriptionGalleryMob.clear();
-        textFieldNumberMob.clear();
-        textFieldCityMob.clear();
-        textFieldCapMob.clear();
-    }
     public void initialize(){
-        labelErroSignMobile.setMaxWidth(274);
-        labelErroSignMobile.setWrapText(true);
-        anchorErroSignMobile.setVisible(false);
+        makeDraggable();
+
+        paneRegister.setVisible(false);
+
+        labelExceptionLoginM.setAlignment(Pos.CENTER);
+        labelExceptionLoginM.setMaxWidth(320);
+        paneExceptionLogin.setVisible(false);
+        svgLogo.setScaleX(1.2);
+        svgLogo.setScaleY(1.2);
+
     }
 
-    public void returnToLogin(ActionEvent event) throws IOException {
-        SceneControllerMobile.switchToLogin(event);
+    public void exitWindow() {
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorMainLoginMobile.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    private void makeDraggable(){
+        anchorMainLoginMobile.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainLoginMobile.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+    public void sendData(ActionEvent actionEvent) throws IOException {
+        UserBean us = new UserBean();
+
+        us.setUsername(textFieldUsername.getText());
+        us.setPassword(textFieldPassword.getText());
+
+        try {
+            lg.credentialLogin(us, actionEvent, "M");   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException e){
+            labelExceptionLoginM.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+
+    }
+
+    public void openRegisterSummary() {
+        paneRegister.setVisible(true);
+    }
+
+    public void switchToArtistSignUp() throws IOException {
+        paneRegister.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterArtistMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
+    public void switchToGallerySignUp() throws IOException {
+        paneRegister.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterGalleryMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
+    public void switchToBuyerSignUp() throws IOException {
+        paneRegister.setVisible(false);
+
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mobile/login/RegisterBuyerMobileView.fxml")));
+        anchorSwitchSignUp.getChildren().add(newLoadedPane);
+    }
+
+    /**
+     * Inizializza uno stub per il login tramite Facebook.
+     */
+    public void openDialogLoginFbMobile() {
+        Dialog<String> dialog = new Dialog<>();
+        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
+
+        dialog.setTitle("Login");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Login con Facebook");
+
+        dialog.showAndWait();
+    }
+
+    /**
+     * Effettua il login statico per un acquirente ospite.
+     */
+    public void goToGuest(ActionEvent event) {
+        UserBean us = new UserBean();
+
+        us.setUsername("acquirenteGUEST");
+        us.setPassword("ispw21");
+
+        try {
+            lg.credentialLogin(us, event, "M");
+        }catch (UserNotFoundException | IOException e){
+            labelExceptionLoginM.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
     }
 }

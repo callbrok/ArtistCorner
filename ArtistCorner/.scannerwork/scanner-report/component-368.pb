@@ -1,1 +1,1 @@
-ð 2javaXÐhrksrc/main/java/com/artistcorner/controller/guicontroller/viewsoldartworks/GuiControllerViewSoldArtworks.java
+ð 2javaXzhrhsrc/main/java/com/artistcorner/controller/guicontroller/login/summaries/GuiControllerGallerySummary.java

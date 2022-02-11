@@ -1,107 +1,86 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.applicationcontroller.login;
 
-import com.artistcorner.engclasses.bean.ArtworkBean;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.dao.ArtworkDAO;
+import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
-import com.artistcorner.engclasses.exceptions.BuyArtworkManagementProblemException;
-import com.artistcorner.engclasses.exceptions.FavouritesManagementProblemException;
-import com.artistcorner.engclasses.observer.ArtistConcreteObserver;
-import com.artistcorner.engclasses.observer.BuyerConcreteSubject;
-import com.artistcorner.model.Artwork;
+import com.artistcorner.engclasses.dao.BuyerDAO;
+import com.artistcorner.engclasses.dao.GalleryDAO;
+import com.artistcorner.engclasses.dao.UserDAO;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
+import com.artistcorner.engclasses.others.SceneController;
+import com.artistcorner.engclasses.others.SceneControllerMobile;
+import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
 import com.artistcorner.model.Buyer;
+import com.artistcorner.model.User;
+import javafx.event.ActionEvent;
 
-import java.sql.SQLException;
-import java.util.List;
+import java.io.IOException;
 
-public class ViewFavouritesBuyer {
+public class Login {
+    /**
+     * Controlla le credenziali ed effettua il login.
+     */
+    public void credentialLogin(UserBean noLoggedUserBean, ActionEvent event, String flagInterface) throws IOException, UserNotFoundException {
 
+        User noLoggedUser = new User(noLoggedUserBean.getUsername(), noLoggedUserBean.getPassword(), noLoggedUserBean.getRole());
 
-    public String manageButtonClick(String buttonPreferiti, ArtworkBean art, BuyerBean buy ) throws FavouritesManagementProblemException {
-        int idOpera= art.getIdOpera();
-        int idBuyer= buy.getIdBuyer();
+        User loggedUser = UserDAO.retrieveUser(noLoggedUser);
 
-        String addPreferiti = "Aggiungi ai Preferiti";
-        String remPreferiti = "Rimuovi dai Preferiti";
-        switch (buttonPreferiti){
-            case "Rimuovi dai Preferiti":{
-                try {
-                    ArtworkDAO.removeArtWorkFromFavourites(idOpera, idBuyer);
-                    return addPreferiti;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+        // Eccezione: Inserito utente non valido.
+        if(loggedUser == null){
+            throw new UserNotFoundException("Inserito utente non valido");
+        }
+
+        switch (loggedUser.getRole()){
+            // Controlla il ruolo dell'utente, e apre l'interfaccia dedicata.
+            case "artista":
+                Artist loggedArtist = ArtistDAO.retrieveArtist(loggedUser);
+                ArtistBean loggedArtistBean = new ArtistBean();
+
+                loggedArtistBean.setIdArtista(loggedArtist.getIdArtista());
+                loggedArtistBean.setNome(loggedArtist.getNome());
+                loggedArtistBean.setCognome(loggedArtist.getCognome());
+
+                if(flagInterface.equals("D")){SceneController.switchToSceneMainArtista(event, loggedArtistBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){SceneControllerMobile.switchToSceneMainArtista(event, loggedArtistBean);}  // Modalità Mobile.
+
                 break;
 
-            }
-            case "Aggiungi ai Preferiti":{
-                try {
-                    ArtworkDAO.addArtWorkToFavourites(idOpera,idBuyer);
-                    return remPreferiti;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-               break;
+            case "galleria":
+                ArtGallery loggedArtGallery = GalleryDAO.retrieveGallery(loggedUser);
+                ArtGalleryBean loggedGalleryBean = new ArtGalleryBean();
 
-            }
-            default:
+                loggedGalleryBean.setGalleria(loggedArtGallery.getGalleria());
+                loggedGalleryBean.setNome(loggedArtGallery.getNome());
+                loggedGalleryBean.setDescrizione(loggedArtGallery.getDescrizione());
+                loggedGalleryBean.setIndirizzo(loggedArtGallery.getIndirizzo());
+
+                if(flagInterface.equals("D")){SceneController.switchToSceneGallerySummary(event, loggedGalleryBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){SceneControllerMobile.switchToSceneGallerySummary(event, loggedGalleryBean);}  // Modalità Mobile.
+
+                break;
+
+            case "acquirente":
+                Buyer loggedBuyer = BuyerDAO.retrieveBuyer(loggedUser);
+                BuyerBean loggedBuyerBean = new BuyerBean();
+
+                loggedBuyerBean.setIdBuyer(loggedBuyer.getIdBuyer());
+                loggedBuyerBean.setNome(loggedBuyer.getNome());
+                loggedBuyerBean.setCognome(loggedBuyer.getCognome());
+
+                if(flagInterface.equals("D")){SceneController.switchToSceneBuyerSummary(event, loggedBuyerBean);}   // Modalità Desktop.
+                if(flagInterface.equals("M")){SceneControllerMobile.switchToSceneBuyerSummary(event, loggedBuyerBean);}  // Modalità Mobile.
+
+                break;
+
+            case "analytics":
+                SceneController.switchToAnalytics(event);
+                break;
         }
-        return remPreferiti;
-    }
-
-    public void finishPayment(ArtworkBean art, BuyerBean buy, ArtistBean artistBean) throws BuyArtworkManagementProblemException, FavouritesManagementProblemException {
-                int idOpera = art.getIdOpera();
-                int idBuyer = buy.getIdBuyer();
-
-                try {
-                    ArtworkDAO.addArtWorkComprata(idOpera,idBuyer);
-                    ArtworkDAO.switchFlagVendibile(idOpera);
-                    ArtworkDAO.removeArtWorkFromFavourites(idOpera,idBuyer);
-                    ArtistConcreteObserver concreteObs= new ArtistConcreteObserver("alessio.torroni00@gmail.com", buy.getNome()+" "+buy.getCognome(),art.getTitolo());
-                    BuyerConcreteSubject concreteSub = new BuyerConcreteSubject();
-                    concreteSub.add(concreteObs);
-                    concreteSub.checkOut();
-                } catch (SQLException  e) {
-                    e.printStackTrace();
-                }
-    }
-
-    public List<ArtworkBean> retrieveArtWorkId(BuyerBean buyer) throws ArtworkNotFoundException {
-        Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
-        List<ArtworkBean> artWorkId = ArtworkDAO.retrieveArtWorkId(buy.getIdBuyer());
-        if (artWorkId.isEmpty()){
-            throw new ArtworkNotFoundException("Nessuna Preferito disponibile.");
-        }
-        return artWorkId;
-    }
-
-    public ArtworkBean retrieveArtWork(int integer){
-        Artwork a = ArtworkDAO.retrieveArtWorks(integer, 1);
-        ArtworkBean artWB = new ArtworkBean();
-
-        artWB.setIdOpera(a.getIdOpera());
-        artWB.setTitolo(a.getTitolo());
-        artWB.setPrezzo(a.getPrezzo());
-        artWB.setFlagVendibile(a.getFlagVenduto());
-        artWB.setArtistId(a.getArtistaId());
-        artWB.setCategoria(a.getCategoria());
-        artWB.setImmagine(a.getImmagine());
-
-        return artWB;
     }
 
 
-    public ArtistBean retrieveArtistName(ArtworkBean a) {
-        Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtistId());
-        ArtistBean artB = new ArtistBean();
-
-        artB.setIdArtista(artist.getIdArtista());
-        artB.setNome(artist.getNome());
-        artB.setCognome(artist.getCognome());
-
-        return artB;
-    }
 }

@@ -1,1 +1,2 @@
-¿ 2javaXhr[src/main/java/com/artistcorner/engclasses/exceptions/GetRaccomandationProblemException.java
+¿ 2javaX
+hrKsrc/main/java/com/artistcorner/engclasses/exceptions/AddBuyerException.java

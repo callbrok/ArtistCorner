@@ -1,1 +1,0 @@
-• 2javaXShrTsrc/main/java/com/artistcorner/controller/applicationcontroller/ManageProposals.java

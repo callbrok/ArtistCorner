@@ -1,1 +1,1 @@
-Û 2javaXhr@src/main/java/com/artistcorner/engclasses/observer/Observer.java
+Û 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java

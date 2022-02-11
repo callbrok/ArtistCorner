@@ -1,9 +1,17 @@
 
-+com.artistcorner.model.Artwork#getPrezzo()Dh
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java# #("1*·
+;com.artistcorner.model.Artwork#getImmagine()Ljava/sql/Blob;h
+^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java) )("1*Æ
 1h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java#& #(,"r
+^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java)& )(.∫
+∑
 h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java# #(-
-""B" 
+^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java)& )(.
+%0java.sql.Blob"__id*0*. 
+com.artistcorner.model.Artwork"
+
+immagine"Å
+h
+^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java) )(/
+
+%0java.sql.BlobB" 
 com.artistcorner.model.Artwork

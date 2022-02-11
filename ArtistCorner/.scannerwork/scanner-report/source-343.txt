@@ -1,47 +1,47 @@
-package com.artistcorner.engclasses.observer;
+package com.artistcorner.engclasses.others;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import com.artistcorner.engclasses.exceptions.*;
 
+public class ExceptionsFactory {
 
-public class SendMail {
+    //***Singleton***/
+    private static ExceptionsFactory instance = null;
+    private ExceptionsFactory() {}
 
-    public static void send(String mail,String nameBuy,String title) {
+    public static synchronized ExceptionsFactory getInstance() {
+        if(instance == null) {
+            instance = new ExceptionsFactory();
+        }
+        return instance;
+    }
 
-        final String username = "artist.corner.company@gmail.com";
-        final String password = "ispw2021";
+    public ExceptionView createView(ExceptionsTypeManager etm) {
 
-        Properties props = new Properties();
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+        switch(etm.getType()) {
+            case 0: case 7:
+                return new EmptyFieldExceptionView(etm);
 
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+            case 1: case 8:
+                return new EmpyPathExceptionView(etm);
 
-        try {
+            case 2: case 9:
+                return new DuplicateArtworkExceptionView(etm);
 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("artist.corner.company@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(mail));
-            message.setSubject("ArtistCorner, Art Work Sold");
-            message.setText("Dear Artist, "
-                    + "\n\nWe inform You that your Art Work: "+ title +" has been purchased from "+nameBuy);
+            case 3: case 10:
+                return new ProposalNotFoundExceptionView(etm);
 
-            Transport.send(message);
+            case 4: case 11:
+                return new SellArtworkNotFoundExceptionView(etm);
 
-            System.out.println("Email sent to: "+mail);
+            case 5: case 12:
+                return new ArtworkNotFoundExceptionView(etm);
 
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            case 6: case 13:
+                return new SentProposalNotFoundExceptionView(etm);
+
+            default:
+                return new EmptyFieldExceptionView(etm);
         }
     }
+
 }

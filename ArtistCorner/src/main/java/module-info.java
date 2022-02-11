@@ -10,8 +10,8 @@ module com.artistcorner {
     requires org.junit.platform.commons;
     requires org.junit.platform.engine;
     requires org.seleniumhq.selenium.api;
-   // requires javax.mail.api;
-    requires java.mail;
+    requires javax.mail.api;
+    //requires java.mail;
 
 
     opens com.artistcorner to javafx.fxml;
@@ -33,8 +33,8 @@ module com.artistcorner {
     opens com.artistcorner.controller.applicationcontroller.login.summaries to javafx.fxml;
     exports com.artistcorner.controller.applicationcontroller.login.summaries;
 
-    opens com.artistcorner.controller.guicontroller.getreccomandation to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.getreccomandation;
+    opens com.artistcorner.controller.guicontroller.getrecommendation to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.getrecommendation;
 
     opens com.artistcorner.controller.guicontroller.manageproposals to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.manageproposals;
@@ -81,8 +81,8 @@ module com.artistcorner {
     opens com.artistcorner.controller.guicontroller.mobile.login.summaries to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.login.summaries;
 
-    opens com.artistcorner.controller.guicontroller.mobile.getreccomandation to javafx.fxml;
-    exports com.artistcorner.controller.guicontroller.mobile.getreccomandation;
+    opens com.artistcorner.controller.guicontroller.mobile.getrecommendation to javafx.fxml;
+    exports com.artistcorner.controller.guicontroller.mobile.getrecommendation;
 
     opens com.artistcorner.controller.guicontroller.mobile.uploadartwork to javafx.fxml;
     exports com.artistcorner.controller.guicontroller.mobile.uploadartwork;

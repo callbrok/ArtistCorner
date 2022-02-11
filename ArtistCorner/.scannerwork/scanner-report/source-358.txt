@@ -1,40 +1,82 @@
 package com.artistcorner.engclasses.others;
 
-import java.net.URL;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
-public enum ExceptionsTypeManager {
+import java.io.IOException;
 
-    EMPTYFIELD(0, "/view/exceptions/EmptyFieldException.fxml"),
-    EMPTYPATH(1, "/view/exceptions/EmptyPathException.fxml"),
-    DUPLICATEARTWORK(2, "/view/exceptions/DuplicateArtWorkException.fxml"),  //Opera già presente
-    PROPOSALNOTFOUND(3, "/view/exceptions/ProposalNotFoundException.fxml"), // Nessuna proposta attuale
-    SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"), // Nessun opera venduta
-    ARTWORKNOTFOUND(5, "/view/exceptions/ArtworkNotFoundException.fxml"), // Nessun opera caricata
-    SENTPROPOSALNOTFOUND(6,"/view/exceptions/SentProposalNotFoundException.fxml"),//Nessuna proposta inviata
+public class StartApplication {
+    @FXML
+    private SVGPath svgLogo;
+    @FXML
+    private AnchorPane anchorParentStart;
+    @FXML
+    private Circle circleMain;
+    @FXML
+    private Button buttonDesktop;
 
-    EMPTYFIELD_MOBILE(7, "/view/mobile/exceptions/EmptyFieldMobileException.fxml"),
-    EMPTYPATH_MOBILE(8, "/view/mobile/exceptions/EmptyPathMobileException.fxml"),
-    DUPLICATEARTWORK_MOBILE(9, "/view/mobile/exceptions/DuplicateArtWorkMobileException.fxml"),  //Opera già presente
-    PROPOSALNOTFOUND_MOBILE(10, "/view/mobile/exceptions/ProposalNotFoundMobileException.fxml"), // Nessuna proposta attuale
-    SELLARTNOTFOUND_MOBILE(11, "/view/mobile/exceptions/SellNotFoundMobileException.fxml"), // Nessun opera venduta
-    ARTWORKNOTFOUND_MOBILE(12, "/view/mobile/exceptions/ArtworkNotFoundMobileException.fxml"), // Nessun opera caricata
-    SENTPROPOSALNOTFOUND_MOBILE(13,"/view/mobile/exceptions/SentProposalNotFoundMobileException.fxml");//Nessuna proposta inviata
-    // Aggiungere errore per il recupero della serializzazione?
+    private double x=0;
+    private double y=0;
+    private Stage stage;
 
-    private final int type;
-    private final String path;
 
-    private ExceptionsTypeManager(int t, String p){
-        this.type = t;
-        this.path = p;
+    public void initialize(){
+        makeDraggable();
+        initDesktop();
+
+        svgLogo.setScaleX(1.1);
+        svgLogo.setScaleY(1.1);
+        svgLogo.setFill(Color.rgb(57, 166, 127));
+        circleMain.setFill(Color.WHITE);
+        circleMain.setStroke(Color.valueOf("0x277458"));
+        circleMain.setStrokeWidth(3);
     }
 
-    public int getType() {
-        return type;
+
+    private void makeDraggable(){
+        anchorParentStart.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorParentStart.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
     }
 
-    public static URL getUrl(ExceptionsTypeManager subview){
-        return ExceptionsTypeManager.class.getResource(subview.path);
+    public void exitWindow() {
+        stage = (Stage) anchorParentStart.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParentStart.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public void switchToMobile(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToLogin(event);
+    }
+
+    public void initDesktop(){
+        buttonDesktop.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            try {
+                SceneController.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }

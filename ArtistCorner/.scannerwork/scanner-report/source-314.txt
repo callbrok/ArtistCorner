@@ -2,7 +2,7 @@ package com.artistcorner.engclasses.exceptions;
 
 import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 
-public class ProposalNotFoundExceptionView extends ExceptionView{
+public class EmpyPathExceptionView extends ExceptionView{
 
-    public ProposalNotFoundExceptionView(ExceptionsTypeManager etm){super(etm);}
+    public EmpyPathExceptionView(ExceptionsTypeManager etm){super(etm);}
 }

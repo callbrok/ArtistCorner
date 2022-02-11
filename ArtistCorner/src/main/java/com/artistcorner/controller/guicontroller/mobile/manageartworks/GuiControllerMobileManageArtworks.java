@@ -123,9 +123,9 @@ public class GuiControllerMobileManageArtworks {
 
             anchorPaneFocusM.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocusM.setVisible(false));
 
-            for (ArtworkBean b : listOfArtWorks){    // Scorre tutti i blob relativi all'artista.
+            for (ArtworkBean bm : listOfArtWorks){    // Scorre tutti i blob relativi all'artista.
 
-                InputStream inputStream = b.getImmagine().getBinaryStream();
+                InputStream inputStream = bm.getImmagine().getBinaryStream();
 
                 /*1)preserveRatio:
                 Indicates whether to preserve the aspect ratio of the source image when scaling to
@@ -134,10 +134,10 @@ public class GuiControllerMobileManageArtworks {
                 2)smooth:
                 Indicates whether to use a better quality filtering algorithm or a faster one when transforming
                 or scaling the source image to fit within the bounding box provided by fitWidth and fitHeight. */
-                Image image = new Image(inputStream, 130, 130, true, false);
+                Image imageM = new Image(inputStream, 130, 130, true, false);
 
                 ImageView imageThumb = new ImageView();
-                imageThumb.setImage(image);
+                imageThumb.setImage(imageM);
 
                 imageThumb.setOnMouseClicked(mouseHandler);   // Setta un mouseHandler su ogni immagine.
 
@@ -150,7 +150,7 @@ public class GuiControllerMobileManageArtworks {
                 vBoxInfo.setAlignment(Pos.BASELINE_CENTER);
 
                 buttonRemove.setOnAction(event2 -> {
-                    vp.removeArtWork(b);
+                    vp.removeArtWork(bm);
 
                     try {
                         SceneControllerMobile.switchToSceneProfiloArtista(event2, art);

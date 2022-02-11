@@ -1,16 +1,9 @@
 
-<com.artistcorner.model.Artwork#getTitolo()Ljava/lang/String;h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java& &("1*²
-1h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java&& &(,»
-¸
-h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java&& &(,
-%0java.lang.String"__id*.*, 
-com.artistcorner.model.Artwork"
-titolo"„
-h
-^/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Artwork.java& &(-
-
-%0java.lang.StringB" 
-com.artistcorner.model.Artwork
+-com.artistcorner.model.Proposal#getArtista()Ii
+_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java ("1*ã
+1i
+_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java$ (+"s
+i
+_/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Proposal.java (,
+""B#!
+com.artistcorner.model.Proposal

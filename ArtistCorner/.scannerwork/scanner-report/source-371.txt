@@ -1,16 +1,15 @@
-package com.artistcorner.controller.guicontroller.login.summaries;
+package com.artistcorner.controller.guicontroller.login;
 
-import com.artistcorner.controller.applicationcontroller.login.summaries.ViewGallerySummary;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.ProposalBean;
+import com.artistcorner.controller.applicationcontroller.login.Login;
+import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.exceptions.UserNotFoundException;
 import com.artistcorner.engclasses.others.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -18,104 +17,148 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
+import java.util.Objects;
 
-public class GuiControllerGallerySummary {
+public class GuiControllerLogin {
     @FXML
-    private Button button1;
+    private PasswordField textFieldPassword;
     @FXML
-    private Button button4;
+    private Button buttonMenuLogIn;
     @FXML
-    private Button button2;
+    private AnchorPane anchorSignUp;
     @FXML
-    private Label labelComprate;
+    private AnchorPane anchorSummarySignUp;
     @FXML
-    private Pane paneComprate;
+    private AnchorPane anchorParentLoginD;
     @FXML
-    private AnchorPane anchorParentGallery;
+    private SVGPath svgLogo;
     @FXML
-    private ListView<String> listViewOfferte;
+    private TextField textFieldUsername;
     @FXML
-    private Label labelUsernameDisplay;
+    private Pane paneExceptionLogin;
     @FXML
-    private Label labelLogOutGallery;
+    private Label labelExceptionLogin;
+
     private double x=0;
     private double y=0;
-    private Stage stageGallery;
-    @FXML
-    private SVGPath svgProfileGallery;
-    @FXML
-    private Pane paneExceptionLoad;
+    private Stage stage;
 
-    private ArtGalleryBean gal;
-
+    private Login lg = new Login();
 
     public void initialize(){
         makeDraggable();
-        makeLogOutGallery();
-        svgProfileGallery.setScaleX(0.07);
-        svgProfileGallery.setScaleY(0.07);
+        reloadLogin();
+
+        labelExceptionLogin.setAlignment(Pos.CENTER);
+        labelExceptionLogin.setMaxWidth(259);
+        paneExceptionLogin.setVisible(false);
+        svgLogo.setScaleX(1.1);
+        svgLogo.setScaleY(1.1);
+
+        anchorSummarySignUp.setVisible(false);
     }
 
-    public void makeLogOutGallery(){
-        labelLogOutGallery.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+    private void makeDraggable(){
+        anchorParentLoginD.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorParentLoginD.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+    }
+
+    public void exitWindow() {
+        stage = (Stage) anchorParentLoginD.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minimizeWindow() {
+        stage = (Stage) anchorParentLoginD.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public void sendData(ActionEvent actionEvent) throws IOException {
+        UserBean us = new UserBean();
+
+        us.setUsername(textFieldUsername.getText());
+        us.setPassword(textFieldPassword.getText());
+
+        try {
+            lg.credentialLogin(us, actionEvent, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
+
+        }catch (UserNotFoundException e){
+            labelExceptionLogin.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
+        }
+
+    }
+
+    public void reloadLogin() {
+        buttonMenuLogIn.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
                 SceneController.switchToLogin(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
     }
 
-    public void getGallery(ArtGalleryBean loggedGallery){
-        gal = loggedGallery;
-        labelUsernameDisplay.setText(gal.getNome());
-        initializeOfferteInviate(listViewOfferte,gal);
-        paneExceptionLoad.setPrefSize(708,250);
+    public void changeToRegister(){
+        anchorSummarySignUp.setVisible(true);
     }
 
+    public void goToArtistSignUp() throws IOException {
+        anchorSummarySignUp.setVisible(false);
 
-    private void makeDraggable(){
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterArtistView.fxml")));
+        anchorSignUp.getChildren().add(newLoadedPane);
+    }
+    public void goToBuyerSignUp() throws IOException {
+        anchorSummarySignUp.setVisible(false);
 
-        anchorParentGallery.setOnMouseDragged((eventDraggableDrag -> {
-            stageGallery = (Stage) ((Node)eventDraggableDrag.getSource()).getScene().getWindow();
-            stageGallery.setX(eventDraggableDrag.getScreenX() - x);
-            stageGallery.setY(eventDraggableDrag.getScreenY() - y);
-        }));
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterBuyerView.fxml")));
+        anchorSignUp.getChildren().add(newLoadedPane);
+    }
+    public void goToGallerySignUp() throws IOException {
+        anchorSummarySignUp.setVisible(false);
 
-        anchorParentGallery.setOnMousePressed((eventDraggablePressed -> {
-            x=eventDraggablePressed.getSceneX();
-            y= eventDraggablePressed.getSceneY();
-        }));
-
+        AnchorPane newLoadedPane =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login/RegisterGalleryView.fxml")));
+        anchorSignUp.getChildren().add(newLoadedPane);
     }
 
-    public void exitWindow() {
-        stageGallery = (Stage) anchorParentGallery.getScene().getWindow();
-        stageGallery.close();
+    /**
+     * Inizializza uno stub per il login tramite Facebook.
+     */
+    public void openDialogLoginFb() {
+        Dialog<String> dialog = new Dialog<>();
+        ButtonType type = new ButtonType("Chiudi", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
+
+        dialog.setTitle("Login");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Login con Facebook");
+
+        dialog.showAndWait();
     }
 
-    public void minimizeWindow() {
-        stageGallery = (Stage) anchorParentGallery.getScene().getWindow();
-        stageGallery.setIconified(true);
-    }
-    private void initializeOfferteInviate(ListView<String> listViewOfferte, ArtGalleryBean gal) {
-        ViewGallerySummary vgs = new ViewGallerySummary();
-        List<ProposalBean> arrayOfProposal = vgs.retrieveGalleryProposal(gal, 0);
-        for (ProposalBean n : arrayOfProposal) {
-            ArtistBean artistProposal = vgs.retrieveArtistNameGallerySum(n);
-            String artistNameProposal = artistProposal.getNome() + " " + artistProposal.getCognome();
-            listViewOfferte.getItems().add("Offerta inviata per Artista :  " + artistNameProposal);  // Popola la listView.
+    /**
+     * Effettua il login statico per un acquirente ospite.
+     */
+    public void loginGuestBuyer(ActionEvent event) throws IOException {
+        UserBean us = new UserBean();
+
+        us.setUsername("acquirenteGUEST");
+        us.setPassword("ispw21");
+
+        try {
+            lg.credentialLogin(us, event, "D");   // Passa le credenziali al controller applicativo per effettuare il login.
+        }catch (UserNotFoundException e){
+            labelExceptionLogin.setText(e.getMessage());
+            paneExceptionLogin.setVisible(true);
         }
     }
-    public void switchToSearchArtWorkGallery(ActionEvent actionEvent) throws IOException {
-        SceneController.switchToSceneSearchArtWorkGallery(actionEvent,gal);
-    }
-    public void switchToProfiloGallery(ActionEvent actionEvent) throws IOException, SQLException {
-        SceneController.switchToSceneProfiloGallery(actionEvent,gal);
-    }
-
-
 }

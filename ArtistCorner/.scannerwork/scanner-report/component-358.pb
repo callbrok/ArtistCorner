@@ -1,1 +1,1 @@
-æ 2javaX)hrKsrc/main/java/com/artistcorner/engclasses/others/ExceptionsTypeManager.java
+æ 2javaXShrFsrc/main/java/com/artistcorner/engclasses/others/StartApplication.java

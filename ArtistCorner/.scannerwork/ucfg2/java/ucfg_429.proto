@@ -1,23 +1,16 @@
 
-fcom.artistcorner.engclasses.query.QueryArtist#selectUsername(Ljava/sql/Statement;)Ljava/sql/ResultSet;w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java (*"1*’
-1w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java (4¾
-»
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java (5
-sqljava.lang.String"__id*!
-SELECT username FROM utente ;º·
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java (%
-%0java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
-
-stmtjava.sql.Statement*
-
-sqljava.lang.String2 executeQuery(Ljava/lang/String;)"•
-w
-m/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtist.java (&
-
-%0java.sql.ResultSet:
-stmtjava.sql.StatementB1"/
--com.artistcorner.engclasses.query.QueryArtist
+;com.artistcorner.model.Buyer#getCognome()Ljava/lang/String;f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java ("1*«
+1f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-¸
+µ
+f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java& (-
+%0java.lang.String"__id*-*+
+com.artistcorner.model.Buyer"	
+cognome"‚
+f
+\/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/model/Buyer.java (.
+
+%0java.lang.StringB 
+com.artistcorner.model.Buyer

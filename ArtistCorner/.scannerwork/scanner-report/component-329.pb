@@ -1,1 +1,2 @@
-É 2javaXhrPsrc/main/java/com/artistcorner/engclasses/exceptions/BuyerNotFoundException.java
+É 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/AddArtistException.java

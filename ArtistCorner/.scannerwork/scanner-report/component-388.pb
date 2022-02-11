@@ -1,1 +1,1 @@
-„ 2javaX‰hrzsrc/main/java/com/artistcorner/controller/guicontroller/mobile/getreccomandation/GuiControllerMobileGetReccomandation.java
+„ 2javaX—hr€src/main/java/com/artistcorner/controller/guicontroller/mobile/managefollowedartist/GuiControllerMobileManageFollowedArtist.java

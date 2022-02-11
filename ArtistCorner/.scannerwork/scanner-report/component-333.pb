@@ -1,1 +1,1 @@
-Í 2javaXhrQsrc/main/java/com/artistcorner/engclasses/exceptions/ArtistNotFoundException.java
+Í 2javaXPhr?src/main/java/com/artistcorner/engclasses/query/QueryBuyer.java

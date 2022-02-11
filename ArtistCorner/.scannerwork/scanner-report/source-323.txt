@@ -1,8 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeManager;
+public class BuyerNotFoundException extends Exception {
 
-public class ArtworkNotFoundExceptionView extends ExceptionView{
+    private static final long serialVersionUID = 1L;
 
-    public ArtworkNotFoundExceptionView(ExceptionsTypeManager etm){super(etm);}
+    public BuyerNotFoundException (String message) {
+        super(message);
+    }
 }

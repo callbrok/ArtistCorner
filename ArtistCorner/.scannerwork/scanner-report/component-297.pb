@@ -1,1 +1,1 @@
-© 2javaXhr3src/main/java/com/artistcorner/MainApplication.java
+© 2javaXhr4src/main/java/com/artistcorner/model/ArtGallery.java

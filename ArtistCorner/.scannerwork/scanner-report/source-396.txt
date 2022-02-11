@@ -1,51 +1,43 @@
-package com.artistcorner.controller.applicationcontroller;
+package com.artistcorner.controller.applicationcontroller.login.summaries;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
-import com.artistcorner.engclasses.dao.BuyerDAO;
-import com.artistcorner.engclasses.dao.GalleryDAO;
 import com.artistcorner.engclasses.dao.ProposalDAO;
-import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
-import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
+import com.artistcorner.model.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewSentArtGalleryProposal {
+public class ViewGallerySummary {
 
-    public String retrieveArtistName(ProposalBean prop) {
-        int idArtista= prop.getArtista();
-
-        Artist name = ArtistDAO.retrieveArtistFromId(idArtista);
-        return name.getNome()+" "+name.getCognome(); // ritorno nome e cognome dell'artista associato all'opera
-
-    }
-
-    public List<ProposalBean> retrieveProposal(ArtGalleryBean gallery, int flag) throws SentProposalNotFoundException {
-        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(gallery,flag,"");    //lista delle proposte inviate
+    public List<ProposalBean> retrieveGalleryProposal(ArtGalleryBean gallery, int flag)  {
+        ArtGallery gall = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo());
+        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(gall,flag,"LAST"); //lista delle proposte inviate
         List<ProposalBean>proposalBean= new ArrayList<>();
-        ProposalBean propBean = new ProposalBean();
 
-        if (proposal.isEmpty()){
-            if(flag==1) {throw new SentProposalNotFoundException("nessuna proposta accettata trovata");}
-            else {throw new SentProposalNotFoundException("nessuna proposta in attesa trovata");}
-        }
 
         for (Proposal p: proposal) {
-            propBean.setIdOfferta(p.getIdOfferta());
-            propBean.setArtista(p.getArtista());
-            propBean.setGalleria(p.getGalleria());
-            propBean.setFlagAccettazione(p.getFlagAccettazione());
+            ProposalBean currentProp = new ProposalBean();
+            currentProp.setIdOfferta(p.getIdOfferta());
+            currentProp.setArtista(p.getArtista());
+            currentProp.setGalleria(p.getGalleria());
+            currentProp.setFlagAccettazione(p.getFlagAccettazione());
 
-            proposalBean.add(propBean);
+            proposalBean.add(currentProp);
         }
         return proposalBean;
     }
-    public void  removeProposta(ArtGalleryBean gallery, int idArtista) throws SQLException, ProposalNotFoundException {
-        ProposalDAO.removeProposta(gallery.getGalleria(),idArtista); // rimuovo la proposta
+    public ArtistBean retrieveArtistNameGallerySum(ProposalBean a) {
+        Artist artist = ArtistDAO.retrieveArtistFromId(a.getArtista()); //artista associato alla proposta
+        ArtistBean artistBean = new ArtistBean();
+
+        artistBean.setIdArtista(artist.getIdArtista());
+        artistBean.setNome(artist.getNome());
+        artistBean.setCognome(artist.getCognome());
+
+        return artistBean;
     }
+
 }

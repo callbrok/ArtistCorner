@@ -1,1 +1,1 @@
-ú 2javaX×hrwsrc/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkbuyer/GuiControllerViewSearchArtWorkBuyer.java
+ú 2javaXàhrtsrc/main/java/com/artistcorner/controller/guicontroller/mobile/manageartworks/GuiControllerMobileManageArtworks.java

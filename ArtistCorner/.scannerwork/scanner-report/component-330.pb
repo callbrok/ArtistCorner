@@ -1,1 +1,2 @@
-Ê 2javaX	hrZsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtworkNotFoundExceptionView.java
+Ê 2javaX
+hrPsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateUserException.java

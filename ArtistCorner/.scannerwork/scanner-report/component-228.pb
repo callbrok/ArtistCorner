@@ -1,1 +1,1 @@
-ä 2javaX(hr(src/test/java/junittests/TestSignUp.java
+ä 2javaXhr5src/test/java/junittests/TestViewPendingProposal.java

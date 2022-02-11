@@ -1,1 +1,1 @@
-ß 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java
+ß 2javaXChrPsrc/main/java/com/artistcorner/engclasses/others/analytics/ViewLogAnalytics.java

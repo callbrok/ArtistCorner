@@ -1,1 +1,1 @@
-” 2javaXphr[src/main/java/com/artistcorner/controller/applicationcontroller/ViewSearchArtWorkBuyer.java
+” 2javaXshrsrc/main/java/module-info.java

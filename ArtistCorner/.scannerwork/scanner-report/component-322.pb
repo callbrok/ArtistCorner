@@ -1,2 +1,1 @@
-Â 2javaX
-hr^src/main/java/com/artistcorner/engclasses/exceptions/FavouritesManagementProblemException.java
+Â 2javaXhrRsrc/main/java/com/artistcorner/engclasses/exceptions/ArtworkNotFoundException.java

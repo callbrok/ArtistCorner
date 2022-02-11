@@ -1,1 +1,1 @@
-“ 2javaXhresrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewBuyerSummary.java
+“ 2javaXhrRsrc/main/java/com/artistcorner/controller/applicationcontroller/UploadArtwork.java

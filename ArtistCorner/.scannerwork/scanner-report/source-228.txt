@@ -1,40 +1,27 @@
 package junittests;
 
-import com.artistcorner.controller.applicationcontroller.login.Register;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.DuplicateUserException;
+import com.artistcorner.controller.applicationcontroller.ViewPendingProposals;
+import com.artistcorner.engclasses.bean.ArtGalleryBean;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
 import org.junit.Test;
-
+import java.sql.SQLException;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author  Marco Purificato
+ * @author  Alessio Torroni
  */
-public class TestSignUp {
 
+public class TestViewPendingProposal {
     @Test
-    public void testRegistrationDuplicateArtistUsername(){
-        Register sgup = new Register();
-        boolean duplicateUsername = false;
-
-        ArtistBean artistToCheck = new ArtistBean();
-
-        artistToCheck.setNome("Alba");
-        artistToCheck.setCognome("DeRose");
-
-        UserBean userToCheck = new UserBean();
-
-        userToCheck.setUsername("artista1");
-        userToCheck.setPassword("ispw21");
-        userToCheck.setRole("artista");
-
-        // Artist with user artista1 already exist.
+    public void testRemoveProposalFailed(){
+        ViewPendingProposals vsawb = new ViewPendingProposals();
+        boolean code = true;
+        ArtGalleryBean galleryToCheck = new ArtGalleryBean();
         try {
-            sgup.registerArtist(userToCheck, artistToCheck);
-        } catch (DuplicateUserException e) {
-            duplicateUsername=true;
+            vsawb.removeProposta(galleryToCheck,17);
+        } catch (SQLException | ProposalNotFoundException e) {
+            code = false;
         }
-        assertEquals(true, duplicateUsername);
+        assertEquals(false,code);
     }
 }

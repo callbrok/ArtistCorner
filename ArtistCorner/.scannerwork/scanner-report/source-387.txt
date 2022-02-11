@@ -1,113 +1,264 @@
-package com.artistcorner.controller.guicontroller.mobile.login.summaries;
+package com.artistcorner.controller.guicontroller.mobile.getrecommendation;
 
-import com.artistcorner.controller.applicationcontroller.login.summaries.ViewBuyerSummary;
-import com.artistcorner.engclasses.bean.ArtworkBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
+import com.artistcorner.controller.applicationcontroller.GetRecommendation;
+import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.engclasses.others.Nodo;
+import com.artistcorner.engclasses.exceptions.GetRaccomandationProblemException;
+import com.artistcorner.engclasses.others.SceneController;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.SVGPath;
+import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class GuiControllerMobileBuyerSummary {
+public class GuiControllerMobileGetReccomandation implements Serializable {
     @FXML
-    private Button buttonLogout;
+    private TextFlow textFlowResultMobile;
     @FXML
-    private SVGPath svgLogout;
-    @FXML
-    private Pane paneGuest;
-    @FXML
-    private Button button2;
-    @FXML
-    private AnchorPane anchorMainSummary;
+    private AnchorPane anchorMainMobile;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
+    private Label labelQuestion;
+    @FXML
+    private AnchorPane anchorResult;
+    @FXML
+    private Button buttonReset;
 
-    private ListView<String> listViewCompra;
+    public static final String FONT_RESULT = "System";
+    public static final String NOTHING_ANSW = "Nessuna Risposta";
+
     private double x=0;
     private double y=0;
-    private Stage stageSummary;
+    private Stage stage;
 
-    BuyerBean buy;
+    private GetReccomandation lcm = new GetReccomandation();
+    private List<Nodo> arraylistM = lcm.initializeTreeTxt(); // Inizializza albero
+    private int idLivelloMobile; // Variabile che tiene conto del livello corrente dell'albero
+    private ArtistBean art;
+    private Nodo n;
 
-    public void getBuyer(BuyerBean loggedBuyer) {
-        buy = loggedBuyer;      // Prendo le informazioni riguardanti l'acquirente che ha effettuato il login.
 
-        if(buy.getIdBuyer() == 13){initGuest();}
+    /**
+     * Deserializza lo stato dell'algoritmo di decisione, nel caso in cui il file contenente l'ultima istanza
+     * serializzata ("object.txt") non fosse presente, inizializza l'algoritmo da zero.
+     */
+    public void inizializeIdLivello() throws IOException {
+        Nodo deserialNode = lcm.deserializaStartNode(art);
 
-        labelUsernameDisplay.setText(buy.getNome() + " " + buy.getCognome());
-        listViewCompra.setStyle("-fx-font-size: 10px");
-        inizializeOpereComprate(listViewCompra,buy);
+        if(deserialNode.getSolutionPart() != null) {
+
+            labelQuestion.setText(deserialNode.getDomanda()); // Prende la domanda dal nodo serializzato
+            idLivelloMobile = deserialNode.getIdProprio(); // Prende l'id del nodo serializzato
+
+            if(idLivelloMobile == 0){showSolution();}
+
+        } else {
+            idLivelloMobile = 1; // Inizializzazione dell'algoritmo al primo nodo
+        }
+
     }
-
-    public void initialize(){
-        paneGuest.setVisible(false);
+    
+    public void initialize() throws IOException, ClassNotFoundException {
         makeDraggable();
+
+        labelQuestion.setAlignment(Pos.CENTER);
+        labelQuestion.setMaxWidth(362);
+        labelQuestion.setWrapText(true);  // Per far andare a capo la linea.
+
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
+        anchorResult.setVisible(false);
     }
 
-    public void makeLogOut(ActionEvent eventLogOut) throws IOException {
-        SceneControllerMobile.switchToLogin(eventLogOut);
+    public void getArtist(ArtistBean loggedArtist) throws IOException, ClassNotFoundException {
+        art = loggedArtist;
+        labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
+
+        inizializeIdLivello();
     }
 
-    public void initGuest(){
-        button2.setDisable(true);
-        paneGuest.setVisible(true);
-        buttonLogout.setText("Accedi");
-        svgLogout.setContent("M16 2c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6zm0-2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm-5.405 16.4l-1.472 1.6h-3.123v2h-2v2h-2v-2.179l5.903-5.976c-.404-.559-.754-1.158-1.038-1.795l-6.865 6.95v5h6v-2h2v-2h2l2.451-2.663c-.655-.249-1.276-.562-1.856-.937zm7.405-11.4c.551 0 1 .449 1 1s-.449 1-1 1-1-.449-1-1 .449-1 1-1zm0-1c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z");
+
+    /**
+     * Visualizza il nodo corretto a seconda della risposta negativa e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerNo() throws IOException, GetRaccomandationProblemException {
+        // In caso di risposta negativa
+
+        n = lcm.decisionTree("N", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        lcm.makeSerializable(art, n);                                 // Serializza il nodo corrente
     }
 
-    public void exitWindow() {
-        stageSummary = (Stage) anchorMainSummary.getScene().getWindow();
-        stageSummary.close();
-    }
-    private void makeDraggable(){
-        anchorMainSummary.setOnMousePressed((eventPressScene -> {
-            x=eventPressScene.getSceneX();
-            y= eventPressScene.getSceneY();
-        }));
+    /**
+     * Visualizza il nodo corretto a seconda della risposta positiva e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerYes() throws IOException, GetRaccomandationProblemException {
+        n = lcm.decisionTree("Y", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
 
-        anchorMainSummary.setOnMouseDragged((eventDragScene -> {
-            stageSummary = (Stage) ((Node)eventDragScene.getSource()).getScene().getWindow();
-            stageSummary.setX(eventDragScene.getScreenX() - x);
-            stageSummary.setY(eventDragScene.getScreenY() - y);
-        }));
+        if(n.getIdProprio() == 0){showSolution();}           // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());               // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                        // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        lcm.makeSerializable(art, n);                                  // Serializza il nodo corrente
+    }
+
+    /**
+     * Visualizza il nodo corretto a seconda della risposta randomica e serializza il nodo corrente
+     * per permettere all'utente, in caso di uscita, di ritornare al passo corrente dell'algoritmo.
+     */
+    public void setAnswerRand() throws IOException, GetRaccomandationProblemException {
+        n = lcm.decisionTree("YN", arraylistM, idLivelloMobile);  // Assegna all'oggetto n di tipo Nodo, il nodo figlio
+        // (ritornato da decisionTree) relativo alla risposta fornita
+
+        if(n.getIdProprio() == 0){showSolution();}            // Se viene tornato il nodo di fine albero, mostro la soluzione.
+
+        labelQuestion.setText(n.getDomanda());                // Setta la label con la domanda ricavata dal nodo figlio ritornato
+        idLivelloMobile = n.getIdProprio();                         // Aggiorna il livello attuale con l'id del nodo figlio ritornato, ergo il nodo corrente
+
+        lcm.makeSerializable(art, n);                                    // Serializza il nodo corrente
+    }
+
+    public void showSolution(){
+        String[] soluzione = lcm.getSolution();
+
+        Text textPREResult1Mob = new Text("Ti consiglio di disegnare ");
+        Text textResult1Mob = new Text("qualcosa (non hai risposto)");
+
+        textResult1Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult1Mob.setFill(Color.rgb(45, 132, 101));
+        textResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult1Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[0].equals(NOTHING_ANSW)){textResult1Mob.setText(soluzione[0]);}
+
+        Text textResult2Mob = new Text("");
+        textResult2Mob.setFill(Color.rgb(209, 62, 10));
+        textResult2Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[1].equals(NOTHING_ANSW)){textResult2Mob.setText(" " + soluzione[1]);}
+
+        Text textPREResult3Mob = new Text("");
+        Text textResult3Mob = new Text("");
+
+        textResult3Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult3Mob.setFill(Color.rgb(45, 132, 101));
+        textResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult3Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[2].equals(NOTHING_ANSW)){textResult3Mob.setText(soluzione[2]); textPREResult3Mob.setText(" in moto ");}
+
+        Text textPREResult4Mob = new Text("");
+        Text textResult4Mob = new Text("");
+
+        textResult4Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult4Mob.setFill(Color.rgb(45, 132, 101));
+        textResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult4Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[3].equals(NOTHING_ANSW)){textResult4Mob.setText(soluzione[3]); textPREResult4Mob.setText(", dai colori ");}
+
+        Text textPREResult5Mob = new Text("");
+        Text textResult5Mob = new Text("");
+
+        textResult5Mob.setFill(Color.rgb(209, 62, 10));
+        textPREResult5Mob.setFill(Color.rgb(45, 132, 101));
+        textResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+        textPREResult5Mob.setFont(Font.font(FONT_RESULT, FontWeight.BOLD, 20));
+
+        if(!soluzione[4].equals(NOTHING_ANSW)){textResult5Mob.setText(soluzione[4]); textPREResult5Mob.setText(" con uno stile ");}
+
+
+        textFlowResultMobile.getChildren().addAll(textPREResult1Mob, textResult1Mob, textResult2Mob, textPREResult3Mob, textResult3Mob, textPREResult4Mob, textResult4Mob, textPREResult5Mob, textResult5Mob);
+        textFlowResultMobile.setTextAlignment(TextAlignment.CENTER);
+
+
+        anchorResult.setVisible(true);
+    }
+
+
+    /**
+     * Resetta l'algoritmo.
+     */
+    public void resetAlgo() throws IOException {
+        String objetNodoPath = "ArtistCorner/src/main/resources/auxiliaryfacilities/objectNodo_" + art.getIdArtista() + ".txt";
+
+        // Cerca il file contenente l'oggetto serializzato e lo elimina
+        if(Files.exists(Path.of(objetNodoPath)) && !Files.isDirectory(Path.of(objetNodoPath))) {Files.delete(Path.of(objetNodoPath));}
+
+        buttonReset.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {                // Ricarica la scena
+            try {
+                SceneControllerMobile.switchToSceneProfiloAlgoritmo(event, art);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+
+    public void exitWindow() throws IOException {
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
+        stage.close();
     }
 
     public void minimizeWindow() {
-        stageSummary = (Stage) anchorMainSummary.getScene().getWindow();
-        stageSummary.setIconified(true);
+        stage = (Stage) anchorMainMobile.getScene().getWindow();
+        stage.setIconified(true);
     }
 
-    public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
-        SceneControllerMobile.switchToSceneSearchArtWorkBuyer(actionEvent, buy);
+    private void makeDraggable(){
+        anchorMainMobile.setOnMousePressed((event -> {
+            x=event.getSceneX();
+            y= event.getSceneY();
+        }));
+
+        anchorMainMobile.setOnMouseDragged((event -> {
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
     }
 
-    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException{
-        SceneControllerMobile.switchToSceneFavouritesBuyer(actionEvent,buy);
-    }
-    public void inizializeOpereComprate(ListView<String> listViewCompra, BuyerBean buy){
-        ViewBuyerSummary vbs = new ViewBuyerSummary();
-        List<ArtworkBean> arrayOfComprate = vbs.retrieveAllComprate(buy);
-        List<ArtworkBean> arrayFinal = new ArrayList<>();
-        for (ArtworkBean n : arrayOfComprate) {
-            ArtworkBean artwork = vbs.retrieveArtWorks(n.getIdOpera(), 0);
-            listViewCompra.getItems().add("Titolo Opera:  " + artwork.getTitolo() + "     Prezzo di acquisto:   € " + artwork.getPrezzo());  // Popola la listView.
-
-            arrayFinal.add(artwork);
-        }
+    public void switchToSceneMainArtistaFromRecM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneMainArtista(event, art);
     }
 
+    public void switchToProfiloArtistaFromRecM(ActionEvent event) throws SQLException, IOException {
+        SceneControllerMobile.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToUploadOperaFromRecM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneUploadOpera(event, art);
+    }
+
+    public void switchToProfiloVendutoFromRecM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneProfiloVenduto(event, art);
+    }
+
+    public void switchToProfiloOfferteMostreFromRecM(ActionEvent event) throws IOException {
+        SceneControllerMobile.switchToSceneProfiloOfferteMostre(event, art);
+    }
 }
-

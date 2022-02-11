@@ -1,1 +1,1 @@
-Ü 2javaXhr<src/main/java/com/artistcorner/engclasses/bean/UserBean.java
+Ü 2javaXhrFsrc/main/java/com/artistcorner/engclasses/others/analytics/Commit.java

@@ -1,1 +1,2 @@
-² 2javaXÁhr>src/main/java/com/artistcorner/engclasses/dao/ProposalDAO.java
+² 2javaX
+hrLsrc/main/java/com/artistcorner/engclasses/exceptions/EmptyPathException.java

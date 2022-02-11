@@ -1,17 +1,16 @@
 
-Icom.artistcorner.engclasses.bean.UserBean#getPassword()Ljava/lang/String;s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java ("1*‡
+Ecom.artistcorner.engclasses.bean.UserBean#getRole()Ljava/lang/String;s
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java ("1*‹
 1s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java' (/”
-–
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java$ ((œ
+Ã
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java' (/
-%0java.lang.String"__id*;*9+
-)com.artistcorner.engclasses.bean.UserBean"
-
-password"è
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java$ ((
+%0java.lang.String"__id*7*5+
+)com.artistcorner.engclasses.bean.UserBean"
+role"è
 s
-i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java  (0
+i/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/bean/UserBean.java ()
 
 %0java.lang.StringB-+
 )com.artistcorner.engclasses.bean.UserBean

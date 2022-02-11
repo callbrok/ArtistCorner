@@ -1,1 +1,1 @@
-Ô 2javaXUhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java
+Ô 2javaXhr@src/main/java/com/artistcorner/engclasses/bean/ProposalBean.java

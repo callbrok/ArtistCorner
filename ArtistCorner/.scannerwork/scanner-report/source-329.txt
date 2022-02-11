@@ -1,10 +1,9 @@
 package com.artistcorner.engclasses.exceptions;
 
-public class BuyerNotFoundException extends Exception {
-
+public class AddArtistException extends Exception{
     private static final long serialVersionUID = 1L;
 
-    public BuyerNotFoundException (String message) {
+    public AddArtistException (String message) {
         super(message);
     }
 }

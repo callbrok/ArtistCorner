@@ -1,1 +1,1 @@
-Ú 2javaXhrLsrc/main/java/com/artistcorner/engclasses/observer/BuyerConcreteSubject.java
+Ú 2javaXðhrKsrc/main/java/com/artistcorner/engclasses/others/SceneControllerMobile.java

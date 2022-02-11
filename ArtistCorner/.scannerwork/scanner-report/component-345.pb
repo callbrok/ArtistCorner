@@ -1,1 +1,1 @@
-Ù 2javaXhrNsrc/main/java/com/artistcorner/engclasses/observer/ArtistConcreteObserver.java
+Ù 2javaXGhrGsrc/main/java/com/artistcorner/engclasses/others/ConnectProperties.java

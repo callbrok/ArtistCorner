@@ -1,1 +1,1 @@
-‰ 2javaXßhrˆsrc/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkgallery/GuiControllerMobileViewSearchArtWorkGallery.java
+‰ 2javaX<hrUsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewSoldArtworks.java

@@ -1,141 +1,122 @@
-package com.artistcorner.controller.guicontroller.login;
+package com.artistcorner.controller.guicontroller.login.summaries;
 
-import com.artistcorner.controller.applicationcontroller.login.Register;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
+import com.artistcorner.controller.applicationcontroller.login.summaries.ViewBuyerSummary;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.engclasses.exceptions.DuplicateUserException;
+import com.artistcorner.engclasses.others.SceneController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
-public class GuiControllerRegister {
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+public class GuiControllerBuyerSummary {
     @FXML
-    private AnchorPane anchorDuplicateUser;
+    private AnchorPane anchorGuest;
     @FXML
-    private Label labelExcepDuplicate;
+    private Button button3;
     @FXML
-    private TextField textFieldUserArtist;
+    private AnchorPane anchorParentBuyer;
     @FXML
-    private TextField textFieldPassArtist;
+    private ListView<String> listViewCompra;
     @FXML
-    private TextField textFieldCognomeArtist;
+    private Label labelUsernameDisplay;
     @FXML
-    private TextField textFieldNomeArtist;
+    private Label labelLogOutBuyerSum;
     @FXML
-    private TextField textFieldUserBuyer;
+    private Stage stageBuyer;
     @FXML
-    private TextField textFieldPassBuyer;
-    @FXML
-    private TextField textFieldCognomeBuyer;
-    @FXML
-    private TextField textFieldNomeBuyer;
-    @FXML
-    private TextField textFieldUserGallery;
-    @FXML
-    private TextField textFieldPassGallery;
-    @FXML
-    private TextField textFieldAddressGallery;
-    @FXML
-    private TextField textFieldNomeGallery;
-    @FXML
-    private TextField textFieldDescriptionGallery;
-    @FXML
-    private TextField textFieldNumber;
-    @FXML
-    private TextField textFieldCap;
-    @FXML
-    private TextField textFieldCity;
+    private SVGPath svgProfileBuyerSum;
 
-    private Register signUp = new Register();
-
-    public void registerArtist() {
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserArtist.getText());
-        userReg.setPassword(textFieldPassArtist.getText());
-        userReg.setRole("artista");
-
-        ArtistBean artistReg = new ArtistBean();
-
-        artistReg.setNome(textFieldNomeArtist.getText());
-        artistReg.setCognome(textFieldCognomeArtist.getText());
-
-        try {
-            signUp.registerArtist(userReg, artistReg);
-        } catch (DuplicateUserException e) {
-            labelExcepDuplicate.setText(e.getMessage());
-            anchorDuplicateUser.setVisible(true);
-        }
-
-        textFieldUserArtist.clear();
-        textFieldPassArtist.clear();
-        textFieldNomeArtist.clear();
-        textFieldCognomeArtist.clear();
-    }
-    public void registerBuyer(){
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserBuyer.getText());
-        userReg.setPassword(textFieldUserBuyer.getText());
-        userReg.setRole("acquirente");
-
-        BuyerBean buyerReg = new BuyerBean();
-
-        buyerReg.setNome(textFieldNomeBuyer.getText());
-        buyerReg.setCognome(textFieldCognomeBuyer.getText());
-
-        try {
-            signUp.registerBuyer(userReg, buyerReg);
-        } catch (DuplicateUserException e) {
-            labelExcepDuplicate.setText(e.getMessage());
-            anchorDuplicateUser.setVisible(true);
-        }
-        textFieldUserBuyer.clear();
-        textFieldPassBuyer.clear();
-        textFieldNomeBuyer.clear();
-        textFieldCognomeBuyer.clear();
-
-    }
-    public void registerGallery(){
-        UserBean userReg = new UserBean();
-
-        userReg.setUsername(textFieldUserGallery.getText());
-        userReg.setPassword(textFieldPassGallery.getText());
-        userReg.setRole("galleria");
-
-        String address = textFieldAddressGallery.getText()+", "+textFieldNumber.getText()+", "+textFieldCap.getText()+" "+textFieldCity.getText();
-
-        ArtGalleryBean artGalleryReg = new ArtGalleryBean();
-
-        artGalleryReg.setNome(textFieldNomeGallery.getText());
-        artGalleryReg.setDescrizione(textFieldDescriptionGallery.getText());
-        artGalleryReg.setIndirizzo(address);
-
-
-        try {
-            signUp.registerGallery(userReg, artGalleryReg);
-        } catch (DuplicateUserException e) {
-            labelExcepDuplicate.setText(e.getMessage());
-            anchorDuplicateUser.setVisible(true);
-        }
-        textFieldUserGallery.clear();
-        textFieldPassGallery.clear();
-        textFieldNomeGallery.clear();
-        textFieldAddressGallery.clear();
-        textFieldDescriptionGallery.clear();
-        textFieldNumber.clear();
-        textFieldCity.clear();
-        textFieldCap.clear();
-    }
+    private double x=0;
+    private double y=0;
+    private BuyerBean buy;
 
 
     public void initialize(){
-       labelExcepDuplicate.setMaxWidth(299);
-       labelExcepDuplicate.setWrapText(true);
-       anchorDuplicateUser.setVisible(false);
+        makeDraggable();
+        makeLogOutBuyer();
+
+        anchorGuest.setVisible(false);
+        svgProfileBuyerSum.setScaleX(0.07);
+        svgProfileBuyerSum.setScaleY(0.07);
+    }
+
+    public void makeLogOutBuyer(){
+        labelLogOutBuyerSum.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            try {
+                SceneController.switchToLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+    public void getBuyer(BuyerBean loggedBuyer) {
+        buy = loggedBuyer;
+
+        if(buy.getIdBuyer() == 13){initGuest();}
+
+        labelUsernameDisplay.setText(buy.getNome()+" "+buy.getCognome());
+        initializeOpereComprate(listViewCompra,buy);
+    }
+
+
+    public void initGuest(){
+        labelLogOutBuyerSum.setText("ACCEDI");
+        button3.setDisable(true);
+        anchorGuest.setVisible(true);
+    }
+
+    private void makeDraggable(){
+        anchorParentBuyer.setOnMousePressed((eventPressBuy -> {
+            x=eventPressBuy.getSceneX();
+            y= eventPressBuy.getSceneY();
+        }));
+
+        anchorParentBuyer.setOnMouseDragged((eventDragBuy -> {
+            stageBuyer = (Stage) ((Node)eventDragBuy.getSource()).getScene().getWindow();
+            stageBuyer.setX(eventDragBuy.getScreenX() - x);
+            stageBuyer.setY(eventDragBuy.getScreenY() - y);
+        }));
+    }
+
+    public void minimizeWindow() {
+        stageBuyer = (Stage) anchorParentBuyer.getScene().getWindow();
+        stageBuyer.setIconified(true);
+    }
+
+    public void exitWindow() {
+        stageBuyer = (Stage) anchorParentBuyer.getScene().getWindow();
+        stageBuyer.close();
+    }
+
+    public void switchToSearchArtWorkBuyer(ActionEvent actionEvent) throws IOException {
+        SceneController.switchToSceneSearchArtWorkBuyer(actionEvent,buy);
+    }
+
+    public void switchToFavouritesBuyer(ActionEvent actionEvent) throws IOException, SQLException {
+        SceneController.switchToSceneFavouritesBuyer(actionEvent,buy);
+    }
+    public void initializeOpereComprate(ListView<String> listViewComprate, BuyerBean buy)  {
+        ViewBuyerSummary vbs = new ViewBuyerSummary();
+
+        List<ArtworkBean> arrayOfComprateD = vbs.retrieveAllComprate(buy);
+
+        for (ArtworkBean n : arrayOfComprateD) {
+            ArtworkBean artworkComprata = vbs.retrieveArtWorks(n.getIdOpera(), 0);
+            listViewComprate.getItems().add("Titolo Opera:  " + artworkComprata.getTitolo() + "     Prezzo di acquisto:   € " + artworkComprata.getPrezzo());  // Popola la listView.
+        }
     }
 
 }

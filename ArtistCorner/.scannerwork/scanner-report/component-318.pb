@@ -1,1 +1,1 @@
-¾ 2javaX	hr[src/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundExceptionView.java
+¾ 2javaXhrVsrc/main/java/com/artistcorner/engclasses/exceptions/SellArtworkNotFoundException.java

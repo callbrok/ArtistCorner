@@ -1,1 +1,1 @@
-Œ 2javaX4hr_src/main/java/com/artistcorner/controller/applicationcontroller/ViewSentArtGalleryProposal.java
+Œ 2javaX,hrgsrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewGallerySummary.java

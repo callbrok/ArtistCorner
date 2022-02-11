@@ -47,7 +47,6 @@ public class GuiControllerMobileManageProposals {
     private double y=0;
     private Stage stage;
 
-    private ManageProposals omlc = new ManageProposals();
     private ArtistBean art;
     
 
@@ -78,6 +77,8 @@ public class GuiControllerMobileManageProposals {
                 });
 
         paneInfoLoading.setVisible(true);              // Durante l'esecuzione del thread visualizza un messaggio di caricamento
+
+        ManageProposals omlc = new ManageProposals();
         webMap.getEngine().loadContent(omlc.makeMapHtml(luogo, 438));      // Carica l'html della pagina
     }
 
@@ -136,17 +137,17 @@ public class GuiControllerMobileManageProposals {
                 buttonRecline.setVisible(true);
             }
 
+            ManageProposals omlcb = new ManageProposals();
 
             // Inizializza evento sul click del bottone "Accetta" proposta.
             EventHandler<ActionEvent> eventAccept = e -> {
                 ProposalBean propToAccept = new ProposalBean();
-                ManageProposals omlc = new ManageProposals();
 
                 propToAccept.setFlagAccettazione(1);
                 propToAccept.setIdOfferta(proposalId);
 
                 try {
-                    omlc.acceptProposal(propToAccept);
+                    omlcb.acceptProposal(propToAccept);
                     SceneControllerMobile.switchToSceneProfiloOfferteMostre(e, art);
                 } catch (SQLException | IOException ex) {
                     ex.printStackTrace();
@@ -156,13 +157,12 @@ public class GuiControllerMobileManageProposals {
             // Inizializza evento sul click del bottone "Rifiuta" proposta.
             EventHandler<ActionEvent> eventDecline= e -> {
                 ProposalBean propToReject = new ProposalBean();
-                ManageProposals omlc = new ManageProposals();
 
                 propToReject.setFlagAccettazione(2);
                 propToReject.setIdOfferta(proposalId);
 
                 try {
-                    omlc.rejectProposal(propToReject);
+                    omlcb.rejectProposal(propToReject);
                     SceneControllerMobile.switchToSceneProfiloOfferteMostre(e, art);
                 } catch (SQLException | IOException ex) {
                     ex.printStackTrace();

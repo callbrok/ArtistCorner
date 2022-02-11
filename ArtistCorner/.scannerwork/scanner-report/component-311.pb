@@ -1,2 +1,1 @@
-· 2javaX
-hr^src/main/java/com/artistcorner/engclasses/exceptions/BuyArtworkManagementProblemException.java
+· 2javaXhrSsrc/main/java/com/artistcorner/engclasses/exceptions/ProposalNotFoundException.java

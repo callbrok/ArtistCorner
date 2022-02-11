@@ -1,1 +1,1 @@
-’ 2javaXBhrfsrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewArtistSummary.java
+’ 2javaXÀhrVsrc/main/java/com/artistcorner/controller/applicationcontroller/GetReccomandation.java

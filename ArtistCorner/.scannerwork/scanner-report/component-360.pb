@@ -1,1 +1,1 @@
-è 2javaXÅhr]src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewLogAnalytics.java
+è 2javaX’hrisrc/main/java/com/artistcorner/controller/guicontroller/manageproposals/GuiControllerManageProposals.java

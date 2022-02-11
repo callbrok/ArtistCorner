@@ -1,2 +1,1 @@
-Ë 2javaX
-hrMsrc/main/java/com/artistcorner/engclasses/exceptions/AddGalleryException.java
+Ë 2javaX0hrAsrc/main/java/com/artistcorner/engclasses/query/QueryArtwork.java

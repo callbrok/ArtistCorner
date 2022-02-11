@@ -1,47 +1,26 @@
-package com.artistcorner.engclasses.others;
+package com.artistcorner.engclasses.others.observer;
 
-import com.artistcorner.engclasses.exceptions.*;
+import java.util.ArrayList;
 
-public class ExceptionsFactory {
+public abstract class Subject {
 
-    //***Singleton***/
-    private static ExceptionsFactory instance = null;
-    private ExceptionsFactory() {}
+        private ArrayList<Observer> observerArrayList ;
 
-    public static synchronized ExceptionsFactory getInstance() {
-        if(instance == null) {
-            instance = new ExceptionsFactory();
+        protected Subject() {
+            observerArrayList = new ArrayList<>() ;
         }
-        return instance;
-    }
 
-    public ExceptionView createView(ExceptionsTypeManager etm) {
-
-        switch(etm.getType()) {
-            case 0: case 7:
-                return new EmptyFieldExceptionView(etm);
-
-            case 1: case 8:
-                return new EmpyPathExceptionView(etm);
-
-            case 2: case 9:
-                return new DuplicateArtworkExceptionView(etm);
-
-            case 3: case 10:
-                return new ProposalNotFoundExceptionView(etm);
-
-            case 4: case 11:
-                return new SellArtworkNotFoundExceptionView(etm);
-
-            case 5: case 12:
-                return new ArtworkNotFoundExceptionView(etm);
-
-            case 6: case 13:
-                return new SentProposalNotFoundExceptionView(etm);
-
-            default:
-                return new EmptyFieldExceptionView(etm);
+        public void attach(Observer newObserver) {
+            observerArrayList.add(newObserver) ;
         }
-    }
 
+        public void detach(Observer removeObserver) {
+            observerArrayList.remove(removeObserver) ;
+        }
+
+        protected void notifyObservers() {
+            for (Observer observer : observerArrayList) {
+                observer.update();
+            }
+        }
 }

@@ -1,30 +1,30 @@
-package com.artistcorner.controller.applicationcontroller.login.summaries;
+package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtworkBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.dao.ArtworkDAO;
+import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
+import com.artistcorner.engclasses.exceptions.EmptyFieldException;
+import com.artistcorner.engclasses.exceptions.EmptyPathException;
 import com.artistcorner.model.Artwork;
 
-import java.util.List;
 
-public class ViewBuyerSummary {
+public class UploadArtwork {
 
-    public List<ArtworkBean> retrieveAllComprate(BuyerBean buyB)  {
-        return ArtworkDAO.retrieveAllComprate(buyB.getIdBuyer());
+    public void uploadImage(ArtworkBean upArt, String filePath) throws DuplicateArtworkException, EmptyPathException, EmptyFieldException {
+
+        if(upArt.getTitolo().equals("")) {
+            throw new EmptyFieldException("Lasciati campi per l'upload vuoti.");
+        }
+
+        if(filePath.equals("")){
+            throw new EmptyPathException("Nessun file selezionato.");
+        }
+
+        Artwork artToUpload = new Artwork(upArt.getTitolo(), upArt.getPrezzo(), upArt.getFlagVendibile(), upArt.getArtistId(), upArt.getCategoria());
+
+        ArtworkDAO.saveArtWork(artToUpload, filePath);
     }
 
-    public ArtworkBean retrieveArtWorks(int integer, int flag) {
-        Artwork a = ArtworkDAO.retrieveArtWorks(integer, flag);
-        ArtworkBean artWorkB = new ArtworkBean();
 
-        artWorkB.setIdOpera(a.getIdOpera());
-        artWorkB.setTitolo(a.getTitolo());
-        artWorkB.setPrezzo(a.getPrezzo());
-        artWorkB.setFlagVendibile(a.getFlagVenduto());
-        artWorkB.setArtistId(a.getArtistaId());
-        artWorkB.setCategoria(a.getCategoria());
-        artWorkB.setImmagine(a.getImmagine());
 
-        return artWorkB;
-    }
 }

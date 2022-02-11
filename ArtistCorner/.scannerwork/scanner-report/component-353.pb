@@ -1,1 +1,1 @@
-á 2javaXhr>src/main/java/com/artistcorner/engclasses/bean/ArtistBean.java
+á 2javaX4hrUsrc/main/java/com/artistcorner/engclasses/others/observer/GalleryConcreteSubject.java

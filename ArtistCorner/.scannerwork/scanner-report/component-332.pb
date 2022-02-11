@@ -1,2 +1,1 @@
-Ì 2javaX
-hrWsrc/main/java/com/artistcorner/engclasses/exceptions/SentProposalNotFoundException.java
+Ì 2javaXhrBsrc/main/java/com/artistcorner/engclasses/query/QueryProposal.java

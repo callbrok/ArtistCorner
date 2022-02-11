@@ -1,8 +1,10 @@
 package com.artistcorner.engclasses.exceptions;
 
-import com.artistcorner.engclasses.others.ExceptionsTypeManager;
+public class GetRaccomandationProblemException extends Exception{
 
-public class DuplicateArtworkExceptionView extends ExceptionView{
+    private static final long serialVersionUID = 1L;
 
-    public DuplicateArtworkExceptionView(ExceptionsTypeManager etm){super(etm);}
+    public GetRaccomandationProblemException (String message) {
+        super(message);
+    }
 }

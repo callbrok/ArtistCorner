@@ -1,2 +1,1 @@
-Ð 2javaX
-hrPsrc/main/java/com/artistcorner/engclasses/exceptions/DuplicateUserException.java
+Ð 2javaXhr>src/main/java/com/artistcorner/engclasses/query/QueryUser.java

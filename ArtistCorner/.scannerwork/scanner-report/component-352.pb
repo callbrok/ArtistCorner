@@ -1,1 +1,1 @@
-à 2javaXhr=src/main/java/com/artistcorner/engclasses/bean/BuyerBean.java
+à 2javaX/hrGsrc/main/java/com/artistcorner/engclasses/others/observer/SendMail.java

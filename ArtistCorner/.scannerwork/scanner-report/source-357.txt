@@ -1,237 +1,30 @@
 package com.artistcorner.engclasses.others;
 
-import com.artistcorner.controller.guicontroller.mobile.getreccomandation.GuiControllerMobileGetReccomandation;
-import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileArtistSummary;
-import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileBuyerSummary;
-import com.artistcorner.controller.guicontroller.mobile.login.summaries.GuiControllerMobileGallerySummary;
-import com.artistcorner.controller.guicontroller.mobile.uploadartwork.GuiControllerMobileUploadArtwork;
-import com.artistcorner.controller.guicontroller.mobile.manageproposals.GuiControllerMobileManageProposals;
-import com.artistcorner.controller.guicontroller.mobile.viewfavouritesbuyer.GuiControllerMobileViewFavouritesBuyer;
-import com.artistcorner.controller.guicontroller.mobile.manageartworks.GuiControllerMobileManageArtworks;
-import com.artistcorner.controller.guicontroller.mobile.viewprofilegallery.GuiControllerMobileManageFollowedArtist;
-import com.artistcorner.controller.guicontroller.mobile.viewsentartgalleryproposal.GuiControllerMobileViewPendingProposals;
-import com.artistcorner.controller.guicontroller.mobile.viewsoldartworks.GuiControllerMobileViewSoldArtworks;
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkbuyer.GuiControllerMobileViewSearchArtWorkBuyer;
-import com.artistcorner.controller.guicontroller.mobile.viewsearchartworkgallery.GuiControllerMobileViewSearchArtWorkGallery;
-import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import java.io.Serializable;
 
-import java.io.IOException;
-import java.sql.SQLException;
+public class Nodo implements Serializable {
+    String domanda;
+    int idAppartenenza;
+    int idProprio;
+    String decisione;
+    String solutionPart;
+    String keyObj;
+    String solutionS;
 
-public class SceneControllerMobile {
 
-    public static  final String CSS_PATH = "/css/" + "mobile/" + "main.css";
+    public void setDomanda(String domanda) {this.domanda = domanda;}
+    public void setIdAppartenenza(int idAppartenenza) {this.idAppartenenza = idAppartenenza;}
+    public void setIdProprio(int idProprio) {this.idProprio = idProprio;}
+    public void setDecisione(String decisione) {this.decisione = decisione;}
+    public void setSolutionPart(String solutionPart) {this.solutionPart = solutionPart;}
+    public void setKeyObj(String keyObj) {this.keyObj = keyObj;}
+    public void setSolutionS(String solutionS) {this.solutionS = solutionS;}
 
-    public static void switchToSceneMainArtista(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/login/ArtistSummaryMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileArtistSummary gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneProfiloArtista(ActionEvent event, ArtistBean art) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ManageArtworksMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileManageArtworks gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneProfiloAlgoritmo(MouseEvent event, ArtistBean art) throws IOException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/GetReccomandationMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileGetReccomandation gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneProfiloVenduto(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ViewSoldArtworksMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewSoldArtworks gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneProfiloOfferteMostre(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ManageProposalsMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileManageProposals gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneUploadOpera(ActionEvent event, ArtistBean art) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/UploadArtworkMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileUploadArtwork gcas = loader.getController();
-        gcas.getArtist(art);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToLogin(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(SceneControllerMobile.class.getResource("/view/mobile/login/LoginMobileView.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneSearchArtWorkBuyer(ActionEvent event, BuyerBean buy) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/BuyerSearchMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewSearchArtWorkBuyer gcas = loader.getController();
-        gcas.getBuyer(buy);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneBuyerSummary(ActionEvent event, BuyerBean buy) throws IOException{
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/login/BuyerSummaryMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileBuyerSummary gcas = loader.getController();
-        gcas.getBuyer(buy);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    public static void switchToSceneFavouritesBuyer(ActionEvent event, BuyerBean buy) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/BuyerFavouritesMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewFavouritesBuyer gcas = loader.getController();
-        gcas.getBuyer(buy);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneSentArtGalleryProposal(ActionEvent event, ArtGalleryBean gal) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/SentArtGalleryProposalMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewSentArtGalleryProposal gcas = loader.getController();
-        gcas.getGallery(gal);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void switchToSceneGallerySummary(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/login/GallerySummaryMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileGallerySummary gcas = loader.getController();
-        gcas.getGallery(gal);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public static void switchToSceneSearchArtWorkGallery(ActionEvent event, ArtGalleryBean gal) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/GallerySearchMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewSearchArtWorkGallery gcas = loader.getController();
-        gcas.getGallery(gal);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public static void switchToSceneProfiloGallery(ActionEvent event,ArtGalleryBean gal) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(SceneControllerMobile.class.getResource("/view/mobile/ProfileGalleryMobileView.fxml"));
-        Parent root = loader.load();
-
-        GuiControllerMobileViewProfileGallery gcas = loader.getController();
-        gcas.getGallery(gal);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(SceneControllerMobile.class.getResource(CSS_PATH).toExternalForm());
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.show();
-    }
+    public int getIdAppartenenza(){ return idAppartenenza; }
+    public int getIdProprio(){ return idProprio; }
+    public String getDecisione(){ return decisione; }
+    public String getDomanda(){ return domanda; }
+    public String getKeyObj() {return keyObj;}
+    public String getSolutionPart() {return solutionPart;}
+    public String getSolutionS() {return solutionS;}
 }

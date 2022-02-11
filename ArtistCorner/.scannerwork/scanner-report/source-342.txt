@@ -1,18 +1,16 @@
-package com.artistcorner.engclasses.query;
+package com.artistcorner.engclasses.bean;
 
-import com.artistcorner.engclasses.bean.UserBean;
-import com.artistcorner.model.User;
+public class ArtistBean {
+    private int idArtista;
+    private String nome;
+    private String cognome;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
-public class QueryUser {
+    public void setIdArtista(int idArtista) {this.idArtista = idArtista;}
+    public void setCognome(String cognome) {this.cognome = cognome;}
+    public void setNome(String nome) {this.nome = nome;}
 
-    private QueryUser(){throw new IllegalStateException("Utility Query Login class");}
-
-    public static ResultSet selectUser(Statement stmt, User user) throws SQLException {
-        String sql = "SELECT * FROM utente WHERE username ='" + user.getUsername() + "' AND password='" + user.getPassword() + "';";
-        return stmt.executeQuery(sql);
-    }
+    public String getNome() {return nome;}
+    public int getIdArtista() {return idArtista;}
+    public String getCognome() {return cognome;}
 }

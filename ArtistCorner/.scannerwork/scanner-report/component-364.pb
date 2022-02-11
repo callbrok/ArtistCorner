@@ -1,1 +1,1 @@
-ì 2javaXShrFsrc/main/java/com/artistcorner/engclasses/others/StartApplication.java
+ì 2javaX»hrgsrc/main/java/com/artistcorner/controller/guicontroller/viewfavourites/GuiControllerViewFavourites.java

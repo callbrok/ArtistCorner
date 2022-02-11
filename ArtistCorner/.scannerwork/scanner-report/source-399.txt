@@ -1,54 +1,54 @@
-package com.artistcorner.controller.applicationcontroller.login;
+package com.artistcorner.controller.applicationcontroller;
 
 import com.artistcorner.engclasses.bean.ArtGalleryBean;
-import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.bean.BuyerBean;
-import com.artistcorner.engclasses.bean.UserBean;
+import com.artistcorner.engclasses.bean.ProposalBean;
 import com.artistcorner.engclasses.dao.ArtistDAO;
 import com.artistcorner.engclasses.dao.BuyerDAO;
 import com.artistcorner.engclasses.dao.GalleryDAO;
-import com.artistcorner.engclasses.exceptions.AddArtistException;
-import com.artistcorner.engclasses.exceptions.AddBuyerException;
-import com.artistcorner.engclasses.exceptions.AddGalleryException;
-import com.artistcorner.engclasses.exceptions.DuplicateUserException;
-import com.artistcorner.engclasses.query.QueryArtist;
+import com.artistcorner.engclasses.dao.ProposalDAO;
+import com.artistcorner.engclasses.exceptions.ProposalNotFoundException;
+import com.artistcorner.engclasses.exceptions.SentProposalNotFoundException;
 import com.artistcorner.model.ArtGallery;
 import com.artistcorner.model.Artist;
-import com.artistcorner.model.Buyer;
-import com.artistcorner.model.User;
+import com.artistcorner.model.Proposal;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Register {
+public class ViewPendingProposals {
 
-    public void registerArtist(UserBean user, ArtistBean art) throws DuplicateUserException{
-        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole());
-        Artist artistToAdd = new Artist(art.getNome(), art.getCognome());
+    public String retrieveArtistName(ProposalBean prop) {
+        int idArtista= prop.getArtista();
 
-        try {
-            ArtistDAO.insertArtist(userToAdd, artistToAdd);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public void registerGallery(UserBean user, ArtGalleryBean gal) throws DuplicateUserException {
-        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole());
-        ArtGallery artGalleryToAdd = new ArtGallery(gal.getGalleria(),gal.getNome(),gal.getDescrizione(),gal.getIndirizzo());
-        try{
-            GalleryDAO.insertGallery(userToAdd,artGalleryToAdd);
-        }catch (SQLException e1){
-            e1.printStackTrace();
-        }
-    }
-    public void registerBuyer(UserBean user, BuyerBean buy)throws DuplicateUserException{
-        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole());
-        Buyer buyerToAdd = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
-        try{
-            BuyerDAO.insertBuyer(userToAdd,buyerToAdd);
-        }catch (SQLException e2){
-            e2.printStackTrace();
-        }
+        Artist name = ArtistDAO.retrieveArtistFromId(idArtista);
+        return name.getNome()+" "+name.getCognome(); // ritorno nome e cognome dell'artista associato all'opera
 
     }
 
+    public List<ProposalBean> retrieveProposal(ArtGalleryBean gallery, int flag) throws SentProposalNotFoundException {
+        ArtGallery ag = new ArtGallery(gallery.getGalleria(),gallery.getNome(),gallery.getDescrizione(),gallery.getIndirizzo());
+        List<Proposal> proposal = ProposalDAO.retrieveProposalFromGallery(ag,flag,"");    //lista delle proposte inviate
+        List<ProposalBean>proposalBean= new ArrayList<>();
+
+
+        if (proposal.isEmpty()){
+            if(flag==1) {throw new SentProposalNotFoundException("nessuna proposta accettata trovata");}
+            else {throw new SentProposalNotFoundException("nessuna proposta in attesa trovata");}
+        }
+
+        for (Proposal p: proposal) {
+            ProposalBean propBeanSent = new ProposalBean();
+            propBeanSent.setIdOfferta(p.getIdOfferta());
+            propBeanSent.setArtista(p.getArtista());
+            propBeanSent.setGalleria(p.getGalleria());
+            propBeanSent.setFlagAccettazione(p.getFlagAccettazione());
+
+            proposalBean.add(propBeanSent);
+        }
+        return proposalBean;
+    }
+    public void  removeProposta(ArtGalleryBean gallery, int idArtista) throws SQLException, ProposalNotFoundException {
+        ProposalDAO.removeProposta(gallery.getGalleria(),idArtista); // rimuovo la proposta
+    }
 }

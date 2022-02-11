@@ -1,1 +1,1 @@
-é 2javaXÞhr_src/main/java/com/artistcorner/engclasses/others/analytics/GuiControllerViewSALogAnalytics.java
+é 2javaXýhrasrc/main/java/com/artistcorner/controller/guicontroller/findartwork/GuiControllerFindArtwork.java

@@ -1,1 +1,1 @@
-ù 2javaXËhrsrc/main/java/com/artistcorner/controller/guicontroller/viewsentartgalleryproposal/GuiControllerViewSentArtGalleryProposal.java
+ù 2javaXæhrrsrc/main/java/com/artistcorner/controller/guicontroller/mobile/uploadartwork/GuiControllerMobileUploadArtwork.java

@@ -1,1 +1,1 @@
-ç 2javaXhrFsrc/main/java/com/artistcorner/engclasses/others/analytics/Commit.java
+ç 2javaXÌhrssrc/main/java/com/artistcorner/controller/guicontroller/viewpendingproposals/GuiControllerViewPendingProposals.java

@@ -1,1 +1,1 @@
-ö 2javaX¥hrUsrc/main/java/com/artistcorner/controller/guicontroller/login/GuiControllerLogin.java
+ö 2javaX©hr€src/main/java/com/artistcorner/controller/guicontroller/mobile/viewpendingproposals/GuiControllerMobileViewPendingProposals.java
