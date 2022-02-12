@@ -186,7 +186,7 @@ public class GuiControllerFindArtwork {
 
             prezzoSearch.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #d13e0a;");
             prezzoSearch.setMaxWidth(Double.MAX_VALUE);
-            prezzoSearch.setText(artWorkBean.getPrezzo() + " €");
+            prezzoSearch.setText("€ " + artWorkBean.getPrezzo());
             prezzoSearch.setAlignment(Pos.CENTER);
 
 

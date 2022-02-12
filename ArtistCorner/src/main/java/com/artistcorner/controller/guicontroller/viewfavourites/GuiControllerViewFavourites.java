@@ -155,11 +155,10 @@ public class GuiControllerViewFavourites {
                         labelArtistNameFavDesk.setAlignment(Pos.CENTER);
                         labelArtistNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
 
-                        prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
+                        prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #d13e0a;");
                         prezzoFavDesk.setMaxWidth(Double.MAX_VALUE);
-                        prezzoFavDesk.setText(artworkBean.getPrezzo() + " €");
+                        prezzoFavDesk.setText("€ " + artworkBean.getPrezzo());
                         prezzoFavDesk.setAlignment(Pos.CENTER);
-                        prezzoFavDesk.setTextFill(Paint.valueOf("d13e0a"));
 
                         VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk, prezzoFavDesk);
                         vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");

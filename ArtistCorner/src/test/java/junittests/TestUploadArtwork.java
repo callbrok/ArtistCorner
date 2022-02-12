@@ -6,6 +6,7 @@ import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
 import com.artistcorner.engclasses.exceptions.EmptyFieldException;
 import com.artistcorner.engclasses.exceptions.EmptyPathException;
+import com.artistcorner.engclasses.exceptions.ImageTooLargeException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +31,7 @@ public class TestUploadArtwork {
 
         try {
             upju.uploadImage(artWorkToCheck,"");
-        } catch (DuplicateArtworkException | EmptyFieldException e) {
+        } catch (DuplicateArtworkException | EmptyFieldException | ImageTooLargeException e) {
             code = 0;
         } catch (EmptyPathException e1){
             code = 1;

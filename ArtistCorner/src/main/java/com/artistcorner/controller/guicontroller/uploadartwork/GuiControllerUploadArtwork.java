@@ -3,10 +3,7 @@ package com.artistcorner.controller.guicontroller.uploadartwork;
 import com.artistcorner.controller.applicationcontroller.UploadArtwork;
 import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtworkException;
-import com.artistcorner.engclasses.exceptions.EmptyFieldException;
-import com.artistcorner.engclasses.exceptions.EmptyPathException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
 import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
@@ -234,6 +231,13 @@ public class GuiControllerUploadArtwork {
         }catch(NumberFormatException n){
             // Eccezione: Prezzo non valido.
             anchorPriceExcept.setVisible(true);
+        }catch (ImageTooLargeException ime){
+            // Eccezione: Caricata immagine troppo grande.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeManager.IMAGETOOLARGE);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 
         resetForm();

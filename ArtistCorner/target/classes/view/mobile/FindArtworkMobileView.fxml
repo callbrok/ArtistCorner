@@ -39,7 +39,7 @@
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="264.0" layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane id="error" fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="446.0" prefWidth="438.0">
-               <ListView fx:id="listView" layoutX="10.0" layoutY="113.0" prefHeight="333.0" prefWidth="429.0" style="-fx-selection-bar: transparent;" styleClass="listSearch" />
+               <ListView fx:id="listView" layoutX="13.0" layoutY="113.0" prefHeight="333.0" prefWidth="425.0" style="-fx-selection-bar: transparent;" styleClass="listSearch" />
                <Pane fx:id="paneExLoad" layoutY="113.0" prefHeight="333.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" visible="false">
                   <children>
                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="33.0" prefHeight="264.0" prefWidth="369.0" style="-fx-background-color: #d13e0a;" text="Nessuna Opera Trovata" textFill="WHITE">

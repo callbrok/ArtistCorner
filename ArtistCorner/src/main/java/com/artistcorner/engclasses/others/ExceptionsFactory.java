@@ -39,6 +39,9 @@ public class ExceptionsFactory {
             case 6: case 13:
                 return new SentProposalNotFoundExceptionView(etm);
 
+            case 14: case 15:
+                return new ImageTooLargeExceptionView(etm);
+
             default:
                 return new EmptyFieldExceptionView(etm);
         }

@@ -11,6 +11,7 @@ public enum ExceptionsTypeManager {
     SELLARTNOTFOUND(4, "/view/exceptions/SellNotFoundException.fxml"), // Nessun opera venduta
     ARTWORKNOTFOUND(5, "/view/exceptions/ArtworkNotFoundException.fxml"), // Nessun opera caricata
     SENTPROPOSALNOTFOUND(6,"/view/exceptions/SentProposalNotFoundException.fxml"),//Nessuna proposta inviata
+    IMAGETOOLARGE(14,"/view/exceptions/ImageTooLargeException.fxml"),// Caricata immagine troppo grande
 
     EMPTYFIELD_MOBILE(7, "/view/mobile/exceptions/EmptyFieldMobileException.fxml"),
     EMPTYPATH_MOBILE(8, "/view/mobile/exceptions/EmptyPathMobileException.fxml"),
@@ -18,7 +19,8 @@ public enum ExceptionsTypeManager {
     PROPOSALNOTFOUND_MOBILE(10, "/view/mobile/exceptions/ProposalNotFoundMobileException.fxml"), // Nessuna proposta attuale
     SELLARTNOTFOUND_MOBILE(11, "/view/mobile/exceptions/SellNotFoundMobileException.fxml"), // Nessun opera venduta
     ARTWORKNOTFOUND_MOBILE(12, "/view/mobile/exceptions/ArtworkNotFoundMobileException.fxml"), // Nessun opera caricata
-    SENTPROPOSALNOTFOUND_MOBILE(13,"/view/mobile/exceptions/SentProposalNotFoundMobileException.fxml");//Nessuna proposta inviata
+    SENTPROPOSALNOTFOUND_MOBILE(13,"/view/mobile/exceptions/SentProposalNotFoundMobileException.fxml"),//Nessuna proposta inviata
+    IMAGETOOLARGE_MOBILE(15,"/view/mobile/exceptions/ImageTooLargeMobileException.fxml");// Caricata immagine troppo grande
 
 
     private final int type;

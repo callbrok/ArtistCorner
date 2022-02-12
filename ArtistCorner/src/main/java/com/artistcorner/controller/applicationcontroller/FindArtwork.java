@@ -55,9 +55,7 @@ public class FindArtwork {
         Buyer buy = new Buyer(buyer.getIdBuyer(),buyer.getNome(),buyer.getCognome());
         List<Artwork> artWorkIdList = ArtworkDAO.retrieveArtWorkId(buy.getIdBuyer());
         List<ArtworkBean> artwBeanList = new ArrayList<>();
-        if (artWorkIdList.isEmpty()){
-            throw new ArtworkNotFoundException("Nessuna Opera disponibile.");
-        }
+
         for (Artwork a : artWorkIdList){
             ArtworkBean awb= new ArtworkBean();
             awb.setIdOpera(a.getIdOpera());

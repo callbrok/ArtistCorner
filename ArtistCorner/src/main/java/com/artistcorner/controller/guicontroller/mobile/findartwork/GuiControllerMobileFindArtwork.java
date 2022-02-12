@@ -119,9 +119,9 @@ public class GuiControllerMobileFindArtwork {
     public class HBoxCellMobile extends HBox {
         Label labelArtWorkNameMobBuy = new Label();
         Label labelArtistNameMobBuy = new Label();
+        Label prezzoMobBuy = new Label();
         Button buttonAcquistaMobBuy = new Button();
         Button buttonPreferitiMobBuy = new Button();
-        Label prezzoMobBuy = new Label();
         ImageView imageView = new ImageView();
 
         public HBoxCellMobile (List<ArtworkBean> arrayListArtWorkIdPrefMob, ArtworkBean artWoBea, ArtistBean artB, BuyerBean buy) {
@@ -140,9 +140,8 @@ public class GuiControllerMobileFindArtwork {
             labelArtistNameMobBuy.setText(artB.getNome()+" "+artB.getCognome());
             labelArtistNameMobBuy.setTextFill(Paint.valueOf("39A67F"));
 
-            prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F ");
+            prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #d13e0a ");
             prezzoMobBuy.setText("€ " + artWoBea.getPrezzo());
-            prezzoMobBuy.setTextFill(Paint.valueOf("d13e0a"));
 
             VBox vBox1 = new VBox(labelArtWorkNameMobBuy, labelArtistNameMobBuy, prezzoMobBuy);
             vBox1.setAlignment(Pos.CENTER);
@@ -174,6 +173,7 @@ public class GuiControllerMobileFindArtwork {
 
                 @Override
                 public void handle(ActionEvent arg0) {
+                    buttonPreferitiMobBuy.setStyle("-fx-background-color: #60b798; -fx-text-fill: #277458;");
                     buttonPreferitiMobBuy.setText("Paga con Carte");
                     buttonAcquistaMobBuy.setText("Paga con PayPal");
                     buttonAcquistaMobBuy.setOnAction(new EventHandler<ActionEvent>() {
@@ -247,19 +247,23 @@ public class GuiControllerMobileFindArtwork {
                 @Override
                 public void handle(ActionEvent arg0) {
                     String answer = null;
-                    boolean checkRemButton = false;
+                    // Controlla se nel momento del click il bottone esegue la rimozione dei preferiti oppure l'aggiunta.
+                    boolean checkRemButton = buttonPreferitiMobBuy.getText().equals("Rimuovi dai Preferiti");
+                    boolean checkAddButton = buttonPreferitiMobBuy.getText().equals("Aggiungi ai Preferiti");
 
-                    // Controlla se nel momento del click il bottone esegue la rimozione dei preferiti.
-                    if(buttonPreferitiMobBuy.getText().equals("Rimuovi dai Preferiti")){checkRemButton = true;}
+                    System.out.println(buttonPreferitiMobBuy.getText() + checkRemButton + checkAddButton);
 
                     try {
                         answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy.getText(),artWoBea, buy);
+
+                        // Dopo la rimozione setta il bottone.
+                        if(checkRemButton){buttonPreferitiMobBuy.setStyle("-fx-background-color: #60b798; -fx-text-fill: #277458;");}
+                        if(checkAddButton){buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");}
+
                     } catch (FavouritesManagementProblemException e) {
                         e.printStackTrace();
                     }
 
-                    // Dopo la rimozione setta il bottone per l'aggiunta.
-                    if(checkRemButton){buttonPreferitiMobBuy.getStyleClass().add("buttonBuy");}
                     buttonPreferitiMobBuy.setText(answer);
                 }
             });
