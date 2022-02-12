@@ -118,23 +118,24 @@ public class GuiControllerMobileViewFavourites {
             labelArtistName.setText(artBean.getNome()+" "+artBean.getCognome());
             labelArtistName.setTextFill(Paint.valueOf("39A67F"));
 
-            prezzo.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F ");
+            prezzo.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F; ");
             prezzo.setText(artwBean.getPrezzo() + " €");
+            prezzo.setTextFill(Paint.valueOf("d13e0a"));
 
             VBox vBox1 = new VBox(labelArtWorkName, labelArtistName, prezzo);
             vBox1.setAlignment(Pos.CENTER);
-            vBox1.setMinWidth(120);
+            vBox1.setMinWidth(110);
             vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
 
             HBox.setHgrow(vBox1, Priority.ALWAYS);
             HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
             buttonAcquista.setText("Acquista");
-            buttonAcquista.setPrefSize(100, 35);
+            buttonAcquista.setPrefSize(110, 35);
             buttonAcquista.getStyleClass().add("buttonBuy");
 
 
             buttonPreferiti.setText("Aggiungi ai Preferiti");
-            buttonPreferiti.setPrefSize(100, 35);
+            buttonPreferiti.setPrefSize(110, 35);
             buttonPreferiti.getStyleClass().add("buttonBuy");
 
             VBox vBox = new VBox(buttonAcquista, buttonPreferiti);
@@ -197,6 +198,7 @@ public class GuiControllerMobileViewFavourites {
             for (ArtworkBean a : arrayListArtWorkId) {
                 if (a.getIdOpera() ==artwBean.getIdOpera()) {
                     buttonPreferiti.setText("Rimuovi dai Preferiti");
+                    buttonPreferiti.getStyleClass().add("buttonRemoveFav");
                 }
             }
             buttonPreferiti.setOnAction(new EventHandler<ActionEvent>() {
@@ -207,7 +209,8 @@ public class GuiControllerMobileViewFavourites {
 
                     try {
                         answer = sa.manageButtonClick(buttonPreferiti.getText(), artwBean, buy);
-                    } catch (FavouritesManagementProblemException e) {
+                        SceneControllerMobile.switchToSceneFavouritesBuyer(arg0, buy);
+                    } catch (FavouritesManagementProblemException | IOException | SQLException e) {
                         e.printStackTrace();
                     }
 

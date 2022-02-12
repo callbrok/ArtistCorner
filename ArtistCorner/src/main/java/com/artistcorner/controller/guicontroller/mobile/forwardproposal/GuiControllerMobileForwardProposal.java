@@ -129,7 +129,7 @@ public class GuiControllerMobileForwardProposal {
             labelArtWorkName.setText(artWorkBean.getTitolo());
             labelArtWorkName.isWrapText();
             labelArtWorkName.setAlignment(Pos.CENTER);
-            labelArtWorkName.setTextFill(Paint.valueOf("39A67F"));
+            labelArtWorkName.setTextFill(Paint.valueOf("22634c"));
 
             labelArtistName.setText(artistBean.getNome()+" "+artistBean.getCognome());
             labelArtistName.isWrapText();

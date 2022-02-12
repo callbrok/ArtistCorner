@@ -180,11 +180,11 @@ public class GuiControllerFindArtwork {
             hBox_border.getStyleClass().add("hBoxBorderMAB");
 
             labelArtWorkNameSearchBuy.setText(artWorkBean.getTitolo());
-            labelArtWorkNameSearchBuy.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtWorkNameSearchBuy.setStyle("-fx-text-fill: #22634c; -fx-font-weight: bold ");
             labelArtistNameSearchBuy.setText(artistBean.getNome()+" "+artistBean.getCognome());
             labelArtistNameSearchBuy.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
 
-            prezzoSearch.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
+            prezzoSearch.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #d13e0a;");
             prezzoSearch.setMaxWidth(Double.MAX_VALUE);
             prezzoSearch.setText(artWorkBean.getPrezzo() + " €");
             prezzoSearch.setAlignment(Pos.CENTER);

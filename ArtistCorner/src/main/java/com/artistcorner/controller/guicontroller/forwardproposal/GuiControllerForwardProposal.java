@@ -198,7 +198,7 @@ public class GuiControllerForwardProposal {
             labelArtWorkNameSearchGal.setText(artWork.getTitolo());
             labelArtWorkNameSearchGal.isWrapText();
             labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
-            labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+            labelArtWorkNameSearchGal.setStyle("-fx-text-fill: #22634c; -fx-font-weight: bold ");
             labelArtWorkNameSearchGal.isWrapText();
 
             labelArtistNameSearchGal.setText(artBean.getNome()+" "+artBean.getCognome());

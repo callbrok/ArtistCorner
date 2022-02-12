@@ -22,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
@@ -148,7 +149,7 @@ public class GuiControllerViewFavourites {
 
                         labelArtWorkNameFavDesk.setText(artworkBean.getTitolo());
                         labelArtWorkNameFavDesk.setAlignment(Pos.CENTER);
-                        labelArtWorkNameFavDesk.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
+                        labelArtWorkNameFavDesk.setStyle("-fx-text-fill: #22634c; -fx-font-weight: bold ");
 
                         labelArtistNameFavDesk.setText(artistBean.getNome()+" "+artistBean.getCognome());
                         labelArtistNameFavDesk.setAlignment(Pos.CENTER);
@@ -156,8 +157,9 @@ public class GuiControllerViewFavourites {
 
                         prezzoFavDesk.setStyle("-fx-font-size: 14px; -fx-font-weight: bold ;-fx-text-fill: #39A67F;");
                         prezzoFavDesk.setMaxWidth(Double.MAX_VALUE);
-                        prezzoFavDesk.setText("€ " + artworkBean.getPrezzo());
+                        prezzoFavDesk.setText(artworkBean.getPrezzo() + " €");
                         prezzoFavDesk.setAlignment(Pos.CENTER);
+                        prezzoFavDesk.setTextFill(Paint.valueOf("d13e0a"));
 
                         VBox vBox1 = new VBox(labelArtWorkNameFavDesk, labelArtistNameFavDesk, prezzoFavDesk);
                         vBox1.setAlignment(Pos.CENTER);vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");

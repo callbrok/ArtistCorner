@@ -135,13 +135,14 @@ public class GuiControllerMobileFindArtwork {
             hBox_border.getStyleClass().add("hBoxBorderMA");
 
             labelArtWorkNameMobBuy.setText(artWoBea.getTitolo());
-            labelArtWorkNameMobBuy.setTextFill(Paint.valueOf("39A67F"));
+            labelArtWorkNameMobBuy.setTextFill(Paint.valueOf("22634c"));
 
             labelArtistNameMobBuy.setText(artB.getNome()+" "+artB.getCognome());
             labelArtistNameMobBuy.setTextFill(Paint.valueOf("39A67F"));
 
             prezzoMobBuy.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F ");
             prezzoMobBuy.setText("€ " + artWoBea.getPrezzo());
+            prezzoMobBuy.setTextFill(Paint.valueOf("d13e0a"));
 
             VBox vBox1 = new VBox(labelArtWorkNameMobBuy, labelArtistNameMobBuy, prezzoMobBuy);
             vBox1.setAlignment(Pos.CENTER);
@@ -151,12 +152,12 @@ public class GuiControllerMobileFindArtwork {
             HBox.setHgrow(vBox1, Priority.ALWAYS);
             HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
             buttonAcquistaMobBuy.setText("Acquista");
-            buttonAcquistaMobBuy.setPrefSize(100, 35);
+            buttonAcquistaMobBuy.setPrefSize(110, 35);
             buttonAcquistaMobBuy.getStyleClass().add("buttonBuy");
 
 
             buttonPreferitiMobBuy.setText("Aggiungi ai Preferiti");
-            buttonPreferitiMobBuy.setPrefSize(100, 35);
+            buttonPreferitiMobBuy.setPrefSize(110, 35);
             buttonPreferitiMobBuy.getStyleClass().add("buttonBuy");
 
             VBox vBox = new VBox(buttonAcquistaMobBuy, buttonPreferitiMobBuy);
@@ -238,6 +239,7 @@ public class GuiControllerMobileFindArtwork {
             for(ArtworkBean art : arrayListArtWorkIdPrefMob){
             if (art.getIdOpera()==artWoBea.getIdOpera()){
                 buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
+                buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");
             }
             }
             buttonPreferitiMobBuy.setOnAction(new EventHandler<ActionEvent>() {
@@ -245,11 +247,19 @@ public class GuiControllerMobileFindArtwork {
                 @Override
                 public void handle(ActionEvent arg0) {
                     String answer = null;
+                    boolean checkRemButton = false;
+
+                    // Controlla se nel momento del click il bottone esegue la rimozione dei preferiti.
+                    if(buttonPreferitiMobBuy.getText().equals("Rimuovi dai Preferiti")){checkRemButton = true;}
+
                     try {
                         answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy.getText(),artWoBea, buy);
                     } catch (FavouritesManagementProblemException e) {
                         e.printStackTrace();
                     }
+
+                    // Dopo la rimozione setta il bottone per l'aggiunta.
+                    if(checkRemButton){buttonPreferitiMobBuy.getStyleClass().add("buttonBuy");}
                     buttonPreferitiMobBuy.setText(answer);
                 }
             });

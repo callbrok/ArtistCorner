@@ -159,6 +159,18 @@
 .buttonBuy:hover{
     -fx-background-color: #88c9b2;
 }
+
+.buttonRemoveFav{
+    -fx-font-size: 8px;
+    -fx-background-color: #e38b6c;
+    -fx-text-fill: #d13e0a;
+    -fx-background-radius: 3px;
+}
+.buttonRemoveFav:hover{
+    -fx-background-color: #ebad98;
+}
+
+
 .buttonProp{
     -fx-font-size: 11px;
     -fx-font-weight: bold;
