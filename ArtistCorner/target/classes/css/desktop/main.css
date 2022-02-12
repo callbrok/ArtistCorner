@@ -149,6 +149,17 @@
     -fx-opacity: 1;
 }
 
+.listBuyerSearch .scroll-bar:vertical {
+    -fx-scale-x: 0;
+}
+
+.listBuyerSearch .scroll-bar:horizontal .increment-arrow,
+.listBuyerSearch .scroll-bar:horizontal .decrement-arrow,
+.listBuyerSearch .scroll-bar:horizontal .increment-button,
+.listBuyerSearch .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
+}
+
 
 /* Start */
 
@@ -181,5 +192,13 @@
     -fx-border-width: 2.5;
     -fx-background-color: #4c4c4c;
 }
+
+.hBoxBorderMAB{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 4;
+    -fx-background-color: #4c4c4c;
+}
+
+
 
 

@@ -42,7 +42,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="listViewCompra" layoutX="19.0" layoutY="39.0" prefHeight="233.0" prefWidth="313.0" />
+                  <ListView fx:id="listViewCompra" layoutX="19.0" layoutY="39.0" prefHeight="233.0" prefWidth="313.0" styleClass="listSearch" />
                   <Pane fx:id="paneGuest" layoutX="14.0" layoutY="50.0" prefHeight="191.0" prefWidth="323.0" style="-fx-background-color: #d13e0a;">
                      <children>
                         <Label layoutX="39.0" layoutY="63.0" text="Devi accedere per poter" textFill="WHITE">

@@ -184,3 +184,22 @@
     -fx-border-width: 2.5;
     -fx-background-color: #4c4c4c;
 }
+
+.hBoxBorderMAB{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 3;
+    -fx-background-color: #4c4c4c;
+}
+
+
+
+.listSearch .scroll-bar:vertical {
+    -fx-scale-x: 0;
+}
+
+.listSearch .scroll-bar:horizontal .increment-arrow,
+.listSearch .scroll-bar:horizontal .decrement-arrow,
+.listSearch .scroll-bar:horizontal .increment-button,
+.listSearch .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
+}

@@ -121,6 +121,11 @@ public class GuiControllerMobileForwardProposal {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
 
+            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBox_border.setMinWidth(75);
+            hBox_border.setMinHeight(75);
+            hBox_border.getStyleClass().add("hBoxBorderMAB");
+
             labelArtWorkName.setText(artWorkBean.getTitolo());
             labelArtWorkName.isWrapText();
             labelArtWorkName.setAlignment(Pos.CENTER);
@@ -137,14 +142,15 @@ public class GuiControllerMobileForwardProposal {
             vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
             vBox1.setMinWidth(120);
 
-            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 65, 10, 60));
-            HBox.setMargin(buttonOfferta,new Insets(15,0,10,0));
+            HBox.setHgrow(vBox1, Priority.ALWAYS);
 
             buttonOfferta.setText("Invia Proposta");
-            buttonOfferta.setPrefSize(100, 50);
-            buttonOfferta.setAlignment(Pos.CENTER);
+            buttonOfferta.setPrefSize(110, 30);
             buttonOfferta.getStyleClass().add("buttonProp");
+
+            HBox hBoxSearchB = new HBox(buttonOfferta);
+            hBoxSearchB.setAlignment(Pos.CENTER);
+
 
             ForwardProposal sa = new ForwardProposal();
             for(ArtistBean art : arrayListProposte) {
@@ -177,7 +183,7 @@ public class GuiControllerMobileForwardProposal {
             });
 
 
-            this.getChildren().addAll(imageView,vBox1, buttonOfferta);
+            this.getChildren().addAll(hBox_border,vBox1, hBoxSearchB);
         }
         private Image extractImage(Blob blob2){
             InputStream inputStream2 = null;

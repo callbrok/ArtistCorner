@@ -42,7 +42,7 @@
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="264.0" layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane id="error" fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="446.0" prefWidth="438.0">
-               <ListView fx:id="listView" layoutX="4.0" layoutY="51.0" prefHeight="395.0" prefWidth="430.0" style="-fx-selection-bar: transparent;" />
+               <ListView fx:id="listView" layoutX="4.0" layoutY="51.0" prefHeight="395.0" prefWidth="430.0" style="-fx-selection-bar: transparent;" styleClass="listSearch" />
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="7.0" prefHeight="34.0" prefWidth="151.0" text="Preferiti" textFill="#39a67f">
                   <font>
                      <Font name="System Bold" size="18.0" />

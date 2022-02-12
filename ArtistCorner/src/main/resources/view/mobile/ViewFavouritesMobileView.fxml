@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="anchor" fx:id="anchorMainFavMob" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewfavourites.GuiControllerMobileViewFavourites">
+<AnchorPane id="anchor" fx:id="anchorMainFavMob" prefHeight="691.0" prefWidth="475.0" styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.viewfavourites.GuiControllerMobileViewFavourites">
     <children>
         <Pane layoutX="17.0" layoutY="43.0" prefHeight="633.0" prefWidth="438.0" styleClass="mainPane">
          <children>
@@ -42,7 +39,7 @@
             <Pane layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane layoutX="264.0" layoutY="85.0" prefHeight="40.0" prefWidth="174.0" style="-fx-background-color: #60b798;" />
             <Pane id="error" fx:id="paneExceptionLoad" layoutY="138.0" prefHeight="446.0" prefWidth="438.0">
-               <ListView fx:id="listView" layoutX="4.0" layoutY="51.0" prefHeight="395.0" prefWidth="430.0" style="-fx-selection-bar: transparent;" />
+               <ListView fx:id="listView" layoutX="10.0" layoutY="51.0" prefHeight="395.0" prefWidth="421.0" style="-fx-selection-bar: transparent;" styleClass="listSearch" />
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="7.0" prefHeight="34.0" prefWidth="151.0" text="Preferiti" textFill="#39a67f">
                   <font>
                      <Font name="System Bold" size="18.0" />

@@ -190,6 +190,11 @@ public class GuiControllerForwardProposal {
             imageViewSearchGal.setFitHeight(100);
             imageViewSearchGal.setFitWidth(100);
 
+            HBox hBox_border = new HBox(imageViewSearchGal);  // Imposta bordo all'immagine tramite un HBox
+            hBox_border.setMinWidth(100);
+            hBox_border.setMinHeight(100);
+            hBox_border.getStyleClass().add("hBoxBorderMAB");
+
             labelArtWorkNameSearchGal.setText(artWork.getTitolo());
             labelArtWorkNameSearchGal.isWrapText();
             labelArtWorkNameSearchGal.setAlignment(Pos.CENTER);
@@ -201,45 +206,47 @@ public class GuiControllerForwardProposal {
             labelArtistNameSearchGal.setStyle("-fx-text-fill: #39A67F; -fx-font-weight:bold ");
             labelArtistNameSearchGal.isWrapText();
 
+
             VBox vBox1 = new VBox(labelArtWorkNameSearchGal, labelArtistNameSearchGal); // vbox contenente titolo dell'opera e nome dell'artista
             vBox1.setAlignment(Pos.CENTER);
-            vBox1.setMinWidth(150);
             vBox1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold ");
 
-            HBox.setHgrow(labelArtWorkNameSearchGal, Priority.ALWAYS);
-            HBox.setMargin(vBox1, new Insets(10, 120, 10, 100));
+            HBox.setHgrow(vBox1, Priority.ALWAYS);
 
 
             buttonOffertaSearchGal.setText("Invia Proposta");
-            buttonOffertaSearchGal.setPrefSize(150, 100);
+            buttonOffertaSearchGal.setPrefSize(170, 50);
             buttonOffertaSearchGal.setStyle("-fx-font-size: 16px;");
+
+            HBox hBoxSearchB = new HBox(buttonOffertaSearchGal);
+            hBoxSearchB.setAlignment(Pos.CENTER);
+
             ForwardProposal sawg = new ForwardProposal();
+
             for (ArtistBean a :arrayListProposteGal) {
                 if (a.getIdArtista()==artBean.getIdArtista()) {     // se l'array contenente tutti gli id artista contiene l'id dell'artista in questione
                     buttonOffertaSearchGal.setText("Proposta Inviata");      // imposto il testo del button su 'ritira proposta'
                     buttonOffertaSearchGal.setDisable(true);
                 }
             }
-            buttonOffertaSearchGal.setOnAction(new EventHandler<ActionEvent>() {
 
-                @Override
-                public void handle(ActionEvent arg0) {
-                    String answer = null;
-                    try {
-                        answer = sawg.manageButtonClick(buttonOffertaSearchGal.getText(), artGalleryBean, artBean);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    buttonOffertaSearchGal.setText(answer);
-                    buttonOffertaSearchGal.setDisable(true);
-                    try {
-                        populateListView(inputSearchGal); //ricarica la listview per aggiornare le ricorrenze di opere dello stesso artista
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
-                    }
-
+            buttonOffertaSearchGal.setOnAction(arg0 -> {
+                String answer = null;
+                try {
+                    answer = sawg.manageButtonClick(buttonOffertaSearchGal.getText(), artGalleryBean, artBean);
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+                buttonOffertaSearchGal.setText(answer);
+                buttonOffertaSearchGal.setDisable(true);
+                try {
+                    populateListView(inputSearchGal); //ricarica la listview per aggiornare le ricorrenze di opere dello stesso artista
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+
             });
+
             EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
                 ImageView imageView2 = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
 
@@ -251,8 +258,9 @@ public class GuiControllerForwardProposal {
             anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
 
             imageViewSearchGal.setOnMouseClicked(mouseHandler);
-            this.getChildren().addAll(imageViewSearchGal,vBox1, buttonOffertaSearchGal);
+            this.getChildren().addAll(hBox_border,vBox1, hBoxSearchB);
         }
+
         private Image extractImage(Blob blob5){
             InputStream inputStream5 = null;
             try {

@@ -107,6 +107,11 @@ public class GuiControllerMobileViewFavourites {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
 
+            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBox_border.setMinWidth(75);
+            hBox_border.setMinHeight(75);
+            hBox_border.getStyleClass().add("hBoxBorderMA");
+
             labelArtWorkName.setText(artwBean.getTitolo());
             labelArtWorkName.setTextFill(Paint.valueOf("39A67F"));
 
@@ -114,17 +119,14 @@ public class GuiControllerMobileViewFavourites {
             labelArtistName.setTextFill(Paint.valueOf("39A67F"));
 
             prezzo.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F ");
-            prezzo.setText("€ " + artwBean.getPrezzo());
-            prezzo.setAlignment(Pos.CENTER);
-            prezzo.setMinWidth(100);
-            prezzo.setPrefHeight(75);
+            prezzo.setText(artwBean.getPrezzo() + " €");
 
-            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName);
+            VBox vBox1 = new VBox(labelArtWorkName, labelArtistName, prezzo);
             vBox1.setAlignment(Pos.CENTER);
             vBox1.setMinWidth(120);
             vBox1.setStyle("-fx-font-size: 12px; -fx-font-weight: bold ");
 
-            HBox.setHgrow(labelArtWorkName, Priority.ALWAYS);
+            HBox.setHgrow(vBox1, Priority.ALWAYS);
             HBox.setMargin(vBox1, new Insets(10, 10, 10, 10));
             buttonAcquista.setText("Acquista");
             buttonAcquista.setPrefSize(100, 35);
@@ -214,7 +216,7 @@ public class GuiControllerMobileViewFavourites {
             });
 
 
-            this.getChildren().addAll(imageView, vBox1, prezzo, vBox);
+            this.getChildren().addAll(hBox_border, vBox1, vBox);
         }
         private Image extractImage(Blob blob){
             InputStream inputStream = null;

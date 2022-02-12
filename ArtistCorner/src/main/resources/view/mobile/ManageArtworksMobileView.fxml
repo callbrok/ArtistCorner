@@ -55,7 +55,7 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Button layoutX="107.0" layoutY="495.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Log Out" textFill="WHITE">
+            <Button layoutX="107.0" layoutY="495.0" mnemonicParsing="false" onAction="#makeLogOut" prefHeight="48.0" prefWidth="220.0" styleClass="buttonInterface" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

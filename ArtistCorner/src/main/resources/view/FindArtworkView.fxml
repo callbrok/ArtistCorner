@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorParentSearchBuy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="846.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.findartwork.GuiControllerFindArtwork">
+<AnchorPane fx:id="anchorParentSearchBuy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="846.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.findartwork.GuiControllerFindArtwork">
    <children>
       <Pane prefHeight="170.0" prefWidth="846.0" style="-fx-background-color: #39A67F;">
          <children>
@@ -59,9 +54,9 @@
                   <SVGPath content="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 " />
                </graphic>
             </Button>
-            <AnchorPane layoutX="40.0" layoutY="194.0" minHeight="0.0" minWidth="0.0" prefHeight="311.0" prefWidth="658.0" styleClass="listBuyer">
+            <AnchorPane layoutX="40.0" layoutY="194.0" minHeight="0.0" minWidth="0.0" prefHeight="311.0" prefWidth="667.0" styleClass="listBuyer">
                <children>
-                  <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" layoutX="-1.0" prefHeight="312.0" prefWidth="659.0" style="-fx-selection-bar: transparent;" />
+                  <ListView fx:id="listView" editable="true" fixedCellSize="-10.0" layoutX="-1.0" prefHeight="312.0" prefWidth="668.0" style="-fx-selection-bar: transparent;" styleClass="listBuyerSearch" />
                   <AnchorPane fx:id="paneExceptionLoad" layoutX="-1.0" layoutY="-2.0" prefHeight="318.0" prefWidth="668.0" style="-fx-background-color: #d13e0a;" visible="false">
                      <children>
                         <Label layoutX="151.0" layoutY="141.0" text="Nessun opera trovata" textFill="WHITE">

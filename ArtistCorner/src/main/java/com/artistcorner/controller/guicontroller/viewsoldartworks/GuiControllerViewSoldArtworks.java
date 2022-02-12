@@ -13,6 +13,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
@@ -23,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
@@ -33,6 +35,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerViewSoldArtworks {
+    public HBox borderImageView;
     @FXML
     private ImageView imageOfArtworkSold;
     @FXML
@@ -111,6 +114,10 @@ public class GuiControllerViewSoldArtworks {
         setTooltipMenu();
         makeLogOut();
 
+        borderImageView.setMinWidth(224);
+        borderImageView.setMinHeight(152);
+        borderImageView.setAlignment(Pos.CENTER);
+
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
 
@@ -154,7 +161,7 @@ public class GuiControllerViewSoldArtworks {
                         e.printStackTrace();
                     }
 
-                    Image image = new Image(inputStream, 210, 158, true, false);
+                    Image image = new Image(inputStream);
                     imageOfArtworkSold.setImage(image);
 
                     labelArtWorkPrice.setText(String.valueOf(currentArt.getPrezzo()) + "\u20ac");

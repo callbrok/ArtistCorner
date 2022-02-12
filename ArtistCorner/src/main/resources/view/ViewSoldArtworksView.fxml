@@ -83,9 +83,13 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="imageOfArtworkSold" fitHeight="158.0" fitWidth="210.0" layoutX="99.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelArtWorkPrice" layoutX="138.0" layoutY="201.0" text="Nessun Opera Selezionata" />
             <Label fx:id="labelArtBuyer" layoutX="139.0" layoutY="240.0" text="Nessun Opera Selezionata" />
+            <HBox fx:id="borderImageView" layoutX="92.0" layoutY="25.0" prefHeight="152.0" prefWidth="224.0" styleClass="hBoxBorderMAB">
+               <children>
+                  <ImageView fx:id="imageOfArtworkSold" fitHeight="140.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
             </children>
         </Pane>
         <Pane id="mainPane" layoutX="56.0" layoutY="438.0" prefHeight="229.0" prefWidth="884.0" style="-fx-background-color: #fff;">

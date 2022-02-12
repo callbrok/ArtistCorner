@@ -174,6 +174,10 @@ public class GuiControllerFindArtwork {
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
 
+            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBox_border.setMinWidth(100);
+            hBox_border.setMinHeight(100);
+            hBox_border.getStyleClass().add("hBoxBorderMAB");
 
             labelArtWorkNameSearchBuy.setText(artWorkBean.getTitolo());
             labelArtWorkNameSearchBuy.setStyle("-fx-text-fill: #39A67F; -fx-font-weight: bold ");
@@ -299,7 +303,7 @@ public class GuiControllerFindArtwork {
             anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
 
             imageView.setOnMouseClicked(mouseHandler);
-            this.getChildren().addAll(imageView, vBox1, vBox);
+            this.getChildren().addAll(hBox_border, vBox1, vBox);
         }
         private Image extractImage(Blob blob4){
             InputStream inputStream4 = null;
