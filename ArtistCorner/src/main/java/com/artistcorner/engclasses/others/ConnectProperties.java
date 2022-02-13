@@ -21,11 +21,11 @@ public class ConnectProperties {
 
         try{
 
-            // load the properties file
+            // Carica il file di configurazione.
             Properties prop = new Properties();
             prop.load(stream);
 
-            // assign db parameters
+            // Preleva i parametri di configurazione.
             String dbhostname = prop.getProperty("hostname");
             String dbname = prop.getProperty("dbname");
             String dbusername = prop.getProperty("username");
@@ -35,7 +35,7 @@ public class ConnectProperties {
             String dburl = "jdbc:" + dbdriverused + "://" + dbhostname + ":3306/" + dbname;
 
 
-            // create a connection to the database
+            // Crea connessione con il DB.
             conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
 
         } catch (IOException | SQLException e) {
@@ -53,11 +53,11 @@ public class ConnectProperties {
 
         try{
 
-            // load the properties file
+            // Carica il file di configurazione.
             Properties prop = new Properties();
             prop.load(stream);
 
-            // assign db parameters
+            // Preleva il driver da utilizzare.
             driverClassName = prop.getProperty("driver");
 
 
