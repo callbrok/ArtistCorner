@@ -106,7 +106,7 @@ public class GuiControllerMobileViewPendingProposals {
                 newSvgPath.setStyle("-fx-fill: #FF0000");
                 newSvgPath.setScaleX(0.6);
                 newSvgPath.setScaleY(0.6);
-                Button button = new Button("Rimuovi dai Seguiti",newSvgPath);
+                Button button = new Button("Ritira Proposta",newSvgPath);
                 button.setAlignment(Pos.CENTER);
                 button.isWrapText();
                 button.getStyleClass().add("buttonRemove");

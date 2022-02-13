@@ -107,10 +107,10 @@ public class GuiControllerMobileViewFavourites {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
 
-            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
-            hBox_border.setMinWidth(75);
-            hBox_border.setMinHeight(75);
-            hBox_border.getStyleClass().add("hBoxBorderMA");
+            HBox hBoxBorder = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBoxBorder.setMinWidth(75);
+            hBoxBorder.setMinHeight(75);
+            hBoxBorder.getStyleClass().add("hBoxBorderMA");
 
             labelArtWorkName.setText(artwBean.getTitolo());
             labelArtWorkName.setTextFill(Paint.valueOf("39A67F"));
@@ -219,7 +219,7 @@ public class GuiControllerMobileViewFavourites {
             });
 
 
-            this.getChildren().addAll(hBox_border, vBox1, vBox);
+            this.getChildren().addAll(hBoxBorder, vBox1, vBox);
         }
         private Image extractImage(Blob blob){
             InputStream inputStream = null;

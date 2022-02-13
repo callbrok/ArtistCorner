@@ -121,10 +121,10 @@ public class GuiControllerMobileForwardProposal {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
 
-            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
-            hBox_border.setMinWidth(75);
-            hBox_border.setMinHeight(75);
-            hBox_border.getStyleClass().add("hBoxBorderMAB");
+            HBox hBoxBorder = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBoxBorder.setMinWidth(75);
+            hBoxBorder.setMinHeight(75);
+            hBoxBorder.getStyleClass().add("hBoxBorderMAB");
 
             labelArtWorkName.setText(artWorkBean.getTitolo());
             labelArtWorkName.isWrapText();
@@ -183,7 +183,7 @@ public class GuiControllerMobileForwardProposal {
             });
 
 
-            this.getChildren().addAll(hBox_border,vBox1, hBoxSearchB);
+            this.getChildren().addAll(hBoxBorder,vBox1, hBoxSearchB);
         }
         private Image extractImage(Blob blob2){
             InputStream inputStream2 = null;

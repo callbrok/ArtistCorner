@@ -30,7 +30,7 @@ public class UploadArtwork {
             long imageBytesSize = Files.size(Path.of(filePath));
             if(imageBytesSize > 16777216){throw new ImageTooLargeException("Caricata immagine troppo grande (MAX. 16MB).");}
         } catch (IOException e) {
-            System.out.println("Impossibile controllare dimensione dell'immagine.");
+            e.printStackTrace();
         }
 
 

@@ -129,10 +129,10 @@ public class GuiControllerMobileFindArtwork {
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
 
-            HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
-            hBox_border.setMinWidth(75);
-            hBox_border.setMinHeight(75);
-            hBox_border.getStyleClass().add("hBoxBorderMA");
+            HBox hBoxBorder = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+            hBoxBorder.setMinWidth(75);
+            hBoxBorder.setMinHeight(75);
+            hBoxBorder.getStyleClass().add("hBoxBorderMA");
 
             labelArtWorkNameMobBuy.setText(artWoBea.getTitolo());
             labelArtWorkNameMobBuy.setTextFill(Paint.valueOf("22634c"));
@@ -236,12 +236,7 @@ public class GuiControllerMobileFindArtwork {
                 }
 
             });
-            for(ArtworkBean art : arrayListArtWorkIdPrefMob){
-            if (art.getIdOpera()==artWoBea.getIdOpera()){
-                buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
-                buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");
-            }
-            }
+            checkFavourites(arrayListArtWorkIdPrefMob,artWoBea);
             buttonPreferitiMobBuy.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
@@ -250,8 +245,6 @@ public class GuiControllerMobileFindArtwork {
                     // Controlla se nel momento del click il bottone esegue la rimozione dei preferiti oppure l'aggiunta.
                     boolean checkRemButton = buttonPreferitiMobBuy.getText().equals("Rimuovi dai Preferiti");
                     boolean checkAddButton = buttonPreferitiMobBuy.getText().equals("Aggiungi ai Preferiti");
-
-                    System.out.println(buttonPreferitiMobBuy.getText() + checkRemButton + checkAddButton);
 
                     try {
                         answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy.getText(),artWoBea, buy);
@@ -269,7 +262,7 @@ public class GuiControllerMobileFindArtwork {
             });
 
 
-            this.getChildren().addAll(hBox_border, vBox1, vBox);
+            this.getChildren().addAll(hBoxBorder, vBox1, vBox);
         }
         private Image extractImage(Blob blob1){
             InputStream inputStream1 = null;
@@ -281,6 +274,14 @@ public class GuiControllerMobileFindArtwork {
             assert inputStream1 != null;
             return new Image(inputStream1, 100, 100, true, false);
 
+        }
+        public void checkFavourites(List<ArtworkBean> arrayListArtWorkIdPrefMob, ArtworkBean artworkBean){
+            for(ArtworkBean art : arrayListArtWorkIdPrefMob){
+                if (art.getIdOpera()==artworkBean.getIdOpera()){
+                    buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
+                    buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");
+                }
+            }
         }
 
     }

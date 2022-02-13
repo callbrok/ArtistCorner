@@ -8,10 +8,7 @@ import com.artistcorner.engclasses.exceptions.ArtworkNotFoundException;
 import com.artistcorner.engclasses.others.observer.ArtistConcreteObserver;
 import com.artistcorner.engclasses.others.observer.GalleryConcreteSubject;
 import com.artistcorner.engclasses.others.observer.SendMail;
-import com.artistcorner.model.ArtGallery;
-import com.artistcorner.model.Artwork;
-import com.artistcorner.model.Artist;
-import com.artistcorner.model.Proposal;
+import com.artistcorner.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,12 +20,13 @@ public class ForwardProposal {
         int idGallery=artGalBean.getGalleria();
         int idArtista=artistBean.getIdArtista();
         int flag =0;
+        User artist = UserDAO.retrieveArtistEmail(idArtista);
         String  remProposta = "Proposta Inviata";
         if(buttonProposta.equals("Invia Proposta")){// se il bottone ha come label 'invia proposta'
                 ProposalDAO.addProposta(idGallery,idArtista,flag);   // invio la proposta con flag accettazione impostato a 0
 
                 GalleryConcreteSubject cs = new GalleryConcreteSubject(artistBean.getNome()+" "+artistBean.getCognome(),artGalBean.getIndirizzo(),artGalBean.getNome(),true);
-                ArtistConcreteObserver concreteObserver= new ArtistConcreteObserver(cs,"alessio.torroni00@gmail.com");
+                ArtistConcreteObserver concreteObserver= new ArtistConcreteObserver(cs, artist.getEmail());
                 cs.attach(concreteObserver);
                 cs.notifyChanges();
         }

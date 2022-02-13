@@ -178,22 +178,22 @@ public class GuiControllerManageArtworks {
                 imageThumb.setImage(image);
 
                 // Imposta bordo all'immagine tramite un HBox
-                HBox hBox_border = new HBox();
-                hBox_border.setMinWidth(120);
-                hBox_border.setMinHeight(120);
-                hBox_border.getStyleClass().add("hBoxBorderMA");
-                hBox_border.setAlignment(Pos.CENTER);
-                hBox_border.getChildren().add(imageThumb);
+                HBox hBoxBorder = new HBox();
+                hBoxBorder.setMinWidth(120);
+                hBoxBorder.setMinHeight(120);
+                hBoxBorder.getStyleClass().add("hBoxBorderMA");
+                hBoxBorder.setAlignment(Pos.CENTER);
+                hBoxBorder.getChildren().add(imageThumb);
 
                 // Implementa eliminazione opera.
-                Button buttonRemove = new Button();
-                buttonRemove.setText("Rimuovi");
-                buttonRemove.getStyleClass().add("loggerButton");
-                VBox vBoxInfo = new VBox(hBox_border, buttonRemove);
+                Button buttonRemove1 = new Button();
+                buttonRemove1.setText("Rimuovi");
+                buttonRemove1.getStyleClass().add("loggerButton");
+                VBox vBoxInfo = new VBox(hBoxBorder, buttonRemove1);
                 vBoxInfo.setSpacing(10);
                 vBoxInfo.setAlignment(Pos.CENTER);
 
-                buttonRemove.setOnAction(event2 -> {
+                buttonRemove1.setOnAction(event2 -> {
                     vp.removeArtWork(b);
 
                     try {

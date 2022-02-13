@@ -129,19 +129,19 @@ public class GuiControllerMobileManageArtworks {
                 imageThumb.setImage(imageM);
 
                 // Imposta bordo all'immagine tramite un HBox
-                HBox hBox_border = new HBox();
-                hBox_border.setMinWidth(150);
-                hBox_border.setMinHeight(150);
-                hBox_border.getStyleClass().add("hBoxBorderMA");
-                hBox_border.setAlignment(Pos.CENTER);
-                hBox_border.getChildren().add(imageThumb);
+                HBox hBoxBorder = new HBox();
+                hBoxBorder.setMinWidth(150);
+                hBoxBorder.setMinHeight(150);
+                hBoxBorder.getStyleClass().add("hBoxBorderMA");
+                hBoxBorder.setAlignment(Pos.CENTER);
+                hBoxBorder.getChildren().add(imageThumb);
 
                 // Implementa eliminazione opera.
                 Button buttonRemove = new Button();
                 buttonRemove.setText("Rimuovi");
                 buttonRemove.getStyleClass().add("buttonInterface");
 
-                VBox vBoxInfo = new VBox(hBox_border, buttonRemove);
+                VBox vBoxInfo = new VBox(hBoxBorder, buttonRemove);
                 vBoxInfo.setAlignment(Pos.CENTER);
                 vBoxInfo.setSpacing(10);
 

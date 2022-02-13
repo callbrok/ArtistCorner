@@ -21,6 +21,10 @@ public class GuiControllerMobileRegister {
     @FXML
     private TextField textFieldEmailArtistMob;
     @FXML
+    private TextField textFieldEmailGalMob;
+    @FXML
+    private TextField textFieldEmailBuyMob;
+    @FXML
     private AnchorPane anchorErroSignMobile;
     @FXML
     private Label labelErroSignMobile;
@@ -88,9 +92,10 @@ public class GuiControllerMobileRegister {
     }
     public void registerBuyerMob(){
         UserBean userReg = new UserBean();
-
+        try {
         userReg.setUsername(textFieldUserBuyerMob.getText());
         userReg.setPassword(textFieldPassBuyerMob.getText());
+        userReg.setEmail(textFieldEmailBuyMob.getText());
         userReg.setRole("acquirente");
 
         BuyerBean buyerReg = new BuyerBean();
@@ -98,9 +103,9 @@ public class GuiControllerMobileRegister {
         buyerReg.setNome(textFieldNomeBuyerMob.getText());
         buyerReg.setCognome(textFieldCognomeBuyerMob.getText());
 
-        try {
+
             signUpM.registerBuyer(userReg, buyerReg);
-        } catch (DuplicateUserException e) {
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelErroSignMobile.setText(e.getMessage());
             anchorErroSignMobile.setVisible(true);
         }
@@ -112,9 +117,10 @@ public class GuiControllerMobileRegister {
     }
     public void registerGalleryMob(){
         UserBean userReg = new UserBean();
-
+        try {
         userReg.setUsername(textFieldUserGalleryMob.getText());
         userReg.setPassword(textFieldPassGalleryMob.getText());
+        userReg.setEmail(textFieldEmailGalMob.getText());
         userReg.setRole("galleria");
 
         String address = textFieldAddressGalleryMob.getText()+", "+textFieldNumberMob.getText()+", "+textFieldCapMob.getText()+" "+textFieldCityMob.getText();
@@ -126,9 +132,8 @@ public class GuiControllerMobileRegister {
         artGalleryReg.setIndirizzo(address);
 
 
-        try {
             signUpM.registerGallery(userReg, artGalleryReg);
-        } catch (DuplicateUserException e) {
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelErroSignMobile.setText(e.getMessage());
             anchorErroSignMobile.setVisible(true);
         }
