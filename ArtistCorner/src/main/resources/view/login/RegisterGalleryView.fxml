@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="340.0" prefWidth="376.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.login.GuiControllerRegister">
+   <children>
+      <Label layoutX="41.0" layoutY="23.0" prefHeight="45.0" prefWidth="279.0" text="Registrati come Galleria" textFill="#39A67F">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="textFieldUserGallery" layoutX="35.0" layoutY="76.0" prefHeight="29.0" prefWidth="139.0" promptText="Username" />
+      <TextField fx:id="textFieldPassGallery" layoutX="190.0" layoutY="76.0" prefHeight="29.0" prefWidth="139.0" promptText="Password" />
+      <TextField fx:id="textFieldNomeGallery" layoutX="36.0" layoutY="111.0" prefHeight="29.0" prefWidth="292.0" promptText="Nome" />
+      <TextField fx:id="textFieldDescriptionGallery" alignment="TOP_LEFT" layoutX="37.0" layoutY="223.0" prefHeight="29.0" prefWidth="292.0" promptText="Descrizione" />
+      <TextField fx:id="textFieldAddressGallery" layoutX="36.0" layoutY="147.0" prefHeight="29.0" prefWidth="139.0" promptText="Indirizzo" />
+      <TextField fx:id="textFieldNumber" layoutX="182.0" layoutY="147.0" prefHeight="29.0" prefWidth="40.0" promptText="n" />
+      <TextField fx:id="textFieldCap" layoutX="226.0" layoutY="147.0" prefHeight="29.0" prefWidth="49.0" promptText="CAP" />
+      <TextField fx:id="textFieldCity" layoutX="279.0" layoutY="147.0" prefHeight="29.0" prefWidth="49.0" promptText="Città" />
+      <TextField fx:id="textFieldEmailGal" alignment="TOP_LEFT" layoutX="36.0" layoutY="184.0" prefHeight="29.0" prefWidth="292.0" promptText="E-mail" />
+      <Button layoutX="37.0" layoutY="260.0" mnemonicParsing="false" onAction="#registerGallery" prefHeight="53.0" prefWidth="292.0" text="Registrati" />
+      <AnchorPane fx:id="anchorDuplicateUser" layoutX="21.0" layoutY="77.0" prefHeight="237.0" prefWidth="333.0" style="-fx-background-color: #d13e0a;" visible="false">
+         <children>
+            <Label fx:id="labelExcepDuplicate" layoutX="17.0" layoutY="56.0" prefHeight="102.0" prefWidth="299.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,15 +1,16 @@
 package com.artistcorner.controller.guicontroller.uploadartwork;
 
-import com.artistcorner.controller.applicationcontroller.UploadArtWork;
-import com.artistcorner.engclasses.bean.ArtWorkBean;
+import com.artistcorner.controller.applicationcontroller.UploadArtwork;
+import com.artistcorner.engclasses.bean.ArtworkBean;
 import com.artistcorner.engclasses.bean.ArtistBean;
-import com.artistcorner.engclasses.exceptions.DuplicateArtWorkException;
-import com.artistcorner.engclasses.exceptions.EmptyFieldException;
-import com.artistcorner.engclasses.exceptions.ExceptionView;
+import com.artistcorner.engclasses.exceptions.*;
 import com.artistcorner.engclasses.others.ExceptionsFactory;
-import com.artistcorner.engclasses.others.ExceptionsTypeMenager;
+import com.artistcorner.engclasses.others.ExceptionsTypeManager;
 import com.artistcorner.engclasses.others.SceneController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -20,61 +21,87 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class GuiControllerUploadArtwork {
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
-    public Button button5;
+    @FXML
+    private AnchorPane anchorPriceExcept;
+    @FXML
+    private ToggleButton toggleCat1;
+    @FXML
+    private ToggleButton toggleCat2;
+    @FXML
+    private ToggleButton toggleCat3;
+    @FXML
+    private ToggleButton toggleCat4;
+    @FXML
+    private Button button1Up;
+    @FXML
+    private Button button2Up;
+    @FXML
+    private Button button3Up;
+    @FXML
+    private Button button4Up;
+    @FXML
+    private Button button5Up;
+    @FXML
+    private AnchorPane anchorParentUpload;
+    @FXML
+    private TextField textFieldTitle;
+    @FXML
+    private TextField textFieldPrice;
+    @FXML
+    private Label labelFilePath;
+    @FXML
+    private AnchorPane anchorPaneDragAndDrop;
+    @FXML
+    private Pane paneExceptionLoad;
+    @FXML
+    private SVGPath svgProfile;
+    @FXML
+    private Label labelUsernameDisplay;
+    @FXML
+    private Label labelLogOutUpload;
+    @FXML
+    private RadioButton radioBtmSellUpload;
 
-    public AnchorPane anchorParent;
-    public TextField textFieldTitle;
-    public TextField textFieldPrice;
-    public Label labelFilePath;
-    public RadioButton radioBtmSell;
-    public AnchorPane anchorPaneDragAndDrop;
-    public Label labelLogOut;
-    public Pane paneExceptionLoad;
-    public SVGPath svgProfile;
-    public Label labelUsernameDisplay;
-    private double x=0, y=0;
+    private double xUpload=0;
+    private double yUpload=0;
+    private ToggleGroup toggleGroup = new ToggleGroup();
     private Stage stage;
 
-    String filePath;
-    ArtistBean art;
+    private String filePath="";
+    private ArtistBean art;
 
 
     private void makeDraggable(){
-        anchorParent.setOnMousePressed(((event) -> {
-            x=event.getSceneX();
-            y= event.getSceneY();
+        anchorParentUpload.setOnMousePressed((eventUpload -> {
+            xUpload=eventUpload.getSceneX();
+            yUpload= eventUpload.getSceneY();
         }));
 
-        anchorParent.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+        anchorParentUpload.setOnMouseDragged((eventUpload -> {
+            stage = (Stage) ((Node)eventUpload.getSource()).getScene().getWindow();
+            stage.setX(eventUpload.getScreenX() - xUpload);
+            stage.setY(eventUpload.getScreenY() - yUpload);
         }));
     }
-    public void exitWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorParent.getScene().getWindow();
+    
+    public void exitWindowUpload() throws IOException {
+        stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.close();
     }
 
-    public void minimizeWindow(ActionEvent actionEvent) {
-        stage = (Stage) anchorParent.getScene().getWindow();
+    public void minimizeWindow() {
+        stage = (Stage) anchorParentUpload.getScene().getWindow();
         stage.setIconified(true);
     }
 
     public void makeLogOut(){
-        labelLogOut.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            SceneController sc = new SceneController();
+        labelLogOutUpload.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
-                sc.switchToLogin(event);
+                SceneController.switchToLogin(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -88,17 +115,31 @@ public class GuiControllerUploadArtwork {
         makeDraggable();
         setTooltipMenu();
         makeLogOut();
+        initTextFieldPrice();
+        initEventHandlerRadio();
 
+        toggleCat1.setToggleGroup(toggleGroup);
+        toggleCat2.setToggleGroup(toggleGroup);
+        toggleCat3.setToggleGroup(toggleGroup);
+        toggleCat4.setToggleGroup(toggleGroup);
+
+        toggleCat4.setSelected(true);
+
+        anchorPriceExcept.setVisible(false);
+        textFieldPrice.setVisible(false);
         svgProfile.setScaleX(0.07);
         svgProfile.setScaleY(0.07);
     }
 
+    /**
+     * Setta i tooltip su i bottoni del menu.
+     */
     public void setTooltipMenu(){
-        button1.setTooltip(new Tooltip("Home"));
-        button2.setTooltip(new Tooltip("Profilo"));
-        button3.setTooltip(new Tooltip("Carica Opera"));
-        button4.setTooltip(new Tooltip("Offerte Mostre"));
-        button5.setTooltip(new Tooltip("Opere Vendute"));
+        button1Up.setTooltip(new Tooltip("Home"));
+        button2Up.setTooltip(new Tooltip("Profilo"));
+        button3Up.setTooltip(new Tooltip("Carica Opera"));
+        button4Up.setTooltip(new Tooltip("Offerte Mostre"));
+        button5Up.setTooltip(new Tooltip("Opere Vendute"));
     }
 
     public void getArtist(ArtistBean loggedArtist) {
@@ -106,99 +147,141 @@ public class GuiControllerUploadArtwork {
         labelUsernameDisplay.setText(art.getNome() + " " + art.getCognome());
     }
 
+    /**
+     * Seleziona l'immagine da caricare.
+     */
     public void selectFile(ActionEvent event) {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
 
         // Impone la selezione di soli file di tipo immagine.
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("File Immagine", "*.jpg", "*.png", "*.bmp", "*.jpeg");
         fileChooser.getExtensionFilters().add(extFilter);
 
         File selectedFile = fileChooser.showOpenDialog(stage);
-        filePath = selectedFile.toString();   // Setta il path dell'immagine nella bean.
+
+        filePath = selectedFile.toString();
+
         labelFilePath.setText(selectedFile.toString());   // Mostra il percorso del file selezionato.
     }
 
     public void initDragAndDrop(){
-
-//        anchorPaneDragAndDrop.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
-//            Dragboard db = event.getD();
-//            File file = db.getFiles().get(0);
-//        });
+        //Implement Drag and Drop Feature.
 
     }
 
-    public void uploadFile(ActionEvent event) throws Exception {
-        UploadArtWork upaw = new UploadArtWork();
-        int flagVendibile;
-        double prezzo;
+    /**
+     * Effettua l'upload dell'opera.
+     */
+    public void uploadFile(){
+        UploadArtwork upawDesk = new UploadArtwork();
+        int flagVendibile=0;
+        double prezzo=0;
+        String categoria = "";
+
+        ToggleButton selectedToggleButton = (ToggleButton) toggleGroup.getSelectedToggle();  // Ritorna il toggle selezionato.
+
+
+        categoria = selectedToggleButton.getText();
+
+        if(selectedToggleButton.getText().equals("altro")){categoria="";}
+
 
         // Stati di flagVendibile
         //  0 : opera non acquistabile
         //  1 : opera acquistabile
-        if (radioBtmSell.isSelected()) {
-            flagVendibile=1;
-            prezzo = Double.parseDouble(textFieldPrice.getText());
-        } else {
-            flagVendibile = 0;
-            prezzo = 0;
-        }
-
         try {
-            ArtWorkBean upArtWork = new ArtWorkBean(textFieldTitle.getText(), prezzo, flagVendibile);
-            upaw.uploadImage(upArtWork, art.getIdArtista(), filePath);
-        } catch (EmptyFieldException e){
+            ArtworkBean upArtWork = new ArtworkBean();
+
+            if (radioBtmSellUpload.isSelected()) {
+                flagVendibile=1;
+                prezzo = Double.parseDouble(textFieldPrice.getText().replace(',','.'));
+            }
+
+            upArtWork.setTitolo(textFieldTitle.getText());
+            upArtWork.setPrezzo(prezzo);
+            upArtWork.setFlagVendibile(flagVendibile);
+            upArtWork.setArtistId(art.getIdArtista());
+            upArtWork.setCategoria(categoria);
+
+            upawDesk.uploadImage(upArtWork, filePath);
+            anchorPriceExcept.setVisible(false);
+
+        }catch (EmptyFieldException e){
             // Eccezione: Campi lasciati vuoti.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYFIELD);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYFIELD);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (FileNotFoundException e) {
+        }catch (EmptyPathException e) {
             // Eccezione: File non selezionato.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.EMPTYPATH);
+            ev = ef.createView(ExceptionsTypeManager.EMPTYPATH);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
-        } catch (DuplicateArtWorkException e){
+        }catch (DuplicateArtworkException e){
             // Eccezione: Opera già caricata.
             ExceptionsFactory ef = ExceptionsFactory.getInstance();
             ExceptionView ev;
 
-            ev = ef.createView(ExceptionsTypeMenager.DUPLICATEARTWORK);
+            ev = ef.createView(ExceptionsTypeManager.DUPLICATEARTWORK);
+            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+        }catch(NumberFormatException n){
+            // Eccezione: Prezzo non valido.
+            anchorPriceExcept.setVisible(true);
+        }catch (ImageTooLargeException ime){
+            // Eccezione: Caricata immagine troppo grande.
+            ExceptionsFactory ef = ExceptionsFactory.getInstance();
+            ExceptionView ev;
+
+            ev = ef.createView(ExceptionsTypeManager.IMAGETOOLARGE);
             paneExceptionLoad.getChildren().add(ev.getExceptionPane());
         }
 
         resetForm();
     }
 
+    /**
+     * Permette il solo inserimento di numeri e "," nel textField prezzo.
+     */
+    public void initTextFieldPrice(){
+        textFieldPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("C=(\\d+\\,\\d+)")) {  // Expression Pattern che permette solo numeri e virgole.
+                textFieldPrice.setText(newValue.replaceAll("[^C=(\\d+\\,\\d+)]", ""));
+            }
+        });
+    }
+
     public void resetForm(){
-        labelFilePath.setText("");
+        labelFilePath.setText("Nessun File Selezionato");
         textFieldPrice.setText("");
         textFieldTitle.setText("");
     }
 
-
-    public void switchToSceneMainArtista(ActionEvent event) throws IOException, SQLException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneMainArtista(event, art);
-    }
-
-    public void switchToProfiloArtista(ActionEvent event) throws SQLException, IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloArtista(event, art);
-    }
-
-    public void switchToProfiloOfferteMostre(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloOfferteMostre(event, art);
-    }
-
-    public void switchToProfiloVenduto(ActionEvent event) throws IOException {
-        SceneController sc = new SceneController();
-        sc.switchToSceneProfiloVenduto(event, art);
+    public void initEventHandlerRadio(){
+        radioBtmSellUpload.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) -> textFieldPrice.setVisible(isNowSelected));
     }
 
 
+    public void switchToSceneMainArtistaUploadD(ActionEvent event) throws IOException, SQLException {
+        SceneController.switchToSceneMainArtista(event, art);
+    }
+
+    public void switchToProfiloArtistaUploadD(ActionEvent event) throws SQLException, IOException {
+        SceneController.switchToSceneProfiloArtista(event, art);
+    }
+
+    public void switchToProfiloOfferteMostreUploadD(ActionEvent event) throws IOException {
+        SceneController.switchToSceneProfiloOfferteMostre(event, art);
+    }
+
+    public void switchToProfiloVendutoUploadD(ActionEvent event) throws IOException {
+        SceneController.switchToSceneProfiloVenduto(event, art);
+    }
+
+    public void switchToUploadOperaUploadD(ActionEvent event) throws IOException {
+        SceneController.switchToSceneUploadOpera(event, art);
+    }
 }

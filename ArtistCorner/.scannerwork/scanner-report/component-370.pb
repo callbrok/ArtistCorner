@@ -1,0 +1,1 @@
+ò 2javaX{hrfsrc/main/java/com/artistcorner/controller/guicontroller/login/summaries/GuiControllerBuyerSummary.java

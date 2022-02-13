@@ -1,0 +1,1 @@
+á 2javaX4hrUsrc/main/java/com/artistcorner/engclasses/others/observer/GalleryConcreteSubject.java

@@ -1,0 +1,1 @@
+ 2xmlX‚hrArtistCorner/pom.xml

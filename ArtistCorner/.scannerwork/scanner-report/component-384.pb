@@ -1,0 +1,1 @@
+€ 2javaXqhrtsrc/main/java/com/artistcorner/controller/guicontroller/mobile/login/summaries/GuiControllerMobileArtistSummary.java

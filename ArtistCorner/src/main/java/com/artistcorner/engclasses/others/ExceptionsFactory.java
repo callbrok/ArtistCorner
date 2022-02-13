@@ -2,8 +2,6 @@ package com.artistcorner.engclasses.others;
 
 import com.artistcorner.engclasses.exceptions.*;
 
-import java.io.IOException;
-
 public class ExceptionsFactory {
 
     //***Singleton***/
@@ -17,26 +15,32 @@ public class ExceptionsFactory {
         return instance;
     }
 
-    public ExceptionView createView(ExceptionsTypeMenager etm) throws IOException {
+    public ExceptionView createView(ExceptionsTypeManager etm) {
 
         switch(etm.getType()) {
-            case 0: case 6:
+            case 0: case 7:
                 return new EmptyFieldExceptionView(etm);
 
-            case 1: case 7:
+            case 1: case 8:
                 return new EmpyPathExceptionView(etm);
 
-            case 2: case 8:
-                return new DuplicateArtWorkExceptionView(etm);
+            case 2: case 9:
+                return new DuplicateArtworkExceptionView(etm);
 
-            case 3: case 9:
+            case 3: case 10:
                 return new ProposalNotFoundExceptionView(etm);
 
-            case 4: case 10:
-                return new SellArtWorkNotFoundExceptionView(etm);
+            case 4: case 11:
+                return new SellArtworkNotFoundExceptionView(etm);
 
-            case 5: case 11:
-                return new ArtWorkNotFoundExceptionView(etm);
+            case 5: case 12:
+                return new ArtworkNotFoundExceptionView(etm);
+
+            case 6: case 13:
+                return new SentProposalNotFoundExceptionView(etm);
+
+            case 14: case 15:
+                return new ImageTooLargeExceptionView(etm);
 
             default:
                 return new EmptyFieldExceptionView(etm);

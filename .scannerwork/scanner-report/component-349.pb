@@ -1,0 +1,1 @@
+İ 2javaX<hriArtistCorner/src/main/java/com/artistcorner/controller/applicationcontroller/ViewArtGalleryProposals.java

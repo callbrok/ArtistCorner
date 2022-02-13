@@ -1,0 +1,1 @@
+­ 2javaX³hr=src/main/java/com/artistcorner/engclasses/dao/GalleryDAO.java

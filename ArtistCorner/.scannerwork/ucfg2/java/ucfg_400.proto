@@ -1,0 +1,38 @@
+
+qcom.artistcorner.engclasses.query.QueryProposal#selectProposalArtistId(Ljava/sql/Statement;I)Ljava/sql/ResultSet;y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (2"1*®	
+1y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (>Õ
+Ò
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (I
+%0java.lang.String"__concat*+)
+'SELECT * FROM offerta WHERE galleria ='*
+""Â
+¿
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (Q
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';·
+´
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (R
+sqljava.lang.String"__id*
+
+%1java.lang.String¼¹
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (%
+%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"—
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (&
+
+%2java.sql.ResultSet:
+stmtjava.sql.Statement:
+""B3"1
+/com.artistcorner.engclasses.query.QueryProposal

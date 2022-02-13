@@ -1,0 +1,67 @@
+
+Xcom.artistcorner.engclasses.query.QueryProposal#insertProposal(Ljava/sql/Statement;III)Iy
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java ($"1*∆
+1y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (cÓ
+Î
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (m
+%0java.lang.String"__concat*DB
+@INSERT INTO offerta(artista,galleria,flagAccettazione) VALUES ('*
+""√
+¿
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (t
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+','¬
+ø
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (
+%2java.lang.String"__concat*
+
+%1java.lang.String*
+""ƒ
+¡
+z
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (Ö
+%3java.lang.String"__concat*
+
+%2java.lang.String*
+','√
+¿
+z
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (ä
+%4java.lang.String"__concat*
+
+%3java.lang.String*
+""ƒ
+¡
+z
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java! (ê
+%5java.lang.String"__concat*
+
+%4java.lang.String*
+');ƒ
+¡
+z
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (ë#
+updateStatementjava.lang.String"__id*
+
+%5java.lang.String®•
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (2	
+%6int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*%
+#
+updateStatementjava.lang.String2!executeUpdate(Ljava/lang/String;)"É
+y
+o/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryProposal.java (3
+"":
+stmtjava.sql.Statement:
+"":
+"":
+""B3"1
+/com.artistcorner.engclasses.query.QueryProposal

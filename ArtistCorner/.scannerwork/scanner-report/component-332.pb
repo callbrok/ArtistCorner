@@ -1,0 +1,1 @@
+Ì 2javaXhrBsrc/main/java/com/artistcorner/engclasses/query/QueryProposal.java

@@ -1,0 +1,1 @@
+ç 2javaXBhrfsrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewArtistSummary.java

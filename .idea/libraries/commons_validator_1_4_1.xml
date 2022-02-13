@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="commons-validator-1.4.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/commons-validator/commons-validator/1.4.1/commons-validator-1.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

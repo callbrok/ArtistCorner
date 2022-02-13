@@ -1,0 +1,1 @@
+Ì 2javaXehr…ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/login/summarypanel/GuiControllerMobileGallerySummary.java

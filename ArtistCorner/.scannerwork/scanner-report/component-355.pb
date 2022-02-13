@@ -1,0 +1,1 @@
+ã 2javaXhrUsrc/main/java/com/artistcorner/engclasses/others/observer/ArtistConcreteObserver.java

@@ -1,0 +1,1 @@
+è 2javaX7hrYsrc/main/java/com/artistcorner/controller/applicationcontroller/ViewPendingProposals.java

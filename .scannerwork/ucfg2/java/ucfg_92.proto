@@ -1,0 +1,52 @@
+
+Vcom.artistcorner.engclasses.query.QueryGallery#removeProposal(Ljava/sql/Statement;II)Ix
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java ($"1*Š
+1x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (:Ò
+Ï
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (D
+%0java.lang.String"__concat*)'
+%DELETE FROM offerta WHERE artista = '*
+""Ñ
+Î
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (Y
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+' AND galleria = 'Á
+¾
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (c
+%2java.lang.String"__concat*
+
+%1java.lang.String*
+""Á
+¾
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (h
+%3java.lang.String"__concat*
+
+%2java.lang.String*
+';¶
+³
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (i
+sqljava.lang.String"__id*
+
+%3java.lang.String›˜
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (%	
+%4int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2!executeUpdate(Ljava/lang/String;)"‚
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (&
+"":
+stmtjava.sql.Statement:
+"":
+""B2"0
+.com.artistcorner.engclasses.query.QueryGallery

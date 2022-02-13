@@ -1,0 +1,1 @@
+ø 2javaX¶hrnsrc/main/java/com/artistcorner/controller/guicontroller/mobile/findartwork/GuiControllerMobileFindArtwork.java

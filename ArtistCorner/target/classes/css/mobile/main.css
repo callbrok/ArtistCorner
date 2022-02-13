@@ -23,6 +23,18 @@
     -fx-background-color: #e38b6c;
 }
 
+.logoutButton{
+    -fx-border-radius: 0;
+    -fx-background-radius: 0 ;
+    -fx-background-color: #e38b6c;
+}
+.logoutButton:hover{
+
+}
+.logoutButton SVGPath{
+    -fx-fill:  #d13e0a;
+}
+
 .currentSceneButton SVGPath{
     -fx-fill:  #d13e0a;
 }
@@ -48,6 +60,10 @@
  -fx-background-radius: 0;
 }
 
+.buttonPane SVGPath{
+    -fx-fill:  #277458;
+}
+
 .buttonPane:hover{
  -fx-background-color: #88c9b2;
 }
@@ -63,6 +79,21 @@
 
 .buttonInterface SVGPath{
     -fx-fill:  #277458;
+}
+
+/* Upload ArtWork */
+
+.toggleButton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggleButton:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.toggleButton:selected{
+    -fx-background-color: #88c9b2;
 }
 
 
@@ -88,4 +119,99 @@
 
 .list-cell:empty {
     -fx-background-color: white;
+}
+
+.toggleButton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggleButton:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.toggleButton:selected{
+    -fx-background-color: #88c9b2;
+}
+
+.buttonSearch{
+    -fx-background-color: transparent;
+}
+.buttonSearch:hover{
+    -fx-background-color: transparent;
+}
+.buttonSearch:hover  SVGPath {
+    -fx-opacity: 1;
+}
+.buttonRemove{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+.buttonRemove:hover{
+    -fx-background-color: #88c9b2;
+}
+.buttonBuy{
+    -fx-font-size: 8px;
+    -fx-background-color: #60b798;
+    -fx-text-fill: #277458;
+    -fx-background-radius: 3px;
+}
+.buttonBuy:hover{
+    -fx-background-color: #88c9b2;
+}
+
+.buttonRemoveFav{
+    -fx-font-size: 8px;
+    -fx-background-color: #e38b6c;
+    -fx-text-fill: #d13e0a;
+    -fx-background-radius: 3px;
+}
+.buttonRemoveFav:hover{
+    -fx-background-color: #ebad98;
+}
+
+
+.buttonProp{
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-color: #60b798;
+    -fx-text-fill: #277458;
+    -fx-background-radius: 3px;
+}
+.buttonProp:hover{
+    -fx-background-color: #88c9b2;
+}
+.buttonPropSent{
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #277458;
+    -fx-background-radius: 3px;
+}
+
+/* Manage Artworks */
+
+.hBoxBorderMA{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 2.5;
+    -fx-background-color: #4c4c4c;
+}
+
+.hBoxBorderMAB{
+    -fx-border-color: #39A67F;
+    -fx-border-width: 3;
+    -fx-background-color: #4c4c4c;
+}
+
+
+
+.listSearch .scroll-bar:vertical {
+    -fx-scale-x: 0;
+}
+
+.listSearch .scroll-bar:horizontal .increment-arrow,
+.listSearch .scroll-bar:horizontal .decrement-arrow,
+.listSearch .scroll-bar:horizontal .increment-button,
+.listSearch .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
 }

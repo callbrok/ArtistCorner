@@ -1,0 +1,1 @@
+« 2javaXhrOArtistCorner/src/main/java/com/artistcorner/engclasses/bean/ArtGalleryBean.java

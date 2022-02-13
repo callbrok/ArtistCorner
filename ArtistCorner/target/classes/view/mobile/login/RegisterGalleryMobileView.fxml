@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="340.0" prefWidth="348.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileRegister">
+   <children>
+      <Button layoutX="29.0" layoutY="204.0" mnemonicParsing="false" onAction="#registerGalleryMob" prefHeight="53.0" prefWidth="292.0" styleClass="buttonPane" text="Registrati" />
+      <Button layoutX="30.0" layoutY="264.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="53.0" prefWidth="292.0" styleClass="buttonPane" text="Torna al Login" />
+      <AnchorPane fx:id="anchorErroSignMobile" layoutX="14.0" layoutY="14.0" prefHeight="244.0" prefWidth="318.0" style="-fx-background-color: #d13e0a;" visible="false">
+         <children>
+            <Label fx:id="labelErroSignMobile" layoutX="22.0" layoutY="58.0" prefHeight="115.0" prefWidth="274.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="textFieldUserGalleryMob" layoutX="28.0" layoutY="19.0" prefHeight="29.0" prefWidth="139.0" promptText="Username" />
+      <TextField fx:id="textFieldPassGalleryMob" layoutX="183.0" layoutY="19.0" prefHeight="29.0" prefWidth="139.0" promptText="Password" />
+      <TextField fx:id="textFieldNomeGalleryMob" layoutX="29.0" layoutY="55.0" prefHeight="29.0" prefWidth="292.0" promptText="Nome" />
+      <TextField fx:id="textFieldDescriptionGalleryMob" alignment="TOP_LEFT" layoutX="30.0" layoutY="166.0" prefHeight="29.0" prefWidth="292.0" promptText="Descrizione" />
+      <TextField fx:id="textFieldAddressGalleryMob" layoutX="29.0" layoutY="94.0" prefHeight="29.0" prefWidth="139.0" promptText="Indirizzo" />
+      <TextField fx:id="textFieldNumberMob" layoutX="175.0" layoutY="94.0" prefHeight="29.0" prefWidth="40.0" promptText="n" />
+      <TextField fx:id="textFieldCapMob" layoutX="219.0" layoutY="94.0" prefHeight="29.0" prefWidth="49.0" promptText="CAP" />
+      <TextField fx:id="textFieldCityMob" layoutX="272.0" layoutY="94.0" prefHeight="29.0" prefWidth="49.0" promptText="Città" />
+      <TextField fx:id="textFieldEmailGalMob" alignment="TOP_LEFT" layoutX="29.0" layoutY="130.0" prefHeight="29.0" prefWidth="292.0" promptText="E-mail" />
+   </children>
+</AnchorPane>

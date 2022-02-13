@@ -1,23 +1,30 @@
 package com.artistcorner.engclasses.bean;
 
+import com.artistcorner.engclasses.exceptions.NotValidEmailException;
+import org.apache.commons.validator.routines.EmailValidator;
+
 public class UserBean {
-    String username;
-    String password;
-    String role;
+    private String username;
+    private String password;
+    private String role;
+    private String email;
 
-    public UserBean(String newUsername, String newPassword){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = "NULL";
+
+    public void setPassword(String password) {this.password = password;}
+    public void setUsername(String username) {this.username = username;}
+    public void setRole(String role) {this.role = role;}
+
+    public void setEmail(String email) throws NotValidEmailException {
+        boolean valid = EmailValidator.getInstance().isValid(email);
+
+        if(!valid){throw new NotValidEmailException("Inserita email non valida.");}
+
+        this.email = email;
     }
 
-    public UserBean(String newUsername, String newPassword, String newRole){
-        this.username = newUsername;
-        this.password = newPassword;
-        this.role = newRole;
-    }
 
     public String getUsername(){return username;}
     public String getPassword(){return password;}
     public String getRole() {return role;}
+    public String getEmail() {return email;}
 }

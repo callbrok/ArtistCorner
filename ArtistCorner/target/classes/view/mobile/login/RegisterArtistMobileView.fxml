@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="408.0" prefWidth="348.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileRegister">
+   <children>
+      <TextField fx:id="textFieldUserArtistMob" layoutX="38.0" layoutY="26.0" prefHeight="37.0" prefWidth="128.0" promptText="Username" />
+      <TextField fx:id="textFieldEmailArtistMob" layoutX="37.0" layoutY="78.0" prefHeight="37.0" prefWidth="274.0" promptText="E-mail" />
+      <TextField fx:id="textFieldPassArtistMob" layoutX="182.0" layoutY="26.0" prefHeight="37.0" prefWidth="128.0" promptText="Password" />
+      <TextField fx:id="textFieldNomeArtistMob" layoutX="37.0" layoutY="133.0" prefHeight="37.0" prefWidth="274.0" promptText="Nome" />
+      <TextField fx:id="textFieldCognomeArtistMob" layoutX="37.0" layoutY="189.0" prefHeight="37.0" prefWidth="274.0" promptText="Cognome" />
+      <Button layoutX="37.0" layoutY="252.0" mnemonicParsing="false" onAction="#registerArtistMob" prefHeight="53.0" prefWidth="274.0" styleClass="buttonPane" text="Registrati" />
+      <Button layoutX="37.0" layoutY="312.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="53.0" prefWidth="274.0" styleClass="buttonPane" text="Torna al Login" />
+      <AnchorPane fx:id="anchorErroSignMobile" layoutX="14.0" layoutY="14.0" prefHeight="295.0" prefWidth="318.0" style="-fx-background-color: #d13e0a;">
+         <children>
+            <Label fx:id="labelErroSignMobile" layoutX="22.0" layoutY="95.0" prefHeight="115.0" prefWidth="274.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

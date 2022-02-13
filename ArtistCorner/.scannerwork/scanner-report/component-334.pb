@@ -1,0 +1,1 @@
+Î 2javaXNhr@src/main/java/com/artistcorner/engclasses/query/QueryArtist.java

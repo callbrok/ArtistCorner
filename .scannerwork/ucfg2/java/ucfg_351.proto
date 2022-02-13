@@ -1,0 +1,48 @@
+
+|com.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewSALogAnalytics#calculateStdv(Ljava/util/List;D)D§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java³ ³("4*¦
+3§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java¸ ¸(ø
+õ
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java¸! ¸(1
+%1java.lang.Double"
+__arrayGet*
+
+	listValuejava.util.List*
+""ö
+ó
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java¸ ¸(E
+%2double"java.lang.Math#pow(DD)D*"
+java.lang.Math*
+""*2*
+4*¯
+4§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java· ·(÷ô
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java· ·(*	
+%0int"java.util.List#size()I*
+
+	listValuejava.util.List2size()*
+3
+1*Ï
+1§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java» »(÷ô
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java»$ »(4	
+%3int"java.util.List#size()I*
+
+	listValuejava.util.List2size()ð
+í
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java» »(:
+%4double"java.lang.Math#sqrt(D)D*"
+java.lang.Math*
+"""²
+§
+š/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewloganalytics/GuiControllerViewSALogAnalytics.java» »(;
+"":
+	listValuejava.util.List:
+""B^\
+Zcom.artistcorner.controller.guicontroller.viewloganalytics.GuiControllerViewSALogAnalytics

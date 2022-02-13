@@ -1,0 +1,1 @@
+ð 2javaXzhrhsrc/main/java/com/artistcorner/controller/guicontroller/login/summaries/GuiControllerGallerySummary.java

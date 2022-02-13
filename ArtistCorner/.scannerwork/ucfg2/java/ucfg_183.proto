@@ -1,0 +1,37 @@
+
+Zcom.artistcorner.engclasses.query.QueryArtwork#switchFlagVendibile(Ljava/sql/Statement;I)Ix
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java ()"1*þ
+1x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java (Gß
+Ü
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java (O
+%0java.lang.String"__concat*64
+2UPDATE opera SET flagVendibile = 0 WHERE idOpera =*
+""À
+½
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java (S
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+;¶
+³
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java (T
+sqljava.lang.String"__id*
+
+%1java.lang.String›˜
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java (&	
+%2int"5java.sql.Statement#executeUpdate(Ljava/lang/String;)I*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2!executeUpdate(Ljava/lang/String;)"‚
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java ('
+"":
+stmtjava.sql.Statement:
+""B2"0
+.com.artistcorner.engclasses.query.QueryArtwork

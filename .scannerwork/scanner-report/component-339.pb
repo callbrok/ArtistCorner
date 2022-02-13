@@ -1,0 +1,1 @@
+Ó 2javaXähr•ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/mobile/viewsearchartworkgallery/GuiControllerMobileViewSearchArtWorkGallery.java

@@ -1,0 +1,1 @@
+Ô 2javaXùhrˆArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/viewsearchartworkgallery/GuiControllerViewSearchArtWorkGallery.java

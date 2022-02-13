@@ -1,0 +1,1 @@
+ˆ 2javaXhrBArtistCorner/src/main/java/com/artistcorner/MobileApplication.java

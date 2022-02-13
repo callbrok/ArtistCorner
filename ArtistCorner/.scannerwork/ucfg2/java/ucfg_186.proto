@@ -1,0 +1,38 @@
+
+mcom.artistcorner.engclasses.query.QueryArtwork#selectOpereComprate(Ljava/sql/Statement;I)Ljava/sql/ResultSet;x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java' '(0"1*Ò	
+1x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java( ((iÿ
+ü
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java( ((s
+%0java.lang.String"__concat*VT
+RSELECT * FROM opera JOIN compra ON opera.idOpera = compra.opera WHERE acquirente =*
+""À
+½
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java( ((y
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+;¶
+³
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java( ((z
+sqljava.lang.String"__id*
+
+%1java.lang.String»¸
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java) )(%
+%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"–
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryArtwork.java) )(&
+
+%2java.sql.ResultSet:
+stmtjava.sql.Statement:
+""B2"0
+.com.artistcorner.engclasses.query.QueryArtwork

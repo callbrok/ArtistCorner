@@ -8,20 +8,24 @@ import java.util.Properties;
 
 public class ConnectProperties {
 
+    private ConnectProperties(){
+        throw new IllegalStateException("Utility Cconnect class");
+    }
 
     /**
      * Prende i valori nel file "login.properties" per effettuare la connessione al DBMS.
      */
     public static Connection getConnection(){
         Connection conn = null;
+        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
 
         try{
 
-            // load the properties file
+            // Carica il file di configurazione.
             Properties prop = new Properties();
-            prop.load(new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties"));
+            prop.load(stream);
 
-            // assign db parameters
+            // Preleva i parametri di configurazione.
             String dbhostname = prop.getProperty("hostname");
             String dbname = prop.getProperty("dbname");
             String dbusername = prop.getProperty("username");
@@ -31,11 +35,11 @@ public class ConnectProperties {
             String dburl = "jdbc:" + dbdriverused + "://" + dbhostname + ":3306/" + dbname;
 
 
-            // create a connection to the database
+            // Crea connessione con il DB.
             conn = DriverManager.getConnection(dburl, dbusername, dbpassword);
 
         } catch (IOException | SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return conn;
     }
@@ -45,19 +49,20 @@ public class ConnectProperties {
      */
     public static String getDriverClassName(){
         String driverClassName="NO DRIVER SPECIFIED";
+        InputStream stream = ConnectProperties.class.getClassLoader().getResourceAsStream("login.properties");
 
         try{
 
-            // load the properties file
+            // Carica il file di configurazione.
             Properties prop = new Properties();
-            prop.load(new FileInputStream("ArtistCorner/src/main/resources/dbproperties/login.properties"));
+            prop.load(stream);
 
-            // assign db parameters
+            // Preleva il driver da utilizzare.
             driverClassName = prop.getProperty("driver");
 
 
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return driverClassName;
     }

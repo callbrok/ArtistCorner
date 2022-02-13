@@ -1,0 +1,1 @@
+è 2javaX’hrisrc/main/java/com/artistcorner/controller/guicontroller/manageproposals/GuiControllerManageProposals.java

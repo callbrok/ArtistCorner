@@ -1,0 +1,233 @@
+
+jcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation#showSolution()Vß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÁ Á("11*∞
+2ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javañ/ ñ(:˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javañC ñ(O
+%29java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2*
+0*¯
+
+3ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaé' é()‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaì& ì(1
+%24java.lang.String"__id*
+""‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaî) î(4
+%25java.lang.String"__id*
+""˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javañ ñ(
+%26java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javañ  ñ(,
+%27java.lang.String"__id*
+""Ω∫
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javañ ñ(-
+%28boolean",java.lang.String#equals(Ljava/lang/Object;)Z*
+
+%26java.lang.String*
+
+%27java.lang.String2equals(Ljava/lang/Object;)*
+2
+0*∞
+4ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaå/ å(:˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaåC å(O
+%23java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2*
+3*¯
+
+5ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÑ' Ñ()‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaâ& â(1
+%18java.lang.String"__id*
+""‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaä) ä(4
+%19java.lang.String"__id*
+""˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaå å(
+%20java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaå  å(,
+%21java.lang.String"__id*
+""Ω∫
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaå å(-
+%22boolean",java.lang.String#equals(Ljava/lang/Object;)Z*
+
+%20java.lang.String*
+
+%21java.lang.String2equals(Ljava/lang/Object;)*
+3
+4*∞
+6ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÇ/ Ç(:˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÇC Ç(O
+%17java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2*
+5*¯
+
+7ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java˙' ˙()‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaˇ& ˇ(1
+%12java.lang.String"__id*
+""‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÄ) Ä(4
+%13java.lang.String"__id*
+""˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÇ Ç(
+%14java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2‘
+—
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÇ  Ç(,
+%15java.lang.String"__id*
+""Ω∫
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÇ Ç(-
+%16boolean",java.lang.String#equals(Ljava/lang/Object;)Z*
+
+%14java.lang.String*
+
+%15java.lang.String2equals(Ljava/lang/Object;)*
+5
+6*•
+8ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯/ ¯(:˚
+¯
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯I ¯(U
+%10java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2Ú
+Ô
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯C ¯(U
+%11java.lang.String"__concat*
+ *
+
+%10java.lang.String*
+7*õ	
+9ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÙ$ Ù(&”
+–
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaˆ& ˆ(1
+%6java.lang.String"__id*
+""˙
+˜
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯ ¯(
+%7java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2”
+–
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯  ¯(,
+%8java.lang.String"__id*
+""∫∑
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java¯ ¯(-
+%9boolean",java.lang.String#equals(Ljava/lang/Object;)Z*
+
+%7java.lang.String*
+
+%8java.lang.String2equals(Ljava/lang/Object;)*
+7
+8*Æ
+10ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÚ/ Ú(:¯
+ı
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÚC Ú(O
+%5java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2 *
+9*–
+11ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaË Ë(‹
+Ÿ
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaË Ë(.
+	soluzionejava.lang.String[]"__id*
+""”
+–
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÔ& Ô(1
+%0java.lang.String"__id*
+""”
+–
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.java) (4
+%1java.lang.String"__id*
+""¯
+ı
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÚ Ú(
+%2java.lang.String"
+__arrayGet*!
+
+	soluzionejava.lang.String[]*2 ”
+–
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÚ  Ú(,
+%3java.lang.String"__id*
+""∫∑
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaÚ Ú(-
+%4boolean",java.lang.String#equals(Ljava/lang/Object;)Z*
+
+%2java.lang.String*
+
+%3java.lang.String2equals(Ljava/lang/Object;)*
+9
+10*«
+0 "ø
+ß
+ö/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/controller/guicontroller/getreccomandation/GuiControllerGetReccomandation.javaù ù(
+implicit returnB^\
+Zcom.artistcorner.controller.guicontroller.getreccomandation.GuiControllerGetReccomandation

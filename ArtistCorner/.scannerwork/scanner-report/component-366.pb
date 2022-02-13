@@ -1,0 +1,1 @@
+î 2javaX©hrisrc/main/java/com/artistcorner/controller/guicontroller/forwardproposal/GuiControllerForwardProposal.java

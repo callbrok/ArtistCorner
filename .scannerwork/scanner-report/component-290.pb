@@ -1,0 +1,1 @@
+¢ 2javaXhrTArtistCorner/src/main/java/com/artistcorner/engclasses/exceptions/ExceptionView.java

@@ -1,0 +1,39 @@
+
+xcom.artistcorner.engclasses.query.QueryGallery#selectGallery(Ljava/sql/Statement;Ljava/lang/String;)Ljava/sql/ResultSet;x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java ()"1*Á	
+1x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (?í
+ê
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (J
+%0java.lang.String"__concat*,*
+(SELECT * FROM galleria WHERE username ='*
+
+usernamejava.lang.StringÁ
+¾
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (Q
+%1java.lang.String"__concat*
+
+%0java.lang.String*
+';¶
+³
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (R
+sqljava.lang.String"__id*
+
+%1java.lang.String»¸
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (%
+%2java.sql.ResultSet"Gjava.sql.Statement#executeQuery(Ljava/lang/String;)Ljava/sql/ResultSet;*
+
+stmtjava.sql.Statement*
+
+sqljava.lang.String2 executeQuery(Ljava/lang/String;)"–
+x
+n/home/marco/GitHub/ArtistCorner/ArtistCorner/src/main/java/com/artistcorner/engclasses/query/QueryGallery.java (&
+
+%2java.sql.ResultSet:
+stmtjava.sql.Statement:
+usernamejava.lang.StringB2"0
+.com.artistcorner.engclasses.query.QueryGallery

@@ -1,0 +1,1 @@
+Œ 2javaX,hrgsrc/main/java/com/artistcorner/controller/applicationcontroller/login/summaries/ViewGallerySummary.java
