@@ -48,7 +48,7 @@
          <children>
             <AnchorPane fx:id="paneException" layoutX="20.0" layoutY="275.0" prefHeight="242.0" prefWidth="682.0" visible="false">
                <children>
-                  <Pane layoutX="48.0" layoutY="30.0" prefHeight="186.0" prefWidth="583.0" style="-fx-background-color: #FF0000;">
+                  <Pane layoutX="48.0" layoutY="30.0" prefHeight="186.0" prefWidth="583.0" style="-fx-background-color: #d13e0a;">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="38.0" prefHeight="107.0" prefWidth="583.0" text="Nessun Artista Seguito" textFill="WHITE">
                            <font>

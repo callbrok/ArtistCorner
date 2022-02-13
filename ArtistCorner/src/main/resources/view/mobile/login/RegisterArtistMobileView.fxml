@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="408.0" prefWidth="348.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.artistcorner.controller.guicontroller.mobile.login.GuiControllerMobileRegister">
    <children>
       <TextField fx:id="textFieldUserArtistMob" layoutX="38.0" layoutY="26.0" prefHeight="37.0" prefWidth="128.0" promptText="Username" />
-      <TextField fx:id="textFieldEmailArtistMob" layoutX="37.0" layoutY="78.0" prefHeight="37.0" prefWidth="274.0" promptText="Email" />
+      <TextField fx:id="textFieldEmailArtistMob" layoutX="37.0" layoutY="78.0" prefHeight="37.0" prefWidth="274.0" promptText="E-mail" />
       <TextField fx:id="textFieldPassArtistMob" layoutX="182.0" layoutY="26.0" prefHeight="37.0" prefWidth="128.0" promptText="Password" />
       <TextField fx:id="textFieldNomeArtistMob" layoutX="37.0" layoutY="133.0" prefHeight="37.0" prefWidth="274.0" promptText="Nome" />
       <TextField fx:id="textFieldCognomeArtistMob" layoutX="37.0" layoutY="189.0" prefHeight="37.0" prefWidth="274.0" promptText="Cognome" />
