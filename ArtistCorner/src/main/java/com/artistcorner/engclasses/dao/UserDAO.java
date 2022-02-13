@@ -41,8 +41,9 @@ public class UserDAO {
                 String usr = rs.getString("username");
                 String psw = rs.getString("password");
                 String rl = rs.getString("ruolo");
+                String mail = rs.getString("email");
 
-                loggedUser = new User(usr, psw, rl);
+                loggedUser = new User(usr, psw, rl, mail);
 
             }while(rs.next());
 

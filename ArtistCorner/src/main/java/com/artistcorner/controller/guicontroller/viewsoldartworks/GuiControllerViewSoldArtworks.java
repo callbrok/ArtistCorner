@@ -35,7 +35,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GuiControllerViewSoldArtworks {
-    public HBox borderImageView;
+    @FXML
+    private HBox borderImageView;
     @FXML
     private ImageView imageOfArtworkSold;
     @FXML

@@ -6,9 +6,11 @@ import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.DuplicateUserException;
+import com.artistcorner.engclasses.exceptions.NotValidEmailException;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +18,8 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class GuiControllerMobileRegister {
+    @FXML
+    private TextField textFieldEmailArtistMob;
     @FXML
     private AnchorPane anchorErroSignMobile;
     @FXML
@@ -58,20 +62,21 @@ public class GuiControllerMobileRegister {
     public void registerArtistMob() {
         UserBean userReg = new UserBean();
 
-        userReg.setUsername(textFieldUserArtistMob.getText());
-        userReg.setPassword(textFieldPassArtistMob.getText());
-        userReg.setRole("artista");
-
-
-        ArtistBean artistReg = new ArtistBean();
-
-        artistReg.setNome(textFieldNomeArtistMob.getText());
-        artistReg.setCognome(textFieldCognomeArtistMob.getText());
-
-
         try {
+            userReg.setUsername(textFieldUserArtistMob.getText());
+            userReg.setPassword(textFieldPassArtistMob.getText());
+            userReg.setEmail(textFieldEmailArtistMob.getText());
+            userReg.setRole("artista");
+
+
+            ArtistBean artistReg = new ArtistBean();
+
+            artistReg.setNome(textFieldNomeArtistMob.getText());
+            artistReg.setCognome(textFieldCognomeArtistMob.getText());
+
             signUpM.registerArtist(userReg, artistReg);
-        } catch (DuplicateUserException e) {
+
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelErroSignMobile.setText(e.getMessage());
             anchorErroSignMobile.setVisible(true);
         }
@@ -139,6 +144,7 @@ public class GuiControllerMobileRegister {
     public void initialize(){
         labelErroSignMobile.setMaxWidth(274);
         labelErroSignMobile.setWrapText(true);
+        labelErroSignMobile.setAlignment(Pos.CENTER);
         anchorErroSignMobile.setVisible(false);
     }
 

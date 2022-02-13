@@ -12,8 +12,9 @@
          </font></Label>
       <TextField fx:id="textFieldUserArtist" layoutX="46.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Username" />
       <TextField fx:id="textFieldPassArtist" layoutX="190.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" promptText="Password" />
-      <TextField fx:id="textFieldNomeArtist" layoutX="45.0" layoutY="152.0" prefHeight="26.0" prefWidth="274.0" promptText="Nome" />
-      <TextField fx:id="textFieldCognomeArtist" layoutX="45.0" layoutY="208.0" prefHeight="26.0" prefWidth="274.0" promptText="Cognome" />
+      <TextField fx:id="textFieldNomeArtist" layoutX="45.0" layoutY="171.0" prefHeight="26.0" prefWidth="274.0" promptText="Nome" />
+      <TextField fx:id="textFieldCognomeArtist" layoutX="45.0" layoutY="209.0" prefHeight="26.0" prefWidth="274.0" promptText="Cognome" />
+      <TextField fx:id="textFieldEmailArtist" layoutX="46.0" layoutY="131.0" prefHeight="26.0" prefWidth="274.0" promptText="Email" />
       <Button layoutX="45.0" layoutY="256.0" mnemonicParsing="false" onAction="#registerArtist" prefHeight="53.0" prefWidth="274.0" text="Registrati" />
       <AnchorPane fx:id="anchorDuplicateUser" layoutX="21.0" layoutY="77.0" prefHeight="237.0" prefWidth="333.0" style="-fx-background-color: #d13e0a;">
          <children>

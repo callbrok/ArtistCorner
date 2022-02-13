@@ -6,12 +6,15 @@ import com.artistcorner.engclasses.bean.ArtistBean;
 import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.bean.UserBean;
 import com.artistcorner.engclasses.exceptions.DuplicateUserException;
+import com.artistcorner.engclasses.exceptions.NotValidEmailException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class GuiControllerRegister {
+    @FXML
+    private TextField textFieldEmailArtist;
     @FXML
     private AnchorPane anchorDuplicateUser;
     @FXML
@@ -54,18 +57,20 @@ public class GuiControllerRegister {
     public void registerArtist() {
         UserBean userReg = new UserBean();
 
-        userReg.setUsername(textFieldUserArtist.getText());
-        userReg.setPassword(textFieldPassArtist.getText());
-        userReg.setRole("artista");
-
-        ArtistBean artistReg = new ArtistBean();
-
-        artistReg.setNome(textFieldNomeArtist.getText());
-        artistReg.setCognome(textFieldCognomeArtist.getText());
-
         try {
+            userReg.setUsername(textFieldUserArtist.getText());
+            userReg.setPassword(textFieldPassArtist.getText());
+            userReg.setEmail(textFieldEmailArtist.getText());
+            userReg.setRole("artista");
+
+            ArtistBean artistReg = new ArtistBean();
+
+            artistReg.setNome(textFieldNomeArtist.getText());
+            artistReg.setCognome(textFieldCognomeArtist.getText());
+
             signUp.registerArtist(userReg, artistReg);
-        } catch (DuplicateUserException e) {
+
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelExcepDuplicate.setText(e.getMessage());
             anchorDuplicateUser.setVisible(true);
         }

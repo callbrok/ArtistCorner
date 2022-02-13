@@ -11,6 +11,7 @@ module com.artistcorner {
     requires org.junit.platform.engine;
     requires org.seleniumhq.selenium.api;
     requires javax.mail.api;
+    requires commons.validator;
     //requires java.mail;
 
 

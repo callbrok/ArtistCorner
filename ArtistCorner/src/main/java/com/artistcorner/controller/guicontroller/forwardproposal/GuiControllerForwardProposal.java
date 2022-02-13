@@ -272,6 +272,7 @@ public class GuiControllerForwardProposal {
             return new Image(inputStream5, 100, 100, true, false);
 
         }
+
         public void centerImage(ImageView imageView) {
             Image img = imageView.getImage();
             if (img != null) {
