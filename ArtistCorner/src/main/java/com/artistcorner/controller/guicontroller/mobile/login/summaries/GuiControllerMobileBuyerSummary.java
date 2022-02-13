@@ -6,6 +6,7 @@ import com.artistcorner.engclasses.bean.BuyerBean;
 import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -54,6 +55,7 @@ public class GuiControllerMobileBuyerSummary {
 
     public void initialize(){
         paneGuest.setVisible(false);
+        labelUsernameDisplay.setAlignment(Pos.CENTER);
         makeDraggable();
     }
 

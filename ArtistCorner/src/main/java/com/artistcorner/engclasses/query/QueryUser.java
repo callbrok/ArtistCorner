@@ -14,7 +14,7 @@ public class QueryUser {
         return stmt.executeQuery(sql);
     }
     public static ResultSet selectArtistEmail(Statement stmt, int id) throws SQLException {
-        String sql = "SELECT email from utente join artista on utente.username =artista.username where idArtista = '"+ id +"';";
+        String sql = "SELECT * from utente join artista on utente.username =artista.username where idArtista = '"+ id +"';";
         return stmt.executeQuery(sql);
     }
 

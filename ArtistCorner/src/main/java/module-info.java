@@ -10,9 +10,8 @@ module com.artistcorner {
     requires org.junit.platform.commons;
     requires org.junit.platform.engine;
     requires org.seleniumhq.selenium.api;
-    requires javax.mail.api;
     requires commons.validator;
-    //requires java.mail;
+    requires javax.mail;
 
 
     opens com.artistcorner to javafx.fxml;

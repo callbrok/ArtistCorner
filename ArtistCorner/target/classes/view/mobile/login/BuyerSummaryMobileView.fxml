@@ -24,7 +24,7 @@
             </Label>
             <Pane id="footerProfile" layoutY="585.0" prefHeight="48.0" prefWidth="438.0" styleClass="footerUserPane">
                <children>
-                  <Label fx:id="labelUsernameDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="18.0" prefHeight="19.0" prefWidth="161.0" text="Profilo Guest" textFill="#922b07">
+                  <Label fx:id="labelUsernameDisplay" layoutY="16.0" prefHeight="16.0" prefWidth="438.0" text="Profilo Guest" textFill="#922b07">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

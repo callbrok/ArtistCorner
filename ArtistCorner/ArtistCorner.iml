@@ -84,6 +84,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="commons-validator-1.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:11.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11.0.2" level="project" />
@@ -177,12 +178,12 @@
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-support:4.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:4.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-chromium-driver:4.1.2" level="project" />
-    <orderEntry type="library" name="Maven: javax.mail:javax.mail-api:1.6.2" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: commons-validator:commons-validator:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />
     <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.1" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
-    <orderEntry type="library" name="commons-validator-1.4.1" level="project" />
   </component>
 </module>
