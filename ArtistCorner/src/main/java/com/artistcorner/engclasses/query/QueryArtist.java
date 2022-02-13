@@ -25,7 +25,7 @@ public class QueryArtist {
     }
 
     public static int insertUser(Statement stmt, User userInsert) throws SQLException  {
-        String insertStatement = String.format("INSERT INTO utente (username, password, ruolo) VALUES ('%s','%s','%s')", userInsert.getUsername(), userInsert.getPassword(), userInsert.getRole());
+        String insertStatement = String.format("INSERT INTO utente (username, password, ruolo, email) VALUES ('%s','%s','%s', '%s')", userInsert.getUsername(), userInsert.getPassword(), userInsert.getRole(), userInsert.getEmail());
         return stmt.executeUpdate(insertStatement);
     }
 

@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class Register {
 
     public void registerArtist(UserBean user, ArtistBean art) throws DuplicateUserException{
-        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole());
+        User userToAdd = new User(user.getUsername(), user.getPassword(), user.getRole(), user.getEmail());
         Artist artistToAdd = new Artist(art.getNome(), art.getCognome());
 
         try {
@@ -32,7 +32,7 @@ public class Register {
         }
     }
     public void registerGallery(UserBean user, ArtGalleryBean gal) throws DuplicateUserException {
-        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole());
+        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole(), user.getEmail());
         ArtGallery artGalleryToAdd = new ArtGallery(gal.getGalleria(),gal.getNome(),gal.getDescrizione(),gal.getIndirizzo());
         try{
             GalleryDAO.insertGallery(userToAdd,artGalleryToAdd);
@@ -41,7 +41,7 @@ public class Register {
         }
     }
     public void registerBuyer(UserBean user, BuyerBean buy)throws DuplicateUserException{
-        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole());
+        User userToAdd = new User(user.getUsername(),user.getPassword(), user.getRole(), user.getEmail());
         Buyer buyerToAdd = new Buyer(buy.getIdBuyer(),buy.getNome(),buy.getCognome());
         try{
             BuyerDAO.insertBuyer(userToAdd,buyerToAdd);
