@@ -9,7 +9,6 @@ import com.artistcorner.engclasses.others.SceneControllerMobile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -17,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -30,6 +30,10 @@ import java.util.List;
 public class GuiControllerMobileForwardProposal {
     @FXML
     private AnchorPane anchorMainSearchGalMob;
+    @FXML
+    private ImageView imageFocusedM1;
+    @FXML
+    private AnchorPane anchorPaneFocusM1;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
@@ -181,6 +185,24 @@ public class GuiControllerMobileForwardProposal {
                     }
                 }
             });
+            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                InputStream inputStreamFocus = null;
+
+                try {
+                    inputStreamFocus = artWorkBean.getImmagine().getBinaryStream();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                Image imageFocus = new Image(inputStreamFocus);
+
+                imageFocusedM1.setImage(imageFocus);   // Setta l'immagine e la rende focused.
+                centerImage(imageFocusedM1);                     // Centra l'immagine.
+                anchorPaneFocusM1.setVisible(true);
+
+                event.consume();
+            });
+            anchorPaneFocusM1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> anchorPaneFocusM1.setVisible(false));
 
 
             this.getChildren().addAll(hBoxBorder,vBox1, hBoxSearchB);
@@ -196,7 +218,30 @@ public class GuiControllerMobileForwardProposal {
             return new Image(inputStream2, 100, 100, true, false);
 
         }
+        public void centerImage(ImageView imageView) {
+            Image img2 = imageView.getImage();
+            if (img2 != null) {
+                double wM2 = 0;
+                double hM2 = 0;
 
+                double ratioXM2 = imageView.getFitWidth() / img2.getWidth();      // Larghezza dell'imageview / larghezza dell'immagine.
+                double ratioYM2 = imageView.getFitHeight() / img2.getHeight();    // Altezza dell'imageView / altezza dell'immagine.
+
+                double reducCoeff = 0;
+                if (ratioXM2 >= ratioYM2) {
+                    reducCoeff = ratioYM2;
+                } else {
+                    reducCoeff = ratioXM2;
+                }
+
+                wM2 = img2.getWidth() * reducCoeff;
+                hM2 = img2.getHeight() * reducCoeff;
+
+                imageView.setX((imageView.getFitWidth() - wM2) / 2);
+                imageView.setY((imageView.getFitHeight() - hM2) / 2);
+
+            }
+        }
     }
     public void populateListView(String input) throws SQLException, IOException {
         paneExLoad.setVisible(false);
