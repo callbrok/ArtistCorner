@@ -1,6 +1,7 @@
 package com.artistcorner.engclasses.others.observer;
 
-public abstract class Observer {
+public interface Observer {
 
-    public abstract void update();
+    void update();
+
 }

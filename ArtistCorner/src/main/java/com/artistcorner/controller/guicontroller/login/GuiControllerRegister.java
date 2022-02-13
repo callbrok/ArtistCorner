@@ -16,6 +16,10 @@ public class GuiControllerRegister {
     @FXML
     private TextField textFieldEmailArtist;
     @FXML
+    private TextField textFieldEmailGal;
+    @FXML
+    private TextField textFieldEmailBuy;
+    @FXML
     private AnchorPane anchorDuplicateUser;
     @FXML
     private Label labelExcepDuplicate;
@@ -82,9 +86,10 @@ public class GuiControllerRegister {
     }
     public void registerBuyer(){
         UserBean userReg = new UserBean();
-
+        try {
         userReg.setUsername(textFieldUserBuyer.getText());
         userReg.setPassword(textFieldUserBuyer.getText());
+        userReg.setEmail(textFieldEmailBuy.getText());
         userReg.setRole("acquirente");
 
         BuyerBean buyerReg = new BuyerBean();
@@ -92,9 +97,9 @@ public class GuiControllerRegister {
         buyerReg.setNome(textFieldNomeBuyer.getText());
         buyerReg.setCognome(textFieldCognomeBuyer.getText());
 
-        try {
+
             signUp.registerBuyer(userReg, buyerReg);
-        } catch (DuplicateUserException e) {
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelExcepDuplicate.setText(e.getMessage());
             anchorDuplicateUser.setVisible(true);
         }
@@ -106,9 +111,10 @@ public class GuiControllerRegister {
     }
     public void registerGallery(){
         UserBean userReg = new UserBean();
-
+        try {
         userReg.setUsername(textFieldUserGallery.getText());
         userReg.setPassword(textFieldPassGallery.getText());
+        userReg.setEmail(textFieldEmailGal.getText());
         userReg.setRole("galleria");
 
         String address = textFieldAddressGallery.getText()+", "+textFieldNumber.getText()+", "+textFieldCap.getText()+" "+textFieldCity.getText();
@@ -120,9 +126,8 @@ public class GuiControllerRegister {
         artGalleryReg.setIndirizzo(address);
 
 
-        try {
-            signUp.registerGallery(userReg, artGalleryReg);
-        } catch (DuplicateUserException e) {
+        signUp.registerGallery(userReg, artGalleryReg);
+        } catch (DuplicateUserException | NotValidEmailException e) {
             labelExcepDuplicate.setText(e.getMessage());
             anchorDuplicateUser.setVisible(true);
         }

@@ -142,10 +142,10 @@ public class GuiControllerViewFavourites {
                         imageView.setFitHeight(100);
                         imageView.setFitWidth(100);
 
-                        HBox hBox_border = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
-                        hBox_border.setMinWidth(100);
-                        hBox_border.setMinHeight(100);
-                        hBox_border.getStyleClass().add("hBoxBorderMAB");
+                        HBox hBoxBorder = new HBox(imageView);  // Imposta bordo all'immagine tramite un HBox
+                        hBoxBorder.setMinWidth(100);
+                        hBoxBorder.setMinHeight(100);
+                        hBoxBorder.getStyleClass().add("hBoxBorderMAB");
 
                         labelArtWorkNameFavDesk.setText(artworkBean.getTitolo());
                         labelArtWorkNameFavDesk.setAlignment(Pos.CENTER);
@@ -235,20 +235,23 @@ public class GuiControllerViewFavourites {
                                 }
                         }
                     });
+                        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                                InputStream inputStream = null;
 
+                                try {
+                                        inputStream = artworkBean.getImmagine().getBinaryStream();
+                                } catch (SQLException e) {
+                                        e.printStackTrace();
+                                }
+                                Image imageFocus =new Image(inputStream);
 
-                        EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                                ImageView imageView2 = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
-
-                                imageFocused.setImage(imageView2.getImage());   // Setta l'immagine e la rende focused.
+                                imageFocused.setImage(imageFocus);   // Setta l'immagine e la rende focused.
                                 centerImage(imageFocused);                     // Centra l'immagine.
                                 anchorPaneFocus.setVisible(true);
-                        };
-
-                        anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
-
-                        imageView.setOnMouseClicked(mouseHandler);
-                        this.getChildren().addAll(hBox_border, vBox1, vBox);
+                                event.consume();
+                        });
+                        anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> anchorPaneFocus.setVisible(false));
+                        this.getChildren().addAll(hBoxBorder, vBox1, vBox);
                 }
                 private Image extractImage(Blob blob3){
                         InputStream inputStream3 = null;

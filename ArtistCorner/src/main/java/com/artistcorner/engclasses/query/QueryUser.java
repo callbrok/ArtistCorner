@@ -13,4 +13,9 @@ public class QueryUser {
         String sql = "SELECT * FROM utente WHERE username ='" + user.getUsername() + "' AND password='" + user.getPassword() + "';";
         return stmt.executeQuery(sql);
     }
+    public static ResultSet selectArtistEmail(Statement stmt, int id) throws SQLException {
+        String sql = "SELECT email from utente join artista on utente.username =artista.username where idArtista = '"+ id +"';";
+        return stmt.executeQuery(sql);
+    }
+
 }

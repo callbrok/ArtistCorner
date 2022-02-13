@@ -1,6 +1,8 @@
 package com.artistcorner.engclasses.dao;
 
+import com.artistcorner.engclasses.exceptions.ArtistNotFoundException;
 import com.artistcorner.engclasses.others.ConnectProperties;
+import com.artistcorner.engclasses.query.QueryArtist;
 import com.artistcorner.engclasses.query.QueryUser;
 import com.artistcorner.model.User;
 
@@ -73,7 +75,59 @@ public class UserDAO {
 
         return loggedUser;
     }
+    public static User retrieveArtistEmail(int userId){
+        User ar = null;
+        Statement stmt = null;
+        Connection conn = null;
 
+        try {
+
+            Class.forName(ConnectProperties.getDriverClassName());    // Loading dinamico del driver mysql
+            conn = ConnectProperties.getConnection();    // Apertura connessione
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,   // Creazione ed esecuzione della query
+                    ResultSet.CONCUR_READ_ONLY);
+
+            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
+            ResultSet rs = QueryUser.selectArtistEmail(stmt,userId);
+
+            if (!rs.first()){ // rs empty
+                throw new ArtistNotFoundException("Artista non trovato");
+            }
+
+            // riposizionamento del cursore
+            rs.first();
+            do{
+                // lettura delle colonne "by name"
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+
+                ar = new User(username,password,email);
+
+            }while(rs.next());
+
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return ar;
+    }
 
 
 

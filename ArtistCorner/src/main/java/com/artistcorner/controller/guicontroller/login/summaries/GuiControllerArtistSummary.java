@@ -90,11 +90,11 @@ public class GuiControllerArtistSummary {
         for (ArtworkBean b : listOfArtWorksImage){    // Scorre tutti i blob relativi all'artista.
 
             InputStream inputStream = null;
-            HBox hBox_border = new HBox();  // Imposta bordo all'immagine tramite un HBox
-            hBox_border.setMinWidth(200);
-            hBox_border.setMinHeight(200);
-            hBox_border.getStyleClass().add("hBoxBorder");
-            hBox_border.setAlignment(Pos.CENTER);
+            HBox hBoxBorder = new HBox();  // Imposta bordo all'immagine tramite un HBox
+            hBoxBorder.setMinWidth(200);
+            hBoxBorder.setMinHeight(200);
+            hBoxBorder.getStyleClass().add("hBoxBorder");
+            hBoxBorder.setAlignment(Pos.CENTER);
 
             try {
                 inputStream = b.getImmagine().getBinaryStream();
@@ -107,9 +107,9 @@ public class GuiControllerArtistSummary {
             ImageView imageThumb = new ImageView();
             imageThumb.setImage(image);
 
-            hBox_border.getChildren().add(imageThumb);
+            hBoxBorder.getChildren().add(imageThumb);
 
-            tilePaneLastArt.getChildren().add(hBox_border);   // Popola la tilePane.
+            tilePaneLastArt.getChildren().add(hBoxBorder);   // Popola la tilePane.
         }
 
     }

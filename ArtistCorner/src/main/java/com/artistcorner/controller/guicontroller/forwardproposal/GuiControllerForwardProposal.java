@@ -190,10 +190,10 @@ public class GuiControllerForwardProposal {
             imageViewSearchGal.setFitHeight(100);
             imageViewSearchGal.setFitWidth(100);
 
-            HBox hBox_border = new HBox(imageViewSearchGal);  // Imposta bordo all'immagine tramite un HBox
-            hBox_border.setMinWidth(100);
-            hBox_border.setMinHeight(100);
-            hBox_border.getStyleClass().add("hBoxBorderMAB");
+            HBox hBoxBorder = new HBox(imageViewSearchGal);  // Imposta bordo all'immagine tramite un HBox
+            hBoxBorder.setMinWidth(100);
+            hBoxBorder.setMinHeight(100);
+            hBoxBorder.getStyleClass().add("hBoxBorderMAB");
 
             labelArtWorkNameSearchGal.setText(artWork.getTitolo());
             labelArtWorkNameSearchGal.isWrapText();
@@ -246,19 +246,22 @@ public class GuiControllerForwardProposal {
                 }
 
             });
+            imageViewSearchGal.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                InputStream inputStreamGal = null;
+                try {
+                    inputStreamGal = artWork.getImmagine().getBinaryStream();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                Image imageFocusGal =new Image(inputStreamGal);
 
-            EventHandler<MouseEvent> mouseHandler = tD -> {    // Crea un EventHandler sull'imageView all'interno del tilePane.
-                ImageView imageView2 = (ImageView) tD.getSource();  // Prende l'imageView collegata all'evento.
-
-                imageFocused.setImage(imageView2.getImage());   // Setta l'immagine e la rende focused.
+                imageFocused.setImage(imageFocusGal);   // Setta l'immagine e la rende focused.
                 centerImage(imageFocused);                     // Centra l'immagine.
                 anchorPaneFocus.setVisible(true);
-            };
-
-            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> anchorPaneFocus.setVisible(false));
-
-            imageViewSearchGal.setOnMouseClicked(mouseHandler);
-            this.getChildren().addAll(hBox_border,vBox1, hBoxSearchB);
+                event.consume();
+            });
+            anchorPaneFocus.addEventHandler(MouseEvent.MOUSE_CLICKED,mouseEvent -> anchorPaneFocus.setVisible(false));
+            this.getChildren().addAll(imageViewSearchGal,vBox1, buttonOffertaSearchGal);
         }
 
         private Image extractImage(Blob blob5){

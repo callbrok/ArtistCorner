@@ -1,6 +1,6 @@
 package com.artistcorner.engclasses.others.observer;
 
-public class ArtistConcreteObserver extends Observer {
+public class ArtistConcreteObserver implements Observer {
 
 
     GalleryConcreteSubject gal;
