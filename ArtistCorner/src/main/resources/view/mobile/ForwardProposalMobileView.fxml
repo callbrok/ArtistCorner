@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -83,5 +84,10 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Button>
+        <AnchorPane fx:id="anchorPaneFocusM1" layoutX="15.0" layoutY="12.0" prefHeight="664.0" prefWidth="441.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" visible="false">
+            <children>
+                <ImageView fx:id="imageFocusedM1" fitHeight="239.0" fitWidth="317.0" layoutX="63.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

@@ -108,21 +108,21 @@ public class UserDAO {
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-                se2.printStackTrace();
+            } catch (SQLException se21) {
+                se21.printStackTrace();
             }
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
             }
         }
 

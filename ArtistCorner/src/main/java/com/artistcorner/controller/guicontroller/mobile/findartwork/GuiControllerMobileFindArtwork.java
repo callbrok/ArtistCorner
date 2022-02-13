@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -32,7 +33,11 @@ public class GuiControllerMobileFindArtwork {
     @FXML
     private Button buttonFavourite;
     @FXML
+    private ImageView imageFocusedMob;
+    @FXML
     private AnchorPane anchorMainMobBuySearch;
+    @FXML
+    private AnchorPane anchorPaneFocusMob;
     @FXML
     private Label labelUsernameDisplay;
     @FXML
@@ -250,8 +255,7 @@ public class GuiControllerMobileFindArtwork {
                         answer = sa.manageButtonClickFavourites(buttonPreferitiMobBuy.getText(),artWoBea, buy);
 
                         // Dopo la rimozione setta il bottone.
-                        if(checkRemButton){buttonPreferitiMobBuy.setStyle("-fx-background-color: #60b798; -fx-text-fill: #277458;");}
-                        if(checkAddButton){buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");}
+                       checkForStyle(checkRemButton,checkAddButton);
 
                     } catch (FavouritesManagementProblemException e) {
                         e.printStackTrace();
@@ -260,6 +264,24 @@ public class GuiControllerMobileFindArtwork {
                     buttonPreferitiMobBuy.setText(answer);
                 }
             });
+            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                InputStream inputStreamFocus = null;
+
+                try {
+                    inputStreamFocus = artWoBea.getImmagine().getBinaryStream();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                Image imageFocus = new Image(inputStreamFocus);
+
+                imageFocusedMob.setImage(imageFocus);   // Setta l'immagine e la rende focused.
+                centerImage(imageFocusedMob);                     // Centra l'immagine.
+                anchorPaneFocusMob.setVisible(true);
+
+                event.consume();
+            });
+            anchorPaneFocusMob.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> anchorPaneFocusMob.setVisible(false));
 
 
             this.getChildren().addAll(hBoxBorder, vBox1, vBox);
@@ -281,6 +303,34 @@ public class GuiControllerMobileFindArtwork {
                     buttonPreferitiMobBuy.setText("Rimuovi dai Preferiti");
                     buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");
                 }
+            }
+        }
+       public void  checkForStyle(boolean checkRemButton,boolean checkAddButton){
+           if(checkRemButton){buttonPreferitiMobBuy.setStyle("-fx-background-color: #60b798; -fx-text-fill: #277458;");}
+           if(checkAddButton){buttonPreferitiMobBuy.getStyleClass().add("buttonRemoveFav");}
+        }
+        public void centerImage(ImageView imageView) {
+            Image img1 = imageView.getImage();
+            if (img1 != null) {
+                double wM1 = 0;
+                double hM1 = 0;
+
+                double ratioXM1 = imageView.getFitWidth() / img1.getWidth();      // Larghezza dell'imageview / larghezza dell'immagine.
+                double ratioYM1 = imageView.getFitHeight() / img1.getHeight();    // Altezza dell'imageView / altezza dell'immagine.
+
+                double reducCoeff = 0;
+                if (ratioXM1 >= ratioYM1) {
+                    reducCoeff = ratioYM1;
+                } else {
+                    reducCoeff = ratioXM1;
+                }
+
+                wM1 = img1.getWidth() * reducCoeff;
+                hM1 = img1.getHeight() * reducCoeff;
+
+                imageView.setX((imageView.getFitWidth() - wM1) / 2);
+                imageView.setY((imageView.getFitHeight() - hM1) / 2);
+
             }
         }
 

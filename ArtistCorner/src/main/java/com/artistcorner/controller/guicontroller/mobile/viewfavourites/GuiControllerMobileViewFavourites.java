@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -35,6 +36,10 @@ import java.util.List;
 public class GuiControllerMobileViewFavourites {
     @FXML
     private Label labelUsernameDisplay;
+    @FXML
+    private ImageView imageFocusedM2;
+    @FXML
+    private AnchorPane anchorPaneFocusM2;
     @FXML
     private AnchorPane anchorMainFavMob;
     @FXML
@@ -102,7 +107,7 @@ public class GuiControllerMobileViewFavourites {
         Label prezzo = new Label();
         ImageView imageView = new ImageView();
 
-        public HBoxCellMobile(List<ArtworkBean> arrayListArtWorkId, ArtworkBean artwBean, ArtistBean artBean, BuyerBean buy){
+        public HBoxCellMobile(List<ArtworkBean> arrayListArtWorkId, ArtworkBean artwBean, ArtistBean artBean, BuyerBean buy) {
             imageView.setImage(extractImage(artwBean.getImmagine()));
             imageView.setFitHeight(75);
             imageView.setFitWidth(75);
@@ -115,7 +120,7 @@ public class GuiControllerMobileViewFavourites {
             labelArtWorkName.setText(artwBean.getTitolo());
             labelArtWorkName.setTextFill(Paint.valueOf("39A67F"));
 
-            labelArtistName.setText(artBean.getNome()+" "+artBean.getCognome());
+            labelArtistName.setText(artBean.getNome() + " " + artBean.getCognome());
             labelArtistName.setTextFill(Paint.valueOf("39A67F"));
 
             prezzo.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #39A67F; ");
@@ -144,8 +149,12 @@ public class GuiControllerMobileViewFavourites {
             vBox.setStyle("-fx-font-size: 10px; -fx-font-weight: bold ");
             vBox.setAlignment(Pos.CENTER);
 
-            if(buy.getIdBuyer() == 13){buttonAcquista.setDisable(true);}
-            if(buy.getIdBuyer() == 13){buttonPreferiti.setDisable(true);}
+            if (buy.getIdBuyer() == 13) {
+                buttonAcquista.setDisable(true);
+            }
+            if (buy.getIdBuyer() == 13) {
+                buttonPreferiti.setDisable(true);
+            }
 
             ViewFavourites sa = new ViewFavourites();
 
@@ -160,7 +169,7 @@ public class GuiControllerMobileViewFavourites {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(artwBean,buy);
+                                sa.finishPayment(artwBean, buy);
                             } catch (BuyArtworkManagementProblemException | FavouritesManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -179,7 +188,7 @@ public class GuiControllerMobileViewFavourites {
                         @Override
                         public void handle(ActionEvent arg0) {
                             try {
-                                sa.finishPayment(artwBean,buy);
+                                sa.finishPayment(artwBean, buy);
                             } catch (BuyArtworkManagementProblemException | FavouritesManagementProblemException e) {
                                 e.printStackTrace();
                             }
@@ -196,7 +205,7 @@ public class GuiControllerMobileViewFavourites {
 
             });
             for (ArtworkBean a : arrayListArtWorkId) {
-                if (a.getIdOpera() ==artwBean.getIdOpera()) {
+                if (a.getIdOpera() == artwBean.getIdOpera()) {
                     buttonPreferiti.setText("Rimuovi dai Preferiti");
                     buttonPreferiti.getStyleClass().add("buttonRemoveFav");
                 }
@@ -217,11 +226,29 @@ public class GuiControllerMobileViewFavourites {
                     buttonPreferiti.setText(answer);
                 }
             });
+            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                InputStream inputStreamFocus = null;
 
+                try {
+                    inputStreamFocus = artwBean.getImmagine().getBinaryStream();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                Image imageFocus = new Image(inputStreamFocus);
+
+                imageFocusedM2.setImage(imageFocus);   // Setta l'immagine e la rende focused.
+                centerImage(imageFocusedM2);                     // Centra l'immagine.
+                anchorPaneFocusM2.setVisible(true);
+
+                event.consume();
+            });
+            anchorPaneFocusM2.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> anchorPaneFocusM2.setVisible(false));
 
             this.getChildren().addAll(hBoxBorder, vBox1, vBox);
         }
-        private Image extractImage(Blob blob){
+
+        private Image extractImage(Blob blob) {
             InputStream inputStream = null;
             try {
                 inputStream = blob.getBinaryStream();
@@ -233,26 +260,52 @@ public class GuiControllerMobileViewFavourites {
 
         }
 
-    }
-    public void populateListView() throws SQLException, IOException {
+        public void centerImage(ImageView imageView) {
+            Image img3 = imageView.getImage();
+            if (img3 != null) {
+                double wM3 = 0;
+                double hM3 = 0;
 
-        ViewFavourites vfb = new ViewFavourites();
-        List<ArtworkBean> arrayOfArtWorkId;
-        ArtistBean artist;
-        try{
-            arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
-            for (ArtworkBean i: arrayOfArtWorkId) {
-                ArtworkBean artWork = vfb.retrieveArtWork(i.getIdOpera());
-                artist = vfb.retrieveArtistName(artWork);
-                listView.getItems().add(new HBoxCellMobile(arrayOfArtWorkId, artWork, artist, buy));
+                double ratioXM = imageView.getFitWidth() / img3.getWidth();      // Larghezza dell'imageview / larghezza dell'immagine.
+                double ratioYM = imageView.getFitHeight() / img3.getHeight();    // Altezza dell'imageView / altezza dell'immagine.
+
+                double reducCoeff = 0;
+                if (ratioXM >= ratioYM) {
+                    reducCoeff = ratioYM;
+                } else {
+                    reducCoeff = ratioXM;
+                }
+
+                wM3 = img3.getWidth() * reducCoeff;
+                hM3 = img3.getHeight() * reducCoeff;
+
+                imageView.setX((imageView.getFitWidth() - wM3) / 2);
+                imageView.setY((imageView.getFitHeight() - hM3) / 2);
+
             }
-        }catch (ArtworkNotFoundException e) {
-            ExceptionsFactory ef = ExceptionsFactory.getInstance();
-            ExceptionView ev;
-            ev = ef.createView(ExceptionsTypeManager.ARTWORKNOTFOUND_MOBILE);
-            paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+
         }
     }
 
+        public void populateListView() throws SQLException, IOException {
+
+            ViewFavourites vfb = new ViewFavourites();
+            List<ArtworkBean> arrayOfArtWorkId;
+            ArtistBean artist;
+            try {
+                arrayOfArtWorkId = vfb.retrieveArtWorkId(buy);
+                for (ArtworkBean i : arrayOfArtWorkId) {
+                    ArtworkBean artWork = vfb.retrieveArtWork(i.getIdOpera());
+                    artist = vfb.retrieveArtistName(artWork);
+                    listView.getItems().add(new HBoxCellMobile(arrayOfArtWorkId, artWork, artist, buy));
+                }
+            } catch (ArtworkNotFoundException e) {
+                ExceptionsFactory ef = ExceptionsFactory.getInstance();
+                ExceptionView ev;
+                ev = ef.createView(ExceptionsTypeManager.ARTWORKNOTFOUND_MOBILE);
+                paneExceptionLoad.getChildren().add(ev.getExceptionPane());
+            }
+        }
 }
+
 
